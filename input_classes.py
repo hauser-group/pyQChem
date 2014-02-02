@@ -20,7 +20,14 @@
 #                                                                   #
 #####################################################################
 
-# This file contains all input file classes and their methods. 
+# This file contains all input file classes and their methods as well as dictionaries used for input geometry manipulations
+
+########################### DICTIONARY  #############################
+
+#Using http://www.nist.gov/pml/data/comp.cfm for relative atomic mass per most common isotope
+
+atomic_mass={"1":1.007825032, "2":4.002603254, "3":7.01600455, "4":9.0121822, "5":11.0093054, "6":12, "7":14.003074, "8":15.99491462, "9":18.99840322, "10":19.99244018, "11":22.98976928, "12":23.9850417, "13":26.98153863, "14":27.97692653, "15":30.97376163, "16":31.972071, "17":34.96885268, "18":39.96238312, "19":38.96370668, "20":39.96259098, "21":44.9559119, "22":47.9479463, "23":50.9439595, "24":51.9405075, "25":54.9380451, "26":55.9349375, "27":58.933195, "28":57.9353429, "29":62.9295975, "30":63.9291422, "31":68.9255736, "32":73.9211778, "33":74.9215965, "34":79.9165213, "35":78.9183371, "36":83.911507,
+"H":1.007825032, "He":4.002603254, "Li":7.01600455, "Be":9.0121822, "B":11.0093054, "C":12, "N":14.003074, "O":15.99491462, "F":18.99840322, "Ne":19.99244018, "Na":22.98976928, "Mg":23.9850417, "Al":26.98153863, "Si":27.97692653, "P":30.97376163, "S":31.972071, "Cl":34.96885268, "Ar":39.96238312, "K":38.96370668, "Ca":39.96259098, "Sc":44.9559119, "Ti":47.9479463, "V":50.9439595, "Cr":51.9405075, "Mn":54.9380451, "Fe":55.9349375, "Co":58.933195, "Ni":57.9353429, "Cu":62.9295975, "Zn":63.9291422, "Ga":68.9255736, "Ge":73.9211778, "As":74.9215965, "Se":79.9165213, "Br":78.9183371, "Kr":83.911507}
 
 ########################### MULTIFILE  ##############################
 
@@ -218,11 +225,50 @@ class zmat(_fragment):
 ####################### CARTESIAN FRAGMENT ##########################
 
 class cartesian(_fragment):
-    
-    def __init__(self,title=""):
+    def __init__(self,title="",atom_list=[]):
+        import copy
         self.__title = title
         self.__Natoms = 0
-        self.list_of_atoms = []
+        self.__xyzs=[]
+        self.com=[0.0,0.0,0.0]
+        self.centroid=[0.0,0.0,0.0]
+        self.list_of_atoms = copy.deepcopy(atom_list)
+        if atom_list!=[]:
+            self.__Natoms=len(atom_list)
+            for i in xrange(self.__Natoms):
+                x=self.list_of_atoms[i][1]
+                y=self.list_of_atoms[i][2]
+                z=self.list_of_atoms[i][3]
+                self.__xyzs.append([float(x),float(y),float(z)])
+            self.__center_of_mass()
+    def fix(self):
+        """This fixes any odd errors resulting from modifying the number of atoms"""
+        self.__Natoms=len(self.list_of_atoms)
+        for i in xrange(self.__Natoms):
+            x=self.list_of_atoms[i][1]
+            y=self.list_of_atoms[i][2]
+            z=self.list_of_atoms[i][3]
+            self.__xyzs.append([float(x),float(y),float(z)])
+        self.__center_of_mass()
+        
+    def __center_of_mass(self):
+        """This computes the centroid and center of mass using standard atomic masses"""
+        total_mass=0.0
+        for i in xrange(self.__Natoms):
+            x=self.__xyzs[i][0]
+            y=self.__xyzs[i][1]
+            z=self.__xyzs[i][2]
+            wt=atomic_mass[self.list_of_atoms[i][0]]
+            total_mass=total_mass+wt
+            self.com[0]=self.com[0]+x*wt
+            self.com[1]=self.com[1]+y*wt
+            self.com[2]=self.com[2]+z*wt
+            self.centroid[0]=self.centroid[0]+x
+            self.centroid[1]=self.centroid[1]+y
+            self.centroid[2]=self.centroid[2]+z
+        self.centroid=[i/self.__Natoms for i in self.centroid]    
+        self.com=[i/total_mass for i in self.com]
+        
     
     def title(self,title="show"):
         if title == "show":
@@ -232,22 +278,51 @@ class cartesian(_fragment):
         
     def add_atom(self,name="H",x="0",y="0",z="0"):
         self.list_of_atoms.append([name,x,y,z])
+        self.__xyzs.append([float(x),float(y),float(z)])
         self.__Natoms += 1
+        self.__center_of_mass()
     
     def remove_atom(self,position):
         del self.list_of_atoms[position-1]  # First atom is atom 1
+        del self.__xyzs[position-1]
         self.__Natoms -= 1
-
+        self.__center_of_mass()        
 
     def atoms(self):
         for i, k in enumerate(self.list_of_atoms):
             print str(i+1) + ":\t" +  k[0] + "\t" + k[1] + "\t" + k[2] + "\t" + k[3]
+
+    def print_centroid(self):
+        print str(self.centroid[0])+'\t'+str(self.centroid[1])+'\t'+str(self.centroid[2])
         
+    def print_center_of_mass(self):
+        print str(self.com[0])+'\t'+str(self.com[1])+'\t'+str(self.com[2])
+        
+    def move(self,dir,amt=1.0):
+        for i in xrange(self.__Natoms):
+            self.__xyzs[i]=[self.__xyzs[i][j]+dir[j]*amt for j in xrange(3)]
+            self.list_of_atoms[i][1]=str(self.__xyzs[i][0])
+            self.list_of_atoms[i][2]=str(self.__xyzs[i][1])
+            self.list_of_atoms[i][3]=str(self.__xyzs[i][2])
+        self.__center_of_mass()
+
     def __str__(self):
         str_ret = str(self.__Natoms) + "\n" + self.__title + "\n"
         for k in self.list_of_atoms:
             str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
         return str_ret
+    def __add__(self,other):
+        if type(other)==type([]):  #let's move the atoms
+            self.move(other,1.0)
+        if type(other)==type(self):                      #merge two cartesians
+            atoms=self.list_of_atoms+other.list_of_atoms  
+            return cartesian(atom_list=atoms)
+    def __radd__(self,other):  #reverse of above
+        if type(other)==type([]):
+            self.move(other)
+        if type(other)==type(self):
+            atoms=self.list_of_atoms+other.list_of_atoms
+            return cartesian(atom_list=atoms)
             
 
 ####################### TINKER FRAGMENT ##########################
