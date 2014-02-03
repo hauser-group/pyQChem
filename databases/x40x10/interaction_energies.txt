@@ -1,0 +1,444 @@
+==========================================================================================
+ X40x10 data set
+ CCSD(T)/CBS interaction energies
+ kcal/mol
+==========================================================================================
+01_methane-F2_0.80.xyz                       0.306
+01_methane-F2_0.85.xyz                      -0.237
+01_methane-F2_0.90.xyz                      -0.444
+01_methane-F2_0.95.xyz                      -0.487
+01_methane-F2_1.00.xyz                      -0.458
+01_methane-F2_1.05.xyz                      -0.400
+01_methane-F2_1.10.xyz                      -0.338
+01_methane-F2_1.25.xyz                      -0.187
+01_methane-F2_1.50.xyz                      -0.070
+01_methane-F2_2.00.xyz                      -0.014
+
+02_methane-Cl2_0.80.xyz                      1.804
+02_methane-Cl2_0.85.xyz                     -0.066
+02_methane-Cl2_0.90.xyz                     -0.841
+02_methane-Cl2_0.95.xyz                     -1.073
+02_methane-Cl2_1.00.xyz                     -1.055
+02_methane-Cl2_1.05.xyz                     -0.937
+02_methane-Cl2_1.10.xyz                     -0.792
+02_methane-Cl2_1.25.xyz                     -0.427
+02_methane-Cl2_1.50.xyz                     -0.151
+02_methane-Cl2_2.00.xyz                     -0.029
+
+03_methane-Br2_0.80.xyz                      2.441
+03_methane-Br2_0.85.xyz                      0.087
+03_methane-Br2_0.90.xyz                     -0.927
+03_methane-Br2_0.95.xyz                     -1.263
+03_methane-Br2_1.00.xyz                     -1.276
+03_methane-Br2_1.05.xyz                     -1.152
+03_methane-Br2_1.10.xyz                     -0.984
+03_methane-Br2_1.25.xyz                     -0.541
+03_methane-Br2_1.50.xyz                     -0.193
+03_methane-Br2_2.00.xyz                     -0.037
+
+04_methane-I2_0.80.xyz                       2.807
+04_methane-I2_0.85.xyz                       0.222
+04_methane-I2_0.90.xyz                      -0.908
+04_methane-I2_0.95.xyz                      -1.295
+04_methane-I2_1.00.xyz                      -1.324
+04_methane-I2_1.05.xyz                      -1.201
+04_methane-I2_1.10.xyz                      -1.028
+04_methane-I2_1.25.xyz                      -0.563
+04_methane-I2_1.50.xyz                      -0.199
+04_methane-I2_2.00.xyz                      -0.037
+
+05_fluoromethane-methane_0.80.xyz            0.759
+05_fluoromethane-methane_0.85.xyz           -0.287
+05_fluoromethane-methane_0.90.xyz           -0.671
+05_fluoromethane-methane_0.95.xyz           -0.755
+05_fluoromethane-methane_1.00.xyz           -0.713
+05_fluoromethane-methane_1.05.xyz           -0.625
+05_fluoromethane-methane_1.10.xyz           -0.527
+05_fluoromethane-methane_1.25.xyz           -0.293
+05_fluoromethane-methane_1.50.xyz           -0.111
+05_fluoromethane-methane_2.00.xyz           -0.023
+
+06_chloromethane-methane_0.80.xyz            1.698
+06_chloromethane-methane_0.85.xyz           -0.131
+06_chloromethane-methane_0.90.xyz           -0.809
+06_chloromethane-methane_0.95.xyz           -0.988
+06_chloromethane-methane_1.00.xyz           -0.959
+06_chloromethane-methane_1.05.xyz           -0.852
+06_chloromethane-methane_1.10.xyz           -0.726
+06_chloromethane-methane_1.25.xyz           -0.411
+06_chloromethane-methane_1.50.xyz           -0.160
+06_chloromethane-methane_2.00.xyz           -0.035
+
+07_trifluoromethane-methane_0.80.xyz         0.330
+07_trifluoromethane-methane_0.85.xyz        -0.413
+07_trifluoromethane-methane_0.90.xyz        -0.657
+07_trifluoromethane-methane_0.95.xyz        -0.677
+07_trifluoromethane-methane_1.00.xyz        -0.608
+07_trifluoromethane-methane_1.05.xyz        -0.512
+07_trifluoromethane-methane_1.10.xyz        -0.418
+07_trifluoromethane-methane_1.25.xyz        -0.213
+07_trifluoromethane-methane_1.50.xyz        -0.071
+07_trifluoromethane-methane_2.00.xyz        -0.012
+
+08_trichloromethane-methane_0.80.xyz         1.629
+08_trichloromethane-methane_0.85.xyz        -0.207
+08_trichloromethane-methane_0.90.xyz        -0.949
+08_trichloromethane-methane_0.95.xyz        -1.156
+08_trichloromethane-methane_1.00.xyz        -1.117
+08_trichloromethane-methane_1.05.xyz        -0.983
+08_trichloromethane-methane_1.10.xyz        -0.824
+08_trichloromethane-methane_1.25.xyz        -0.436
+08_trichloromethane-methane_1.50.xyz        -0.149
+08_trichloromethane-methane_2.00.xyz        -0.025
+
+09_fluoromethane-fluoromethane_0.80.xyz      0.675
+09_fluoromethane-fluoromethane_0.85.xyz     -0.849
+09_fluoromethane-fluoromethane_0.90.xyz     -1.461
+09_fluoromethane-fluoromethane_0.95.xyz     -1.628
+09_fluoromethane-fluoromethane_1.00.xyz     -1.590
+09_fluoromethane-fluoromethane_1.05.xyz     -1.469
+09_fluoromethane-fluoromethane_1.10.xyz     -1.322
+09_fluoromethane-fluoromethane_1.25.xyz     -0.930
+09_fluoromethane-fluoromethane_1.50.xyz     -0.550
+09_fluoromethane-fluoromethane_2.00.xyz     -0.256
+
+10_chloromethane-chloromethane_0.80.xyz      1.215
+10_chloromethane-chloromethane_0.85.xyz     -0.445
+10_chloromethane-chloromethane_0.90.xyz     -1.130
+10_chloromethane-chloromethane_0.95.xyz     -1.332
+10_chloromethane-chloromethane_1.00.xyz     -1.310
+10_chloromethane-chloromethane_1.05.xyz     -1.196
+10_chloromethane-chloromethane_1.10.xyz     -1.056
+10_chloromethane-chloromethane_1.25.xyz     -0.690
+10_chloromethane-chloromethane_1.50.xyz     -0.374
+10_chloromethane-chloromethane_2.00.xyz     -0.166
+
+11_benF3-ben_0.80.xyz                        8.633
+11_benF3-ben_0.85.xyz                        1.517
+11_benF3-ben_0.90.xyz                       -2.199
+11_benF3-ben_0.95.xyz                       -3.905
+11_benF3-ben_1.00.xyz                       -4.470
+11_benF3-ben_1.05.xyz                       -4.419
+11_benF3-ben_1.10.xyz                       -4.066
+11_benF3-ben_1.25.xyz                       -2.624
+11_benF3-ben_1.50.xyz                       -1.080
+11_benF3-ben_2.00.xyz                       -0.221
+
+12_benF6-ben_0.80.xyz                       11.949
+12_benF6-ben_0.85.xyz                        1.711
+12_benF6-ben_0.90.xyz                       -3.399
+12_benF6-ben_0.95.xyz                       -5.605
+12_benF6-ben_1.00.xyz                       -6.234
+12_benF6-ben_1.05.xyz                       -6.056
+12_benF6-ben_1.10.xyz                       -5.510
+12_benF6-ben_1.25.xyz                       -3.529
+12_benF6-ben_1.50.xyz                       -1.518
+12_benF6-ben_2.00.xyz                       -0.370
+
+13_chloromethane-formaldehyde_0.80.xyz       3.054
+13_chloromethane-formaldehyde_0.85.xyz       0.171
+13_chloromethane-formaldehyde_0.90.xyz      -0.880
+13_chloromethane-formaldehyde_0.95.xyz      -1.162
+13_chloromethane-formaldehyde_1.00.xyz      -1.132
+13_chloromethane-formaldehyde_1.05.xyz      -0.991
+13_chloromethane-formaldehyde_1.10.xyz      -0.823
+13_chloromethane-formaldehyde_1.25.xyz      -0.419
+13_chloromethane-formaldehyde_1.50.xyz      -0.125
+13_chloromethane-formaldehyde_2.00.xyz      -0.006
+
+14_bromomethane-formaldehyde_0.80.xyz        3.464
+14_bromomethane-formaldehyde_0.85.xyz        0.465
+14_bromomethane-formaldehyde_0.90.xyz       -0.991
+14_bromomethane-formaldehyde_0.95.xyz       -1.642
+14_bromomethane-formaldehyde_1.00.xyz       -1.695
+14_bromomethane-formaldehyde_1.05.xyz       -1.499
+14_bromomethane-formaldehyde_1.10.xyz       -1.240
+14_bromomethane-formaldehyde_1.25.xyz       -0.608
+14_bromomethane-formaldehyde_1.50.xyz       -0.165
+14_bromomethane-formaldehyde_2.00.xyz        0.000
+
+15_iodomethane-formaldehyde_0.80.xyz         2.526
+15_iodomethane-formaldehyde_0.85.xyz        -0.441
+15_iodomethane-formaldehyde_0.90.xyz        -1.817
+15_iodomethane-formaldehyde_0.95.xyz        -2.311
+15_iodomethane-formaldehyde_1.00.xyz        -2.342
+15_iodomethane-formaldehyde_1.05.xyz        -2.151
+15_iodomethane-formaldehyde_1.10.xyz        -1.875
+15_iodomethane-formaldehyde_1.25.xyz        -1.073
+15_iodomethane-formaldehyde_1.50.xyz        -0.328
+15_iodomethane-formaldehyde_2.00.xyz        -0.029
+
+16_F3chloromethane-formaldehyde_0.80.xyz     1.190
+16_F3chloromethane-formaldehyde_0.85.xyz    -0.979
+16_F3chloromethane-formaldehyde_0.90.xyz    -1.938
+16_F3chloromethane-formaldehyde_0.95.xyz    -2.238
+16_F3chloromethane-formaldehyde_1.00.xyz    -2.200
+16_F3chloromethane-formaldehyde_1.05.xyz    -2.009
+16_F3chloromethane-formaldehyde_1.10.xyz    -1.763
+16_F3chloromethane-formaldehyde_1.25.xyz    -1.083
+16_F3chloromethane-formaldehyde_1.50.xyz    -0.447
+16_F3chloromethane-formaldehyde_2.00.xyz    -0.116
+
+17_F3bromomethane-formaldehyde_0.80.xyz      1.440
+17_F3bromomethane-formaldehyde_0.85.xyz     -1.357
+17_F3bromomethane-formaldehyde_0.90.xyz     -2.636
+17_F3bromomethane-formaldehyde_0.95.xyz     -3.065
+17_F3bromomethane-formaldehyde_1.00.xyz     -3.046
+17_F3bromomethane-formaldehyde_1.05.xyz     -2.812
+17_F3bromomethane-formaldehyde_1.10.xyz     -2.495
+17_F3bromomethane-formaldehyde_1.25.xyz     -1.576
+17_F3bromomethane-formaldehyde_1.50.xyz     -0.710
+17_F3bromomethane-formaldehyde_2.00.xyz     -0.203
+
+18_F3iodomethane-formaldehyde_0.80.xyz       1.433
+18_F3iodomethane-formaldehyde_0.85.xyz      -1.932
+18_F3iodomethane-formaldehyde_0.90.xyz      -3.484
+18_F3iodomethane-formaldehyde_0.95.xyz      -4.011
+18_F3iodomethane-formaldehyde_1.00.xyz      -3.988
+18_F3iodomethane-formaldehyde_1.05.xyz      -3.694
+18_F3iodomethane-formaldehyde_1.10.xyz      -3.292
+18_F3iodomethane-formaldehyde_1.25.xyz      -2.107
+18_F3iodomethane-formaldehyde_1.50.xyz      -0.967
+18_F3iodomethane-formaldehyde_2.00.xyz      -0.285
+
+19_benCl-acetone_0.80.xyz                    0.902
+19_benCl-acetone_0.85.xyz                   -0.625
+19_benCl-acetone_0.90.xyz                   -1.290
+19_benCl-acetone_0.95.xyz                   -1.487
+19_benCl-acetone_1.00.xyz                   -1.448
+19_benCl-acetone_1.05.xyz                   -1.301
+19_benCl-acetone_1.10.xyz                   -1.115
+19_benCl-acetone_1.25.xyz                   -0.576
+19_benCl-acetone_1.50.xyz                   -0.113
+19_benCl-acetone_2.00.xyz                    0.032
+
+20_benBr-acetone_0.80.xyz                    1.700
+20_benBr-acetone_0.85.xyz                   -0.779
+20_benBr-acetone_0.90.xyz                   -1.948
+20_benBr-acetone_0.95.xyz                   -2.374
+20_benBr-acetone_1.00.xyz                   -2.399
+20_benBr-acetone_1.05.xyz                   -2.225
+20_benBr-acetone_1.10.xyz                   -1.967
+20_benBr-acetone_1.25.xyz                   -1.183
+20_benBr-acetone_1.50.xyz                   -0.410
+20_benBr-acetone_2.00.xyz                   -0.018
+
+21_benI-acetone_0.80.xyz                     1.578
+21_benI-acetone_0.85.xyz                    -1.444
+21_benI-acetone_0.90.xyz                    -2.872
+21_benI-acetone_0.95.xyz                    -3.381
+21_benI-acetone_1.00.xyz                    -3.387
+21_benI-acetone_1.05.xyz                    -3.139
+21_benI-acetone_1.10.xyz                    -2.786
+21_benI-acetone_1.25.xyz                    -1.716
+21_benI-acetone_1.50.xyz                    -0.676
+21_benI-acetone_2.00.xyz                    -0.104
+
+22_benCl-Nm3_0.80.xyz                        1.671
+22_benCl-Nm3_0.85.xyz                       -0.604
+22_benCl-Nm3_0.90.xyz                       -1.682
+22_benCl-Nm3_0.95.xyz                       -2.073
+22_benCl-Nm3_1.00.xyz                       -2.092
+22_benCl-Nm3_1.05.xyz                       -1.927
+22_benCl-Nm3_1.10.xyz                       -1.686
+22_benCl-Nm3_1.25.xyz                       -0.970
+22_benCl-Nm3_1.50.xyz                       -0.312
+22_benCl-Nm3_2.00.xyz                       -0.005
+
+23_benBr-Nm3_0.80.xyz                        2.786
+23_benBr-Nm3_0.85.xyz                       -0.958
+23_benBr-Nm3_0.90.xyz                       -2.840
+23_benBr-Nm3_0.95.xyz                       -3.610
+23_benBr-Nm3_1.00.xyz                       -3.748
+23_benBr-Nm3_1.05.xyz                       -3.549
+23_benBr-Nm3_1.10.xyz                       -3.194
+23_benBr-Nm3_1.25.xyz                       -2.005
+23_benBr-Nm3_1.50.xyz                       -0.782
+23_benBr-Nm3_2.00.xyz                       -0.112
+
+24_benI-Nm3_0.80.xyz                         3.632
+24_benI-Nm3_0.85.xyz                        -1.702
+24_benI-Nm3_0.90.xyz                        -4.394
+24_benI-Nm3_0.95.xyz                        -5.515
+24_benI-Nm3_1.00.xyz                        -5.732
+24_benI-Nm3_1.05.xyz                        -5.461
+24_benI-Nm3_1.10.xyz                        -4.955
+24_benI-Nm3_1.25.xyz                        -3.205
+24_benI-Nm3_1.50.xyz                        -1.329
+24_benI-Nm3_2.00.xyz                        -0.242
+
+25_benBr-mSH_0.80.xyz                        9.335
+25_benBr-mSH_0.85.xyz                        1.378
+25_benBr-mSH_0.90.xyz                       -1.435
+25_benBr-mSH_0.95.xyz                       -2.254
+25_benBr-mSH_1.00.xyz                       -2.292
+25_benBr-mSH_1.05.xyz                       -2.048
+25_benBr-mSH_1.10.xyz                       -1.731
+25_benBr-mSH_1.25.xyz                       -0.933
+25_benBr-mSH_1.50.xyz                       -0.333
+25_benBr-mSH_2.00.xyz                       -0.063
+
+26_benI-mSH_0.80.xyz                        11.716
+26_benI-mSH_0.85.xyz                         3.641
+26_benI-mSH_0.90.xyz                        -1.296
+26_benI-mSH_0.95.xyz                        -2.850
+26_benI-mSH_1.00.xyz                        -3.062
+26_benI-mSH_1.05.xyz                        -2.777
+26_benI-mSH_1.10.xyz                        -2.350
+26_benI-mSH_1.25.xyz                        -1.241
+26_benI-mSH_1.50.xyz                        -0.422
+26_benI-mSH_2.00.xyz                        -0.074
+
+27_CH3Br-ben_0.80.xyz                        4.271
+27_CH3Br-ben_0.85.xyz                        0.716
+27_CH3Br-ben_0.90.xyz                       -1.007
+27_CH3Br-ben_0.95.xyz                       -1.704
+27_CH3Br-ben_1.00.xyz                       -1.858
+27_CH3Br-ben_1.05.xyz                       -1.749
+27_CH3Br-ben_1.10.xyz                       -1.531
+27_CH3Br-ben_1.25.xyz                       -0.849
+27_CH3Br-ben_1.50.xyz                       -0.254
+27_CH3Br-ben_2.00.xyz                       -0.002
+
+28_CH3I-ben_0.80.xyz                         6.817
+28_CH3I-ben_0.85.xyz                         1.637
+28_CH3I-ben_0.90.xyz                        -0.999
+28_CH3I-ben_0.95.xyz                        -2.163
+28_CH3I-ben_1.00.xyz                        -2.518
+28_CH3I-ben_1.05.xyz                        -2.460
+28_CH3I-ben_1.10.xyz                        -2.216
+28_CH3I-ben_1.25.xyz                        -1.319
+28_CH3I-ben_1.50.xyz                        -0.463
+28_CH3I-ben_2.00.xyz                        -0.056
+
+29_CF3Br-ben_0.80.xyz                        3.942
+29_CF3Br-ben_0.85.xyz                       -0.206
+29_CF3Br-ben_0.90.xyz                       -2.220
+29_CF3Br-ben_0.95.xyz                       -3.018
+29_CF3Br-ben_1.00.xyz                       -3.163
+29_CF3Br-ben_1.05.xyz                       -2.984
+29_CF3Br-ben_1.10.xyz                       -2.669
+29_CF3Br-ben_1.25.xyz                       -1.677
+29_CF3Br-ben_1.50.xyz                       -0.730
+29_CF3Br-ben_2.00.xyz                       -0.188
+
+30_CF3I-ben_0.80.xyz                         6.544
+30_CF3I-ben_0.85.xyz                         0.683
+30_CF3I-ben_0.90.xyz                        -2.305
+30_CF3I-ben_0.95.xyz                        -3.607
+30_CF3I-ben_1.00.xyz                        -3.970
+30_CF3I-ben_1.05.xyz                        -3.844
+30_CF3I-ben_1.10.xyz                        -3.494
+30_CF3I-ben_1.25.xyz                        -2.246
+30_CF3I-ben_1.50.xyz                        -0.984
+30_CF3I-ben_2.00.xyz                        -0.254
+
+31_trifluorometOH-wat_0.80.xyz              -4.935
+31_trifluorometOH-wat_0.85.xyz              -7.456
+31_trifluorometOH-wat_0.90.xyz              -8.849
+31_trifluorometOH-wat_0.95.xyz              -9.477
+31_trifluorometOH-wat_1.00.xyz              -9.598
+31_trifluorometOH-wat_1.05.xyz              -9.392
+31_trifluorometOH-wat_1.10.xyz              -8.986
+31_trifluorometOH-wat_1.25.xyz              -7.300
+31_trifluorometOH-wat_1.50.xyz              -4.708
+31_trifluorometOH-wat_2.00.xyz              -2.031
+
+32_trichlorometOH-wat_0.80.xyz              -5.404
+32_trichlorometOH-wat_0.85.xyz              -8.056
+32_trichlorometOH-wat_0.90.xyz              -9.531
+32_trichlorometOH-wat_0.95.xyz             -10.207
+32_trichlorometOH-wat_1.00.xyz             -10.346
+32_trichlorometOH-wat_1.05.xyz             -10.137
+32_trichlorometOH-wat_1.10.xyz              -8.429
+32_trichlorometOH-wat_1.25.xyz              -7.896
+32_trichlorometOH-wat_1.50.xyz              -5.047
+32_trichlorometOH-wat_2.00.xyz              -2.062
+
+33_HF-mOH_0.80.xyz                          -5.241
+33_HF-mOH_0.85.xyz                          -7.644
+33_HF-mOH_0.90.xyz                          -8.922
+33_HF-mOH_0.95.xyz                          -9.453
+33_HF-mOH_1.00.xyz                          -9.498
+33_HF-mOH_1.05.xyz                          -9.237
+33_HF-mOH_1.10.xyz                          -8.794
+33_HF-mOH_1.25.xyz                          -7.072
+33_HF-mOH_1.50.xyz                          -4.535
+33_HF-mOH_2.00.xyz                          -1.971
+
+37_HF-mNH2_0.80.xyz                         -9.096
+37_HF-mNH2_0.85.xyz                        -11.969
+37_HF-mNH2_0.90.xyz                        -13.501
+37_HF-mNH2_0.95.xyz                        -14.123
+37_HF-mNH2_1.00.xyz                        -14.138
+37_HF-mNH2_1.05.xyz                        -13.756
+37_HF-mNH2_1.10.xyz                        -13.128
+37_HF-mNH2_1.25.xyz                        -10.657
+37_HF-mNH2_1.50.xyz                         -6.843
+37_HF-mNH2_2.00.xyz                         -2.805
+
+38_HCl-mNH2_0.80.xyz                        -6.674
+38_HCl-mNH2_0.85.xyz                        -9.078
+38_HCl-mNH2_0.90.xyz                       -10.458
+38_HCl-mNH2_0.95.xyz                       -11.130
+38_HCl-mNH2_1.00.xyz                       -11.313
+38_HCl-mNH2_1.05.xyz                       -11.162
+38_HCl-mNH2_1.10.xyz                       -10.789
+38_HCl-mNH2_1.25.xyz                        -9.043
+38_HCl-mNH2_1.50.xyz                        -6.001
+38_HCl-mNH2_2.00.xyz                        -2.470
+
+34_HCl-mOH_0.80.xyz                         -2.784
+34_HCl-mOH_0.85.xyz                         -4.598
+34_HCl-mOH_0.90.xyz                         -5.630
+34_HCl-mOH_0.95.xyz                         -6.125
+34_HCl-mOH_1.00.xyz                         -6.259
+34_HCl-mOH_1.05.xyz                         -6.157
+34_HCl-mOH_1.10.xyz                         -5.906
+34_HCl-mOH_1.25.xyz                         -4.793
+34_HCl-mOH_1.50.xyz                         -3.048
+34_HCl-mOH_2.00.xyz                         -1.271
+
+35_HBr-mOH_0.80.xyz                         -2.213
+35_HBr-mOH_0.85.xyz                         -3.782
+35_HBr-mOH_0.90.xyz                         -4.695
+35_HBr-mOH_0.95.xyz                         -5.151
+35_HBr-mOH_1.00.xyz                         -5.294
+35_HBr-mOH_1.05.xyz                         -5.228
+35_HBr-mOH_1.10.xyz                         -5.029
+35_HBr-mOH_1.25.xyz                         -4.095
+35_HBr-mOH_1.50.xyz                         -2.590
+35_HBr-mOH_2.00.xyz                         -1.054
+
+36_HI-mOH_0.80.xyz                          -1.234
+36_HI-mOH_0.85.xyz                          -2.563
+36_HI-mOH_0.90.xyz                          -3.356
+36_HI-mOH_0.95.xyz                          -3.770
+36_HI-mOH_1.00.xyz                          -3.921
+36_HI-mOH_1.05.xyz                          -3.895
+36_HI-mOH_1.10.xyz                          -3.755
+36_HI-mOH_1.25.xyz                          -3.043
+36_HI-mOH_1.50.xyz                          -1.884
+36_HI-mOH_2.00.xyz                          -0.734
+
+39_methanol-fluoromethane_0.80.xyz          -1.617
+39_methanol-fluoromethane_0.85.xyz          -2.950
+39_methanol-fluoromethane_0.90.xyz          -3.608
+39_methanol-fluoromethane_0.95.xyz          -3.846
+39_methanol-fluoromethane_1.00.xyz          -3.828
+39_methanol-fluoromethane_1.05.xyz          -3.663
+39_methanol-fluoromethane_1.10.xyz          -3.421
+39_methanol-fluoromethane_1.25.xyz          -2.592
+39_methanol-fluoromethane_1.50.xyz          -1.540
+39_methanol-fluoromethane_2.00.xyz          -0.623
+
+40_methanol-chloromethane_0.80.xyz          -0.142
+40_methanol-chloromethane_0.85.xyz          -2.242
+40_methanol-chloromethane_0.90.xyz          -3.301
+40_methanol-chloromethane_0.95.xyz          -3.720
+40_methanol-chloromethane_1.00.xyz          -3.761
+40_methanol-chloromethane_1.05.xyz          -3.592
+40_methanol-chloromethane_1.10.xyz          -3.319
+40_methanol-chloromethane_1.25.xyz          -2.379
+40_methanol-chloromethane_1.50.xyz          -1.086
+40_methanol-chloromethane_2.00.xyz          -0.349
