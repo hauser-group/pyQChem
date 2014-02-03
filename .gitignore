@@ -6,4 +6,5 @@ pyQchem\ test.ipynb
 *.png
 *.in
 *.out
+*.sh
 pathtable

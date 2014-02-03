@@ -55,7 +55,7 @@ class _general(object):
         print "--------------"
         print ""
         print "Q-Chem version:\t\t" + self.version
-        print "Jobtype:\t\t" + self.jobtype
+        print "Jobtype:\t\t" + self.jobtype.lower()
         print "Basis functions:\t" + str(self.basis_size)
         print "Spin:\t\t\t" + str(self.spin)
         print "SCF energy:\t\t" + str(self.energy)
@@ -312,7 +312,9 @@ class _outputfile(object):
         switch = 0
         for line in content:
             if "JOBTYPE" in line:
-                jobtype = ((line.split())[1]).lower()
+                jobtype = ((line.split())[-1]).lower()
+            if "JOB_TYPE" in line:
+                jobtype = ((line.split())[-1]).lower()
             if "Q-Chem, Version" in line:
                 version = (((line.split(","))[1]).split())[1]
             if "<S^2> =" in line:
@@ -427,7 +429,7 @@ class _outputfile(object):
             G = H - (T*S)
             self.thermo = _thermo(E,ZPE,ITE,T,p,S,H,F,G,frequencies,intensities,mass,mom_inertia,rot_sym,linear_switch)
 
-        if jobtype=="opt":
+        if jobtype=="opt" or jobtype=="optimization":
             energies = []
             gradient = []
             displacement = []
@@ -467,7 +469,4 @@ class _outputfile(object):
                     N_step += 1
                     switch = 0
 
-
             self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
-
-

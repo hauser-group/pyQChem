@@ -6398,4 +6398,3 @@ By default, all integrals are used in decomposed format allowing significant red
     def info(self):
         print "Type: rem fragment"
         print "Keywords: " + str(len(self.dict_of_keywords))
-
