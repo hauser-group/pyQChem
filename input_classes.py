@@ -42,7 +42,7 @@ class multifile(object):
             self.add(k)
 
     def add(self,new_job):
-        if type(new_job) == type(ifutfile()):
+        if type(new_job) == type(inputfile()):
             self.list_of_jobs.append(new_job)
             self.list_of_content.append(new_job._jtype)
         else:

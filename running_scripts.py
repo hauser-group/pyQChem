@@ -27,7 +27,7 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     #tag it all with current time for safety's sake
     import time,os
     curtime=time.strftime("%Y%m%d%H%M%S")
-    if timestamp!=true:
+    if timestamp!=True:
         name=name.replace(".in","")
     else: 
         if name.endswith(".in"):

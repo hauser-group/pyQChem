@@ -455,6 +455,10 @@ class _outputfile(object):
                     switch = 1
                     cycle_name = "Optimization step " + str(N_step)
                     cart_dummy = cartesian(cycle_name)
+                if "ATOM                X               Y               Z" in line:
+                    switch = 1
+                    cycle_name = "Optimization step " + str(N_step)
+                    cart_dummy = cartesian(cycle_name)
                 if switch == 1 and "ATOM" not in line and "Point Group" not in line:
                     con = line.split()
                     cart_dummy.add_atom(con[1],con[2],con[3],con[4])
