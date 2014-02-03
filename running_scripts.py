@@ -22,7 +22,7 @@
 
 from input_classes import *
 
-def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=false):
+def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     """This is a script for running Q-Chem inside of iPython given an input file object, name, 53.0 file, location, and number of threads or processors"""
     #tag it all with current time for safety's sake
     import time,os
@@ -36,7 +36,7 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=false):
         	name=name+curtime
 
     #make script file
-    scr=name+".sh"sg
+    scr=name+".sh"
     scr_out=open(scr,'w')
 
     #source appropriate Q-Chem
@@ -66,3 +66,19 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=false):
     scr_out.close()
     os.popen("bash "+scr).read()
     return
+
+def rmsd(a,b):
+    from math import sqrt
+    if type(a)!=type(b):
+        return
+    a=a.list_of_atoms
+    b=b.list_of_atoms
+    if len(a)!=len(b):
+        print "Geometries incompatible"
+        return
+    natoms=len(a)
+    tot=[0.0 for i in xrange(3)]
+    for i in xrange(natoms):
+        tot=[tot[j]+(float(a[i][j+1])-float(b[i][j+1]))**2.0 for j in xrange(3)]
+    tot=[sqrt(tot[i]/natoms) for i in xrange(3)]
+    return tot[0]+tot[1]+tot[2]

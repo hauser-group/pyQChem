@@ -22,6 +22,8 @@
 
 # This file contains all input file classes and their methods as well as dictionaries used for input geometry manipulations
 
+import numpy as np
+
 ########################### DICTIONARY  #############################
 
 #Using http://www.nist.gov/pml/data/comp.cfm for relative atomic mass per most common isotope
@@ -40,7 +42,7 @@ class multifile(object):
             self.add(k)
 
     def add(self,new_job):
-        if type(new_job) == type(inputfile()):
+        if type(new_job) == type(ifutfile()):
             self.list_of_jobs.append(new_job)
             self.list_of_content.append(new_job._jtype)
         else:
@@ -229,9 +231,9 @@ class cartesian(_fragment):
         import copy
         self.__title = title
         self.__Natoms = 0
-        self.__xyzs=[]
-        self.com=[0.0,0.0,0.0]
-        self.centroid=[0.0,0.0,0.0]
+        self.xyzs=[]
+        self.com=np.array([0.0,0.0,0.0])
+        self.centroid=np.array([0.0,0.0,0.0])
         self.list_of_atoms = copy.deepcopy(atom_list)
         if atom_list!=[]:
             self.__Natoms=len(atom_list)
@@ -239,36 +241,39 @@ class cartesian(_fragment):
                 x=self.list_of_atoms[i][1]
                 y=self.list_of_atoms[i][2]
                 z=self.list_of_atoms[i][3]
-                self.__xyzs.append([float(x),float(y),float(z)])
+                self.xyzs.append(np.array([float(x),float(y),float(z)]))
+            self.xyzs=np.array(self.xyzs)
             self.__center_of_mass()
     def fix(self):
         """This fixes any odd errors resulting from modifying the number of atoms"""
         self.__Natoms=len(self.list_of_atoms)
+        if self.__Natoms==0:
+            return
+        self.xyzs=[]
         for i in xrange(self.__Natoms):
             x=self.list_of_atoms[i][1]
             y=self.list_of_atoms[i][2]
             z=self.list_of_atoms[i][3]
-            self.__xyzs.append([float(x),float(y),float(z)])
+            self.xyzs.append(np.array([float(x),float(y),float(z)]))
+        self.xyzs=np.array(self.xyzs)
         self.__center_of_mass()
         
     def __center_of_mass(self):
         """This computes the centroid and center of mass using standard atomic masses"""
+        #print self.xyzs, self.__Natoms
+        self.com=np.array([0.0,0.0,0.0])
+        self.centroid=np.array([0.0,0.0,0.0])
+        if len(self.xyzs)==0:
+            return   
         total_mass=0.0
-        for i in xrange(self.__Natoms):
-            x=self.__xyzs[i][0]
-            y=self.__xyzs[i][1]
-            z=self.__xyzs[i][2]
-            wt=atomic_mass[self.list_of_atoms[i][0]]
+        self.centroid=sum(self.xyzs)/len(self.xyzs)
+        wts=[atomic_mass[self.list_of_atoms[i][0]]  for i in xrange(self.__Natoms)]
+        for i,atom in enumerate(self.xyzs):
+            wt=wts[i]
             total_mass=total_mass+wt
-            self.com[0]=self.com[0]+x*wt
-            self.com[1]=self.com[1]+y*wt
-            self.com[2]=self.com[2]+z*wt
-            self.centroid[0]=self.centroid[0]+x
-            self.centroid[1]=self.centroid[1]+y
-            self.centroid[2]=self.centroid[2]+z
-        self.centroid=[i/self.__Natoms for i in self.centroid]    
-        self.com=[i/total_mass for i in self.com]
-        
+            self.com=self.com+atom*wt
+        self.centroid=np.array([i/self.__Natoms for i in self.centroid])
+        self.com=np.array([i/total_mass for i in self.com])
     
     def title(self,title="show"):
         if title == "show":
@@ -278,14 +283,12 @@ class cartesian(_fragment):
         
     def add_atom(self,name="H",x="0",y="0",z="0"):
         self.list_of_atoms.append([name,x,y,z])
-        self.__xyzs.append([float(x),float(y),float(z)])
-        self.__Natoms += 1
+        self.fix()
         self.__center_of_mass()
     
     def remove_atom(self,position):
         del self.list_of_atoms[position-1]  # First atom is atom 1
-        del self.__xyzs[position-1]
-        self.__Natoms -= 1
+        self.fix()
         self.__center_of_mass()        
 
     def atoms(self):
@@ -299,11 +302,12 @@ class cartesian(_fragment):
         print str(self.com[0])+'\t'+str(self.com[1])+'\t'+str(self.com[2])
         
     def move(self,dir,amt=1.0):
+        dir=np.array(dir)
         for i in xrange(self.__Natoms):
-            self.__xyzs[i]=[self.__xyzs[i][j]+dir[j]*amt for j in xrange(3)]
-            self.list_of_atoms[i][1]=str(self.__xyzs[i][0])
-            self.list_of_atoms[i][2]=str(self.__xyzs[i][1])
-            self.list_of_atoms[i][3]=str(self.__xyzs[i][2])
+            self.xyzs[i]=self.xyzs[i]+dir*amt
+            self.list_of_atoms[i][1]=str(self.xyzs[i][0])
+            self.list_of_atoms[i][2]=str(self.xyzs[i][1])
+            self.list_of_atoms[i][3]=str(self.xyzs[i][2])
         self.__center_of_mass()
 
     def __str__(self):
