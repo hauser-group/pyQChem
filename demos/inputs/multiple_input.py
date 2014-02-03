@@ -1,0 +1,26 @@
+import pyQchem as qc
+
+rem=qc.rem_fragment()
+rem.basis("sto-3g")
+rem.jobtype("opt")
+xyz=qc.cartesian()
+xyz.add_atom()
+xyz.add_atom("H","0","0",".74")
+molec=qc.mol_fragment(xyz)
+job1=qc.inputfile()
+job1.add(rem)
+job1.add(molec)
+job1.write("h2.in")
+
+rem2=qc.deepcopy(rem)
+rem2.jobtype("freq")
+molec2=qc.mol_fragment()
+molec2.geometry("read")
+job2=qc.inputfile()
+job2.add(rem2)
+job2.add(molec2)
+
+job=qc.multifile()
+job.add(job1)
+job.add(job2)
+job.write("h2_opt.in")
