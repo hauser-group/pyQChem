@@ -66,6 +66,10 @@ from utilities import _readcartesian
 from utilities import _readtinker
 from utilities import _readinput
 
+# Lastly, let's load some scripts for running files
+
+from running_scripts import *
+
 ########################### FILEHANDLING ############################
         
 # This is the main filereading method. It reads all types of supported
