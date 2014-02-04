@@ -75,6 +75,7 @@ class inputfile(object):
     def __init__(self, fragments=[]):
         self.list_of_fragments=[]
         self.list_of_content=[]
+	self.name=''
         self.__jtype="undef"
         for k in fragments:
             self.add(k)

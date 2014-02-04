@@ -27,6 +27,10 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     #tag it all with current time for safety's sake
     import time,os
     curtime=time.strftime("%Y%m%d%H%M%S")
+    if name=='':
+        name=inp_file.name
+    if name=='':
+        name=curtime
     if timestamp!=True:
         name=name.replace(".in","")
     else: 
@@ -34,6 +38,7 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
             name.replace(".in",curtime)
         else:
         	name=name+curtime
+
 
     #make script file
     scr=name+".sh"
@@ -67,18 +72,49 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     os.popen("bash "+scr).read()
     return
 
-def rmsd(a,b):
-    from math import sqrt
-    if type(a)!=type(b):
-        return
-    a=a.list_of_atoms
-    b=b.list_of_atoms
-    if len(a)!=len(b):
-        print "Geometries incompatible"
-        return
-    natoms=len(a)
-    tot=[0.0 for i in xrange(3)]
-    for i in xrange(natoms):
-        tot=[tot[j]+(float(a[i][j+1])-float(b[i][j+1]))**2.0 for j in xrange(3)]
-    tot=[sqrt(tot[i]/natoms) for i in xrange(3)]
-    return tot[0]+tot[1]+tot[2]
+def queue(joblist,num_workers=1):
+	"""This is a simple queue for running through a list of jobs.
+	When in doubt, set num_workers to the number of cores on the machine.
+	Advanced options are currently not supported."""
+	import Queue
+	import threading
+	q_in = Queue.Queue(maxsize=0)
+	q_out = Queue.Queue(maxsize=0)
+	# process that each worker thread will execute until the Queue is empty
+	def worker():
+	    while True:
+	        # get item from queue, do work on it, let queue know processing is done for one item
+	        item = q_in.get()
+	        qcrun(item)
+	        q_out.put(item.name)
+	        q_in.task_done()
+
+	# another queued thread we will use to print output
+	def printer():
+	    while True:
+	        # get an item processed by worker threads and print the result. Let queue know item has been processed
+	        item = q_out.get()
+	        print "Completed ", item
+	        q_out.task_done()
+
+	# launch all of our queued processes
+	# Launches a number of worker threads to perform operations using the queue of inputs
+	for i in range(num_workers):
+	     t = threading.Thread(target=worker)
+	     t.daemon = True
+	     t.start()
+
+	# launches a single "printer" thread to output the result (makes things neater)
+	t = threading.Thread(target=printer)
+	t.daemon = True
+	t.start()
+
+	# put items on the input queue
+	for item in joblist:
+		q_in.put(item)
+
+	# wait for two queues to be emptied (and workers to close)
+	q_in.join()       # block until all tasks are done
+	q_out.join()
+
+	print "Processing Complete"

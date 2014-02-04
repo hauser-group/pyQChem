@@ -20,8 +20,11 @@
 #                                                                   #
 #####################################################################
 
-# This file contains a few hidden methods for easy file reading,
+# This file contains a few hidden methods for easy file reading with
 # one reading method for each type of fragment.
+
+# Additionally, tools for comparing geometries are included for
+# cartesian objects
 
 
 ######################### STANDARD MODULES ##########################
@@ -367,3 +370,4 @@ def kabsch(P, Q):
     P = numpy.dot(P, U)
 
     return rmsd(P,Q)
+
