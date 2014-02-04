@@ -141,7 +141,7 @@ def _readinput(file_input):
             re_file.add(new_fragment)
             
         elif k=="molecule":
-            if "read" or "READ" in content[0].strip():
+            if ("read" or "READ") in content[0].strip():
                 new_fragment = mol_fragment(geometry="read")
             else:
                 new_fragment = mol_fragment()
