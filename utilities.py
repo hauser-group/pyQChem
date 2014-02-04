@@ -134,7 +134,7 @@ def _readinput(file_input):
         if k=="rem":
             new_fragment = rem_fragment()
             for k in content:
-                new_fragment.add(k.strip().split()[0],k.strip().split()[1])
+                new_fragment.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
             re_file.add(new_fragment)
             
         elif k=="molecule":
