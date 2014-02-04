@@ -8,3 +8,5 @@ pyQchem\ test.ipynb
 *.out
 *.sh
 pathtable
+..*
+*.qcin.*
