@@ -69,13 +69,32 @@ class multifile(object):
         f.close()
 
 ########################### INPUTFILE  ##############################
+class rundata(object):
+    def __init__(self):
+        self.name=''
+        self.loc53=''
+        self.qchem=''
+        self.nt=1
+        self.np=1
+    def __str__(self):
+        if self.name!='':
+            print "Name is ",self.name
+        if self.loc53!='':
+            print "53.0 is stored at", self.loc53
+        if self.qchem!='':
+            print "Q-Chem version is ",self.qchem
+        if self.nt>0:
+            print "Using ",self.nt,"threads"
+        if self.np>0:
+            print "Using ",self.np,"cores"
+			
 
 class inputfile(object):
     
     def __init__(self, fragments=[]):
         self.list_of_fragments=[]
         self.list_of_content=[]
-	self.name=''
+        self.runinfo=rundata()
         self.__jtype="undef"
         for k in fragments:
             self.add(k)

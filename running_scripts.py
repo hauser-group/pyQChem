@@ -28,7 +28,7 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     import time,os
     curtime=time.strftime("%Y%m%d%H%M%S")
     if name=='':
-        name=inp_file.name
+        name=inp_file.runinfo.name
     if name=='':
         name=curtime
     if timestamp!=True:
@@ -38,6 +38,15 @@ def qcrun(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
             name.replace(".in",curtime)
         else:
         	name=name+curtime
+    if loc53=='':
+        loc53=inp_file.runinfo.loc53
+    if qchem=='':
+        qchem=inp_file.runinfo.qchem
+    if nt==1:
+        nt=inp_file.runinfo.nt
+    if np==1:
+        np=inp_file.runinfo.np
+    
 
 
     #make script file
@@ -86,7 +95,7 @@ def queue(joblist,num_workers=1):
 	        # get item from queue, do work on it, let queue know processing is done for one item
 	        item = q_in.get()
 	        qcrun(item)
-	        q_out.put(item.name)
+	        q_out.put(item.runinfo.name)
 	        q_in.task_done()
 
 	# another queued thread we will use to print output

@@ -6,7 +6,7 @@ rem.basis("sto-3g")
 job_list=[]
 for i in os.popen("ls ../../databases/a24/*.xyz").read().splitlines():
     job=qc.inputfile()
-    job.name=i.split('/')[-1].replace(".xyz","")
+    job.runinfo.name=i.split('/')[-1].replace(".xyz","")
     xyz=qc.read(i)
     job.add(qc.mol_fragment(xyz))
     job.add(rem)
