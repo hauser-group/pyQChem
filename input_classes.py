@@ -287,7 +287,7 @@ class cartesian(_fragment):
             return   
         total_mass=0.0
         self.centroid=sum(self.xyzs)/len(self.xyzs)
-        wts=[atomic_mass[self.list_of_atoms[i][0]]  for i in xrange(self.__Natoms)]
+        wts=[atomic_mass[self.list_of_atoms[i][0].replace("@","")]  for i in xrange(self.__Natoms)]
         for i,atom in enumerate(self.xyzs):
             wt=wts[i]
             total_mass=total_mass+wt
@@ -309,7 +309,13 @@ class cartesian(_fragment):
     def remove_atom(self,position):
         del self.list_of_atoms[position-1]  # First atom is atom 1
         self.fix()
-        self.__center_of_mass()        
+        self.__center_of_mass()
+    
+    def ghost(self):
+	atoms=[]
+        for i in xrange(self.__Natoms):
+            atoms.append(['@'+self.list_of_atoms[i][0],self.list_of_atoms[i][1],self.list_of_atoms[i][2],self.list_of_atoms[i][3]])
+	return atoms
 
     def atoms(self):
         for i, k in enumerate(self.list_of_atoms):
@@ -337,6 +343,8 @@ class cartesian(_fragment):
         return str_ret
     def __add__(self,other):
         if type(other)==type([]):  #let's move the atoms
+            self.move(other,1.0)
+        if type(other)==self.com:  #let's move the atoms using a numpy array
             self.move(other,1.0)
         if type(other)==type(self):                      #merge two cartesians
             atoms=self.list_of_atoms+other.list_of_atoms  
