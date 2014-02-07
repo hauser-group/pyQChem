@@ -1,22 +1,22 @@
 
 #####################################################################
 #                                                                   #
-#               pyQchem - Input/Output-Tools for Q-Chem             #
+#               pyQChem - Input/Output-Tools for Q-Chem             #
 #                                                                   #
 #####################################################################
 
-PyQchem is a Python module designed for an intuitive manipulation of
+PyQChem is a Python module designed for an intuitive manipulation of
 Q-Chem input and output files. It was written with special focus on
-the features of iPython such as tab completion and easy access to
+the features of IPython such as tab completion and easy access to
 help docstrings via the question mark operator. 
 
-To use pyQchem in your Python environment you have to put this folder
+To use pyQChem in your Python environment you have to put this folder
 in the directory of your PYTHONPATH variable. On Unix/Max, if this
 variable is not set, add the following line to your .bash_profile:
 
 export PYTHONPATH=<path_to_your_folder>
 
-Two ipython notebooks in html format are provided as an introduction
+Two IPython notebooks in html format are provided as an introduction
 to inputfile handling and outputfile parsing.
 
 Andreas W. Hauser, Jan 2014
