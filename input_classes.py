@@ -344,7 +344,7 @@ class cartesian(_fragment):
     def __add__(self,other):
         if type(other)==type([]):  #let's move the atoms
             self.move(other,1.0)
-        if type(other)==self.com:  #let's move the atoms using a numpy array
+        if type(other)==type(self.com):  #let's move the atoms using a numpy array
             self.move(other,1.0)
         if type(other)==type(self):                      #merge two cartesians
             atoms=self.list_of_atoms+other.list_of_atoms  
