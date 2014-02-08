@@ -20,16 +20,10 @@
 #                                                                   #
 #####################################################################
 
-# This file contains all input file classes and their methods as well as dictionaries used for input geometry manipulations
+# This file contains all input file classes and their methods.
 
 import numpy as np
-
-########################### DICTIONARY  #############################
-
-#Using http://www.nist.gov/pml/data/comp.cfm for relative atomic mass per most common isotope
-
-atomic_mass={"1":1.007825032, "2":4.002603254, "3":7.01600455, "4":9.0121822, "5":11.0093054, "6":12, "7":14.003074, "8":15.99491462, "9":18.99840322, "10":19.99244018, "11":22.98976928, "12":23.9850417, "13":26.98153863, "14":27.97692653, "15":30.97376163, "16":31.972071, "17":34.96885268, "18":39.96238312, "19":38.96370668, "20":39.96259098, "21":44.9559119, "22":47.9479463, "23":50.9439595, "24":51.9405075, "25":54.9380451, "26":55.9349375, "27":58.933195, "28":57.9353429, "29":62.9295975, "30":63.9291422, "31":68.9255736, "32":73.9211778, "33":74.9215965, "34":79.9165213, "35":78.9183371, "36":83.911507,
-"H":1.007825032, "He":4.002603254, "Li":7.01600455, "Be":9.0121822, "B":11.0093054, "C":12, "N":14.003074, "O":15.99491462, "F":18.99840322, "Ne":19.99244018, "Na":22.98976928, "Mg":23.9850417, "Al":26.98153863, "Si":27.97692653, "P":30.97376163, "S":31.972071, "Cl":34.96885268, "Ar":39.96238312, "K":38.96370668, "Ca":39.96259098, "Sc":44.9559119, "Ti":47.9479463, "V":50.9439595, "Cr":51.9405075, "Mn":54.9380451, "Fe":55.9349375, "Co":58.933195, "Ni":57.9353429, "Cu":62.9295975, "Zn":63.9291422, "Ga":68.9255736, "Ge":73.9211778, "As":74.9215965, "Se":79.9165213, "Br":78.9183371, "Kr":83.911507}
+import constants
 
 ########################### MULTIFILE  ##############################
 
@@ -287,7 +281,7 @@ class cartesian(_fragment):
             return   
         total_mass=0.0
         self.centroid=sum(self.xyzs)/len(self.xyzs)
-        wts=[atomic_mass[self.list_of_atoms[i][0].replace("@","")]  for i in xrange(self.__Natoms)]
+        wts=[constants.dict_of_atomic_masses[self.list_of_atoms[i][0].replace("@","")]  for i in xrange(self.__Natoms)]
         for i,atom in enumerate(self.xyzs):
             wt=wts[i]
             total_mass=total_mass+wt
