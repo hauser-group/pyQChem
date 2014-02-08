@@ -1,4 +1,4 @@
-# pyQChem - Input/Output-Tools for Q-Chem
+## pyQChem - Input/Output-Tools for Q-Chem
  
 
 PyQChem is a Python module designed for an intuitive manipulation of
@@ -8,7 +8,7 @@ To use pyQChem in your Python environment you have to put this folder
 in the directory of your PYTHONPATH variable. On Unix/Max, if this
 variable is not set, add the following line to your .bash_profile:
 
-> export PYTHONPATH=<path_to_your_folder>
+> export PYTHONPATH= (path_to_your_folder)
 
 Two IPython notebooks in html format are provided as an introduction
 to basic inputfile handling and outputfile parsing. Example Python scripts that use pyQChem can be found in the 'demos' directory.
