@@ -1,4 +1,4 @@
-import pyQchem as qc
+import pyQChem as qc
 import os
 from pylab import *
 

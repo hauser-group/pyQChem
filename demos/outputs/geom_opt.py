@@ -1,4 +1,4 @@
-import pyQchem as qc
+import pyQChem as qc
 
 rem=qc.rem_fragment()
 rem.basis("sto-3g")
