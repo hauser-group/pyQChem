@@ -371,3 +371,102 @@ def kabsch(P, Q):
 
     return rmsd(P,Q)
 
+def kabsch2(Q, P):
+    """ The Kabsch algorithm
+
+    http://en.wikipedia.org/wiki/Kabsch_algorithm
+
+    The algorithm starts with two sets of paired points P and Q.
+    P and Q should already be centered on top of each other.
+
+    Each vector set is represented as an NxD matrix, where D is the
+    the dimension of the space.
+
+    The algorithm works in three steps:
+    - a translation of P and Q
+    - the computation of a covariance matrix C
+    - computation of the optimal rotation matrix U
+
+    The optimal rotation matrix U is then used to
+    rotate P unto Q so the RMSD can be caculated
+    from a straight forward fashion.
+
+    """
+
+    # Computation of the covariance matrix
+    C = numpy.dot(numpy.transpose(P), Q)
+
+    # Computation of the optimal rotation matrix
+    # This can be done using singular value decomposition (SVD)
+    # Getting the sign of the det(V)*(W) to decide
+    # whether we need to correct our rotation matrix to ensure a
+    # right-handed coordinate system.
+    # And finally calculating the optimal rotation matrix U
+    # see http://en.wikipedia.org/wiki/Kabsch_algorithm
+    V, S, W = numpy.linalg.svd(C)
+    d = (numpy.linalg.det(V) * numpy.linalg.det(W)) < 0.0
+
+    if(d):
+        S[-1] = -S[-1]
+        V[:,-1] = -V[:,-1]
+
+    # Create Rotation matrix U
+    U = numpy.dot(V, W)
+
+    # Rotate P
+    P = numpy.dot(P, U)
+
+    return rmsd(P,Q),P
+        
+#End of utilities for comparing xyz files taken from https://github.com/charnley/rmsd    
+
+
+#Let's add some utilities for reorganizing xyz files
+def swap(cart,i,j):
+    cart2=deepcopy(cart)
+    temp=deepcopy(cart2.xyzs[i])
+    cart2.xyzs[i]=deepcopy(cart2.xyzs[j])
+    cart2.xyzs[j]=temp
+    temp=deepcopy(cart2.list_of_atoms[i])
+    cart2.list_of_atoms[i][0]=cart2.list_of_atoms[j][0]
+    cart2.list_of_atoms[i][1]=cart2.list_of_atoms[j][1]
+    cart2.list_of_atoms[i][2]=cart2.list_of_atoms[j][2]
+    cart2.list_of_atoms[i][3]=cart2.list_of_atoms[j][3]
+    cart2.list_of_atoms[j][0]=temp[0]
+    cart2.list_of_atoms[j][1]=temp[1]
+    cart2.list_of_atoms[j][2]=temp[2]
+    cart2.list_of_atoms[j][3]=temp[3]
+    return cart2
+
+def order(P,Q):
+    """Reordering Q to match structure P as best as possible"""
+    natoms=len(P.xyzs)
+    dist,Q.xyzs=kabsch2(P.xyzs,Q.xyzs)
+    Q.move([0,0,0])
+    for i in xrange(natoms):
+        for j in xrange(natoms):
+            if i==j:
+                continue
+            tmp=kabsch(P.xyzs,swap(Q,i,j).xyzs)
+            if tmp<dist:
+                Q=swap(Q,i,j)
+                dist,Q.xyzs=kabsch2(P.xyzs,Q.xyzs)
+                Q.move([0,0,0])
+                print "Swapping atoms ",i," and ",j
+    return Q
+
+def orderset(cart_list):
+    cnum=len(cart_list)
+    for i in xrange(cnum):
+        cart_list[i].move(-cart_list[i].com)
+    for i in xrange(cnum-1):
+        print "Comparing ",i," and ",i+1
+        cart_list[i+1]=order(cart_list[i],cart_list[i+1])
+        print "RMSD=",rmsd(cart_list[i].xyzs,cart_list[i+1].xyzs)
+        print "Kabsch RMSD=",kabsch(cart_list[i].xyzs,cart_list[i+1].xyzs)
+    return
+
+
+
+
+

@@ -11,7 +11,7 @@ job=qc.inputfile()
 job.add(rem)
 job.add(molec)
 
-qc.qcrun(job,"h2")
+qc.run(job,"h2")
 
 out=qc.read("h2.out")
 out.opt.info()
@@ -23,3 +23,5 @@ end=out.opt.geometries[-1]
 print "\n\nApproximate change between starting and ending geometries by two metrics:\n"
 print qc.utilities.rmsd(start.xyzs,end.xyzs)," or ", qc.utilities.kabsch(start.xyzs,end.xyzs)
 
+#Check for reordering (not necessary in this case) and print out sequential RMSDs
+qc.utilities.orderset(out.opt.geometries)
