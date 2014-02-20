@@ -11,7 +11,7 @@ job=qc.inputfile()
 job.add(rem)
 job.add(molec)
 
-qc.qcrun(job,"h2")
+qc.run(job,"h2")
 
 out=qc.read("h2.out")
 out.opt.info()
