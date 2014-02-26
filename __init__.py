@@ -42,7 +42,6 @@
 from copy import deepcopy
 
 #from pylab import *
-import numpy
 
 ############################ CONSTANTS ##############################
 

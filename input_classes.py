@@ -26,6 +26,36 @@ import numpy as _np
 import constants
 import running_scripts
 
+############################# RUNDATA  ###############################
+
+class _rundata(object):
+    def __init__(self):
+        self.name=''
+        self.loc53=''
+        self.qchem=''
+        self.nt=1
+        self.np=1
+        self.timestamp=False
+
+    def __str__(self):
+        ret_str = "Submission status summary:\n" + 26*"-" + "\n\n"
+        if self.name!='':
+            ret_str +=  "Filename is " + self.name + "\n"
+        else:
+            ret_str += "No filename provided, will use timestamp instead\n"
+        if self.loc53!='':
+            ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
+        if self.qchem!='':
+            ret_str += "Q-Chem version is " + self.qchem + "\n"
+        if self.nt>0:
+            ret_str += "Using " + str(self.nt) + " threads\n"
+        if self.np>0:
+            ret_str += "Using " + str(self.np) + " cores\n"
+        return ret_str
+
+    def info(self):
+        print self
+
 ########################### MULTIFILE  ##############################
 
 class multifile(object):
@@ -67,45 +97,24 @@ class multifile(object):
         f.close()
 
     def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
-        '''Makes Q-Chem process the given batch inputfile object. Optional parameters are name, 53.0 file, location, and number of threads or processors.'''
-        self.runinfo.name = name
-        self.runinfo.loc53 = loc53
-        self.runinfo.qchem = qchem
-        self.runinfo.nt = nt
-        self.runinfo.np = np
-        self.runinfo.timestamp = timestamp
+        '''Makes Q-Chem process the given batch inputfile object. Optional parameters are
+
+        name  ...... filename (without file extension, will be \".in\" and \".out\" by default)
+        loc53 ...... 53.0 file location
+        nt ......... number of threads
+        np ......... number of processors.
+
+        If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
+        if name == '':
+            name = self.runinfo.name
+            loc53 = self.runinfo.loc53
+            qchem = self.runinfo.qchem
+            nt = self.runinfo.nt
+            np = self.runinfo.np
+            timestamp = self.runinfo.timestamp
         running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
 
-
 ########################### INPUTFILE  ##############################
-class _rundata(object):
-    def __init__(self):
-        self.name=''
-        self.loc53=''
-        self.qchem=''
-        self.nt=1
-        self.np=1
-
-    def __str__(self):
-        ret_str = ""
-        if self.name=='':
-            ret_str += "This inputfile has not been processed yet in this IPython session."
-        else:
-            ret_str += "Last submission to Q-Chem:\n" + 26*"-" + "\n\n"
-            ret_str +=  "Name is " + self.name + "\n"
-            if self.loc53!='':
-                ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
-            if self.qchem!='':
-                ret_str += "Q-Chem version is " + self.qchem + "\n"
-            if self.nt>0:
-                ret_str += "Using " + str(self.nt) + " threads\n"
-            if self.np>0:
-                ret_str += "Using " + str(self.np) + " cores\n"
-        return ret_str
-
-    def info(self):
-        print self
-
 
 class inputfile(object):
     
@@ -187,13 +196,21 @@ class inputfile(object):
         print "Status: " + status
 
     def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
-        '''Makes Q-Chem process the given inputfile object. Optional parameters are name, 53.0 file, location, and number of threads or processors.'''
-        self.runinfo.name = name
-        self.runinfo.loc53 = loc53
-        self.runinfo.qchem = qchem
-        self.runinfo.nt = nt
-        self.runinfo.np = np
-        self.runinfo.timestamp = timestamp
+        '''Makes Q-Chem process the given batch inputfile object. Optional parameters are
+
+        name  ...... filename (without file extension, will be \".in\" and \".out\" by default)
+        loc53 ...... 53.0 file location
+        nt ......... number of threads
+        np ......... number of processors.
+
+        If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
+        if name == '':
+            name = self.runinfo.name
+            loc53 = self.runinfo.loc53
+            qchem = self.runinfo.qchem
+            nt = self.runinfo.nt
+            np = self.runinfo.np
+            timestamp = self.runinfo.timestamp
         running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
     
 ######################## INPUT FRAGMENTS ############################

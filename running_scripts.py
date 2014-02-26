@@ -85,7 +85,7 @@ def _run(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     return
 
 def queue(joblist,num_workers=1):
-	"""This is a simple queue for running through a list of jobs.
+	"""This is a simple queue for running through a list of jobs (based on the content of each runinfo object).  
 	When in doubt, set num_workers to the number of cores on the machine.
 	Advanced options are currently not supported."""
 	import Queue
@@ -97,7 +97,7 @@ def queue(joblist,num_workers=1):
 	    while True:
 	        # get item from queue, do work on it, let queue know processing is done for one item
 	        item = q_in.get()
-	        run(item)
+	        _run(item)
 	        q_out.put(item.runinfo.name)
 	        q_in.task_done()
 
