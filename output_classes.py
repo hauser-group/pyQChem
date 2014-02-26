@@ -41,9 +41,9 @@ class _general(object):
     def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile):
         self.jobtype = jobtype
         self.version = version
-        self.spin = spin
-        self.basis_size = basis_size
-        self.energy = energy
+        self.spin = _np.float(spin)
+        self.basis_size = _np.float(basis_size)
+        self.energy = _np.float(energy)
         self.status = status
         self.inputfile = inputfile
 
@@ -77,10 +77,10 @@ class _thermo(object):
         self.H = H
         self.F = F
         self.G = G
-        self.frequencies = frequencies
-        self.intensities = intensities
-        self.mass = mass
-        self.mom_inertia = mom_inertia
+        self.frequencies = _np.asarray(frequencies)
+        self.intensities = _np.asarray(intensities)
+        self.mass = _np.asarray(mass)
+        self.mom_inertia = _np.asarray(mom_inertia)
         self.rot_sym = rot_sym
         self._lin_switch = linear_switch
 

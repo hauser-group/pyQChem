@@ -41,8 +41,6 @@
 
 from copy import deepcopy
 
-#from pylab import *
-
 ############################ CONSTANTS ##############################
 
 import constants
