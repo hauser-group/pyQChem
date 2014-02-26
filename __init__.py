@@ -33,7 +33,7 @@
 # a dictionary. Indentation is 4 spaces.
 
 # Current addition: The jobfile class allows direct access to certain
-# fragment objects (rem, basis, molecule ...). 
+# array objects (rem, basis, molecule ...). 
 
 ######################### STANDARD MODULES ##########################
 
@@ -60,7 +60,7 @@ from output_classes import _multioutput
 # and one hidden inputfile class for users who need to create their own
 # unsupported input arrays
 
-from input_classes import _unsupported_fragment
+from input_classes import _unsupported_array
 
 # Now we load some subroutines for filereading.
 

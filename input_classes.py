@@ -85,62 +85,62 @@ class rundata(object):
 
 class inputfile(object):
     
-    def __init__(self, fragments=[]):
-        self.list_of_fragments=[]
+    def __init__(self, arrays=[]):
+        self.list_of_arrays=[]
         self.list_of_content=[]
         self.runinfo=rundata()
         self.__jtype="undef"
-        for k in fragments:
+        for k in arrays:
             self.add(k)
             
-    def add(self,new_fragment):
-        if type(new_fragment) == type(rem_fragment()):
-            self.rem = new_fragment
+    def add(self,new_array):
+        if type(new_array) == type(rem_array()):
+            self.rem = new_array
             if "rem" in self.list_of_content:
                 index = self.list_of_content.index("rem")
-                self.list_of_fragments[index]=new_fragment
+                self.list_of_arrays[index]=new_array
             else:
                 self.list_of_content.append("rem")
-                self.list_of_fragments.append(new_fragment)
-            self._jtype = new_fragment.jobtype() #rem variable "jobtype" defines type
+                self.list_of_arrays.append(new_array)
+            self._jtype = new_array.jobtype() #rem variable "jobtype" defines type
         
-        elif type(new_fragment) == type(mol_fragment()):
-            self.molecule = new_fragment
+        elif type(new_array) == type(mol_array()):
+            self.molecule = new_array
             if "molecule" in self.list_of_content:
                 index = self.list_of_content.index("molecule")
-                self.list_of_fragments[index]=new_fragment
+                self.list_of_arrays[index]=new_array
             else:
                 self.list_of_content.append("molecule")
-                self.list_of_fragments.append(new_fragment)
+                self.list_of_arrays.append(new_array)
         
-        elif type(new_fragment) == type(comment_fragment()):
+        elif type(new_array) == type(comment_array()):
             self.list_of_content.append("comment")
-            self.list_of_fragments.append(new_fragment)
+            self.list_of_arrays.append(new_array)
 
-        elif type(new_fragment) == type(basis_fragment()):
-            self.basis = new_fragment
+        elif type(new_array) == type(basis_array()):
+            self.basis = new_array
             self.list_of_content.append("basis")
-            self.list_of_fragments.append(new_fragment)
+            self.list_of_arrays.append(new_array)
 
-        elif type(new_fragment) == type(ecp_fragment()):
-            self.ecp = new_fragment
+        elif type(new_array) == type(ecp_array()):
+            self.ecp = new_array
             self.list_of_content.append("ecp")
-            self.list_of_fragments.append(new_fragment)
+            self.list_of_arrays.append(new_array)
 
-        elif type(new_fragment) == type(_unsupported_fragment()):
-            self.list_of_content.append(str(new_fragment.type))
-            self.list_of_fragments.append(new_fragment)
+        elif type(new_array) == type(_unsupported_array()):
+            self.list_of_content.append(str(new_array.type))
+            self.list_of_arrays.append(new_array)
 
         else:
             print "Fragment type unknown."
 
     def remove(self,position=0): #if not specified delete last
         del self.list_of_content[position-1] 
-        del self.list_of_fragments[position-1] 
+        del self.list_of_arrays[position-1] 
              
     def __str__(self):
         ret_str = ""
-        for k in self.list_of_fragments:
+        for k in self.list_of_arrays:
             ret_str += k.__str__() + "\n" 
         return ret_str
  
@@ -161,7 +161,7 @@ class inputfile(object):
 
 ######################## INPUT FRAGMENTS ############################
 
-class _fragment(object):
+class _array(object):
 
     def __init__(self,content="undef"):
         self.content = content
@@ -180,7 +180,7 @@ class _fragment(object):
 
 ##################### UNSUPPORTED FRAGMENT ##########################
 
-class _unsupported_fragment(_fragment):
+class _unsupported_array(_array):
 
     def __init__(self,arraytype="undef"):
         self.content = []
@@ -198,7 +198,7 @@ class _unsupported_fragment(_fragment):
 
 ######################### ZMAT FRAGMENT #############################
 
-class zmat(_fragment):
+class zmat(_array):
     
     __tabstop = 10
     
@@ -240,7 +240,7 @@ class zmat(_fragment):
 
 ####################### CARTESIAN FRAGMENT ##########################
 
-class cartesian(_fragment):
+class cartesian(_array):
     def __init__(self,title="",atom_list=[]):
         import copy
         self.__title = title
@@ -413,7 +413,7 @@ class tinker(cartesian):
         
 ######################### MOL FRAGMENT ##############################
 
-class mol_fragment(_fragment):
+class mol_array(_array):
             
     def __init__(self,geometry=""):
         if geometry == "":
@@ -435,7 +435,7 @@ class mol_fragment(_fragment):
             self.content["MULTIPLICITY"]=value
         
     def geometry(self,value="show"):
-        '''Reads xyz, txyz or zmat coordinate fragment.'''
+        '''Reads xyz, txyz or zmat coordinate array.'''
         if value == "show":
             return self.content["GEOMETRY"]
         elif value == "read":
@@ -444,7 +444,7 @@ class mol_fragment(_fragment):
             if type(value)==type(cartesian()) or type(value)==type(zmat()) or type(value)==type(tinker()):
                 self.content["GEOMETRY"]=value
             else:
-                print "Only cartesian, tinker or zmat fragments can be added here."
+                print "Only cartesian, tinker or zmat arrays can be added here."
        
     def clear(self):
         self.content = {"CHARGE":"0","MULTIPLICITY":"1","GEOMETRY":""}
@@ -480,13 +480,13 @@ class mol_fragment(_fragment):
             switch = 1
         else:
             coor_type = "empty"
-        print "Type: molecule fragment, " + coor_type
+        print "Type: molecule array, " + coor_type
         if switch == 1:
         	print "Number of atoms: " + str(len((self.content["GEOMETRY"]).list_of_atoms))
 
 ######################### BASIS FRAGMENT ############################
 
-class basis_fragment(_fragment):
+class basis_array(_array):
 
     def __init__(self):
         self.dict_of_atoms = {}
@@ -514,7 +514,7 @@ class basis_fragment(_fragment):
 
 ########################## ECP FRAGMENT #############################
 
-class ecp_fragment(basis_fragment):
+class ecp_array(basis_array):
 
     def __str__(self):
         ret_str = "$ecp\n"
@@ -536,7 +536,7 @@ class ecp_fragment(basis_fragment):
               
 ####################### COMMENT FRAGMENT ############################
 
-class comment_fragment(_fragment):
+class comment_array(_array):
 
     def __init__(self,content=""):
         self.content = content
@@ -551,7 +551,7 @@ class comment_fragment(_fragment):
 
 ######################### REM FRAGMENT ##############################
 
-class rem_fragment(_fragment):
+class rem_array(_array):
     
     __tabstop = 30
         
@@ -6413,10 +6413,10 @@ By default, all integrals are used in decomposed format allowing significant red
     def __str__(self):
         str_ret =  "$rem\n"
         for key,value in self.dict_of_keywords.iteritems():
-            str_ret += key.upper() + (rem_fragment.__tabstop-len(key))*" " + value + "\n"
+            str_ret += key.upper() + (rem_array.__tabstop-len(key))*" " + value + "\n"
         str_ret += "$end\n"
         return str_ret
     
     def info(self):
-        print "Type: rem fragment"
+        print "Type: rem array"
         print "Keywords: " + str(len(self.dict_of_keywords))
