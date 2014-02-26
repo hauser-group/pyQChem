@@ -22,7 +22,7 @@
 
 # This file contains all input file classes and their methods.
 
-import numpy as np
+import numpy as _np
 import constants
 import running_scripts
 
@@ -37,6 +37,7 @@ class multifile(object):
             self.add(k)
 
     def add(self,new_job):
+        ''' Adds an inputfile to your batch object.'''
         if type(new_job) == type(inputfile()):
             self.list_of_jobs.append(new_job)
             self.list_of_content.append(new_job._jtype)
@@ -44,6 +45,7 @@ class multifile(object):
             print "Can only add inputfiles."
 
     def remove(self,position=0): #if not specified delete last
+        ''' Removes an inputfile from your batch object. If no other specified the last is removed.'''
         del self.list_of_content[position-1] 
         del self.list_of_jobs[position-1] 
 
@@ -58,6 +60,7 @@ class multifile(object):
         return ret_str
 
     def write(self,filename):
+        '''Writes the batch jobfile to disk.'''
         f = open(filename,'w')
         str_ret = self.__str__()
         print >>f, str_ret
@@ -115,6 +118,7 @@ class inputfile(object):
             self.add(k)
             
     def add(self,new_array):
+        ''' Adds an array to your inputfile object.'''
         if type(new_array) == type(rem_array()):
             self.rem = new_array
             if "rem" in self.list_of_content:
@@ -153,9 +157,10 @@ class inputfile(object):
             self.list_of_arrays.append(new_array)
 
         else:
-            print "Fragment type unknown."
+            print "Array type unknown."
 
     def remove(self,position=0): #if not specified delete last
+        ''' Removes an array from your inputfile object. If no other specified the last is removed.'''
         del self.list_of_content[position-1] 
         del self.list_of_arrays[position-1] 
              
@@ -172,6 +177,7 @@ class inputfile(object):
         f.close()
 
     def info(self):
+        '''A quick overview of your inputfile.''' # Health check could be put here
         if "rem" and "molecule" in self.list_of_content:
             status = "valid"
         else:
@@ -240,6 +246,7 @@ class zmat(_array):
         self.__variables = {}
         
     def add_atom(self,line,position=0):  #if not specified add at the end
+        '''Adds an atom to your Z-Matrix.'''
         if position ==0:
             self.__lines.append(line)
         else:
@@ -247,6 +254,7 @@ class zmat(_array):
         self.__Natoms += 1
 
     def remove_atom(self,position=0): #if not specified delete last
+        '''Removes an atom from your Z-Matrix. Takes the last if no other specified.'''
         del self.__lines[position-1] 
         self.__Natoms -= 1
 
@@ -277,8 +285,8 @@ class cartesian(_array):
         self.__title = title
         self.__Natoms = 0
         self.xyzs=[]
-        self.com=np.array([0.0,0.0,0.0])
-        self.centroid=np.array([0.0,0.0,0.0])
+        self.com=_np.array([0.0,0.0,0.0])
+        self.centroid=_np.array([0.0,0.0,0.0])
         self.list_of_atoms = copy.deepcopy(atom_list)
         if atom_list!=[]:
             self.__Natoms=len(atom_list)
@@ -286,8 +294,8 @@ class cartesian(_array):
                 x=self.list_of_atoms[i][1]
                 y=self.list_of_atoms[i][2]
                 z=self.list_of_atoms[i][3]
-                self.xyzs.append(np.array([float(x),float(y),float(z)]))
-            self.xyzs=np.array(self.xyzs)
+                self.xyzs.append(_np.array([float(x),float(y),float(z)]))
+            self.xyzs=_np.array(self.xyzs)
             self.__center_of_mass()
     def fix(self):
         """This fixes any odd errors resulting from modifying the number of atoms"""
@@ -299,15 +307,15 @@ class cartesian(_array):
             x=self.list_of_atoms[i][1]
             y=self.list_of_atoms[i][2]
             z=self.list_of_atoms[i][3]
-            self.xyzs.append(np.array([float(x),float(y),float(z)]))
-        self.xyzs=np.array(self.xyzs)
+            self.xyzs.append(_np.array([float(x),float(y),float(z)]))
+        self.xyzs=_np.array(self.xyzs)
         self.__center_of_mass()
         
     def __center_of_mass(self):
         """This computes the centroid and center of mass using standard atomic masses"""
         #print self.xyzs, self.__Natoms
-        self.com=np.array([0.0,0.0,0.0])
-        self.centroid=np.array([0.0,0.0,0.0])
+        self.com=_np.array([0.0,0.0,0.0])
+        self.centroid=_np.array([0.0,0.0,0.0])
         if len(self.xyzs)==0:
             return   
         total_mass=0.0
@@ -317,8 +325,8 @@ class cartesian(_array):
             wt=wts[i]
             total_mass=total_mass+wt
             self.com=self.com+atom*wt
-        self.centroid=np.array([i/self.__Natoms for i in self.centroid])
-        self.com=np.array([i/total_mass for i in self.com])
+        self.centroid=_np.array([i/self.__Natoms for i in self.centroid])
+        self.com=_np.array([i/total_mass for i in self.com])
     
     def title(self,title="show"):
         if title == "show":
@@ -353,7 +361,7 @@ class cartesian(_array):
         print str(self.com[0])+'\t'+str(self.com[1])+'\t'+str(self.com[2])
         
     def move(self,dir,amt=1.0):
-        dir=np.array(dir)
+        dir=_np.array(dir)
         for i in xrange(self.__Natoms):
             self.xyzs[i]=self.xyzs[i]+dir*amt
             self.list_of_atoms[i][1]=str(self.xyzs[i][0])
@@ -397,11 +405,7 @@ class tinker(cartesian):
             return self.__title
         else:
             self.__title=title
-        
-    def add_atom(self,name="H",x="0",y="0",z="0"):
-        self.list_of_atoms.append([name,x,y,z])
-        self.__Natoms += 1
-    
+            
     def remove_atom(self,position):
         del self.list_of_atoms[position-1]  # First atom is atom 1
         self.__Natoms -= 1
@@ -6439,6 +6443,7 @@ By default, all integrals are used in decomposed format allowing significant red
         del self.dict_of_keywords[keyword.upper()]
         
     def clear(self):
+        '''Removes all keywords from array.'''
         self.dict_of_keywords.clear()
         
     def __str__(self):
