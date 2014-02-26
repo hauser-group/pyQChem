@@ -24,6 +24,7 @@
 
 import numpy as np
 import constants
+import running_scripts
 
 ########################### MULTIFILE  ##############################
 
@@ -62,33 +63,53 @@ class multifile(object):
         print >>f, str_ret
         f.close()
 
+    def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+        '''Makes Q-Chem process the given batch inputfile object. Optional parameters are name, 53.0 file, location, and number of threads or processors.'''
+        self.runinfo.name = name
+        self.runinfo.loc53 = loc53
+        self.runinfo.qchem = qchem
+        self.runinfo.nt = nt
+        self.runinfo.np = np
+        self.runinfo.timestamp = timestamp
+        running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+
+
 ########################### INPUTFILE  ##############################
-class rundata(object):
+class _rundata(object):
     def __init__(self):
         self.name=''
         self.loc53=''
         self.qchem=''
         self.nt=1
         self.np=1
+
     def __str__(self):
-        if self.name!='':
-            print "Name is ",self.name
-        if self.loc53!='':
-            print "53.0 is stored at", self.loc53
-        if self.qchem!='':
-            print "Q-Chem version is ",self.qchem
-        if self.nt>0:
-            print "Using ",self.nt,"threads"
-        if self.np>0:
-            print "Using ",self.np,"cores"
-			
+        ret_str = ""
+        if self.name=='':
+            ret_str += "This inputfile has not been processed yet in this IPython session."
+        else:
+            ret_str += "Last submission to Q-Chem:\n" + 26*"-" + "\n\n"
+            ret_str +=  "Name is " + self.name + "\n"
+            if self.loc53!='':
+                ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
+            if self.qchem!='':
+                ret_str += "Q-Chem version is " + self.qchem + "\n"
+            if self.nt>0:
+                ret_str += "Using " + str(self.nt) + " threads\n"
+            if self.np>0:
+                ret_str += "Using " + str(self.np) + " cores\n"
+        return ret_str
+
+    def info(self):
+        print self
+
 
 class inputfile(object):
     
     def __init__(self, arrays=[]):
         self.list_of_arrays=[]
         self.list_of_content=[]
-        self.runinfo=rundata()
+        self.runinfo=_rundata()
         self.__jtype="undef"
         for k in arrays:
             self.add(k)
@@ -159,6 +180,16 @@ class inputfile(object):
         print "Type: inputfile"
         print "Status: " + status
 
+    def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+        '''Makes Q-Chem process the given inputfile object. Optional parameters are name, 53.0 file, location, and number of threads or processors.'''
+        self.runinfo.name = name
+        self.runinfo.loc53 = loc53
+        self.runinfo.qchem = qchem
+        self.runinfo.nt = nt
+        self.runinfo.np = np
+        self.runinfo.timestamp = timestamp
+        running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+    
 ######################## INPUT FRAGMENTS ############################
 
 class _array(object):
@@ -306,10 +337,10 @@ class cartesian(_array):
         self.__center_of_mass()
     
     def ghost(self):
-	atoms=[]
+        atoms=[]
         for i in xrange(self.__Natoms):
             atoms.append(['@'+self.list_of_atoms[i][0],self.list_of_atoms[i][1],self.list_of_atoms[i][2],self.list_of_atoms[i][3]])
-	return atoms
+        return atoms
 
     def atoms(self):
         for i, k in enumerate(self.list_of_atoms):
@@ -468,7 +499,7 @@ class mol_array(_array):
         return str_ret
          
     def info(self):
-    	switch = 0
+        switch = 0
         if type(self.content["GEOMETRY"])==type(cartesian()):
             coor_type = "cartesian coordinates"
             switch = 1
@@ -482,7 +513,7 @@ class mol_array(_array):
             coor_type = "empty"
         print "Type: molecule array, " + coor_type
         if switch == 1:
-        	print "Number of atoms: " + str(len((self.content["GEOMETRY"]).list_of_atoms))
+            print "Number of atoms: " + str(len((self.content["GEOMETRY"]).list_of_atoms))
 
 ######################### BASIS FRAGMENT ############################
 

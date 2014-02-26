@@ -20,9 +20,12 @@
 #                                                                   #
 #####################################################################
 
+# modified my AWH Feb 2014: global method 'run()' is now hidden to reduce confusion,
+# inputfile and multifile objects have their own 'run()' method which calls '_run()'.
+
 from input_classes import *
 
-def run(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+def _run(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     """This is a script for running Q-Chem inside of iPython given an input file object, name, 53.0 file, location, and number of threads or processors"""
     #tag it all with current time for safety's sake
     import time,os
