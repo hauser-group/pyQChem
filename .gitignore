@@ -10,3 +10,6 @@ pyQchem\ test.ipynb
 pathtable
 ..*
 *.qcin.*
+*.xyz
+*.ipynb
+*.inp

@@ -53,7 +53,10 @@ class _general(object):
     def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile):
         self.jobtype = jobtype
         self.version = version
-        self.spin = _np.float(spin)
+        try: 
+		self.spin = _np.float(spin)
+	except: 
+		print "Could not determine spin"
         self.basis_size = _np.float(basis_size)
         self.energy = _np.float(energy)
         self.status = status
