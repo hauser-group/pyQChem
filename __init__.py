@@ -43,9 +43,12 @@
 # really makes sense for the user and Python datatypes come in handy.
 # In these rare exceptions, the property has to contain the word "list"
 # if it is a list and "dict" if it is a dictionary.
-#
+
 # Indentation is 4 spaces. Hide subroutines and classes which are not
 # needed by the user. This keeps the tab completion tidy and efficient.
+
+# Note that "remove" functions start counting at 1, in contrast to
+# the Python tradition. 
 
 # Current addition: The jobfile class allows direct access to certain
 # array objects (rem, basis, molecule ...). 

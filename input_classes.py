@@ -59,10 +59,8 @@ class _rundata(object):
             ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
         if self.qchem!='':
             ret_str += "Q-Chem version is " + self.qchem + "\n"
-        if self.nt>0:
-            ret_str += "Using " + str(self.nt) + " threads\n"
-        if self.np>0:
-            ret_str += "Using " + str(self.np) + " cores\n"
+        ret_str += "Using " + str(self.nt) + " threads\n"
+        ret_str += "Using " + str(self.np) + " cores\n"
         return ret_str
 
     def info(self):
@@ -115,15 +113,10 @@ class multifile(object):
         loc53 ...... 53.0 file location
         nt ......... number of threads
         np ......... number of processors.
+        timestamp... adds a timestamp to input and output if set True.
 
         If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
-        if name == '':
-            name = self.runinfo.name
-            loc53 = self.runinfo.loc53
-            qchem = self.runinfo.qchem
-            nt = self.runinfo.nt
-            np = self.runinfo.np
-            timestamp = self.runinfo.timestamp
+
         running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
 
 ########################### INPUTFILE  ##############################
@@ -214,15 +207,10 @@ class inputfile(object):
         loc53 ...... 53.0 file location
         nt ......... number of threads
         np ......... number of processors.
+        timestamp... adds a timestamp to input and output if set True.
 
         If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
-        if name == '':
-            name = self.runinfo.name
-            loc53 = self.runinfo.loc53
-            qchem = self.runinfo.qchem
-            nt = self.runinfo.nt
-            np = self.runinfo.np
-            timestamp = self.runinfo.timestamp
+
         running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
     
 ######################## INPUT FRAGMENTS ############################
