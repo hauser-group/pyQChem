@@ -313,6 +313,8 @@ class _outputfile(object):
         for line in content:
             if "JOBTYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
+            if "jobtype" in line:
+                jobtype = ((line.split())[-1]).lower()    
             if "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
             if "Q-Chem, Version" in line:
