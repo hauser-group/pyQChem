@@ -6500,6 +6500,19 @@ By default, all integrals are used in decomposed format allowing significant red
                 print "Value not set."
         else:
             self.dict_of_keywords["NL_VV_B"]=value.lower()
+    def srcorr(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "SRCORR" in self.dict_of_keywords:
+                del self.dict_of_keywords["SRCORR"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SRCORR" in self.dict_of_keywords:
+                return self.dict_of_keywords["SRCORR"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SRCORR"]=value.lower()            
     def srcorr_r(self,value="show"):
         '''Format and add me!'''
         if value == "":
