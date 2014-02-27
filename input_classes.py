@@ -6499,7 +6499,61 @@ By default, all integrals are used in decomposed format allowing significant red
             else:
                 print "Value not set."
         else:
-            self.dict_of_keywords["NL_VV_B"]=value.lower()        
+            self.dict_of_keywords["NL_VV_B"]=value.lower()
+    def srcorr_r(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "SRCORR_R" in self.dict_of_keywords:
+                del self.dict_of_keywords["SRCORR_R"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SRCORR_R" in self.dict_of_keywords:
+                return self.dict_of_keywords["SRCORR_R"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SRCORR_R"]=value.lower()
+    def srcorr_r_ndp(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "SRCORR_R_NDP" in self.dict_of_keywords:
+                del self.dict_of_keywords["SRCORR_R_NDP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SRCORR_R_NDP" in self.dict_of_keywords:
+                return self.dict_of_keywords["SRCORR_R_NDP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SRCORR_R_NDP"]=value.lower()
+    def srcorr_k(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "SRCORR_K" in self.dict_of_keywords:
+                del self.dict_of_keywords["SRCORR_K"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SRCORR_K" in self.dict_of_keywords:
+                return self.dict_of_keywords["SRCORR_K"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SRCORR_K"]=value.lower()
+    def srcorr_k_ndp(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "SRCORR_K_NDP" in self.dict_of_keywords:
+                del self.dict_of_keywords["SRCORR_K_NDP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SRCORR_K_NDP" in self.dict_of_keywords:
+                return self.dict_of_keywords["SRCORR_K_NDP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SRCORR_K_NDP"]=value.lower()
+            
+                    
 
     # ------------------------ End of keyword list ----------------------------
         
