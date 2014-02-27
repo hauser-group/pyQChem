@@ -59,8 +59,10 @@ class _rundata(object):
             ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
         if self.qchem!='':
             ret_str += "Q-Chem version is " + self.qchem + "\n"
-        ret_str += "Using " + str(self.nt) + " threads\n"
-        ret_str += "Using " + str(self.np) + " cores\n"
+	if self.nt!=1:
+		ret_str += "Using " + str(self.nt) + " threads\n"
+	if self.np!=1:
+		ret_str += "Using " + str(self.np) + " processors\n"
         return ret_str
 
     def info(self):
