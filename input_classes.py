@@ -6461,7 +6461,45 @@ By default, all integrals are used in decomposed format allowing significant red
                 print "Value not set."
         else:
             self.dict_of_keywords["DIRECT_RI"]=value.lower()
-
+    def nl_correlation(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "NL_CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_CORRELATION"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_CORRELATION"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_CORRELATION"]=value.lower()
+    def nl_vv_c(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "NL_VV_C" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_VV_C"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_VV_C" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_VV_C"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_VV_C"]=value.lower()
+    def nl_vv_b(self,value="show"):
+        '''Format and add me!'''
+        if value == "":
+            if "NL_VV_B" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_VV_B"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_VV_B" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_VV_B"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_VV_B"]=value.lower()        
 
     # ------------------------ End of keyword list ----------------------------
         
