@@ -24,7 +24,7 @@
 # information for the user.
 
 
-import numpy as np 
+import numpy as _np 
 from copy import deepcopy
 
 from input_classes import cartesian
@@ -145,53 +145,53 @@ class _thermo(object):
         if type(temp) is str or type(temp) is float or type(temp) is int:  
             dummy = [] # convert temperature input to list (will be iterated over)
             dummy.append(temp)
-            T = np.asarray(dummy,dtype=float)
+            T = _np.asarray(dummy,dtype=float)
         else:
-            T = np.asarray(temp,dtype=float)
+            T = _np.asarray(temp,dtype=float)
 
         if pressure == "":
-            p = np.ones(np.size(T))*1.01325e5  # from ATM to Pa
+            p = _np.ones(_np.size(T))*1.01325e5  # from ATM to Pa
         else:
             if type(pressure) is str or type(pressure) is float or type(pressure) is int:  
                 dummy = [] # convert pressure input to list
                 for k in range(len(T)):  # assume same pressure for set of temperature
                     dummy.append(pressure)
-                p = np.asarray(dummy,dtype=float) 
+                p = _np.asarray(dummy,dtype=float) 
             else:
-                p = np.asarray(pressure,dtype=float)
+                p = _np.asarray(pressure,dtype=float)
 
-        if (np.size(T) != np.size(p)):
+        if (_np.size(T) != _np.size(p)):
             print "Temperature and pressure input differs in length."
         else:
             # Get frequencies
-            dummy = np.asarray(self.frequencies[loop_freq],dtype=float)
+            dummy = _np.asarray(self.frequencies[loop_freq],dtype=float)
             # Remove negative entries
             freq = dummy[dummy>0]
 
         # Get mass (in amu) and moment of inertia (in amu * bohr**2)
         mass = self.mass[loop_iso]*constants.atomic_mass_constant
-        mom_inertia = np.asarray(self.mom_inertia[loop_iso])*constants.atomic_mass_constant*(1e-10*constants.bohr_to_angstrom)**2  
+        mom_inertia = _np.asarray(self.mom_inertia[loop_iso])*constants.atomic_mass_constant*(1e-10*constants.bohr_to_angstrom)**2  
         rot_sym = float(self.rot_sym[loop_iso])
 
 
         # Translational contributions to S and the thermal energy E
         pi = 3.141592654
         Q_trans = ((2*pi*mass*constants.Boltzmann_constant*T/(constants.Planck_constant)**2)**(3./2))*constants.Boltzmann_constant*T/p
-        S_trans = constants.molar_gas_constant*(np.log(Q_trans) + 1 + 3./2) # in J/mol
+        S_trans = constants.molar_gas_constant*(_np.log(Q_trans) + 1 + 3./2) # in J/mol
         E_trans = 3./2*constants.molar_gas_constant*T # in J/mol
 
         # Rotational contributions (for linear molecule)
         if self._lin_switch==1:
             print "Linear molecule detected..."
-            theta_lin = (constants.Planck_constant)**2/(8*pi**2*np.max(mom_inertia)*constants.Boltzmann_constant) # rotational temperature
+            theta_lin = (constants.Planck_constant)**2/(8*pi**2*_np.max(mom_inertia)*constants.Boltzmann_constant) # rotational temperature
             Q_rot_lin = T/theta_lin/rot_sym
-            S_rot = constants.molar_gas_constant*(np.log(Q_rot_lin)+1)
+            S_rot = constants.molar_gas_constant*(_np.log(Q_rot_lin)+1)
             E_rot = constants.molar_gas_constant*T
         else:
             # Rotational contributions (for nonlinear molecule)
             theta = (constants.Planck_constant)**2/(8*pi**2*mom_inertia*constants.Boltzmann_constant) # rotational temperature
-            Q_rot = np.sqrt(pi)/rot_sym*((T**(3./2))/np.sqrt(theta[0]*theta[1]*theta[2]))
-            S_rot = constants.molar_gas_constant*(np.log(Q_rot)+3./2)
+            Q_rot = _np.sqrt(pi)/rot_sym*((T**(3./2))/_np.sqrt(theta[0]*theta[1]*theta[2]))
+            S_rot = constants.molar_gas_constant*(_np.log(Q_rot)+3./2)
             E_rot = 3./2*constants.molar_gas_constant*T
 
         # Vibrational contributions 
@@ -202,9 +202,9 @@ class _thermo(object):
         S_hind = []
         
         for k in T:
-            dum_term = (freq/k)/(np.exp(freq/k)-1)-np.log(1-np.exp(-freq/k))
+            dum_term = (freq/k)/(_np.exp(freq/k)-1)-_np.log(1-_np.exp(-freq/k))
             S_vib.append(constants.molar_gas_constant*dum_term.sum())
-            dum_term2 = (freq*(1.0/2 + 1.0/(np.exp(freq/k)-1)))
+            dum_term2 = (freq*(1.0/2 + 1.0/(_np.exp(freq/k)-1)))
             E_vib.append(constants.molar_gas_constant*dum_term2.sum())
 
             if grimme==1:
@@ -212,7 +212,7 @@ class _thermo(object):
                 alpha = 4;
                 mu=constants.Planck_constant/(8*pi**2*constants.speed_of_light_in_vacuum*freq)
                 mu_prime=mu*B_average/(mu+B_average)
-                dum_grim = 0.5+np.log((8*pi**3*constants.Boltzmann_constant*k*mu_prime/constants.Planck_constant**2)**0.5);
+                dum_grim = 0.5+_np.log((8*pi**3*constants.Boltzmann_constant*k*mu_prime/constants.Planck_constant**2)**0.5);
                 weight=1./(1+(grimme_thresh/freq)**alpha);
                 S_hind.append(constants.molar_gas_constant*(weight*dum_term + (1-weight)*dum_grim).sum())
 
@@ -237,7 +237,7 @@ class _thermo(object):
         print "\nT\tp\t\tITE\t\t S\t\t H\t\t F\t\t G"
         for k,l in enumerate(T):
             print "%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k])        
-        dummy = np.asarray([T,p,ITE,S,H,F,G])
+        dummy = _np.asarray([T,p,ITE,S,H,F,G])
         data = dummy.transpose()
         return data
 
@@ -419,12 +419,12 @@ class _outputfile(object):
                     frequencies.append(loop1)
                     intensities.append(loop2)
 
-            T = np.asarray(temp)
-            p = np.asarray(press)
-            ZPE = np.asarray(zero_point)
-            H = E + np.asarray(enth_corr)
-            S = np.asarray(entr_corr)
-            ITE = np.asarray(enth_corr) - R_T # RT = pV is subtracted from H to obtain the ZPE corrected ITE
+            T = _np.asarray(temp)
+            p = _np.asarray(press)
+            ZPE = _np.asarray(zero_point)
+            H = E + _np.asarray(enth_corr)
+            S = _np.asarray(entr_corr)
+            ITE = _np.asarray(enth_corr) - R_T # RT = pV is subtracted from H to obtain the ZPE corrected ITE
             F = E + ITE - (T*S)
             G = H - (T*S)
             self.thermo = _thermo(E,ZPE,ITE,T,p,S,H,F,G,frequencies,intensities,mass,mom_inertia,rot_sym,linear_switch)

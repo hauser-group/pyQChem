@@ -18,7 +18,7 @@
 #                                                                   #
 #               pyQchem - Input/Output-Tools for Q-Chem             #
 #                                                                   #
-#                           Version 0.4                             #
+#                           Version 0.5                             #
 #                                                                   #
 #####################################################################
 
@@ -30,17 +30,18 @@
 # valid in cases where it really makes sense for the user and Python
 # datatypes come in handy. In these rare exceptions, the property has
 # to contain the word "list" if it is a list and "dict" if it is
-# a dictionary. Indentation is 4 spaces.
+# a dictionary. Indentation is 4 spaces. Hide subroutines and classes
+# which are not needed by the user. This keeps the tab completion
+# tidy and efficient.
 
 # Current addition: The jobfile class allows direct access to certain
-# fragment objects (rem, basis, molecule ...). 
+# array objects (rem, basis, molecule ...). 
 
 ######################### STANDARD MODULES ##########################
 
 from copy import deepcopy
 
 #from pylab import *
-import numpy
 
 ############################ CONSTANTS ##############################
 
@@ -60,7 +61,7 @@ from output_classes import _multioutput
 # and one hidden inputfile class for users who need to create their own
 # unsupported input arrays
 
-from input_classes import _unsupported_fragment
+from input_classes import _unsupported_array
 
 # Now we load some subroutines for filereading.
 

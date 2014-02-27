@@ -21,7 +21,7 @@
 #####################################################################
 
 # This file contains a few hidden methods for easy file reading with
-# one reading method for each type of fragment.
+# one reading method for each type of array.
 
 # Additionally, tools for comparing geometries are included for
 # cartesian objects
@@ -38,8 +38,8 @@ import numpy
 # Hidden classes have to be imported explicitely.
 
 from input_classes import *
-from input_classes import _unsupported_fragment
-from input_classes import _fragment
+from input_classes import _unsupported_array
+from input_classes import _array
 
 
 def _readcartesian(filename):
@@ -124,9 +124,9 @@ def _readinput(file_input):
     
     re_file = inputfile() 
     
-    # Start to populate the job object with fragments,
+    # Start to populate the job object with arrays,
     # using the blocks from above and their range,
-    # then extend fragments list...
+    # then extend arrays list...
     
     
     for i,k in enumerate(blocks):
@@ -135,18 +135,18 @@ def _readinput(file_input):
         content = full_content[block_index[0][i]+1:block_index[1][i]]
 
         if k=="rem":
-            new_fragment = rem_fragment()
+            new_array = rem_array()
             for k in content:
-                new_fragment.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
-            re_file.add(new_fragment)
+                new_array.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
+            re_file.add(new_array)
             
         elif k=="molecule":
             if ("read" or "READ") in content[0].strip():
-                new_fragment = mol_fragment(geometry="read")
+                new_array = mol_array(geometry="read")
             else:
-                new_fragment = mol_fragment()
-                new_fragment.charge(content[0].strip().split()[0])
-                new_fragment.multiplicity(content[0].strip().split()[1])
+                new_array = mol_array()
+                new_array.charge(content[0].strip().split()[0])
+                new_array.multiplicity(content[0].strip().split()[1])
             
                 # What type of coordinates do we have?
                 if len(content)<2:
@@ -164,7 +164,7 @@ def _readinput(file_input):
                         y = atom_input[2]
                         z = atom_input[3]
                         cartesian_dummy.add_atom(atom,x,y,z)
-                    new_fragment.geometry(cartesian_dummy)
+                    new_array.geometry(cartesian_dummy)
                 
                 elif switch == 1:
                     # must be zmat...
@@ -181,7 +181,7 @@ def _readinput(file_input):
                                 zmat_dummy.variable((dummy.split())[0],(dummy.split())[1])
                             else:
                                 pass
-                    new_fragment.geometry(zmat_dummy)
+                    new_array.geometry(zmat_dummy)
                 
                 elif switch > 4:
                     # must be tinker...
@@ -198,22 +198,22 @@ def _readinput(file_input):
                         con3 = atom_input[7]
                         con4 = atom_input[8]
                         tinker_dummy.add_atom(name,x,y,z,atomtype,con1,con2,con3,con4)
-                    new_fragment.geometry(tinker_dummy)
+                    new_array.geometry(tinker_dummy)
                 elif switch == 0:
                 	print "Warning: $molecule array is empty."
                 else:
                     print "Unknown format in $molecule array."
-            re_file.add(new_fragment)
+            re_file.add(new_array)
             
         elif k=="comment":
             ret_str = ""
             for line in content:
                 ret_str += line
-            new_fragment = comment_fragment(ret_str)
-            re_file.add(new_fragment)
+            new_array = comment_array(ret_str)
+            re_file.add(new_array)
             
         elif k=="basis":
-            new_fragment = basis_fragment()
+            new_array = basis_array()
             first = 0
             atom = content[0].strip()
             for line in content[1:]:
@@ -225,12 +225,12 @@ def _readinput(file_input):
                         atom = dummy
                         first = 0
                     else:
-                        new_fragment.add(atom,dummy)
-            re_file.add(new_fragment)
+                        new_array.add(atom,dummy)
+            re_file.add(new_array)
 
 
         elif k=="ecp":
-            new_fragment = ecp_fragment()
+            new_array = ecp_array()
             first = 0
             atom = content[0].strip()
             for line in content[1:]:
@@ -242,21 +242,21 @@ def _readinput(file_input):
                         atom = dummy
                         first = 0
                     else:
-                        new_fragment.add(atom,dummy)
-            re_file.add(new_fragment)
+                        new_array.add(atom,dummy)
+            re_file.add(new_array)
 
-        # Add new fragments here...
+        # Add new arrays here...
         #
-        # Note: For each added fragment the inputfile class has to be updated
-        # so that it recognizes the new fragment type (otherwise it's still unsupported).
+        # Note: For each added array the inputfile class has to be updated
+        # so that it recognizes the new array type (otherwise it's still unsupported).
 
         else:
             print "Unsupported array type " + k + " detected. Read as constant."
-            new_fragment = _unsupported_fragment(k)
+            new_array = _unsupported_array(k)
             for line in content:
-                new_fragment.add_line(line)
-            re_file.add(new_fragment)
-            del new_fragment 
+                new_array.add_line(line)
+            re_file.add(new_array)
+            del new_array 
             
     # Return the final inputfile object
     return deepcopy(re_file)

@@ -22,8 +22,39 @@
 
 # This file contains all input file classes and their methods.
 
-import numpy as np
+import numpy as _np
 import constants
+import running_scripts
+
+############################# RUNDATA  ###############################
+
+class _rundata(object):
+    def __init__(self):
+        self.name=''
+        self.loc53=''
+        self.qchem=''
+        self.nt=1
+        self.np=1
+        self.timestamp=False
+
+    def __str__(self):
+        ret_str = "Submission status summary:\n" + 26*"-" + "\n\n"
+        if self.name!='':
+            ret_str +=  "Filename is " + self.name + "\n"
+        else:
+            ret_str += "No filename provided, will use timestamp instead\n"
+        if self.loc53!='':
+            ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
+        if self.qchem!='':
+            ret_str += "Q-Chem version is " + self.qchem + "\n"
+        if self.nt>0:
+            ret_str += "Using " + str(self.nt) + " threads\n"
+        if self.np>0:
+            ret_str += "Using " + str(self.np) + " cores\n"
+        return ret_str
+
+    def info(self):
+        print self
 
 ########################### MULTIFILE  ##############################
 
@@ -36,6 +67,7 @@ class multifile(object):
             self.add(k)
 
     def add(self,new_job):
+        ''' Adds an inputfile to your batch object.'''
         if type(new_job) == type(inputfile()):
             self.list_of_jobs.append(new_job)
             self.list_of_content.append(new_job._jtype)
@@ -43,6 +75,7 @@ class multifile(object):
             print "Can only add inputfiles."
 
     def remove(self,position=0): #if not specified delete last
+        ''' Removes an inputfile from your batch object. If no other specified the last is removed.'''
         del self.list_of_content[position-1] 
         del self.list_of_jobs[position-1] 
 
@@ -57,90 +90,92 @@ class multifile(object):
         return ret_str
 
     def write(self,filename):
+        '''Writes the batch jobfile to disk.'''
         f = open(filename,'w')
         str_ret = self.__str__()
         print >>f, str_ret
         f.close()
 
+    def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+        '''Makes Q-Chem process the given batch inputfile object. Optional parameters are
+
+        name  ...... filename (without file extension, will be \".in\" and \".out\" by default)
+        loc53 ...... 53.0 file location
+        nt ......... number of threads
+        np ......... number of processors.
+
+        If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
+        if name == '':
+            name = self.runinfo.name
+            loc53 = self.runinfo.loc53
+            qchem = self.runinfo.qchem
+            nt = self.runinfo.nt
+            np = self.runinfo.np
+            timestamp = self.runinfo.timestamp
+        running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+
 ########################### INPUTFILE  ##############################
-class rundata(object):
-    def __init__(self):
-        self.name=''
-        self.loc53=''
-        self.qchem=''
-        self.nt=1
-        self.np=1
-    def __str__(self):
-        if self.name!='':
-            print "Name is ",self.name
-        if self.loc53!='':
-            print "53.0 is stored at", self.loc53
-        if self.qchem!='':
-            print "Q-Chem version is ",self.qchem
-        if self.nt>0:
-            print "Using ",self.nt,"threads"
-        if self.np>0:
-            print "Using ",self.np,"cores"
-			
 
 class inputfile(object):
     
-    def __init__(self, fragments=[]):
-        self.list_of_fragments=[]
+    def __init__(self, arrays=[]):
+        self.list_of_arrays=[]
         self.list_of_content=[]
-        self.runinfo=rundata()
+        self.runinfo=_rundata()
         self.__jtype="undef"
-        for k in fragments:
+        for k in arrays:
             self.add(k)
             
-    def add(self,new_fragment):
-        if type(new_fragment) == type(rem_fragment()):
-            self.rem = new_fragment
+    def add(self,new_array):
+        ''' Adds an array to your inputfile object.'''
+        if type(new_array) == type(rem_array()):
+            self.rem = new_array
             if "rem" in self.list_of_content:
                 index = self.list_of_content.index("rem")
-                self.list_of_fragments[index]=new_fragment
+                self.list_of_arrays[index]=new_array
             else:
                 self.list_of_content.append("rem")
-                self.list_of_fragments.append(new_fragment)
-            self._jtype = new_fragment.jobtype() #rem variable "jobtype" defines type
+                self.list_of_arrays.append(new_array)
+            self._jtype = new_array.jobtype() #rem variable "jobtype" defines type
         
-        elif type(new_fragment) == type(mol_fragment()):
-            self.molecule = new_fragment
+        elif type(new_array) == type(mol_array()):
+            self.molecule = new_array
             if "molecule" in self.list_of_content:
                 index = self.list_of_content.index("molecule")
-                self.list_of_fragments[index]=new_fragment
+                self.list_of_arrays[index]=new_array
             else:
                 self.list_of_content.append("molecule")
-                self.list_of_fragments.append(new_fragment)
+                self.list_of_arrays.append(new_array)
         
-        elif type(new_fragment) == type(comment_fragment()):
+        elif type(new_array) == type(comment_array()):
             self.list_of_content.append("comment")
-            self.list_of_fragments.append(new_fragment)
+            self.list_of_arrays.append(new_array)
 
-        elif type(new_fragment) == type(basis_fragment()):
-            self.basis = new_fragment
+        elif type(new_array) == type(basis_array()):
+            self.basis = new_array
             self.list_of_content.append("basis")
-            self.list_of_fragments.append(new_fragment)
+            self.list_of_arrays.append(new_array)
 
-        elif type(new_fragment) == type(ecp_fragment()):
-            self.ecp = new_fragment
+        elif type(new_array) == type(ecp_array()):
+            self.ecp = new_array
             self.list_of_content.append("ecp")
-            self.list_of_fragments.append(new_fragment)
+            self.list_of_arrays.append(new_array)
 
-        elif type(new_fragment) == type(_unsupported_fragment()):
-            self.list_of_content.append(str(new_fragment.type))
-            self.list_of_fragments.append(new_fragment)
+        elif type(new_array) == type(_unsupported_array()):
+            self.list_of_content.append(str(new_array.type))
+            self.list_of_arrays.append(new_array)
 
         else:
-            print "Fragment type unknown."
+            print "Array type unknown."
 
     def remove(self,position=0): #if not specified delete last
+        ''' Removes an array from your inputfile object. If no other specified the last is removed.'''
         del self.list_of_content[position-1] 
-        del self.list_of_fragments[position-1] 
+        del self.list_of_arrays[position-1] 
              
     def __str__(self):
         ret_str = ""
-        for k in self.list_of_fragments:
+        for k in self.list_of_arrays:
             ret_str += k.__str__() + "\n" 
         return ret_str
  
@@ -151,6 +186,7 @@ class inputfile(object):
         f.close()
 
     def info(self):
+        '''A quick overview of your inputfile.''' # Health check could be put here
         if "rem" and "molecule" in self.list_of_content:
             status = "valid"
         else:
@@ -159,9 +195,27 @@ class inputfile(object):
         print "Type: inputfile"
         print "Status: " + status
 
+    def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+        '''Makes Q-Chem process the given batch inputfile object. Optional parameters are
+
+        name  ...... filename (without file extension, will be \".in\" and \".out\" by default)
+        loc53 ...... 53.0 file location
+        nt ......... number of threads
+        np ......... number of processors.
+
+        If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
+        if name == '':
+            name = self.runinfo.name
+            loc53 = self.runinfo.loc53
+            qchem = self.runinfo.qchem
+            nt = self.runinfo.nt
+            np = self.runinfo.np
+            timestamp = self.runinfo.timestamp
+        running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+    
 ######################## INPUT FRAGMENTS ############################
 
-class _fragment(object):
+class _array(object):
 
     def __init__(self,content="undef"):
         self.content = content
@@ -180,7 +234,7 @@ class _fragment(object):
 
 ##################### UNSUPPORTED FRAGMENT ##########################
 
-class _unsupported_fragment(_fragment):
+class _unsupported_array(_array):
 
     def __init__(self,arraytype="undef"):
         self.content = []
@@ -198,7 +252,7 @@ class _unsupported_fragment(_fragment):
 
 ######################### ZMAT FRAGMENT #############################
 
-class zmat(_fragment):
+class zmat(_array):
     
     __tabstop = 10
     
@@ -209,6 +263,7 @@ class zmat(_fragment):
         self.__variables = {}
         
     def add_atom(self,line,position=0):  #if not specified add at the end
+        '''Adds an atom to your Z-Matrix.'''
         if position ==0:
             self.__lines.append(line)
         else:
@@ -216,6 +271,7 @@ class zmat(_fragment):
         self.__Natoms += 1
 
     def remove_atom(self,position=0): #if not specified delete last
+        '''Removes an atom from your Z-Matrix. Takes the last if no other specified.'''
         del self.__lines[position-1] 
         self.__Natoms -= 1
 
@@ -240,14 +296,14 @@ class zmat(_fragment):
 
 ####################### CARTESIAN FRAGMENT ##########################
 
-class cartesian(_fragment):
+class cartesian(_array):
     def __init__(self,title="",atom_list=[]):
         import copy
         self.__title = title
         self.__Natoms = 0
         self.xyzs=[]
-        self.com=np.array([0.0,0.0,0.0])
-        self.centroid=np.array([0.0,0.0,0.0])
+        self.com=_np.array([0.0,0.0,0.0])
+        self.centroid=_np.array([0.0,0.0,0.0])
         self.list_of_atoms = copy.deepcopy(atom_list)
         if atom_list!=[]:
             self.__Natoms=len(atom_list)
@@ -255,8 +311,8 @@ class cartesian(_fragment):
                 x=self.list_of_atoms[i][1]
                 y=self.list_of_atoms[i][2]
                 z=self.list_of_atoms[i][3]
-                self.xyzs.append(np.array([float(x),float(y),float(z)]))
-            self.xyzs=np.array(self.xyzs)
+                self.xyzs.append(_np.array([float(x),float(y),float(z)]))
+            self.xyzs=_np.array(self.xyzs)
             self.__center_of_mass()
     def fix(self):
         """This fixes any odd errors resulting from modifying the number of atoms"""
@@ -268,15 +324,15 @@ class cartesian(_fragment):
             x=self.list_of_atoms[i][1]
             y=self.list_of_atoms[i][2]
             z=self.list_of_atoms[i][3]
-            self.xyzs.append(np.array([float(x),float(y),float(z)]))
-        self.xyzs=np.array(self.xyzs)
+            self.xyzs.append(_np.array([float(x),float(y),float(z)]))
+        self.xyzs=_np.array(self.xyzs)
         self.__center_of_mass()
         
     def __center_of_mass(self):
         """This computes the centroid and center of mass using standard atomic masses"""
         #print self.xyzs, self.__Natoms
-        self.com=np.array([0.0,0.0,0.0])
-        self.centroid=np.array([0.0,0.0,0.0])
+        self.com=_np.array([0.0,0.0,0.0])
+        self.centroid=_np.array([0.0,0.0,0.0])
         if len(self.xyzs)==0:
             return   
         total_mass=0.0
@@ -286,8 +342,8 @@ class cartesian(_fragment):
             wt=wts[i]
             total_mass=total_mass+wt
             self.com=self.com+atom*wt
-        self.centroid=np.array([i/self.__Natoms for i in self.centroid])
-        self.com=np.array([i/total_mass for i in self.com])
+        self.centroid=_np.array([i/self.__Natoms for i in self.centroid])
+        self.com=_np.array([i/total_mass for i in self.com])
     
     def title(self,title="show"):
         if title == "show":
@@ -306,10 +362,10 @@ class cartesian(_fragment):
         self.__center_of_mass()
     
     def ghost(self):
-	atoms=[]
+        atoms=[]
         for i in xrange(self.__Natoms):
             atoms.append(['@'+self.list_of_atoms[i][0],self.list_of_atoms[i][1],self.list_of_atoms[i][2],self.list_of_atoms[i][3]])
-	return atoms
+        return atoms
 
     def atoms(self):
         for i, k in enumerate(self.list_of_atoms):
@@ -322,7 +378,7 @@ class cartesian(_fragment):
         print str(self.com[0])+'\t'+str(self.com[1])+'\t'+str(self.com[2])
         
     def move(self,dir,amt=1.0):
-        dir=np.array(dir)
+        dir=_np.array(dir)
         for i in xrange(self.__Natoms):
             self.xyzs[i]=self.xyzs[i]+dir*amt
             self.list_of_atoms[i][1]=str(self.xyzs[i][0])
@@ -366,11 +422,7 @@ class tinker(cartesian):
             return self.__title
         else:
             self.__title=title
-        
-    def add_atom(self,name="H",x="0",y="0",z="0"):
-        self.list_of_atoms.append([name,x,y,z])
-        self.__Natoms += 1
-    
+            
     def remove_atom(self,position):
         del self.list_of_atoms[position-1]  # First atom is atom 1
         self.__Natoms -= 1
@@ -413,7 +465,7 @@ class tinker(cartesian):
         
 ######################### MOL FRAGMENT ##############################
 
-class mol_fragment(_fragment):
+class mol_array(_array):
             
     def __init__(self,geometry=""):
         if geometry == "":
@@ -435,7 +487,7 @@ class mol_fragment(_fragment):
             self.content["MULTIPLICITY"]=value
         
     def geometry(self,value="show"):
-        '''Reads xyz, txyz or zmat coordinate fragment.'''
+        '''Reads xyz, txyz or zmat coordinate array.'''
         if value == "show":
             return self.content["GEOMETRY"]
         elif value == "read":
@@ -444,7 +496,7 @@ class mol_fragment(_fragment):
             if type(value)==type(cartesian()) or type(value)==type(zmat()) or type(value)==type(tinker()):
                 self.content["GEOMETRY"]=value
             else:
-                print "Only cartesian, tinker or zmat fragments can be added here."
+                print "Only cartesian, tinker or zmat arrays can be added here."
        
     def clear(self):
         self.content = {"CHARGE":"0","MULTIPLICITY":"1","GEOMETRY":""}
@@ -468,7 +520,7 @@ class mol_fragment(_fragment):
         return str_ret
          
     def info(self):
-    	switch = 0
+        switch = 0
         if type(self.content["GEOMETRY"])==type(cartesian()):
             coor_type = "cartesian coordinates"
             switch = 1
@@ -480,13 +532,13 @@ class mol_fragment(_fragment):
             switch = 1
         else:
             coor_type = "empty"
-        print "Type: molecule fragment, " + coor_type
+        print "Type: molecule array, " + coor_type
         if switch == 1:
-        	print "Number of atoms: " + str(len((self.content["GEOMETRY"]).list_of_atoms))
+            print "Number of atoms: " + str(len((self.content["GEOMETRY"]).list_of_atoms))
 
 ######################### BASIS FRAGMENT ############################
 
-class basis_fragment(_fragment):
+class basis_array(_array):
 
     def __init__(self):
         self.dict_of_atoms = {}
@@ -514,7 +566,7 @@ class basis_fragment(_fragment):
 
 ########################## ECP FRAGMENT #############################
 
-class ecp_fragment(basis_fragment):
+class ecp_array(basis_array):
 
     def __str__(self):
         ret_str = "$ecp\n"
@@ -536,7 +588,7 @@ class ecp_fragment(basis_fragment):
               
 ####################### COMMENT FRAGMENT ############################
 
-class comment_fragment(_fragment):
+class comment_array(_array):
 
     def __init__(self,content=""):
         self.content = content
@@ -551,7 +603,7 @@ class comment_fragment(_fragment):
 
 ######################### REM FRAGMENT ##############################
 
-class rem_fragment(_fragment):
+class rem_array(_array):
     
     __tabstop = 30
         
@@ -6408,15 +6460,16 @@ By default, all integrals are used in decomposed format allowing significant red
         del self.dict_of_keywords[keyword.upper()]
         
     def clear(self):
+        '''Removes all keywords from array.'''
         self.dict_of_keywords.clear()
         
     def __str__(self):
         str_ret =  "$rem\n"
         for key,value in self.dict_of_keywords.iteritems():
-            str_ret += key.upper() + (rem_fragment.__tabstop-len(key))*" " + value + "\n"
+            str_ret += key.upper() + (rem_array.__tabstop-len(key))*" " + value + "\n"
         str_ret += "$end\n"
         return str_ret
     
     def info(self):
-        print "Type: rem fragment"
+        print "Type: rem array"
         print "Keywords: " + str(len(self.dict_of_keywords))
