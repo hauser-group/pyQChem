@@ -16,8 +16,8 @@ a.move(-a.com)
 b.move(-b.com)
 
 for i in arange(.9,2.01,.1):
-	a.move(-sqrt(i)*d/2)
-	b.move(sqrt(i)*d/2)
+	a.move(-i*d/2)
+	b.move(i*d/2)
 	c=a+b
 	c.write("water-dimer"+"_"+str(i)+".xyz")
 	c=qc.cartesian(atom_list=(a.list_of_atoms+b.ghost()))
