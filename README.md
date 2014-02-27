@@ -10,7 +10,7 @@ variable is not set, add the following line to your .bash_profile:
 
 > export PYTHONPATH= (path_to_your_folder)
 
-Two IPython notebooks in html format are provided as an introduction
+Two IPython notebooks (and support files)  are provided as an introduction
 to basic inputfile handling and outputfile parsing. Example Python scripts that use pyQChem can be found in the 'demos' directory.
 
 Andreas W. Hauser and Matthew Goldey, Feb 2014
