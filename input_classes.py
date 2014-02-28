@@ -6453,27 +6453,9 @@ By default, all integrals are used in decomposed format allowing significant red
             self.dict_of_keywords["DIRECT_RI"]=value.lower()
 
     # ------------------------ End of keyword list ----------------------------
-    
-    # ------------------------ UNDOCUMENTED KEYWORDS CODE ---------------------
-    
-    def undoc(self,undoc_str,value="show"):
-        '''\nFor rem values without documenation herein, please use the undoc keyword and add them manually'''
-        if value == "":
-            if undoc_str in self.dict_of_keywords:
-                del self.dict_of_keywords[undoc_str]
-                print "Keyword removed."
-        elif value == "show":
-            if undoc_str in self.dict_of_keywords:
-                return self.dict_of_keywords[undoc_str]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords[undoc_str]=value.lower()
-    
-    # ---------------------- END OF UNDOCUMENTED KEYWORDS CODE ----------------
-    
-        
+            
     def add(self,keyword,value):
+        '''\nFor rem values without documenation herein, please add keyword and value manually'''
         self.dict_of_keywords[keyword.upper()]=value.lower()
         
     def remove(self,keyword):
