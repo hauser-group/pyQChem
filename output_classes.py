@@ -347,7 +347,7 @@ class _opt(object):
         self.gradient = gradient
         self.displacement = displacement
         self.change = change
-        self.optstat = optstat
+        self.status = optstat
 
     def info(self):
         print "Summary of geometry optimization:"
@@ -357,6 +357,30 @@ class _opt(object):
         for i,k in enumerate(self.energies):
             #print str(k) + "\t\t" + str(self.gradient[i]) + "\t" + str(self.displacement[i]) + "\t" + str(self.change[i])
             print "%.9f\t%.9f\t%.9f\t%.9f\t" %(k,self.gradient[i],self.displacement[i],self.change[i])
+
+
+class _aimd(object):
+    """
+    This structure contains information about the AIMD steps. Time steps are given in fs, energies in Hartee.
+    """
+    def __init__(self,temp,N_steps,time_step,total_time,time,energies,drift,geometries,aimdstat):
+        self.temp=temp
+        self.N_steps=N_steps
+        self.time_step=time_step
+        self.total_time=total_time
+        self.time = time
+        self.energies=energies
+        self.drift=drift
+        self.geometries=geometries
+        self.status=aimdstat
+
+    def info(self):
+        print "Summary of AIMD calculation:"
+        print "--------------------------------"
+        print ""
+        print "Step\tenergies\ttime (fs)\tdrift"
+        for i,k in enumerate(self.energies):
+            print "%i\t%.9f\t%8.2f\t%.5f\t" %(i+1,k,self.time[i],self.drift[i])
 
 
 class _orbitals(object):
@@ -429,6 +453,8 @@ class _outputfile(object):
                 basis_size = (line.split())[5]
             if "MISSION" in line:
                 status = 'finished'
+            if "TIME STEPS COMPLETED" in line and jobtype=="aimd":
+                status = 'time steps completed'
             # Create corresponding inputfile:
             if "User input:" in line:
                 switch = 1
@@ -690,3 +716,48 @@ class _outputfile(object):
                     switch = 0
 
             self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
+
+        if jobtype=="aimd":
+            drift = []
+            time = []
+            energies = []
+            geometries = []
+            aimdstat = "steps not completed"
+
+            aimd_step = 0
+            drift_switch = 0
+            geom_switch = 0
+            for line in content:
+                if "Simulation temperature" in line:
+                    temp = float((line.split())[3])
+                if "AIMD will take" in line:
+                    N_steps = int((line.split())[3])
+                if "Time step =" in line:
+                    time_step = float((line.split())[7])  # use fs units
+                if "Total simulation time requested" in line:
+                    total_time = float((line.split())[5])  # use fs units
+                if "TIME STEP #" in line:  # AIMD starts
+                    aimd_step += 1
+                    time.append(float((line.split())[5]))
+                if ("Drift factor =" in line) and (aimd_step>0):  
+                    drift_switch = 1
+                if ("Total" in line) and (drift_switch==1) and (aimd_step>0):
+                    drift.append(float((line.split())[2]))
+                    drift_switch = 0 
+                if ("Total energy in the final" in line) and (aimd_step>0):
+                    dummy = float((line.split())[8])
+                    energies.append(dummy)
+                if "Atom         X            Y            Z" in line and (aimd_step>0):
+                    geom_switch = 1
+                    cycle_name = "time step " + str(aimd_step)
+                    cart_dummy = cartesian(cycle_name)
+                if (geom_switch == 1) and ("------" not in line) and ("Atom" not in line) and ("Nuclear" not in line):
+                    con = line.split()
+                    cart_dummy.add_atom(con[1],con[2],con[3],con[4])
+                if geom_switch==1 and "Nuclear Repulsion Energy" in line:
+                    geometries.append(deepcopy(cart_dummy))
+                    geom_switch = 0
+                if "TIME STEPS COMPLETED" in line:
+                    aimdstat = "steps completed"
+
+            self.aimd = _aimd(temp,N_steps,time_step,total_time,time,energies,drift,geometries,aimdstat)
