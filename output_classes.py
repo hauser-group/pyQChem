@@ -46,34 +46,113 @@ import constants
 
 ########################## INFO CLASSES #############################
 
+class _mm(object):
+    '''
+    This structure contains molecular mechanics data. Energies are in kcal/mol.
+    '''
+
+    def __init__(self,mm_list):
+        if (len(mm_list[0])>1):
+            self.etot=mm_list[0] 
+            self.ecoulomb=mm_list[1] 
+            self.evdw=mm_list[2] 
+            self.etorsion=mm_list[3] 
+            self.eimptors=mm_list[4] 
+            self.eureybrad=mm_list[5] 
+            self.eangle=mm_list[6] 
+            self.ebond=mm_list[7]
+            self.nbonds=mm_list[8]
+        else:
+            self.etot=mm_list[0][0]
+            self.ecoulomb=mm_list[1][0] 
+            self.evdw=mm_list[2][0]
+            self.etorsion=mm_list[3][0] 
+            self.eimptors=mm_list[4][0] 
+            self.eureybrad=mm_list[5][0] 
+            self.eangle=mm_list[6][0] 
+            self.ebond=mm_list[7][0]
+            self.nbonds=mm_list[8]
+
+
+    def info(self):
+        '''
+        Prints an overview of the calculated MM energies.
+        '''
+        print "MM calculation summary"
+        print "----------------------"
+        print ""
+        if type(self.etot)==list:
+            print str(len(self.etot)) + " energies found, printing last:" 
+            print ""
+            print "Number of bonds:\t\t" + str(self.nbonds) 
+            print "Bond energy:\t\t\t" + str(self.ebond[-1]) + " kcal/mol"
+            print "Angle energy:\t\t\t" + str(self.eangle[-1]) + " kcal/mol"
+            print "Urey-Bradly energy:\t\t" + str(self.eureybrad[-1]) + " kcal/mol"
+            print "Improper rotation energy:\t" + str(self.eimptors[-1]) + " kcal/mol"
+            print "Torsion energy:\t\t\t" + str(self.etorsion[-1]) + " kcal/mol"
+            print "van der Waals energy:\t\t" + str(self.evdw[-1]) + " kcal/mol"
+            print "Coulomb energy:\t\t\t" + str(self.ecoulomb[-1]) + " kcal/mol"
+            print "-------------------------"
+            print "Total energy:\t\t\t" + str(self.etot[-1])  + " kcal/mol (" + \
+                str(self.etot[-1]*constants.kcal_pro_mole_to_hartree) + " Hartree)"
+        else:
+            print "Number of bonds:\t\t" + str(self.nbonds) 
+            print "Bond energy:\t\t\t" + str(self.ebond) + " kcal/mol"
+            print "Angle energy:\t\t\t" + str(self.eangle) + " kcal/mol"
+            print "Urey-Bradly energy:\t\t" + str(self.eureybrad) + " kcal/mol"
+            print "Improper rotation energy:\t" + str(self.eimptors) + " kcal/mol"
+            print "Torsion energy:\t\t\t" + str(self.etorsion) + " kcal/mol"
+            print "van der Waals energy:\t\t" + str(self.evdw) + " kcal/mol"
+            print "Coulomb energy:\t\t\t" + str(self.ecoulomb) + " kcal/mol"
+            print "-------------------------"
+            print "Total energy:\t\t\t" + str(self.etot)  + " kcal/mol (" + \
+                str(self.etot*constants.kcal_pro_mole_to_hartree) + " Hartree)"
+
+
 class _general(object):
     '''
     This structure contains basic information about the Q-Chem jobfile.
     '''
-    def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile):
+    def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile,mm_type):
         self.jobtype = jobtype
         self.version = version
-        try: 
-		self.spin = _np.float(spin)
-	except: 
-		print "Could not determine spin"
-        self.basis_size = _np.float(basis_size)
+        self.spin = _np.float(spin)
+        if mm_type!="mm":
+            self.basis_size = int(basis_size)
         self.energy = _np.float(energy)
         self.status = status
         self.inputfile = inputfile
+        self.mm_type = mm_type
 
     def info(self):
         '''
-        Prints a summary of basic information.
+        Prints a summary of basic information. Energy is given in Hartree.
         '''
         print "About this job:"
         print "--------------"
         print ""
         print "Q-Chem version:\t\t" + self.version
-        print "Jobtype:\t\t" + self.jobtype.lower()
-        print "Basis functions:\t" + str(self.basis_size)
-        print "Spin:\t\t\t" + str(self.spin)
-        print "SCF energy:\t\t" + str(self.energy)
+
+        jobstring = "Jobtype:\t\t" + self.jobtype.lower()
+        if self.mm_type == "mm":
+            jobstring += " (MM calculation)"
+        if self.mm_type == "janus":
+            jobstring += " (QM/MM calculation of type Janus)"
+        if self.mm_type == "oniom":
+            jobstring += " (QM/MM calculation of type ONIOM)"
+        print jobstring
+        
+        if self.mm_type=="mm":
+            print "MM energy:\t\t" + str(self.energy)
+        elif self.mm_type=="" :
+            print "Basis functions:\t" + str(self.basis_size)
+            print "Spin:\t\t\t" + str(self.spin)
+            print "SCF energy:\t\t" + str(self.energy)
+        else:
+            print "Basis functions:\t" + str(self.basis_size)
+            print "Spin:\t\t\t" + str(self.spin)
+            print "QM/MM total energy:\t" + str(self.energy)
+
         print "Status:\t\t\t" + self.status
 
 
@@ -260,7 +339,7 @@ class _thermo(object):
 
 class _opt(object):
     '''
-    This structure contains information about the geometry optimization.
+    This structure contains information about the geometry optimization. Energies are given in Hartree.
     '''
     def __init__(self,geometries,energies,gradient,displacement,change,optstat):
         self.geometries = geometries
@@ -274,9 +353,10 @@ class _opt(object):
         print "Summary of geometry optimization:"
         print "--------------------------------"
         print ""
-        print "Energy\t\t\tGradient\tDisplacement\tDeltaE"
+        print "Energy\t\tGradient\tDisplacement\tDeltaE"
         for i,k in enumerate(self.energies):
-            print str(k) + "\t\t" + str(self.gradient[i]) + "\t" + str(self.displacement[i]) + "\t" + str(self.change[i])
+            #print str(k) + "\t\t" + str(self.gradient[i]) + "\t" + str(self.displacement[i]) + "\t" + str(self.change[i])
+            print "%.9f\t%.9f\t%.9f\t%.9f\t" %(k,self.gradient[i],self.displacement[i],self.change[i])
 
 
 class _orbitals(object):
@@ -285,6 +365,7 @@ class _orbitals(object):
     '''
     def __init__(self,N_elec):
         self.N_elec = N_elec
+        # to be continued...
 
 ####################### MULTI OUTPUTFILE  ###########################
 
@@ -317,13 +398,15 @@ class _outputfile(object):
             infile = open(file_input,"r")
             content = infile.readlines()
         
-        spin = 'undetermined'
+        spin = '0'
         energy = 'undetermined'
         jobtype = 'undetermined'
         version = 'undetermined'
         basis_size = 'undetermined'
         status = 'unfinished'
-        
+
+        mm_type = "" 
+
         switch = 0
         for line in content:
             if "JOBTYPE" in line:
@@ -332,12 +415,16 @@ class _outputfile(object):
                 jobtype = ((line.split())[-1]).lower()    
             if "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
+            if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
+                mm_type = ((line.split())[-1]).lower()
             if "Q-Chem, Version" in line:
                 version = (((line.split(","))[1]).split())[1]
             if "<S^2> =" in line:
                 spin = (line.split())[2]
-            if "Total energy in the final basis set" in line:
+            if ("Total energy in the final basis set") in line and mm_type!="mm":
                 energy = (line.split())[8]
+            if ("Etot:" in line) and (mm_type=="mm"):
+                energy = (line.split())[4]
             if ("There are" in line) and ("shells" in line):
                 basis_size = (line.split())[5]
             if "MISSION" in line:
@@ -352,9 +439,119 @@ class _outputfile(object):
                 switch = 0
         inputfile = _readinput(infile_content)
 
+        self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type)
 
-        self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile)
+        # Make another round if we have an MM or a QM/MM Janus job (just one MM per step)
+        if mm_type=="mm" or mm_type=="janus":
+            etot = []
+            ecoulomb = []
+            etorsion = []
+            eimptors = []
+            eureybrad = []
+            eangle = []
+            ebond = []
+            evdw = []
 
+            first_bond=1
+            for line in content:
+                if ("MM bonds to file" in line) and (first_bond==1):
+                    nbonds = int((line.split())[1])
+                    first_bond = 0
+                if "Ebond:" in line:
+                    ebond.append(float((line.split())[1]))
+                if "Eangle:" in line:
+                    eangle.append(float((line.split())[1]))
+                if "EUreyBrad:" in line:
+                    eureybrad.append(float((line.split())[1]))
+                if "Eimptors:" in line:
+                    eimptors.append(float((line.split())[1]))
+                if "Etorsion:" in line:
+                    etorsion.append(float((line.split())[1]))
+                if "Evdw:" in line:
+                    evdw.append(float((line.split())[1]))
+                if "Ecoulomb:" in line:
+                    ecoulomb.append(float((line.split())[1]))
+                if "Etot:" in line:
+                    etot.append(float((line.split())[1]))
+            self.mm = _mm([etot,ecoulomb,evdw,etorsion,eimptors,eureybrad,eangle,ebond,nbonds]) # Create MM info object
+
+        # Make another round if we have an QM/MM ONIOM job (has two MM calulations per step)
+        elif mm_type=="oniom":
+            etot = []
+            ecoulomb = []
+            etorsion = []
+            eimptors = []
+            eureybrad = []
+            eangle = []
+            ebond = []
+            evdw = []
+
+            etot2 = []
+            ecoulomb2 = []
+            etorsion2 = []
+            eimptors2 = []
+            eureybrad2 = []
+            eangle2 = []
+            ebond2 = []
+            evdw2 = []
+
+            mm_step = 0
+
+            first_bond=1
+            first_bond2=1
+
+            for line in content:
+                if "Step 1: MM calculation on the entire system" in line:
+                    mm_step = 1
+                if "Step 2: MM calculation on the model system" in line:
+                    mm_step = 2
+
+                if ("MM bonds to file" in line) and (first_bond==1) and (mm_step==1):
+                    nbonds = int((line.split())[1])
+                    first_bond = 0
+                if "Ebond:" in line and (mm_step==1):
+                    ebond.append(float((line.split())[1]))
+                if "Eangle:" in line and (mm_step==1):
+                    eangle.append(float((line.split())[1]))
+                if "EUreyBrad:" in line and (mm_step==1):
+                    eureybrad.append(float((line.split())[1]))
+                if "Eimptors:" in line and (mm_step==1):
+                    eimptors.append(float((line.split())[1]))
+                if "Etorsion:" in line and (mm_step==1):
+                    etorsion.append(float((line.split())[1]))
+                if "Evdw:" in line and (mm_step==1):
+                    evdw.append(float((line.split())[1]))
+                if "Ecoulomb:" in line and (mm_step==1):
+                    ecoulomb.append(float((line.split())[1]))
+                if "Etot:" in line and (mm_step==1):
+                    etot.append(float((line.split())[1]))
+
+                if ("n_qm_bonds =" in line) and (first_bond2==1) and (mm_step==2):
+                    nbonds2 = int((line.split())[2])
+                    first_bond2 = 0
+                if "Ebond:" in line and (mm_step==2):
+                    ebond2.append(float((line.split())[1]))
+                if "Eangle:" in line and (mm_step==2):
+                    eangle2.append(float((line.split())[1]))
+                if "EUreyBrad:" in line and (mm_step==2):
+                    eureybrad2.append(float((line.split())[1]))
+                if "Eimptors:" in line and (mm_step==2):
+                    eimptors2.append(float((line.split())[1]))
+                if "Etorsion:" in line and (mm_step==2):
+                    etorsion2.append(float((line.split())[1]))
+                if "Evdw:" in line and (mm_step==2):
+                    evdw2.append(float((line.split())[1]))
+                if "Ecoulomb:" in line and (mm_step==2):
+                    ecoulomb2.append(float((line.split())[1]))
+                if "Etot:" in line and (mm_step==2):
+                    etot2.append(float((line.split())[1]))
+
+            # Create MM info object for entire system
+            self.mm_total = _mm([etot,ecoulomb,evdw,etorsion,eimptors,eureybrad,eangle,ebond,nbonds]) 
+            # Create MM info object for model system
+            self.mm_model = _mm([etot2,ecoulomb2,evdw2,etorsion2,eimptors2,eureybrad2,eangle2,ebond2,nbonds2])
+
+        
 
         if jobtype=="freq":
             H2kcal=constants.hartree_to_kcal_pro_mole
@@ -448,7 +645,7 @@ class _outputfile(object):
 
         if jobtype=="opt" or jobtype=="optimization":
             energies = []
-            gradient = []
+            gradient = [0.0]
             displacement = []
             change = []
             geometries = []
@@ -457,16 +654,22 @@ class _outputfile(object):
             switch = 0
             for line in content:
                 if "Energy is" in line:
-                    dummy = (line.split())[2]
+                    dummy = float((line.split())[2])
                     energies.append(dummy)
                 if "Gradient   " in line:
-                    dummy = (line.split())[1]
+                    try:
+                        dummy = float((line.split())[1])
+                    except:
+                        dummy = 0.0
                     gradient.append(dummy)
                 if "Displacement   " in line:
-                    dummy = (line.split())[1]
+                    dummy = float((line.split())[1])
                     displacement.append(dummy)
                 if "Energy change   " in line:
-                    dummy = (line.split())[2]
+                    try:
+                        dummy = float((line.split())[2])
+                    except:
+                        dummy = 0.0
                     change.append(dummy)
                 if "**  OPTIMIZATION CONVERGED  **" in line:
                     optstat = "converged"
