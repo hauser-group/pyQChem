@@ -413,7 +413,7 @@ class _multioutput(object):
 
 class _outputfile(object):
 
-    def __init__(self,file_input):
+    def __init__(self,file_input,silent=False):
 
         #Check input type
         if type(file_input)==list:
@@ -463,7 +463,7 @@ class _outputfile(object):
                 infile_content.append(line)
             if switch == 1 and "Standard Nuclear Orientation" in line:
                 switch = 0
-        inputfile = _readinput(infile_content)
+        inputfile = _readinput(infile_content,silent)
 
         self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type)
 
@@ -622,7 +622,8 @@ class _outputfile(object):
                 if "Molecular Mass:" in line:
                     loop += 1
                     if "*" in line:
-                        print "Warning: Molecular mass in loop " + str(loop) + " is unphysically large. Will use mass of first loop instead."
+                        if not silent:
+                            print "Warning: Molecular mass in loop " + str(loop) + " is unphysically large. Will use mass of first loop instead."
                         mass.append(mass[0])
                     else:
                         dummy = float((line.split())[2])
@@ -631,7 +632,8 @@ class _outputfile(object):
                     rot_sym.append(float((line.split())[4]))
                 if "Eigenvalues --" in line:
                     if "*" in line:
-                        print "Warning: Moment of inertia in loop " + str(loop) + " is unphysically large. Will use values of first loop instead."
+                        if not silent:
+                            print "Warning: Moment of inertia in loop " + str(loop) + " is unphysically large. Will use values of first loop instead."
                         mom_inertia.append(mom_inertia[0])
                     else:
                         dummy = [float((line.split())[2]),float((line.split())[3]),float((line.split())[4])]

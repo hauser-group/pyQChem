@@ -108,7 +108,7 @@ def _readtinker(filename):
     return re_file
 
 
-def _readinput(file_input):
+def _readinput(file_input,silent=False):
     
     #Check input type
     if type(file_input)==list:
@@ -162,7 +162,7 @@ def _readinput(file_input):
             
                 # What type of coordinates do we have?
                 if len(content)<2:
-                	switch = 0
+                    switch = 0
                 else:
                     switch = len(content[1].strip().split())
                 
@@ -212,9 +212,11 @@ def _readinput(file_input):
                         tinker_dummy.add_atom(name,x,y,z,atomtype,con1,con2,con3,con4)
                     new_array.geometry(tinker_dummy)
                 elif switch == 0:
-                	print "Warning: $molecule array is empty."
+                    if not silent:
+                        print "Warning: $molecule array is empty."
                 else:
-                    print "Unknown format in $molecule array."
+                    if not silent:
+                        print "Unknown format in $molecule array."
             re_file.add(new_array)
             
         elif k=="comment":
@@ -263,7 +265,8 @@ def _readinput(file_input):
         # so that it recognizes the new array type (otherwise it's still unsupported).
 
         else:
-            print "Unsupported array type " + k + " detected. Read as constant."
+            if not silent:
+                print "Unsupported array type " + k + " detected. Read as constant."
             new_array = _unsupported_array(k)
             for line in content:
                 new_array.add_line(line)

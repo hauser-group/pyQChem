@@ -93,7 +93,11 @@ from running_scripts import *
 # This is the main filereading method. It reads all types of supported
 # files. All other reading methods are hidden from the user. 
 
-def read(filename):
+def read(filename,silent=False):
+    """
+    This method reads Q-Chem input files, output files, and coordinate files (xyz,zmat,txyz). 
+    """
+
     extension = (filename.split("."))[-1]
 
     # Do we have an inputfile?
@@ -109,7 +113,8 @@ def read(filename):
 
         # Does the file contain multiple jobs? 
         if N_jobs>0:
-            print "Batch Jobfile detected."
+            if not silent:
+                print "Batch Jobfile detected."
             joblist = []
             infile = open(filename,"r")
             content = infile.readlines()
@@ -124,28 +129,32 @@ def read(filename):
                 start=seperator[k]+1
                 end=seperator[k+1]
                 dummylines = content[start:end]
-                dummy = _readinput(dummylines)
+                dummy = _readinput(dummylines,silent)
                 re_file.add(dummy)
             return re_file
     
         # No, it's a single job file    
         else:
-            print "Jobfile detected."
-            return _readinput(filename)
+            if not silent:
+                print "Jobfile detected."
+            return _readinput(filename,silent)
         
     # Is it a z-matrix file?
     elif extension in ("zmat","ZMAT","Z","z"):
-        print "Z-matrix file detected."
+        if not silent:
+            print "Z-matrix file detected."
         return _readzmat(filename)
           
     # Is it a cartesian coordinates file?
     elif extension in ("xyz","XYZ"):
-        print "Cartesian coordinates file detected."
+        if not silent:
+            print "Cartesian coordinates file detected."
         return _readcartesian(filename)
         
     # Is it a tinker coordinates file?
     elif extension in ("txyz","TXYZ"):
-        print "Tinker coordinates file detected."
+        if not silent:
+            print "Tinker coordinates file detected."
         return _readtinker(filename)
     
 
@@ -162,7 +171,8 @@ def read(filename):
 
         # Does the file contain multiple jobs? 
         if N_jobs>1:
-            print "Batch-Outputfile detected."
+            if not silent:
+                print "Batch-Outputfile detected."
             joblist = []
             infile = open(filename,"r")
             content = infile.readlines()
@@ -177,18 +187,20 @@ def read(filename):
                 start=seperator[k]+1
                 end=seperator[k+1]
                 dummylines = content[start:end]
-                dummy = _outputfile(dummylines)
+                dummy = _outputfile(dummylines,silent)
                 re_file.add(dummy)
             return re_file
     
         # No, it's a single job file    
         else:
-            print "Outputfile detected."
-            return _outputfile(filename)
+            if not silent:
+                print "Outputfile detected."
+            return _outputfile(filename,silent)
 
     # What the heck? This is not a valid file.
     else:
-        print "Error: File type not recognized."
+        if not silent:
+            print "Error: File type not recognized."
 
 if __name__ == "__main__":
     print "This file is supposed to be loaded as a module, not as main."
