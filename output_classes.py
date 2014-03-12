@@ -382,6 +382,18 @@ class _aimd(object):
         for i,k in enumerate(self.energies):
             print "%i\t%.9f\t%8.2f\t%.5f\t" %(i+1,k,self.time[i],self.drift[i])
 
+    def write_trajectory_xyz(self,filename='trajectory.xyz'):
+    	"""
+    	This method concatenates the xyz geometries, using the current energy as title (supported by Molden). 
+    	"""
+    	f = open(filename,'w')
+    	ret_str = ""
+    	for i,k in enumerate(self.geometries):
+    		k.title(str(self.energies[i]))
+    		ret_str += k.__str__()
+    	f.write(ret_str)
+    	f.close()
+
 
 class _orbitals(object):
     '''
