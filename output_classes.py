@@ -683,7 +683,7 @@ class _outputfile(object):
             G = H - (T*S)
             self.thermo = _thermo(E,ZPE,ITE,T,p,S,H,F,G,frequencies,intensities,mass,mom_inertia,rot_sym,linear_switch)
 
-        if jobtype=="opt" or jobtype=="optimization":
+        if jobtype=="opt" or jobtype=="optimization" or jobtype=="ts":
             energies = []
             gradient = [0.0]
             displacement = []
@@ -729,7 +729,12 @@ class _outputfile(object):
                     N_step += 1
                     switch = 0
 
-            self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
+            if jobtype=="opt" or jobtype=="optimization":
+                self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
+            else:
+                self.ts = _opt(geometries,energies,gradient,displacement,change,optstat)
+
+
 
         if jobtype=="aimd":
             drift = []
