@@ -172,6 +172,10 @@ class inputfile(object):
             self.list_of_content.append(str(new_array.type))
             self.list_of_arrays.append(new_array)
 
+        #poor man's typecasting because these feel equivalent to users
+        elif (type(new_array) == cartesian  or type(new_array)== zmat or type(new_array) == tinker):
+            self.add(mol_array(new_array))
+
         else:
             print "Array type unknown."
 
@@ -214,6 +218,14 @@ class inputfile(object):
         If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
 
         running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+
+    def __add__(self,other): #autoadd subarrays - works
+        self.add(other)
+        return self
+
+    def __radd__(self,other): #not working right, but general form should be this
+        self.add(other)
+        return self
     
 ######################## INPUT FRAGMENTS ############################
 
@@ -233,6 +245,12 @@ class _array(object):
         str_ret = self.__str__()
         print >>f, str_ret
         f.close()
+    def __add__(self,other):
+        if isinstance(other,_array):
+            a=inputfile()
+            a.add(self)
+            a.add(other)
+            return a
 
 ##################### UNSUPPORTED FRAGMENT ##########################
 
