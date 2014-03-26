@@ -190,7 +190,10 @@ def _readinput(file_input,silent=False):
                             if z_switch == 0:
                                 zmat_dummy.add_atom(dummy)
                             elif z_switch == 1:
-                                zmat_dummy.variable((dummy.split())[0],(dummy.split())[1])
+				try:
+					zmat_dummy.variable((dummy.split())[0],(dummy.split())[1])
+				except:
+					zmat_dummy.variable((dummy.split('='))[0],(dummy.split('='))[1])
                             else:
                                 pass
                     new_array.geometry(zmat_dummy)
