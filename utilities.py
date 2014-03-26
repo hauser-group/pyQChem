@@ -171,7 +171,9 @@ def _readinput(file_input,silent=False):
                     cartesian_dummy = cartesian()
                     for line in content[1:]:
                         atom_input = line.strip().split()
-                        atom = atom_input[0]
+                        if len(atom_input)<4:
+                                continue
+                        atom = atom_input[0].capitalize()
                         x = atom_input[1]
                         y = atom_input[2]
                         z = atom_input[3]
