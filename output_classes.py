@@ -363,7 +363,7 @@ class _aimd(object):
     """
     This structure contains information about the AIMD steps. Time steps are given in fs, energies in Hartee.
     """
-    def __init__(self,temp,N_steps,time_step,total_time,time,energies,drift,geometries,aimdstat):
+    def __init__(self,temp,N_steps,time_step,total_time,time,energies,drift,kinetic_energies,geometries,aimdstat):
         self.temp=temp
         self.N_steps=N_steps
         self.time_step=time_step
@@ -371,6 +371,7 @@ class _aimd(object):
         self.time = time
         self.energies=energies
         self.drift=drift
+        self.kinetic_energies = kinetic_energies
         self.geometries=geometries
         self.status=aimdstat
 
@@ -683,7 +684,7 @@ class _outputfile(object):
             G = H - (T*S)
             self.thermo = _thermo(E,ZPE,ITE,T,p,S,H,F,G,frequencies,intensities,mass,mom_inertia,rot_sym,linear_switch)
 
-        if jobtype=="opt" or jobtype=="optimization":
+        if jobtype=="opt" or jobtype=="optimization" or jobtype=="ts":
             energies = []
             gradient = [0.0]
             displacement = []
@@ -729,10 +730,16 @@ class _outputfile(object):
                     N_step += 1
                     switch = 0
 
-            self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
+            if jobtype=="opt" or jobtype=="optimization":
+                self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
+            else:
+                self.ts = _opt(geometries,energies,gradient,displacement,change,optstat)
+
+
 
         if jobtype=="aimd":
             drift = []
+            kinetic_energies = []
             time = []
             energies = []
             geometries = []
@@ -757,6 +764,7 @@ class _outputfile(object):
                     drift_switch = 1
                 if ("Total" in line) and (drift_switch==1) and (aimd_step>0):
                     drift.append(float((line.split())[2]))
+                    kinetic_energies.append(float((line.split())[1]))
                     drift_switch = 0 
                 if ("Total energy in the final" in line) and (aimd_step>0):
                     dummy = float((line.split())[8])
@@ -774,4 +782,4 @@ class _outputfile(object):
                 if "TIME STEPS COMPLETED" in line:
                     aimdstat = "steps completed"
 
-            self.aimd = _aimd(temp,N_steps,time_step,total_time,time,energies,drift,geometries,aimdstat)
+            self.aimd = _aimd(temp,N_steps,time_step,total_time,time,energies,drift,kinetic_energies,geometries,aimdstat)
