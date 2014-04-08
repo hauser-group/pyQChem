@@ -153,7 +153,7 @@ def _readinput(file_input,silent=False):
             re_file.add(new_array)
             
         elif k=="molecule":
-            if ("read" or "READ") in content[0].strip():
+            if ("read" in content[0].strip()) or ("READ" in content[0].strip()):
                 new_array = mol_array(geometry="read")
             else:
                 new_array = mol_array()
