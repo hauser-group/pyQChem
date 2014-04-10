@@ -652,7 +652,7 @@ class _outputfile(object):
                         dummy = [float((line.split())[2]),float((line.split())[3]),float((line.split())[4])]
                         mom_inertia.append(dummy)
 
-                if "Vibman" in line:
+                if "VIBRATIONAL ANALYSIS" in line:
                     loop1 = []
                     loop2 = []
                     switch = 1
