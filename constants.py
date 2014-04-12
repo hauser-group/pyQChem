@@ -226,7 +226,8 @@ dict_of_atomic_masses = {}
 
 dict_of_atomic_masses['1'] = 1.00782503207
 dict_of_atomic_masses['H'] = 1.00782503207
-dict_of_atomic_masses['2'] = 3.0160293191
+dict_of_atomic_masses['2'] = 4.00260325415
+dict_of_atomic_masses['He'] = 4.00260325415
 dict_of_atomic_masses['3'] = 6.015122795
 dict_of_atomic_masses['Li'] = 6.015122795
 dict_of_atomic_masses['4'] = 9.0121822
