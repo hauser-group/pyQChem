@@ -219,13 +219,19 @@ class inputfile(object):
 
         running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
 
-    def __add__(self,other): #autoadd subarrays - works
-        self.add(other)
-        return self
+    def __add__(self,other): 
+        #autoadd subarrays - works
+        import copy
+        new=copy.deepcopy(self)
+        new.add(other)
+        return new
 
-    def __radd__(self,other): #not working right, but general form should be this
-        self.add(other)
-        return self
+#    def __radd__(self,other): 
+#	#not working right, but general form should be this
+#	import copy
+#	new=copy.deepcopy(self)
+#	new.add(other)
+#	return new
     
 ######################## INPUT FRAGMENTS ############################
 
@@ -251,6 +257,8 @@ class _array(object):
             a.add(self)
             a.add(other)
             return a
+        if isinstance(other,inputfile):
+            return other+self
 
 ##################### UNSUPPORTED FRAGMENT ##########################
 
