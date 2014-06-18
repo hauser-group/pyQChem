@@ -160,13 +160,21 @@ class inputfile(object):
 
         elif type(new_array) == type(basis_array()):
             self.basis = new_array
-            self.list_of_content.append("basis")
-            self.list_of_arrays.append(new_array)
+            if "basis" in self.list_of_content:
+                index = self.list_of_content.index("basis")
+                self.list_of_arrays[index]=new_array
+            else:
+                self.list_of_content.append("basis")
+                self.list_of_arrays.append(new_array)
 
         elif type(new_array) == type(ecp_array()):
             self.ecp = new_array
-            self.list_of_content.append("ecp")
-            self.list_of_arrays.append(new_array)
+            if "ecp" in self.list_of_content:
+                index = self.list_of_content.index("ecp")
+                self.list_of_arrays[index]=new_array
+            else:
+                self.list_of_content.append("ecp")
+                self.list_of_arrays.append(new_array)
 
         elif type(new_array) == type(_unsupported_array()):
             self.list_of_content.append(str(new_array.type))

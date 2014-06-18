@@ -206,7 +206,7 @@ class _thermo(object):
         print "Helmholtz free energy (F):\t" + str(self.F)
         print "Gibbs free energy (G):\t\t" + str(self.G)
 
-    def calculate(self,temp,pressure="",loop_iso=0,loop_freq="",grimme=0,grimme_thresh=100):
+    def calculate(self,temp,pressure="",loop_iso=0,loop_freq="",grimme=0,grimme_thresh=100,silent=0):
         '''
         Thermodynamics calculation
         --------------------------
@@ -224,6 +224,8 @@ class _thermo(object):
         If 'grimme' is set to 1, hindered rotations are approximated via Grimme's interpolation technique,
         see Grimme, S. Chemistry - A European Journal 2012, 18, 9955-9964.
         The threshold is adjusted via the 'grimme_thresh' variable. Default is 100 wavenumbers.
+
+        To make pyQchem shut up set silent=1.
 
         Output:
         A numpy array of dimension N*7, with N as number of temperature/pressure 
@@ -276,7 +278,8 @@ class _thermo(object):
 
         # Rotational contributions (for linear molecule)
         if self._lin_switch==1:
-            print "Linear molecule detected..."
+            if silent==0:
+                print "Linear molecule detected..."
             theta_lin = (constants.Planck_constant)**2/(8*pi**2*_np.max(mom_inertia)*constants.Boltzmann_constant) # rotational temperature
             Q_rot_lin = T/theta_lin/rot_sym
             S_rot = constants.molar_gas_constant*(_np.log(Q_rot_lin)+1)
@@ -325,12 +328,13 @@ class _thermo(object):
         G = H - T*S
 
         # Print and return array of thermodynamical potentials
-        headerline = "Results based on frequencies of loop " + str(loop_freq) + " and isotopes of loop " + str(loop_iso)
-        print headerline
-        print "-"*len(headerline)
-        print "\nT\tp\t\tITE\t\t S\t\t H\t\t F\t\t G"
-        for k,l in enumerate(T):
-            print "%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k])        
+        if silent==0:
+            headerline = "Results based on frequencies of loop " + str(loop_freq) + " and isotopes of loop " + str(loop_iso)
+            print headerline
+            print "-"*len(headerline)
+            print "\nT\tp\t\tITE\t\t S\t\t H\t\t F\t\t G"
+            for k,l in enumerate(T):
+                print "%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k])        
         dummy = _np.asarray([T,p,ITE,S,H,F,G])
         data = dummy.transpose()
         return data
