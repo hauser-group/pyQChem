@@ -399,6 +399,12 @@ class cartesian(_array):
         for i, k in enumerate(self.list_of_atoms):
             print str(i+1) + ":\t" +  k[0] + "\t" + k[1] + "\t" + k[2] + "\t" + k[3]
 
+    def atomic_distance(self,a,b):
+	"""Gives the pair-wise distance between two atoms (counting from 0)"""
+	from math import sqrt
+	d=self.xyzs[b]-self.xyzs[a]
+	return sqrt(d.dot(d))
+
     def print_centroid(self):
         print str(self.centroid[0])+'\t'+str(self.centroid[1])+'\t'+str(self.centroid[2])
         
