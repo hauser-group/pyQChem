@@ -268,6 +268,12 @@ class _array(object):
             return a
         if isinstance(other,inputfile):
             return other+self
+    def __radd__(self,other):
+	if isinstance(other,_array):
+	    a=inputfile()
+	    a.add(self)
+	    a.add(other)
+	    return a
 
 ##################### UNSUPPORTED FRAGMENT ##########################
 
@@ -436,6 +442,12 @@ class cartesian(_array):
             str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
         return str_ret
 
+    def __subtract__(self,other):
+        if type(other)==type([]):  #let's move the atoms
+            self.move(other,-1.0)
+        if type(other)==type(self.com):  #let's move the atoms using a numpy array
+            self.move(other,-1.0)
+
     def __add__(self,other):
         if type(other)==type([]):  #let's move the atoms
             self.move(other,1.0)
@@ -444,6 +456,8 @@ class cartesian(_array):
         if type(other)==type(self):                      #merge two cartesians
             atoms=self.list_of_atoms+other.list_of_atoms  
             return cartesian(atom_list=atoms)
+        if isinstance(other,_array):
+            return other+mol_array(self)
 
     def __radd__(self,other):  #reverse of above
         if type(other)==type([]):
@@ -451,6 +465,8 @@ class cartesian(_array):
         if type(other)==type(self):
             atoms=self.list_of_atoms+other.list_of_atoms
             return cartesian(atom_list=atoms)
+        if isinstance(other,_array):
+            return other+mol_array(self)
             
 
 ####################### TINKER FRAGMENT ##########################
