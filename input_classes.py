@@ -653,8 +653,17 @@ class rem_array(_array):
     
     __tabstop = 30
         
-    def __init__(self):
+    def __init__(self,rem_init=""):
         self.dict_of_keywords = {"JOBTYPE":"sp"}
+	rem_init=rem_init.splitlines()
+	if len(rem_init)!=0:
+		for i in rem_init:
+			i=i.split(" ")
+			if len(i)==0:
+				i=i.split("=")
+			if i[0].startswith("$"):
+				continue
+			self.add(i[0],i[1])
     
     # -------------- Computer-generated List of REM keywords  -----------------
 
