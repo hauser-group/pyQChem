@@ -259,6 +259,7 @@ class _array(object):
         str_ret = self.__str__()
         print >>f, str_ret
         f.close()
+
     def __add__(self,other):
         if isinstance(other,_array):
             a=inputfile()
@@ -350,6 +351,7 @@ class cartesian(_array):
                 self.xyzs.append(_np.array([float(x),float(y),float(z)]))
             self.xyzs=_np.array(self.xyzs)
             self.__center_of_mass()
+
     def fix(self):
         """This fixes any odd errors resulting from modifying the number of atoms"""
         self.__Natoms=len(self.list_of_atoms)
@@ -433,6 +435,7 @@ class cartesian(_array):
         for k in self.list_of_atoms:
             str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
         return str_ret
+
     def __add__(self,other):
         if type(other)==type([]):  #let's move the atoms
             self.move(other,1.0)
@@ -441,6 +444,7 @@ class cartesian(_array):
         if type(other)==type(self):                      #merge two cartesians
             atoms=self.list_of_atoms+other.list_of_atoms  
             return cartesian(atom_list=atoms)
+
     def __radd__(self,other):  #reverse of above
         if type(other)==type([]):
             self.move(other)
@@ -650,7 +654,7 @@ class rem_array(_array):
     __tabstop = 30
         
     def __init__(self):
-        self.dict_of_keywords = {"JOBTYPE":"sp","EXCHANGE":"hf"}
+        self.dict_of_keywords = {"JOBTYPE":"sp"}
     
     # -------------- Computer-generated List of REM keywords  -----------------
 
