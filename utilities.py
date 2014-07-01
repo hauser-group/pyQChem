@@ -146,6 +146,9 @@ def _readinput(file_input,silent=False):
         # Grab block content and save it to list
         content = full_content[block_index[0][i]+1:block_index[1][i]]
 
+        # clear k from possible comments
+        k = k.split('!')[0].strip()
+
         if k=="rem":
             new_array = rem_array()
             for k in content:
@@ -231,7 +234,7 @@ def _readinput(file_input,silent=False):
             new_array = comment_array(ret_str)
             re_file.add(new_array)
             
-        elif k=="basis":
+        elif k == "basis":
             new_array = basis_array()
             first = 0
             atom = content[0].strip()
