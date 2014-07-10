@@ -88,8 +88,8 @@ class multifile(object):
 
     def remove(self,position=0): #if not specified delete last
         ''' Removes an inputfile from your batch object. If no other specified the last is removed.'''
-        del self.list_of_content[position-1] 
-        del self.list_of_jobs[position-1] 
+        del self.list_of_content[position] 
+        del self.list_of_jobs[position] 
 
     def __str__(self):
         if self.list_of_jobs==[]:
@@ -189,8 +189,8 @@ class inputfile(object):
 
     def remove(self,position=0): #if not specified delete last
         ''' Removes an array from your inputfile object. If no other specified the last is removed.'''
-        del self.list_of_content[position-1] 
-        del self.list_of_arrays[position-1] 
+        del self.list_of_content[position] 
+        del self.list_of_arrays[position] 
              
     def __str__(self):
         ret_str = ""
@@ -310,12 +310,12 @@ class zmat(_array):
         if position ==0:
             self.__lines.append(line)
         else:
-            self.__lines.insert(position-1,line)
+            self.__lines.insert(position,line)
         self.__Natoms += 1
 
     def remove_atom(self,position=0): #if not specified delete last
         '''Removes an atom from your Z-Matrix. Takes the last if no other specified.'''
-        del self.__lines[position-1] 
+        del self.__lines[position] 
         self.__Natoms -= 1
 
     def variable(self,key="variable",value="show"):
@@ -401,7 +401,7 @@ class cartesian(_array):
         self.__center_of_mass()
     
     def remove_atom(self,position=0):
-        del self.list_of_atoms[position-1]  # First atom is atom 1
+        del self.list_of_atoms[position]  # First atom is atom 1
         self.fix()
         self.__center_of_mass()
     
@@ -442,7 +442,7 @@ class cartesian(_array):
             str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
         return str_ret
 
-    def __subtract__(self,other):
+    def __sub__(self,other):
         if type(other)==type([]):  #let's move the atoms
             self.move(other,-1.0)
         if type(other)==type(self.com):  #let's move the atoms using a numpy array
@@ -486,7 +486,7 @@ class tinker(cartesian):
             self.__title=title
             
     def remove_atom(self,position):
-        del self.list_of_atoms[position-1]  # First atom is atom 1
+        del self.list_of_atoms[position]  # First atom is atom 1
         self.__Natoms -= 1
 
 

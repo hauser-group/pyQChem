@@ -423,8 +423,8 @@ class _multioutput(object):
         self.list_of_content.append(new_job.general.jobtype)
 
     #def remove(self,position=0): #if not specified delete last
-    #    del self.list_of_content[position-1] 
-    #    del self.list_of_jobs[position-1] 
+    #    del self.list_of_content[position] 
+    #    del self.list_of_jobs[position] 
 
 ########################## OUTPUTFILE  ##############################
 
