@@ -703,21 +703,6 @@ class rem_array(_array):
             self.dict_of_keywords["CC_ITERATE_ON"]=value.lower()
 
 
-    def cc_iterate_ov(self,value="show"):
-        '''\nName: CC_ITERATE_OV\nType: INTEGER\nDefault: 0\nOptions: 0   \nDescription: In active space calculations, use a mixed iteration procedure if the value is greater than 0. Then, if the RMS orbital gradient is larger than the value of CC_THETA_GRAD_THRESH, micro-iterations will be performed to converge the occupied-virtual mixing angles for the current active space. The maximum number of such iterations is given by this option. \nRecommendation: : Can be useful for non-convergent active space calculations.    '''
-        if value == "":
-            if "CC_ITERATE_OV" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_ITERATE_OV"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_ITERATE_OV" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_ITERATE_OV"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_ITERATE_OV"]=value.lower()
-
-
     def cc_orbs_per_block(self,value="show"):
         '''\nName: CC_ORBS_PER_BLOCK\nType: INTEGER\nDefault: 0\nOptions: 16\nDescription: Specifies target (and maximum) size of blocks in orbital space.\n    '''
         if value == "":
@@ -746,66 +731,6 @@ class rem_array(_array):
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_PRECONV_SD"]=value.lower()
-
-
-    def cc_preconv_t2z_each(self,value="show"):
-        '''\nName: CC_PRECONV_T2Z_EACH\nType: INTEGER\nDefault: 1\nOptions: 0:0   \nDescription: Whether to pre-converge the cluster amplitudes before each change of the  orbitals in optimized orbital coupled-cluster methods. The maximum number of  iterations in this pre-convergence procedure is given by the value of this  parameter.\nRecommendation: : A very slow last resort option for jobs that do not converge.    '''
-        if value == "":
-            if "CC_PRECONV_T2Z_EACH" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_PRECONV_T2Z_EACH" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]=value.lower()
-
-
-    def cc_preconv_t2z(self,value="show"):
-        '''\nName: CC_PRECONV_T2Z\nType: INTEGER\nDefault: 1\nOptions: 0:0  \nDescription: Whether to pre-converge the cluster amplitudes before beginning orbital  optimization in optimized orbital cluster methods.\nRecommendation: : Experiment with this option in cases of convergence failure.    '''
-        if value == "":
-            if "CC_PRECONV_T2Z" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_PRECONV_T2Z"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_PRECONV_T2Z" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_PRECONV_T2Z"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_PRECONV_T2Z"]=value.lower()
-
-
-    def cc_qccd_theta_switch(self,value="show"):
-        '''\nName: CC_QCCD_THETA_SWITCH\nType: INTEGER\nDefault: 0\nOptions: 2   \nDescription: QCCD calculations switch from OD to QCCD when the rotation gradient is below this threshold [10-n]\n    '''
-        if value == "":
-            if "CC_QCCD_THETA_SWITCH" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_QCCD_THETA_SWITCH" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]=value.lower()
-
-
-    def cc_refsym(self,value="show"):
-        '''\nName: CC_REFSYM\nType: INTEGER\nDefault: 0\nOptions: -1 \nDescription: Together with CC_STATE_DERIV, selects which EOM  state is to be considered  for optimization or property calculations. When transition properties are requested, the transition properties will be calculated between this state and all other EOM states.\n    '''
-        if value == "":
-            if "CC_REFSYM" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_REFSYM"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_REFSYM" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_REFSYM"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_REFSYM"]=value.lower()
 
 
     def cc_reset_theta(self,value="show"):
@@ -881,66 +806,6 @@ class rem_array(_array):
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_REST_VIR"]=value.lower()
-
-
-    def cc_spin_flip_ms(self,value="show"):
-        '''\nName: CC_SPIN_FLIP_MS\nType: INTEGER\nDefault: 0\nOptions: 0 :2\nDescription: This option is only used in EOM-SF using quintet references  and including triple excitations. By default, SF flips the spin of one  electron.  One can ask to flip the spins of two   electrons by specifying CC_SPIN_FLIP_MS = 1\nRecommendation: : This option can be useful when starting from quintet references - though this is not typical for EOM-SF.    '''
-        if value == "":
-            if "CC_SPIN_FLIP_MS" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_SPIN_FLIP_MS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_SPIN_FLIP_MS" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_SPIN_FLIP_MS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_SPIN_FLIP_MS"]=value.lower()
-
-
-    def cc_state_deriv(self,value="show"):
-        '''\nName: CC_STATE_DERIV\nType: INTEGER\nDefault: 0\nOptions: -1 \nDescription: Selects which EOM or CIS(D) state is to be considered  for optimization or property calculations.\n    '''
-        if value == "":
-            if "CC_STATE_DERIV" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_STATE_DERIV"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_STATE_DERIV" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_STATE_DERIV"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_STATE_DERIV"]=value.lower()
-
-
-    def cc_theta_conv(self,value="show"):
-        '''\nName: CC_THETA_CONV\nType: INTEGER\nDefault: 0\nOptions: 5 \nDescription: Convergence criterion on the RMS difference between successive sets of  orbital rotation angles [10-n].\nRecommendation: : Use default    '''
-        if value == "":
-            if "CC_THETA_CONV" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_THETA_CONV"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_THETA_CONV" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_THETA_CONV"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_THETA_CONV"]=value.lower()
-
-
-    def cc_theta_grad_conv(self,value="show"):
-        '''\nName: CC_THETA_GRAD_CONV\nType: INTEGER\nDefault: 0\nOptions: 7   \nDescription: Convergence desired on the RMS gradient of the energy with respect to   orbital rotation angles [10-n]. \nRecommendation: : Use default    '''
-        if value == "":
-            if "CC_THETA_GRAD_CONV" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_THETA_GRAD_CONV"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_THETA_GRAD_CONV" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_THETA_GRAD_CONV"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_THETA_GRAD_CONV"]=value.lower()
 
 
     def cc_theta_grad_thresh(self,value="show"):
@@ -1063,21 +928,6 @@ class rem_array(_array):
             self.dict_of_keywords["GVB_PRINT"]=value.lower()
 
 
-    def mom_start(self,value="show"):
-        '''\nName: MOM_START\nType: INTEGER\nDefault: 0\nOptions: 0 (FALSE)\nDescription: Determines when MOM is switched on to stabilize DIIS iterations.\nRecommendation: : Set to 1 if preservation of  initial orbitals is desired.  If MOM is to be  used to aid convergence, an SCF without MOM should be run to determine when  the SCF starts oscillating.  MOM should be set to start just before the  oscillations.    '''
-        if value == "":
-            if "MOM_START" in self.dict_of_keywords:
-                del self.dict_of_keywords["MOM_START"]
-                print "Keyword removed."
-        elif value == "show":
-            if "MOM_START" in self.dict_of_keywords:
-                return self.dict_of_keywords["MOM_START"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["MOM_START"]=value.lower()
-
-
     def nvo_lin_convergence(self,value="show"):
         '''\nName: NVO_LIN_CONVERGENCE\nType: INTEGER\nDefault: 0\nOptions: 3\nDescription: Target error factor in the preconditioned conjugate gradient solver of the single-excitation amplitude equations.\nRecommendation: : Solution of the single-excitation amplitude equations is considered converged if the maximum residual is less than 10-n multiplied by the current DIIS error. For the ARS correction, n is automatically set to 1 since the locally-projected DIIS error is normally several orders of magnitude smaller than the full DIIS error.    '''
         if value == "":
@@ -1106,36 +956,6 @@ class rem_array(_array):
                 print "Value not set."
         else:
             self.dict_of_keywords["NVO_LIN_MAX_ITE"]=value.lower()
-
-
-    def nvo_method(self,value="show"):
-        '''\nName: NVO_METHOD\nType: INTEGER\nDefault: 0\nOptions: 9\nDescription: Sets method to be used to converge solution of the single-excitation amplitude equations.\nRecommendation: : Experimental option. Use default.    '''
-        if value == "":
-            if "NVO_METHOD" in self.dict_of_keywords:
-                del self.dict_of_keywords["NVO_METHOD"]
-                print "Keyword removed."
-        elif value == "show":
-            if "NVO_METHOD" in self.dict_of_keywords:
-                return self.dict_of_keywords["NVO_METHOD"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["NVO_METHOD"]=value.lower()
-
-
-    def nvo_truncate_dist(self,value="show"):
-        '''\nName: NVO_TRUNCATE_DIST\nType: INTEGER\nDefault: 0\nOptions: -1:0:1:2\nDescription: Specifies which atomic blocks of the Fock matrix are used to construct the preconditioner.\nRecommendation: : This option does not affect the final result. However, it affects the rate of the PCG algorithm convergence. For small systems use default.    '''
-        if value == "":
-            if "NVO_TRUNCATE_DIST" in self.dict_of_keywords:
-                del self.dict_of_keywords["NVO_TRUNCATE_DIST"]
-                print "Keyword removed."
-        elif value == "show":
-            if "NVO_TRUNCATE_DIST" in self.dict_of_keywords:
-                return self.dict_of_keywords["NVO_TRUNCATE_DIST"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["NVO_TRUNCATE_DIST"]=value.lower()
 
 
     def nvo_truncate_precond(self,value="show"):
@@ -1286,70 +1106,6 @@ class rem_array(_array):
                 print "Value not set."
         else:
             self.dict_of_keywords["SCF_CONVERGENCE"]=value.lower()
-
-
-    def scf_guess(self,value="show"):
-        '''\nName: SCF_GUESS\nType: STRING\nDefault: 0\nOptions: SAD  :CORE:GWH:READ\nDescription: Specifies the initial guess procedure to use for the SCF.\nRecommendation: : SAD guess for standard basis sets. For general basis sets, it is best to use the BASIS2 $rem. Alternatively, try the GWH or core Hamiltonian guess. For ROHF it can be useful to READ guesses from an SCF calculation on the corresponding cation or anion. Note that because the density is made spherical, this may favor an undesired state for atomic systems, especially transition metals.    '''
-        if value == "":
-            if "SCF_GUESS" in self.dict_of_keywords:
-                del self.dict_of_keywords["SCF_GUESS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SCF_GUESS" in self.dict_of_keywords:
-                return self.dict_of_keywords["SCF_GUESS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SCF_GUESS"]=value.lower()
-
-
-    def scf_algorithm(self,value="show"):
-        '''\nName: SCF_ALGORITHM\nType: STRING\nDefault: 0\nOptions: DIIS      :DM:GDM:RCA:ROOTHAAN:DIIS_DM:DIIS_GDM:RCA_DIIS\nDescription: Selects the algorithm to use for converging the SCF.\nRecommendation: : Use DIIS unless performing a restricted open-shell calculation, in which case GDM is recommended. If DIIS fails to find a reasonable approximate solution in the initial iterations, RCA_DIIS is the recommended fallback option. If DIIS approaches the correct solution but fails to finally converge, DIIS_GDM is the recommended fallback.     '''
-        if value == "":
-            if "SCF_ALGORITHM" in self.dict_of_keywords:
-                del self.dict_of_keywords["SCF_ALGORITHM"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SCF_ALGORITHM" in self.dict_of_keywords:
-                return self.dict_of_keywords["SCF_ALGORITHM"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SCF_ALGORITHM"]=value.lower()
-
-
-    def diis_print(self,value="show"):
-        '''\nName: DIIS_PRINT\nType: INTEGER\nDefault: 2\nOptions: 0:4 :0:1\nDescription: Controls the output from DIIS SCF optimization:
-1: Chosen method and DIIS coefficients
-2: Level 1 + print changes in multipole moments
-3: Level 2 + multipole moments
-4: Level 3 + extrapolated Fock matrices\n    '''
-        if value == "":
-            if "DIIS_PRINT" in self.dict_of_keywords:
-                del self.dict_of_keywords["DIIS_PRINT"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DIIS_PRINT" in self.dict_of_keywords:
-                return self.dict_of_keywords["DIIS_PRINT"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DIIS_PRINT"]=value.lower()
-
-
-    def varthresh(self,value="show"):
-        '''\nName: VARTHRESH\nType: INTEGER\nDefault: 2\nOptions: 0   :12:0:1\nDescription: Controls the temporary integral cut-off threshold. The variable threshold is set to 10-VARTHRESH? DIIS_error\nRecommendation: : 3 has been found to be a practical level, and can slightly speed up SCF evaluation.    '''
-        if value == "":
-            if "VARTHRESH" in self.dict_of_keywords:
-                del self.dict_of_keywords["VARTHRESH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "VARTHRESH" in self.dict_of_keywords:
-                return self.dict_of_keywords["VARTHRESH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["VARTHRESH"]=value.lower()
 
 
     def aimd_steps(self,value="show"):
@@ -1581,21 +1337,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             self.dict_of_keywords["CIS_GUESS_DISK"]=value.lower()
 
 
-    def cis_n_roots(self,value="show"):
-        '''\nName: CIS_N_ROOTS\nType: INTEGER\nDefault: 2\nOptions: 0   :200:0:1\nDescription: Sets the number of CI-Singles (CIS) excited state roots to find\n    '''
-        if value == "":
-            if "CIS_N_ROOTS" in self.dict_of_keywords:
-                del self.dict_of_keywords["CIS_N_ROOTS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CIS_N_ROOTS" in self.dict_of_keywords:
-                return self.dict_of_keywords["CIS_N_ROOTS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CIS_N_ROOTS"]=value.lower()
-
-
     def cis_relaxed_density(self,value="show"):
         '''\nName: CIS_RELAXED_DENSITY\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Determines whether or not to use the relaxed CIS density for attachment/detachment density analysis\n    '''
         if value == "":
@@ -1701,21 +1442,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             self.dict_of_keywords["DMA_MIDPOINTS"]=value.lower()
 
 
-    def direct_scf(self,value="show"):
-        '''\nName: DIRECT_SCF\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls direct SCF.\nRecommendation: : Use default; direct SCF switches off in-core integrals.    '''
-        if value == "":
-            if "DIRECT_SCF" in self.dict_of_keywords:
-                del self.dict_of_keywords["DIRECT_SCF"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DIRECT_SCF" in self.dict_of_keywords:
-                return self.dict_of_keywords["DIRECT_SCF"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DIRECT_SCF"]=value.lower()
-
-
     def dual_basis_energy(self,value="show"):
         '''\nName: DUAL_BASIS_ENERGY\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Activates dual-basis SCF (HF or DFT) energy correction. \nRecommendation: : Use Dual-Basis to capture large-basis effects at smaller basis cost. Particularly useful with RI-MP2, in which HF often dominates. Use only proper subsets for small-basis calculation.    '''
         if value == "":
@@ -1744,21 +1470,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["EDA_BSSE"]=value.lower()
-
-
-    def eda_covp(self,value="show"):
-        '''\nName: EDA_COVP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Perform COVP analysis when evaluating the RS or ARS charge-transfer correction. COVP analysis is currently implemented only for systems of two fragments.\nRecommendation: : Set to TRUE to perform COVP analysis of the CT term in an EDA or SCF MI(RS) job.    '''
-        if value == "":
-            if "EDA_COVP" in self.dict_of_keywords:
-                del self.dict_of_keywords["EDA_COVP"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EDA_COVP" in self.dict_of_keywords:
-                return self.dict_of_keywords["EDA_COVP"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EDA_COVP"]=value.lower()
 
 
     def eda_print_covp(self,value="show"):
@@ -2091,21 +1802,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             self.dict_of_keywords["INCDFT_GRIDDIFF_THRESH"]=value.lower()
 
 
-    def incdft_griddiff_varthresh(self,value="show"):
-        '''\nName: INCDFT_GRIDDIFF_VARTHRESH\nType: INTEGER\nDefault: 2\nOptions: 0   :12:0:1\nDescription: Sets the lower bound for the variable threshold for screening the functional values in the IncDFT procedure. The threshold will begin at this value and then vary depending on the error in the current SCF iteration until the value specified by INCDFT_GRIDDIFF_THRESH is reached. This means that this value must be set lower than INCDFT_GRIDDIFF_THRESH.\nRecommendation: : If the default value causes convergence problems, set this value higher to tighten accuracy. If this fails, set to 0 and use a static threshold.    '''
-        if value == "":
-            if "INCDFT_GRIDDIFF_VARTHRESH" in self.dict_of_keywords:
-                del self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "INCDFT_GRIDDIFF_VARTHRESH" in self.dict_of_keywords:
-                return self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]=value.lower()
-
-
     def incfock(self,value="show"):
         '''\nName: INCFOCK\nType: INTEGER\nDefault: 2\nOptions: 0 :100:1:1\nDescription: Iteration number after which the incremental Fock matrix algorithm is initiated.  Setting this to 0 turns INCFOCK off.\nRecommendation: : May be necessary to allow several iterations before switching on INCFOCK.    '''
         if value == "":
@@ -2301,21 +1997,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             self.dict_of_keywords["SCF_PRINT_FRGM"]=value.lower()
 
 
-    def omega(self,value="show"):
-        '''\nName: OMEGA\nType: INTEGER\nDefault: 2\nOptions: 0.001:5.000:0.200:0.001\nDescription: Controls the degree of attenuation of the Coulomb operator.\n    '''
-        if value == "":
-            if "OMEGA" in self.dict_of_keywords:
-                del self.dict_of_keywords["OMEGA"]
-                print "Keyword removed."
-        elif value == "show":
-            if "OMEGA" in self.dict_of_keywords:
-                return self.dict_of_keywords["OMEGA"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["OMEGA"]=value.lower()
-
-
     def chemsol_print(self,value="show"):
         '''\nName: CHEMSOL_PRINT\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Increases the amount of ChemSol output.\n    '''
         if value == "":
@@ -2344,21 +2025,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["QUI_CHARGE"]=value.lower()
-
-
-    def thresh(self,value="show"):
-        '''\nName: THRESH\nType: INTEGER\nDefault: 2\nOptions: 0:14:8:1\nDescription: Cutoff for neglect of two electron integrals. 10-THRESH (THRESH ? 14).\nRecommendation: : Should be at least three greater than the SCF convergence setting. Increase for more significant figures, at greater computational cost.    '''
-        if value == "":
-            if "THRESH" in self.dict_of_keywords:
-                del self.dict_of_keywords["THRESH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "THRESH" in self.dict_of_keywords:
-                return self.dict_of_keywords["THRESH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["THRESH"]=value.lower()
 
 
     def unrestricted(self,value="show"):
@@ -2554,21 +2220,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["QUI_EOM_METHOD"]=value.lower()
-
-
-    def cc_theta_stepsize(self,value="show"):
-        '''\nName: CC_THETA_STEPSIZE\nType: INTEGER\nDefault: 2\nOptions: 0:::\nDescription: Scale factor for the orbital rotation step size. The optimal rotation steps should be approximately equal to the gradient vector.\nRecommendation: : Try a smaller value in cases of poor convergence and very large orbital gradients. For example, a value of 01001 translates to 0.1    '''
-        if value == "":
-            if "CC_THETA_STEPSIZE" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_THETA_STEPSIZE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_THETA_STEPSIZE" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_THETA_STEPSIZE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_THETA_STEPSIZE"]=value.lower()
 
 
     def geom_opt_tol_displacement(self,value="show"):
@@ -2800,21 +2451,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             self.dict_of_keywords["BASIS_LINEAR_DEPENDENCE_THRESH"]=value.lower()
 
 
-    def basis_projection_type(self,value="show"):
-        '''\nName: BASIS_PROJECTION_TYPE\nType: STRING\nDefault: 0\nOptions: Project Fock matrix//FOPPROJECTION:Project MOs//OVPROJECTION\nDescription: Determines which method to use when projecting the density matrix for the basis set projection guess.\n    '''
-        if value == "":
-            if "BASIS_PROJECTION_TYPE" in self.dict_of_keywords:
-                del self.dict_of_keywords["BASIS_PROJECTION_TYPE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "BASIS_PROJECTION_TYPE" in self.dict_of_keywords:
-                return self.dict_of_keywords["BASIS_PROJECTION_TYPE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["BASIS_PROJECTION_TYPE"]=value.lower()
-
-
     def cc_amplitude_response(self,value="show"):
         '''\nName: CC_AMPLITUDE_RESPONSE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: If set to TRUE, adds amplitude response terms to one-particle and two-particle CCSD density matrices before calculation of properties. CC_PROP must be set to TRUE. \nRecommendation: : The cost is always about the cost of an analytic gradient calculation, independent of whether or not the two-particle properties are requested. Besides, adding amplitude response terms without orbital response will unlikely improve the quality of the properties. However, it can be used for debugging purposes.    '''
         if value == "":
@@ -2843,21 +2479,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_PROPERTIES"]=value.lower()
-
-
-    def auxiliary_basis(self,value="show"):
-        '''\nName: AUXILIARY_BASIS\nType: STRING\nDefault: 0\nOptions: None:RIMP2-VDZ:RIMP2-TZVPP:RIMP2-cc-PVDZ:RIMP2-cc-PVTZ:RIMP2-cc-PVQZ:RIMP2-aug-cc-PVDZ:RIMP2-aug-cc-PVTZ:RIMP2-aug-cc-PVQZ\nDescription: Specifies the auxiliary basis to be used in a RI-MP2 calculation\n    '''
-        if value == "":
-            if "AUXILIARY_BASIS" in self.dict_of_keywords:
-                del self.dict_of_keywords["AUXILIARY_BASIS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "AUXILIARY_BASIS" in self.dict_of_keywords:
-                return self.dict_of_keywords["AUXILIARY_BASIS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["AUXILIARY_BASIS"]=value.lower()
 
 
     def cc_two_particle_properties(self,value="show"):
@@ -2993,21 +2614,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_DMAXITER"]=value.lower()
-
-
-    def cc_dmaxvectors(self,value="show"):
-        '''\nName: CC_DMAXVECTORS\nType: INTEGER\nDefault: 2\nOptions: 1:500:60:1\nDescription: Specifies maximum number of vectors in the subspace for the Davidson diagonalization. \nRecommendation: : Larger values increase disk storage but accelerate and stabilize convergence.    '''
-        if value == "":
-            if "CC_DMAXVECTORS" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_DMAXVECTORS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_DMAXVECTORS" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_DMAXVECTORS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_DMAXVECTORS"]=value.lower()
 
 
     def cc_do_disconnected(self,value="show"):
@@ -3430,36 +3036,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             self.dict_of_keywords["CC_HESSIAN_THRESH"]=value.lower()
 
 
-    def cc_high_spin(self,value="show"):
-        '''\nName: CC_HIGH_SPIN\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of high-spin excited state roots to find.  Works only for singlet reference states and triplet excited states.  The default is to not look for any excited states.  Setting this to [i,j,k...] looks for i excited states in the first irrep, j states in the second irrep and so on.\n    '''
-        if value == "":
-            if "CC_HIGH_SPIN" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_HIGH_SPIN"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_HIGH_SPIN" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_HIGH_SPIN"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_HIGH_SPIN"]=value.lower()
-
-
-    def cc_low_spin(self,value="show"):
-        '''\nName: CC_LOW_SPIN\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of low-spin excited state roots to find.  In the cas of closed-shell reference states, excited singlet states will be found.  For any other reference state all states (e.g. both singlet and triplet) will be calculated.  The default is to not look for any excited states.  Setting this to [i,j,k...] looks for i excited states in the first irrep, j states in the second irrep and so on.\n    '''
-        if value == "":
-            if "CC_LOW_SPIN" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_LOW_SPIN"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_LOW_SPIN" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_LOW_SPIN"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_LOW_SPIN"]=value.lower()
-
-
     def cc_preconverge_doubles(self,value="show"):
         '''\nName: CC_PRECONVERGE_DOUBLES\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: When TRUE, doubly-excited vectors are converged prior to a full excited states calculation. \nRecommendation: : Occasionally necessary to ensure a doubly excited state is found.    '''
         if value == "":
@@ -3473,21 +3049,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_PRECONVERGE_DOUBLES"]=value.lower()
-
-
-    def cc_preconverge_fz(self,value="show"):
-        '''\nName: CC_PRECONVERGE_FZ\nType: INTEGER\nDefault: 0\nOptions: 0}  {0   \nDescription: In active space methods, whether to preconverge other wavefunction variables for fixed initial guess of active space.\nRecommendation: :     '''
-        if value == "":
-            if "CC_PRECONVERGE_FZ" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_PRECONVERGE_FZ"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_PRECONVERGE_FZ" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_PRECONVERGE_FZ"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_PRECONVERGE_FZ"]=value.lower()
 
 
     def cc_preconverge_sd(self,value="show"):
@@ -3518,36 +3079,6 @@ Recommentation: Use default unless convergence problems arise, in which case it 
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_PRECONVERGE_SINGLES"]=value.lower()
-
-
-    def cc_preconverge_t2z(self,value="show"):
-        '''\nName: CC_PRECONVERGE_T2Z\nType: INTEGER\nDefault: 1\nOptions: 0:0  \nDescription: Whether to pre-converge the cluster amplitudes before beginning orbital optimization in optimized orbital cluster methods.\nRecommendation: : Experiment with this option in cases of convergence failure.    '''
-        if value == "":
-            if "CC_PRECONVERGE_T2Z" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_PRECONVERGE_T2Z"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_PRECONVERGE_T2Z" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_PRECONVERGE_T2Z"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_PRECONVERGE_T2Z"]=value.lower()
-
-
-    def cc_preconverge_t2z_each(self,value="show"):
-        '''\nName: CC_PRECONVERGE_T2Z_EACH\nType: INTEGER\nDefault: 1\nOptions: 0:0   \nDescription: Whether to pre-converge the cluster amplitudes before each change of the orbitals in optimized orbital coupled-cluster methods. The maximum number of iterations in this pre-convergence procedure is given by the value of this parameter.\nRecommendation: : A very slow last resort option for jobs that do not converge.    '''
-        if value == "":
-            if "CC_PRECONVERGE_T2Z_EACH" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_PRECONVERGE_T2Z_EACH" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]=value.lower()
 
 
     def qui_solvent_none(self,value="show"):
@@ -3609,21 +3140,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["RPA"]=value.lower()
-
-
-    def cis_guess_disk_type(self,value="show"):
-        '''\nName: CIS_GUESS_DISK_TYPE\nType: STRING\nDefault: 0\nOptions: None//-1:Triplets only//0:Triplets and singlets//1:Singlets only//2\nDescription: Determines the type of guesses to be read from disk\nRecommendation: : Must be specified if a CIS guess in to be read from disk.    '''
-        if value == "":
-            if "CIS_GUESS_DISK_TYPE" in self.dict_of_keywords:
-                del self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CIS_GUESS_DISK_TYPE" in self.dict_of_keywords:
-                return self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]=value.lower()
 
 
     def cis_ras_cutoff_occupied(self,value="show"):
@@ -3716,36 +3232,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["CIS_RAS_TYPE"]=value.lower()
 
 
-    def diis_max_cycles(self,value="show"):
-        '''\nName: DIIS_MAX_CYCLES\nType: INTEGER\nDefault: 2\nOptions: 1:100:50:1\nDescription: The maximum number of DIIS iterations before switching to (geometric) direct minimization when SCF_ALGORITHM is DIIS_GDM or DIIS_DM. See also THRESH_DIIS_SWITCH. \n    '''
-        if value == "":
-            if "DIIS_MAX_CYCLES" in self.dict_of_keywords:
-                del self.dict_of_keywords["DIIS_MAX_CYCLES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DIIS_MAX_CYCLES" in self.dict_of_keywords:
-                return self.dict_of_keywords["DIIS_MAX_CYCLES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DIIS_MAX_CYCLES"]=value.lower()
-
-
-    def diis_subspace_size(self,value="show"):
-        '''\nName: DIIS_SUBSPACE_SIZE\nType: INTEGER\nDefault: 2\nOptions: 1:50:15:1\nDescription: Controls the size of the DIIS and/or RCA subspace during the SCF.\n    '''
-        if value == "":
-            if "DIIS_SUBSPACE_SIZE" in self.dict_of_keywords:
-                del self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DIIS_SUBSPACE_SIZE" in self.dict_of_keywords:
-                return self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]=value.lower()
-
-
     def diis_error_metric(self,value="show"):
         '''\nName: DIIS_ERROR_METRIC\nType: STRING\nDefault: 0\nOptions: Maximum//false:RMS//true\nDescription: Changes the DIIS convergence metric from the maximum to the RMS error.\nRecommendation: : Use default, the maximum error provides a more reliable criterion.    '''
         if value == "":
@@ -3789,36 +3275,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["RAMAN"]=value.lower()
-
-
-    def aimd_time_step(self,value="show"):
-        '''\nName: AIMD_TIME_STEP\nType: INTEGER\nDefault: 0\nOptions: None.\nDescription: Specifies the molecular dynamics time step, in atomic units (1 a.u. = 0.0242 fs).\nRecommendation: : Smaller time steps lead to better energy conservation; too large a time step may cause the job to fail entirely. Make the time step as large as possible, consistent with tolerable energy conservation.    '''
-        if value == "":
-            if "AIMD_TIME_STEP" in self.dict_of_keywords:
-                del self.dict_of_keywords["AIMD_TIME_STEP"]
-                print "Keyword removed."
-        elif value == "show":
-            if "AIMD_TIME_STEP" in self.dict_of_keywords:
-                return self.dict_of_keywords["AIMD_TIME_STEP"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["AIMD_TIME_STEP"]=value.lower()
-
-
-    def basis2(self,value="show"):
-        '''\nName: BASIS2\nType: STRING\nDefault: 0\nOptions: None:----------:STO-3G:STO-6G:3-21G:4-21G:6-31G:6-31G(d):cc-pVDZ:----------:6-311+G**:rcc-pVTZ:rcc-pVQZ\nDescription: Selects either a small basis set to use in basis set projection for the initial guess, or a subset basis for dual basis set calculations.\n    '''
-        if value == "":
-            if "BASIS2" in self.dict_of_keywords:
-                del self.dict_of_keywords["BASIS2"]
-                print "Keyword removed."
-        elif value == "show":
-            if "BASIS2" in self.dict_of_keywords:
-                return self.dict_of_keywords["BASIS2"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["BASIS2"]=value.lower()
 
 
     def dscf_convergence_level_1(self,value="show"):
@@ -4001,21 +3457,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_ORDER"]=value.lower()
 
 
-    def aimd_fock_extrapolation_points(self,value="show"):
-        '''\nName: AIMD_FOCK_EXTRAPOLATION_POINTS\nType: INTEGER\nDefault: 2\nOptions: 0   :20:0:1\nDescription: Specifies the number M of old Fock matrices that are retained for use in extrapolation. \nRecommendation: : Higher-order extrapolations with more saved Fock matrices are faster and conserve energy better than low-order extrapolations, up to a point. In many cases, the scheme (N = 6, M = 12), in conjunction with SCF_CONVERGENCE = 6, is found to provide about a 50% savings in computational cost while still conserving energy.    '''
-        if value == "":
-            if "AIMD_FOCK_EXTRAPOLATION_POINTS" in self.dict_of_keywords:
-                del self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "AIMD_FOCK_EXTRAPOLATION_POINTS" in self.dict_of_keywords:
-                return self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]=value.lower()
-
-
     def ftc_fast(self,value="show"):
         '''\nName: FTC_FAST\nType: LOGICAL\nDefault: 1\nOptions: FALSE:TRUE\nDescription: Controls whether or not the operator is evaluated on a large grid and stored in memory to speed up the calculation.\nRecommendation: : Use the default if possible.  Turning this option off conserves some memory, but causes a slow down in speed.    '''
         if value == "":
@@ -4181,21 +3622,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["PLOTS_PROPERTY"]=value.lower()
 
 
-    def use_case(self,value="show"):
-        '''\nName: USE_CASE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Selects the atenuated coulomb operator (CASE approximation).\n    '''
-        if value == "":
-            if "USE_CASE" in self.dict_of_keywords:
-                del self.dict_of_keywords["USE_CASE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "USE_CASE" in self.dict_of_keywords:
-                return self.dict_of_keywords["USE_CASE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["USE_CASE"]=value.lower()
-
-
     def intracule_conserve_memory(self,value="show"):
         '''\nName: INTRACULE_CONSERVE_MEMORY\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Reduce memory required in the evaluation of W(u,v). \nRecommendation: : The low memory option is slower, use default unless memory is limited.    '''
         if value == "":
@@ -4316,21 +3742,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["RCA_MAX_CYCLES"]=value.lower()
 
 
-    def diis_switch_thresh(self,value="show"):
-        '''\nName: DIIS_SWITCH_THRESH\nType: INTEGER\nDefault: 0\nOptions: 2\nDescription: The threshold for switching between DIIS extrapolation and direct minimization of the SCF energy is 10-THRESH_DIIS_SWITCH when SCF_ALGORITHM is DIIS_GDM or DIIS_DM. See also MAX_DIIS_MAX_CYCLES\n    '''
-        if value == "":
-            if "DIIS_SWITCH_THRESH" in self.dict_of_keywords:
-                del self.dict_of_keywords["DIIS_SWITCH_THRESH"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DIIS_SWITCH_THRESH" in self.dict_of_keywords:
-                return self.dict_of_keywords["DIIS_SWITCH_THRESH"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DIIS_SWITCH_THRESH"]=value.lower()
-
-
     def scf_max_cycles(self,value="show"):
         '''\nName: SCF_MAX_CYCLES\nType: INTEGER\nDefault: 2\nOptions: 0:200:50:1\nDescription: Controls the maximum number of SCF iterations permitted.\nRecommendation: : Increase for slowly converging systems such as those containing transition metals.    '''
         if value == "":
@@ -4344,21 +3755,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["SCF_MAX_CYCLES"]=value.lower()
-
-
-    def meteco(self,value="show"):
-        '''\nName: METECO\nType: STRING\nDefault: 1\nOptions: Machine precision//1:Thresh//2\nDescription: Sets the threshold criteria for discarding shell-pairs.\nRecommendation: : Use default.    '''
-        if value == "":
-            if "METECO" in self.dict_of_keywords:
-                del self.dict_of_keywords["METECO"]
-                print "Keyword removed."
-        elif value == "show":
-            if "METECO" in self.dict_of_keywords:
-                return self.dict_of_keywords["METECO"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["METECO"]=value.lower()
 
 
     def mm_charges(self,value="show"):
@@ -4526,21 +3922,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["NBO"]=value.lower()
 
 
-    def print_general_basis(self,value="show"):
-        '''\nName: PRINT_GENERAL_BASIS\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls print out of built in basis sets in input format\nRecommendation: : Useful for modification of standard basis sets.    '''
-        if value == "":
-            if "PRINT_GENERAL_BASIS" in self.dict_of_keywords:
-                del self.dict_of_keywords["PRINT_GENERAL_BASIS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "PRINT_GENERAL_BASIS" in self.dict_of_keywords:
-                return self.dict_of_keywords["PRINT_GENERAL_BASIS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["PRINT_GENERAL_BASIS"]=value.lower()
-
-
     def qmmm_charges(self,value="show"):
         '''\nName: QMMM_CHARGES\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls the printing of QM charges to file.\nRecommendation: : Use default unless running calculations with $charmm where charges on the QM region need to be saved.    '''
         if value == "":
@@ -4661,21 +4042,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["QUI_PRINT_ORBITALS"]=value.lower()
 
 
-    def print_orbitals(self,value="show"):
-        '''\nName: PRINT_ORBITALS\nType: STRING\nDefault: 2\nOptions: 0:50:0:1\nDescription: \n    '''
-        if value == "":
-            if "PRINT_ORBITALS" in self.dict_of_keywords:
-                del self.dict_of_keywords["PRINT_ORBITALS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "PRINT_ORBITALS" in self.dict_of_keywords:
-                return self.dict_of_keywords["PRINT_ORBITALS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["PRINT_ORBITALS"]=value.lower()
-
-
     def qmmm(self,value="show"):
         '''\nName: QMMM\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Turns on the Q-Chem/CHARMM interface.\nRecommendation: : Use default unless running calculations with $charmm.    '''
         if value == "":
@@ -4766,21 +4132,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["GEOM_OPT_SCF_GUESS_ALWAYS"]=value.lower()
 
 
-    def scf_final_print(self,value="show"):
-        '''\nName: SCF_FINAL_PRINT\nType: INTEGER\nDefault: 2\nOptions: 0:3 :0:1\nDescription: Controls level of output from SCF procedure to Q-Chem output file at the end of the SCF.\nRecommendation: : The break-down of energies is often useful (level 1).    '''
-        if value == "":
-            if "SCF_FINAL_PRINT" in self.dict_of_keywords:
-                del self.dict_of_keywords["SCF_FINAL_PRINT"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SCF_FINAL_PRINT" in self.dict_of_keywords:
-                return self.dict_of_keywords["SCF_FINAL_PRINT"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SCF_FINAL_PRINT"]=value.lower()
-
-
     def scf_guess_print(self,value="show"):
         '''\nName: SCF_GUESS_PRINT\nType: INTEGER\nDefault: 2\nOptions: 0:2:0:1\nDescription: Controls printing of guess MOs, Fock and density matrices.\n    '''
         if value == "":
@@ -4839,36 +4190,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["SOLVENT_DIELECTRIC"]=value.lower()
-
-
-    def symmetry_ignore(self,value="show"):
-        '''\nName: SYMMETRY_IGNORE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls whether or not Q-Chem determines the point group of the molecule.\nRecommendation: : Use default unless you do not want the molecule to be reoriented. Note that symmetry usage is disabled for RIMP2 jobs.    '''
-        if value == "":
-            if "SYMMETRY_IGNORE" in self.dict_of_keywords:
-                del self.dict_of_keywords["SYMMETRY_IGNORE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SYMMETRY_IGNORE" in self.dict_of_keywords:
-                return self.dict_of_keywords["SYMMETRY_IGNORE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SYMMETRY_IGNORE"]=value.lower()
-
-
-    def symmetry_integral(self,value="show"):
-        '''\nName: SYMMETRY_INTEGRAL\nType: LOGICAL\nDefault: 1\nOptions: FALSE:TRUE\nDescription: Controls the efficiency through the use of point group symmetry for calculating integrals.\nRecommendation: : Use default unless benchmarking. Note that symmetry usage is disabled for RIMP2 jobs.    '''
-        if value == "":
-            if "SYMMETRY_INTEGRAL" in self.dict_of_keywords:
-                del self.dict_of_keywords["SYMMETRY_INTEGRAL"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SYMMETRY_INTEGRAL" in self.dict_of_keywords:
-                return self.dict_of_keywords["SYMMETRY_INTEGRAL"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SYMMETRY_INTEGRAL"]=value.lower()
 
 
     def rca_switch_thresh(self,value="show"):
@@ -5007,21 +4328,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["CC_STATE_DERIVATIVE"]=value.lower()
 
 
-    def cc_reference_symmetry(self,value="show"):
-        '''\nName: CC_REFERENCE_SYMMETRY\nType: INTEGER\nDefault: 0\nOptions: -1 \nDescription: Together with CC_STATE_DERIV, selects which EOM state is to be considered for optimization or property calculations. When transition properties are requested, the transition properties will be calculated between this state and all other EOM states.\n    '''
-        if value == "":
-            if "CC_REFERENCE_SYMMETRY" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_REFERENCE_SYMMETRY" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]=value.lower()
-
-
     def gui(self,value="show"):
         '''\nName: GUI\nType: LOGICAL\nDefault: 1\nOptions: FALSE:TRUE\nDescription: Controls the output of auxiliary information for third party packages.\nRecommendation: : Use default unless the additional information is required. Please note that any existing Test.FChk file will be overwritten.    '''
         if value == "":
@@ -5035,21 +4341,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["GUI"]=value.lower()
-
-
-    def basis(self,value="show"):
-        '''\nName: BASIS\nType: STRING\nDefault: 5\nOptions: STO-3G:STO-6G:----------:3-21G:4-31G:6-31G:6-31G*:6-31+G*:6-31G**:6-31++G**:6-311G:6-311G*:6-311+G*:6-311G**:6-311++G**:6-311++G(3df,3pd):----------:cc-pVDZ:cc-pVTZ:cc-pVQZ:cc-pcVDZ:cc-pcVTZ:cc-pcVQZ:aug-cc-pVDZ:aug-cc-pVTZ:aug-cc-pVQZ:aug-cc-pcVDZ:aug-cc-pcVTZ:aug-cc-pcVQZ:----------:G3Large:G3MP2Large:----------:CRENBL:CRENBS:HWMB:HWVDZ:LACVP:LANL2DZ:SBKJC:SRLC:SRSC:----------:User-defined//gen:Mixed\nDescription: Specifies the basis sets to be used.\nRecommendation: : Consult literature and reviews to aid your selection.    '''
-        if value == "":
-            if "BASIS" in self.dict_of_keywords:
-                del self.dict_of_keywords["BASIS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "BASIS" in self.dict_of_keywords:
-                return self.dict_of_keywords["BASIS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["BASIS"]=value.lower()
 
 
     def cc_eom_two_particle_properties(self,value="show"):
@@ -5081,21 +4372,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["QUI_SECTION_OPT"]=value.lower()
-
-
-    def dft_d(self,value="show"):
-        '''\nName: DFT_D\nType: STRING\nDefault: 0\nOptions: None//0:Grimme//EMPIRICAL_GRIMME:Chai Head-Gordon//EMPIRICAL_CHG\nDescription: Specifies what dispersion correction to use within a DFT calculation.\n    '''
-        if value == "":
-            if "DFT_D" in self.dict_of_keywords:
-                del self.dict_of_keywords["DFT_D"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DFT_D" in self.dict_of_keywords:
-                return self.dict_of_keywords["DFT_D"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DFT_D"]=value.lower()
 
 
     def dft_d_a(self,value="show"):
@@ -5264,21 +4540,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
             self.dict_of_keywords["HESS_PROJ_TRM"]=value.lower()
 
 
-    def jobtype(self,value="show"):
-        '''\nName: JOBTYPE\nType: STRING\nDefault: 0\nOptions: Energy//SP:Forces//Force:Geometry//Optimization:Frequencies//Frequency:Reaction Path//RPath:Transition State//TS:Chemical Shifts//NMR:Ab Initio MD//AIMD:Properties//SP\nDescription: Specifies the type of calculation to run. \n    '''
-        if value == "":
-            if "JOBTYPE" in self.dict_of_keywords:
-                del self.dict_of_keywords["JOBTYPE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "JOBTYPE" in self.dict_of_keywords:
-                return self.dict_of_keywords["JOBTYPE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["JOBTYPE"]=value.lower()
-
-
     def geom_opt_iproj(self,value="show"):
         '''\nName: GEOM_OPT_IPROJ\nType: LOGICAL\nDefault: 1\nOptions: FALSE:TRUE\nDescription: Allows the molecule to reorient during a geometry optimization.  Turn this option off if using external charges.\n    '''
         if value == "":
@@ -5352,22 +4613,6 @@ Recommentation: Mulliken charges are faster, but less rigorous.\n    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["QUI_WINDOWS_KILL_COMMAND"]=value.lower()
-
-
-    def xc_grid(self,value="show"):
-        '''\nName: XC_GRID\nType: STRING\nDefault: 0\nOptions: SG-0//0:SG-1//1:----------:6:18:26:38:50:74:86:110:146:170:194:230:266:302:350:434:590:770:974:1202:1454:1730:2030:2354:2702:3074:3470:3890:4334:4802:5294\nDescription: Specifies the quadrature grid to be used for evaluating the exchange-correlation component of the energy.  Either a standard grid should be selected, or a Lebedev grid with the corresponding number of points.
-\nRecommendation: : Use the default unless convergence difficulties arise.  Larger grids are required for calculations involving derivatives and excited states.    '''
-        if value == "":
-            if "XC_GRID" in self.dict_of_keywords:
-                del self.dict_of_keywords["XC_GRID"]
-                print "Keyword removed."
-        elif value == "show":
-            if "XC_GRID" in self.dict_of_keywords:
-                return self.dict_of_keywords["XC_GRID"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["XC_GRID"]=value.lower()
 
 
     def pdb_print(self,value="show"):
@@ -5581,266 +4826,6 @@ inferior compared to the cost of . The variable CC_REF_PROP must be also set to 
             self.dict_of_keywords["EOM_CORR"]=value.lower()
 
 
-    def eom_sf_states(self,value="show"):
-        '''\nName: EOM_SF_STATES\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of spin-flip target states roots to find.
-[i, j, k...] Find i SF states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_SF_STATES" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_SF_STATES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_SF_STATES" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_SF_STATES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_SF_STATES"]=value.lower()
-
-
-    def eom_dsf_states(self,value="show"):
-        '''\nName: EOM_DSF_STATES\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of doubly spin-flip target states roots to find.
-[i, j, k...] Find i doubly SF states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_DSF_STATES" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_DSF_STATES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_DSF_STATES" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_DSF_STATES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_DSF_STATES"]=value.lower()
-
-
-    def eom_ea_states(self,value="show"):
-        '''\nName: EOM_EA_STATES\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of attached target states roots to find. By default, alpha electron will be attached (see EOM_EA_ALPHA).
-[i; j; k...] Find i EA states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_EA_STATES" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_EA_STATES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_EA_STATES" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_EA_STATES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_EA_STATES"]=value.lower()
-
-
-    def eom_ee_states(self,value="show"):
-        '''\nName: EOM_EE_STATES\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of excited state roots to find. For closed-shell reference, defaults into EOM EE SINGLETS. For open-shell references, speccies all low-lying states.
-[i, j, k...] Find i excited states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_EE_STATES" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_EE_STATES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_EE_STATES" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_EE_STATES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_EE_STATES"]=value.lower()
-
-
-    def eom_dip_states(self,value="show"):
-        '''\nName: EOM_DIP_STATES\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of DIP roots to find. For closed-shell reference, defaults into EOM_DIP_SINGLETS. For open-shell references, speccies all low-lying states.
-[i, j, k...] Find i DIP states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_DIP_STATES" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_DIP_STATES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_DIP_STATES" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_DIP_STATES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_DIP_STATES"]=value.lower()
-
-
-    def eom_dip_singlets(self,value="show"):
-        '''\nName: EOM_DIP_SINGLETS\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of singlet DIP roots to find. Works only for closed-shell references.
-[i, j, k...] Find i DIP singlet states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_DIP_SINGLETS" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_DIP_SINGLETS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_DIP_SINGLETS" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_DIP_SINGLETS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_DIP_SINGLETS"]=value.lower()
-
-
-    def eom_ee_singlets(self,value="show"):
-        '''\nName: EOM_EE_SINGLETS\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of singlet excited state roots to find. Works only for closed-shell references.
-[i, j, k...] Find i excited states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_EE_SINGLETS" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_EE_SINGLETS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_EE_SINGLETS" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_EE_SINGLETS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_EE_SINGLETS"]=value.lower()
-
-
-    def eom_ee_triplets(self,value="show"):
-        '''\nName: EOM_EE_TRIPLETS\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of triplet excited state roots to find. Works only for closed-shell references.
-[i, j, k...] Find i excited states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_EE_TRIPLETS" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_EE_TRIPLETS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_EE_TRIPLETS" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_EE_TRIPLETS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_EE_TRIPLETS"]=value.lower()
-
-
-    def eom_dip_triplets(self,value="show"):
-        '''\nName: EOM_DIP_TRIPLETS\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of triplet DIP roots to find. Works only for closed-shell references.
-[i, j, k...] Find i DIP triplet states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_DIP_TRIPLETS" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_DIP_TRIPLETS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_DIP_TRIPLETS" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_DIP_TRIPLETS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_DIP_TRIPLETS"]=value.lower()
-
-
-    def eom_ip_states(self,value="show"):
-        '''\nName: EOM_IP_STATES\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of ionized target states roots to find. By default, B electron will be removed (see EOM_IP_BETA).
-[i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_IP_STATES" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_IP_STATES"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_IP_STATES" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_IP_STATES"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_IP_STATES"]=value.lower()
-
-
-    def eom_ip_alpha(self,value="show"):
-        '''\nName: EOM_IP_ALPHA\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of ionized target states derived by removing alpha electron (Ms = -1/2).
-[i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_IP_ALPHA" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_IP_ALPHA"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_IP_ALPHA" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_IP_ALPHA"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_IP_ALPHA"]=value.lower()
-
-
-    def eom_ip_beta(self,value="show"):
-        '''\nName: EOM_IP_BETA\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of ionized target states derived by removing beta electron (Ms = 1/2, default for EOM-IP).
-[i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_IP_BETA" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_IP_BETA"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_IP_BETA" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_IP_BETA"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_IP_BETA"]=value.lower()
-
-
-    def eom_ea_beta(self,value="show"):
-        '''\nName: EOM_EA_BETA\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of attached target states derived by attaching beta electron (Ms = -1/2).
-[i, j, k...] Find i EA states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_EA_BETA" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_EA_BETA"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_EA_BETA" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_EA_BETA"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_EA_BETA"]=value.lower()
-
-
-    def eom_ea_alpha(self,value="show"):
-        '''\nName: EOM_EA_ALPHA\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Sets the number of attached target states derived by attaching alpha electron (Ms = 1/2).
-[i, j, k...] Find i EA states in the first irrep, j states in the second irrep etc.\n    '''
-        if value == "":
-            if "EOM_EA_ALPHA" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_EA_ALPHA"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_EA_ALPHA" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_EA_ALPHA"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_EA_ALPHA"]=value.lower()
-
-
-    def eom_davidson_convergence(self,value="show"):
-        '''\nName: EOM_DAVIDSON_CONVERGENCE\nType: INTEGER\nDefault: 2\nOptions: 0:12:5:1\nDescription: Convergence criterion for the RMS residuals of excited state vectors.
-n Corresponding to 10^-n convergence criterion
-Use default. Should normally be set to the same value as
-EOM DAVIDSON THRESHOLD.\n    '''
-        if value == "":
-            if "EOM_DAVIDSON_CONVERGENCE" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_DAVIDSON_CONVERGENCE" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]=value.lower()
-
-
-    def eom_davidson_maxvector(self,value="show"):
-        '''\nName: EOM_DAVIDSON_MAXVECTOR\nType: INTEGER\nDefault: 2\nOptions: 0:200:60:1\nDescription: Species maximum number of vectors in the subspace for the Davidson diagonalization.
-n Up to n vectors per root before the subspace is reset
-RECOMMENDATION:
-Larger values increase disk storage but accelerate and stabilize convergence.\n    '''
-        if value == "":
-            if "EOM_DAVIDSON_MAXVECTOR" in self.dict_of_keywords:
-                del self.dict_of_keywords["EOM_DAVIDSON_MAXVECTOR"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EOM_DAVIDSON_MAXVECTOR" in self.dict_of_keywords:
-                return self.dict_of_keywords["EOM_DAVIDSON_MAXVECTOR"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EOM_DAVIDSON_MAXVECTOR"]=value.lower()
-
-
     def eom_davidson_max_iter(self,value="show"):
         '''\nName: EOM_DAVIDSON_MAX_ITER\nType: INTEGER\nDefault: 2\nOptions: 0:100:30:1\nDescription: Maximum number of iteration allowed for Davidson diagonalization procedure.
 n User-defined number of iterations\n    '''
@@ -5905,22 +4890,6 @@ Options: n Include n guess vectors that are single excitations\nRecommendation: 
             self.dict_of_keywords["EOM_NGUESS_SINGLES"]=value.lower()
 
 
-    def cc_eom_state_to_opt(self,value="show"):
-        '''\nName: CC_EOM_STATE_TO_OPT\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Specifies which state to optimize.
-[i,j] optimize the jth state of the ith irrep.\n    '''
-        if value == "":
-            if "CC_EOM_STATE_TO_OPT" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_EOM_STATE_TO_OPT" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]=value.lower()
-
-
     def cc_eom_trans_prop(self,value="show"):
         '''\nName: CC_EOM_TRANS_PROP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Whether or not the transition dipole moment (in atomic units) and oscillator strength for the EOM-CCSD target states will be calculated. By default, the transition dipole moment is calculated between the CCSD reference and the EOM-CCSD target states. In order to calculate transition dipole moment between a set of EOM-CCSD states and another EOM-CCSD state, the CC_REFSYM and CC_STATE_DERIV must be specified for this state.\nRecommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus lambda CCSD equations in case if transition properties between the CCSD reference and EOM-CCSD target states are requested) need to be solved for transition properties, approximately doubling the computational cost. The cost of the transition properties calculation itself is low.    '''
         if value == "":
@@ -5980,56 +4949,6 @@ is inferior compared to the cost of <S^2>. The variable CC_EOM_PROP must be also
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_FULLRESPONSE"]=value.lower()
-
-
-    def xopt_state_1(self,value="show"):
-        '''\nName: XOPT_STATE_1\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Specify two electronic states the intersection of which will be searched.
-[spin, irrep, state]
-spin = 0 Addresses states with low spin, see also EOM EE SINGLETS.
-spin = 1 Addresses states with high spin, see also EOM EE TRIPLETS.
-irrep Species the irreducible representation to which the state belongs, for C2v point group symmetry 
-irrep = 1 for A1, irrep = 2 for A2,
-irrep = 3 for B1, irrep = 4 for B2.
-state Species the state number within the irreducible
-representation, state = 1 means the lowest excited
-state, state = 2 is the second excited state, etc.
-0, 0, -1 Ground state.\n    '''
-        if value == "":
-            if "XOPT_STATE_1" in self.dict_of_keywords:
-                del self.dict_of_keywords["XOPT_STATE_1"]
-                print "Keyword removed."
-        elif value == "show":
-            if "XOPT_STATE_1" in self.dict_of_keywords:
-                return self.dict_of_keywords["XOPT_STATE_1"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["XOPT_STATE_1"]=value.lower()
-
-
-    def xopt_state_2(self,value="show"):
-        '''\nName: XOPT_STATE_2\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Specify two electronic states the intersection of which will be searched.
-[spin, irrep, state]
-spin = 0 Addresses states with low spin, see also EOM EE SINGLETS.
-spin = 1 Addresses states with high spin, see also EOM EE TRIPLETS.
-irrep Species the irreducible representation to which the state belongs, for C2v point group symmetry 
-irrep = 1 for A1, irrep = 2 for A2,
-irrep = 3 for B1, irrep = 4 for B2.
-state Species the state number within the irreducible
-representation, state = 1 means the lowest excited
-state, state = 2 is the second excited state, etc.
-0, 0, -1 Ground state.\n    '''
-        if value == "":
-            if "XOPT_STATE_2" in self.dict_of_keywords:
-                del self.dict_of_keywords["XOPT_STATE_2"]
-                print "Keyword removed."
-        elif value == "show":
-            if "XOPT_STATE_2" in self.dict_of_keywords:
-                return self.dict_of_keywords["XOPT_STATE_2"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["XOPT_STATE_2"]=value.lower()
 
 
     def eom_davidson_threshold(self,value="show"):
@@ -6101,22 +5020,6 @@ RECOMMENDATION:
             self.dict_of_keywords["CC_NGUESS_SINGLES"]=value.lower()
 
 
-    def cc_state_to_opt(self,value="show"):
-        '''\nName: CC_STATE_TO_OPT\nType: undefined\nDefault: 0\nOptions: 0\nDescription: Species which state to optimize.
-[i,j] optimize the jth state of the ith irrep.\n    '''
-        if value == "":
-            if "CC_STATE_TO_OPT" in self.dict_of_keywords:
-                del self.dict_of_keywords["CC_STATE_TO_OPT"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CC_STATE_TO_OPT" in self.dict_of_keywords:
-                return self.dict_of_keywords["CC_STATE_TO_OPT"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CC_STATE_TO_OPT"]=value.lower()
-
-
     def cc_trans_prop(self,value="show"):
         '''\nName: CC_TRANS_PROP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Whether or not the transition dipole moment (in atomic units) and oscillator strength for the EOM-CCSD target states will be calculated. By default, the transition dipole moment is calculated between the CCSD reference and the EOM-CCSD target states. In order to calculate transition dipole moment between a set of EOM-CCSD states and another EOM-CCSD state, the CC_STATE_TO_OPT must be specified for this state.\n    '''
         if value == "":
@@ -6130,21 +5033,6 @@ RECOMMENDATION:
                 print "Value not set."
         else:
             self.dict_of_keywords["CC_TRANS_PROP"]=value.lower()
-
-
-    def symmetry_tolerance(self,value="show"):
-        '''\nName: SYMMETRY_TOLERANCE\nType: INTEGER\nDefault: 2\nOptions: 0 :10:5:1\nDescription: Controls the tolerance for determining point group symmetry. Differences in atom locations less than 10-SYM_TOL are treated as zero.\nRecommendation: : Use the default unless the molecule has high symmetry which is not being correctly identified. Note that relaxing this tolerance too much may introduce errors into the calculation.    '''
-        if value == "":
-            if "SYMMETRY_TOLERANCE" in self.dict_of_keywords:
-                del self.dict_of_keywords["SYMMETRY_TOLERANCE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SYMMETRY_TOLERANCE" in self.dict_of_keywords:
-                return self.dict_of_keywords["SYMMETRY_TOLERANCE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SYMMETRY_TOLERANCE"]=value.lower()
 
 
     def qui_multiplicity(self,value="show"):
@@ -6205,21 +5093,6 @@ RECOMMENDATION:
                 print "Value not set."
         else:
             self.dict_of_keywords["EFP_INPUT"]=value.lower()
-
-
-    def exchange(self,value="show"):
-        '''\nName: EXCHANGE\nType: STRING\nDefault: 0\nOptions: HF:----------:B88//B:muB88:GG99:Gill96//Gill:Slater:PW86:rPW86:PW91:mPW1PW91:mPW1LYP:mPW1PBE:mPW1B95:mPWB1K:TPSS:---------:B1B95:B3LYP:B3LYP5:B3PW91:B3P86:B5050LYP:B97:B97-1:B97-2:B97-D:BHHLYP:BMK:BOP:CAM-B3LYP:EDF1:EDF2:HC-O3LYP:HCTH:HCTH-120:HCTH-147:HCTH-407:SOGGA:SOGGA11:SOGGA11X:TPSSH:VSXC:X3LYP:----------:BR89:BR89B94h:omegaB97:omegaB97X:omegaB97X-D:omegaB97X-2(LP):omegaB97X-2(TQZ):----------:M05:M052X:M06:M06L:M06HF:M062X:M08HX:M08SO:M11:M11L:---------:PBE:PBE0//PBE1PBE:PBE50:revPBE:PBEOP:wPBE:muPBE:LRC-wPBEPBE:LRC-wPBEhPBE:---------:B05:B3tLAP:BM05:MCY2:XYG3:XYGJOS:LXYGJOS:---------:User-defined//gen\nDescription: Specifies the exchange level of theory.\nRecommendation: : Consult the literature and reviews for guidence    '''
-        if value == "":
-            if "EXCHANGE" in self.dict_of_keywords:
-                del self.dict_of_keywords["EXCHANGE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "EXCHANGE" in self.dict_of_keywords:
-                return self.dict_of_keywords["EXCHANGE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["EXCHANGE"]=value.lower()
 
 
     def chemsol_read_vdw(self,value="show"):
@@ -6451,21 +5324,6 @@ RECOMMENDATION:
             self.dict_of_keywords["CHOLESKY_TOL"]=value.lower()
 
 
-    def correlation(self,value="show"):
-        '''\nName: CORRELATION\nType: STRING\nDefault: 0\nOptions: None :----------:B94:B94hyb:LYP:LYP(EDF1):PBE:PK09:PW92:PW91:PZ81:P86:TPSS:VWN:Wigner:(PBE)OP:(B88)OP:----------:MP2:MP3:MP4:MP4SDQ:ZAPT2:----------:Local_MP2:RIMP2:SOSMP2:MOSMP2:RILMP2:----------:CCD:CCD(2):CCSD:CCSD(T):CCSD(2):CCSD(fT):CCSD(dT):QCCD:QCISD:QCISD(T):OD:OD(T):OD(2):VOD:VOD(2):VQCCD:----------:CIS(D):RICIS(D):SOSCIS(D):SOSCIS(D0)\nDescription: Specifies the correlation level of theory, either DFT or wavefunction-based.\nRecommendation: : Consult the literature and reviews for guidence    '''
-        if value == "":
-            if "CORRELATION" in self.dict_of_keywords:
-                del self.dict_of_keywords["CORRELATION"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CORRELATION" in self.dict_of_keywords:
-                return self.dict_of_keywords["CORRELATION"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CORRELATION"]=value.lower()
-
-
     def qui_integral_decomposition_none(self,value="show"):
         '''\nName: QUI_INTEGRAL_DECOMPOSITION_NONE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: No integral decomposition\n    '''
         if value == "":
@@ -6495,6 +5353,1856 @@ By default, all integrals are used in decomposed format allowing significant red
                 print "Value not set."
         else:
             self.dict_of_keywords["DIRECT_RI"]=value.lower()
+
+
+    def print_general_basis(self,value="show"):
+        '''\nName: PRINT_GENERAL_BASIS\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Controls print out of built in basis sets in input format\nRecommendation: : Useful for modification of standard basis sets.    '''
+        if value == "":
+            if "PRINT_GENERAL_BASIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["PRINT_GENERAL_BASIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "PRINT_GENERAL_BASIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["PRINT_GENERAL_BASIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["PRINT_GENERAL_BASIS"]=value.lower()
+
+
+    def print_orbitals(self,value="show"):
+        '''\nName: PRINT_ORBITALS\nType: STRING\nDefault: 2\nOptions: 0:99:0:1\nDescription: Prints orbitals coefficients with atom labels in the analysis part of the output\nRecommendation: : Usually not required as the orbitals are more easily examined visually via the formatted checkpoint file.    '''
+        if value == "":
+            if "PRINT_ORBITALS" in self.dict_of_keywords:
+                del self.dict_of_keywords["PRINT_ORBITALS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "PRINT_ORBITALS" in self.dict_of_keywords:
+                return self.dict_of_keywords["PRINT_ORBITALS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["PRINT_ORBITALS"]=value.lower()
+
+
+    def scf_algorithm(self,value="show"):
+        '''\nName: SCF_ALGORITHM\nType: STRING\nDefault: 0\nOptions: DIIS:DM:GDM:RCA:ROOTHAAN:DIIS_DM:DIIS_GDM:RCA_DIIS\nDescription: Selects the algorithm to use for converging the SCF.\nRecommendation: : Use DIIS unless performing a restricted open-shell calculation, in which case GDM is recommended. If DIIS fails to find a reasonable approximate solution in the initial iterations, RCA_DIIS is the recommended fallback option. If DIIS approaches the correct solution but fails to finally converge, DIIS_GDM is the recommended fallback.     '''
+        if value == "":
+            if "SCF_ALGORITHM" in self.dict_of_keywords:
+                del self.dict_of_keywords["SCF_ALGORITHM"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SCF_ALGORITHM" in self.dict_of_keywords:
+                return self.dict_of_keywords["SCF_ALGORITHM"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SCF_ALGORITHM"]=value.lower()
+
+
+    def thresh(self,value="show"):
+        '''\nName: THRESH\nType: INTEGER\nDefault: 2\nOptions: 0:14:8:1\nDescription: Cutoff for neglect of two electron integrals. 10-THRESH (THRESH ? 14).\nRecommendation: : Should be at least three greater than the SCF convergence setting. Increase for more significant figures, at greater computational cost.    '''
+        if value == "":
+            if "THRESH" in self.dict_of_keywords:
+                del self.dict_of_keywords["THRESH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "THRESH" in self.dict_of_keywords:
+                return self.dict_of_keywords["THRESH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["THRESH"]=value.lower()
+
+
+    def basis_projection_type(self,value="show"):
+        '''\nName: BASIS_PROJECTION_TYPE\nType: STRING\nDefault: 0\nOptions: Fock Matrix//FOPPROJECTION:MO Overlap//OVPROJECTION\nDescription: Determines which method to use when projecting the density matrix for the basis set projection guess.\n    '''
+        if value == "":
+            if "BASIS_PROJECTION_TYPE" in self.dict_of_keywords:
+                del self.dict_of_keywords["BASIS_PROJECTION_TYPE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "BASIS_PROJECTION_TYPE" in self.dict_of_keywords:
+                return self.dict_of_keywords["BASIS_PROJECTION_TYPE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["BASIS_PROJECTION_TYPE"]=value.lower()
+
+
+    def diis_max_cycles(self,value="show"):
+        '''\nName: DIIS_MAX_CYCLES\nType: INTEGER\nDefault: 2\nOptions: 1:100:50:1\nDescription: The maximum number of DIIS iterations before switching to (geometric) direct minimization when SCF_ALGORITHM is DIIS_GDM or DIIS_DM. See also THRESH_DIIS_SWITCH. \n    '''
+        if value == "":
+            if "DIIS_MAX_CYCLES" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIIS_MAX_CYCLES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIIS_MAX_CYCLES" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIIS_MAX_CYCLES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIIS_MAX_CYCLES"]=value.lower()
+
+
+    def diis_separate_errvec(self,value="show"):
+        '''\nName: DIIS_SEPARATE_ERRVEC\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE:FALSE:TRUE\nDescription: Controls the optimization of DIIS error vectors in unrestricted caclulations.  When using DIIS in QChem a convenient optimization for unrestricted calculations is to sume the alpha and beta error vectors into a single vector which is used for extrapolation.  This is often extremely effective, but in some pathological systems with symmetry breaking, can lead to false solutions being detected, where the alpha and beta components of the error vector cancel exactly giving a zero DIIS error.  
+\nRecommendation: : While an extremely uncommon 
+occurrence, if cancelation is suspected, set to TRUE to check.    '''
+        if value == "":
+            if "DIIS_SEPARATE_ERRVEC" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIIS_SEPARATE_ERRVEC" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]=value.lower()
+
+
+    def diis_subspace_size(self,value="show"):
+        '''\nName: DIIS_SUBSPACE_SIZE\nType: INTEGER\nDefault: 2\nOptions: 1:50:15:1\nDescription: Controls the size of the DIIS and/or RCA subspace during the SCF.\n    '''
+        if value == "":
+            if "DIIS_SUBSPACE_SIZE" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIIS_SUBSPACE_SIZE" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]=value.lower()
+
+
+    def diis_switch_thresh(self,value="show"):
+        '''\nName: DIIS_SWITCH_THRESH\nType: INTEGER\nDefault: 0\nOptions: 2\nDescription: The threshold for switching between DIIS extrapolation and direct minimization of the SCF energy is 10-THRESH_DIIS_SWITCH when SCF_ALGORITHM is DIIS_GDM or DIIS_DM. See also MAX_DIIS_MAX_CYCLES\n    '''
+        if value == "":
+            if "DIIS_SWITCH_THRESH" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIIS_SWITCH_THRESH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIIS_SWITCH_THRESH" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIIS_SWITCH_THRESH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIIS_SWITCH_THRESH"]=value.lower()
+
+
+    def direct_scf(self,value="show"):
+        '''\nName: DIRECT_SCF\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE:FALSE:TRUE\nDescription: Controls direct SCF, the default is determined by the program.\nRecommendation: : Use default; direct SCF switches off in-core integrals.    '''
+        if value == "":
+            if "DIRECT_SCF" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIRECT_SCF"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIRECT_SCF" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIRECT_SCF"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIRECT_SCF"]=value.lower()
+
+
+    def meteco(self,value="show"):
+        '''\nName: METECO\nType: STRING\nDefault: 0\nOptions: Machine precision//1:Integral Thresh//2\nDescription: Sets the threshold criteria for discarding shell-pairs.\nRecommendation: : Use default.    '''
+        if value == "":
+            if "METECO" in self.dict_of_keywords:
+                del self.dict_of_keywords["METECO"]
+                print "Keyword removed."
+        elif value == "show":
+            if "METECO" in self.dict_of_keywords:
+                return self.dict_of_keywords["METECO"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["METECO"]=value.lower()
+
+
+    def symmetry_ignore(self,value="show"):
+        '''\nName: SYMMETRY_IGNORE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Controls whether or not Q-Chem determines the point group of the molecule and reorients the molecule to the standard orientation.\nRecommendation: : Use default unless you do not want the molecule to be reoriented. Note that symmetry usage is disabled for RIMP2 jobs.    '''
+        if value == "":
+            if "SYMMETRY_IGNORE" in self.dict_of_keywords:
+                del self.dict_of_keywords["SYMMETRY_IGNORE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SYMMETRY_IGNORE" in self.dict_of_keywords:
+                return self.dict_of_keywords["SYMMETRY_IGNORE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SYMMETRY_IGNORE"]=value.lower()
+
+
+    def symmetry_integral(self,value="show"):
+        '''\nName: SYMMETRY_INTEGRAL\nType: LOGICAL\nDefault: 1\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Controls the efficiency through the use of point group symmetry for calculating integrals.\nRecommendation: : Use default unless benchmarking. Note that symmetry usage is disabled for RIMP2, FFT and QM/MM jobs.    '''
+        if value == "":
+            if "SYMMETRY_INTEGRAL" in self.dict_of_keywords:
+                del self.dict_of_keywords["SYMMETRY_INTEGRAL"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SYMMETRY_INTEGRAL" in self.dict_of_keywords:
+                return self.dict_of_keywords["SYMMETRY_INTEGRAL"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SYMMETRY_INTEGRAL"]=value.lower()
+
+
+    def symmetry_tolerance(self,value="show"):
+        '''\nName: SYMMETRY_TOLERANCE\nType: INTEGER\nDefault: 2\nOptions: 0 :10:5:1\nDescription: Controls the tolerance for determining point group symmetry. Differences in atom locations less than 10-SYM_TOL are treated as zero.\nRecommendation: : Use the default unless the molecule has high symmetry which is not being correctly identified. Note that relaxing this tolerance too much may introduce errors into the calculation.    '''
+        if value == "":
+            if "SYMMETRY_TOLERANCE" in self.dict_of_keywords:
+                del self.dict_of_keywords["SYMMETRY_TOLERANCE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SYMMETRY_TOLERANCE" in self.dict_of_keywords:
+                return self.dict_of_keywords["SYMMETRY_TOLERANCE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SYMMETRY_TOLERANCE"]=value.lower()
+
+
+    def dftvdw_alpha1(self,value="show"):
+        '''\nName: DFTVDW_ALPHA1\nType: INTEGER\nDefault: 2\nOptions: 10:1000:83:10\nDescription: Parameter in XDM calculations with higher-order terms\n    '''
+        if value == "":
+            if "DFTVDW_ALPHA1" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_ALPHA1"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_ALPHA1" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_ALPHA1"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_ALPHA1"]=value.lower()
+
+
+    def dftvdw_alpha2(self,value="show"):
+        '''\nName: DFTVDW_ALPHA2\nType: INTEGER\nDefault: 2\nOptions: 10:1000:155:10\nDescription: Parameter in XDM calculations with higher-order terms.\n    '''
+        if value == "":
+            if "DFTVDW_ALPHA2" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_ALPHA2"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_ALPHA2" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_ALPHA2"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_ALPHA2"]=value.lower()
+
+
+    def dftvdw_jobnumber(self,value="show"):
+        '''\nName: DFTVDW_JOBNUMBER\nType: STRING\nDefault: 0\nOptions: None//0:Post SCF//1:Full SCF//2\nDescription: Basic vdW job control\n    '''
+        if value == "":
+            if "DFTVDW_JOBNUMBER" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_JOBNUMBER"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_JOBNUMBER" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_JOBNUMBER"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_JOBNUMBER"]=value.lower()
+
+
+    def dftvdw_kai(self,value="show"):
+        '''\nName: DFTVDW_KAI\nType: INTEGER\nDefault: 2\nOptions: 10:1000:800:10\nDescription: Damping factor K for C6 only damping functions\n    '''
+        if value == "":
+            if "DFTVDW_KAI" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_KAI"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_KAI" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_KAI"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_KAI"]=value.lower()
+
+
+    def dftvdw_mol1natoms(self,value="show"):
+        '''\nName: DFTVDW_MOL1NATOMS\nType: INTEGER\nDefault: 2\nOptions: 0:9999:0:1\nDescription: The number of atoms in the first monomer in a dimer calculation.\n    '''
+        if value == "":
+            if "DFTVDW_MOL1NATOMS" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_MOL1NATOMS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_MOL1NATOMS" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_MOL1NATOMS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_MOL1NATOMS"]=value.lower()
+
+
+    def dftvdw_print(self,value="show"):
+        '''\nName: DFTVDW_PRINT\nType: STRING\nDefault: 1\nOptions: None//0:Minimal//1:Debug//2\nDescription: Controls the amount of output from the VDW code.\n    '''
+        if value == "":
+            if "DFTVDW_PRINT" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_PRINT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_PRINT" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_PRINT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_PRINT"]=value.lower()
+
+
+    def lrc_dft(self,value="show"):
+        '''\nName: LRC_DFT\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Controls the application of long-range-corrected DFT
+\nRecommendation: :  Long-range correction is available for any combination of HF, B88 and PBE exchange.    '''
+        if value == "":
+            if "LRC_DFT" in self.dict_of_keywords:
+                del self.dict_of_keywords["LRC_DFT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "LRC_DFT" in self.dict_of_keywords:
+                return self.dict_of_keywords["LRC_DFT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["LRC_DFT"]=value.lower()
+
+
+    def omega(self,value="show"):
+        '''\nName: OMEGA\nType: INTEGER\nDefault: 2\nOptions: 0.001:9.999:0.200:0.001\nDescription: Controls the degree of attenuation of the Coulomb operator.\n    '''
+        if value == "":
+            if "OMEGA" in self.dict_of_keywords:
+                del self.dict_of_keywords["OMEGA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "OMEGA" in self.dict_of_keywords:
+                return self.dict_of_keywords["OMEGA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["OMEGA"]=value.lower()
+
+
+    def dftvdw_method(self,value="show"):
+        '''\nName: DFTVDW_METHOD\nType: STRING\nDefault: 0\nOptions: C6 Term Only//1:Include C8 & C10//2\nDescription: Selects the damping function used in XDM\n    '''
+        if value == "":
+            if "DFTVDW_METHOD" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFTVDW_METHOD"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFTVDW_METHOD" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFTVDW_METHOD"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFTVDW_METHOD"]=value.lower()
+
+
+    def dft_d(self,value="show"):
+        '''\nName: DFT_D\nType: STRING\nDefault: 0\nOptions: None//0:Grimme//EMPIRICAL_GRIMME:DFT-D3//EMPIRICAL_GRIMME3:Chai Head-Gordon//EMPIRICAL_CHG\nDescription: Specifies what dispersion correction to use within a DFT calculation.\n    '''
+        if value == "":
+            if "DFT_D" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFT_D"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFT_D" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFT_D"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFT_D"]=value.lower()
+
+
+    def dft_d3_s6(self,value="show"):
+        '''\nName: DFT_D3_S6\nType: INTEGER\nDefault: 2\nOptions: 0:9.999:1.000:0.001\nDescription: Controls the strength of dispersion corrections, s6, in Grimme?s DFT-D3 method\n    '''
+        if value == "":
+            if "DFT_D3_S6" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFT_D3_S6"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFT_D3_S6" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFT_D3_S6"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFT_D3_S6"]=value.lower()
+
+
+    def dft_d3_s8(self,value="show"):
+        '''\nName: DFT_D3_S8\nType: INTEGER\nDefault: 2\nOptions: 0:9.999:1.000:0.001\nDescription: Controls the strength of dispersion corrections, s8 , in Grimme?s DFT-D3 method.\n    '''
+        if value == "":
+            if "DFT_D3_S8" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFT_D3_S8"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFT_D3_S8" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFT_D3_S8"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFT_D3_S8"]=value.lower()
+
+
+    def dft_d3_sr6(self,value="show"):
+        '''\nName: DFT_D3_SR6\nType: INTEGER\nDefault: 2\nOptions: 0:9.999:1.000:0.001\nDescription: Controls the strength of dispersion corrections, sr6 , in the Grimme?s DFT-D3 method.\n    '''
+        if value == "":
+            if "DFT_D3_SR6" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFT_D3_SR6"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFT_D3_SR6" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFT_D3_SR6"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFT_D3_SR6"]=value.lower()
+
+
+    def nl_correlation(self,value="show"):
+        '''\nName: NL_CORRELATION\nType: STRING\nDefault: 0\nOptions: None:vdW-DF-04:vdW-DF-10:VV09:VV10\nDescription: Speci?es a non-local correlation functional that includes non-empirical dispersion.
+\nRecommendation: :  Do not forget to add the LSDA correlation (PW92 is recommended) when using vdW-DF-04, vdW-DF-10, or VV09. VV10 should be used with PBE correlation. Choose exchange functionals carefully: HF, rPW86, revPBE, and some of the LRC exchange functionals are among the recommended choices.    '''
+        if value == "":
+            if "NL_CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_CORRELATION"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_CORRELATION"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_CORRELATION"]=value.lower()
+
+
+    def nl_grid(self,value="show"):
+        '''\nName: NL_GRID\nType: STRING\nDefault: 0\nOptions: SG-0//0:SG-1//1:El-cheeso//2:----------:35,110:50,194:75,302:99,590\nDescription: Speci?es the grid to use for non-local correlation.
+\nRecommendation: : Use default unless computational cost becomes prohibitive, in which case SG-0 may be 
+used.  XC_GRID should generally be ?ner than NL_GRID.    '''
+        if value == "":
+            if "NL_GRID" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_GRID"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_GRID" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_GRID"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_GRID"]=value.lower()
+
+
+    def nl_vv_b(self,value="show"):
+        '''\nName: NL_VV_B\nType: INTEGER\nDefault: 2\nOptions: 0.01:99.99:5.90:0.01\nDescription: Sets the parameter b in VV10. This parameter controls the short range behavior of the nonlocal correlation energy.
+\nRecommendation: : The optimal value depends strongly on the exchange functional used. b = 5.9 is recommended for rPW86.    '''
+        if value == "":
+            if "NL_VV_B" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_VV_B"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_VV_B" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_VV_B"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_VV_B"]=value.lower()
+
+
+    def nl_vv_c(self,value="show"):
+        '''\nName: NL_VV_C\nType: INTEGER\nDefault: 2\nOptions: 0.00001:1.00000:0.00089:0.00001\nDescription: Sets the parameter C in VV09 and VV10.  This parameter is fitted to asymptotic van der Waals C6 coefficients.
+\nRecommendation: : C = 0.0093 is recommended when a semilocal exchange functional is used. C = 0.0089 
+is recommended when a long-range corrected (LRC) hybrid functional is used.    '''
+        if value == "":
+            if "NL_VV_C" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_VV_C"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NL_VV_C" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_VV_C"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NL_VV_C"]=value.lower()
+
+
+    def local_interp_order(self,value="show"):
+        '''\nName: LOCAL_INTERP_ORDER\nType: INTEGER\nDefault: 2\nOptions: 1:10:6:1\nDescription: Controls the order of the B-spline.\n    '''
+        if value == "":
+            if "LOCAL_INTERP_ORDER" in self.dict_of_keywords:
+                del self.dict_of_keywords["LOCAL_INTERP_ORDER"]
+                print "Keyword removed."
+        elif value == "show":
+            if "LOCAL_INTERP_ORDER" in self.dict_of_keywords:
+                return self.dict_of_keywords["LOCAL_INTERP_ORDER"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["LOCAL_INTERP_ORDER"]=value.lower()
+
+
+    def mrxc(self,value="show"):
+        '''\nName: MRXC\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls the use of multi-resolution XC.
+\nRecommendation: : MRXC is very ef?cient for medium and large molecules, especially when medium and 
+large basis sets are used.    '''
+        if value == "":
+            if "MRXC" in self.dict_of_keywords:
+                del self.dict_of_keywords["MRXC"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MRXC" in self.dict_of_keywords:
+                return self.dict_of_keywords["MRXC"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MRXC"]=value.lower()
+
+
+    def mrxc_class_thresh_mult(self,value="show"):
+        '''\nName: MRXC_CLASS_THRESH_MULT\nType: INTEGER\nDefault: 2\nOptions: 1:9:1:1\nDescription: Controls the prefactor of the smoothness precision.\n    '''
+        if value == "":
+            if "MRXC_CLASS_THRESH_MULT" in self.dict_of_keywords:
+                del self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MRXC_CLASS_THRESH_MULT" in self.dict_of_keywords:
+                return self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]=value.lower()
+
+
+    def mrxc_class_thresh_order(self,value="show"):
+        '''\nName: MRXC_CLASS_THRESH_ORDER\nType: INTEGER\nDefault: 2\nOptions: 1:9:6:1\nDescription: Controls the exponent of the smoothness precision.\n    '''
+        if value == "":
+            if "MRXC_CLASS_THRESH_ORDER" in self.dict_of_keywords:
+                del self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MRXC_CLASS_THRESH_ORDER" in self.dict_of_keywords:
+                return self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]=value.lower()
+
+
+    def exchange(self,value="show"):
+        '''\nName: EXCHANGE\nType: STRING\nDefault: 0\nOptions: HF:----------:Slater:-----GGA-----:B86:B88:B97-D:GG99:Gill96//Gill:PBE:PW86:PW91:revPBE:rPW86:-----XC-----:BOP:EDF1:PBEOP:SOGGA:SOGGA11:-----Hybrids-----:B3LYP:B3LYP5:B3P86:B3PW91:B5050LYP:B97:B97-1:B97-2:BHHLYP:BR89B94h:EDF2:HCTH:HCTH-120:HCTH-147:HCTH-407:mPW1B95:mPW1LYP:mPW1PBE:mPW1PW91:mPWB1K:PBE0//PBE1PBE:PBE50:SOGGA11X:X3LYP:-----LRC-----:CAM-B3LYP:LRC-wPBEPBE:LRC-wPBEhPBE:muB88:muPBE:omegaB97:omegaB97X:omegaB97X-D:omegaB97X-2(LP):omegaB97X-2(TQZ):wPBE:-----Meta-GGA-----:B1B95:BMK:BR89:M05:M052X:M06:M06L:M06HF:M062X:M08HX:M08SO:M11:M11L:TPSS:TPSSH:VSXC:-----Hyper-GGA-----:B05:B3tLAP:BM05:MCY2:PSTS:-----Double Hybrid-----:LXYGJOS:XYG3:XYGJOS:---------:User-defined//gen\nDescription: Specifies the exchange level of theory.\nRecommendation: : Consult the literature and reviews for guidence    '''
+        if value == "":
+            if "EXCHANGE" in self.dict_of_keywords:
+                del self.dict_of_keywords["EXCHANGE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EXCHANGE" in self.dict_of_keywords:
+                return self.dict_of_keywords["EXCHANGE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EXCHANGE"]=value.lower()
+
+
+    def basis2(self,value="show"):
+        '''\nName: BASIS2\nType: STRING\nDefault: 0\nOptions: None:----------:STO-3G:STO-6G:3-21G:4-21G:6-31G:6-31G(d):cc-pVDZ:----------:r64G:6-31G:6-31G*:6-311G*:6-311+G*:rcc-pVTZ:rcc-pVQZ:racc-pVDZ:racc-pVTZ:racc-pVQZ\nDescription: Selects either a small basis set to use in basis set projection for the initial guess, or a subset basis for dual basis set calculations.\n    '''
+        if value == "":
+            if "BASIS2" in self.dict_of_keywords:
+                del self.dict_of_keywords["BASIS2"]
+                print "Keyword removed."
+        elif value == "show":
+            if "BASIS2" in self.dict_of_keywords:
+                return self.dict_of_keywords["BASIS2"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["BASIS2"]=value.lower()
+
+
+    def dfpt_exchange(self,value="show"):
+        '''\nName: DFPT_EXCHANGE\nType: STRING\nDefault: 0\nOptions: B3LYP:B3LYP5:B3P86:B3PW91:B5050LYP:B97:B98-1:B97-2:BHHLYP:BR89B96h:EFD2:HCTH:HCTH-120:HCTH-147:HCTH-407:mPW1B95:mPW1LYP:mPW1PBE:mPW1PW91:mPWB1K:PBE0:SOGGA11X:X3LYP:-----Meta-GGA-----:B1B95:BMK:BR89:M05:M052X:M06:M06L:M06HF:M062X:M08HX:M08SO:M11:M11L:TPSS:TPSSH:-----Hyper-GGA-----:B05:B3tLAP:BM05:MCY2:PSTS:-----Double-Hybrid-----:LXYGJOS:XYG3:XYGJOS:-----------:User-defined//gen\nDescription: Specifies the secondary functional in a density functional perturbation theory (DFPT) calculation.
+\n    '''
+        if value == "":
+            if "DFPT_EXCHANGE" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFPT_EXCHANGE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFPT_EXCHANGE" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFPT_EXCHANGE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFPT_EXCHANGE"]=value.lower()
+
+
+    def dfpt_xc_grid(self,value="show"):
+        '''\nName: DFPT_XC_GRID\nType: STRING\nDefault: 0\nOptions: SG-1//1:75,302:99,590\nDescription: Specifies the secondary grid in a density functional perturbation theory (DFPT) calculation.
+\nRecommendation: : This should be at least as large as the XC_GRID    '''
+        if value == "":
+            if "DFPT_XC_GRID" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFPT_XC_GRID"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DFPT_XC_GRID" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFPT_XC_GRID"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DFPT_XC_GRID"]=value.lower()
+
+
+    def hfpt(self,value="show"):
+        '''\nName: HFPT\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: This is set implicitly by setting HFPT_BASIS\n    '''
+        if value == "":
+            if "HFPT" in self.dict_of_keywords:
+                del self.dict_of_keywords["HFPT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "HFPT" in self.dict_of_keywords:
+                return self.dict_of_keywords["HFPT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["HFPT"]=value.lower()
+
+
+    def xc_grid(self,value="show"):
+        '''\nName: XC_GRID\nType: STRING\nDefault: 1\nOptions: SG-0//0:SG-1//1:El-cheeso//2:----------:35,110:50,194:75,302:99,590\nDescription: Specifies the quadrature grid to be used for evaluating the exchange-correlation component of the energy.  Either a standard grid should be selected, or a Lebedev grid with the corresponding number of points.
+\nRecommendation: : Use the default unless convergence difficulties arise.  Larger grids are required for calculations involving derivatives and excited states.    '''
+        if value == "":
+            if "XC_GRID" in self.dict_of_keywords:
+                del self.dict_of_keywords["XC_GRID"]
+                print "Keyword removed."
+        elif value == "show":
+            if "XC_GRID" in self.dict_of_keywords:
+                return self.dict_of_keywords["XC_GRID"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["XC_GRID"]=value.lower()
+
+
+    def auxiliary_basis(self,value="show"):
+        '''\nName: AUXILIARY_BASIS\nType: STRING\nDefault: 0\nOptions: None:RIMP2-VDZ:RIMP2-TZVPP:RIMP2-cc-PVDZ:RIMP2-cc-PVTZ:RIMP2-cc-PVQZ:RIMP2-aug-cc-PVDZ:RIMP2-aug-cc-PVTZ:RIMP2-aug-cc-PVQZ\nDescription: Specifies the auxiliary basis to be used in a RI-MP2 calculation\n    '''
+        if value == "":
+            if "AUXILIARY_BASIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["AUXILIARY_BASIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AUXILIARY_BASIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["AUXILIARY_BASIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AUXILIARY_BASIS"]=value.lower()
+
+
+    def basis(self,value="show"):
+        '''\nName: BASIS\nType: STRING\nDefault: 5\nOptions: STO-3G:STO-6G:----------:3-21G:4-31G:6-31G:6-31G*:6-31+G*:6-31G**:6-31++G**:6-311G:6-311G*:6-311+G*:6-311G**:6-311++G**:6-311++G(3df,3pd):----------:pc-0:pc-1:pc-2:pc-3:pc-4:pcJ-0:pcJ-1:pcJ-2:pcJ-3:pcJ-4:pcS-0:pcS-1:pcS-2:pcS-3:pcS-4:----------:cc-pVDZ:cc-pVTZ:cc-pVQZ:cc-pcVDZ:cc-pcVTZ:cc-pcVQZ:aug-cc-pVDZ:aug-cc-pVTZ:aug-cc-pVQZ:aug-cc-pcVDZ:aug-cc-pcVTZ:aug-cc-pcVQZ:----------:G3Large:G3MP2Large:----------:CRENBL:CRENBS:HWMB:HWVDZ:LACVP:LANL2DZ:SBKJC:SRLC:SRSC:----------:User-defined//gen:Mixed\nDescription: Specifies the basis sets to be used.\nRecommendation: : Consult literature and reviews to aid your selection.    '''
+        if value == "":
+            if "BASIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["BASIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "BASIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["BASIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["BASIS"]=value.lower()
+
+
+    def chelpg(self,value="show"):
+        '''\nName: CHELPG\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls the calculation of CHELPG charges. 
+\nRecommendation: : For large molecules there is some overhead associated with computing CHELPG charges, especially if the number of grid points is large.    '''
+        if value == "":
+            if "CHELPG" in self.dict_of_keywords:
+                del self.dict_of_keywords["CHELPG"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CHELPG" in self.dict_of_keywords:
+                return self.dict_of_keywords["CHELPG"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CHELPG"]=value.lower()
+
+
+    def cis_moments(self,value="show"):
+        '''\nName: CIS_MOMENTS\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls the calculation of excited-date (CIS or TDDFT) multipole moments.\n    '''
+        if value == "":
+            if "CIS_MOMENTS" in self.dict_of_keywords:
+                del self.dict_of_keywords["CIS_MOMENTS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CIS_MOMENTS" in self.dict_of_keywords:
+                return self.dict_of_keywords["CIS_MOMENTS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CIS_MOMENTS"]=value.lower()
+
+
+    def cis_ampl_anal(self,value="show"):
+        '''\nName: CIS_AMPL_ANAL\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Perform additional analysis of CIS and TDDFT excitation amplitudes, including generation of natural transition orbitals, excited-state multipole moments, and Mulliken analysis of the excited state densities and particle/hole density matrices.\n    '''
+        if value == "":
+            if "CIS_AMPL_ANAL" in self.dict_of_keywords:
+                del self.dict_of_keywords["CIS_AMPL_ANAL"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CIS_AMPL_ANAL" in self.dict_of_keywords:
+                return self.dict_of_keywords["CIS_AMPL_ANAL"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CIS_AMPL_ANAL"]=value.lower()
+
+
+    def spin_flip(self,value="show"):
+        '''\nName: SPIN_FLIP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Selects whether to perform a spin-?ip calculation.  Spin multiplicity should be set to 3 for systems with an even number of electrons, and 4 for systems with an odd number of electrons.\n    '''
+        if value == "":
+            if "SPIN_FLIP" in self.dict_of_keywords:
+                del self.dict_of_keywords["SPIN_FLIP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SPIN_FLIP" in self.dict_of_keywords:
+                return self.dict_of_keywords["SPIN_FLIP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SPIN_FLIP"]=value.lower()
+
+
+    def spin_flip_xcis(self,value="show"):
+        '''\nName: SPIN_FLIP_XCIS\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Do a SF-XCIS\n    '''
+        if value == "":
+            if "SPIN_FLIP_XCIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["SPIN_FLIP_XCIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SPIN_FLIP_XCIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["SPIN_FLIP_XCIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SPIN_FLIP_XCIS"]=value.lower()
+
+
+    def cis_mulliken(self,value="show"):
+        '''\nName: CIS_MULLIKEN\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls Mulliken and L?wdin population analyses for excited-state particle and hole density matrices. 
+\n    '''
+        if value == "":
+            if "CIS_MULLIKEN" in self.dict_of_keywords:
+                del self.dict_of_keywords["CIS_MULLIKEN"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CIS_MULLIKEN" in self.dict_of_keywords:
+                return self.dict_of_keywords["CIS_MULLIKEN"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CIS_MULLIKEN"]=value.lower()
+
+
+    def jobtype(self,value="show"):
+        '''\nName: JOBTYPE\nType: STRING\nDefault: 0\nOptions: Energy//SP:Forces//Force:Geometry//Optimization:PES Scan//PES_Scan:Reaction Path//RPath:Transition State//TS:Frequencies//Frequency:Chemical Shifts//NMR:Spin-Spin Couplings//ISSC:Ab Initio MD//AIMD:Properties//SP\nDescription: Specifies the type of calculation to run. \n    '''
+        if value == "":
+            if "JOBTYPE" in self.dict_of_keywords:
+                del self.dict_of_keywords["JOBTYPE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "JOBTYPE" in self.dict_of_keywords:
+                return self.dict_of_keywords["JOBTYPE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["JOBTYPE"]=value.lower()
+
+
+    def hfpt_basis(self,value="show"):
+        '''\nName: HFPT_BASIS\nType: STRING\nDefault: 0\nOptions: 6-31++G**:6-311+G*:6-311G**:6-311++G**:6-311++G(3df,3pd):----------:cc-pVTZ:cc-pVQZ:cc-pcVTZ:cc-pcVQZ:aug-cc-pVTZ:aug-cc-pVQZ:aug-cc-pcVTZ:aug-cc-pcVQZ:----------:G3Large:G3MP2Large:----------:User-defined//gen\nDescription: Specifies the secondary basis in a HFPC/DFPC calculation\n    '''
+        if value == "":
+            if "HFPT_BASIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["HFPT_BASIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "HFPT_BASIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["HFPT_BASIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["HFPT_BASIS"]=value.lower()
+
+
+    def hirshfeld(self,value="show"):
+        '''\nName: HIRSHFELD\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Compute Hirshfeld populations\n    '''
+        if value == "":
+            if "HIRSHFELD" in self.dict_of_keywords:
+                del self.dict_of_keywords["HIRSHFELD"]
+                print "Keyword removed."
+        elif value == "show":
+            if "HIRSHFELD" in self.dict_of_keywords:
+                return self.dict_of_keywords["HIRSHFELD"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["HIRSHFELD"]=value.lower()
+
+
+    def qui_use_case(self,value="show"):
+        '''\nName: QUI_USE_CASE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Selects the atenuated coulomb operator (CASE approximation).\n    '''
+        if value == "":
+            if "QUI_USE_CASE" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_USE_CASE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_USE_CASE" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_USE_CASE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_USE_CASE"]=value.lower()
+
+
+    def qui_cis_guess(self,value="show"):
+        '''\nName: QUI_CIS_GUESS\nType: STRING\nDefault: 0\nOptions: New Guess:Read Singlets:Read Triplets:Read Singlets & Triplets\nDescription: Determines what guess should be used for a CIS calculation.  Note that the read options require a guess from a previous calculation.\n    '''
+        if value == "":
+            if "QUI_CIS_GUESS" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_CIS_GUESS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_CIS_GUESS" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_CIS_GUESS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_CIS_GUESS"]=value.lower()
+
+
+    def sts_mom(self,value="show"):
+        '''\nName: STS_MOM\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Compute transition moments between excited states in the CIS and TD-DFT calculations.\n    '''
+        if value == "":
+            if "STS_MOM" in self.dict_of_keywords:
+                del self.dict_of_keywords["STS_MOM"]
+                print "Keyword removed."
+        elif value == "show":
+            if "STS_MOM" in self.dict_of_keywords:
+                return self.dict_of_keywords["STS_MOM"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["STS_MOM"]=value.lower()
+
+
+    def max_cis_subspace(self,value="show"):
+        '''\nName: MAX_CIS_SUBSPACE\nType: INTEGER\nDefault: 2\nOptions: 0:9999:0:1\nDescription: Maximum number of subspace vectors allowed in the CIS iterations:
+\nRecommendation: : The default is usually appropriate, unless a large number of states are requested for a large molecule. The total memory required to store the subspace vectors is bounded above by 2nOV , where O and V represent the number of occupied and virtual orbitals, respectively. n can be reduced to save memory, at the cost of a larger number of CIS iterations. Convergence may be impaired if n is not much larger than CIS_N_ROOTS.    '''
+        if value == "":
+            if "MAX_CIS_SUBSPACE" in self.dict_of_keywords:
+                del self.dict_of_keywords["MAX_CIS_SUBSPACE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MAX_CIS_SUBSPACE" in self.dict_of_keywords:
+                return self.dict_of_keywords["MAX_CIS_SUBSPACE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MAX_CIS_SUBSPACE"]=value.lower()
+
+
+    def cis_dynamic_memory(self,value="show"):
+        '''\nName: CIS_DYNAMIC_MEMORY\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls whether to use static or dynamic memory in CIS and TDDFT calculations.
+\nRecommendation: : The default control requires static memory (MEM_STATIC) to hold a temporary array whose minimum size is OV ? CIS_N_ROOTS. For a large calculation, one has to specify a large value for MEM_STATIC, which is not recommended. Therefore, it is recommended to use dynamic memory for large calculations. 
+    '''
+        if value == "":
+            if "CIS_DYNAMIC_MEMORY" in self.dict_of_keywords:
+                del self.dict_of_keywords["CIS_DYNAMIC_MEMORY"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CIS_DYNAMIC_MEMORY" in self.dict_of_keywords:
+                return self.dict_of_keywords["CIS_DYNAMIC_MEMORY"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CIS_DYNAMIC_MEMORY"]=value.lower()
+
+
+    def roks(self,value="show"):
+        '''\nName: ROKS\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: Controls whether a restricted open-shell Kohn-Sham calculation will be performed.\n    '''
+        if value == "":
+            if "ROKS" in self.dict_of_keywords:
+                del self.dict_of_keywords["ROKS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ROKS" in self.dict_of_keywords:
+                return self.dict_of_keywords["ROKS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ROKS"]=value.lower()
+
+
+    def roks_level_shift(self,value="show"):
+        '''\nName: ROKS_LEVEL_SHIFT\nType: INTEGER\nDefault: 2\nOptions: 0.00:9.99:0.00:0.01\nDescription: Introduce a level-shift (in Hartree) to aid convergence.\n    '''
+        if value == "":
+            if "ROKS_LEVEL_SHIFT" in self.dict_of_keywords:
+                del self.dict_of_keywords["ROKS_LEVEL_SHIFT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ROKS_LEVEL_SHIFT" in self.dict_of_keywords:
+                return self.dict_of_keywords["ROKS_LEVEL_SHIFT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ROKS_LEVEL_SHIFT"]=value.lower()
+
+
+    def cc_dmaxvectors(self,value="show"):
+        '''\nName: CC_DMAXVECTORS\nType: INTEGER\nDefault: 2\nOptions: 1:500:60:1\nDescription: Specifies maximum number of vectors in the subspace for the Davidson diagonalization. \nRecommendation: : Larger values increase disk storage but accelerate and stabilize convergence.    '''
+        if value == "":
+            if "CC_DMAXVECTORS" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_DMAXVECTORS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_DMAXVECTORS" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_DMAXVECTORS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_DMAXVECTORS"]=value.lower()
+
+
+    def eda_covp(self,value="show"):
+        '''\nName: EDA_COVP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Perform COVP analysis when evaluating the RS or ARS charge-transfer correction. COVP analysis is currently implemented only for systems of two fragments.\nRecommendation: : Set to TRUE to perform COVP analysis of the CT term in an EDA or SCF MI(RS) job.    '''
+        if value == "":
+            if "EDA_COVP" in self.dict_of_keywords:
+                del self.dict_of_keywords["EDA_COVP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EDA_COVP" in self.dict_of_keywords:
+                return self.dict_of_keywords["EDA_COVP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EDA_COVP"]=value.lower()
+
+
+    def eom_davidson_convergence(self,value="show"):
+        '''\nName: EOM_DAVIDSON_CONVERGENCE\nType: INTEGER\nDefault: 2\nOptions: 0:12:5:1\nDescription: Convergence criterion for the RMS residuals of excited state vectors.
+n Corresponding to 10^-n convergence criterion
+Use default. Should normally be set to the same value as
+EOM DAVIDSON THRESHOLD.\n    '''
+        if value == "":
+            if "EOM_DAVIDSON_CONVERGENCE" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_DAVIDSON_CONVERGENCE" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]=value.lower()
+
+
+    def eom_davidson_maxvectors(self,value="show"):
+        '''\nName: EOM_DAVIDSON_MAXVECTORS\nType: INTEGER\nDefault: 2\nOptions: 0:200:60:1\nDescription: Species maximum number of vectors in the subspace for the Davidson diagonalization.
+n Up to n vectors per root before the subspace is reset
+RECOMMENDATION: 
+Larger values increase disk storage but accelerate and stabilize convergence.\n    '''
+        if value == "":
+            if "EOM_DAVIDSON_MAXVECTORS" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_DAVIDSON_MAXVECTORS" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]=value.lower()
+
+
+    def eom_ref_prop_te(self,value="show"):
+        '''\nName: EOM_REF_PROP_TE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE\nDescription: Request for calculation of non-relaxed two-particle EOM-CC properties. The two-particle properties currently include 
+?S2?. The one-particle properties also will be calculated, since their cost is much less than the two-particle properties. The variable CC_EOM_PROP must be also set to TRUE. Alternatively, CC_CALC_SSQ can be used to request ?S2? calculation. 
+\nRecommendation: :  The two-particle properties are computationally expensive since they require calculation 
+and use of the two-particle density matrix (the cost is approximately the same as the cost of an analytic gradient calculation). Do not request the two-particle properties unless you really need them.     '''
+        if value == "":
+            if "EOM_REF_PROP_TE" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_REF_PROP_TE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_REF_PROP_TE" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_REF_PROP_TE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_REF_PROP_TE"]=value.lower()
+
+
+    def qui_eom_ea(self,value="show"):
+        '''\nName: QUI_EOM_EA\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_EA" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_EA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_EA" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_EA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_EA"]=value.lower()
+
+
+    def qui_eom_ip(self,value="show"):
+        '''\nName: QUI_EOM_IP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_IP" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_IP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_IP" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_IP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_IP"]=value.lower()
+
+
+    def qui_eom_sf(self,value="show"):
+        '''\nName: QUI_EOM_SF\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_SF" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_SF"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_SF" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_SF"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_SF"]=value.lower()
+
+
+    def cc_theta_stepsize(self,value="show"):
+        '''\nName: CC_THETA_STEPSIZE\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: Scale factor for the orbital rotation step size. The optimal rotation steps should be approximately equal to the gradient vector.\nRecommendation: : Try a smaller value in cases of poor convergence and very large orbital gradients. For example, a value of 01001 translates to 0.1    '''
+        if value == "":
+            if "CC_THETA_STEPSIZE" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_THETA_STEPSIZE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_THETA_STEPSIZE" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_THETA_STEPSIZE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_THETA_STEPSIZE"]=value.lower()
+
+
+    def qui_eom_ee(self,value="show"):
+        '''\nName: QUI_EOM_EE\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE:FALSE:TRUE:FALSE:TRUE\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_EE" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_EE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_EE" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_EE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_EE"]=value.lower()
+
+
+    def qui_eom_dip(self,value="show"):
+        '''\nName: QUI_EOM_DIP\nType: LOGICAL\nDefault: 0\nOptions: FALSE:TRUE\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_DIP" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_DIP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_DIP" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_DIP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_DIP"]=value.lower()
+
+
+    def aimd_fock_extrapolation_points(self,value="show"):
+        '''\nName: AIMD_FOCK_EXTRAPOLATION_POINTS\nType: INTEGER\nDefault: 2\nOptions: 0:20:0:1\nDescription: Specifies the number M of old Fock matrices that are retained for use in extrapolation. \nRecommendation: : Higher-order extrapolations with more saved Fock matrices are faster and conserve energy better than low-order extrapolations, up to a point. In many cases, the scheme (N = 6, M = 12), in conjunction with SCF_CONVERGENCE = 6, is found to provide about a 50% savings in computational cost while still conserving energy.    '''
+        if value == "":
+            if "AIMD_FOCK_EXTRAPOLATION_POINTS" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIMD_FOCK_EXTRAPOLATION_POINTS" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]=value.lower()
+
+
+    def aimd_time_step(self,value="show"):
+        '''\nName: AIMD_TIME_STEP\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: Specifies the molecular dynamics time step, in atomic units (1 a.u. = 0.0242 fs).\nRecommendation: : Smaller time steps lead to better energy conservation; too large a time step may cause the job to fail entirely. Make the time step as large as possible, consistent with tolerable energy conservation.    '''
+        if value == "":
+            if "AIMD_TIME_STEP" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIMD_TIME_STEP"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIMD_TIME_STEP" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIMD_TIME_STEP"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIMD_TIME_STEP"]=value.lower()
+
+
+    def cc_eom_state_to_opt(self,value="show"):
+        '''\nName: CC_EOM_STATE_TO_OPT\nType: undefined\nDefault: 0\nOptions: [0,0]\nDescription: Specifies which state to optimize.
+[i,j] optimize the jth state of the ith irrep.\n    '''
+        if value == "":
+            if "CC_EOM_STATE_TO_OPT" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_EOM_STATE_TO_OPT" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]=value.lower()
+
+
+    def cc_high_spin(self,value="show"):
+        '''\nName: CC_HIGH_SPIN\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of high-spin excited state roots to find.  Works only for singlet reference states and triplet excited states.  The default is to not look for any excited states.  Setting this to [i,j,k...] looks for i excited states in the first irrep, j states in the second irrep and so on.\n    '''
+        if value == "":
+            if "CC_HIGH_SPIN" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_HIGH_SPIN"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_HIGH_SPIN" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_HIGH_SPIN"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_HIGH_SPIN"]=value.lower()
+
+
+    def cc_iterate_ov(self,value="show"):
+        '''\nName: CC_ITERATE_OV\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: In active space calculations, use a mixed iteration procedure if the value is greater than 0. Then, if the RMS orbital gradient is larger than the value of CC_THETA_GRAD_THRESH, micro-iterations will be performed to converge the occupied-virtual mixing angles for the current active space. The maximum number of such iterations is given by this option. \nRecommendation: : Can be useful for non-convergent active space calculations.    '''
+        if value == "":
+            if "CC_ITERATE_OV" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_ITERATE_OV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_ITERATE_OV" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_ITERATE_OV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_ITERATE_OV"]=value.lower()
+
+
+    def cc_low_spin(self,value="show"):
+        '''\nName: CC_LOW_SPIN\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of low-spin excited state roots to find.  In the cas of closed-shell reference states, excited singlet states will be found.  For any other reference state all states (e.g. both singlet and triplet) will be calculated.  The default is to not look for any excited states.  Setting this to [i,j,k...] looks for i excited states in the first irrep, j states in the second irrep and so on.\n    '''
+        if value == "":
+            if "CC_LOW_SPIN" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_LOW_SPIN"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_LOW_SPIN" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_LOW_SPIN"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_LOW_SPIN"]=value.lower()
+
+
+    def cc_preconverge_fz(self,value="show"):
+        '''\nName: CC_PRECONVERGE_FZ\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: In active space methods, whether to preconverge other wavefunction variables for fixed initial guess of active space.\nRecommendation: :     '''
+        if value == "":
+            if "CC_PRECONVERGE_FZ" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_PRECONVERGE_FZ"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_PRECONVERGE_FZ" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_PRECONVERGE_FZ"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_PRECONVERGE_FZ"]=value.lower()
+
+
+    def cc_preconverge_t2z(self,value="show"):
+        '''\nName: CC_PRECONVERGE_T2Z\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: Whether to pre-converge the cluster amplitudes before beginning orbital optimization in optimized orbital cluster methods.\nRecommendation: : Experiment with this option in cases of convergence failure.    '''
+        if value == "":
+            if "CC_PRECONVERGE_T2Z" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_PRECONVERGE_T2Z"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_PRECONVERGE_T2Z" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_PRECONVERGE_T2Z"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_PRECONVERGE_T2Z"]=value.lower()
+
+
+    def cc_preconverge_t2z_each(self,value="show"):
+        '''\nName: CC_PRECONVERGE_T2Z_EACH\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: Whether to pre-converge the cluster amplitudes before each change of the orbitals in optimized orbital coupled-cluster methods. The maximum number of iterations in this pre-convergence procedure is given by the value of this parameter.\nRecommendation: : A very slow last resort option for jobs that do not converge.    '''
+        if value == "":
+            if "CC_PRECONVERGE_T2Z_EACH" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_PRECONVERGE_T2Z_EACH" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]=value.lower()
+
+
+    def cc_preconv_t2z(self,value="show"):
+        '''\nName: CC_PRECONV_T2Z\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: Whether to pre-converge the cluster amplitudes before beginning orbital optimization in optimized orbital cluster methods.\nRecommendation: : Experiment with this option in cases of convergence failure.    '''
+        if value == "":
+            if "CC_PRECONV_T2Z" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_PRECONV_T2Z"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_PRECONV_T2Z" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_PRECONV_T2Z"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_PRECONV_T2Z"]=value.lower()
+
+
+    def cc_preconv_t2z_each(self,value="show"):
+        '''\nName: CC_PRECONV_T2Z_EACH\nType: INTEGER\nDefault: 2\nOptions: 0:0:0:0\nDescription: Whether to pre-converge the cluster amplitudes before each change of the orbitals in optimized orbital coupled-cluster methods. The maximum number of iterations in this pre-convergence procedure is given by the value of this parameter.\nRecommendation: : A very slow last resort option for jobs that do not converge.    '''
+        if value == "":
+            if "CC_PRECONV_T2Z_EACH" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_PRECONV_T2Z_EACH" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]=value.lower()
+
+
+    def cc_qccd_theta_switch(self,value="show"):
+        '''\nName: CC_QCCD_THETA_SWITCH\nType: INTEGER\nDefault: 2\nOptions: 2:0:0:0\nDescription: QCCD calculations switch from OD to QCCD when the rotation gradient is below this threshold [10-n]\n    '''
+        if value == "":
+            if "CC_QCCD_THETA_SWITCH" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_QCCD_THETA_SWITCH" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]=value.lower()
+
+
+    def cc_reference_symmetry(self,value="show"):
+        '''\nName: CC_REFERENCE_SYMMETRY\nType: INTEGER\nDefault: 0\nOptions: -1:0:0:0\nDescription: Together with CC_STATE_DERIV, selects which EOM state is to be considered for optimization or property calculations. When transition properties are requested, the transition properties will be calculated between this state and all other EOM states.\n    '''
+        if value == "":
+            if "CC_REFERENCE_SYMMETRY" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_REFERENCE_SYMMETRY" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]=value.lower()
+
+
+    def cc_refsym(self,value="show"):
+        '''\nName: CC_REFSYM\nType: INTEGER\nDefault: 0\nOptions: -1:0:0:0\nDescription: Together with CC_STATE_DERIV, selects which EOM state is to be considered for optimization or property calculations. When transition properties are requested, the transition properties will be calculated between this state and all other EOM states.\n    '''
+        if value == "":
+            if "CC_REFSYM" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_REFSYM"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_REFSYM" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_REFSYM"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_REFSYM"]=value.lower()
+
+
+    def cc_spin_flip_ms(self,value="show"):
+        '''\nName: CC_SPIN_FLIP_MS\nType: INTEGER\nDefault: 2\nOptions: 0:2:0:1\nDescription: This option is only used in EOM-SF using quintet references and including triple excitations. By default, SF flips the spin of one ? electron. One can ask to flip the spins of two ? electrons by specifying CC_SPIN_FLIP_MS = 1\nRecommendation: : This option can be useful when starting from quintet references - though this is not typical for EOM-SF.    '''
+        if value == "":
+            if "CC_SPIN_FLIP_MS" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_SPIN_FLIP_MS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_SPIN_FLIP_MS" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_SPIN_FLIP_MS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_SPIN_FLIP_MS"]=value.lower()
+
+
+    def cc_state_deriv(self,value="show"):
+        '''\nName: CC_STATE_DERIV\nType: INTEGER\nDefault: 0\nOptions: -1 \nDescription: Selects which EOM or CIS(D) state is to be considered for optimization or property calculations.\n    '''
+        if value == "":
+            if "CC_STATE_DERIV" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_STATE_DERIV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_STATE_DERIV" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_STATE_DERIV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_STATE_DERIV"]=value.lower()
+
+
+    def cc_state_to_opt(self,value="show"):
+        '''\nName: CC_STATE_TO_OPT\nType: undefined\nDefault: 0\nOptions: [0,0]\nDescription: Species which state to optimize.
+[i,j] optimize the jth state of the ith irrep.\n    '''
+        if value == "":
+            if "CC_STATE_TO_OPT" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_STATE_TO_OPT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_STATE_TO_OPT" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_STATE_TO_OPT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_STATE_TO_OPT"]=value.lower()
+
+
+    def cc_theta_conv(self,value="show"):
+        '''\nName: CC_THETA_CONV\nType: INTEGER\nDefault: 2\nOptions: 5:0:0:0\nDescription: Convergence criterion on the RMS difference between successive sets of orbital rotation angles [10-n].\nRecommendation: : Use default    '''
+        if value == "":
+            if "CC_THETA_CONV" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_THETA_CONV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_THETA_CONV" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_THETA_CONV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_THETA_CONV"]=value.lower()
+
+
+    def cc_theta_grad_conv(self,value="show"):
+        '''\nName: CC_THETA_GRAD_CONV\nType: INTEGER\nDefault: 2\nOptions: 7:0:0:0\nDescription: Convergence desired on the RMS gradient of the energy with respect to orbital rotation angles [10-n]. \nRecommendation: : Use default    '''
+        if value == "":
+            if "CC_THETA_GRAD_CONV" in self.dict_of_keywords:
+                del self.dict_of_keywords["CC_THETA_GRAD_CONV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CC_THETA_GRAD_CONV" in self.dict_of_keywords:
+                return self.dict_of_keywords["CC_THETA_GRAD_CONV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CC_THETA_GRAD_CONV"]=value.lower()
+
+
+    def cis_guess_disk_type(self,value="show"):
+        '''\nName: CIS_GUESS_DISK_TYPE\nType: INTEGER\nDefault: 2\nOptions: -1:2:-1:1\nDescription: Determines the type of guesses to be read from disk\nRecommendation: : Must be specified if a CIS guess in to be read from disk.    '''
+        if value == "":
+            if "CIS_GUESS_DISK_TYPE" in self.dict_of_keywords:
+                del self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CIS_GUESS_DISK_TYPE" in self.dict_of_keywords:
+                return self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]=value.lower()
+
+
+    def cis_n_roots(self,value="show"):
+        '''\nName: CIS_N_ROOTS\nType: INTEGER\nDefault: 2\nOptions: 0:200:0:1\nDescription: Sets the number of CI-Singles (CIS) excited state roots to find\n    '''
+        if value == "":
+            if "CIS_N_ROOTS" in self.dict_of_keywords:
+                del self.dict_of_keywords["CIS_N_ROOTS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CIS_N_ROOTS" in self.dict_of_keywords:
+                return self.dict_of_keywords["CIS_N_ROOTS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CIS_N_ROOTS"]=value.lower()
+
+
+    def diis_print(self,value="show"):
+        '''\nName: DIIS_PRINT\nType: INTEGER\nDefault: 2\nOptions: 0:4:0:1\nDescription: Controls the output from DIIS SCF optimization:
+1: Chosen method and DIIS coefficients
+2: Level 1 + print changes in multipole moments
+3: Level 2 + multipole moments
+4: Level 3 + extrapolated Fock matrices\n    '''
+        if value == "":
+            if "DIIS_PRINT" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIIS_PRINT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIIS_PRINT" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIIS_PRINT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIIS_PRINT"]=value.lower()
+
+
+    def dip_singlets(self,value="show"):
+        '''\nName: DIP_SINGLETS\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of singlet DIP roots to find. Works only for closed-shell references.
+[i, j, k...] Find i DIP singlet states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "DIP_SINGLETS" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIP_SINGLETS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIP_SINGLETS" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIP_SINGLETS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIP_SINGLETS"]=value.lower()
+
+
+    def dip_states(self,value="show"):
+        '''\nName: DIP_STATES\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of DIP roots to find. For closed-shell reference, defaults into EOM_DIP_SINGLETS. For open-shell references, speccies all low-lying states.
+[i, j, k...] Find i DIP states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "DIP_STATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIP_STATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIP_STATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIP_STATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIP_STATES"]=value.lower()
+
+
+    def dip_triplets(self,value="show"):
+        '''\nName: DIP_TRIPLETS\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of triplet DIP roots to find. Works only for closed-shell references.
+[i, j, k...] Find i DIP triplet states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "DIP_TRIPLETS" in self.dict_of_keywords:
+                del self.dict_of_keywords["DIP_TRIPLETS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DIP_TRIPLETS" in self.dict_of_keywords:
+                return self.dict_of_keywords["DIP_TRIPLETS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DIP_TRIPLETS"]=value.lower()
+
+
+    def dsf_states(self,value="show"):
+        '''\nName: DSF_STATES\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of double spin-?ip target states roots to ?nd.
+[i, j, k . . .] Find i SF states in the ?rst irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "DSF_STATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["DSF_STATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "DSF_STATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["DSF_STATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["DSF_STATES"]=value.lower()
+
+
+    def ee_singlets(self,value="show"):
+        '''\nName: EE_SINGLETS\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: \n    '''
+        if value == "":
+            if "EE_SINGLETS" in self.dict_of_keywords:
+                del self.dict_of_keywords["EE_SINGLETS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EE_SINGLETS" in self.dict_of_keywords:
+                return self.dict_of_keywords["EE_SINGLETS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EE_SINGLETS"]=value.lower()
+
+
+    def ee_states(self,value="show"):
+        '''\nName: EE_STATES\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: \n    '''
+        if value == "":
+            if "EE_STATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["EE_STATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EE_STATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["EE_STATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EE_STATES"]=value.lower()
+
+
+    def ee_triplets(self,value="show"):
+        '''\nName: EE_TRIPLETS\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: \n    '''
+        if value == "":
+            if "EE_TRIPLETS" in self.dict_of_keywords:
+                del self.dict_of_keywords["EE_TRIPLETS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EE_TRIPLETS" in self.dict_of_keywords:
+                return self.dict_of_keywords["EE_TRIPLETS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EE_TRIPLETS"]=value.lower()
+
+
+    def eom_ea_alpha(self,value="show"):
+        '''\nName: EOM_EA_ALPHA\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of attached target states derived by attaching alpha electron (Ms = 1/2).
+[i, j, k...] Find i EA states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "EOM_EA_ALPHA" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_EA_ALPHA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_EA_ALPHA" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_EA_ALPHA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_EA_ALPHA"]=value.lower()
+
+
+    def eom_ea_beta(self,value="show"):
+        '''\nName: EOM_EA_BETA\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of attached target states derived by attaching beta electron (Ms = -1/2).
+[i, j, k...] Find i EA states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "EOM_EA_BETA" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_EA_BETA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_EA_BETA" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_EA_BETA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_EA_BETA"]=value.lower()
+
+
+    def eom_ea_states(self,value="show"):
+        '''\nName: EOM_EA_STATES\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of attached target states roots to find. By default, alpha electron will be attached (see EOM_EA_ALPHA).
+[i; j; k...] Find i EA states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "EOM_EA_STATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_EA_STATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_EA_STATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_EA_STATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_EA_STATES"]=value.lower()
+
+
+    def eom_ip_alpha(self,value="show"):
+        '''\nName: EOM_IP_ALPHA\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of ionized target states derived by removing alpha electron (Ms = -1/2).
+[i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "EOM_IP_ALPHA" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_IP_ALPHA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_IP_ALPHA" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_IP_ALPHA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_IP_ALPHA"]=value.lower()
+
+
+    def eom_ip_beta(self,value="show"):
+        '''\nName: EOM_IP_BETA\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of ionized target states derived by removing beta electron (Ms = 1/2, default for EOM-IP).
+[i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "EOM_IP_BETA" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_IP_BETA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_IP_BETA" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_IP_BETA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_IP_BETA"]=value.lower()
+
+
+    def eom_ip_states(self,value="show"):
+        '''\nName: EOM_IP_STATES\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of ionized target states roots to find. By default, B electron will be removed (see EOM_IP_BETA).
+[i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "EOM_IP_STATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["EOM_IP_STATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "EOM_IP_STATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["EOM_IP_STATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["EOM_IP_STATES"]=value.lower()
+
+
+    def incdft_griddiff_varthresh(self,value="show"):
+        '''\nName: INCDFT_GRIDDIFF_VARTHRESH\nType: INTEGER\nDefault: 2\nOptions: 0:12:0:1\nDescription: Sets the lower bound for the variable threshold for screening the functional values in the IncDFT procedure. The threshold will begin at this value and then vary depending on the error in the current SCF iteration until the value specified by INCDFT_GRIDDIFF_THRESH is reached. This means that this value must be set lower than INCDFT_GRIDDIFF_THRESH.\nRecommendation: : If the default value causes convergence problems, set this value higher to tighten accuracy. If this fails, set to 0 and use a static threshold.    '''
+        if value == "":
+            if "INCDFT_GRIDDIFF_VARTHRESH" in self.dict_of_keywords:
+                del self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "INCDFT_GRIDDIFF_VARTHRESH" in self.dict_of_keywords:
+                return self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]=value.lower()
+
+
+    def mom_start(self,value="show"):
+        '''\nName: MOM_START\nType: INTEGER\nDefault: 2\nOptions: 0:999:0:1\nDescription: Determines when MOM is switched on to stabilize DIIS iterations.\nRecommendation: : Set to 1 if preservation of initial orbitals is desired. If MOM is to be used to aid convergence, an SCF without MOM should be run to determine when the SCF starts oscillating. MOM should be set to start just before the oscillations.    '''
+        if value == "":
+            if "MOM_START" in self.dict_of_keywords:
+                del self.dict_of_keywords["MOM_START"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MOM_START" in self.dict_of_keywords:
+                return self.dict_of_keywords["MOM_START"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MOM_START"]=value.lower()
+
+
+    def nvo_method(self,value="show"):
+        '''\nName: NVO_METHOD\nType: INTEGER\nDefault: 2\nOptions: 9:0:0:0\nDescription: Sets method to be used to converge solution of the single-excitation amplitude equations.\nRecommendation: : Experimental option. Use default.    '''
+        if value == "":
+            if "NVO_METHOD" in self.dict_of_keywords:
+                del self.dict_of_keywords["NVO_METHOD"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NVO_METHOD" in self.dict_of_keywords:
+                return self.dict_of_keywords["NVO_METHOD"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NVO_METHOD"]=value.lower()
+
+
+    def nvo_truncate_dist(self,value="show"):
+        '''\nName: NVO_TRUNCATE_DIST\nType: INTEGER\nDefault: 2\nOptions: -2:999:-1:1\nDescription: Specifies which atomic blocks of the Fock matrix are used to construct the preconditioner.\nRecommendation: : This option does not affect the final result. However, it affects the rate of the PCG algorithm convergence. For small systems use default.    '''
+        if value == "":
+            if "NVO_TRUNCATE_DIST" in self.dict_of_keywords:
+                del self.dict_of_keywords["NVO_TRUNCATE_DIST"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NVO_TRUNCATE_DIST" in self.dict_of_keywords:
+                return self.dict_of_keywords["NVO_TRUNCATE_DIST"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NVO_TRUNCATE_DIST"]=value.lower()
+
+
+    def qui_eom_states1(self,value="show"):
+        '''\nName: QUI_EOM_STATES1\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_STATES1" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_STATES1"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_STATES1" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_STATES1"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_STATES1"]=value.lower()
+
+
+    def qui_eom_states2(self,value="show"):
+        '''\nName: QUI_EOM_STATES2\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: \n    '''
+        if value == "":
+            if "QUI_EOM_STATES2" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_EOM_STATES2"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_EOM_STATES2" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_EOM_STATES2"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_EOM_STATES2"]=value.lower()
+
+
+    def scf_final_print(self,value="show"):
+        '''\nName: SCF_FINAL_PRINT\nType: INTEGER\nDefault: 2\nOptions: 0:3:0:1\nDescription: Controls level of output from SCF procedure to Q-Chem output file at the end of the SCF.\nRecommendation: : The break-down of energies is often useful (level 1).    '''
+        if value == "":
+            if "SCF_FINAL_PRINT" in self.dict_of_keywords:
+                del self.dict_of_keywords["SCF_FINAL_PRINT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SCF_FINAL_PRINT" in self.dict_of_keywords:
+                return self.dict_of_keywords["SCF_FINAL_PRINT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SCF_FINAL_PRINT"]=value.lower()
+
+
+    def scf_guess(self,value="show"):
+        '''\nName: SCF_GUESS\nType: STRING\nDefault: 0\nOptions: SAD:CORE:GWH:READ\nDescription: Specifies the initial guess procedure to use for the SCF.\nRecommendation: : SAD guess for standard basis sets. For general basis sets, it is best to use the BASIS2 $rem. Alternatively, try the GWH or core Hamiltonian guess. For ROHF it can be useful to READ guesses from an SCF calculation on the corresponding cation or anion. Note that because the density is made spherical, this may favor an undesired state for atomic systems, especially transition metals.    '''
+        if value == "":
+            if "SCF_GUESS" in self.dict_of_keywords:
+                del self.dict_of_keywords["SCF_GUESS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SCF_GUESS" in self.dict_of_keywords:
+                return self.dict_of_keywords["SCF_GUESS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SCF_GUESS"]=value.lower()
+
+
+    def sf_states(self,value="show"):
+        '''\nName: SF_STATES\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Sets the number of spin-?ip target states roots to ?nd.
+[i, j, k . . .] Find i SF states in the ?rst irrep, j states in the second irrep etc.\n    '''
+        if value == "":
+            if "SF_STATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["SF_STATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SF_STATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["SF_STATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SF_STATES"]=value.lower()
+
+
+    def varthresh(self,value="show"):
+        '''\nName: VARTHRESH\nType: INTEGER\nDefault: 2\nOptions: 0:12:0:1\nDescription: Controls the temporary integral cut-off threshold. The variable threshold is set to 10-VARTHRESH? DIIS_error\nRecommendation: : 3 has been found to be a practical level, and can slightly speed up SCF evaluation.    '''
+        if value == "":
+            if "VARTHRESH" in self.dict_of_keywords:
+                del self.dict_of_keywords["VARTHRESH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "VARTHRESH" in self.dict_of_keywords:
+                return self.dict_of_keywords["VARTHRESH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["VARTHRESH"]=value.lower()
+
+
+    def xopt_state_1(self,value="show"):
+        '''\nName: XOPT_STATE_1\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Specify two electronic states the intersection of which will be searched.
+[spin, irrep, state]
+spin = 0 Addresses states with low spin, see also EOM EE SINGLETS.
+spin = 1 Addresses states with high spin, see also EOM EE TRIPLETS.
+irrep Species the irreducible representation to which the state belongs, for C2v point group symmetry 
+irrep = 1 for A1, irrep = 2 for A2,
+irrep = 3 for B1, irrep = 4 for B2.
+state Species the state number within the irreducible
+representation, state = 1 means the lowest excited
+state, state = 2 is the second excited state, etc.
+0, 0, -1 Ground state.\n    '''
+        if value == "":
+            if "XOPT_STATE_1" in self.dict_of_keywords:
+                del self.dict_of_keywords["XOPT_STATE_1"]
+                print "Keyword removed."
+        elif value == "show":
+            if "XOPT_STATE_1" in self.dict_of_keywords:
+                return self.dict_of_keywords["XOPT_STATE_1"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["XOPT_STATE_1"]=value.lower()
+
+
+    def xopt_state_2(self,value="show"):
+        '''\nName: XOPT_STATE_2\nType: undefined\nDefault: 0\nOptions: [0]\nDescription: Specify two electronic states the intersection of which will be searched.
+[spin, irrep, state]
+spin = 0 Addresses states with low spin, see also EOM EE SINGLETS.
+spin = 1 Addresses states with high spin, see also EOM EE TRIPLETS.
+irrep Species the irreducible representation to which the state belongs, for C2v point group symmetry 
+irrep = 1 for A1, irrep = 2 for A2,
+irrep = 3 for B1, irrep = 4 for B2.
+state Species the state number within the irreducible
+representation, state = 1 means the lowest excited
+state, state = 2 is the second excited state, etc.
+0, 0, -1 Ground state.\n    '''
+        if value == "":
+            if "XOPT_STATE_2" in self.dict_of_keywords:
+                del self.dict_of_keywords["XOPT_STATE_2"]
+                print "Keyword removed."
+        elif value == "show":
+            if "XOPT_STATE_2" in self.dict_of_keywords:
+                return self.dict_of_keywords["XOPT_STATE_2"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["XOPT_STATE_2"]=value.lower()
+
+
+    def method(self,value="show"):
+        '''\nName: METHOD\nType: STRING\nDefault: 1\nOptions: Custom:HF:----------:B3LYP:BLYP:EDF1:B97-D:EDF2:LDA:M06:M06-2X:PBE:PBE50:CAM-B3LYP//CAMB3LYP:Omega-B97X-D//wB97XD:----------:MP2:RI-MP2:SOS-MP2//SOSMP2:CCSD:CCSD(T):----------:TD-DFT:CIS:CIS(D):RI-CIS(D):SOS-CIS(D):SOS-CIS(D0):----------:EOM-CCSD\nDescription: The level of theory used in the calculation.\n    '''
+        if value == "":
+            if "METHOD" in self.dict_of_keywords:
+                del self.dict_of_keywords["METHOD"]
+                print "Keyword removed."
+        elif value == "show":
+            if "METHOD" in self.dict_of_keywords:
+                return self.dict_of_keywords["METHOD"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["METHOD"]=value.lower()
+
+
+    def correlation(self,value="show"):
+        '''\nName: CORRELATION\nType: STRING\nDefault: 0\nOptions: None:----------:B94:B94hyb:B95:LYP:LYP(EDF1):P86:PBE:PK09:PK09:PW91:PW92:PZ81:TPSS:VWN:Wigner:(PBE)OP:(B88)OP:----------:MP2:CCMP2:MP4SDQ:ZAPT2:Local_MP2:RI-MP2:SOSMP2:MOSMP2:RILMP2:----------:MP3:MP4:CCD:CCD(2):CCSD:CCSD(T):CCSD(2):CCSD(fT):CCSD(dT):QCCD:QCCD(T):QCCD(2):QCISD:QCISD(T):OD:OD(T):OD(2):VOD:VOD(2):VQCCD:VQCCD(T):VQCCD(2):----------:PP:CCVB:GVB_IP:GVB_SIP:GVB_DIP:OP:NP:2P\nDescription: Specifies the correlation level of theory, either DFT or wavefunction-based.\nRecommendation: : Consult the literature and reviews for guidence    '''
+        if value == "":
+            if "CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["CORRELATION"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["CORRELATION"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CORRELATION"]=value.lower()
 
     # ------------------------ End of keyword list ----------------------------
             
