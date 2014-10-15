@@ -436,7 +436,7 @@ class _outputfile(object):
         if type(file_input)==list:
             content = file_input
         else:
-            infile = open(file_input,"r")
+            infile = open(file_input, "r")
             content = infile.readlines()
         
         spin = '0'
@@ -445,6 +445,9 @@ class _outputfile(object):
         version = 'undetermined'
         basis_size = 'undetermined'
         status = 'unfinished'
+
+        # flag for detection of basis2 job
+        basis2_flag = False
 
         mm_type = "" 
 
@@ -456,6 +459,8 @@ class _outputfile(object):
                 jobtype = ((line.split())[-1]).lower()    
             if "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
+            if "basis2" in line.lower():
+                basis2_flag = True
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
                 mm_type = ((line.split())[-1]).lower()
             if "Q-Chem, Version" in line:
@@ -464,6 +469,8 @@ class _outputfile(object):
                 spin = (line.split())[2]
             if ("Total energy in the final basis set") in line and mm_type!="mm":
                 energy = (line.split())[8]
+            if ("Convergence criterion met") in line and basis2_flag:
+                energy = (line.split())[1]
             if ("Etot:" in line) and (mm_type=="mm"):
                 energy = (line.split())[4]
             if ("There are" in line) and ("shells" in line):

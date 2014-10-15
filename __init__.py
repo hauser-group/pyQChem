@@ -159,7 +159,7 @@ def read(filename,silent=False):
     
 
     # Do we have a Q-Chem outputfile?
-    if  extension in ("out","OUT","qcout","QCOUT"):
+    if extension.lower() in ("out", "qcout", "qchem"):
 
         seperator = []
         with open(filename) as infile:
