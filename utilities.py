@@ -107,6 +107,57 @@ def _readtinker(filename):
             
     return re_file
 
+def _readpybel(extension,filename):
+    try:
+        import pybel
+    except:
+        print "pybel not loaded- please check your openbabel installation\n"
+        return 
+    import numpy as _np
+    from constants import dict_of_atomic_abbr
+
+    infile = pybel.readfile(extension,filename).next() #this assumes only one geometry per file
+    periodic=False
+    try:
+        if (infile.unitcell.GetValue()=='UnitCell'):
+            periodic=True
+    except:
+        periodic=False
+    cell_a=0.0
+    cell_b=0.0
+    cell_c=0.0
+    if periodic:
+        print "Be very careful, you have a periodic system. You'd better terminate those bonds.\n"
+        cell_a=infile.unitcell.GetA()
+        cell_b=infile.unitcell.GetB()
+        cell_c=infile.unitcell.GetC()
+
+    Natoms = len(infile.atoms)
+    
+    atoms=_np.array([[i.atomicnum] for i in infile.atoms])
+    xyzs=_np.array([list(i.coords) for i in infile.atoms]).reshape(Natoms,3)
+    
+    atom_list=_np.concatenate((atoms,xyzs),axis=1)
+    atom_list=atom_list.tolist()
+
+    for num,i in enumerate(atom_list):
+        atom_list[num][0]=dict_of_atomic_abbr[i[0]] #cast to known abbreviations
+    
+    for i in xrange(len(atom_list)): #Make it all strings
+        for j in xrange(len(atom_list[i])):
+            atom_list[i][j]=str(atom_list[i][j])
+
+    re_file = inputfile()
+    re_file.add(cartesian(atom_list=atom_list))
+
+    #cell=cell_array()  #Shhh no periodic systems in pyQChem 
+    #cell.setABC=(cell_a,cell_b,cell_c)
+    #re_file.add(cell)
+
+    return deepcopy(re_file)
+    del re_file
+
+
 
 def _readinput(file_input,silent=False):
     
