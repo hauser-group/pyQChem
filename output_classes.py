@@ -362,6 +362,19 @@ class _opt(object):
             #print str(k) + "\t\t" + str(self.gradient[i]) + "\t" + str(self.displacement[i]) + "\t" + str(self.change[i])
             print "%.9f\t%.9f\t%.9f\t%.9f\t" %(k,self.gradient[i],self.displacement[i],self.change[i])
 
+    def write_trajectory_xyz(self,filename='trajectory.xyz'):
+        """
+        This method concatenates the xyz geometries, using the current energy as title (supported by Molden). 
+        """
+        f = open(filename,'w')
+        ret_str = ""
+        for i,k in enumerate(self.geometries):
+            k.title(str(self.energies[i]))
+            ret_str += k.__str__()
+        f.write(ret_str)
+        f.close()
+
+
 
 class _aimd(object):
     """
