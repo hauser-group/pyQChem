@@ -162,11 +162,7 @@ def read(filename,silent=False):
             print "Tinker coordinates file detected."
         return _readtinker(filename)
 
-    # Is it anything pybel can read?
-    elif extension in pybel_inlist:
-        if not silent:
-            print pybel.informats[extension], " detected"
-        return _readpybel(extension,filename)   
+
     
 
     # Do we have a Q-Chem outputfile?
@@ -207,6 +203,17 @@ def read(filename,silent=False):
             if not silent:
                 print "Outputfile detected."
             return _outputfile(filename,silent)
+
+    # Is it anything pybel can read?
+    elif extension in pybel_inlist:
+        try: 
+            import pybel
+        except:
+            print "Error: File type not recognized."
+            return
+        if not silent:
+            print pybel.informats[extension], " detected"
+        return _readpybel(extension,filename)   
 
     # What the heck? This is not a valid file.
     else:
