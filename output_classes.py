@@ -719,7 +719,7 @@ class _outputfile(object):
             switch = 0
             for line in content:
                 if "Energy is" in line:
-                    dummy = float((line.split())[2])
+                    dummy = float((line.split())[-1])
                     energies.append(dummy)
                 if "Gradient   " in line:
                     try:
