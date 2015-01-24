@@ -480,13 +480,13 @@ class _outputfile(object):
             if "TIME STEPS COMPLETED" in line and jobtype=="aimd":
                 status = 'time steps completed'
             # Create corresponding inputfile:
-            if "User input:" in line:
+            if switch == 0 and "User input:" in line:
                 switch = 1
                 infile_content = []
             if switch == 1:
                 infile_content.append(line)
             if switch == 1 and "Standard Nuclear Orientation" in line:
-                switch = 0
+                switch = 2
         inputfile = _readinput(infile_content,silent)
 
         self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type)
