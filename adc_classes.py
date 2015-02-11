@@ -27,7 +27,9 @@ class _state(object):
         '''
         Print an overview of the state information 
         '''
-        print("State " + self.term_symbol + ": Energy = " + repr(self.total_energy))
+        if self.term_symbol != "":
+            print("  Term symbol: " + self.term_symbol)
+        print("  Energy = " + repr(self.total_energy))
         for name,value in self.properties.items():
             print("  Property: " + name + " = " + repr(value))
         
@@ -53,7 +55,7 @@ class _transition(object):
         '''
         Print an overview of the transition information 
         '''
-        print("Excitation energy = " + repr(self.energy) +
+        print("  Excitation energy = " + repr(self.energy) +
             " (" + repr(self.osc_strength) + ")");
         for name,value in self.properties.items():
             print("  Property " + name + " = " + repr(value))
@@ -121,15 +123,15 @@ class _excited_state(_state, _transition):
         _transition.info(self)
         s = "(R^2 = " + str(self.rnorm) + ")"
         if self.converged:
-            s = "Converged " + s
+            s = "  Converged " + s
         else:
-            s = "Not converged " + s
+            s = "  Not converged " + s
         print(s)
-        print("Components V^2 = " + str(self.vnorm))
+        print("  Components V^2 = " + str(self.vnorm))
         if len(self.amplitudes) > 0:
-            print("Imporant amplitudes")
+            print("  Imporant amplitudes")
             for a in self.amplitudes:
-                print("  " + a.excitation + ": " + str(a.value))
+                print("    " + a.excitation + ": " + str(a.value))
         
 
 class _adc(object):
@@ -161,6 +163,7 @@ class _adc(object):
         for i,state in enumerate(self.excited_states):
             print("Excited state " + str(i + 1) + ":")
             state.info()
+            print("")
         print("")
         if isinstance(self.transitions, dict):
             for i,trlist in self.transitions.items():
@@ -334,14 +337,15 @@ def _parse_es(content, start, silent=False):
     state = _excited_state(ts, te, ee, osc, prop, tprop, conv, rnorm, vnorm)
     if len(arange) == 2:
         for j in range(arange[0] + 1, arange[1] - 1):
-            list = content[j].split()
+            list = content[j].replace("(","").replace(")","").split()
             value = list[-1]
             name = []
             k = 3
             while k < len(list):
                 name.append(' '.join(list[k-3:k]))
                 k += 3
-            state.add_amplitude(', '.join(name), value)
+            list=[', '.join(name[0:len(name)/2]), ', '.join(name[len(name)/2:len(name)])]
+            state.add_amplitude(' -> '.join(list), value)
 
     return i - 1,state
 
