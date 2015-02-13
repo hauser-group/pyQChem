@@ -15,13 +15,13 @@ class _state(object):
     Attributes:
      - term_symbol - Term symbol of state 
      - total_energy - Absolute energy of the state (in a.u.)
-     - properties - Dictionary of properties calculated
+     - dict_of_properties - Dictionary of properties calculated
     '''
     
     def __init__(self, ts = '', te = 0.0, prop = {}):
         self.term_symbol = ts
         self.total_energy = te
-        self.properties = prop
+        self.dict_of_properties = prop
         
     def info(self):
         '''
@@ -30,7 +30,7 @@ class _state(object):
         if self.term_symbol != "":
             print("  Term symbol: " + self.term_symbol)
         print("  Energy = " + repr(self.total_energy))
-        for name,value in self.properties.items():
+        for name,value in self.dict_of_properties.items():
             print("  Property: " + name + " = " + repr(value))
         
         
@@ -40,7 +40,7 @@ class _transition(object):
     Attributes:
      - energy - Excitation energy (in eV)
      - osc_strength - Oscillator strength
-     - properties - Dictionary of transition properties
+     - dict_of_properties - Dictionary of transition properties
     '''
     
     def __init__(self, omega = 0.0, osc = 0.0, prop = {}):
@@ -49,7 +49,7 @@ class _transition(object):
         '''
         self.energy = omega
         self.osc_strength = osc
-        self.properties = prop
+        self.dict_of_properties = prop
         
     def info(self):
         '''
@@ -57,7 +57,7 @@ class _transition(object):
         '''
         print("  Excitation energy = " + repr(self.energy) +
             " (" + repr(self.osc_strength) + ")");
-        for name,value in self.properties.items():
+        for name,value in self.dict_of_properties.items():
             print("  Property " + name + " = " + repr(value))
 
 
@@ -71,15 +71,15 @@ class _ground_state(_state):
     '''
     Ground state computed using ADC (derived from _state) 
     Additional attributes:
-     - energy_contrib - Dictionary of energy contributions (in a.u.) 
+     - dict_of_econtrib - Dictionary of energy contributions (in a.u.) 
     '''
     
     def __init__(self, ts = '', te = 0.0, prop = {}, contrib = {}):
         _state.__init__(self, ts, te, prop)
         if (len(contrib) == 0):
-            self.energy_contrib = { 'hf': te }
+            self.dict_of_econtrib = { 'hf': te }
         else:
-            self.energy_contrib = contrib
+            self.dict_of_econtrib = contrib
 
     def info(self):
         '''
@@ -87,7 +87,7 @@ class _ground_state(_state):
         '''
         _state.info(self)
         print("  Energy composition:")
-        for name,value in self.energy_contrib.items():
+        for name,value in self.dict_of_econtrib.items():
             print("    E(" + name + ") = " + repr(value))
 
 
@@ -100,7 +100,7 @@ class _excited_state(_state, _transition):
      - converged - Boolean variable indicating if the calculation of the state converged
      - rnorm - Square of the residual norm
      - vnorm - Vector of the square norms of the excited state components
-     - amplitudes - Vector of important amplitudes in the excited state 
+     - list_of_amplitudes - Vector of important amplitudes in the excited state 
     '''
     
     def __init__(self, ts = '', te = 0.0, omega = 0.0, osc = 0.0, prop = {}, 
@@ -110,10 +110,10 @@ class _excited_state(_state, _transition):
         self.converged = conv
         self.rnorm = rnorm 
         self.vnorm = vnorm
-        self.amplitudes = []
+        self.list_of_amplitudes = []
         
     def add_amplitude(self, name, value):
-        self.amplitudes.append(_amplitude(name, value))
+        self.list_of_amplitudes.append(_amplitude(name, value))
     
     def info(self):
         '''
@@ -128,9 +128,9 @@ class _excited_state(_state, _transition):
             s = "  Not converged " + s
         print(s)
         print("  Components V^2 = " + str(self.vnorm))
-        if len(self.amplitudes) > 0:
+        if len(self.list_of_amplitudes) > 0:
             print("  Imporant amplitudes")
-            for a in self.amplitudes:
+            for a in self.list_of_amplitudes:
                 print("    " + a.excitation + ": " + str(a.value))
         
 
@@ -140,8 +140,8 @@ class _adc(object):
     Attributes:
      - adc_variant - Variant of ADC used in the calculation
      - ground_state - Ground state data 
-     - excited_states - List of excited state data
-     - transitions - List of state-to-state transitions (only for excited states)
+     - list_of_excited_states - List of excited state data
+     - dict_of_transitions - List of state-to-state transitions (only for excited states)
     '''
 
     def __init__(self, variant, gs = _ground_state(), es = [], tr = {}):
@@ -150,8 +150,8 @@ class _adc(object):
         '''
         self.adc_variant = variant
         self.ground_state = gs
-        self.excited_states = es
-        self.transitions = tr
+        self.list_of_excited_states = es
+        self.dict_of_transitions = tr
 
     def info(self):
         '''
@@ -160,13 +160,13 @@ class _adc(object):
         print("Ground state:")
         self.ground_state.info()
         print("")
-        for i,state in enumerate(self.excited_states):
+        for i,state in enumerate(self.list_of_excited_states):
             print("Excited state " + str(i + 1) + ":")
             state.info()
             print("")
         print("")
-        if isinstance(self.transitions, dict):
-            for i,trlist in self.transitions.items():
+        if isinstance(self.dict_of_transitions, dict):
+            for i,trlist in self.dict_of_transitions.items():
                 if not isinstance(trlist, dict): 
                     continue
                 for j,tr in trlist.items():
