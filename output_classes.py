@@ -41,6 +41,7 @@ from copy import deepcopy
 
 from input_classes import cartesian
 from utilities import _readinput
+from adc_classes import _parse_adc
 import constants
 
 
@@ -493,13 +494,13 @@ class _outputfile(object):
             if "TIME STEPS COMPLETED" in line and jobtype=="aimd":
                 status = 'time steps completed'
             # Create corresponding inputfile:
-            if "User input:" in line:
+            if switch == 0 and "User input:" in line:
                 switch = 1
                 infile_content = []
             if switch == 1:
                 infile_content.append(line)
             if switch == 1 and "Standard Nuclear Orientation" in line:
-                switch = 0
+                switch = 2
         inputfile = _readinput(infile_content,silent)
 
         self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type)
@@ -614,7 +615,35 @@ class _outputfile(object):
             # Create MM info object for model system
             self.mm_model = _mm([etot2,ecoulomb2,evdw2,etorsion2,eimptors2,eureybrad2,eangle2,ebond2,nbonds2])
 
-        
+        if jobtype=="sp":
+            # Retrieve rem object from input file
+            index = inputfile.list_of_content.index("rem")
+            rem = inputfile.list_of_arrays[index]
+            adc_variant = ''
+            if "METHOD" in rem.dict_of_keywords:
+                if "adc" in rem.dict_of_keywords["METHOD"]: 
+                    adc_variant = rem.dict_of_keywords["METHOD"]                
+            elif "ADC_ORDER" in rem.dict_of_keywords:
+                adc_order = int(rem.dict_of_keywords["ADC_ORDER"])
+                adc_ext = False
+                if adc_order == 2 and "ADC_EXTENDED" in rem.dict_of_keywords:
+                    if int(rem.dict_of_keywords["ADC_EXTENDED"] == 1):
+                        adc_ext = True
+                adc_variant = "adc(" + str(adc_order) + ")"
+                if adc_ext:
+                    adc_variant += "-x"
+            
+            if adc_variant:
+                if "ADC_SOS" in rem.dict_of_keywords:
+                    if int(rem.dict_of_keywords("ADC_SOS")) != 0: 
+                        if "adc(2)" in adc_variant and not "sos" in adc_variant:
+                            adc_variant = "sos-" + adc_variant
+                if "ADC_CVS" in rem.dict_of_keywords:
+                    if int(rem.dict_of_keywords("ADC_CVS")) != 0:
+                        if not "cvs" in adc_variant:
+                            adc_variant = "cvs-" + adc_variant              
+                
+                self.adc = _parse_adc(adc_variant, content, silent)                    
 
         if jobtype=="freq":
             H2kcal=constants.hartree_to_kcal_pro_mole

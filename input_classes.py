@@ -990,7 +990,7 @@ Type: STRING
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
+    'FALSE'......................... FALSE
 
 Description: Restart a job from previously-converged GVB-CC orbitals.
 Recommendation: : Useful when trying to converge to the same GVB solution at slightly different geometries, for example.    '''
@@ -1014,7 +1014,7 @@ Type: STRING
 Default: same value as UNRESTRICTED
 
 Options:
-	'same value as UNRESTRICTED'.... same value as UNRESTRICTED
+    'same value as UNRESTRICTED'.... same value as UNRESTRICTED
 
 Description: Controls restricted versus unrestricted PP jobs. Usually handled  automatically.
 Recommendation: : Set this variable explicitly only to do a UPP job from an RHF or ROHF initial guess.    '''
@@ -1352,8 +1352,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether to semi-canonicalize orbitals at the end of the ground state calculation.
 Recommendation: : Should not normally have to be altered.    '''
@@ -1377,8 +1377,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether to semi-canonicalize orbitals at the start of the calculation (i.e. Fock matrix is diagonalized in each orbital subspace)
 Recommendation: : Should not normally have to be altered.    '''
@@ -1446,8 +1446,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Initiates a constrained DFT calculation
 Recommendation: : Set to TRUE if a Constrained DFT calculation is desired.    '''
@@ -1471,10 +1471,10 @@ Type: STRING
 Default: Program determined
 
 Options:
-	'Program determined'............ Program determined
-	'Direct'........................ Direct
-	'Semi-direct'................... Semi-direct
-	'Local-occupied'................ Local-occupied
+    'Program determined'............ Program determined
+    'Direct'........................ Direct
+    'Semi-direct'................... Semi-direct
+    'Local-occupied'................ Local-occupied
 
 Description: Determines the algorithm for MP2 integral transformations.
 Recommendation: : Semi-direct is usually most efficient, and will normally be chosen by default.    '''
@@ -1521,8 +1521,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether the connstraint is enforced after DIIS extrapolation.
 Recommentation: Use default unless convergence problems arise, in which case it may be benificial to turn this option off.  If selected, energies should be variational after the first iteration.
@@ -1547,8 +1547,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls wheter the constraint is enforced before DIIS extrapolation.
 
@@ -1639,8 +1639,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Read the CIS guess from disk (previous calculation)
 Recommendation: : Requires a guess from previous calculation.    '''
@@ -1664,8 +1664,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Determines whether or not to use the relaxed CIS density for attachment/detachment density analysis
     '''
@@ -1689,8 +1689,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Solve for singlet excited states in RCIS calculations (ignored for UCIS)
     '''
@@ -1714,8 +1714,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Solve for triplet excited states in RCIS calculations (ignored for UCIS)
     '''
@@ -1783,8 +1783,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Requests that all hydrogen atoms be replaces with deuterium.
 Recommendation: : Replacing hydrogen atoms reduces the fastest vibrational frequencies by a factor of 1.4, which allow for a larger fictitious mass and time step in ELMD calculations. There is no reason to replace hydrogens in BOMD calculations.    '''
@@ -1808,8 +1808,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Specifies whether to include bond midpoints in the DMA expansion.
     '''
@@ -1833,8 +1833,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Activates dual-basis SCF (HF or DFT) energy correction. 
 Recommendation: : Use Dual-Basis to capture large-basis effects at smaller basis cost. Particularly useful with RI-MP2, in which HF often dominates. Use only proper subsets for small-basis calculation.    '''
@@ -1858,8 +1858,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Calculates the BSSE correction when performing the energy decomposition analysis.
 Recommendation: : Set to TRUE unless a very large basis set is used.    '''
@@ -1883,8 +1883,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Replace the final MOs with the CVOP orbitals in the end of the run.
 Recommendation: : Set to TRUE to print COVP orbitals instead of conventional MOs.    '''
@@ -1931,8 +1931,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls direct variable thresholds to accelerate the calculation of exchange and correlation (XC) in DFT.
 Recommendation: : This option improves the speed of a DFT calculation, but may occasionally cause the SCF calculation to diverge.    '''
@@ -1956,12 +1956,12 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
-	'ARS'........................... ARS
-	'RS'............................ RS
-	'EXACT_SCF'..................... EXACT_SCF
-	'ARS_EXACT_SCF'................. ARS_EXACT_SCF
-	'RS_EXACT_SCF'.................. RS_EXACT_SCF
+    'None'.......................... None
+    'ARS'........................... ARS
+    'RS'............................ RS
+    'EXACT_SCF'..................... EXACT_SCF
+    'ARS_EXACT_SCF'................. ARS_EXACT_SCF
+    'RS_EXACT_SCF'.................. RS_EXACT_SCF
 
 Description: Specifies a correction method performed after the locally-projected equations are converged.
 Recommendation: : For large basis sets use ARS, use RS if ARS fails.    '''
@@ -1985,13 +1985,13 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
-	'STOLL'......................... STOLL
-	'GIA'........................... GIA
-	'NOSCF_RS'...................... NOSCF_RS
-	'NOSCF_ARS'..................... NOSCF_ARS
-	'NOSCF_DRS'..................... NOSCF_DRS
-	'NOSCF_RS_FOCK'................. NOSCF_RS_FOCK
+    'None'.......................... None
+    'STOLL'......................... STOLL
+    'GIA'........................... GIA
+    'NOSCF_RS'...................... NOSCF_RS
+    'NOSCF_ARS'..................... NOSCF_ARS
+    'NOSCF_DRS'..................... NOSCF_DRS
+    'NOSCF_RS_FOCK'................. NOSCF_RS_FOCK
 
 Description: Specifies the locally-projected method.
 Recommendation: : STOLL and GIA - variational optimization of the ALMOs. NOSCF options are for computationally fast corrections of the FRAGMO initial guess.     '''
@@ -2059,8 +2059,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Sets whether or not to fall back to cartesian coordinates if the optimization in internal or Z-matrix coordinates fails.
     '''
@@ -2084,8 +2084,8 @@ Type: STRING
 Default: Diagonal
 
 Options:
-	'Diagonal'...................... Diagonal
-	'READ'.......................... READ
+    'Diagonal'...................... Diagonal
+    'READ'.......................... READ
 
 Description: Determines the initial Hessian status.
 Recommendation: : An accurate initial Hessian will improve the performance of the optimizer, but is expensive to compute.    '''
@@ -2197,8 +2197,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the printing of additional geometric information at each step.
 Recommendation: : Use if you want to be able to quickly examine geometric parameters at the beginning and end of optimizations. Only prints in the beginning of single point energy calculations.    '''
@@ -2267,8 +2267,8 @@ Type: STRING
 Default: Pipek-Mezey
 
 Options:
-	'Boys localized'................ Boys localized
-	'Pipek-Mezey'................... Pipek-Mezey
+    'Boys localized'................ Boys localized
+    'Pipek-Mezey'................... Pipek-Mezey
 
 Description: Sets the localization scheme used in the initial guess wave function.
 Recommendation: : Different initial guesses can sometimes lead to different solutions. It can be helpful to try both to ensure the global minimum has been found.    '''
@@ -2314,8 +2314,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Toggles the use of the IncDFT procedure for DFT energy calculations.
 Recommendation: : Turning this option on can lead to faster SCF calculations, particularly towards the end of the SCF. Please note that for some systems use of this option may lead to convergence problems.    '''
@@ -2449,8 +2449,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether linear scaling evaluation of exact exchange (LinK) is used.
 Recommendation: : Use for HF and hybrid DFT calculations with large numbers of atoms.    '''
@@ -2496,8 +2496,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -2521,8 +2521,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Uses SG-0 (where available) for early SCF cycles, and switches to the (larger) grid specified by XC_GRID (which defaults to SG-1, if not otherwise specified) for final cycles of the SCF.
 Recommendation: : The use of the smart grid can save some time on initial SCF cycles.    '''
@@ -2546,8 +2546,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Orders an intersection seam search only, no minimization is to perform.
 Recommendation: : In systems with a large number of degrees of freedom it might be useful to locate the seam first setting this option to TRUE and use that geometry as a starting point for the minimization.    '''
@@ -2571,8 +2571,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Do an XCIS calculation in addition to a CIS calculation
     '''
@@ -2596,8 +2596,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the running of the default wavefunction analysis tasks.
     '''
@@ -2665,8 +2665,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Performs stability analysis for a HF or DFT solution.
 Recommendation: : Set to TRUE when a HF or DFT solution is suspected to be unstable.    '''
@@ -2690,8 +2690,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the output of Q-Chem jobs on isolated fragments.
 Recommendation: : Use TRUE if details about isolated fragments are important.    '''
@@ -2715,8 +2715,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Increases the amount of ChemSol output.
     '''
@@ -2762,8 +2762,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the use of restricted or unrestricted orbitals.
 Recommendation: : Use default unless ROHF is desired. Note that for unrestricted calculations on systems with an even number of electrons it is usually necessary to break alpha-beta symmetry in the initial guess, by using SCF_GUESS_MIX or providing $occupied information.    '''
@@ -2787,7 +2787,7 @@ Type: STRING
 Default: qchem
 
 Options:
-	'qchem'......................... qchem
+    'qchem'......................... qchem
 
 Description: Specifies whether or not a wfn file is created, which is suitable for use with AIMPAC. Note that the output to this file is currently limited to f orbitals, which is the highest angular momentum implemented in AIMPAC.
     '''
@@ -2877,8 +2877,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the use of ChemSol in Q-Chem.
     '''
@@ -2902,8 +2902,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the overall use of the FTC.
 Recommendation: : Use FTC when bigger and/or diffuse basis sets are used.     '''
@@ -2927,8 +2927,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -2952,8 +2952,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -2977,8 +2977,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -3024,8 +3024,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the calculation of the SSG wavefunction.
 Recommendation: : See also the UNRESTRICTED and DIIS_SUBSPACE_SIZE $rem variables.    '''
@@ -3049,11 +3049,11 @@ Type: STRING
 Default: Spin Flip
 
 Options:
-	'Spin Flip'..................... Spin Flip
-	'EA (Diffuse Orbital)'.......... EA (Diffuse Orbital)
-	'IP (Diffuse Orbital)'.......... IP (Diffuse Orbital)
-	'IP (Proper)'................... IP (Proper)
-	'DIP'........................... DIP
+    'Spin Flip'..................... Spin Flip
+    'EA (Diffuse Orbital)'.......... EA (Diffuse Orbital)
+    'IP (Diffuse Orbital)'.......... IP (Diffuse Orbital)
+    'IP (Proper)'................... IP (Proper)
+    'DIP'........................... DIP
 
 Description: Specifies the type of EOM calculation to perform
     '''
@@ -3143,8 +3143,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Skips the solution of the CIS, RPA, TDA or TDDFT equations for wavefunction analysis.
 
@@ -3169,9 +3169,9 @@ Type: STRING
 Default: Cartesian
 
 Options:
-	'Cartesian'..................... Cartesian
-	'Z-matrix'...................... Z-matrix
-	'Z-matrix (compact)'............ Z-matrix (compact)
+    'Cartesian'..................... Cartesian
+    'Z-matrix'...................... Z-matrix
+    'Z-matrix (compact)'............ Z-matrix (compact)
 
 Description: Controls the format of the geometry in the output file.
     '''
@@ -3195,8 +3195,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: When SCF_ALGORITHM = DM, this controls the way the initial step, and steps after subspace resets are taken.
 Recommendation: : The default is usually more efficient, but choosing TRUE sometimes avoids problems with orbital reordering.    '''
@@ -3220,11 +3220,11 @@ Type: STRING
 Default: 1111
 
 Options:
-	'1111'.......................... All pure
-	'2222'.......................... All cartesian
-	'2111'.......................... Pure d, f and g
-	'2211'.......................... Pure d and f
-	'2221'.......................... Pure d only
+    '1111'.......................... All pure
+    '2222'.......................... All cartesian
+    '2111'.......................... Pure d, f and g
+    '2211'.......................... Pure d and f
+    '2221'.......................... Pure d only
 
 Description: Controls the use of pure (spherical harmonic) or Cartesian angular forms.
     '''
@@ -3248,14 +3248,14 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. None
-	'1'............................. NMR Shielding Tensors
-	'2'............................. Static Polarizability
-	'100'........................... Dynamic Polarizability
-	'101'........................... Hyperpolarizability
-	'102'........................... Hyperpolarizability (Read)
-	'103'........................... Hyperpolarizabilty (Wigner)
-	'104'........................... Hyperpolarizability (Wigner+Read)
+    '0'............................. None
+    '1'............................. NMR Shielding Tensors
+    '2'............................. Static Polarizability
+    '100'........................... Dynamic Polarizability
+    '101'........................... Hyperpolarizability
+    '102'........................... Hyperpolarizability (Read)
+    '103'........................... Hyperpolarizabilty (Wigner)
+    '104'........................... Hyperpolarizability (Wigner+Read)
 
 Description: Specifies the job for mopropman.  Note that for hyperpolarizabilities, the Wigner option uses the (2n+1) rule, and the Read option takes first order results from disk.
     '''
@@ -3279,19 +3279,19 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
+    'None'.......................... None
 
-	'CRENBL'........................ CRENBL
-	'CRENBS'........................ CRENBS
-	'HWMB'.......................... HWMB
-	'HWVDZ'......................... HWVDZ
-	'LACVP'......................... LACVP
-	'LANL2DZ'....................... LANL2DZ
-	'SBKJC'......................... SBKJC
-	'SRLC'.......................... SRLC
-	'SRSC'.......................... SRSC
+    'CRENBL'........................ CRENBL
+    'CRENBS'........................ CRENBS
+    'HWMB'.......................... HWMB
+    'HWVDZ'......................... HWVDZ
+    'LACVP'......................... LACVP
+    'LANL2DZ'....................... LANL2DZ
+    'SBKJC'......................... SBKJC
+    'SRLC'.......................... SRLC
+    'SRSC'.......................... SRSC
 
-	'gen'........................... User-defined
+    'gen'........................... User-defined
 
 Description: Defines the effective core potential and associated basis set to be used
 Recommendation: : Pseudopotentials are recommended for first row transition metals and heavier elements. Consult the reviews for more details.    '''
@@ -3338,8 +3338,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects whether or not to perform various nuclear vibrational theory (TOSH, VPT2, VCI) calculations to obtain vibrational anharmonic frequencies. 
 
@@ -3364,10 +3364,10 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. Read
-	'ZPE'........................... ZPE
-	'Random'........................ Random
-	'Thermal'....................... Thermal
+    '0'............................. Read
+    'ZPE'........................... ZPE
+    'Random'........................ Random
+    'Thermal'....................... Thermal
 
 Description: Specifies the method for selecting initial nuclear velocities. 
 Recommendation: : This variable need only be specified in the event that velocities are not specified explicitly in a $velocity  section.    '''
@@ -3413,8 +3413,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects whether or not to perform various nuclear vibrational theory (TOSH, VPT2, VCI) calculations to obtain vibrational anharmonic frequencies. 
 
@@ -3461,8 +3461,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If set to TRUE, adds amplitude response terms to one-particle and two-particle CCSD density matrices before calculation of properties. CC_PROP must be set to TRUE. 
 Recommendation: : The cost is always about the cost of an analytic gradient calculation, independent of whether or not the two-particle properties are requested. Besides, adding amplitude response terms without orbital response will unlikely improve the quality of the properties. However, it can be used for debugging purposes.    '''
@@ -3486,8 +3486,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the non-relaxed (expectation value) one-particle CCSD properties will be calculated. The properties currently include permanent dipole moment, the second moments < X2>, < Y2>, and < Z2> of electron density, and the total < R2> = < X2> +< Y2> +< Z2> (in atomic units). Incompatible with JOBTYPE=FORCE, OPT, FREQ.
 Recommendation: : Additional equations need to be solved (lambda CCSD equations) for properties with the cost approximately the same as CCSD equations. Use default if you do not need properties. The cost of the properties calculation itself is low. The CCSD one-particle density can be analyzed with NBO package by specifying NBO=TRUE, CC_PROP=TRUE and JOBTYPE=FORCE.    '''
@@ -3511,8 +3511,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Request for calculation of non-relaxed two-particle CCSD properties. The two-particle properties currently include. The one-particle properties also will be calculated, since the additional cost of the one-particle properties calculation is inferior compared to the cost of 2>. The variable CC_PROPERTIES must be also set to TRUE.
 Recommendation: : The two-particle properties are extremely computationally expensive, since they require calculation and use of the two-particle density matrix (the cost is approximately the same as the cost of an analytic gradient calculation). Do not request the two-particle properties unless you really need them.    '''
@@ -3713,8 +3713,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Determines whether disconnected terms included in the EOM-OD equations
 Recommendation: : Inclusion of disconnected terms has very small effects and is not necessary.    '''
@@ -3738,8 +3738,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the calculation of full CISDT
     '''
@@ -3763,8 +3763,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether excited state Dyson orbitals will be calculated for EOM-IP/EA-CCSD calculations.
 Recommendation: : none    '''
@@ -3788,8 +3788,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether ground state Dyson orbitals will be calculated for EOM-IP/EA-CCSD calculations.
 Recommendation: : none    '''
@@ -3813,8 +3813,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If TRUE, calculates EOM-EA-CCSD excitation energies and properties using the diffuse orbital trick. A very diffuse orbital is added to the basis set, excitations from which correspond to electron attachment.
     '''
@@ -3838,8 +3838,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If TRUE, calculates EOM-IP-CCSD excitation energies and properties using the diffuse orbital trick. A very diffuse orbital is added to the basis set, excitations to which correspond to ionization. CC_IP and CC_IP_PROPER keywords are mutually exclusive. 
     '''
@@ -3863,8 +3863,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If TRUE, filters the EOM-IP-CCSD amplitudes obtained using the diffuse orbital implementation, to be used in conjunction with CC_IP keyword. Helps with convergence.
     '''
@@ -3888,8 +3888,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If TRUE, calculates proper EOM-IP-CCSD excitation energies and properties. This implementation does not use the diffuse orbital and is the recommended method of doing EOM-IP-CCSD calculations. CC_IP and CC_IP_PROPER keywords are mutually exclusive.
     '''
@@ -3913,8 +3913,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If CC_MP2NO_GUESS is TRUE, what kind of one-particle density matrix is used to make the guess orbitals? 
 Recommendation: : The two definitions give generally similar performance.    '''
@@ -3938,8 +3938,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Will guess orbitals be natural orbitals of the MP1 wavefunction? Alternatively, it is possible to use an effective one-particle density matrix to define the natural orbitals. 
     '''
@@ -3963,8 +3963,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: When TRUE, doubly-excited vectors are converged prior to a full excited states calculation. 
 Recommendation: : Occasionally necessary to ensure a doubly excited state is found.    '''
@@ -3988,8 +3988,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: When TRUE, singly-excited vectors are converged prior to a full excited states calculation. 
     '''
@@ -4013,8 +4013,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the non-relaxed (expectation value) one-particle CCSD properties will be calculated. The properties currently include permanent dipole moment, the second moments < X2>, < Y2>, and < Z2> of electron density, and the total < R2> = < X2> +< Y2> +< Z2> (in atomic units). Incompatible with JOBTYPE=FORCE, OPT, FREQ.
 Recommendation: : Additional equations need to be solved (lambda CCSD equations) for properties with the cost approximately the same as CCSD equations. Use default if you do not need properties. The cost of the properties calculation itself is low. The CCSD one-particle density can be analyzed with NBO package by specifying NBO=TRUE, CC_PROP=TRUE and JOBTYPE=FORCE.    '''
@@ -4038,8 +4038,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Allows an optimized orbital coupled cluster calculation to begin with an initial guess for the orbital transformation matrix U other than the unit vector. The scratch file from a previous run must be available for the U matrix to be read successfully. 
 Recommendation: : Useful for restarting a job that did not converge, if files were saved.    '''
@@ -4063,8 +4063,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Should an optimized orbital coupled cluster calculation begin with optimized orbitals from a previous calculation? When TRUE, molecular orbitals are initially orthogonalized, and CC_PRECONV_T2Z and CC_CANONIZE are set to TRUE while other guess options are set to FALSE.
     '''
@@ -4088,8 +4088,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: This keyword initializes calculation of non-iterative triples corrections (fT) and (dT) for EE or SF after the EOM-CCSD is done.
     '''
@@ -4113,8 +4113,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects whether do perform a standard excited state calculation, or a spin-flip calculation. Spin multiplicity should be set to 3 for systems with an even number of electrons, and 4 for systems with an odd number of electrons.
     '''
@@ -4138,8 +4138,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the use of symmetry in coupled-cluster calculations
 Recommendation: : It is automatically turned off for any finite difference calculations, e.g. second derivatives.    '''
@@ -4163,8 +4163,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If set to TRUE, adds amplitude response terms to one-particle and two-particle EOM-CCSD density matrices before calculation of properties. CC_EXSTATES_PROP must be set to TRUE.
 Recommendation: : The cost is always about the cost of an analytic gradient calculation for each state, independent of whether or not the two-particle properties are requested. Besides, adding amplitude response terms without orbital response will unlikely improve the quality of the properties. However, it can be used for debugging purposes.    '''
@@ -4188,8 +4188,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the non-relaxed (expectation value) one-particle EOM-CCSD target state properties will be calculated. The properties currently include permanent dipole moment, the second moments 2>, 2>, and 2> of electron density, and the total 2> = 2> +2> +2> (in atomic units). Incompatible with JOBTYPE=FORCE, OPT, FREQ.
 Recommendation: : Additional equations (EOM-CCSD equations for the left eigenvectors) need to be solved for properties, approximately doubling the cost of calculation for each irrep. Sometimes the equations for left and right eigenvectors converge to different sets of target states. In this case, the simultaneous iterations of left and right vectors will diverge, and the properties for several or all the target states may be incorrect! The problem can be solved by varying the number of requested states, specified with CC_NLOWSPIN and CC_NHIGHSPIN, or the number of guess vectors (CC_NGUESS_SINGLES). The cost of the one-particle properties calculation itself is low. The one-particle density of an EOM-CCSD target state can be analyzed with NBO package by specifying the state with CC_REFSYM and CC_STATE_DERIV and requesting NBO=TRUE and CC_EXSTATES_PROP=TRUE.    '''
@@ -4213,8 +4213,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If set to TRUE, adds both amplitude and orbital response terms to one- and two-particle EOM-CCSD density matrices before calculation of the properties. CC_EXSTATES_PROP must be set to TRUE. If both CC_EOM_AMPL_RESP=TRUE and CC_EOM_FULL_RESP=TRUE, the CC_EOM_AMPL_RESP=TRUE will be ignored.
 Recommendation: : The cost for the full response properties calculation is about the same as the cost of the analytic gradient for each state. Adding full response terms improves quality of calculated properties, but usually it is a small but expensive correction. Use it only if you really need accurate properties.    '''
@@ -4260,8 +4260,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the transition dipole moment (in atomic units) and oscillator strength for the EOM-CCSD target states will be calculated. By default, the transition dipole moment is calculated between the CCSD reference and the EOM-CCSD target states. In order to calculate transition dipole moment between a set of EOM-CCSD states and another EOM-CCSD state, the CC_REFSYM and CC_STATE_DERIV must be specified for this state.
 Recommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus lambda CCSD equations in case if transition properties between the CCSD reference and EOM-CCSD target states are requested) need to be solved for transition properties, approximately doubling the computational cost. The cost of the transition properties calculation itself is low.    '''
@@ -4351,8 +4351,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: If set to TRUE, adds both amplitude and orbital response terms to one- and two-particle CCSD density matrices before calculation of the properties. CC_PROP must be set to TRUE. If both CC_AMPL_RESP=TRUE and CC_FULL_RESP=TRUE, the CC_AMPL_RESP=TRUE will be ignored.
 Recommendation: : The cost for the full response properties calculation is about the same as the cost of the analytic gradient. Adding full response terms improves quality of calculated properties, but usually it is a small but expensive correction. Use it only if you really need accurate properties.    '''
@@ -4399,8 +4399,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: When TRUE, doubly-excited vectors are converged prior to a full excited states calculation. 
 Recommendation: : Occasionally necessary to ensure a doubly excited state is found.    '''
@@ -4444,8 +4444,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: When TRUE, singly-excited vectors are converged prior to a full excited states calculation. 
     '''
@@ -4469,8 +4469,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Checking this disables all solvent models.
     '''
@@ -4494,8 +4494,8 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. Exact
-	'0'............................. Mulliken
+    '1'............................. Exact
+    '0'............................. Mulliken
 
 Description: Determines how the solute charge distribution is approximated in evaluating the electrostatic field of the solute.  Either the exact solute charge distribution is used, or the charge distribution is approximated by Mulliken atomic charges. 
 Recommentation: Mulliken charges are faster, but less rigorous.
@@ -4542,8 +4542,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Do an RPA calculation in addition to a CIS calculation
     '''
@@ -4613,8 +4613,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether reduced single excitation space is used
     '''
@@ -4658,8 +4658,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects whether or not to print additional output.
     '''
@@ -4683,8 +4683,8 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. Localized Orbitals
-	'2'............................. User-defined
+    '1'............................. Localized Orbitals
+    '2'............................. User-defined
 
 Description: Controls how reduced subspace is specified
     '''
@@ -4708,8 +4708,8 @@ Type: STRING
 Default: false
 
 Options:
-	'false'......................... Maximum
-	'true'.......................... RMS
+    'false'......................... Maximum
+    'true'.......................... RMS
 
 Description: Changes the DIIS convergence metric from the maximum to the RMS error.
 Recommendation: : Use default, the maximum error provides a more reliable criterion.    '''
@@ -4733,8 +4733,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Specifies whether to perform Distributed Multipole Analysis.
     '''
@@ -4758,8 +4758,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls calculation of Raman intensities. Only relevant for a frequency calculation.
     '''
@@ -4849,8 +4849,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Specifies whether to do the perturbations all together.
     '''
@@ -4874,8 +4874,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Specifies whether to do the perturbations all together.
     '''
@@ -4899,10 +4899,10 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. Energies Only
-	'1'............................. Gradients Only
-	'2'............................. Hessians Only
-	'3 '............................ Enegies, Gradients and Hessians
+    '0'............................. Energies Only
+    '1'............................. Gradients Only
+    '2'............................. Hessians Only
+    '3 '............................ Enegies, Gradients and Hessians
 
 Description: Controls what types of gradient information are used to compute higher derivatives. The default uses a combination of energy, gradient and Hessian information, which makes the force field calculation faster. 
 Recommendation: : When the molecule is larger than benzene with small basis set, using only Hessian information may be faster. Note that this option will be set lower if analytic derivatives of the requested order are not available.     '''
@@ -4971,8 +4971,8 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. Efficient
-	'1'............................. Conservative
+    '0'............................. Efficient
+    '1'............................. Conservative
 
 Description: Algorithm used to optimize polarized atomic orbitals (see PAO_METHOD)
     '''
@@ -4996,8 +4996,8 @@ Type: STRING
 Default: EPAO 
 
 Options:
-	'EPAO '......................... EPAO 
-	'PAO'........................... PAO
+    'EPAO '......................... EPAO 
+    'PAO'........................... PAO
 
 Description: Controls evaluation of polarized atomic orbitals (PAOs).
     '''
@@ -5021,8 +5021,8 @@ Type: STRING
 Default: 115
 
 Options:
-	'115'........................... 1st & 2nd order
-	'15'............................ 1st order only
+    '115'........................... 1st & 2nd order
+    '15'............................ 1st order only
 
 Description: Controls algorithm and weights for EPAO calculations (see PAO_METHOD).
 Recommendation: : Use default, unless convergence failure is encountered.    '''
@@ -5068,8 +5068,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether or not the operator is evaluated on a large grid and stored in memory to speed up the calculation.
 Recommendation: : Use the default if possible.  Turning this option off conserves some memory, but causes a slow down in speed.    '''
@@ -5182,8 +5182,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the use of point-group symmetry in the optimization.
     '''
@@ -5207,9 +5207,9 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. Cartesian
-	'1'............................. Internal
-	'2'............................. Z-matrix
+    '0'............................. Cartesian
+    '1'............................. Internal
+    '2'............................. Z-matrix
 
 Description: Controls the type of optimization coordinates.
 Recommendation: : Use the default; delocalized internals are more efficient.    '''
@@ -5256,13 +5256,13 @@ Type: STRING
 Default: -1
 
 Options:
-	'-1'............................ Default
-	'0'............................. No Update
-	'1'............................. Murtagh-Sargent
-	'2'............................. Powell
-	'3'............................. Powell/Murtagh-Sargent
-	'4'............................. BFGS
-	'5'............................. BFGS w/ safeguards
+    '-1'............................ Default
+    '0'............................. No Update
+    '1'............................. Murtagh-Sargent
+    '2'............................. Powell
+    '3'............................. Powell/Murtagh-Sargent
+    '4'............................. BFGS
+    '5'............................. BFGS w/ safeguards
 
 Description: Controls the Hessian update algorithm.  The default dpends on the type of job.
     '''
@@ -5286,17 +5286,17 @@ Type: STRING
 Default: -1
 
 Options:
-	'-1'............................ Automatic
-	'1'............................. Off
-	'8'............................. 8
-	'9'............................. 9
-	'10'............................ 10
-	'11'............................ 11
-	'12'............................ 12
-	'13'............................ 13
-	'14'............................ 14
-	'15'............................ 15
-	'16'............................ 16
+    '-1'............................ Automatic
+    '1'............................. Off
+    '8'............................. 8
+    '9'............................. 9
+    '10'............................ 10
+    '11'............................ 11
+    '12'............................ 12
+    '13'............................ 13
+    '14'............................ 14
+    '15'............................ 15
+    '16'............................ 16
 
 Description: Controls the number of lowest-level boxes in one dimension for CFMM.
 Recommendation: : This is an expert option; either use the default, or use a value of 1 if CFMM is not desired.    '''
@@ -5320,10 +5320,10 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
-	'0'............................. ESP Only
-	'1'............................. ESP & EFIELD
-	'2'............................. EFIELD Only
+    'None'.......................... None
+    '0'............................. ESP Only
+    '1'............................. ESP & EFIELD
+    '2'............................. EFIELD Only
 
 Description: Triggers the calculation of the electrostatic potential and/or the electric field at the points given in the file ESPGrid. 
 Recommendation: : Must use this option when IGDESP is specified.    '''
@@ -5347,8 +5347,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Reduce memory required in the evaluation of W(u,v). 
 Recommendation: : The low memory option is slower, use default unless memory is limited.    '''
@@ -5372,8 +5372,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether intracule properties are calculated.  Setting this option causes the data in $intracule to be activated.
     '''
@@ -5397,37 +5397,37 @@ Type: STRING
 Default: 194
 
 Options:
-	'6'............................. 6
-	'18'............................ 18
-	'26'............................ 26
-	'38'............................ 38
-	'50'............................ 50
-	'74'............................ 74
-	'86'............................ 86
-	'110'........................... 110
-	'146'........................... 146
-	'170'........................... 170
-	'194'........................... 194
-	'230'........................... 230
-	'266'........................... 266
-	'302'........................... 302
-	'350'........................... 350
-	'434'........................... 434
-	'590'........................... 590
-	'770'........................... 770
-	'974'........................... 974
-	'1202'.......................... 1202
-	'1454'.......................... 1454
-	'1730'.......................... 1730
-	'2030'.......................... 2030
-	'2354'.......................... 2354
-	'2702'.......................... 2702
-	'3074'.......................... 3074
-	'3470'.......................... 3470
-	'3890'.......................... 3890
-	'4334'.......................... 4334
-	'4802'.......................... 4802
-	'5294'.......................... 5294
+    '6'............................. 6
+    '18'............................ 18
+    '26'............................ 26
+    '38'............................ 38
+    '50'............................ 50
+    '74'............................ 74
+    '86'............................ 86
+    '110'........................... 110
+    '146'........................... 146
+    '170'........................... 170
+    '194'........................... 194
+    '230'........................... 230
+    '266'........................... 266
+    '302'........................... 302
+    '350'........................... 350
+    '434'........................... 434
+    '590'........................... 590
+    '770'........................... 770
+    '974'........................... 974
+    '1202'.......................... 1202
+    '1454'.......................... 1454
+    '1730'.......................... 1730
+    '2030'.......................... 2030
+    '2354'.......................... 2354
+    '2702'.......................... 2702
+    '3074'.......................... 3074
+    '3470'.......................... 3470
+    '3890'.......................... 3890
+    '4334'.......................... 4334
+    '4802'.......................... 4802
+    '5294'.......................... 5294
 
 Description: Specify angular Lebedev grid for Wigner intracule calculations.
 Recommendation: : Larger grids if high accuracy required.    '''
@@ -5517,8 +5517,8 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. Series
-	'1'............................. Quadrature
+    '0'............................. Series
+    '1'............................. Quadrature
 
 Description: Use Lebedev quadrature to evaluate Wigner integrals.
     '''
@@ -5586,8 +5586,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Requests the calculation of multipole-derived charges (MDCs).
 Recommendation: : Set to TRUE if MDCs or the traceless form of the multipole moments are desired. The calculation does not take long.    '''
@@ -5611,8 +5611,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Requests a $molden-formatted input file containing information from a Q-Chem job.
     '''
@@ -5636,8 +5636,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Switches printing on within the MOM procedure.
     '''
@@ -5816,8 +5816,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the use of the NBO package.
     '''
@@ -5841,8 +5841,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the printing of QM charges to file.
 Recommendation: : Use default unless running calculations with $charmm where charges on the QM region need to be saved.    '''
@@ -5866,8 +5866,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the amount of output printed from a QM/MM job.
 Recommendation: : Use default unless running calculations with $charmm.    '''
@@ -5913,10 +5913,10 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
-	'-1'............................ User-defined
-	'0'............................. Nuclear positions
-	'1'............................. Read from file
+    'None'.......................... None
+    '-1'............................ User-defined
+    '0'............................. Nuclear positions
+    '1'............................. Read from file
 
 Description: Controls evaluation of the electrostatic potential on a grid of points. If enabled, the output is in an ACSII file, plot.esp, in the format x, y, z, esp for each point.
     '''
@@ -5940,9 +5940,9 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. None
-	'1'............................. Atomic
-	'2'............................. Shell
+    '0'............................. None
+    '1'............................. Atomic
+    '2'............................. Shell
 
 Description: 
     '''
@@ -5966,9 +5966,9 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. None
-	'1'............................. Occupied MOs
-	'2'............................. MOs and AOs
+    '0'............................. None
+    '1'............................. Occupied MOs
+    '2'............................. MOs and AOs
 
 Description: Determines the print level for the CORE_CHARACTER option.
 Recommendation: : Use default, unless you are uncertain about what the core character is.    '''
@@ -6012,8 +6012,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -6037,8 +6037,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Turns on the Q-Chem/CHARMM interface.
 Recommendation: : Use default unless running calculations with $charmm.    '''
@@ -6084,8 +6084,8 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. Mass-weighted
-	'2'............................. Z-matrix
+    '1'............................. Mass-weighted
+    '2'............................. Z-matrix
 
 Description: Determines which coordinate system to use in the IRC search.
 Recommendation: : Mass weighted coordinates are usually more effective.    '''
@@ -6109,8 +6109,8 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. Positive
-	'-1'............................ Negative
+    '1'............................. Positive
+    '-1'............................ Negative
 
 Description: Determines the direction of the eigen mode to follow. This will not usually be known prior to the Hessian diagonalization and thereforr both directions will have to be considered.
     '''
@@ -6157,8 +6157,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Switch to force the regeneration of a new initial guess for each series of SCF iterations (for use in geometry optimization).
 Recommendation: : Use default unless SCF convergence issues arise    '''
@@ -6294,40 +6294,40 @@ Type: STRING
 Default: SG-1
 
 Options:
-	'SG-0'.......................... SG-0
-	'SG-1'.......................... SG-1
+    'SG-0'.......................... SG-0
+    'SG-1'.......................... SG-1
 
-	'6'............................. 6
-	'18'............................ 18
-	'26'............................ 26
-	'38'............................ 38
-	'50'............................ 50
-	'74'............................ 74
-	'86'............................ 86
-	'110'........................... 110
-	'146'........................... 146
-	'170'........................... 170
-	'194'........................... 194
-	'230'........................... 230
-	'266'........................... 266
-	'302'........................... 302
-	'350'........................... 350
-	'434'........................... 434
-	'590'........................... 590
-	'770'........................... 770
-	'974'........................... 974
-	'1202'.......................... 1202
-	'1454'.......................... 1454
-	'1730'.......................... 1730
-	'2030'.......................... 2030
-	'2354'.......................... 2354
-	'2702'.......................... 2702
-	'3074'.......................... 3074
-	'3470'.......................... 3470
-	'3890'.......................... 3890
-	'4334'.......................... 4334
-	'4802'.......................... 4802
-	'5294'.......................... 5294
+    '6'............................. 6
+    '18'............................ 18
+    '26'............................ 26
+    '38'............................ 38
+    '50'............................ 50
+    '74'............................ 74
+    '86'............................ 86
+    '110'........................... 110
+    '146'........................... 146
+    '170'........................... 170
+    '194'........................... 194
+    '230'........................... 230
+    '266'........................... 266
+    '302'........................... 302
+    '350'........................... 350
+    '434'........................... 434
+    '590'........................... 590
+    '770'........................... 770
+    '974'........................... 974
+    '1202'.......................... 1202
+    '1454'.......................... 1454
+    '1730'.......................... 1730
+    '2030'.......................... 2030
+    '2354'.......................... 2354
+    '2702'.......................... 2702
+    '3074'.......................... 3074
+    '3470'.......................... 3470
+    '3890'.......................... 3890
+    '4334'.......................... 4334
+    '4802'.......................... 4802
+    '5294'.......................... 5294
 
 Description: Specifies the quadrature grid to be used for evaluating the exchange-correlation component of the energy.  Either a standard grid should be selected, or a Lebedev grid with the corresponding number of points.
 
@@ -6374,8 +6374,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Specifies if non-default masses are to be used in the frequency calculation.  If this option is selected the $isotopes section is read.
     '''
@@ -6444,8 +6444,8 @@ Type: STRING
 Default: BOMD
 
 Options:
-	'BOMD'.......................... BOMD
-	'Curvy'......................... Curvy
+    'BOMD'.......................... BOMD
+    'Curvy'......................... Curvy
 
 Description: Selects an ab initio molecular dynamics algorithm.
 Recommendation: : Born-oppenheimer MD (BOMD) yields exact classical molecular dynamics, provided that the energy is tolerably conserved. Curvy-steps extended Lagrangian MD (Curvy) is an approximation to exact classical dynamics whose validity should be tested for the properties of interest.     '''
@@ -6512,8 +6512,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the output of auxiliary information for third party packages.
 Recommendation: : Use default unless the additional information is required. Please note that any existing Test.FChk file will be overwritten.    '''
@@ -6537,8 +6537,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Request for calculation of non-relaxed two-particle EOM-CCSD target state properties.  The two-part properties currently include<>. The one-particle properties will also be calculated since the additional cost of these is small in comparison.  The vairable CC_EXSTATES_PROP must also be set.
 
@@ -6563,8 +6563,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Adds the $opt section for specifying constraints in the geometry optimization
     '''
@@ -6655,8 +6655,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Save last G[P]x when calculating dynamic polarizabilities in order to call mopropman in a second run with MOPROP = 102.
     '''
@@ -6680,7 +6680,7 @@ Type: STRING
 Default:  
 
 Options:
-	' '.............................  
+    ' '.............................  
 
 Description: Sets the lable for this section of the input file.
     '''
@@ -6704,182 +6704,182 @@ Type: STRING
 Default: water
 
 Options:
-	'111trichloroethane'............ 111trichloroethane
-	'112trichloroethane'............ 112trichloroethane
-	'11dichloroethane'.............. 11dichloroethane
-	'124trimethylbenzene'........... 124trimethylbenzene
-	'14dioxane'..................... 14dioxane
-	'1bromo2methylpropane'.......... 1bromo2methylpropane
-	'1bromopentane'................. 1bromopentane
-	'1bromopropane'................. 1bromopropane
-	'1butanol'...................... 1butanol
-	'1chloropentane'................ 1chloropentane
-	'1chloropropane'................ 1chloropropane
-	'1decanol'...................... 1decanol
-	'1fluorooctane'................. 1fluorooctane
-	'1heptanol'..................... 1heptanol
-	'1hexanol'...................... 1hexanol
-	'1hexene'....................... 1hexene
-	'1hexyne'....................... 1hexyne
-	'1iodobutane'................... 1iodobutane
-	'1iodopentene'.................. 1iodopentene
-	'1iodopropane'.................. 1iodopropane
-	'1nitropropane'................. 1nitropropane
-	'1nonanol'...................... 1nonanol
-	'1octanol'...................... 1octanol
-	'1pentanol'..................... 1pentanol
-	'1pentene'...................... 1pentene
-	'1pentyne'...................... 1pentyne
-	'1propanol'..................... 1propanol
-	'222trifluoroethanol'........... 222trifluoroethanol
-	'224trimethylpentane'........... 224trimethylpentane
-	'24dimethylpentane'............. 24dimethylpentane
-	'24dimethylpyridine'............ 24dimethylpyridine
-	'26dimethylpyridine'............ 26dimethylpyridine
-	'2bromopropane'................. 2bromopropane
-	'2chlorobutane'................. 2chlorobutane
-	'2heptanone'.................... 2heptanone
-	'2hexanone'..................... 2hexanone
-	'2methylpentane'................ 2methylpentane
-	'2methylpyridine'............... 2methylpyridine
-	'2nitropropane'................. 2nitropropane
-	'2octanone'..................... 2octanone
-	'2pentanone'.................... 2pentanone
-	'2propanol'..................... 2propanol
-	'2propen1ol'.................... 2propen1ol
-	'3methylpyridine'............... 3methylpyridine
-	'3pentanone'.................... 3pentanone
-	'4heptanone'.................... 4heptanone
-	'4methyl2pentanone'............. 4methyl2pentanone
-	'4methylpyridine'............... 4methylpyridine
-	'5nonanone'..................... 5nonanone
-	'aceticacid'.................... aceticacid
-	'acetone'....................... acetone
-	'acetonitrile'.................. acetonitrile
-	'aniline'....................... aniline
-	'anisole'....................... anisole
-	'benzaldehyde'.................. benzaldehyde
-	'benzene'....................... benzene
-	'benzonitrile'.................. benzonitrile
-	'benzylalcohol'................. benzylalcohol
-	'bromobenzene'.................. bromobenzene
-	'bromoethane'................... bromoethane
-	'bromooctane'................... bromooctane
-	'butanal'....................... butanal
-	'butanoicacid'.................. butanoicacid
-	'butanone'...................... butanone
-	'butanonitrile'................. butanonitrile
-	'butylethanoate'................ butylethanoate
-	'butylamine'.................... butylamine
-	'butylbenzene'.................. butylbenzene
-	'carbondisulfide'............... carbondisulfide
-	'carbontet'..................... carbontet
-	'chlorobenzene'................. chlorobenzene
-	'chlorotoluene'................. chlorotoluene
-	'cis12dimethylcyclohexane'...... cis12dimethylcyclohexane
-	'decalin'....................... decalin
-	'cyclohexane'................... cyclohexane
-	'cyclohexanone'................. cyclohexanone
-	'cyclopentane'.................. cyclopentane
-	'cyclopentanol'................. cyclopentanol
-	'cyclopentanone'................ cyclopentanone
-	'decane'........................ decane
-	'dibromomethane'................ dibromomethane
-	'dibutylether'.................. dibutylether
-	'dichloromethane'............... dichloromethane
-	'diethylether'.................. diethylether
-	'diethylsulfide'................ diethylsulfide
-	'diethylamine'.................. diethylamine
-	'diiodomethane'................. diiodomethane
-	'dimethyldisulfide'............. dimethyldisulfide
-	'dimethylacetamide'............. dimethylacetamide
-	'dimethylformamide'............. dimethylformamide
-	'dimethylpyridine'.............. dimethylpyridine
-	'dmso'.......................... dmso
-	'dipropylamine'................. dipropylamine
-	'dodecane'...................... dodecane
-	'E12dichloroethene'............. E12dichloroethene
-	'E2pentene'..................... E2pentene
-	'ethanethiol'................... ethanethiol
-	'ethanol'....................... ethanol
-	'ethylethanoate'................ ethylethanoate
-	'ethylmethanoate'............... ethylmethanoate
-	'ethylphenylether'.............. ethylphenylether
-	'ethylbenzene'.................. ethylbenzene
-	'ethyleneglycol'................ ethyleneglycol
-	'fluorobenzene'................. fluorobenzene
-	'formamide'..................... formamide
-	'formicacid'.................... formicacid
-	'hexadecyliodide'............... hexadecyliodide
-	'hexanoic'...................... hexanoic
-	'iodobenzene'................... iodobenzene
-	'iodoethane'.................... iodoethane
-	'iodomethane'................... iodomethane
-	'isobutanol'.................... isobutanol
-	'isopropylether'................ isopropylether
-	'isopropylbenzene'.............. isopropylbenzene
-	'isopropyltoluene'.............. isopropyltoluene
-	'mcresol'....................... mcresol
-	'mesitylene'.................... mesitylene
-	'methanol'...................... methanol
-	'methylbenzoate'................ methylbenzoate
-	'methylethanoate'............... methylethanoate
-	'methylmethanoate'.............. methylmethanoate
-	'methylphenylketone'............ methylphenylketone
-	'methylpropanoate'.............. methylpropanoate
-	'methylbutanoate'............... methylbutanoate
-	'methylcyclohexane'............. methylcyclohexane
-	'methylformamide'............... methylformamide
-	'methylformamide'............... methylformamide
-	'heptane'....................... heptane
-	'hexadecane'.................... hexadecane
-	'hexane'........................ hexane
-	'nitrobenzene'.................. nitrobenzene
-	'nitroethane'................... nitroethane
-	'nitromethane'.................. nitromethane
-	'methylaniline'................. methylaniline
-	'nonane'........................ nonane
-	'octane'........................ octane
-	'pentane'....................... pentane
-	'ochlorotoluene'................ ochlorotoluene
-	'ocresol'....................... ocresol
-	'odichlorobenzene'.............. odichlorobenzene
-	'onitrotoluene'................. onitrotoluene
-	'oxylene'....................... oxylene
-	'pentadecane'................... pentadecane
-	'pentanal'...................... pentanal
-	'pentanoicacid'................. pentanoicacid
-	'pentylethanoate'............... pentylethanoate
-	'pentylamine'................... pentylamine
-	'perfluorobenzene'.............. perfluorobenzene
-	'phenyletherphenylether'........ phenyletherphenylether
-	'propanal'...................... propanal
-	'propanoicacid'................. propanoicacid
-	'propanonitrile'................ propanonitrile
-	'propylethanoate'............... propylethanoate
-	'propylamine'................... propylamine
-	'pxylene'....................... pxylene
-	'pyridine'...................... pyridine
-	'pyrrolidine'................... pyrrolidine
-	'secbutanol'.................... secbutanol
-	'tbutanol'...................... tbutanol
-	'tbutylbenzene'................. tbutylbenzene
-	'tetrachloroethene'............. tetrachloroethene
-	'thf'........................... thf
-	'tetrahyrothiophenedioxide'..... tetrahyrothiophenedioxide
-	'tetralin'...................... tetralin
-	'thiophene'..................... thiophene
-	'thiophenol'.................... thiophenol
-	'toluene'....................... toluene
-	'transdecalin'.................. transdecalin
-	'tribromomethane'............... tribromomethane
-	'tributylphosphate'............. tributylphosphate
-	'trichloroethene'............... trichloroethene
-	'trichloromethane'.............. trichloromethane
-	'triethylamine'................. triethylamine
-	'undecane'...................... undecane
-	'water'......................... water
-	'Z12dichloroethene'............. Z12dichloroethene
+    '111trichloroethane'............ 111trichloroethane
+    '112trichloroethane'............ 112trichloroethane
+    '11dichloroethane'.............. 11dichloroethane
+    '124trimethylbenzene'........... 124trimethylbenzene
+    '14dioxane'..................... 14dioxane
+    '1bromo2methylpropane'.......... 1bromo2methylpropane
+    '1bromopentane'................. 1bromopentane
+    '1bromopropane'................. 1bromopropane
+    '1butanol'...................... 1butanol
+    '1chloropentane'................ 1chloropentane
+    '1chloropropane'................ 1chloropropane
+    '1decanol'...................... 1decanol
+    '1fluorooctane'................. 1fluorooctane
+    '1heptanol'..................... 1heptanol
+    '1hexanol'...................... 1hexanol
+    '1hexene'....................... 1hexene
+    '1hexyne'....................... 1hexyne
+    '1iodobutane'................... 1iodobutane
+    '1iodopentene'.................. 1iodopentene
+    '1iodopropane'.................. 1iodopropane
+    '1nitropropane'................. 1nitropropane
+    '1nonanol'...................... 1nonanol
+    '1octanol'...................... 1octanol
+    '1pentanol'..................... 1pentanol
+    '1pentene'...................... 1pentene
+    '1pentyne'...................... 1pentyne
+    '1propanol'..................... 1propanol
+    '222trifluoroethanol'........... 222trifluoroethanol
+    '224trimethylpentane'........... 224trimethylpentane
+    '24dimethylpentane'............. 24dimethylpentane
+    '24dimethylpyridine'............ 24dimethylpyridine
+    '26dimethylpyridine'............ 26dimethylpyridine
+    '2bromopropane'................. 2bromopropane
+    '2chlorobutane'................. 2chlorobutane
+    '2heptanone'.................... 2heptanone
+    '2hexanone'..................... 2hexanone
+    '2methylpentane'................ 2methylpentane
+    '2methylpyridine'............... 2methylpyridine
+    '2nitropropane'................. 2nitropropane
+    '2octanone'..................... 2octanone
+    '2pentanone'.................... 2pentanone
+    '2propanol'..................... 2propanol
+    '2propen1ol'.................... 2propen1ol
+    '3methylpyridine'............... 3methylpyridine
+    '3pentanone'.................... 3pentanone
+    '4heptanone'.................... 4heptanone
+    '4methyl2pentanone'............. 4methyl2pentanone
+    '4methylpyridine'............... 4methylpyridine
+    '5nonanone'..................... 5nonanone
+    'aceticacid'.................... aceticacid
+    'acetone'....................... acetone
+    'acetonitrile'.................. acetonitrile
+    'aniline'....................... aniline
+    'anisole'....................... anisole
+    'benzaldehyde'.................. benzaldehyde
+    'benzene'....................... benzene
+    'benzonitrile'.................. benzonitrile
+    'benzylalcohol'................. benzylalcohol
+    'bromobenzene'.................. bromobenzene
+    'bromoethane'................... bromoethane
+    'bromooctane'................... bromooctane
+    'butanal'....................... butanal
+    'butanoicacid'.................. butanoicacid
+    'butanone'...................... butanone
+    'butanonitrile'................. butanonitrile
+    'butylethanoate'................ butylethanoate
+    'butylamine'.................... butylamine
+    'butylbenzene'.................. butylbenzene
+    'carbondisulfide'............... carbondisulfide
+    'carbontet'..................... carbontet
+    'chlorobenzene'................. chlorobenzene
+    'chlorotoluene'................. chlorotoluene
+    'cis12dimethylcyclohexane'...... cis12dimethylcyclohexane
+    'decalin'....................... decalin
+    'cyclohexane'................... cyclohexane
+    'cyclohexanone'................. cyclohexanone
+    'cyclopentane'.................. cyclopentane
+    'cyclopentanol'................. cyclopentanol
+    'cyclopentanone'................ cyclopentanone
+    'decane'........................ decane
+    'dibromomethane'................ dibromomethane
+    'dibutylether'.................. dibutylether
+    'dichloromethane'............... dichloromethane
+    'diethylether'.................. diethylether
+    'diethylsulfide'................ diethylsulfide
+    'diethylamine'.................. diethylamine
+    'diiodomethane'................. diiodomethane
+    'dimethyldisulfide'............. dimethyldisulfide
+    'dimethylacetamide'............. dimethylacetamide
+    'dimethylformamide'............. dimethylformamide
+    'dimethylpyridine'.............. dimethylpyridine
+    'dmso'.......................... dmso
+    'dipropylamine'................. dipropylamine
+    'dodecane'...................... dodecane
+    'E12dichloroethene'............. E12dichloroethene
+    'E2pentene'..................... E2pentene
+    'ethanethiol'................... ethanethiol
+    'ethanol'....................... ethanol
+    'ethylethanoate'................ ethylethanoate
+    'ethylmethanoate'............... ethylmethanoate
+    'ethylphenylether'.............. ethylphenylether
+    'ethylbenzene'.................. ethylbenzene
+    'ethyleneglycol'................ ethyleneglycol
+    'fluorobenzene'................. fluorobenzene
+    'formamide'..................... formamide
+    'formicacid'.................... formicacid
+    'hexadecyliodide'............... hexadecyliodide
+    'hexanoic'...................... hexanoic
+    'iodobenzene'................... iodobenzene
+    'iodoethane'.................... iodoethane
+    'iodomethane'................... iodomethane
+    'isobutanol'.................... isobutanol
+    'isopropylether'................ isopropylether
+    'isopropylbenzene'.............. isopropylbenzene
+    'isopropyltoluene'.............. isopropyltoluene
+    'mcresol'....................... mcresol
+    'mesitylene'.................... mesitylene
+    'methanol'...................... methanol
+    'methylbenzoate'................ methylbenzoate
+    'methylethanoate'............... methylethanoate
+    'methylmethanoate'.............. methylmethanoate
+    'methylphenylketone'............ methylphenylketone
+    'methylpropanoate'.............. methylpropanoate
+    'methylbutanoate'............... methylbutanoate
+    'methylcyclohexane'............. methylcyclohexane
+    'methylformamide'............... methylformamide
+    'methylformamide'............... methylformamide
+    'heptane'....................... heptane
+    'hexadecane'.................... hexadecane
+    'hexane'........................ hexane
+    'nitrobenzene'.................. nitrobenzene
+    'nitroethane'................... nitroethane
+    'nitromethane'.................. nitromethane
+    'methylaniline'................. methylaniline
+    'nonane'........................ nonane
+    'octane'........................ octane
+    'pentane'....................... pentane
+    'ochlorotoluene'................ ochlorotoluene
+    'ocresol'....................... ocresol
+    'odichlorobenzene'.............. odichlorobenzene
+    'onitrotoluene'................. onitrotoluene
+    'oxylene'....................... oxylene
+    'pentadecane'................... pentadecane
+    'pentanal'...................... pentanal
+    'pentanoicacid'................. pentanoicacid
+    'pentylethanoate'............... pentylethanoate
+    'pentylamine'................... pentylamine
+    'perfluorobenzene'.............. perfluorobenzene
+    'phenyletherphenylether'........ phenyletherphenylether
+    'propanal'...................... propanal
+    'propanoicacid'................. propanoicacid
+    'propanonitrile'................ propanonitrile
+    'propylethanoate'............... propylethanoate
+    'propylamine'................... propylamine
+    'pxylene'....................... pxylene
+    'pyridine'...................... pyridine
+    'pyrrolidine'................... pyrrolidine
+    'secbutanol'.................... secbutanol
+    'tbutanol'...................... tbutanol
+    'tbutylbenzene'................. tbutylbenzene
+    'tetrachloroethene'............. tetrachloroethene
+    'thf'........................... thf
+    'tetrahyrothiophenedioxide'..... tetrahyrothiophenedioxide
+    'tetralin'...................... tetralin
+    'thiophene'..................... thiophene
+    'thiophenol'.................... thiophenol
+    'toluene'....................... toluene
+    'transdecalin'.................. transdecalin
+    'tribromomethane'............... tribromomethane
+    'tributylphosphate'............. tributylphosphate
+    'trichloroethene'............... trichloroethene
+    'trichloromethane'.............. trichloromethane
+    'triethylamine'................. triethylamine
+    'undecane'...................... undecane
+    'water'......................... water
+    'Z12dichloroethene'............. Z12dichloroethene
 
 Description: Specifies which solvent to use in the SM8 model.
     '''
@@ -6903,8 +6903,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Sets whether or not to use the SM8 solvation model.
     '''
@@ -6928,8 +6928,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether to perform a link-atom projection, which is necessary in a full QM/MM hessian evaluation on a system with link atoms.
     '''
@@ -6953,8 +6953,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -6978,8 +6978,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Enables the use of Gaussian-delocalized external charges in a QM/MM calculation.  If set to FALSE, then regular point charges are used.
     '''
@@ -7003,8 +7003,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects whether or not to project out the rotational and translational degrees of freedom in a frequency calculation.
     '''
@@ -7028,8 +7028,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Allows the molecule to reorient during a geometry optimization.  Turn this option off if using external charges.
     '''
@@ -7053,8 +7053,8 @@ Type: STRING
 Default: qchem_s.exe
 
 Options:
-	'qcprog.exe'.................... qcprog.exe
-	'qchem_s.exe'................... qchem_s.exe
+    'qcprog.exe'.................... qcprog.exe
+    'qchem_s.exe'................... qchem_s.exe
 
 Description: 
     '''
@@ -7078,8 +7078,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Determines which file is passed as an argument to Avogadro.  If true, then the .out file is passed, if false the .Fchk file is passed.
     '''
@@ -7103,7 +7103,7 @@ Type: STRING
 Default: /Windows/System32
 
 Options:
-	'/Windows/System32'............. /Windows/System32
+    '/Windows/System32'............. /Windows/System32
 
 Description: Sets the directory for tskill or taskkill
     '''
@@ -7127,8 +7127,8 @@ Type: STRING
 Default: tskill qchem_s
 
 Options:
-	'tskill qchem_s'................ tskill qchem_s
-	'taskkill /IM qchem_s.exe /F'... taskkill /IM qchem_s.exe /F
+    'tskill qchem_s'................ tskill qchem_s
+    'taskkill /IM qchem_s.exe /F'... taskkill /IM qchem_s.exe /F
 
 Description: The command required to kill qchem jobs, only used on Windows
     '''
@@ -7174,11 +7174,11 @@ Type: STRING
 Default: New option
 
 Options:
-	'0'............................. 0
-	'New option'.................... New option
-	'1'............................. 1
-	'1'............................. 1
-	'1'............................. 1
+    '0'............................. 0
+    'New option'.................... New option
+    '1'............................. 1
+    '1'............................. 1
+    '1'............................. 1
 
 Description: 
     '''
@@ -7315,8 +7315,8 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether to include the correlation contribution from frozen core orbitals in non iterative (2) corrections, such as OD(2) and CCSD(2).
 Recommendation: : Use default unless no core-valence or core correlation is desired (e.g., for comparison with other methods or because the basis used cannot describe core correlation).    '''
@@ -7340,8 +7340,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the non-relaxed (expectation value) one-particle CCSD properties will be calculated. The properties currently include permanent dipole moment, the second moments , , and  of electron density, and the total 2> = 2> +2> +2> (in atomic units). Incompatible with JOBTYPE=FORCE, OPT, FREQ.
 Recommendation: : Additional equations need to be solved (lambda CCSD equations) for properties with the cost approximately the same as CCSD equations. Use default if you do not need properties. The cost of the properties calculation itself is low. The CCSD one-particle density can be analyzed with NBO package by specifying NBO=TRUE, CC_PROP=TRUE and JOBTYPE=FORCE.    '''
@@ -7385,8 +7385,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -7432,8 +7432,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Request for calculation of non-relaxed two-particle CCSD properties. The two-particle properties currently include . The one-particle properties also will be calculated, since the additional cost of the one-particle properties calculation is
 inferior compared to the cost of . The variable CC_REF_PROP must be also set to TRUE.
@@ -7458,14 +7458,14 @@ Type: STRING
 Default: CIS
 
 Options:
-	'CIS'........................... CIS
-	'CIS(D)'........................ CIS(D)
-	'SDT'........................... SDT
-	'DT'............................ DT
-	'SD'............................ SD
-	'SD(dT)'........................ SD(dT)
-	'SD(fT)'........................ SD(fT)
-	'SD(sT)'........................ SD(sT)
+    'CIS'........................... CIS
+    'CIS(D)'........................ CIS(D)
+    'SDT'........................... SDT
+    'DT'............................ DT
+    'SD'............................ SD
+    'SD(dT)'........................ SD(dT)
+    'SD(fT)'........................ SD(fT)
+    'SD(sT)'........................ SD(sT)
 
 Description: Specifies the correlation level
     '''
@@ -7581,8 +7581,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the transition dipole moment (in atomic units) and oscillator strength for the EOM-CCSD target states will be calculated. By default, the transition dipole moment is calculated between the CCSD reference and the EOM-CCSD target states. In order to calculate transition dipole moment between a set of EOM-CCSD states and another EOM-CCSD state, the CC_REFSYM and CC_STATE_DERIV must be specified for this state.
 Recommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus lambda CCSD equations in case if transition properties between the CCSD reference and EOM-CCSD target states are requested) need to be solved for transition properties, approximately doubling the computational cost. The cost of the transition properties calculation itself is low.    '''
@@ -7606,8 +7606,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the non-relaxed (expectation value) one-particle EOM-CCSD target state properties will be calculated. The properties currently include permanent dipole moment, the second moments 2>, 2>, and 2> of electron density, and the total 2> = 2> +2> +2> (in atomic units). Incompatible with JOBTYPE=FORCE, OPT, FREQ.
 Recommendation: : Additional equations (EOM-CCSD equations for the left eigenvectors) need to be solved for properties, approximately doubling the cost of calculation for each irrep. Sometimes the equations for left and right eigenvectors converge to different sets of target states. In this case, the simultaneous iterations of left and right vectors will diverge, and the properties for several or all the target states may be incorrect! The problem can be solved by varying the number of requested states, specified with CC_NLOWSPIN and CC_NHIGHSPIN, or the number of guess vectors (CC_NGUESS_SINGLES). The cost of the one-particle properties calculation itself is low. The one-particle density of an EOM-CCSD target state can be analyzed with NBO package by specifying the state with CC_REFSYM and CC_STATE_DERIV and requesting NBO=TRUE and CC_EXSTATES_PROP=TRUE.    '''
@@ -7631,11 +7631,11 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
-Description: Request for calculation of non-relaxed two-particle EOM-CC properties. The two-particle properties currently include <S^2>. The one-particle properties also will be calculated, since the additional cost of the one-particle properties calculation
-is inferior compared to the cost of <S^2>. The variable CC_EOM_PROP must be also set to TRUE. Alternatively, CC_CALC_SSQ can be used to request <S^2> calculation.
+Description: Request for calculation of non-relaxed two-particle EOM-CC properties. The two-particle properties currently include . The one-particle properties also will be calculated, since the additional cost of the one-particle properties calculation
+is inferior compared to the cost of . The variable CC_EOM_PROP must be also set to TRUE. Alternatively, CC_CALC_SSQ can be used to request  calculation.
     '''
         if value == "":
             if "CC_EOM_PROP_TE" in self.dict_of_keywords:
@@ -7657,8 +7657,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Fully relaxed properties (including orbital relaxation terms) will be computed. The variable CC EOM PROP must be also set to TRUE.
 Recommendation: : Not available for non-UHF/RHF references. Only available for EOM/CI methods for which analytic gradients are available.    '''
@@ -7682,7 +7682,7 @@ Type: STRING
 Default: 00105
 
 Options:
-	'00105'......................... 00105
+    '00105'......................... 00105
 
 Description: Species threshold for including a new expansion vector in the iterative Davidson diagonalization. Their norm must be above this threshold.
 abcde Integer code is mapped to abc x 10^-de
@@ -7735,7 +7735,7 @@ Type: STRING
 Default: 2502
 
 Options:
-	'2502'.......................... 2502
+    '2502'.......................... 2502
 
 Description: Specifies the minimum allowed values for the coupled-cluster energy denominators.  Smaller values are replaced by this constant during the early iterations only, so the final results are unaffected, but initial convergence is improved when the guess is poor.OPTIONS: abcde Integer code is mapped to abc x 10^-de
 RECOMMENDATION:
@@ -7783,8 +7783,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Whether or not the transition dipole moment (in atomic units) and oscillator strength for the EOM-CCSD target states will be calculated. By default, the transition dipole moment is calculated between the CCSD reference and the EOM-CCSD target states. In order to calculate transition dipole moment between a set of EOM-CCSD states and another EOM-CCSD state, the CC_STATE_TO_OPT must be specified for this state.
     '''
@@ -7831,8 +7831,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: The keyword should be present if excited state calculation is requested.
     '''
@@ -7856,8 +7856,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Set to true if there is no QM part to the calculation.
     '''
@@ -7881,8 +7881,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: True indicates the new format without a dummy atom in the $molecule section.  False indicates the old format which requires a dummy atom (e.g. He) in the $molecule section for an EFP-only calculation.
     '''
@@ -7906,8 +7906,8 @@ Type: STRING
 Default: false
 
 Options:
-	'false'......................... Default
-	'true'.......................... User-defined
+    'false'......................... Default
+    'true'.......................... User-defined
 
 Description: Controls the input of user-defined atomic radii for a ChemSol calculation.
     '''
@@ -7953,8 +7953,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -7978,8 +7978,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Use an apparent surface charge polarizable continuum solvent model.
     '''
@@ -8003,9 +8003,9 @@ Type: STRING
 Default: SCRF
 
 Options:
-	'SCRF'.......................... SCRF
-	'PCM'........................... PCM
-	'COSMO'......................... COSMO
+    'SCRF'.......................... SCRF
+    'PCM'........................... PCM
+    'COSMO'......................... COSMO
 
 Description: Sets the preferred solvent model.
     '''
@@ -8051,10 +8051,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Sets whether to perform the isodensity solvation procedure.
     '''
@@ -8098,9 +8098,9 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. No Guess
-	'1'............................. Read
-	'2'............................. Specify
+    '0'............................. No Guess
+    '1'............................. Read
+    '2'............................. Specify
 
 Description: Specifies how and if the solvation module will use a given guess for the charges and cavity points.
 Recommendation: : It is helpful to also set SCF_GUESS to READ when using a guess from a previous Q-Chem run.     '''
@@ -8146,10 +8146,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Specifies whether to run a gas phase computation prior to performing the solvation procedure.
 Recommendation: : Running the gas-phase calculation provides a good guess to start the solvation stage and provides a more complete set of solvated properties.    '''
@@ -8265,10 +8265,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: No integral decomposition
     '''
@@ -8292,12 +8292,12 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
 Recommendation: :
@@ -8322,10 +8322,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls print out of built in basis sets in input format
 Recommendation: : Useful for modification of standard basis sets.    '''
@@ -8347,9 +8347,14 @@ Recommendation: : Useful for modification of standard basis sets.    '''
 Name: PRINT_ORBITALS
 Type: INTEGER
 Default: 0
-Options: Range from 0 to 99
 
-Description: Prints orbitals coefficients with atom labels in the analysis part of the output. 0 for no output, 1 for all occupied orbitals plus 5 virtuals. N for all occupied plus N virtual orbitals.
+Options:
+    '0'............................. 0
+    '99'............................ 99
+    '0'............................. 0
+    '1'............................. 1
+
+Description: Prints orbitals coefficients with atom labels in the analysis part of the output
 Recommendation: : Usually not required as the orbitals are more easily examined visually via the formatted checkpoint file.    '''
         if value == "":
             if "PRINT_ORBITALS" in self.dict_of_keywords:
@@ -8371,14 +8376,14 @@ Type: STRING
 Default: DIIS
 
 Options:
-	'DIIS'.......................... DIIS
-	'DM'............................ DM
-	'GDM'........................... GDM
-	'RCA'........................... RCA
-	'ROOTHAAN'...................... ROOTHAAN
-	'DIIS_DM'....................... DIIS_DM
-	'DIIS_GDM'...................... DIIS_GDM
-	'RCA_DIIS'...................... RCA_DIIS
+    'DIIS'.......................... DIIS
+    'DM'............................ DM
+    'GDM'........................... GDM
+    'RCA'........................... RCA
+    'ROOTHAAN'...................... ROOTHAAN
+    'DIIS_DM'....................... DIIS_DM
+    'DIIS_GDM'...................... DIIS_GDM
+    'RCA_DIIS'...................... RCA_DIIS
 
 Description: Selects the algorithm to use for converging the SCF.
 Recommendation: : Use DIIS unless performing a restricted open-shell calculation, in which case GDM is recommended. If DIIS fails to find a reasonable approximate solution in the initial iterations, RCA_DIIS is the recommended fallback option. If DIIS approaches the correct solution but fails to finally converge, DIIS_GDM is the recommended fallback.     '''
@@ -8424,8 +8429,8 @@ Type: STRING
 Default: FOPPROJECTION
 
 Options:
-	'FOPPROJECTION'................. Fock Matrix
-	'OVPROJECTION'.................. MO Overlap
+    'FOPPROJECTION'................. Fock Matrix
+    'OVPROJECTION'.................. MO Overlap
 
 Description: Determines which method to use when projecting the density matrix for the basis set projection guess.
     '''
@@ -8471,12 +8476,12 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the optimization of DIIS error vectors in unrestricted caclulations.  When using DIIS in QChem a convenient optimization for unrestricted calculations is to sume the alpha and beta error vectors into a single vector which is used for extrapolation.  This is often extremely effective, but in some pathological systems with symmetry breaking, can lead to false solutions being detected, where the alpha and beta components of the error vector cancel exactly giving a zero DIIS error.  
 
@@ -8544,12 +8549,12 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls direct SCF, the default is determined by the program.
 Recommendation: : Use default; direct SCF switches off in-core integrals.    '''
@@ -8573,8 +8578,8 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. Machine precision
-	'2'............................. Integral Thresh
+    '1'............................. Machine precision
+    '2'............................. Integral Thresh
 
 Description: Sets the threshold criteria for discarding shell-pairs.
 Recommendation: : Use default.    '''
@@ -8598,10 +8603,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether or not Q-Chem determines the point group of the molecule and reorients the molecule to the standard orientation.
 Recommendation: : Use default unless you do not want the molecule to be reoriented. Note that symmetry usage is disabled for RIMP2 jobs.    '''
@@ -8625,10 +8630,10 @@ Type: LOGICAL
 Default: TRUE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the efficiency through the use of point group symmetry for calculating integrals.
 Recommendation: : Use default unless benchmarking. Note that symmetry usage is disabled for RIMP2, FFT and QM/MM jobs.    '''
@@ -8720,9 +8725,9 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. None
-	'1'............................. Post SCF
-	'2'............................. Full SCF
+    '0'............................. None
+    '1'............................. Post SCF
+    '2'............................. Full SCF
 
 Description: Basic vdW job control
     '''
@@ -8791,9 +8796,9 @@ Type: STRING
 Default: 1
 
 Options:
-	'0'............................. None
-	'1'............................. Minimal
-	'2'............................. Debug
+    '0'............................. None
+    '1'............................. Minimal
+    '2'............................. Debug
 
 Description: Controls the amount of output from the VDW code.
     '''
@@ -8817,10 +8822,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the application of long-range-corrected DFT
 
@@ -8868,8 +8873,8 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. C6 Term Only
-	'2'............................. Include C8 & C10
+    '1'............................. C6 Term Only
+    '2'............................. Include C8 & C10
 
 Description: Selects the damping function used in XDM
     '''
@@ -8893,10 +8898,10 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. None
-	'EMPIRICAL_GRIMME'.............. Grimme
-	'EMPIRICAL_GRIMME3'............. DFT-D3
-	'EMPIRICAL_CHG'................. Chai Head-Gordon
+    '0'............................. None
+    'EMPIRICAL_GRIMME'.............. Grimme
+    'EMPIRICAL_GRIMME3'............. DFT-D3
+    'EMPIRICAL_CHG'................. Chai Head-Gordon
 
 Description: Specifies what dispersion correction to use within a DFT calculation.
     '''
@@ -8989,11 +8994,11 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
-	'vdW-DF-04'..................... vdW-DF-04
-	'vdW-DF-10'..................... vdW-DF-10
-	'VV09'.......................... VV09
-	'VV10'.......................... VV10
+    'None'.......................... None
+    'vdW-DF-04'..................... vdW-DF-04
+    'vdW-DF-10'..................... vdW-DF-10
+    'VV09'.......................... VV09
+    'VV10'.......................... VV10
 
 Description: Speci?es a non-local correlation functional that includes non-empirical dispersion.
 
@@ -9018,14 +9023,14 @@ Type: STRING
 Default: 0
 
 Options:
-	'0'............................. SG-0
-	'1'............................. SG-1
-	'2'............................. El-cheeso
+    '0'............................. SG-0
+    '1'............................. SG-1
+    '2'............................. El-cheeso
 
-	'35,110'........................ 35,110
-	'50,194'........................ 50,194
-	'75,302'........................ 75,302
-	'99,590'........................ 99,590
+    '35,110'........................ 35,110
+    '50,194'........................ 50,194
+    '75,302'........................ 75,302
+    '99,590'........................ 99,590
 
 Description: Speci?es the grid to use for non-local correlation.
 
@@ -9122,8 +9127,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the use of multi-resolution XC.
 
@@ -9193,94 +9198,94 @@ Type: STRING
 Default: HF
 
 Options:
-	'HF'............................ HF
+    'HF'............................ HF
 
-	'Slater'........................ Slater
+    'Slater'........................ Slater
 
-	'B86'........................... B86
-	'B88'........................... B88
-	'B97-D'......................... B97-D
-	'GG99'.......................... GG99
-	'Gill'.......................... Gill96
-	'PBE'........................... PBE
-	'PW86'.......................... PW86
-	'PW91'.......................... PW91
-	'revPBE'........................ revPBE
-	'rPW86'......................... rPW86
+    'B86'........................... B86
+    'B88'........................... B88
+    'B97-D'......................... B97-D
+    'GG99'.......................... GG99
+    'Gill'.......................... Gill96
+    'PBE'........................... PBE
+    'PW86'.......................... PW86
+    'PW91'.......................... PW91
+    'revPBE'........................ revPBE
+    'rPW86'......................... rPW86
 
-	'BOP'........................... BOP
-	'EDF1'.......................... EDF1
-	'PBEOP'......................... PBEOP
-	'SOGGA'......................... SOGGA
-	'SOGGA11'....................... SOGGA11
+    'BOP'........................... BOP
+    'EDF1'.......................... EDF1
+    'PBEOP'......................... PBEOP
+    'SOGGA'......................... SOGGA
+    'SOGGA11'....................... SOGGA11
 
-	'B3LYP'......................... B3LYP
-	'B3LYP5'........................ B3LYP5
-	'B3P86'......................... B3P86
-	'B3PW91'........................ B3PW91
-	'B5050LYP'...................... B5050LYP
-	'B97'........................... B97
-	'B97-1'......................... B97-1
-	'B97-2'......................... B97-2
-	'BHHLYP'........................ BHHLYP
-	'BR89B94h'...................... BR89B94h
-	'EDF2'.......................... EDF2
-	'HCTH'.......................... HCTH
-	'HCTH-120'...................... HCTH-120
-	'HCTH-147'...................... HCTH-147
-	'HCTH-407'...................... HCTH-407
-	'mPW1B95'....................... mPW1B95
-	'mPW1LYP'....................... mPW1LYP
-	'mPW1PBE'....................... mPW1PBE
-	'mPW1PW91'...................... mPW1PW91
-	'mPWB1K'........................ mPWB1K
-	'PBE1PBE'....................... PBE0
-	'PBE50'......................... PBE50
-	'SOGGA11X'...................... SOGGA11X
-	'X3LYP'......................... X3LYP
+    'B3LYP'......................... B3LYP
+    'B3LYP5'........................ B3LYP5
+    'B3P86'......................... B3P86
+    'B3PW91'........................ B3PW91
+    'B5050LYP'...................... B5050LYP
+    'B97'........................... B97
+    'B97-1'......................... B97-1
+    'B97-2'......................... B97-2
+    'B97M-V'........................ B97M-V
+    'BHHLYP'........................ BHHLYP
+    'BR89B94h'...................... BR89B94h
+    'EDF2'.......................... EDF2
+    'HCTH'.......................... HCTH
+    'HCTH-120'...................... HCTH-120
+    'HCTH-147'...................... HCTH-147
+    'HCTH-407'...................... HCTH-407
+    'mPW1B95'....................... mPW1B95
+    'mPW1LYP'....................... mPW1LYP
+    'mPW1PBE'....................... mPW1PBE
+    'mPW1PW91'...................... mPW1PW91
+    'mPWB1K'........................ mPWB1K
+    'PBE1PBE'....................... PBE0
+    'PBE50'......................... PBE50
+    'SOGGA11X'...................... SOGGA11X
+    'X3LYP'......................... X3LYP
 
-	'CAM-B3LYP'..................... CAM-B3LYP
-	'LRC-wPBEPBE'................... LRC-wPBEPBE
-	'LRC-wPBEhPBE'.................. LRC-wPBEhPBE
-	'muB88'......................... muB88
-	'muPBE'......................... muPBE
-	'omegaB97'...................... omegaB97
-	'omegaB97X'..................... omegaB97X
-	'omegaB97X-D'................... omegaB97X-D
-	'omegaB97X-V'................... omegaB97X-V
-	'B97M-V'........................ B97M-V
-	'omegaB97X-2(LP)'............... omegaB97X-2(LP)
-	'omegaB97X-2(TQZ)'.............. omegaB97X-2(TQZ)
-	'wPBE'.......................... wPBE
+    'CAM-B3LYP'..................... CAM-B3LYP
+    'LRC-wPBEPBE'................... LRC-wPBEPBE
+    'LRC-wPBEhPBE'.................. LRC-wPBEhPBE
+    'muB88'......................... muB88
+    'muPBE'......................... muPBE
+    'omegaB97'...................... omegaB97
+    'omegaB97X'..................... omegaB97X
+    'omegaB97X-D'................... omegaB97X-D
+    'omegaB97X-V'................... omegaB97X-V
+    'omegaB97X-2(LP)'............... omegaB97X-2(LP)
+    'omegaB97X-2(TQZ)'.............. omegaB97X-2(TQZ)
+    'wPBE'.......................... wPBE
 
-	'B1B95'......................... B1B95
-	'BMK'........................... BMK
-	'BR89'.......................... BR89
-	'M05'........................... M05
-	'M052X'......................... M052X
-	'M06'........................... M06
-	'M06L'.......................... M06L
-	'M06HF'......................... M06HF
-	'M062X'......................... M062X
-	'M08HX'......................... M08HX
-	'M08SO'......................... M08SO
-	'M11'........................... M11
-	'M11L'.......................... M11L
-	'TPSS'.......................... TPSS
-	'TPSSH'......................... TPSSH
-	'VSXC'.......................... VSXC
+    'B1B95'......................... B1B95
+    'BMK'........................... BMK
+    'BR89'.......................... BR89
+    'M05'........................... M05
+    'M052X'......................... M052X
+    'M06'........................... M06
+    'M06L'.......................... M06L
+    'M06HF'......................... M06HF
+    'M062X'......................... M062X
+    'M08HX'......................... M08HX
+    'M08SO'......................... M08SO
+    'M11'........................... M11
+    'M11L'.......................... M11L
+    'TPSS'.......................... TPSS
+    'TPSSH'......................... TPSSH
+    'VSXC'.......................... VSXC
 
-	'B05'........................... B05
-	'B3tLAP'........................ B3tLAP
-	'BM05'.......................... BM05
-	'MCY2'.......................... MCY2
-	'PSTS'.......................... PSTS
+    'B05'........................... B05
+    'B3tLAP'........................ B3tLAP
+    'BM05'.......................... BM05
+    'MCY2'.......................... MCY2
+    'PSTS'.......................... PSTS
 
-	'LXYGJOS'....................... LXYGJOS
-	'XYG3'.......................... XYG3
-	'XYGJOS'........................ XYGJOS
+    'LXYGJOS'....................... LXYGJOS
+    'XYG3'.......................... XYG3
+    'XYGJOS'........................ XYGJOS
 
-	'gen'........................... User-defined
+    'gen'........................... User-defined
 
 Description: Specifies the exchange level of theory.
 Recommendation: : Consult the literature and reviews for guidence    '''
@@ -9304,26 +9309,26 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
+    'None'.......................... None
 
-	'STO-3G'........................ STO-3G
-	'STO-6G'........................ STO-6G
-	'3-21G'......................... 3-21G
-	'4-21G'......................... 4-21G
-	'6-31G'......................... 6-31G
-	'6-31G(d)'...................... 6-31G(d)
-	'cc-pVDZ'....................... cc-pVDZ
+    'STO-3G'........................ STO-3G
+    'STO-6G'........................ STO-6G
+    '3-21G'......................... 3-21G
+    '4-21G'......................... 4-21G
+    '6-31G'......................... 6-31G
+    '6-31G(d)'...................... 6-31G(d)
+    'cc-pVDZ'....................... cc-pVDZ
 
-	'r64G'.......................... r64G
-	'6-31G'......................... 6-31G
-	'6-31G*'........................ 6-31G*
-	'6-311G*'....................... 6-311G*
-	'6-311+G*'...................... 6-311+G*
-	'rcc-pVTZ'...................... rcc-pVTZ
-	'rcc-pVQZ'...................... rcc-pVQZ
-	'racc-pVDZ'..................... racc-pVDZ
-	'racc-pVTZ'..................... racc-pVTZ
-	'racc-pVQZ'..................... racc-pVQZ
+    'r64G'.......................... r64G
+    '6-31G'......................... 6-31G
+    '6-31G*'........................ 6-31G*
+    '6-311G*'....................... 6-311G*
+    '6-311+G*'...................... 6-311+G*
+    'rcc-pVTZ'...................... rcc-pVTZ
+    'rcc-pVQZ'...................... rcc-pVQZ
+    'racc-pVDZ'..................... racc-pVDZ
+    'racc-pVTZ'..................... racc-pVTZ
+    'racc-pVQZ'..................... racc-pVQZ
 
 Description: Selects either a small basis set to use in basis set projection for the initial guess, or a subset basis for dual basis set calculations.
     '''
@@ -9347,57 +9352,57 @@ Type: STRING
 Default: B3LYP
 
 Options:
-	'B3LYP'......................... B3LYP
-	'B3LYP5'........................ B3LYP5
-	'B3P86'......................... B3P86
-	'B3PW91'........................ B3PW91
-	'B5050LYP'...................... B5050LYP
-	'B97'........................... B97
-	'B98-1'......................... B98-1
-	'B97-2'......................... B97-2
-	'BHHLYP'........................ BHHLYP
-	'BR89B96h'...................... BR89B96h
-	'EFD2'.......................... EFD2
-	'HCTH'.......................... HCTH
-	'HCTH-120'...................... HCTH-120
-	'HCTH-147'...................... HCTH-147
-	'HCTH-407'...................... HCTH-407
-	'mPW1B95'....................... mPW1B95
-	'mPW1LYP'....................... mPW1LYP
-	'mPW1PBE'....................... mPW1PBE
-	'mPW1PW91'...................... mPW1PW91
-	'mPWB1K'........................ mPWB1K
-	'PBE0'.......................... PBE0
-	'SOGGA11X'...................... SOGGA11X
-	'X3LYP'......................... X3LYP
+    'B3LYP'......................... B3LYP
+    'B3LYP5'........................ B3LYP5
+    'B3P86'......................... B3P86
+    'B3PW91'........................ B3PW91
+    'B5050LYP'...................... B5050LYP
+    'B97'........................... B97
+    'B98-1'......................... B98-1
+    'B97-2'......................... B97-2
+    'BHHLYP'........................ BHHLYP
+    'BR89B96h'...................... BR89B96h
+    'EFD2'.......................... EFD2
+    'HCTH'.......................... HCTH
+    'HCTH-120'...................... HCTH-120
+    'HCTH-147'...................... HCTH-147
+    'HCTH-407'...................... HCTH-407
+    'mPW1B95'....................... mPW1B95
+    'mPW1LYP'....................... mPW1LYP
+    'mPW1PBE'....................... mPW1PBE
+    'mPW1PW91'...................... mPW1PW91
+    'mPWB1K'........................ mPWB1K
+    'PBE0'.......................... PBE0
+    'SOGGA11X'...................... SOGGA11X
+    'X3LYP'......................... X3LYP
 
-	'B1B95'......................... B1B95
-	'BMK'........................... BMK
-	'BR89'.......................... BR89
-	'M05'........................... M05
-	'M052X'......................... M052X
-	'M06'........................... M06
-	'M06L'.......................... M06L
-	'M06HF'......................... M06HF
-	'M062X'......................... M062X
-	'M08HX'......................... M08HX
-	'M08SO'......................... M08SO
-	'M11'........................... M11
-	'M11L'.......................... M11L
-	'TPSS'.......................... TPSS
-	'TPSSH'......................... TPSSH
+    'B1B95'......................... B1B95
+    'BMK'........................... BMK
+    'BR89'.......................... BR89
+    'M05'........................... M05
+    'M052X'......................... M052X
+    'M06'........................... M06
+    'M06L'.......................... M06L
+    'M06HF'......................... M06HF
+    'M062X'......................... M062X
+    'M08HX'......................... M08HX
+    'M08SO'......................... M08SO
+    'M11'........................... M11
+    'M11L'.......................... M11L
+    'TPSS'.......................... TPSS
+    'TPSSH'......................... TPSSH
 
-	'B05'........................... B05
-	'B3tLAP'........................ B3tLAP
-	'BM05'.......................... BM05
-	'MCY2'.......................... MCY2
-	'PSTS'.......................... PSTS
+    'B05'........................... B05
+    'B3tLAP'........................ B3tLAP
+    'BM05'.......................... BM05
+    'MCY2'.......................... MCY2
+    'PSTS'.......................... PSTS
 
-	'LXYGJOS'....................... LXYGJOS
-	'XYG3'.......................... XYG3
-	'XYGJOS'........................ XYGJOS
+    'LXYGJOS'....................... LXYGJOS
+    'XYG3'.......................... XYG3
+    'XYGJOS'........................ XYGJOS
 
-	'gen'........................... User-defined
+    'gen'........................... User-defined
 
 Description: Specifies the secondary functional in a density functional perturbation theory (DFPT) calculation.
 
@@ -9422,9 +9427,9 @@ Type: STRING
 Default: 1
 
 Options:
-	'1'............................. SG-1
-	'75,302'........................ 75,302
-	'99,590'........................ 99,590
+    '1'............................. SG-1
+    '75,302'........................ 75,302
+    '99,590'........................ 99,590
 
 Description: Specifies the secondary grid in a density functional perturbation theory (DFPT) calculation.
 
@@ -9449,8 +9454,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: This is set implicitly by setting HFPT_BASIS
     '''
@@ -9474,14 +9479,14 @@ Type: STRING
 Default: 1
 
 Options:
-	'0'............................. SG-0
-	'1'............................. SG-1
-	'2'............................. El-cheeso
+    '0'............................. SG-0
+    '1'............................. SG-1
+    '2'............................. El-cheeso
 
-	'35,110'........................ 35,110
-	'50,194'........................ 50,194
-	'75,302'........................ 75,302
-	'99,590'........................ 99,590
+    '35,110'........................ 35,110
+    '50,194'........................ 50,194
+    '75,302'........................ 75,302
+    '99,590'........................ 99,590
 
 Description: Specifies the quadrature grid to be used for evaluating the exchange-correlation component of the energy.  Either a standard grid should be selected, or a Lebedev grid with the corresponding number of points.
 
@@ -9506,15 +9511,15 @@ Type: STRING
 Default: None
 
 Options:
-	'None'.......................... None
-	'RIMP2-VDZ'..................... RIMP2-VDZ
-	'RIMP2-TZVPP'................... RIMP2-TZVPP
-	'RIMP2-cc-PVDZ'................. RIMP2-cc-PVDZ
-	'RIMP2-cc-PVTZ'................. RIMP2-cc-PVTZ
-	'RIMP2-cc-PVQZ'................. RIMP2-cc-PVQZ
-	'RIMP2-aug-cc-PVDZ'............. RIMP2-aug-cc-PVDZ
-	'RIMP2-aug-cc-PVTZ'............. RIMP2-aug-cc-PVTZ
-	'RIMP2-aug-cc-PVQZ'............. RIMP2-aug-cc-PVQZ
+    'None'.......................... None
+    'RIMP2-VDZ'..................... RIMP2-VDZ
+    'RIMP2-TZVPP'................... RIMP2-TZVPP
+    'RIMP2-cc-PVDZ'................. RIMP2-cc-PVDZ
+    'RIMP2-cc-PVTZ'................. RIMP2-cc-PVTZ
+    'RIMP2-cc-PVQZ'................. RIMP2-cc-PVQZ
+    'RIMP2-aug-cc-PVDZ'............. RIMP2-aug-cc-PVDZ
+    'RIMP2-aug-cc-PVTZ'............. RIMP2-aug-cc-PVTZ
+    'RIMP2-aug-cc-PVQZ'............. RIMP2-aug-cc-PVQZ
 
 Description: Specifies the auxiliary basis to be used in a RI-MP2 calculation
     '''
@@ -9538,67 +9543,67 @@ Type: STRING
 Default: 6-31G
 
 Options:
-	'STO-3G'........................ STO-3G
-	'STO-6G'........................ STO-6G
+    'STO-3G'........................ STO-3G
+    'STO-6G'........................ STO-6G
 
-	'3-21G'......................... 3-21G
-	'4-31G'......................... 4-31G
-	'6-31G'......................... 6-31G
-	'6-31G*'........................ 6-31G*
-	'6-31+G*'....................... 6-31+G*
-	'6-31G**'....................... 6-31G**
-	'6-31++G**'..................... 6-31++G**
-	'6-311G'........................ 6-311G
-	'6-311G*'....................... 6-311G*
-	'6-311+G*'...................... 6-311+G*
-	'6-311G**'...................... 6-311G**
-	'6-311++G**'.................... 6-311++G**
-	'6-311++G(3df,3pd)'............. 6-311++G(3df,3pd)
+    '3-21G'......................... 3-21G
+    '4-31G'......................... 4-31G
+    '6-31G'......................... 6-31G
+    '6-31G*'........................ 6-31G*
+    '6-31+G*'....................... 6-31+G*
+    '6-31G**'....................... 6-31G**
+    '6-31++G**'..................... 6-31++G**
+    '6-311G'........................ 6-311G
+    '6-311G*'....................... 6-311G*
+    '6-311+G*'...................... 6-311+G*
+    '6-311G**'...................... 6-311G**
+    '6-311++G**'.................... 6-311++G**
+    '6-311++G(3df,3pd)'............. 6-311++G(3df,3pd)
 
-	'pc-0'.......................... pc-0
-	'pc-1'.......................... pc-1
-	'pc-2'.......................... pc-2
-	'pc-3'.......................... pc-3
-	'pc-4'.......................... pc-4
-	'pcJ-0'......................... pcJ-0
-	'pcJ-1'......................... pcJ-1
-	'pcJ-2'......................... pcJ-2
-	'pcJ-3'......................... pcJ-3
-	'pcJ-4'......................... pcJ-4
-	'pcS-0'......................... pcS-0
-	'pcS-1'......................... pcS-1
-	'pcS-2'......................... pcS-2
-	'pcS-3'......................... pcS-3
-	'pcS-4'......................... pcS-4
+    'pc-0'.......................... pc-0
+    'pc-1'.......................... pc-1
+    'pc-2'.......................... pc-2
+    'pc-3'.......................... pc-3
+    'pc-4'.......................... pc-4
+    'pcJ-0'......................... pcJ-0
+    'pcJ-1'......................... pcJ-1
+    'pcJ-2'......................... pcJ-2
+    'pcJ-3'......................... pcJ-3
+    'pcJ-4'......................... pcJ-4
+    'pcS-0'......................... pcS-0
+    'pcS-1'......................... pcS-1
+    'pcS-2'......................... pcS-2
+    'pcS-3'......................... pcS-3
+    'pcS-4'......................... pcS-4
 
-	'cc-pVDZ'....................... cc-pVDZ
-	'cc-pVTZ'....................... cc-pVTZ
-	'cc-pVQZ'....................... cc-pVQZ
-	'cc-pcVDZ'...................... cc-pcVDZ
-	'cc-pcVTZ'...................... cc-pcVTZ
-	'cc-pcVQZ'...................... cc-pcVQZ
-	'aug-cc-pVDZ'................... aug-cc-pVDZ
-	'aug-cc-pVTZ'................... aug-cc-pVTZ
-	'aug-cc-pVQZ'................... aug-cc-pVQZ
-	'aug-cc-pcVDZ'.................. aug-cc-pcVDZ
-	'aug-cc-pcVTZ'.................. aug-cc-pcVTZ
-	'aug-cc-pcVQZ'.................. aug-cc-pcVQZ
+    'cc-pVDZ'....................... cc-pVDZ
+    'cc-pVTZ'....................... cc-pVTZ
+    'cc-pVQZ'....................... cc-pVQZ
+    'cc-pcVDZ'...................... cc-pcVDZ
+    'cc-pcVTZ'...................... cc-pcVTZ
+    'cc-pcVQZ'...................... cc-pcVQZ
+    'aug-cc-pVDZ'................... aug-cc-pVDZ
+    'aug-cc-pVTZ'................... aug-cc-pVTZ
+    'aug-cc-pVQZ'................... aug-cc-pVQZ
+    'aug-cc-pcVDZ'.................. aug-cc-pcVDZ
+    'aug-cc-pcVTZ'.................. aug-cc-pcVTZ
+    'aug-cc-pcVQZ'.................. aug-cc-pcVQZ
 
-	'G3Large'....................... G3Large
-	'G3MP2Large'.................... G3MP2Large
+    'G3Large'....................... G3Large
+    'G3MP2Large'.................... G3MP2Large
 
-	'CRENBL'........................ CRENBL
-	'CRENBS'........................ CRENBS
-	'HWMB'.......................... HWMB
-	'HWVDZ'......................... HWVDZ
-	'LACVP'......................... LACVP
-	'LANL2DZ'....................... LANL2DZ
-	'SBKJC'......................... SBKJC
-	'SRLC'.......................... SRLC
-	'SRSC'.......................... SRSC
+    'CRENBL'........................ CRENBL
+    'CRENBS'........................ CRENBS
+    'HWMB'.......................... HWMB
+    'HWVDZ'......................... HWVDZ
+    'LACVP'......................... LACVP
+    'LANL2DZ'....................... LANL2DZ
+    'SBKJC'......................... SBKJC
+    'SRLC'.......................... SRLC
+    'SRSC'.......................... SRSC
 
-	'gen'........................... User-defined
-	'Mixed'......................... Mixed
+    'gen'........................... User-defined
+    'Mixed'......................... Mixed
 
 Description: Specifies the basis sets to be used.
 Recommendation: : Consult literature and reviews to aid your selection.    '''
@@ -9622,8 +9627,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the calculation of CHELPG charges. 
 
@@ -9648,8 +9653,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls the calculation of excited-date (CIS or TDDFT) multipole moments.
     '''
@@ -9673,8 +9678,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Perform additional analysis of CIS and TDDFT excitation amplitudes, including generation of natural transition orbitals, excited-state multipole moments, and Mulliken analysis of the excited state densities and particle/hole density matrices.
     '''
@@ -9698,8 +9703,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects whether to perform a spin-?ip calculation.  Spin multiplicity should be set to 3 for systems with an even number of electrons, and 4 for systems with an odd number of electrons.
     '''
@@ -9723,8 +9728,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Do a SF-XCIS
     '''
@@ -9748,8 +9753,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls Mulliken and L?wdin population analyses for excited-state particle and hole density matrices. 
 
@@ -9774,17 +9779,17 @@ Type: STRING
 Default: SP
 
 Options:
-	'SP'............................ Energy
-	'Force'......................... Forces
-	'Optimization'.................. Geometry
-	'PES_Scan'...................... PES Scan
-	'RPath'......................... Reaction Path
-	'TS'............................ Transition State
-	'Frequency'..................... Frequencies
-	'NMR'........................... Chemical Shifts
-	'ISSC'.......................... Spin-Spin Couplings
-	'AIMD'.......................... Ab Initio MD
-	'SP'............................ Properties
+    'SP'............................ Energy
+    'Force'......................... Forces
+    'Optimization'.................. Geometry
+    'PES_Scan'...................... PES Scan
+    'RPath'......................... Reaction Path
+    'TS'............................ Transition State
+    'Frequency'..................... Frequencies
+    'NMR'........................... Chemical Shifts
+    'ISSC'.......................... Spin-Spin Couplings
+    'AIMD'.......................... Ab Initio MD
+    'SP'............................ Properties
 
 Description: Specifies the type of calculation to run. 
     '''
@@ -9808,25 +9813,25 @@ Type: STRING
 Default: 6-31++G**
 
 Options:
-	'6-31++G**'..................... 6-31++G**
-	'6-311+G*'...................... 6-311+G*
-	'6-311G**'...................... 6-311G**
-	'6-311++G**'.................... 6-311++G**
-	'6-311++G(3df,3pd)'............. 6-311++G(3df,3pd)
+    '6-31++G**'..................... 6-31++G**
+    '6-311+G*'...................... 6-311+G*
+    '6-311G**'...................... 6-311G**
+    '6-311++G**'.................... 6-311++G**
+    '6-311++G(3df,3pd)'............. 6-311++G(3df,3pd)
 
-	'cc-pVTZ'....................... cc-pVTZ
-	'cc-pVQZ'....................... cc-pVQZ
-	'cc-pcVTZ'...................... cc-pcVTZ
-	'cc-pcVQZ'...................... cc-pcVQZ
-	'aug-cc-pVTZ'................... aug-cc-pVTZ
-	'aug-cc-pVQZ'................... aug-cc-pVQZ
-	'aug-cc-pcVTZ'.................. aug-cc-pcVTZ
-	'aug-cc-pcVQZ'.................. aug-cc-pcVQZ
+    'cc-pVTZ'....................... cc-pVTZ
+    'cc-pVQZ'....................... cc-pVQZ
+    'cc-pcVTZ'...................... cc-pcVTZ
+    'cc-pcVQZ'...................... cc-pcVQZ
+    'aug-cc-pVTZ'................... aug-cc-pVTZ
+    'aug-cc-pVQZ'................... aug-cc-pVQZ
+    'aug-cc-pcVTZ'.................. aug-cc-pcVTZ
+    'aug-cc-pcVQZ'.................. aug-cc-pcVQZ
 
-	'G3Large'....................... G3Large
-	'G3MP2Large'.................... G3MP2Large
+    'G3Large'....................... G3Large
+    'G3MP2Large'.................... G3MP2Large
 
-	'gen'........................... User-defined
+    'gen'........................... User-defined
 
 Description: Specifies the secondary basis in a HFPC/DFPC calculation
     '''
@@ -9850,8 +9855,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Compute Hirshfeld populations
     '''
@@ -9875,10 +9880,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Selects the atenuated coulomb operator (CASE approximation).
     '''
@@ -9902,10 +9907,10 @@ Type: STRING
 Default: New Guess
 
 Options:
-	'New Guess'..................... New Guess
-	'Read Singlets'................. Read Singlets
-	'Read Triplets'................. Read Triplets
-	'Read Singlets & Triplets'...... Read Singlets & Triplets
+    'New Guess'..................... New Guess
+    'Read Singlets'................. Read Singlets
+    'Read Triplets'................. Read Triplets
+    'Read Singlets & Triplets'...... Read Singlets & Triplets
 
 Description: Determines what guess should be used for a CIS calculation.  Note that the read options require a guess from a previous calculation.
     '''
@@ -9929,8 +9934,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Compute transition moments between excited states in the CIS and TD-DFT calculations.
     '''
@@ -9977,8 +9982,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether to use static or dynamic memory in CIS and TDDFT calculations.
 
@@ -10004,8 +10009,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Controls whether a restricted open-shell Kohn-Sham calculation will be performed.
     '''
@@ -10074,10 +10079,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Perform COVP analysis when evaluating the RS or ARS charge-transfer correction. COVP analysis is currently implemented only for systems of two fragments.
 Recommendation: : Set to TRUE to perform COVP analysis of the CT term in an EDA or SCF MI(RS) job.    '''
@@ -10151,10 +10156,10 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: Request for calculation of non-relaxed two-particle EOM-CC properties. The two-particle properties currently include 
 ?S2?. The one-particle properties also will be calculated, since their cost is much less than the two-particle properties. The variable CC_EOM_PROP must be also set to TRUE. Alternatively, CC_CALC_SSQ can be used to request ?S2? calculation. 
@@ -10181,8 +10186,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -10206,8 +10211,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -10231,8 +10236,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -10278,12 +10283,12 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -10307,8 +10312,8 @@ Type: LOGICAL
 Default: FALSE
 
 Options:
-	'FALSE'......................... FALSE
-	'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
 
 Description: 
     '''
@@ -10376,7 +10381,7 @@ Type: undefined
 Default: [0,0]
 
 Options:
-	'[0,0]'......................... [0,0]
+    '[0,0]'......................... [0,0]
 
 Description: Specifies which state to optimize.
 [i,j] optimize the jth state of the ith irrep.
@@ -10401,7 +10406,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of high-spin excited state roots to find.  Works only for singlet reference states and triplet excited states.  The default is to not look for any excited states.  Setting this to [i,j,k...] looks for i excited states in the first irrep, j states in the second irrep and so on.
     '''
@@ -10447,7 +10452,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of low-spin excited state roots to find.  In the cas of closed-shell reference states, excited singlet states will be found.  For any other reference state all states (e.g. both singlet and triplet) will be calculated.  The default is to not look for any excited states.  Setting this to [i,j,k...] looks for i excited states in the first irrep, j states in the second irrep and so on.
     '''
@@ -10689,7 +10694,7 @@ Type: undefined
 Default: [0,0]
 
 Options:
-	'[0,0]'......................... [0,0]
+    '[0,0]'......................... [0,0]
 
 Description: Species which state to optimize.
 [i,j] optimize the jth state of the ith irrep.
@@ -10828,7 +10833,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of singlet DIP roots to find. Works only for closed-shell references.
 [i, j, k...] Find i DIP singlet states in the first irrep, j states in the second irrep etc.
@@ -10853,7 +10858,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of DIP roots to find. For closed-shell reference, defaults into EOM_DIP_SINGLETS. For open-shell references, speccies all low-lying states.
 [i, j, k...] Find i DIP states in the first irrep, j states in the second irrep etc.
@@ -10878,7 +10883,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of triplet DIP roots to find. Works only for closed-shell references.
 [i, j, k...] Find i DIP triplet states in the first irrep, j states in the second irrep etc.
@@ -10903,7 +10908,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of double spin-?ip target states roots to ?nd.
 [i, j, k . . .] Find i SF states in the ?rst irrep, j states in the second irrep etc.
@@ -10928,7 +10933,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: 
     '''
@@ -10952,7 +10957,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: 
     '''
@@ -10976,7 +10981,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: 
     '''
@@ -11000,7 +11005,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of attached target states derived by attaching alpha electron (Ms = 1/2).
 [i, j, k...] Find i EA states in the first irrep, j states in the second irrep etc.
@@ -11025,7 +11030,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of attached target states derived by attaching beta electron (Ms = -1/2).
 [i, j, k...] Find i EA states in the first irrep, j states in the second irrep etc.
@@ -11050,7 +11055,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of attached target states roots to find. By default, alpha electron will be attached (see EOM_EA_ALPHA).
 [i; j; k...] Find i EA states in the first irrep, j states in the second irrep etc.
@@ -11075,7 +11080,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of ionized target states derived by removing alpha electron (Ms = -1/2).
 [i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.
@@ -11100,7 +11105,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of ionized target states derived by removing beta electron (Ms = 1/2, default for EOM-IP).
 [i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.
@@ -11125,7 +11130,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of ionized target states roots to find. By default, B electron will be removed (see EOM_IP_BETA).
 [i, j, k...] Find i inonized states in the first irrep, j states in the second irrep etc.
@@ -11238,7 +11243,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: 
     '''
@@ -11262,7 +11267,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: 
     '''
@@ -11308,10 +11313,10 @@ Type: STRING
 Default: SAD
 
 Options:
-	'SAD'........................... SAD
-	'CORE'.......................... CORE
-	'GWH'........................... GWH
-	'READ'.......................... READ
+    'SAD'........................... SAD
+    'CORE'.......................... CORE
+    'GWH'........................... GWH
+    'READ'.......................... READ
 
 Description: Specifies the initial guess procedure to use for the SCF.
 Recommendation: : SAD guess for standard basis sets. For general basis sets, it is best to use the BASIS2 $rem. Alternatively, try the GWH or core Hamiltonian guess. For ROHF it can be useful to READ guesses from an SCF calculation on the corresponding cation or anion. Note that because the density is made spherical, this may favor an undesired state for atomic systems, especially transition metals.    '''
@@ -11335,7 +11340,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Sets the number of spin-?ip target states roots to ?nd.
 [i, j, k . . .] Find i SF states in the ?rst irrep, j states in the second irrep etc.
@@ -11382,7 +11387,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Specify two electronic states the intersection of which will be searched.
 [spin, irrep, state]
@@ -11416,7 +11421,7 @@ Type: undefined
 Default: [0]
 
 Options:
-	'[0]'........................... [0]
+    '[0]'........................... [0]
 
 Description: Specify two electronic states the intersection of which will be searched.
 [spin, irrep, state]
@@ -11443,6 +11448,712 @@ state, state = 2 is the second excited state, etc.
             self.dict_of_keywords["XOPT_STATE_2"]=value.lower()
 
 
+    def correlation(self,value="show"):
+        '''
+Name: CORRELATION
+Type: STRING
+Default: None
+
+Options:
+    'None'.......................... None
+
+    'B94'........................... B94
+    'B94hyb'........................ B94hyb
+    'B95'........................... B95
+    'LYP'........................... LYP
+    'LYP(EDF1)'..................... LYP(EDF1)
+    'P86'........................... P86
+    'PBE'........................... PBE
+    'PK09'.......................... PK09
+    'PK09'.......................... PK09
+    'PW91'.......................... PW91
+    'PW92'.......................... PW92
+    'PZ81'.......................... PZ81
+    'TPSS'.......................... TPSS
+    'VWN'........................... VWN
+    'Wigner'........................ Wigner
+    '(PBE)OP'....................... (PBE)OP
+    '(B88)OP'....................... (B88)OP
+
+    'MP2'........................... MP2
+    'CCMP2'......................... CCMP2
+    'MP4SDQ'........................ MP4SDQ
+    'ZAPT2'......................... ZAPT2
+    'Local_MP2'..................... Local_MP2
+    'RI-MP2'........................ RI-MP2
+    'SOSMP2'........................ SOSMP2
+    'MOSMP2'........................ MOSMP2
+    'RILMP2'........................ RILMP2
+
+    'MP3'........................... MP3
+    'MP4'........................... MP4
+    'CCD'........................... CCD
+    'CCD(2)'........................ CCD(2)
+    'CCSD'.......................... CCSD
+    'CCSD(T)'....................... CCSD(T)
+    'CCSD(2)'....................... CCSD(2)
+    'CCSD(fT)'...................... CCSD(fT)
+    'CCSD(dT)'...................... CCSD(dT)
+    'QCCD'.......................... QCCD
+    'QCCD(T)'....................... QCCD(T)
+    'QCCD(2)'....................... QCCD(2)
+    'QCISD'......................... QCISD
+    'QCISD(T)'...................... QCISD(T)
+    'OD'............................ OD
+    'OD(T)'......................... OD(T)
+    'OD(2)'......................... OD(2)
+    'VOD'........................... VOD
+    'VOD(2)'........................ VOD(2)
+    'VQCCD'......................... VQCCD
+    'VQCCD(T)'...................... VQCCD(T)
+    'VQCCD(2)'...................... VQCCD(2)
+
+    'PP'............................ PP
+    'CCVB'.......................... CCVB
+    'GVB_IP'........................ GVB_IP
+    'GVB_SIP'....................... GVB_SIP
+    'GVB_DIP'....................... GVB_DIP
+    'OP'............................ OP
+    'NP'............................ NP
+    '2P'............................ 2P
+
+Description: Specifies the correlation level of theory, either DFT or wavefunction-based.
+Recommendation: : Consult the literature and reviews for guidence    '''
+        if value == "":
+            if "CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["CORRELATION"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["CORRELATION"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CORRELATION"]=value.lower()
+
+
+    def qui_section_swap_occupied_virtual(self,value="show"):
+        '''
+Name: QUI_SECTION_SWAP_OCCUPIED_VIRTUAL
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Change the occupancies of the guess orbitals (not compatible with the SAD guess)
+    '''
+        if value == "":
+            if "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]=value.lower()
+
+
+    def adc_davidson_maxiter(self,value="show"):
+        '''
+Name: ADC_DAVIDSON_MAXITER
+Type: INTEGER
+Default: 60
+Options: Range from 1 to 500
+
+Description: Maximum number of iterations to determine the eigenstates in an ADC calculation using the Davidson algorithm.
+    '''
+        if value == "":
+            if "ADC_DAVIDSON_MAXITER" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DAVIDSON_MAXITER" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]=value.lower()
+
+
+    def adc_diis_maxiter(self,value="show"):
+        '''
+Name: ADC_DIIS_MAXITER
+Type: STRING
+Default: 
+
+Options:
+    ''.............................. 
+
+Description: Maximum number of iterations to determine the eigenstates in an ADC calculation using the DIIS algorithm.
+    '''
+        if value == "":
+            if "ADC_DIIS_MAXITER" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DIIS_MAXITER"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DIIS_MAXITER" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DIIS_MAXITER"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DIIS_MAXITER"]=value.lower()
+
+
+    def adc_davidson_maxsubspace(self,value="show"):
+        '''
+Name: ADC_DAVIDSON_MAXSUBSPACE
+Type: INTEGER
+Default: 40
+Options: Range from 1 to 500
+
+Description: Maximum number of ADC amplitudes in the subspace for the Davidson diagonalization. 
+Recommendation: : Larger values increase disk storage but accelerate and stabilize convergence.
+    '''
+        if value == "":
+            if "ADC_DAVIDSON_MAXSUBSPACE" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DAVIDSON_MAXSUBSPACE" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]=value.lower()
+
+
+    def adc_c_c(self,value="show"):
+        '''
+Name: ADC_C_C
+Type: INTEGER
+Default: 1000
+Options: Range from 0 to 9999
+
+Description: Scaling factor cC for spin-opposite scaled ADC calculations. The parameter value is devided by 1000 to obtain the proper scaling factor. 
+
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_C_C" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_C_C"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_C_C" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_C_C"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_C_C"]=value.lower()
+
+
+    def adc_c_t(self,value="show"):
+        '''
+Name: ADC_C_T
+Type: INTEGER
+Default: 1300
+Options: Range from 0 to 9999
+
+Description: Scaling factor cT  for MP(2) T amplitudes in spin-opposite scaled ADC calculations. The parameter value is devided by 1000 to obtain the proper scaling factor. 
+
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_C_T" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_C_T"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_C_T" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_C_T"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_C_T"]=value.lower()
+
+
+    def adc_c_x(self,value="show"):
+        '''
+Name: ADC_C_X
+Type: INTEGER
+Default: 900
+Options: Range from 0 to 9999
+
+Description: Scaling factor cX  in spin-opposite scaled ADC calculations. The parameter value is devided by 1000 to obtain the proper scaling factor. 
+
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_C_X" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_C_X"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_C_X" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_C_X"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_C_X"]=value.lower()
+
+
+    def adc_davidson_conv(self,value="show"):
+        '''
+Name: ADC_DAVIDSON_CONV
+Type: INTEGER
+Default: 6
+Options: Range from 0 to 14
+
+Description: Convergence criterion on the RMS difference between successive sets of ADC amplitudes during the Davidson diagonalization [10-n].
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_DAVIDSON_CONV" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DAVIDSON_CONV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DAVIDSON_CONV" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DAVIDSON_CONV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DAVIDSON_CONV"]=value.lower()
+
+
+    def adc_davidson_thresh(self,value="show"):
+        '''
+Name: ADC_DAVIDSON_THRESH
+Type: INTEGER
+Default: 10
+Options: Range from 0 to 14
+
+Description: Numerical threshold to suppress noise in the ADC amplitudes during the Davidson diagonalization [10-n].
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_DAVIDSON_THRESH" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DAVIDSON_THRESH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DAVIDSON_THRESH" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DAVIDSON_THRESH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DAVIDSON_THRESH"]=value.lower()
+
+
+    def adc_diis_econv(self,value="show"):
+        '''
+Name: ADC_DIIS_ECONV
+Type: INTEGER
+Default: 6
+Options: Range from 0 to 14
+
+Description: Convergence criterion on the RMS difference between successive sets of ADC amplitudes during the Davidson diagonalization [10-n].
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_DIIS_ECONV" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DIIS_ECONV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DIIS_ECONV" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DIIS_ECONV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DIIS_ECONV"]=value.lower()
+
+
+    def adc_diis_rconv(self,value="show"):
+        '''
+Name: ADC_DIIS_RCONV
+Type: INTEGER
+Default: 6
+Options: Range from 0 to 14
+
+Description: Convergence criterion on the RMS difference between ADC amplitudes in successive steps of the DIIS solver [10-n].
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_DIIS_RCONV" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DIIS_RCONV"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DIIS_RCONV" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DIIS_RCONV"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DIIS_RCONV"]=value.lower()
+
+
+    def adc_diis_size(self,value="show"):
+        '''
+Name: ADC_DIIS_SIZE
+Type: INTEGER
+Default: 5
+Options: Range from 1 to 50
+
+Description: Specifies the maximum size of the DIIS space in an ADC(2) calculation.
+Recommendation: : Larger values involve larger amounts of disk storage.    '''
+        if value == "":
+            if "ADC_DIIS_SIZE" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DIIS_SIZE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DIIS_SIZE" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DIIS_SIZE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DIIS_SIZE"]=value.lower()
+
+
+    def adc_diis_start(self,value="show"):
+        '''
+Name: ADC_DIIS_START
+Type: INTEGER
+Default: 1
+Options: Range from 0 to 200
+
+Description: Iteration number when the DIIS steps are turned on in an ADC(2)  calculation. Set to a large number to disable DIIS and use the Jacobi algorithm. 
+
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_DIIS_START" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DIIS_START"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DIIS_START" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DIIS_START"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DIIS_START"]=value.lower()
+
+
+    def adc_do_diis(self,value="show"):
+        '''
+Name: ADC_DO_DIIS
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Compute the ADC(2) eigenvalues and eigenvectors by solving non-linear equation systems using the DIIS algorithm. 
+
+Recommendation: : Use only with extreme care!    '''
+        if value == "":
+            if "ADC_DO_DIIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_DO_DIIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_DO_DIIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_DO_DIIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_DO_DIIS"]=value.lower()
+
+
+    def adc_ecorr(self,value="show"):
+        '''
+Name: ADC_ECORR
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate the computation of higher-order energy corrections for ADC excitation energies. [EXPERIMENTAL]
+    '''
+        if value == "":
+            if "ADC_ECORR" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_ECORR"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_ECORR" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_ECORR"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_ECORR"]=value.lower()
+
+
+    def adc_extended(self,value="show"):
+        '''
+Name: ADC_EXTENDED
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Use the extended second order ADC variant ADC(2)-x. 
+
+Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
+        if value == "":
+            if "ADC_EXTENDED" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_EXTENDED"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_EXTENDED" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_EXTENDED"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_EXTENDED"]=value.lower()
+
+
+    def adc_cvs(self,value="show"):
+        '''
+Name: ADC_CVS
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate the core-valence separation approximation in ADC calculations to compute core-excited states. In addition the parameter CC_REST_OCC has to be set to define the core orbitals.
+
+Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
+        if value == "":
+            if "ADC_CVS" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_CVS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_CVS" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_CVS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_CVS"]=value.lower()
+
+
+    def adc_order(self,value="show"):
+        '''
+Name: ADC_ORDER
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate an ADC calculation and set the order of ADC to use.
+
+Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
+        if value == "":
+            if "ADC_ORDER" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_ORDER"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_ORDER" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_ORDER"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_ORDER"]=value.lower()
+
+
+    def adc_nguess_doubles(self,value="show"):
+        '''
+Name: ADC_NGUESS_DOUBLES
+Type: INTEGER
+Default: 0
+Options: Range from 0 to 500
+
+Description: Set the number of guesses from the double excitation manifold.
+
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_NGUESS_DOUBLES" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_NGUESS_DOUBLES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_NGUESS_DOUBLES" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_NGUESS_DOUBLES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_NGUESS_DOUBLES"]=value.lower()
+
+
+    def adc_nguess_singles(self,value="show"):
+        '''
+Name: ADC_NGUESS_SINGLES
+Type: INTEGER
+Default: 0
+Options: Range from 0 to 500
+
+Description: Set the number of guesses from the single excitation manifold.
+
+Recommendation: : Use default ( = number of states to requested).    '''
+        if value == "":
+            if "ADC_NGUESS_SINGLES" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_NGUESS_SINGLES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_NGUESS_SINGLES" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_NGUESS_SINGLES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_NGUESS_SINGLES"]=value.lower()
+
+
+    def adc_prop_es2es(self,value="show"):
+        '''
+Name: ADC_PROP_ES2ES
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate the calculation of state-to-state transition properties in an ADC calculation.
+    '''
+        if value == "":
+            if "ADC_PROP_ES2ES" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_PROP_ES2ES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_PROP_ES2ES" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_PROP_ES2ES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_PROP_ES2ES"]=value.lower()
+
+
+    def adc_prop_tpa(self,value="show"):
+        '''
+Name: ADC_PROP_TPA
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate the calculation of two-photon absorption cross-sections for the excited states in an ADC calculation.
+    '''
+        if value == "":
+            if "ADC_PROP_TPA" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_PROP_TPA"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_PROP_TPA" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_PROP_TPA"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_PROP_TPA"]=value.lower()
+
+
+    def adc_prop_es(self,value="show"):
+        '''
+Name: ADC_PROP_ES
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate the calculation of excited state properties in an ADC calculation (one-particle transition properties from the ground state are activated by default).
+    '''
+        if value == "":
+            if "ADC_PROP_ES" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_PROP_ES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_PROP_ES" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_PROP_ES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_PROP_ES"]=value.lower()
+
+
+    def adc_sos(self,value="show"):
+        '''
+Name: ADC_SOS
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Activate the spin-opposite scaled variant of the second order ADC methods.
+
+Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
+        if value == "":
+            if "ADC_SOS" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_SOS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_SOS" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_SOS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_SOS"]=value.lower()
+
+
+    def adc_print(self,value="show"):
+        '''
+Name: ADC_PRINT
+Type: INTEGER
+Default: 2
+Options: Range from 0 to 6
+
+Description: Set the print level in the ADC part of the calculation.
+
+Recommendation: : Use default.    '''
+        if value == "":
+            if "ADC_PRINT" in self.dict_of_keywords:
+                del self.dict_of_keywords["ADC_PRINT"]
+                print "Keyword removed."
+        elif value == "show":
+            if "ADC_PRINT" in self.dict_of_keywords:
+                return self.dict_of_keywords["ADC_PRINT"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["ADC_PRINT"]=value.lower()
+
+
+    def state_analysis(self,value="show"):
+        '''
+Name: STATE_ANALYSIS
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Performs certain excited state analyses for CIS/TD-DFT, ADC, and CC excited states. [EXPERIMENTAL]
+    '''
+        if value == "":
+            if "STATE_ANALYSIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["STATE_ANALYSIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "STATE_ANALYSIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["STATE_ANALYSIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["STATE_ANALYSIS"]=value.lower()
+
+
     def method(self,value="show"):
         '''
 Name: METHOD
@@ -11450,36 +12161,46 @@ Type: STRING
 Default: HF
 
 Options:
-	'Custom'........................ Custom
-	'HF'............................ HF
+    'Custom'........................ Custom
+    'HF'............................ HF
 
-	'B3LYP'......................... B3LYP
-	'BLYP'.......................... BLYP
-	'EDF1'.......................... EDF1
-	'B97-D'......................... B97-D
-	'EDF2'.......................... EDF2
-	'LDA'........................... LDA
-	'M06'........................... M06
-	'M06-2X'........................ M06-2X
-	'PBE'........................... PBE
-	'PBE50'......................... PBE50
-	'CAMB3LYP'...................... CAM-B3LYP
-	'wB97XD'........................ Omega-B97X-D
+    'B3LYP'......................... B3LYP
+    'BLYP'.......................... BLYP
+    'EDF1'.......................... EDF1
+    'B97-D'......................... B97-D
+    'EDF2'.......................... EDF2
+    'LDA'........................... LDA
+    'M06'........................... M06
+    'M06-2X'........................ M06-2X
+    'PBE'........................... PBE
+    'PBE50'......................... PBE50
+    'CAMB3LYP'...................... CAM-B3LYP
+    'wB97XD'........................ Omega-B97X-D
 
-	'MP2'........................... MP2
-	'RI-MP2'........................ RI-MP2
-	'SOSMP2'........................ SOS-MP2
-	'CCSD'.......................... CCSD
-	'CCSD(T)'....................... CCSD(T)
+    'MP2'........................... MP2
+    'RI-MP2'........................ RI-MP2
+    'SOSMP2'........................ SOS-MP2
+    'CCSD'.......................... CCSD
+    'CCSD(T)'....................... CCSD(T)
 
-	'TD-DFT'........................ TD-DFT
-	'CIS'........................... CIS
-	'CIS(D)'........................ CIS(D)
-	'RI-CIS(D)'..................... RI-CIS(D)
-	'SOS-CIS(D)'.................... SOS-CIS(D)
-	'SOS-CIS(D0)'................... SOS-CIS(D0)
+    'TD-DFT'........................ TD-DFT
+    'CIS'........................... CIS
+    'CIS(D)'........................ CIS(D)
+    'RI-CIS(D)'..................... RI-CIS(D)
+    'SOS-CIS(D)'.................... SOS-CIS(D)
+    'SOS-CIS(D0)'................... SOS-CIS(D0)
 
-	'EOM-CCSD'...................... EOM-CCSD
+    'EOM-CCSD'...................... EOM-CCSD
+
+    'ADC(1)'........................ ADC(1)
+    'ADC(2)'........................ ADC(2)
+    'ADC(2)-x'...................... ADC(2)-x
+    'ADC(3)'........................ ADC(3)
+    'CVS-ADC(1)'.................... CVS-ADC(1)
+    'CVS-ADC(2)'.................... CVS-ADC(2)
+    'CVS-ADC(2)-x'.................. CVS-ADC(2)-x
+    'SOS-ADC(2)'.................... SOS-ADC(2)
+    'SOS-ADC(2)-x'.................. SOS-ADC(2)-x
 
 Description: The level of theory used in the calculation.
     '''
@@ -11496,88 +12217,75 @@ Description: The level of theory used in the calculation.
             self.dict_of_keywords["METHOD"]=value.lower()
 
 
-    def correlation(self,value="show"):
+    def qui_adc_states1(self,value="show"):
         '''
-Name: CORRELATION
-Type: STRING
-Default: None
+Name: QUI_ADC_STATES1
+Type: undefined
+Default: [0]
 
 Options:
-	'None'.......................... None
+    '[0]'........................... [0]
 
-	'B94'........................... B94
-	'B94hyb'........................ B94hyb
-	'B95'........................... B95
-	'LYP'........................... LYP
-	'LYP(EDF1)'..................... LYP(EDF1)
-	'P86'........................... P86
-	'PBE'........................... PBE
-	'PK09'.......................... PK09
-	'PK09'.......................... PK09
-	'PW91'.......................... PW91
-	'PW92'.......................... PW92
-	'PZ81'.......................... PZ81
-	'TPSS'.......................... TPSS
-	'VWN'........................... VWN
-	'Wigner'........................ Wigner
-	'(PBE)OP'....................... (PBE)OP
-	'(B88)OP'....................... (B88)OP
-
-	'MP2'........................... MP2
-	'CCMP2'......................... CCMP2
-	'MP4SDQ'........................ MP4SDQ
-	'ZAPT2'......................... ZAPT2
-	'Local_MP2'..................... Local_MP2
-	'RI-MP2'........................ RI-MP2
-	'SOSMP2'........................ SOSMP2
-	'MOSMP2'........................ MOSMP2
-	'RILMP2'........................ RILMP2
-
-	'MP3'........................... MP3
-	'MP4'........................... MP4
-	'CCD'........................... CCD
-	'CCD(2)'........................ CCD(2)
-	'CCSD'.......................... CCSD
-	'CCSD(T)'....................... CCSD(T)
-	'CCSD(2)'....................... CCSD(2)
-	'CCSD(fT)'...................... CCSD(fT)
-	'CCSD(dT)'...................... CCSD(dT)
-	'QCCD'.......................... QCCD
-	'QCCD(T)'....................... QCCD(T)
-	'QCCD(2)'....................... QCCD(2)
-	'QCISD'......................... QCISD
-	'QCISD(T)'...................... QCISD(T)
-	'OD'............................ OD
-	'OD(T)'......................... OD(T)
-	'OD(2)'......................... OD(2)
-	'VOD'........................... VOD
-	'VOD(2)'........................ VOD(2)
-	'VQCCD'......................... VQCCD
-	'VQCCD(T)'...................... VQCCD(T)
-	'VQCCD(2)'...................... VQCCD(2)
-
-	'PP'............................ PP
-	'CCVB'.......................... CCVB
-	'GVB_IP'........................ GVB_IP
-	'GVB_SIP'....................... GVB_SIP
-	'GVB_DIP'....................... GVB_DIP
-	'OP'............................ OP
-	'NP'............................ NP
-	'2P'............................ 2P
-
-Description: Specifies the correlation level of theory, either DFT or wavefunction-based.
-Recommendation: Consult the literature and reviews for guidance.    '''
+Description: 
+    '''
         if value == "":
-            if "CORRELATION" in self.dict_of_keywords:
-                del self.dict_of_keywords["CORRELATION"]
+            if "QUI_ADC_STATES1" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_ADC_STATES1"]
                 print "Keyword removed."
         elif value == "show":
-            if "CORRELATION" in self.dict_of_keywords:
-                return self.dict_of_keywords["CORRELATION"]
+            if "QUI_ADC_STATES1" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_ADC_STATES1"]
             else:
                 print "Value not set."
         else:
-            self.dict_of_keywords["CORRELATION"]=value.lower()
+            self.dict_of_keywords["QUI_ADC_STATES1"]=value.lower()
+
+
+    def qui_adc_states2(self,value="show"):
+        '''
+Name: QUI_ADC_STATES2
+Type: undefined
+Default: [0]
+
+Options:
+    '[0]'........................... [0]
+
+Description: 
+    '''
+        if value == "":
+            if "QUI_ADC_STATES2" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_ADC_STATES2"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_ADC_STATES2" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_ADC_STATES2"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_ADC_STATES2"]=value.lower()
+
+
+    def qui_adc_core(self,value="show"):
+        '''
+Name: QUI_ADC_CORE
+Type: INTEGER
+Default: 1
+Options: Range from 1 to 500
+
+Description: Set the number of core orbitals in an CVS-ADC calculation.
+    '''
+        if value == "":
+            if "QUI_ADC_CORE" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_ADC_CORE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_ADC_CORE" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_ADC_CORE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_ADC_CORE"]=value.lower()
+
 
     # ------------------------ End of keyword list ----------------------------
             
