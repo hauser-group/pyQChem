@@ -145,6 +145,15 @@ class inputfile(object):
                 self.list_of_arrays.append(new_array)
             self._jtype = new_array.jobtype() #rem variable "jobtype" defines type
         
+        elif type(new_array) == type(rem_frgm_array()):
+            self.rem_frgm = new_array
+            if "rem_frgm" in self.list_of_content:
+                index = self.list_of_content.index("rem_frgm")
+                self.list_of_arrays[index]=new_array
+            else:
+                self.list_of_content.append("rem_frgm")
+                self.list_of_arrays.append(new_array)
+
         elif type(new_array) == type(mol_array()):
             self.molecule = new_array
             if "molecule" in self.list_of_content:
@@ -12310,3 +12319,33 @@ Description: Set the number of core orbitals in an CVS-ADC calculation.
     def info(self):
         print "Type: rem array"
         print "Keywords: " + str(len(self.dict_of_keywords))
+
+######################### REM_FRGM FRAGMENT ##############################
+
+class rem_frgm_array(rem_array):
+
+    __tabstop = 30
+
+    def __init__(self,rem_init=""):
+        self.dict_of_keywords = {}
+        rem_init=rem_init.splitlines()
+        if len(rem_init)!=0:
+            for i in rem_init:
+                i=i.split(" ")
+                if len(i)==0:
+                    i=i.split("=")
+                if i[0].startswith("$"):
+                    continue
+                self.add(i[0],i[1])
+
+    def __str__(self):
+        str_ret =  "$rem_frgm\n"
+        for key,value in self.dict_of_keywords.iteritems():
+            str_ret += key.upper() + (rem_frgm_array.__tabstop-len(key))*" " + value + "\n"
+        str_ret += "$end\n"
+        return str_ret
+
+    def info(self):
+        print "Type: rem_frgm array"
+        print "Keywords: " + str(len(self.dict_of_keywords))
+

@@ -205,6 +205,12 @@ def _readinput(file_input,silent=False):
             for k in content:
                 new_array.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
             re_file.add(new_array)
+        
+        elif k=="rem_frgm":
+            new_array = rem_frgm_array()
+            for k in content:
+                new_array.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
+            re_file.add(new_array)
             
         elif k=="molecule":
             if ("read" in content[0].strip()) or ("READ" in content[0].strip()):
