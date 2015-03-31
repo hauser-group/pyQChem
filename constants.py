@@ -805,3 +805,29 @@ dict_of_atomic_names[117] = "Ununseptium"
 dict_of_atomic_names[118] = "Ununoctium" 
 
 dict_abbr_to_name={'Ru': 'Ruthenium', 'Re': 'Rhenium', 'Rf': 'Rutherfordium', 'Rg': 'Roentgenium', 'Ra': 'Radium', 'Rb': 'Rubidium', 'Rn': 'Radon', 'Rh': 'Rhodium', 'Be': 'Beryllium', 'Ba': 'Barium', 'Bh': 'Bohrium', 'Bi': 'Bismuth', 'Bk': 'Berkelium', 'Br': 'Bromine', 'Uuh': 'Ununhexium', 'H': 'Hydrogen', 'P': 'Phosphorus', 'Os': 'Osmium', 'Es': 'Einsteinium', 'Hg': 'Mercury', 'Ge': 'Germanium', 'Gd': 'Gadolinium', 'Ga': 'Gallium', 'Uub': 'Ununbium', 'Pr': 'Praseodymium', 'Pt': 'Platinum', 'Pu': 'Plutonium', 'C': 'Carbon', 'Pb': 'Lead', 'Pa': 'Protactinium', 'Pd': 'Palladium', 'Cd': 'Cadmium', 'Po': 'Polonium', 'Pm': 'Promethium', 'Hs': 'Hassium', 'Uuq': 'Ununquadium', 'Uup': 'Ununpentium', 'Uus': 'Ununseptium', 'Ho': 'Holmium', 'Hf': 'Hafnium', 'K': 'Potassium', 'He': 'Helium', 'Md': 'Mendelevium', 'Mg': 'Magnesium', 'Mo': 'Molybdenum', 'Mn': 'Manganese', 'O': 'Oxygen', 'Mt': 'Meitnerium', 'S': 'Sulfur', 'W': 'Tungsten', 'Zn': 'Zinc', 'Eu': 'Europium', 'Zr': 'Zirconium', 'Er': 'Erbium', 'Ni': 'Nickel', 'No': 'Nobelium', 'Na': 'Sodium', 'Nb': 'Niobium', 'Nd': 'Neodymium', 'Ne': 'Neon', 'Np': 'Neptunium', 'Fr': 'Francium', 'Fe': 'Iron', 'Fm': 'Fermium', 'B': 'Boron', 'F': 'Fluorine', 'Sr': 'Strontium', 'N': 'Nitrogen', 'Kr': 'Krypton', 'Si': 'Silicon', 'Sn': 'Tin', 'Sm': 'Samarium', 'V': 'Vanadium', 'Sc': 'Scandium', 'Sb': 'Antimony', 'Sg': 'Seaborgium', 'Se': 'Selenium', 'Co': 'Cobalt', 'Cm': 'Curium', 'Cl': 'Chlorine', 'Ca': 'Calcium', 'Cf': 'Californium', 'Ce': 'Cerium', 'Xe': 'Xenon', 'Lu': 'Lutetium', 'Cs': 'Cesium', 'Cr': 'Chromium', 'Cu': 'Copper', 'La': 'Lanthanum', 'Li': 'Lithium', 'Tl': 'Thallium', 'Tm': 'Thulium', 'Lr': 'Lawrencium', 'Th': 'Thorium', 'Ti': 'Titanium', 'Te': 'Tellurium', 'Tb': 'Terbium', 'Tc': 'Technetium', 'Ta': 'Tantalum', 'Yb': 'Ytterbium', 'Db': 'Dubnium', 'Dy': 'Dysprosium', 'Ds': 'Darmstadtium', 'I': 'Iodine', 'U': 'Uranium', 'Y': 'Yttrium', 'Ac': 'Actinium', 'Ag': 'Silver', 'Uut': 'Ununtrium', 'Ir': 'Iridium', 'Am': 'Americium', 'Al': 'Aluminum', 'As': 'Arsenic', 'Ar': 'Argon', 'Au': 'Gold', 'At': 'Astatine', 'In': 'Indium'}
+
+
+#from http://en.wikipedia.org/wiki/Covalent_radius
+covalent_radii=[0.31,0.28,1.28,0.96,0.84,0.76,0.71,0.66,0.57,
+				0.58,1.66,1.41,1.21,1.11,1.07,1.05,1.02,1.06,
+				2.03,1.76,1.7,1.6,1.53,1.39,1.61,1.52,1.5,
+				1.24,1.32,1.22,1.22,1.2,1.19,1.2,1.2,1.16,
+				2.2,1.95,1.9,1.75,1.64,1.54,1.47,1.46,1.42,
+				1.39,1.45,1.44,1.42,1.39,1.39,1.38,1.39,1.4,
+				2.44,2.15,2.07,2.04,2.03,2.01,1.99,1.98,1.98,
+				1.96,1.94,1.92,1.92,1.89,1.9,1.87,1.87,1.75,
+				1.7,1.62,1.51,1.44,1.41,1.36,1.36,1.32,1.45,
+				1.46,1.48,1.4,1.5,1.5,2.6,2.21,2.15,2.06,
+				2.,1.96,1.9,1.87,1.8,1.69]
+
+ 
+#from http://toc.uni-muenster.de/DFTD3/index.html, times 1.1, then converted to Angstroms
+vdw_radii=[1.892,1.912,1.559,2.661,2.806,2.744,2.640,2.536,2.432,2.349,
+           2.162,2.578,3.097,3.243,3.222,3.180,3.097,3.014,2.806,2.785,
+           2.952,2.952,2.952,2.952,2.952,2.952,2.952,2.952,2.952,2.952,
+           3.118,3.264,3.326,3.347,3.305,3.264,3.076,3.035,3.097,3.097,
+           3.097,3.097,3.097,3.097,3.097,3.097,3.097,3.097,3.160,3.409,
+           3.555,3.575,3.575,3.555,3.405,3.330,3.251,3.313,3.313,3.313,
+           3.313,3.313,3.313,3.313,3.313,3.313,3.313,3.313,3.313,3.313,
+           3.313,3.378,3.349,3.349,3.349,3.349,3.349,3.349,3.349,3.322,
+           3.752,3.673,3.586,3.789,3.762,3.636]
