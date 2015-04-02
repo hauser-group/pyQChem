@@ -145,6 +145,15 @@ class inputfile(object):
                 self.list_of_arrays.append(new_array)
             self._jtype = new_array.jobtype() #rem variable "jobtype" defines type
         
+        elif type(new_array) == type(rem_frgm_array()):
+            self.rem_frgm = new_array
+            if "rem_frgm" in self.list_of_content:
+                index = self.list_of_content.index("rem_frgm")
+                self.list_of_arrays[index]=new_array
+            else:
+                self.list_of_content.append("rem_frgm")
+                self.list_of_arrays.append(new_array)
+
         elif type(new_array) == type(mol_array()):
             self.molecule = new_array
             if "molecule" in self.list_of_content:
@@ -467,7 +476,73 @@ class cartesian(_array):
             return cartesian(atom_list=atoms)
         if isinstance(other,_array):
             return other+mol_array(self)
-            
+  
+
+
+####################### FRAGMENT FRAGMENT ##########################
+
+class fragment(cartesian):
+    def __init__(self,title="",fragment_list=[],atom_list=[]):
+        self.__title = title
+        if len(fragment_list)==0:
+            self.__Natoms = 0
+            self.list_of_atoms = []
+            self.number_of_fragments=0
+            self.fragment_list=[]
+        else:
+            self.fragment_list=fragment_list
+            self.__Natoms = 0
+            for i in self.fragment_list:
+                self.__Natoms+=i.__Natoms
+                self.__Natoms = 0
+
+        if (atom_list!=[]):
+            xyzs=[]
+            self.__Natoms=len(atom_list)
+            for i in xrange(self.__Natoms):
+                x=atom_list[i][1]
+                y=atom_list[i][2]
+                z=atom_list[i][3]
+                xyzs.append(_np.array([float(x),float(y),float(z)]))
+            self.xyzs=_np.array(xyzs)
+            from constants import covalent_radii, dict_of_atomic_numbers
+            from math import sqrt
+            nleft=len(atom_list)
+            ifrag=cartesian(atom_list=[atom_list[0]])
+            #print atom_list[0]
+            #ifrag.add_atom(self,name=atom_list[0][0],x=atom_list[0][1],y=atom_list[0][2],z=atom_list[0][3])
+            self.fragment_list.append(ifrag)
+            for i in range(1,self.__Natoms):
+                myxyz=self.xyzs[i]
+                included=0
+                for myfrag in self.fragment_list:
+                    for k in xrange(len(myfrag.xyzs)):
+                        d=(myfrag.xyzs[k]-myxyz)
+                        d=sqrt(d.dot(d))
+                        try:
+                            myA=dict_of_atomic_numbers[atom_list[i][0]]
+                        except:
+                            myA=atom_list[i][0]
+                        try:
+                            myB=dict_of_atomic_numbers[myfrag.list_of_atoms[k][0]]
+                        except:
+                            myB=myfrag.list_of_atoms[k][0]
+                        maxd=covalent_radii[myA]+covalent_radii[myB]
+                        maxd=maxd*1.3
+                        if d<maxd:
+                            myfrag.add_atom(name=atom_list[i][0],x=atom_list[i][1],y=atom_list[i][2],z=atom_list[i][3])
+                            included=1
+                            break
+                if included==0:
+                    ifrag=cartesian(atom_list=[atom_list[i]])
+                    self.fragment_list.append(ifrag)
+
+    def __str__(self):
+        str_ret = str(self.__Natoms) + "\n" + self.__title + "\n"
+        for l in self.fragment_list:
+            for k in l.list_of_atoms:
+                str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
+        return str_ret
 
 ####################### TINKER FRAGMENT ##########################
 
@@ -571,6 +646,11 @@ class mol_array(_array):
             if type(self.content["GEOMETRY"])==type(cartesian()):
                 for k in (self.content["GEOMETRY"]).list_of_atoms:
                     str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
+            elif type(self.content["GEOMETRY"])==type(fragment()):
+                for l in self.content["GEOMETRY"].fragment_list:
+                    str_ret+="--\n0 1\n"
+                    for k in l.list_of_atoms:
+                        str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
             elif type(self.content["GEOMETRY"])==type(zmat()):
                 str_ret += (self.content["GEOMETRY"]).__str__() 
             elif type(self.content["GEOMETRY"])==type(tinker()):
@@ -12310,3 +12390,33 @@ Description: Set the number of core orbitals in an CVS-ADC calculation.
     def info(self):
         print "Type: rem array"
         print "Keywords: " + str(len(self.dict_of_keywords))
+
+######################### REM_FRGM FRAGMENT ##############################
+
+class rem_frgm_array(rem_array):
+
+    __tabstop = 30
+
+    def __init__(self,rem_init=""):
+        self.dict_of_keywords = {}
+        rem_init=rem_init.splitlines()
+        if len(rem_init)!=0:
+            for i in rem_init:
+                i=i.split(" ")
+                if len(i)==0:
+                    i=i.split("=")
+                if i[0].startswith("$"):
+                    continue
+                self.add(i[0],i[1])
+
+    def __str__(self):
+        str_ret =  "$rem_frgm\n"
+        for key,value in self.dict_of_keywords.iteritems():
+            str_ret += key.upper() + (rem_frgm_array.__tabstop-len(key))*" " + value + "\n"
+        str_ret += "$end\n"
+        return str_ret
+
+    def info(self):
+        print "Type: rem_frgm array"
+        print "Keywords: " + str(len(self.dict_of_keywords))
+

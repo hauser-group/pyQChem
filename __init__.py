@@ -82,6 +82,7 @@ from input_classes import _unsupported_array
 from utilities import _readzmat
 from utilities import _readcartesian
 from utilities import _readtinker
+from utilities import _readpybel
 from utilities import _readinput
 
 # Lastly, let's load some scripts for running files
@@ -99,6 +100,10 @@ def read(filename,silent=False):
     """
 
     extension = (filename.split("."))[-1]
+
+    #catchall pybel list
+    pybel_inlist=['txyz', 'text', 'alc', 'castep', 'nwo', 'cdx', 'xml', 'pwscf', 'rsmi', 'xtc', 'g09', 'pcm', 'mopin', 'mopcrt', 'xyz', 'fchk', 'g03', 'cube', 'axsf', 'mpc', 'mpo', 'mop', 'pos', 'dat', 'moo', 'dx', 'mol', 'inchi', 'hin', 'cml', 'outmol', 'xsf', 'qcout', 'output', 'mdl', 'unixyz', 'pdbqt', 'gzmat', 'arc', 'out', 'c09out', 'feat', 'crk3d', 'got', 'mopout', 'tdd', 'mmod', 'bs', 'mmd', 'box', 'bgf', 'vmol', 'acr', 'pqs', 'crk2d', 'CONFIG', 'pdb', 'ck', 'c3d2', 't41', 'c3d1', 'CONTCAR', 'gamout', 'mmcif', 'txt', 'ct', 'therm', 'log', 'pc', 'dmol', 'molden', 'ml2', 'fract', 'msi', 'cdxml', 'g98', 'prep', 'gpr', 'cub', 'gam', 'gukin', 'cmlr', 'abinit', 'POSCAR', 'ins', 'tmol', 'png', 'cif', 'gamess', 'car', 'mcif', 'smi', 'can', 'caccrt', 'fhiaims', 'inp', 'gukout', 'sy2', 'fasta', 'mpqc', 'mold', 'molf', 'jout', 'yob', 'mcdl', 'ent', 'adfout', 'gro', 'smiles', 'fs', 'mol2', 'fa', 'pqr', 'g94', 'g92', 'fch', 'VASP', 'fck', 'HISTORY', 'fsa', 'gamin', 'rxn', 'mrv', 'sdf', 'gal', 'res', 'sd', 'ccc', 'acesout']
+
 
     # Do we have an inputfile?
     if  extension in ("inp","in","IN","INP","qcin","QCIN"):
@@ -156,6 +161,8 @@ def read(filename,silent=False):
         if not silent:
             print "Tinker coordinates file detected."
         return _readtinker(filename)
+
+
     
 
     # Do we have a Q-Chem outputfile?
@@ -196,6 +203,17 @@ def read(filename,silent=False):
             if not silent:
                 print "Outputfile detected."
             return _outputfile(filename,silent)
+
+    # Is it anything pybel can read?
+    elif extension in pybel_inlist:
+        try: 
+            import pybel
+        except:
+            print "Error: File type not recognized."
+            return
+        if not silent:
+            print pybel.informats[extension], " detected"
+        return _readpybel(extension,filename)   
 
     # What the heck? This is not a valid file.
     else:
