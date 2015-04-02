@@ -305,8 +305,10 @@ class _thermo(object):
             dum_term2 = (freq*(1.0/2 + 1.0/(_np.exp(freq/k)-1)))
             E_vib.append(constants.molar_gas_constant*dum_term2.sum())
 
-            if grimme==1:
+            if grimme>=1:
                 B_average = 10E-44; # kg.m^2
+                if grimme==2:  # calculate B_av from current frequencies
+                    B_average = sum(constants.Planck_constant/(8*pi**2*constants.speed_of_light_in_vacuum*freq))/len(freq);
                 alpha = 4;
                 mu=constants.Planck_constant/(8*pi**2*constants.speed_of_light_in_vacuum*freq)
                 mu_prime=mu*B_average/(mu+B_average)
@@ -314,7 +316,7 @@ class _thermo(object):
                 weight=1./(1+(grimme_thresh/freq)**alpha);
                 S_hind.append(constants.molar_gas_constant*(weight*dum_term + (1-weight)*dum_grim).sum())
 
-        if grimme==1:
+        if grimme>=1:
             S_vib = S_hind # replace vibrational contribution with Grimme correction
 
         # Summmation over all contributions
