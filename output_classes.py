@@ -114,7 +114,7 @@ class _general(object):
     '''
     This structure contains basic information about the Q-Chem jobfile.
     '''
-    def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile,mm_type):
+    def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry):
         self.jobtype = jobtype
         self.version = version
         self.spin = _np.float(spin)
@@ -124,6 +124,8 @@ class _general(object):
         self.status = status
         self.inputfile = inputfile
         self.mm_type = mm_type
+        self.initial_geometry = initial_geometry
+        self.final_geometry = final_geometry
 
     def info(self):
         '''
@@ -505,7 +507,10 @@ class _outputfile(object):
                 switch = 2
         inputfile = _readinput(infile_content,silent)
 
-        self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type)
+        # Create geometry objects under 'general' for convenience, final geometry will be overwritten later if different
+        # (The info object 'general' will be created after ALL OTHER objects are finished with parsing)
+        initial_geometry = inputfile.molecule.geometry()
+        final_geometry = deepcopy(initial_geometry)
 
         # Make another round if we have an MM or a QM/MM Janus job (just one MM per step)
         if mm_type=="mm" or mm_type=="janus":
@@ -785,6 +790,9 @@ class _outputfile(object):
                     N_step += 1
                     switch = 0
 
+            # The geometry has changed, so let's update a variable in the 'general' info object 
+            final_geometry = deepcopy(geometries[-1])
+
             if jobtype=="opt" or jobtype=="optimization":
                 self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
             else:
@@ -839,4 +847,13 @@ class _outputfile(object):
                 if "TIME STEPS COMPLETED" in line:
                     aimdstat = "steps completed"
 
+            # The geometry has changed, so let's update a variable in the 'general' info object 
+            final_geometry = deepcopy(geometries[-1])
+
             self.aimd = _aimd(temp,N_steps,time_step,total_time,time,energies,drift,kinetic_energies,geometries,aimdstat)
+
+        # Finally, we create the global info object 'general'
+        self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry)
+
+        
+
