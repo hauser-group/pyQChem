@@ -769,7 +769,7 @@ class _outputfile(object):
                     change.append(dummy)
                 if "**  OPTIMIZATION CONVERGED  **" in line:
                     optstat = "converged"
-                if "ATOM              X           Y           Z" in line:
+                if "ATOM                X               Y               Z" in line:
                     switch = 1
                     cycle_name = "Optimization step " + str(N_step)
                     cart_dummy = cartesian(cycle_name)
@@ -799,6 +799,7 @@ class _outputfile(object):
             energies = []
             geometries = []
             aimdstat = "steps not completed"
+            temp = 0
 
             aimd_step = 0
             drift_switch = 0
@@ -824,7 +825,8 @@ class _outputfile(object):
                 if ("Total energy in the final" in line) and (aimd_step>0):
                     dummy = float((line.split())[8])
                     energies.append(dummy)
-                if "Atom         X            Y            Z" in line and (aimd_step>0):
+                #if "Atom           X                Y                Z" in line and (aimd_step>0):
+                if "I     Atom         X            Y            Z" in line and (aimd_step>0):
                     geom_switch = 1
                     cycle_name = "time step " + str(aimd_step)
                     cart_dummy = cartesian(cycle_name)
