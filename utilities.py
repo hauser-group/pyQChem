@@ -203,13 +203,13 @@ def _readinput(file_input,silent=False):
         if k=="rem":
             new_array = rem_array()
             for k in content:
-                new_array.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
+                new_array.add(k.strip().replace("="," ").split()[0],k.strip().replace("="," ").split()[1])
             re_file.add(new_array)
         
         elif k=="rem_frgm":
             new_array = rem_frgm_array()
             for k in content:
-                new_array.add(k.strip().split()[0],k.strip().replace("=","").split()[1])
+                new_array.add(k.strip().replace("="," ").split()[0],k.strip().replace("="," ").split()[1])
             re_file.add(new_array)
             
         elif k=="molecule":
