@@ -505,13 +505,24 @@ class _outputfile(object):
                 infile_content.append(line)
             if switch == 1 and "Standard Nuclear Orientation" in line:
                 switch = 2
+                initial_cartesian = cartesian("sp job - initial geometry in standard orientation")
+            if switch == 2 and "Atom" not in line and "---" not in line and "Standard" not in line and "Repulsion" not in line:
+            	dummy = (line.split())[1:]
+            	initial_cartesian.add_atom(dummy[0],dummy[1],dummy[2],dummy[3])
+            if switch == 2 and "Repulsion" in line:
+            	switch = 3
         inputfile = _readinput(infile_content,silent)
 
-        # Create geometry objects under 'general' for convenience, final geometry will be overwritten later if different
-        # (The info object 'general' will be created after ALL OTHER objects are finished with parsing)
-        initial_geometry = inputfile.molecule.geometry()
-        final_geometry = deepcopy(initial_geometry)
+        # Creating geometry objects under 'general' for convenience, final geometry will be overwritten later if different
 
+        # Final geometry is NOT read directly from inputfile, but from Q-Chem standard orientation output in order to
+        # avoid issues with molecule 'read' in batch jobs
+        
+        initial_geometry = inputfile.molecule.geometry()
+        final_geometry = initial_cartesian
+
+        # The info object 'general' will be created after ALL OTHER objects are finished with parsing
+        
         # Make another round if we have an MM or a QM/MM Janus job (just one MM per step)
         if mm_type=="mm" or mm_type=="janus":
             etot = []
