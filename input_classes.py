@@ -2157,31 +2157,6 @@ Description: Sets whether or not to fall back to cartesian coordinates if the op
             self.dict_of_keywords["QUI_GEOM_OPT_FALLBACK"]=value.lower()
 
 
-    def geom_opt_hessian(self,value="show"):
-        '''
-Name: GEOM_OPT_HESSIAN
-Type: STRING
-Default: Diagonal
-
-Options:
-    'Diagonal'...................... Diagonal
-    'READ'.......................... READ
-
-Description: Determines the initial Hessian status.
-Recommendation: : An accurate initial Hessian will improve the performance of the optimizer, but is expensive to compute.    '''
-        if value == "":
-            if "GEOM_OPT_HESSIAN" in self.dict_of_keywords:
-                del self.dict_of_keywords["GEOM_OPT_HESSIAN"]
-                print "Keyword removed."
-        elif value == "show":
-            if "GEOM_OPT_HESSIAN" in self.dict_of_keywords:
-                return self.dict_of_keywords["GEOM_OPT_HESSIAN"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["GEOM_OPT_HESSIAN"]=value.lower()
-
-
     def geom_opt_linear_angle(self,value="show"):
         '''
 Name: GEOM_OPT_LINEAR_ANGLE
@@ -8425,7 +8400,7 @@ Recommendation: : Useful for modification of standard basis sets.    '''
     def print_orbitals(self,value="show"):
         '''
 Name: PRINT_ORBITALS
-Type: INTEGER
+Type: STRING
 Default: 0
 
 Options:
@@ -9307,7 +9282,6 @@ Options:
     'B97'........................... B97
     'B97-1'......................... B97-1
     'B97-2'......................... B97-2
-    'B97M-V'........................ B97M-V
     'BHHLYP'........................ BHHLYP
     'BR89B94h'...................... BR89B94h
     'EDF2'.......................... EDF2
@@ -9333,7 +9307,6 @@ Options:
     'omegaB97'...................... omegaB97
     'omegaB97X'..................... omegaB97X
     'omegaB97X-D'................... omegaB97X-D
-    'omegaB97X-V'................... omegaB97X-V
     'omegaB97X-2(LP)'............... omegaB97X-2(LP)
     'omegaB97X-2(TQZ)'.............. omegaB97X-2(TQZ)
     'wPBE'.......................... wPBE
@@ -9380,49 +9353,6 @@ Recommendation: : Consult the literature and reviews for guidence    '''
                 print "Value not set."
         else:
             self.dict_of_keywords["EXCHANGE"]=value.lower()
-
-
-    def basis2(self,value="show"):
-        '''
-Name: BASIS2
-Type: STRING
-Default: None
-
-Options:
-    'None'.......................... None
-
-    'STO-3G'........................ STO-3G
-    'STO-6G'........................ STO-6G
-    '3-21G'......................... 3-21G
-    '4-21G'......................... 4-21G
-    '6-31G'......................... 6-31G
-    '6-31G(d)'...................... 6-31G(d)
-    'cc-pVDZ'....................... cc-pVDZ
-
-    'r64G'.......................... r64G
-    '6-31G'......................... 6-31G
-    '6-31G*'........................ 6-31G*
-    '6-311G*'....................... 6-311G*
-    '6-311+G*'...................... 6-311+G*
-    'rcc-pVTZ'...................... rcc-pVTZ
-    'rcc-pVQZ'...................... rcc-pVQZ
-    'racc-pVDZ'..................... racc-pVDZ
-    'racc-pVTZ'..................... racc-pVTZ
-    'racc-pVQZ'..................... racc-pVQZ
-
-Description: Selects either a small basis set to use in basis set projection for the initial guess, or a subset basis for dual basis set calculations.
-    '''
-        if value == "":
-            if "BASIS2" in self.dict_of_keywords:
-                del self.dict_of_keywords["BASIS2"]
-                print "Keyword removed."
-        elif value == "show":
-            if "BASIS2" in self.dict_of_keywords:
-                return self.dict_of_keywords["BASIS2"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["BASIS2"]=value.lower()
 
 
     def dfpt_exchange(self,value="show"):
@@ -9836,7 +9766,7 @@ Options:
     'FALSE'......................... FALSE
     'TRUE'.......................... TRUE
 
-Description: Controls Mulliken and L?wdin population analyses for excited-state particle and hole density matrices. 
+Description: Controls Mulliken and Loewdin population analyses for excited-state particle and hole density matrices. 
 
     '''
         if value == "":
@@ -11528,90 +11458,6 @@ state, state = 2 is the second excited state, etc.
             self.dict_of_keywords["XOPT_STATE_2"]=value.lower()
 
 
-    def correlation(self,value="show"):
-        '''
-Name: CORRELATION
-Type: STRING
-Default: None
-
-Options:
-    'None'.......................... None
-
-    'B94'........................... B94
-    'B94hyb'........................ B94hyb
-    'B95'........................... B95
-    'LYP'........................... LYP
-    'LYP(EDF1)'..................... LYP(EDF1)
-    'P86'........................... P86
-    'PBE'........................... PBE
-    'PK09'.......................... PK09
-    'PK09'.......................... PK09
-    'PW91'.......................... PW91
-    'PW92'.......................... PW92
-    'PZ81'.......................... PZ81
-    'TPSS'.......................... TPSS
-    'VWN'........................... VWN
-    'Wigner'........................ Wigner
-    '(PBE)OP'....................... (PBE)OP
-    '(B88)OP'....................... (B88)OP
-
-    'MP2'........................... MP2
-    'CCMP2'......................... CCMP2
-    'MP4SDQ'........................ MP4SDQ
-    'ZAPT2'......................... ZAPT2
-    'Local_MP2'..................... Local_MP2
-    'RI-MP2'........................ RI-MP2
-    'SOSMP2'........................ SOSMP2
-    'MOSMP2'........................ MOSMP2
-    'RILMP2'........................ RILMP2
-
-    'MP3'........................... MP3
-    'MP4'........................... MP4
-    'CCD'........................... CCD
-    'CCD(2)'........................ CCD(2)
-    'CCSD'.......................... CCSD
-    'CCSD(T)'....................... CCSD(T)
-    'CCSD(2)'....................... CCSD(2)
-    'CCSD(fT)'...................... CCSD(fT)
-    'CCSD(dT)'...................... CCSD(dT)
-    'QCCD'.......................... QCCD
-    'QCCD(T)'....................... QCCD(T)
-    'QCCD(2)'....................... QCCD(2)
-    'QCISD'......................... QCISD
-    'QCISD(T)'...................... QCISD(T)
-    'OD'............................ OD
-    'OD(T)'......................... OD(T)
-    'OD(2)'......................... OD(2)
-    'VOD'........................... VOD
-    'VOD(2)'........................ VOD(2)
-    'VQCCD'......................... VQCCD
-    'VQCCD(T)'...................... VQCCD(T)
-    'VQCCD(2)'...................... VQCCD(2)
-
-    'PP'............................ PP
-    'CCVB'.......................... CCVB
-    'GVB_IP'........................ GVB_IP
-    'GVB_SIP'....................... GVB_SIP
-    'GVB_DIP'....................... GVB_DIP
-    'OP'............................ OP
-    'NP'............................ NP
-    '2P'............................ 2P
-
-Description: Specifies the correlation level of theory, either DFT or wavefunction-based.
-Recommendation: : Consult the literature and reviews for guidence    '''
-        if value == "":
-            if "CORRELATION" in self.dict_of_keywords:
-                del self.dict_of_keywords["CORRELATION"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CORRELATION" in self.dict_of_keywords:
-                return self.dict_of_keywords["CORRELATION"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CORRELATION"]=value.lower()
-
-
     def qui_section_swap_occupied_virtual(self,value="show"):
         '''
 Name: QUI_SECTION_SWAP_OCCUPIED_VIRTUAL
@@ -12234,69 +12080,6 @@ Description: Performs certain excited state analyses for CIS/TD-DFT, ADC, and CC
             self.dict_of_keywords["STATE_ANALYSIS"]=value.lower()
 
 
-    def method(self,value="show"):
-        '''
-Name: METHOD
-Type: STRING
-Default: HF
-
-Options:
-    'Custom'........................ Custom
-    'HF'............................ HF
-
-    'B3LYP'......................... B3LYP
-    'BLYP'.......................... BLYP
-    'EDF1'.......................... EDF1
-    'B97-D'......................... B97-D
-    'EDF2'.......................... EDF2
-    'LDA'........................... LDA
-    'M06'........................... M06
-    'M06-2X'........................ M06-2X
-    'PBE'........................... PBE
-    'PBE50'......................... PBE50
-    'CAMB3LYP'...................... CAM-B3LYP
-    'wB97XD'........................ Omega-B97X-D
-
-    'MP2'........................... MP2
-    'RI-MP2'........................ RI-MP2
-    'SOSMP2'........................ SOS-MP2
-    'CCSD'.......................... CCSD
-    'CCSD(T)'....................... CCSD(T)
-
-    'TD-DFT'........................ TD-DFT
-    'CIS'........................... CIS
-    'CIS(D)'........................ CIS(D)
-    'RI-CIS(D)'..................... RI-CIS(D)
-    'SOS-CIS(D)'.................... SOS-CIS(D)
-    'SOS-CIS(D0)'................... SOS-CIS(D0)
-
-    'EOM-CCSD'...................... EOM-CCSD
-
-    'ADC(1)'........................ ADC(1)
-    'ADC(2)'........................ ADC(2)
-    'ADC(2)-x'...................... ADC(2)-x
-    'ADC(3)'........................ ADC(3)
-    'CVS-ADC(1)'.................... CVS-ADC(1)
-    'CVS-ADC(2)'.................... CVS-ADC(2)
-    'CVS-ADC(2)-x'.................. CVS-ADC(2)-x
-    'SOS-ADC(2)'.................... SOS-ADC(2)
-    'SOS-ADC(2)-x'.................. SOS-ADC(2)-x
-
-Description: The level of theory used in the calculation.
-    '''
-        if value == "":
-            if "METHOD" in self.dict_of_keywords:
-                del self.dict_of_keywords["METHOD"]
-                print "Keyword removed."
-        elif value == "show":
-            if "METHOD" in self.dict_of_keywords:
-                return self.dict_of_keywords["METHOD"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["METHOD"]=value.lower()
-
-
     def qui_adc_states1(self,value="show"):
         '''
 Name: QUI_ADC_STATES1
@@ -12365,6 +12148,427 @@ Description: Set the number of core orbitals in an CVS-ADC calculation.
                 print "Value not set."
         else:
             self.dict_of_keywords["QUI_ADC_CORE"]=value.lower()
+
+
+    def geom_opt_hessian(self,value="show"):
+        '''
+Name: GEOM_OPT_HESSIAN
+Type: STRING
+Default: READ
+
+Options:
+    '0'............................. None
+    'READ'.......................... READ
+    'Diagonal'...................... Diagonal
+
+Description: Determines the initial Hessian status.
+Recommendation: : An accurate initial Hessian will improve the performance of the optimizer, but is expensive to compute.    '''
+        if value == "":
+            if "GEOM_OPT_HESSIAN" in self.dict_of_keywords:
+                del self.dict_of_keywords["GEOM_OPT_HESSIAN"]
+                print "Keyword removed."
+        elif value == "show":
+            if "GEOM_OPT_HESSIAN" in self.dict_of_keywords:
+                return self.dict_of_keywords["GEOM_OPT_HESSIAN"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["GEOM_OPT_HESSIAN"]=value.lower()
+
+
+    def mp2v(self,value="show"):
+        '''
+Name: MP2V
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: 
+    '''
+        if value == "":
+            if "MP2V" in self.dict_of_keywords:
+                del self.dict_of_keywords["MP2V"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MP2V" in self.dict_of_keywords:
+                return self.dict_of_keywords["MP2V"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MP2V"]=value.lower()
+
+
+    def correlation(self,value="show"):
+        '''
+Name: CORRELATION
+Type: STRING
+Default: None
+
+Options:
+    'None'.......................... None
+
+    'B94'........................... B94
+    'B94hyb'........................ B94hyb
+    'B95'........................... B95
+    'LYP'........................... LYP
+    'LYP(EDF1)'..................... LYP(EDF1)
+    'P86'........................... P86
+    'PBE'........................... PBE
+    'PK09'.......................... PK09
+    'PK09'.......................... PK09
+    'PW91'.......................... PW91
+    'PW92'.......................... PW92
+    'PZ81'.......................... PZ81
+    'TPSS'.......................... TPSS
+    'VWN'........................... VWN
+    'Wigner'........................ Wigner
+    '(PBE)OP'....................... (PBE)OP
+    '(B88)OP'....................... (B88)OP
+
+    'MP2'........................... MP2
+    'CCMP2'......................... CCMP2
+    'MP4SDQ'........................ MP4SDQ
+    'ZAPT2'......................... ZAPT2
+    'Local_MP2'..................... Local_MP2
+    'RI-MP2'........................ RI-MP2
+    'SOSMP2'........................ SOSMP2
+    'ATTMP2'........................ ATT-MP2
+    'MOSMP2'........................ MOSMP2
+    'RILMP2'........................ RILMP2
+
+    'MP3'........................... MP3
+    'MP4'........................... MP4
+    'CCD'........................... CCD
+    'CCD(2)'........................ CCD(2)
+    'CCSD'.......................... CCSD
+    'CCSD(T)'....................... CCSD(T)
+    'CCSD(2)'....................... CCSD(2)
+    'CCSD(fT)'...................... CCSD(fT)
+    'CCSD(dT)'...................... CCSD(dT)
+    'QCCD'.......................... QCCD
+    'QCCD(T)'....................... QCCD(T)
+    'QCCD(2)'....................... QCCD(2)
+    'QCISD'......................... QCISD
+    'QCISD(T)'...................... QCISD(T)
+    'OD'............................ OD
+    'OD(T)'......................... OD(T)
+    'OD(2)'......................... OD(2)
+    'VOD'........................... VOD
+    'VOD(2)'........................ VOD(2)
+    'VQCCD'......................... VQCCD
+    'VQCCD(T)'...................... VQCCD(T)
+    'VQCCD(2)'...................... VQCCD(2)
+
+    'PP'............................ PP
+    'CCVB'.......................... CCVB
+    'GVB_IP'........................ GVB_IP
+    'GVB_SIP'....................... GVB_SIP
+    'GVB_DIP'....................... GVB_DIP
+    'OP'............................ OP
+    'NP'............................ NP
+    '2P'............................ 2P
+
+Description: Specifies the correlation level of theory, either DFT or wavefunction-based.
+Recommendation: : Consult the literature and reviews for guidence    '''
+        if value == "":
+            if "CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["CORRELATION"]
+                print "Keyword removed."
+        elif value == "show":
+            if "CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["CORRELATION"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["CORRELATION"]=value.lower()
+
+
+    def qui_primary_basis(self,value="show"):
+        '''
+Name: QUI_PRIMARY_BASIS
+Type: STRING
+Default: 6-31G
+
+Options:
+    'STO-3G'........................ STO-3G
+    'STO-6G'........................ STO-6G
+
+    '3-21G'......................... 3-21G
+    '4-31G'......................... 4-31G
+    '6-31G'......................... 6-31G
+    '6-31G*'........................ 6-31G*
+    '6-31+G*'....................... 6-31+G*
+    '6-31G**'....................... 6-31G**
+    '6-31++G**'..................... 6-31++G**
+    '6-311G'........................ 6-311G
+    '6-311G*'....................... 6-311G*
+    '6-311+G*'...................... 6-311+G*
+    '6-311G**'...................... 6-311G**
+    '6-311++G**'.................... 6-311++G**
+    '6-311++G(3df,3pd)'............. 6-311++G(3df,3pd)
+
+    'pc-0'.......................... pc-0
+    'pc-1'.......................... pc-1
+    'pc-2'.......................... pc-2
+    'pc-3'.......................... pc-3
+    'pc-4'.......................... pc-4
+    'pcJ-0'......................... pcJ-0
+    'pcJ-1'......................... pcJ-1
+    'pcJ-2'......................... pcJ-2
+    'pcJ-3'......................... pcJ-3
+    'pcJ-4'......................... pcJ-4
+    'pcS-0'......................... pcS-0
+    'pcS-1'......................... pcS-1
+    'pcS-2'......................... pcS-2
+    'pcS-3'......................... pcS-3
+    'pcS-4'......................... pcS-4
+
+    'cc-pVDZ'....................... cc-pVDZ
+    'cc-pVTZ'....................... cc-pVTZ
+    'cc-pVQZ'....................... cc-pVQZ
+    'cc-pcVDZ'...................... cc-pcVDZ
+    'cc-pcVTZ'...................... cc-pcVTZ
+    'cc-pcVQZ'...................... cc-pcVQZ
+    'aug-cc-pVDZ'................... aug-cc-pVDZ
+    'aug-cc-pVTZ'................... aug-cc-pVTZ
+    'aug-cc-pVQZ'................... aug-cc-pVQZ
+    'aug-cc-pcVDZ'.................. aug-cc-pcVDZ
+    'aug-cc-pcVTZ'.................. aug-cc-pcVTZ
+    'aug-cc-pcVQZ'.................. aug-cc-pcVQZ
+
+    'G3Large'....................... G3Large
+    'G3MP2Large'.................... G3MP2Large
+
+    'CRENBL'........................ CRENBL
+    'CRENBS'........................ CRENBS
+    'HWMB'.......................... HWMB
+    'HWVDZ'......................... HWVDZ
+    'LACVP'......................... LACVP
+    'LANL2DZ'....................... LANL2DZ
+    'SBKJC'......................... SBKJC
+    'SRLC'.......................... SRLC
+    'SRSC'.......................... SRSC
+
+    'gen'........................... User-defined
+    'Mixed'......................... Mixed
+
+Description: Specifies the basis sets to be used for the inital SCF to determine the occupied orbitals.
+Recommendation: : The primary basis should be smaller than the target basis.    '''
+        if value == "":
+            if "QUI_PRIMARY_BASIS" in self.dict_of_keywords:
+                del self.dict_of_keywords["QUI_PRIMARY_BASIS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "QUI_PRIMARY_BASIS" in self.dict_of_keywords:
+                return self.dict_of_keywords["QUI_PRIMARY_BASIS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["QUI_PRIMARY_BASIS"]=value.lower()
+
+
+    def basis2_save(self,value="show"):
+        '''
+Name: BASIS2_SAVE
+Type: STRING
+Default: None
+
+Options:
+    'None'.......................... None
+
+    'STO-3G'........................ STO-3G
+    'STO-6G'........................ STO-6G
+    '3-21G'......................... 3-21G
+    '4-21G'......................... 4-21G
+    '6-31G'......................... 6-31G
+    '6-31G(d)'...................... 6-31G(d)
+    'cc-pVDZ'....................... cc-pVDZ
+
+    'r64G'.......................... r64G
+    '6-31G'......................... 6-31G
+    '6-31G*'........................ 6-31G*
+    '6-311G*'....................... 6-311G*
+    '6-311+G*'...................... 6-311+G*
+    'rcc-pVTZ'...................... rcc-pVTZ
+    'rcc-pVQZ'...................... rcc-pVQZ
+    'racc-pVDZ'..................... racc-pVDZ
+    'racc-pVTZ'..................... racc-pVTZ
+    'racc-pVQZ'..................... racc-pVQZ
+
+Description: Selects either a small basis set to use in basis set projection for the initial guess, or a subset basis for dual basis set calculations.
+    '''
+        if value == "":
+            if "BASIS2_SAVE" in self.dict_of_keywords:
+                del self.dict_of_keywords["BASIS2_SAVE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "BASIS2_SAVE" in self.dict_of_keywords:
+                return self.dict_of_keywords["BASIS2_SAVE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["BASIS2_SAVE"]=value.lower()
+
+
+    def basis2(self,value="show"):
+        '''
+Name: BASIS2
+Type: STRING
+Default: None
+
+Options:
+    'None'.......................... None
+
+    'STO-3G'........................ STO-3G
+    'STO-6G'........................ STO-6G
+
+    '3-21G'......................... 3-21G
+    '4-31G'......................... 4-31G
+    '6-31G'......................... 6-31G
+    '6-31G*'........................ 6-31G*
+    '6-31+G*'....................... 6-31+G*
+    '6-31G**'....................... 6-31G**
+    '6-31++G**'..................... 6-31++G**
+    '6-311G'........................ 6-311G
+    '6-311G*'....................... 6-311G*
+    '6-311+G*'...................... 6-311+G*
+    '6-311G**'...................... 6-311G**
+    '6-311++G**'.................... 6-311++G**
+    '6-311++G(3df,3pd)'............. 6-311++G(3df,3pd)
+
+    'rcc-pVTZ'...................... rcc-pVTZ
+    'rcc-pVQZ'...................... rcc-pVQZ
+    'racc-pVDZ'..................... racc-pVDZ
+    'racc-pVTZ'..................... racc-pVTZ
+    'racc-pVQZ'..................... racc-pVQZ
+
+    'pc-0'.......................... pc-0
+    'pc-1'.......................... pc-1
+    'pc-2'.......................... pc-2
+    'pc-3'.......................... pc-3
+    'pc-4'.......................... pc-4
+    'pcJ-0'......................... pcJ-0
+    'pcJ-1'......................... pcJ-1
+    'pcJ-2'......................... pcJ-2
+    'pcJ-3'......................... pcJ-3
+    'pcJ-4'......................... pcJ-4
+    'pcS-0'......................... pcS-0
+    'pcS-1'......................... pcS-1
+    'pcS-2'......................... pcS-2
+    'pcS-3'......................... pcS-3
+    'pcS-4'......................... pcS-4
+
+    'cc-pVDZ'....................... cc-pVDZ
+    'cc-pVTZ'....................... cc-pVTZ
+    'cc-pVQZ'....................... cc-pVQZ
+    'cc-pcVDZ'...................... cc-pcVDZ
+    'cc-pcVTZ'...................... cc-pcVTZ
+    'cc-pcVQZ'...................... cc-pcVQZ
+    'aug-cc-pVDZ'................... aug-cc-pVDZ
+    'aug-cc-pVTZ'................... aug-cc-pVTZ
+    'aug-cc-pVQZ'................... aug-cc-pVQZ
+    'aug-cc-pcVDZ'.................. aug-cc-pcVDZ
+    'aug-cc-pcVTZ'.................. aug-cc-pcVTZ
+    'aug-cc-pcVQZ'.................. aug-cc-pcVQZ
+
+    'G3Large'....................... G3Large
+    'G3MP2Large'.................... G3MP2Large
+
+    'CRENBL'........................ CRENBL
+    'CRENBS'........................ CRENBS
+    'HWMB'.......................... HWMB
+    'HWVDZ'......................... HWVDZ
+    'LACVP'......................... LACVP
+    'LANL2DZ'....................... LANL2DZ
+    'SBKJC'......................... SBKJC
+    'SRLC'.......................... SRLC
+    'SRSC'.......................... SRSC
+
+    'gen'........................... User-defined
+    'Mixed'......................... Mixed
+
+Description: Specifies the basis sets to be used.
+Recommendation: : Consult literature and reviews to aid your selection.    '''
+        if value == "":
+            if "BASIS2" in self.dict_of_keywords:
+                del self.dict_of_keywords["BASIS2"]
+                print "Keyword removed."
+        elif value == "show":
+            if "BASIS2" in self.dict_of_keywords:
+                return self.dict_of_keywords["BASIS2"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["BASIS2"]=value.lower()
+
+
+    def method(self,value="show"):
+        '''
+Name: METHOD
+Type: STRING
+Default: HF
+
+Options:
+    'Custom'........................ Custom
+    'HF'............................ HF
+
+    'B3LYP'......................... B3LYP
+    'M06-2X'........................ M06-2X
+    'wB97XD'........................ Omega-B97X-D
+    'wB97XV'........................ Omega-B97X-V
+    'BLYP'.......................... BLYP
+    'CAMB3LYP'...................... CAM-B3LYP
+    'EDF1'.......................... EDF1
+    'B97-D'......................... B97-D
+    'EDF2'.......................... EDF2
+    'LDA'........................... LDA
+    'M06'........................... M06
+    'PBE'........................... PBE
+    'PBE50'......................... PBE50
+
+    'MP2'........................... MP2
+    'MP2'........................... MP2[V]
+    'RI-MP2'........................ RI-MP2
+    'ATT-MP2'....................... ATT-MP2
+    'SOS-MP2'....................... SOS-MP2
+    'CCSD'.......................... CCSD
+    'CCSD(T)'....................... CCSD(T)
+
+    'TD-DFT'........................ TD-DFT
+    'CIS'........................... CIS
+    'CIS(D)'........................ CIS(D)
+    'RI-CIS(D)'..................... RI-CIS(D)
+    'SOS-CIS(D)'.................... SOS-CIS(D)
+    'SOS-CIS(D0)'................... SOS-CIS(D0)
+
+    'EOM-CCSD'...................... EOM-CCSD
+
+    'ADC(1)'........................ ADC(1)
+    'ADC(2)'........................ ADC(2)
+    'ADC(2)-x'...................... ADC(2)-x
+    'ADC(3)'........................ ADC(3)
+    'CVS-ADC(1)'.................... CVS-ADC(1)
+    'CVS-ADC(2)'.................... CVS-ADC(2)
+    'CVS-ADC(2)-x'.................. CVS-ADC(2)-x
+    'SOS-ADC(2)'.................... SOS-ADC(2)
+    'SOS-ADC(2)-x'.................. SOS-ADC(2)-x
+
+Description: The level of theory used in the calculation.
+    '''
+        if value == "":
+            if "METHOD" in self.dict_of_keywords:
+                del self.dict_of_keywords["METHOD"]
+                print "Keyword removed."
+        elif value == "show":
+            if "METHOD" in self.dict_of_keywords:
+                return self.dict_of_keywords["METHOD"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["METHOD"]=value.lower()
 
 
     # ------------------------ End of keyword list ----------------------------
