@@ -114,18 +114,23 @@ class _general(object):
     '''
     This structure contains basic information about the Q-Chem jobfile.
     '''
-    def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry):
+    def __init__(self,jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry,wall_time,cpu_time):
         self.jobtype = jobtype
         self.version = version
         self.spin = _np.float(spin)
         if mm_type!="mm":
             self.basis_size = int(basis_size)
-        self.energy = _np.float(energy)
+        try:
+            self.energy = _np.float(energy)
+        except:
+            self.energy="undefined"
         self.status = status
         self.inputfile = inputfile
         self.mm_type = mm_type
         self.initial_geometry = initial_geometry
         self.final_geometry = final_geometry
+        self.wall_time = wall_time
+        self.cpu_time = cpu_time
 
     def info(self):
         '''
@@ -463,11 +468,16 @@ class _outputfile(object):
         version = 'undetermined'
         basis_size = 'undetermined'
         status = 'unfinished'
+        wall_time = -99
+        cpu_time = -99
 
         # flag for detection of basis2 job
         basis2_flag = False
 
-        mm_type = "" 
+        mm_type = ""
+        self.aifdem = 0 
+        self.N_Fragments=1
+        self.N_SET=0
 
         switch = 0
         for line in content:
@@ -481,6 +491,10 @@ class _outputfile(object):
                 basis2_flag = True
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
                 mm_type = ((line.split())[-1]).lower()
+            if("AIFDEM" in line) or ("aifdem" in line):
+                self.aifdem=((line.split())[-1]).lower()
+            if("CIS_N_ROOTS" in line):
+                self.N_SET = ((line.split())[-1]).lower()
             if "Q-Chem, Version" in line:
                 version = (((line.split(","))[1]).split())[1]
             if "<S^2> =" in line:
@@ -493,8 +507,15 @@ class _outputfile(object):
                 energy = (line.split())[4]
             if ("There are" in line) and ("shells" in line):
                 basis_size = (line.split())[5]
+            if ("Total job time:" in line):
+                wall_time=float(line.split()[3].split("s")[0])
+                cpu_time=float(line.split()[4].split("s")[0])
             if "MISSION" in line:
                 status = 'finished'
+            if "--fragment" in line:
+                ifrgm = int((line.split())[-1])
+                if ifrgm+1 > self.N_Fragments:
+                    self.N_Fragments = ifrgm+1  
             if "TIME STEPS COMPLETED" in line and jobtype=="aimd":
                 status = 'time steps completed'
             # Create corresponding inputfile:
@@ -863,8 +884,81 @@ class _outputfile(object):
 
             self.aimd = _aimd(temp,N_steps,time_step,total_time,time,energies,drift,kinetic_energies,geometries,aimdstat)
 
+        if self.aifdem != 0:
+            self.EvalStrng=""
+            self.aifdem_E_Excite=0.0
+            self.aifdem_Time=0.0
+            EvalSwitch=0
+            for line in content:
+                if("AIFDEM Time:" in line):
+                    self.aifdem_Time=float(line.split()[6])
+                if (" EigenVectors " in line) and (EvalSwitch==1):
+                    EvalSwitch=0
+                if EvalSwitch==1:
+                    self.EvalStrng+=line
+                if " EigenValues \n" in line:
+                    EvalSwitch=1
+                _ierr = 0
+            for i in range(len(self.EvalStrng.split())):
+                _ierr +=1
+                if _ierr > 7:
+                    print "Possible Error finding AIFDEM Excitation Energy in output_classes.py"
+                if len(self.EvalStrng.split()[i]) > 1:
+                    _iFirstline = i
+                    break
+            
+            _EvalStrngFirstline=self.EvalStrng.split()[_iFirstline] 
+                        
+            self.aifdem_E_Excite=float((_EvalStrngFirstline.split("-"))[1])-float((_EvalStrngFirstline.split("-"))[2])
+            self.aifdem_E_Excite=round(self.aifdem_E_Excite,7)
+        if self.N_SET > 0 and self.aifdem==0:
+            self.excited_states=[]
+            self.cis_time=0
+            _N_SET = 0
+            for line in content:
+                if("Excited state" in line):
+                    _E_Exc_eV = float(line.split()[-1])
+                    _N_SET +=1
+                if("Total energy for state" in line):
+                    _E_Exc_total = float(line.split()[-1])
+                if("Multiplicity:" in line):
+                    _Mult = line.split()[-1]
+                if("Trans. Mom.:" in line):
+                    _momX = line.split()[2]
+                    _momY = line.split()[4]
+                    _momZ = line.split()[6]
+                if("Strength" in line):
+                    _osc = line.split()[-1]
+                    self.excited_states.append({"Exc_eV":_E_Exc_eV,"Tot":_E_Exc_total,"Mult":_Mult,"X":_momX,"Y":_momY,"Z":_momZ,"Strength":_osc})
+                if("CPU time" in line):
+                    self.cis_time = line.split()[-1]
+            self.N_SET=_N_SET        
+        
+        if self.N_SET > 0 and self.aifdem==0:
+            self.excited_states=[]
+            self.cis_time=0
+            _N_SET = 0
+            for line in content:
+                if("Excited state" in line):
+                    _E_Exc_eV = float(line.split()[-1])
+                    _N_SET +=1
+                if("Total energy for state" in line):
+                    _E_Exc_total = float(line.split()[-1])
+                if("Multiplicity:" in line):
+                    _Mult = line.split()[-1]
+                if("Trans. Mom.:" in line):
+                    _momX = line.split()[2]
+                    _momY = line.split()[4]
+                    _momZ = line.split()[6]
+                if("Strength" in line):
+                    _osc = line.split()[-1]
+                    self.excited_states.append({"Exc_eV":_E_Exc_eV,"Tot":_E_Exc_total,"Mult":_Mult,"X":_momX,"Y":_momY,"Z":_momZ,"Strength":_osc})
+                if("CPU time" in line):
+                    self.cis_time = line.split()[-1]
+            self.N_SET=_N_SET
+
         # Finally, we create the global info object 'general'
-        self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry)
+        self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry,wall_time,cpu_time)
 
         
 

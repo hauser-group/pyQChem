@@ -12571,7 +12571,170 @@ Description: The level of theory used in the calculation.
             self.dict_of_keywords["METHOD"]=value.lower()
 
 
-    # ------------------------ End of keyword list ----------------------------
+    # --------------- End of computer generated keyword list ------------------
+
+
+
+    # --------------  REM keywords added by hand (obsolete?) -----------------
+
+    def aifdem(self,value="show"):
+        if value == "":
+            if "AIFDEM" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIFDEM"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIFDEM" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIFDEM"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIFDEM"]=value.lower()
+    
+    def aifdem_ntothresh(self,value="show"):
+        if value == "":
+            if "AIFDEM_NTOTHRESH" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIFDEM_NTOTHRESH"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIFDEM_NTOTHRESH" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIFDEM_NTOTHRESH"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIFDEM_NTOTHRESH"]=value.lower()
+    
+    def aifdem_embed_range(self,value="show"):
+        if value == "":
+            if "AIFDEM_EMBED_RANGE" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIFDEM_EMBED_RANGE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIFDEM_EMBED_RANGE" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIFDEM_EMBED_RANGE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIFDEM_EMBED_RANGE"]=value.lower()
+    
+    def aifdem_ctstates(self,value="show"):
+        if value == "":
+            if "AIFDEM_CTSTATES" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIFDEM_CTSTATES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIFDEM_CTSTATES" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIFDEM_CTSTATES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIFDEM_CTSTATES"]=value.lower()
+    
+    def xpol(self,value="show"):
+        if value == "":
+            if "XPOL" in self.dict_of_keywords:
+                del self.dict_of_keywords["XPOL"]
+                print "Keyword removed."
+        elif value == "show":
+            if "XPOL" in self.dict_of_keywords:
+                return self.dict_of_keywords["XPOL"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["XPOL"]=value.lower()
+    
+    def xpol_noscf(self,value="show"):
+        if value == "":
+            if "XPOL_NOSCF" in self.dict_of_keywords:
+                del self.dict_of_keywords["XPOL_NOSCF"]
+                print "Keyword removed."
+        elif value == "show":
+            if "XPOL_NOSCF" in self.dict_of_keywords:
+                return self.dict_of_keywords["XPOL_NOSCF"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["XPOL_NOSCF"]=value.lower()
+    
+    def xpol_charge_type(self,value="show"):
+        if value == "":
+            if "XPOL_CHARGE_TYPE" in self.dict_of_keywords:
+                del self.dict_of_keywords["XPOL_CHARGE_TYPE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "XPOL_CHARGE_TYPE" in self.dict_of_keywords:
+                return self.dict_of_keywords["XPOL_CHARGE_TYPE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["XPOL_CHARGE_TYPE"]=value.lower()
+            
+    def nto_pairs(self,value="show"):
+        if value == "":
+            if "NTO_PAIRS" in self.dict_of_keywords:
+                del self.dict_of_keywords["NTO_PAIRS"]
+                print "Keyword removed."
+        elif value == "show":
+            if "NTO_PAIRS" in self.dict_of_keywords:
+                return self.dict_of_keywords["NTO_PAIRS"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["NTO_PAIRS"]=value.lower()
+    
+    def max_scf_cycles(self,value="show"):
+        if value == "":
+            if "MAX_SCF_CYCLES" in self.dict_of_keywords:
+                del self.dict_of_keywords["MAX_SCF_CYCLES"]
+                print "Keyword removed."
+        elif value == "show":
+            if "MAX_SCF_CYCLES" in self.dict_of_keywords:
+                return self.dict_of_keywords["MAX_SCF_CYCLES"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["MAX_SCF_CYCLES"]=value.lower()
+            
+    def symmetry(self,value="show"):
+        if value == "":
+            if "SYMMETRY" in self.dict_of_keywords:
+                del self.dict_of_keywords["SYMMETRY"]
+                print "Keyword removed."
+        elif value == "show":
+            if "SYMMETRY" in self.dict_of_keywords:
+                return self.dict_of_keywords["SYMMETRY"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["SYMMETRY"]=value.lower()
+    
+    def aifdem_frgm_read(self,value="show"):
+        if value == "":
+            if "AIFDEM_FRGM_READ" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIFDEM_FRGM_READ"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIFDEM_FRGM_READ" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIFDEM_FRGM_READ"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIFDEM_FRGM_READ"]=value.lower()
+    
+    def aifdem_frgm_write(self,value="show"):
+        if value == "":
+            if "AIFDEM_FRGM_WRITE" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIFDEM_FRGM_WRITE"]
+                print "Keyword removed."
+        elif value == "show":
+            if "AIFDEM_FRGM_WRITE" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIFDEM_FRGM_WRITE"]
+            else:
+                print "Value not set."
+        else:
+            self.dict_of_keywords["AIFDEM_FRGM_WRITE"]=value.lower()
+
+
+   # ------------------------ End of manual keyword list ---------------------- 
             
     def add(self,keyword,value):
         '''\nFor rem values without documenation herein, please add keyword and value manually'''
