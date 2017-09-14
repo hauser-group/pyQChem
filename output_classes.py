@@ -866,7 +866,7 @@ class _outputfile(object):
                     dummy = float((line.split())[8])
                     energies.append(dummy)
                 #if "Atom           X                Y                Z" in line and (aimd_step>0):
-                if "I     Atom         X            Y            Z" in line and (aimd_step>0):
+                if "Standard Nuclear Orientation (Angstroms)" in line and (aimd_step>0):
                     geom_switch = 1
                     cycle_name = "time step " + str(aimd_step)
                     cart_dummy = cartesian(cycle_name)
