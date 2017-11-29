@@ -831,7 +831,6 @@ class _outputfile(object):
                     continue
                 if  "Max gradient component" in line and switch == 2:
                     switch = 0
-                    print(grad_dummy)
                     gradient_vector.append(_np.array([[float(value) for value in sp[1:]] for sp in grad_dummy[1:]]))
                 elif switch == 2:
                     grad_dummy.append(line.split())
