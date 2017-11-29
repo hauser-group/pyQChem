@@ -3,13 +3,13 @@
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met: 
+# modification, are permitted provided that the following conditions are met:
 
 # 1. Redistributions of source code must retain the above copyright notice, this
-#    list of conditions and the following disclaimer. 
+#    list of conditions and the following disclaimer.
 # 2. Redistributions in binary form must reproduce the above copyright notice,
 #    this list of conditions and the following disclaimer in the documentation
-#    and/or other materials provided with the distribution. 
+#    and/or other materials provided with the distribution.
 
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -23,7 +23,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # The views and conclusions contained in the software and documentation are those
-# of the authors and should not be interpreted as representing official policies, 
+# of the authors and should not be interpreted as representing official policies,
 # either expressed or implied, of the FreeBSD Project.
 
 #####################################################################
@@ -32,11 +32,11 @@
 #                                                                   #
 #####################################################################
 
-# All classes here are all hidden. Their only purpose is to structure 
+# All classes here are all hidden. Their only purpose is to structure
 # information for the user.
 
 
-import numpy as _np 
+import numpy as _np
 from copy import deepcopy
 
 from input_classes import cartesian
@@ -54,23 +54,23 @@ class _mm(object):
 
     def __init__(self,mm_list):
         if (len(mm_list[0])>1):
-            self.etot=mm_list[0] 
-            self.ecoulomb=mm_list[1] 
-            self.evdw=mm_list[2] 
-            self.etorsion=mm_list[3] 
-            self.eimptors=mm_list[4] 
-            self.eureybrad=mm_list[5] 
-            self.eangle=mm_list[6] 
+            self.etot=mm_list[0]
+            self.ecoulomb=mm_list[1]
+            self.evdw=mm_list[2]
+            self.etorsion=mm_list[3]
+            self.eimptors=mm_list[4]
+            self.eureybrad=mm_list[5]
+            self.eangle=mm_list[6]
             self.ebond=mm_list[7]
             self.nbonds=mm_list[8]
         else:
             self.etot=mm_list[0][0]
-            self.ecoulomb=mm_list[1][0] 
+            self.ecoulomb=mm_list[1][0]
             self.evdw=mm_list[2][0]
-            self.etorsion=mm_list[3][0] 
-            self.eimptors=mm_list[4][0] 
-            self.eureybrad=mm_list[5][0] 
-            self.eangle=mm_list[6][0] 
+            self.etorsion=mm_list[3][0]
+            self.eimptors=mm_list[4][0]
+            self.eureybrad=mm_list[5][0]
+            self.eangle=mm_list[6][0]
             self.ebond=mm_list[7][0]
             self.nbonds=mm_list[8]
 
@@ -83,9 +83,9 @@ class _mm(object):
         print "----------------------"
         print ""
         if type(self.etot)==list:
-            print str(len(self.etot)) + " energies found, printing last:" 
+            print str(len(self.etot)) + " energies found, printing last:"
             print ""
-            print "Number of bonds:\t\t" + str(self.nbonds) 
+            print "Number of bonds:\t\t" + str(self.nbonds)
             print "Bond energy:\t\t\t" + str(self.ebond[-1]) + " kcal/mol"
             print "Angle energy:\t\t\t" + str(self.eangle[-1]) + " kcal/mol"
             print "Urey-Bradly energy:\t\t" + str(self.eureybrad[-1]) + " kcal/mol"
@@ -97,7 +97,7 @@ class _mm(object):
             print "Total energy:\t\t\t" + str(self.etot[-1])  + " kcal/mol (" + \
                 str(self.etot[-1]*constants.kcal_pro_mole_to_hartree) + " Hartree)"
         else:
-            print "Number of bonds:\t\t" + str(self.nbonds) 
+            print "Number of bonds:\t\t" + str(self.nbonds)
             print "Bond energy:\t\t\t" + str(self.ebond) + " kcal/mol"
             print "Angle energy:\t\t\t" + str(self.eangle) + " kcal/mol"
             print "Urey-Bradly energy:\t\t" + str(self.eureybrad) + " kcal/mol"
@@ -149,7 +149,7 @@ class _general(object):
         if self.mm_type == "oniom":
             jobstring += " (QM/MM calculation of type ONIOM)"
         print jobstring
-        
+
         if self.mm_type=="mm":
             print "MM energy:\t\t" + str(self.energy)
         elif self.mm_type=="" :
@@ -189,9 +189,9 @@ class _thermo(object):
     def info(self):
         '''
         Prints a summary of basic thermodynamics information (in Hartree).
-        The internal thermal energy (ITE) is corrected for zero point energy (ZPE). 
-        Enthalpy (H), Helmholtz free energy (F) and Gibbs free energy (G) are 
-        already corrected for internal thermal energy (which includes zero point energy). 
+        The internal thermal energy (ITE) is corrected for zero point energy (ZPE).
+        Enthalpy (H), Helmholtz free energy (F) and Gibbs free energy (G) are
+        already corrected for internal thermal energy (which includes zero point energy).
         '''
         print "Electronic energy (E):\t\t" + str(self.E)
         print "---------------------"
@@ -236,8 +236,8 @@ class _thermo(object):
         To make pyQchem shut up set silent=1.
 
         Output:
-        A numpy array of dimension N*7, with N as number of temperature/pressure 
-        pairs. The columns are: temperature, pressure, ITE (internal thermal energy), S, H, F and G. 
+        A numpy array of dimension N*7, with N as number of temperature/pressure
+        pairs. The columns are: temperature, pressure, ITE (internal thermal energy), S, H, F and G.
 
         Example:
         <somefile>.thermo.calculate(373.15) calculates the potentials at 100 deg C and 1 atm.
@@ -246,7 +246,7 @@ class _thermo(object):
             loop_freq = loop_iso
 
         # Check temperature and pressure
-        if type(temp) is str or type(temp) is float or type(temp) is int:  
+        if type(temp) is str or type(temp) is float or type(temp) is int:
             dummy = [] # convert temperature input to list (will be iterated over)
             dummy.append(temp)
             T = _np.asarray(dummy,dtype=float)
@@ -256,11 +256,11 @@ class _thermo(object):
         if pressure == "":
             p = _np.ones(_np.size(T))*1.01325e5  # from ATM to Pa
         else:
-            if type(pressure) is str or type(pressure) is float or type(pressure) is int:  
+            if type(pressure) is str or type(pressure) is float or type(pressure) is int:
                 dummy = [] # convert pressure input to list
                 for k in range(len(T)):  # assume same pressure for set of temperature
                     dummy.append(pressure)
-                p = _np.asarray(dummy,dtype=float) 
+                p = _np.asarray(dummy,dtype=float)
             else:
                 p = _np.asarray(pressure,dtype=float)
 
@@ -274,7 +274,7 @@ class _thermo(object):
 
         # Get mass (in amu) and moment of inertia (in amu * bohr**2)
         mass = self.mass[loop_iso]*constants.atomic_mass_constant
-        mom_inertia = _np.asarray(self.mom_inertia[loop_iso])*constants.atomic_mass_constant*(1e-10*constants.bohr_to_angstrom)**2  
+        mom_inertia = _np.asarray(self.mom_inertia[loop_iso])*constants.atomic_mass_constant*(1e-10*constants.bohr_to_angstrom)**2
         rot_sym = float(self.rot_sym[loop_iso])
 
 
@@ -299,13 +299,13 @@ class _thermo(object):
             S_rot = constants.molar_gas_constant*(_np.log(Q_rot)+3./2)
             E_rot = 3./2*constants.molar_gas_constant*T
 
-        # Vibrational contributions 
+        # Vibrational contributions
         dummy = freq*constants.inverse_cm_to_hertz # conversion from wavenumbers to Hertz
         freq = dummy*constants.Planck_constant/constants.Boltzmann_constant  # conversion to Kelvin
         S_vib = []
         E_vib = []
         S_hind = []
-        
+
         for k in T:
             dum_term = (freq/k)/(_np.exp(freq/k)-1)-_np.log(1-_np.exp(-freq/k))
             S_vib.append(constants.molar_gas_constant*dum_term.sum())
@@ -332,7 +332,7 @@ class _thermo(object):
         ITE = E_trans + E_rot + E_vib
         ITE = ITE/constants.Avogadro_constant*constants.joule_to_hartree # in Hartree
 
-        # Calculate the thermodynamic potentials 
+        # Calculate the thermodynamic potentials
         H = self.E + ITE + constants.Boltzmann_constant*T*constants.joule_to_hartree # in Hartree
         F = self.E + ITE - T*S # array issue here
         G = H - T*S
@@ -344,7 +344,7 @@ class _thermo(object):
             print "-"*len(headerline)
             print "\nT\tp\t\tITE\t\t S\t\t H\t\t F\t\t G"
             for k,l in enumerate(T):
-                print "%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k])        
+                print "%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k])
         dummy = _np.asarray([T,p,ITE,S,H,F,G])
         data = dummy.transpose()
         return data
@@ -355,9 +355,10 @@ class _opt(object):
     '''
     This structure contains information about the geometry optimization. Energies are given in Hartree.
     '''
-    def __init__(self,geometries,energies,gradient,displacement,change,optstat):
+    def __init__(self,geometries,energies,gradient,gradient_vector,displacement,change,optstat):
         self.geometries = geometries
         self.energies = energies
+        self.gradient_vector = gradient_vector
         self.gradient = gradient
         self.displacement = displacement
         self.change = change
@@ -374,7 +375,7 @@ class _opt(object):
 
     def write_trajectory_xyz(self,filename='trajectory.xyz'):
         """
-        This method concatenates the xyz geometries, using the current energy as title (supported by Molden). 
+        This method concatenates the xyz geometries, using the current energy as title (supported by Molden).
         """
         f = open(filename,'w')
         ret_str = ""
@@ -412,7 +413,7 @@ class _aimd(object):
 
     def write_trajectory_xyz(self,filename='trajectory.xyz'):
     	"""
-    	This method concatenates the xyz geometries, using the current energy as title (supported by Molden). 
+    	This method concatenates the xyz geometries, using the current energy as title (supported by Molden).
     	"""
     	f = open(filename,'w')
     	ret_str = ""
@@ -446,8 +447,8 @@ class _multioutput(object):
         self.list_of_content.append(new_job.general.jobtype)
 
     #def remove(self,position=0): #if not specified delete last
-    #    del self.list_of_content[position] 
-    #    del self.list_of_jobs[position] 
+    #    del self.list_of_content[position]
+    #    del self.list_of_jobs[position]
 
 ########################## OUTPUTFILE  ##############################
 
@@ -461,7 +462,7 @@ class _outputfile(object):
         else:
             infile = open(file_input, "r")
             content = infile.readlines()
-        
+
         spin = '0'
         energy = 'undetermined'
         jobtype = 'undetermined'
@@ -475,7 +476,7 @@ class _outputfile(object):
         basis2_flag = False
 
         mm_type = ""
-        self.aifdem = 0 
+        self.aifdem = 0
         self.N_Fragments=1
         self.N_SET=0
 
@@ -484,7 +485,7 @@ class _outputfile(object):
             if "JOBTYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
             if "jobtype" in line:
-                jobtype = ((line.split())[-1]).lower()    
+                jobtype = ((line.split())[-1]).lower()
             if "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
             if "basis2" in line.lower():
@@ -515,7 +516,7 @@ class _outputfile(object):
             if "--fragment" in line:
                 ifrgm = int((line.split())[-1])
                 if ifrgm+1 > self.N_Fragments:
-                    self.N_Fragments = ifrgm+1  
+                    self.N_Fragments = ifrgm+1
             if "TIME STEPS COMPLETED" in line and jobtype=="aimd":
                 status = 'time steps completed'
             # Create corresponding inputfile:
@@ -533,19 +534,19 @@ class _outputfile(object):
             elif switch == 2 and "Atom" not in line and "---" not in line:
             	dummy = (line.split())[1:]
             	initial_cartesian.add_atom(dummy[0],dummy[1],dummy[2],dummy[3])
-            
+
         inputfile = _readinput(infile_content,silent)
 
         # Creating geometry objects under 'general' for convenience, final geometry will be overwritten later if different
 
         # Final geometry is NOT read directly from inputfile, but from Q-Chem standard orientation output in order to
         # avoid issues with molecule 'read' in batch jobs
-        
+
         initial_geometry = inputfile.molecule.geometry()
         final_geometry = initial_cartesian
 
         # The info object 'general' will be created after ALL OTHER objects are finished with parsing
-        
+
         # Make another round if we have an MM or a QM/MM Janus job (just one MM per step)
         if mm_type=="mm" or mm_type=="janus":
             etot = []
@@ -652,7 +653,7 @@ class _outputfile(object):
                     etot2.append(float((line.split())[1]))
 
             # Create MM info object for entire system
-            self.mm_total = _mm([etot,ecoulomb,evdw,etorsion,eimptors,eureybrad,eangle,ebond,nbonds]) 
+            self.mm_total = _mm([etot,ecoulomb,evdw,etorsion,eimptors,eureybrad,eangle,ebond,nbonds])
             # Create MM info object for model system
             self.mm_model = _mm([etot2,ecoulomb2,evdw2,etorsion2,eimptors2,eureybrad2,eangle2,ebond2,nbonds2])
 
@@ -662,8 +663,8 @@ class _outputfile(object):
             rem = inputfile.list_of_arrays[index]
             adc_variant = ''
             if "METHOD" in rem.dict_of_keywords:
-                if "adc" in rem.dict_of_keywords["METHOD"]: 
-                    adc_variant = rem.dict_of_keywords["METHOD"]                
+                if "adc" in rem.dict_of_keywords["METHOD"]:
+                    adc_variant = rem.dict_of_keywords["METHOD"]
             elif "ADC_ORDER" in rem.dict_of_keywords:
                 adc_order = int(rem.dict_of_keywords["ADC_ORDER"])
                 adc_ext = False
@@ -673,18 +674,18 @@ class _outputfile(object):
                 adc_variant = "adc(" + str(adc_order) + ")"
                 if adc_ext:
                     adc_variant += "-x"
-            
+
             if adc_variant:
                 if "ADC_SOS" in rem.dict_of_keywords:
-                    if int(rem.dict_of_keywords("ADC_SOS")) != 0: 
+                    if int(rem.dict_of_keywords("ADC_SOS")) != 0:
                         if "adc(2)" in adc_variant and not "sos" in adc_variant:
                             adc_variant = "sos-" + adc_variant
                 if "ADC_CVS" in rem.dict_of_keywords:
                     if int(rem.dict_of_keywords("ADC_CVS")) != 0:
                         if not "cvs" in adc_variant:
-                            adc_variant = "cvs-" + adc_variant              
-                
-                self.adc = _parse_adc(adc_variant, content, silent)                    
+                            adc_variant = "cvs-" + adc_variant
+
+                self.adc = _parse_adc(adc_variant, content, silent)
 
         if jobtype=="freq":
             H2kcal=constants.hartree_to_kcal_pro_mole
@@ -722,7 +723,7 @@ class _outputfile(object):
                     entr_corr.append(float((line.split())[2])/1000/H2kcal)
                 if "We detect a D*h symmetry" in line:
                     linear_switch = 1
-                if "We detect a C*v symmetry" in line: 
+                if "We detect a C*v symmetry" in line:
                     linear_switch = 1
                 if "We detect a C*h symmetry" in line:  # necessary because of wrong nomenclature in Q-chem (thermodyn.F)
                     linear_switch = 1
@@ -780,6 +781,7 @@ class _outputfile(object):
 
         if jobtype=="opt" or jobtype=="optimization" or jobtype=="ts":
             energies = []
+            gradient_vector = []
             gradient = [0.0]
             displacement = []
             change = []
@@ -812,7 +814,7 @@ class _outputfile(object):
                     switch = 1
                     cycle_name = "Optimization step " + str(N_step)
                     cart_dummy = cartesian(cycle_name)
-                if "ATOM                X               Y               Z" in line:
+                if "ATOM             X             Y             Z" in line:
                     switch = 1
                     cycle_name = "Optimization step " + str(N_step)
                     cart_dummy = cartesian(cycle_name)
@@ -823,14 +825,24 @@ class _outputfile(object):
                     geometries.append(deepcopy(cart_dummy))
                     N_step += 1
                     switch = 0
+                if "Gradient of SCF Energy" in line:
+                    switch = 2
+                    grad_dummy = []
+                    continue
+                if  "Max gradient component" in line and switch == 2:
+                    switch = 0
+                    print(grad_dummy)
+                    gradient_vector.append(_np.array([[float(value) for value in sp[1:]] for sp in grad_dummy[1:]]))
+                elif switch == 2:
+                    grad_dummy.append(line.split())
 
-            # The geometry has changed, so let's update a variable in the 'general' info object 
+            # The geometry has changed, so let's update a variable in the 'general' info object
             final_geometry = deepcopy(geometries[-1])
 
             if jobtype=="opt" or jobtype=="optimization":
-                self.opt = _opt(geometries,energies,gradient,displacement,change,optstat)
+                self.opt = _opt(geometries,energies,gradient,gradient_vector,displacement,change,optstat)
             else:
-                self.ts = _opt(geometries,energies,gradient,displacement,change,optstat)
+                self.ts = _opt(geometries,energies,gradient,gradient_vector,displacement,change,optstat)
 
 
 
@@ -858,12 +870,12 @@ class _outputfile(object):
                 if "TIME STEP #" in line:  # AIMD starts
                     aimd_step += 1
                     time.append(float((line.split())[5]))
-                if ("Drift factor =" in line) and (aimd_step>0):  
+                if ("Drift factor =" in line) and (aimd_step>0):
                     drift_switch = 1
                 if ("Total" in line) and (drift_switch==1) and (aimd_step>0):
                     drift.append(float((line.split())[2]))
                     kinetic_energies.append(float((line.split())[1]))
-                    drift_switch = 0 
+                    drift_switch = 0
                 if ("Total energy in the final" in line) and (aimd_step>0):
                     dummy = float((line.split())[8])
                     energies.append(dummy)
@@ -881,7 +893,7 @@ class _outputfile(object):
                 if "TIME STEPS COMPLETED" in line:
                     aimdstat = "steps completed"
 
-            # The geometry has changed, so let's update a variable in the 'general' info object 
+            # The geometry has changed, so let's update a variable in the 'general' info object
             final_geometry = deepcopy(geometries[-1])
 
             self.aimd = _aimd(temp,N_steps,time_step,total_time,time,energies,drift,kinetic_energies,geometries,aimdstat)
@@ -908,9 +920,9 @@ class _outputfile(object):
                 if len(self.EvalStrng.split()[i]) > 1:
                     _iFirstline = i
                     break
-            
-            _EvalStrngFirstline=self.EvalStrng.split()[_iFirstline] 
-                        
+
+            _EvalStrngFirstline=self.EvalStrng.split()[_iFirstline]
+
             self.aifdem_E_Excite=float((_EvalStrngFirstline.split("-"))[1])-float((_EvalStrngFirstline.split("-"))[2])
             self.aifdem_E_Excite=round(self.aifdem_E_Excite,7)
         if self.N_SET > 0 and self.aifdem==0:
@@ -934,8 +946,8 @@ class _outputfile(object):
                     self.excited_states.append({"Exc_eV":_E_Exc_eV,"Tot":_E_Exc_total,"Mult":_Mult,"X":_momX,"Y":_momY,"Z":_momZ,"Strength":_osc})
                 if("CPU time" in line):
                     self.cis_time = line.split()[-1]
-            self.N_SET=_N_SET        
-        
+            self.N_SET=_N_SET
+
         if self.N_SET > 0 and self.aifdem==0:
             self.excited_states=[]
             self.cis_time=0
@@ -961,6 +973,3 @@ class _outputfile(object):
 
         # Finally, we create the global info object 'general'
         self.general = _general(jobtype,version,spin,basis_size,energy,status,inputfile,mm_type,initial_geometry,final_geometry,wall_time,cpu_time)
-
-        
-
