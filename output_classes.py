@@ -824,10 +824,14 @@ class _outputfile(object):
                 if "Gradient of SCF Energy" in line:
                     switch = 2
                     grad_dummy = []
-                    continue
-                if  "Max gradient component" in line and switch == 2:
+                elif  "Max gradient component" in line and switch == 2:
+                    # Assuming that the array will always have a 3xN structure:
+                    matrix = [[],[],[]]
+                    for i, sp in enumerate(grad_dummy):
+                        if not i%4 == 0:
+                            matrix[i%4-1].extend(sp[1:])
                     switch = 0
-                    gradient_vector.append(_np.array([[float(value) for value in sp[1:]] for sp in grad_dummy[1:]]))
+                    gradient_vector.append(_np.array(matrix))
                 elif switch == 2:
                     grad_dummy.append(line.split())
 
