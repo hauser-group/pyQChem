@@ -3449,16 +3449,16 @@ Options: Range from 0 to 1000
 Description: Specifies a temperature (in Kelvin) for Maxwell-Boltzmann velocity sampling.
 Recommendation: : This variable is only useful in conjunction with AIMD velocit initialisation set to Thermal. Note that the simulations are run at constant energy, rather than constant temperature, so the mean nuclear kinetic energy will fluctuate in the course of the simulation.    '''
         if value == "":
-            if "AIMD_TEMPERATURE" in self.dict_of_keywords:
-                del self.dict_of_keywords["AIMD_TEMPERATURE"]
+            if "AIMD_TEMP" in self.dict_of_keywords:
+                del self.dict_of_keywords["AIMD_TEMP"]
                 print "Keyword removed."
         elif value == "show":
-            if "AIMD_TEMPERATURE" in self.dict_of_keywords:
-                return self.dict_of_keywords["AIMD_TEMPERATURE"]
+            if "AIMD_TEMP" in self.dict_of_keywords:
+                return self.dict_of_keywords["AIMD_TEMP"]
             else:
                 print "Value not set."
         else:
-            self.dict_of_keywords["AIMD_TEMPERATURE"]=value.lower()
+            self.dict_of_keywords["AIMD_TEMP"]=value.lower()
 
 
     def anharmonic(self,value="show"):
