@@ -12,3 +12,6 @@ pathtable
 *.qcin.*
 *.ipynb
 *.inp
+
+# Ignore folder for PyCharm IDE
+.idea/
