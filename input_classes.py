@@ -632,10 +632,10 @@ class tinker(cartesian):
 
 class mol_array(_array):
 
-    def __init__(self, geometry=""):
-        if geometry == "":
+    def __init__(self, geometry=None, charge='0', multiplicity='1'):
+        if geometry is None:
             geometry = cartesian()
-        self.content = {"CHARGE": "0", "MULTIPLICITY": "1",
+        self.content = {"CHARGE": charge, "MULTIPLICITY": multiplicity,
                         "GEOMETRY": geometry}
 
     def charge(self, value="show"):
