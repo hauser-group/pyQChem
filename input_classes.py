@@ -38,47 +38,49 @@ import numpy as _np
 from . import constants
 from . import running_scripts
 
+
 ############################# RUNDATA  ###############################
 
 class _rundata(object):
     def __init__(self):
-        self.name=''
-        self.loc53=''
-        self.qchem=''
-        self.nt=1
-        self.np=1
-        self.timestamp=False
+        self.name = ''
+        self.loc53 = ''
+        self.qchem = ''
+        self.nt = 1
+        self.np = 1
+        self.timestamp = False
 
     def __str__(self):
-        ret_str = "Submission status summary:\n" + 26*"-" + "\n\n"
-        if self.name!='':
-            ret_str +=  "Filename is " + self.name + "\n"
+        ret_str = "Submission status summary:\n" + 26 * "-" + "\n\n"
+        if self.name != '':
+            ret_str += "Filename is " + self.name + "\n"
         else:
             ret_str += "No filename provided, will use timestamp instead\n"
-        if self.loc53!='':
+        if self.loc53 != '':
             ret_str += "53.0 is stored at \'" + self.loc53 + "\'\n"
-        if self.qchem!='':
+        if self.qchem != '':
             ret_str += "Q-Chem version is " + self.qchem + "\n"
-	if self.nt!=1:
-		ret_str += "Using " + str(self.nt) + " threads\n"
-	if self.np!=1:
-		ret_str += "Using " + str(self.np) + " processors\n"
+        if self.nt != 1:
+            ret_str += "Using " + str(self.nt) + " threads\n"
+        if self.np != 1:
+            ret_str += "Using " + str(self.np) + " processors\n"
         return ret_str
 
     def info(self):
         print(self)
+
 
 ########################### MULTIFILE  ##############################
 
 class multifile(object):
 
     def __init__(self, jobs=[]):
-        self.list_of_jobs=[]
-        self.list_of_content=[]
+        self.list_of_jobs = []
+        self.list_of_content = []
         for k in jobs:
             self.add(k)
 
-    def add(self,new_job):
+    def add(self, new_job):
         ''' Adds an inputfile to your batch object.'''
         if type(new_job) == type(inputfile()):
             self.list_of_jobs.append(new_job)
@@ -86,29 +88,29 @@ class multifile(object):
         else:
             print("Can only add inputfiles.")
 
-    def remove(self,position=0): #if not specified delete last
+    def remove(self, position=0):  # if not specified delete last
         ''' Removes an inputfile from your batch object. If no other specified the last is removed.'''
-        del self.list_of_content[position] 
-        del self.list_of_jobs[position] 
+        del self.list_of_content[position]
+        del self.list_of_jobs[position]
 
     def __str__(self):
-        if self.list_of_jobs==[]:
-            ret_str =  "empty"
+        if self.list_of_jobs == []:
+            ret_str = "empty"
         else:
             ret_str = self.list_of_jobs[0].__str__()
-        if len(self.list_of_jobs)>1:
+        if len(self.list_of_jobs) > 1:
             for k in self.list_of_jobs[1:]:
                 ret_str += "@@@\n\n" + k.__str__()
         return ret_str
 
-    def write(self,filename):
+    def write(self, filename):
         '''Writes the batch jobfile to disk.'''
-        f = open(filename,'w')
+        f = open(filename, 'w')
         str_ret = self.__str__()
         print(str_ret, file=f)
         f.close()
 
-    def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+    def run(self, name='', loc53='', qchem='', nt=1, np=1, timestamp=False):
         '''Makes Q-Chem process the given batch inputfile object. Optional parameters are
 
         name  ...... filename (without file extension, will be \".in\" and \".out\" by default)
@@ -119,37 +121,38 @@ class multifile(object):
 
         If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
 
-        running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+        running_scripts._run(self, name, loc53, qchem, nt, np, timestamp)
+
 
 ########################### INPUTFILE  ##############################
 
 class inputfile(object):
-    
+
     def __init__(self, arrays=[]):
-        self.list_of_arrays=[]
-        self.list_of_content=[]
-        self.runinfo=_rundata()
-        self.__jtype="undef"
+        self.list_of_arrays = []
+        self.list_of_content = []
+        self.runinfo = _rundata()
+        self.__jtype = "undef"
         for k in arrays:
             self.add(k)
-            
-    def add(self,new_array):
+
+    def add(self, new_array):
         ''' Adds an array to your inputfile object.'''
         if type(new_array) == type(rem_array()):
             self.rem = new_array
             if "rem" in self.list_of_content:
                 index = self.list_of_content.index("rem")
-                self.list_of_arrays[index]=new_array
+                self.list_of_arrays[index] = new_array
             else:
                 self.list_of_content.append("rem")
                 self.list_of_arrays.append(new_array)
-            self._jtype = new_array.jobtype() #rem variable "jobtype" defines type
-        
+            self._jtype = new_array.jobtype()  # rem variable "jobtype" defines type
+
         elif type(new_array) == type(rem_frgm_array()):
             self.rem_frgm = new_array
             if "rem_frgm" in self.list_of_content:
                 index = self.list_of_content.index("rem_frgm")
-                self.list_of_arrays[index]=new_array
+                self.list_of_arrays[index] = new_array
             else:
                 self.list_of_content.append("rem_frgm")
                 self.list_of_arrays.append(new_array)
@@ -158,11 +161,11 @@ class inputfile(object):
             self.molecule = new_array
             if "molecule" in self.list_of_content:
                 index = self.list_of_content.index("molecule")
-                self.list_of_arrays[index]=new_array
+                self.list_of_arrays[index] = new_array
             else:
                 self.list_of_content.append("molecule")
                 self.list_of_arrays.append(new_array)
-        
+
         elif type(new_array) == type(comment_array()):
             self.list_of_content.append("comment")
             self.list_of_arrays.append(new_array)
@@ -171,7 +174,7 @@ class inputfile(object):
             self.basis = new_array
             if "basis" in self.list_of_content:
                 index = self.list_of_content.index("basis")
-                self.list_of_arrays[index]=new_array
+                self.list_of_arrays[index] = new_array
             else:
                 self.list_of_content.append("basis")
                 self.list_of_arrays.append(new_array)
@@ -180,7 +183,7 @@ class inputfile(object):
             self.ecp = new_array
             if "ecp" in self.list_of_content:
                 index = self.list_of_content.index("ecp")
-                self.list_of_arrays[index]=new_array
+                self.list_of_arrays[index] = new_array
             else:
                 self.list_of_content.append("ecp")
                 self.list_of_arrays.append(new_array)
@@ -189,32 +192,33 @@ class inputfile(object):
             self.list_of_content.append(str(new_array.type))
             self.list_of_arrays.append(new_array)
 
-        #poor man's typecasting because these feel equivalent to users
-        elif (type(new_array) == cartesian  or type(new_array)== zmat or type(new_array) == tinker):
+        # poor man's typecasting because these feel equivalent to users
+        elif (type(new_array) == cartesian or type(new_array) == zmat or type(
+                new_array) == tinker):
             self.add(mol_array(new_array))
 
         else:
             print("Array type unknown.")
 
-    def remove(self,position=0): #if not specified delete last
+    def remove(self, position=0):  # if not specified delete last
         ''' Removes an array from your inputfile object. If no other specified the last is removed.'''
-        del self.list_of_content[position] 
-        del self.list_of_arrays[position] 
-             
+        del self.list_of_content[position]
+        del self.list_of_arrays[position]
+
     def __str__(self):
         ret_str = ""
         for k in self.list_of_arrays:
-            ret_str += k.__str__() + "\n" 
+            ret_str += k.__str__() + "\n"
         return ret_str
- 
-    def write(self,filename):
-        f = open(filename,'w')
+
+    def write(self, filename):
+        f = open(filename, 'w')
         str_ret = self.__str__()
         print(str_ret, file=f)
         f.close()
 
     def info(self):
-        '''A quick overview of your inputfile.''' # Health check could be put here
+        '''A quick overview of your inputfile.'''  # Health check could be put here
         if "rem" and "molecule" in self.list_of_content:
             status = "valid"
         else:
@@ -223,7 +227,7 @@ class inputfile(object):
         print("Type: inputfile")
         print("Status: " + status)
 
-    def run(self,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
+    def run(self, name='', loc53='', qchem='', nt=1, np=1, timestamp=False):
         '''Makes Q-Chem process the given batch inputfile object. Optional parameters are
 
         name  ...... filename (without file extension, will be \".in\" and \".out\" by default)
@@ -234,27 +238,28 @@ class inputfile(object):
 
         If nothing specified, pyQChem will fall back on information in the corresponding runinfo object.'''
 
-        running_scripts._run(self,name,loc53,qchem,nt,np,timestamp)
+        running_scripts._run(self, name, loc53, qchem, nt, np, timestamp)
 
-    def __add__(self,other): 
-        #autoadd subarrays - works
+    def __add__(self, other):
+        # autoadd subarrays - works
         import copy
-        new=copy.deepcopy(self)
+        new = copy.deepcopy(self)
         new.add(other)
         return new
 
-#    def __radd__(self,other): 
+
+#    def __radd__(self,other):
 #	#not working right, but general form should be this
 #	import copy
 #	new=copy.deepcopy(self)
 #	new.add(other)
 #	return new
-    
+
 ######################## INPUT FRAGMENTS ############################
 
 class _array(object):
 
-    def __init__(self,content="undef"):
+    def __init__(self, content="undef"):
         self.content = content
 
     def __str__(self):
@@ -262,39 +267,41 @@ class _array(object):
         ret_str += str(self.content) + "\n"
         ret_str += "$end\n"
         return ret_str
-    
-    def write(self,filename):
-        f = open(filename,'w')
+
+    def write(self, filename):
+        f = open(filename, 'w')
         str_ret = self.__str__()
         print(str_ret, file=f)
         f.close()
 
-    def __add__(self,other):
-        if isinstance(other,_array):
-            a=inputfile()
+    def __add__(self, other):
+        if isinstance(other, _array):
+            a = inputfile()
             a.add(self)
             a.add(other)
             return a
-        if isinstance(other,inputfile):
-            return other+self
-    def __radd__(self,other):
-	if isinstance(other,_array):
-	    a=inputfile()
-	    a.add(self)
-	    a.add(other)
-	    return a
+        if isinstance(other, inputfile):
+            return other + self
+
+    def __radd__(self, other):
+        if isinstance(other, _array):
+            a = inputfile()
+            a.add(self)
+            a.add(other)
+            return a
+
 
 ##################### UNSUPPORTED FRAGMENT ##########################
 
 class _unsupported_array(_array):
 
-    def __init__(self,arraytype="undef"):
+    def __init__(self, arraytype="undef"):
         self.content = []
         self.type = arraytype
 
-    def add_line(self,line):
+    def add_line(self, line):
         self.content.append(line.strip())
-    
+
     def __str__(self):
         ret_str = "$" + str(self.type) + "\n"
         for k in self.content:
@@ -302,381 +309,411 @@ class _unsupported_array(_array):
         ret_str += "$end\n"
         return ret_str
 
+
 ######################### ZMAT FRAGMENT #############################
 
 class zmat(_array):
-    
     __tabstop = 10
-    
+
     def __init__(self):
         self.__Natoms = 0
         self.__Nvariables = 0
         self.__lines = []
         self.__variables = {}
-        
-    def add_atom(self,line,position=0):  #if not specified add at the end
+
+    def add_atom(self, line, position=0):  # if not specified add at the end
         '''Adds an atom to your Z-Matrix.'''
-        if position ==0:
+        if position == 0:
             self.__lines.append(line)
         else:
-            self.__lines.insert(position,line)
+            self.__lines.insert(position, line)
         self.__Natoms += 1
 
-    def remove_atom(self,position=0): #if not specified delete last
+    def remove_atom(self, position=0):  # if not specified delete last
         '''Removes an atom from your Z-Matrix. Takes the last if no other specified.'''
-        del self.__lines[position] 
+        del self.__lines[position]
         self.__Natoms -= 1
 
-    def variable(self,key="variable",value="show"):
+    def variable(self, key="variable", value="show"):
         '''Adds, changes or removes variable definitions.'''
         if value == "" and key in self.__variables:
             del self.__variables[key]
         elif value == "show":
             return self.__variables[key]
         else:
-            self.__variables[key]=value        
-        
+            self.__variables[key] = value
+
     def __str__(self):
         ret_str = ""
         for k in self.__lines:
             ret_str += k + "\n"
         ret_str += "\n"
-        for key,value in self.__variables.items():
-            ret_str += key + " "*(zmat.__tabstop-len(key)) + value + "\n"
+        for key, value in self.__variables.items():
+            ret_str += key + " " * (zmat.__tabstop - len(key)) + value + "\n"
         return ret_str
-    
+
 
 ####################### CARTESIAN FRAGMENT ##########################
 
 class cartesian(_array):
-    def __init__(self,title="",atom_list=[]):
+    def __init__(self, title="", atom_list=[]):
         import copy
         self.__title = title
         self.__Natoms = 0
-        self.xyzs=[]
-        self.com=_np.array([0.0,0.0,0.0])
-        self.centroid=_np.array([0.0,0.0,0.0])
+        self.xyzs = []
+        self.com = _np.array([0.0, 0.0, 0.0])
+        self.centroid = _np.array([0.0, 0.0, 0.0])
         self.list_of_atoms = copy.deepcopy(atom_list)
-        if atom_list!=[]:
-            self.__Natoms=len(atom_list)
+        if atom_list != []:
+            self.__Natoms = len(atom_list)
             for i in range(self.__Natoms):
-                x=self.list_of_atoms[i][1]
-                y=self.list_of_atoms[i][2]
-                z=self.list_of_atoms[i][3]
-                self.xyzs.append(_np.array([float(x),float(y),float(z)]))
-            self.xyzs=_np.array(self.xyzs)
+                x = self.list_of_atoms[i][1]
+                y = self.list_of_atoms[i][2]
+                z = self.list_of_atoms[i][3]
+                self.xyzs.append(_np.array([float(x), float(y), float(z)]))
+            self.xyzs = _np.array(self.xyzs)
             self.__center_of_mass()
 
     def fix(self):
         """This fixes any odd errors resulting from modifying the number of atoms"""
-        self.__Natoms=len(self.list_of_atoms)
-        if self.__Natoms==0:
+        self.__Natoms = len(self.list_of_atoms)
+        if self.__Natoms == 0:
             return
-        self.xyzs=[]
+        self.xyzs = []
         for i in range(self.__Natoms):
-            x=self.list_of_atoms[i][1]
-            y=self.list_of_atoms[i][2]
-            z=self.list_of_atoms[i][3]
-            self.xyzs.append(_np.array([float(x),float(y),float(z)]))
-        self.xyzs=_np.array(self.xyzs)
+            x = self.list_of_atoms[i][1]
+            y = self.list_of_atoms[i][2]
+            z = self.list_of_atoms[i][3]
+            self.xyzs.append(_np.array([float(x), float(y), float(z)]))
+        self.xyzs = _np.array(self.xyzs)
         self.__center_of_mass()
-        
+
     def __center_of_mass(self):
         """This computes the centroid and center of mass using standard atomic masses"""
-        #print self.xyzs, self.__Natoms
-        self.com=_np.array([0.0,0.0,0.0])
-        self.centroid=_np.array([0.0,0.0,0.0])
-        if len(self.xyzs)==0:
-            return   
-        total_mass=0.0
-        self.centroid=sum(self.xyzs)/len(self.xyzs)
-        wts=[constants.dict_of_atomic_masses[self.list_of_atoms[i][0].replace("@","")]  for i in range(self.__Natoms)]
-        for i,atom in enumerate(self.xyzs):
-            wt=wts[i]
-            total_mass=total_mass+wt
-            self.com=self.com+atom*wt
-        self.centroid=_np.array([i/self.__Natoms for i in self.centroid])
-        self.com=_np.array([i/total_mass for i in self.com])
-    
-    def title(self,title="show"):
+        # print self.xyzs, self.__Natoms
+        self.com = _np.array([0.0, 0.0, 0.0])
+        self.centroid = _np.array([0.0, 0.0, 0.0])
+        if len(self.xyzs) == 0:
+            return
+        total_mass = 0.0
+        self.centroid = sum(self.xyzs) / len(self.xyzs)
+        wts = [constants.dict_of_atomic_masses[
+                   self.list_of_atoms[i][0].replace("@", "")] for i in
+               range(self.__Natoms)]
+        for i, atom in enumerate(self.xyzs):
+            wt = wts[i]
+            total_mass = total_mass + wt
+            self.com = self.com + atom * wt
+        self.centroid = _np.array([i / self.__Natoms for i in self.centroid])
+        self.com = _np.array([i / total_mass for i in self.com])
+
+    def title(self, title="show"):
         if title == "show":
             return self.__title
         else:
-            self.__title=title
-        
-    def add_atom(self,name="H",x="0",y="0",z="0"):
-        self.list_of_atoms.append([name,x,y,z])
+            self.__title = title
+
+    def add_atom(self, name="H", x="0", y="0", z="0"):
+        self.list_of_atoms.append([name, x, y, z])
         self.fix()
         self.__center_of_mass()
-    
-    def remove_atom(self,position=0):
+
+    def remove_atom(self, position=0):
         del self.list_of_atoms[position]  # First atom is atom 1
         self.fix()
         self.__center_of_mass()
-    
+
     def ghost(self):
-        atoms=[]
+        atoms = []
         for i in range(self.__Natoms):
-            atoms.append(['@'+self.list_of_atoms[i][0],self.list_of_atoms[i][1],self.list_of_atoms[i][2],self.list_of_atoms[i][3]])
+            atoms.append(
+                ['@' + self.list_of_atoms[i][0], self.list_of_atoms[i][1],
+                 self.list_of_atoms[i][2], self.list_of_atoms[i][3]])
         return atoms
 
     def atoms(self):
         for i, k in enumerate(self.list_of_atoms):
-            print(str(i+1) + ":\t" +  k[0] + "\t" + k[1] + "\t" + k[2] + "\t" + k[3])
+            print(str(i + 1) + ":\t" + k[0] + "\t" + k[1] + "\t" + k[2] + "\t" +
+                  k[3])
 
-    def atomic_distance(self,a,b):
-	"""Gives the pair-wise distance between two atoms (counting from 0)"""
-	from math import sqrt
-	d=self.xyzs[b]-self.xyzs[a]
-	return sqrt(d.dot(d))
+    def atomic_distance(self, a, b):
+        """Gives the pair-wise distance between two atoms (counting from 0)"""
+        from math import sqrt
+        d = self.xyzs[b] - self.xyzs[a]
+        return sqrt(d.dot(d))
 
     def print_centroid(self):
-        print(str(self.centroid[0])+'\t'+str(self.centroid[1])+'\t'+str(self.centroid[2]))
-        
+        print(str(self.centroid[0]) + '\t' + str(self.centroid[1]) + '\t' + str(
+            self.centroid[2]))
+
     def print_center_of_mass(self):
-        print(str(self.com[0])+'\t'+str(self.com[1])+'\t'+str(self.com[2]))
-        
-    def move(self,dir,amt=1.0):
-        dir=_np.array(dir)
+        print(str(self.com[0]) + '\t' + str(self.com[1]) + '\t' + str(
+            self.com[2]))
+
+    def move(self, dir, amt=1.0):
+        dir = _np.array(dir)
         for i in range(self.__Natoms):
-            self.xyzs[i]=self.xyzs[i]+dir*amt
-            self.list_of_atoms[i][1]=str(self.xyzs[i][0])
-            self.list_of_atoms[i][2]=str(self.xyzs[i][1])
-            self.list_of_atoms[i][3]=str(self.xyzs[i][2])
+            self.xyzs[i] = self.xyzs[i] + dir * amt
+            self.list_of_atoms[i][1] = str(self.xyzs[i][0])
+            self.list_of_atoms[i][2] = str(self.xyzs[i][1])
+            self.list_of_atoms[i][3] = str(self.xyzs[i][2])
         self.__center_of_mass()
 
     def __str__(self):
         str_ret = str(self.__Natoms) + "\n" + self.__title + "\n"
         for k in self.list_of_atoms:
-            str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
+            str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[
+                3] + "\n"
         return str_ret
 
-    def __sub__(self,other):
-        if type(other)==type([]):  #let's move the atoms
-            self.move(other,-1.0)
-        if type(other)==type(self.com):  #let's move the atoms using a numpy array
-            self.move(other,-1.0)
+    def __sub__(self, other):
+        if type(other) == type([]):  # let's move the atoms
+            self.move(other, -1.0)
+        if type(other) == type(
+                self.com):  # let's move the atoms using a numpy array
+            self.move(other, -1.0)
 
-    def __add__(self,other):
-        if type(other)==type([]):  #let's move the atoms
-            self.move(other,1.0)
-        if type(other)==type(self.com):  #let's move the atoms using a numpy array
-            self.move(other,1.0)
-        if type(other)==type(self):                      #merge two cartesians
-            atoms=self.list_of_atoms+other.list_of_atoms  
+    def __add__(self, other):
+        if type(other) == type([]):  # let's move the atoms
+            self.move(other, 1.0)
+        if type(other) == type(
+                self.com):  # let's move the atoms using a numpy array
+            self.move(other, 1.0)
+        if type(other) == type(self):  # merge two cartesians
+            atoms = self.list_of_atoms + other.list_of_atoms
             return cartesian(atom_list=atoms)
-        if isinstance(other,_array):
-            return other+mol_array(self)
+        if isinstance(other, _array):
+            return other + mol_array(self)
 
-    def __radd__(self,other):  #reverse of above
-        if type(other)==type([]):
+    def __radd__(self, other):  # reverse of above
+        if type(other) == type([]):
             self.move(other)
-        if type(other)==type(self):
-            atoms=self.list_of_atoms+other.list_of_atoms
+        if type(other) == type(self):
+            atoms = self.list_of_atoms + other.list_of_atoms
             return cartesian(atom_list=atoms)
-        if isinstance(other,_array):
-            return other+mol_array(self)
-  
+        if isinstance(other, _array):
+            return other + mol_array(self)
 
 
 ####################### FRAGMENT FRAGMENT ##########################
 
 class fragment(cartesian):
-    def __init__(self,title="",fragment_list=[],atom_list=[]):
+    def __init__(self, title="", fragment_list=[], atom_list=[]):
         self.__title = title
-        if len(fragment_list)==0:
+        if len(fragment_list) == 0:
             self.__Natoms = 0
             self.list_of_atoms = []
-            self.number_of_fragments=0
-            self.fragment_list=[]
+            self.number_of_fragments = 0
+            self.fragment_list = []
         else:
-            self.fragment_list=fragment_list
+            self.fragment_list = fragment_list
             self.__Natoms = 0
             for i in self.fragment_list:
-                self.__Natoms+=i.__Natoms
+                self.__Natoms += i.__Natoms
                 self.__Natoms = 0
 
-        if (atom_list!=[]):
-            xyzs=[]
-            self.__Natoms=len(atom_list)
+        if (atom_list != []):
+            xyzs = []
+            self.__Natoms = len(atom_list)
             for i in range(self.__Natoms):
-                x=atom_list[i][1]
-                y=atom_list[i][2]
-                z=atom_list[i][3]
-                xyzs.append(_np.array([float(x),float(y),float(z)]))
-            self.xyzs=_np.array(xyzs)
+                x = atom_list[i][1]
+                y = atom_list[i][2]
+                z = atom_list[i][3]
+                xyzs.append(_np.array([float(x), float(y), float(z)]))
+            self.xyzs = _np.array(xyzs)
             from .constants import covalent_radii, dict_of_atomic_numbers
             from math import sqrt
-            nleft=len(atom_list)
-            ifrag=cartesian(atom_list=[atom_list[0]])
-            #print atom_list[0]
-            #ifrag.add_atom(self,name=atom_list[0][0],x=atom_list[0][1],y=atom_list[0][2],z=atom_list[0][3])
+            nleft = len(atom_list)
+            ifrag = cartesian(atom_list=[atom_list[0]])
+            # print atom_list[0]
+            # ifrag.add_atom(self,name=atom_list[0][0],x=atom_list[0][1],y=atom_list[0][2],z=atom_list[0][3])
             self.fragment_list.append(ifrag)
-            for i in range(1,self.__Natoms):
-                myxyz=self.xyzs[i]
-                included=0
+            for i in range(1, self.__Natoms):
+                myxyz = self.xyzs[i]
+                included = 0
                 for myfrag in self.fragment_list:
                     for k in range(len(myfrag.xyzs)):
-                        d=(myfrag.xyzs[k]-myxyz)
-                        d=sqrt(d.dot(d))
+                        d = (myfrag.xyzs[k] - myxyz)
+                        d = sqrt(d.dot(d))
                         try:
-                            myA=dict_of_atomic_numbers[atom_list[i][0]]
+                            myA = dict_of_atomic_numbers[atom_list[i][0]]
                         except:
-                            myA=atom_list[i][0]
+                            myA = atom_list[i][0]
                         try:
-                            myB=dict_of_atomic_numbers[myfrag.list_of_atoms[k][0]]
+                            myB = dict_of_atomic_numbers[
+                                myfrag.list_of_atoms[k][0]]
                         except:
-                            myB=myfrag.list_of_atoms[k][0]
-                        maxd=covalent_radii[myA]+covalent_radii[myB]
-                        maxd=maxd*1.3
-                        if d<maxd:
-                            myfrag.add_atom(name=atom_list[i][0],x=atom_list[i][1],y=atom_list[i][2],z=atom_list[i][3])
-                            included=1
+                            myB = myfrag.list_of_atoms[k][0]
+                        maxd = covalent_radii[myA] + covalent_radii[myB]
+                        maxd = maxd * 1.3
+                        if d < maxd:
+                            myfrag.add_atom(name=atom_list[i][0],
+                                            x=atom_list[i][1],
+                                            y=atom_list[i][2],
+                                            z=atom_list[i][3])
+                            included = 1
                             break
-                if included==0:
-                    ifrag=cartesian(atom_list=[atom_list[i]])
+                if included == 0:
+                    ifrag = cartesian(atom_list=[atom_list[i]])
                     self.fragment_list.append(ifrag)
 
     def __str__(self):
         str_ret = str(self.__Natoms) + "\n" + self.__title + "\n"
         for l in self.fragment_list:
             for k in l.list_of_atoms:
-                str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
+                str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[
+                    3] + "\n"
         return str_ret
+
 
 ####################### TINKER FRAGMENT ##########################
 
 class tinker(cartesian):
 
-    def __init__(self,title=""):
+    def __init__(self, title=""):
         self.__title = title
         self.__Natoms = 0
         self.list_of_atoms = []
         self.dict_of_types = {}  # dictionary of atom types
 
-    def title(self,title="show"):
+    def title(self, title="show"):
         if title == "show":
             return self.__title
         else:
-            self.__title=title
-            
-    def remove_atom(self,position):
+            self.__title = title
+
+    def remove_atom(self, position):
         del self.list_of_atoms[position]  # First atom is atom 1
         self.__Natoms -= 1
 
-
-    def add_atom(self,name="H",x="0",y="0",z="0",atomtype="0",con1="0",con2="0",con3="0",con4="0"):
+    def add_atom(self, name="H", x="0", y="0", z="0", atomtype="0", con1="0",
+                 con2="0", con3="0", con4="0"):
         if name not in self.dict_of_types:
-            self.dict_of_types[name]=atomtype
-        self.list_of_atoms.append([name,x,y,z,atomtype,con1,con2,con3,con4])
+            self.dict_of_types[name] = atomtype
+        self.list_of_atoms.append(
+            [name, x, y, z, atomtype, con1, con2, con3, con4])
         self.__Natoms += 1
 
-    def change_type(self,atomtype="none",value="show"):
+    def change_type(self, atomtype="none", value="show"):
         '''Changes the definition number of atom "atomtype" to "value".'''
         if value == "" and atomtype in self.dict_of_types:
             del self.dict_of_types[atomtype]
         elif value == "show":
             return self.dict_of_types
         else:
-            self.dict_of_types[atomtype]=value 
+            self.dict_of_types[atomtype] = value
             # atomtype definition has changed, list_of_atoms needs to be updated:
             Nchanges = 0
             for k in self.list_of_atoms:
-                if k[0]==atomtype:
+                if k[0] == atomtype:
                     k[4] = value
                     Nchanges += 1
-            print("Atomtype definition has changed, " + str(Nchanges) + " atoms updated in list_of_atoms.")
-    
+            print("Atomtype definition has changed, " + str(
+                Nchanges) + " atoms updated in list_of_atoms.")
+
     def atoms(self):
         for i, k in enumerate(self.list_of_atoms):
-            print(str(i+1) + ":\t" +  k[0] + "    " + k[1] + "    " + k[2] + \
-            "    " + k[3] + "    " + k[4] + "    " + k[5] + "    " + k[6] + "    " + k[7] + "    " + k[8])
-        
+            print(str(i + 1) + ":\t" + k[0] + "    " + k[1] + "    " + k[2] + \
+                  "    " + k[3] + "    " + k[4] + "    " + k[5] + "    " + k[
+                      6] + "    " + k[7] + "    " + k[8])
+
     def __str__(self):
         str_ret = str(self.__Natoms) + "\t" + self.__title + "\n"
-        for i,k in enumerate(self.list_of_atoms):
-            str_ret += str(i+1) + "\t" + k[0] + "    " + k[1] + "    " + k[2] + \
-            "    " + k[3] + "    " + k[4] + "    " + k[5] + "    " + k[6] + "    " + \
-            k[7] + "    " + k[8] + "\n"
+        for i, k in enumerate(self.list_of_atoms):
+            str_ret += str(i + 1) + "\t" + k[0] + "    " + k[1] + "    " + k[
+                2] + \
+                       "    " + k[3] + "    " + k[4] + "    " + k[5] + "    " + \
+                       k[6] + "    " + \
+                       k[7] + "    " + k[8] + "\n"
         return str_ret
-        
+
+
 ######################### MOL FRAGMENT ##############################
 
 class mol_array(_array):
-            
-    def __init__(self,geometry=""):
+
+    def __init__(self, geometry=""):
         if geometry == "":
             geometry = cartesian()
-        self.content = {"CHARGE":"0","MULTIPLICITY":"1","GEOMETRY":geometry}
-     
-    def charge(self,value="show"):
+        self.content = {"CHARGE": "0", "MULTIPLICITY": "1",
+                        "GEOMETRY": geometry}
+
+    def charge(self, value="show"):
         '''Total charge of the molecule.'''
         if value == "show":
             return self.content["CHARGE"]
         else:
-            self.content["CHARGE"]=value
-             
-    def multiplicity(self,value="show"):
+            self.content["CHARGE"] = value
+
+    def multiplicity(self, value="show"):
         '''Spin multiplicity of the molecule.'''
         if value == "show":
             return self.content["MULTIPLICITY"]
         else:
-            self.content["MULTIPLICITY"]=value
-        
-    def geometry(self,value="show"):
+            self.content["MULTIPLICITY"] = value
+
+    def geometry(self, value="show"):
         '''Reads xyz, txyz or zmat coordinate array.'''
         if value == "show":
             return self.content["GEOMETRY"]
         elif value == "read":
-            self.content["GEOMETRY"]=value
+            self.content["GEOMETRY"] = value
         else:
-            if type(value)==type(cartesian()) or type(value)==type(zmat()) or type(value)==type(tinker()):
-                self.content["GEOMETRY"]=value
+            if type(value) == type(cartesian()) or type(value) == type(
+                    zmat()) or type(value) == type(tinker()):
+                self.content["GEOMETRY"] = value
             else:
-                print("Only cartesian, tinker or zmat arrays can be added here.")
-       
+                print(
+                    "Only cartesian, tinker or zmat arrays can be added here.")
+
     def clear(self):
-        self.content = {"CHARGE":"0","MULTIPLICITY":"1","GEOMETRY":""}
-        
+        self.content = {"CHARGE": "0", "MULTIPLICITY": "1", "GEOMETRY": ""}
+
     def __str__(self):
-        if self.content["GEOMETRY"]=="read":
+        if self.content["GEOMETRY"] == "read":
             str_ret = "$molecule\nread\n$end\n"
         else:
-            str_ret = "$molecule\n" + self.content["CHARGE"] + " " + self.content["MULTIPLICITY"] + "\n"
-            if type(self.content["GEOMETRY"])==type(cartesian()):
+            str_ret = "$molecule\n" + self.content["CHARGE"] + " " + \
+                      self.content["MULTIPLICITY"] + "\n"
+            if type(self.content["GEOMETRY"]) == type(cartesian()):
                 for k in (self.content["GEOMETRY"]).list_of_atoms:
-                    str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
-            elif type(self.content["GEOMETRY"])==type(fragment()):
+                    str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + \
+                               k[3] + "\n"
+            elif type(self.content["GEOMETRY"]) == type(fragment()):
                 for l in self.content["GEOMETRY"].fragment_list:
-                    str_ret+="--\n0 1\n"
+                    str_ret += "--\n0 1\n"
                     for k in l.list_of_atoms:
-                        str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + k[3] + "\n"
-            elif type(self.content["GEOMETRY"])==type(zmat()):
-                str_ret += (self.content["GEOMETRY"]).__str__() 
-            elif type(self.content["GEOMETRY"])==type(tinker()):
+                        str_ret += k[0] + "    " + k[1] + "    " + k[
+                            2] + "    " + k[3] + "\n"
+            elif type(self.content["GEOMETRY"]) == type(zmat()):
+                str_ret += (self.content["GEOMETRY"]).__str__()
+            elif type(self.content["GEOMETRY"]) == type(tinker()):
                 for k in (self.content["GEOMETRY"]).list_of_atoms:
-                    str_ret +=  k[0] + "    " + k[1] + "   " + k[2] + \
-                    "    " + k[3] + "    " + k[4] + "    " + k[5] + \
-                    "    " + k[6] + "    " + k[7] + "    " + k[8] + "\n"
+                    str_ret += k[0] + "    " + k[1] + "   " + k[2] + \
+                               "    " + k[3] + "    " + k[4] + "    " + k[5] + \
+                               "    " + k[6] + "    " + k[7] + "    " + k[
+                                   8] + "\n"
             str_ret += "$end\n"
         return str_ret
-         
+
     def info(self):
         switch = 0
-        if type(self.content["GEOMETRY"])==type(cartesian()):
+        if type(self.content["GEOMETRY"]) == type(cartesian()):
             coor_type = "cartesian coordinates"
             switch = 1
-        elif type(self.content["GEOMETRY"])==type(zmat()):
+        elif type(self.content["GEOMETRY"]) == type(zmat()):
             coor_type = "Z-Matrix"
             switch = 1
-        elif type(self.content["GEOMETRY"])==type(tinker()):
+        elif type(self.content["GEOMETRY"]) == type(tinker()):
             coor_type = "Tinker"
             switch = 1
         else:
             coor_type = "empty"
         print("Type: molecule array, " + coor_type)
         if switch == 1:
-            print("Number of atoms: " + str(len((self.content["GEOMETRY"]).list_of_atoms)))
+            print("Number of atoms: " + str(
+                len((self.content["GEOMETRY"]).list_of_atoms)))
+
 
 ######################### BASIS FRAGMENT ############################
 
@@ -684,15 +721,15 @@ class basis_array(_array):
 
     def __init__(self):
         self.dict_of_atoms = {}
-    
-    def add(self,atom,line):
+
+    def add(self, atom, line):
         if atom in self.dict_of_atoms:
             self.dict_of_atoms[atom].append(line)
         else:
-            self.dict_of_atoms[atom]=list()
+            self.dict_of_atoms[atom] = list()
             self.dict_of_atoms[atom].append(line)
 
-    def remove(self,atom):
+    def remove(self, atom):
         if atom in self.dict_of_atoms:
             del self.dict_of_atoms[atom]
 
@@ -705,6 +742,7 @@ class basis_array(_array):
             ret_str += "****\n"
         ret_str += "$end\n"
         return ret_str
+
 
 ########################## ECP FRAGMENT #############################
 
@@ -720,6 +758,7 @@ class ecp_array(basis_array):
         ret_str += "$end\n"
         return ret_str
 
+
 ########################## OPT FRAGMENT #############################
 
 ######################### ALIST FRAGMENT ############################
@@ -727,43 +766,44 @@ class ecp_array(basis_array):
 ####################### QM_ATOMS FRAGMENT ###########################
 
 ################## FORCE_FIELD_PARAMS FRAGMENT ######################
-              
+
 ####################### COMMENT FRAGMENT ############################
 
 class comment_array(_array):
 
-    def __init__(self,content=""):
+    def __init__(self, content=""):
         self.content = content
 
     def __str__(self):
-        ret_str = "$comment\n" 
-        lines = list(filter(bool,self.content.split("\n"))) #remove empty list entries
+        ret_str = "$comment\n"
+        lines = list(
+            filter(bool, self.content.split("\n")))  # remove empty list entries
         for line in lines:
-            ret_str += line.strip() + "\n" 
+            ret_str += line.strip() + "\n"
         ret_str += "$end\n"
         return ret_str
+
 
 ######################### REM FRAGMENT ##############################
 
 class rem_array(_array):
-    
     __tabstop = 30
-        
-    def __init__(self,rem_init=""):
-        self.dict_of_keywords = {"JOBTYPE":"sp"}
-	rem_init=rem_init.splitlines()
-	if len(rem_init)!=0:
-		for i in rem_init:
-			i=i.split(" ")
-			if len(i)==0:
-				i=i.split("=")
-			if i[0].startswith("$"):
-				continue
-			self.add(i[0],i[1])
-    
+
+    def __init__(self, rem_init=""):
+        self.dict_of_keywords = {"JOBTYPE": "sp"}
+        rem_init = rem_init.splitlines()
+        if len(rem_init) != 0:
+            for i in rem_init:
+                i = i.split(" ")
+                if len(i) == 0:
+                    i = i.split("=")
+                if i[0].startswith("$"):
+                    continue
+                self.add(i[0], i[1])
+
     # -------------- Computer-generated List of REM keywords  -----------------
 
-    def cc_dip(self,value="show"):
+    def cc_dip(self, value="show"):
         '''
 Name: CC_DIP
 Type: INTEGER
@@ -780,10 +820,9 @@ Description: Initializes a EOM-DIP-CCSD calculation
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIP"]=value.lower()
+            self.dict_of_keywords["CC_DIP"] = value.lower()
 
-
-    def cc_do_triples(self,value="show"):
+    def cc_do_triples(self, value="show"):
         '''
 Name: CC_DO_TRIPLES
 Type: INTEGER
@@ -800,10 +839,9 @@ Description: This keyword initializes a EOM-CC(2,3) calculation. If {CC_IP_PROPE
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DO_TRIPLES"]=value.lower()
+            self.dict_of_keywords["CC_DO_TRIPLES"] = value.lower()
 
-
-    def cc_iterate_on(self,value="show"):
+    def cc_iterate_on(self, value="show"):
         '''
 Name: CC_ITERATE_ON
 Type: INTEGER
@@ -820,10 +858,9 @@ Recommendation: : Can be useful for non-convergent active space calculations    
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_ITERATE_ON"]=value.lower()
+            self.dict_of_keywords["CC_ITERATE_ON"] = value.lower()
 
-
-    def cc_orbs_per_block(self,value="show"):
+    def cc_orbs_per_block(self, value="show"):
         '''
 Name: CC_ORBS_PER_BLOCK
 Type: INTEGER
@@ -840,10 +877,9 @@ Description: Specifies target (and maximum) size of blocks in orbital space.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_ORBS_PER_BLOCK"]=value.lower()
+            self.dict_of_keywords["CC_ORBS_PER_BLOCK"] = value.lower()
 
-
-    def cc_preconv_sd(self,value="show"):
+    def cc_preconv_sd(self, value="show"):
         '''
 Name: CC_PRECONV_SD
 Type: INTEGER
@@ -860,10 +896,9 @@ Recommendation: : Turning this option on is recommended    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONV_SD"]=value.lower()
+            self.dict_of_keywords["CC_PRECONV_SD"] = value.lower()
 
-
-    def cc_reset_theta(self,value="show"):
+    def cc_reset_theta(self, value="show"):
         '''
 Name: CC_RESET_THETA
 Type: INTEGER
@@ -880,10 +915,9 @@ Description: The reference MO coefficient matrix is reset every n iterations to 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_RESET_THETA"]=value.lower()
+            self.dict_of_keywords["CC_RESET_THETA"] = value.lower()
 
-
-    def cc_restr_ampl(self,value="show"):
+    def cc_restr_ampl(self, value="show"):
         '''
 Name: CC_RESTR_AMPL
 Type: INTEGER
@@ -900,10 +934,9 @@ Description: Controls the restriction on amplitudes is there are restricted orbi
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_RESTR_AMPL"]=value.lower()
+            self.dict_of_keywords["CC_RESTR_AMPL"] = value.lower()
 
-
-    def cc_restr_triples(self,value="show"):
+    def cc_restr_triples(self, value="show"):
         '''
 Name: CC_RESTR_TRIPLES
 Type: INTEGER
@@ -920,10 +953,9 @@ Description: Controls which space the triples correction is computed in
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_RESTR_TRIPLES"]=value.lower()
+            self.dict_of_keywords["CC_RESTR_TRIPLES"] = value.lower()
 
-
-    def cc_rest_occ(self,value="show"):
+    def cc_rest_occ(self, value="show"):
         '''
 Name: CC_REST_OCC
 Type: INTEGER
@@ -940,10 +972,9 @@ Description: Sets the number of restricted occupied orbitals including frozen oc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_REST_OCC"]=value.lower()
+            self.dict_of_keywords["CC_REST_OCC"] = value.lower()
 
-
-    def cc_rest_vir(self,value="show"):
+    def cc_rest_vir(self, value="show"):
         '''
 Name: CC_REST_VIR
 Type: INTEGER
@@ -960,10 +991,9 @@ Description: Sets the number of restricted virtual orbitals including frozen vir
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_REST_VIR"]=value.lower()
+            self.dict_of_keywords["CC_REST_VIR"] = value.lower()
 
-
-    def cc_theta_grad_thresh(self,value="show"):
+    def cc_theta_grad_thresh(self, value="show"):
         '''
 Name: CC_THETA_GRAD_THRESH
 Type: INTEGER
@@ -980,10 +1010,9 @@ Recommendation: : Can be made smaller if convergence difficulties are encountere
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_THETA_GRAD_THRESH"]=value.lower()
+            self.dict_of_keywords["CC_THETA_GRAD_THRESH"] = value.lower()
 
-
-    def cc_tmpbuffsize(self,value="show"):
+    def cc_tmpbuffsize(self, value="show"):
         '''
 Name: CC_TMPBUFFSIZE
 Type: INTEGER
@@ -1000,10 +1029,9 @@ Recommendation: : Should not be smaller than the size of the largest possible bl
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_TMPBUFFSIZE"]=value.lower()
+            self.dict_of_keywords["CC_TMPBUFFSIZE"] = value.lower()
 
-
-    def gvb_orb_conv(self,value="show"):
+    def gvb_orb_conv(self, value="show"):
         '''
 Name: GVB_ORB_CONV
 Type: INTEGER
@@ -1020,10 +1048,9 @@ Recommendation: : Use 6 for PP(2) jobs or geometry optimizations. Tighter conver
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_ORB_CONV"]=value.lower()
+            self.dict_of_keywords["GVB_ORB_CONV"] = value.lower()
 
-
-    def gvb_orb_max_iter(self,value="show"):
+    def gvb_orb_max_iter(self, value="show"):
         '''
 Name: GVB_ORB_MAX_ITER
 Type: INTEGER
@@ -1040,10 +1067,9 @@ Recommendation: : Default is typically adequate, but some jobs, particularly UPP
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_ORB_MAX_ITER"]=value.lower()
+            self.dict_of_keywords["GVB_ORB_MAX_ITER"] = value.lower()
 
-
-    def gvb_orb_scale(self,value="show"):
+    def gvb_orb_scale(self, value="show"):
         '''
 Name: GVB_ORB_SCALE
 Type: INTEGER
@@ -1060,10 +1086,9 @@ Recommendation: : Default is usually fine, but for some stretched geometries it 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_ORB_SCALE"]=value.lower()
+            self.dict_of_keywords["GVB_ORB_SCALE"] = value.lower()
 
-
-    def gvb_restart(self,value="show"):
+    def gvb_restart(self, value="show"):
         '''
 Name: GVB_RESTART
 Type: STRING
@@ -1084,10 +1109,9 @@ Recommendation: : Useful when trying to converge to the same GVB solution at sli
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_RESTART"]=value.lower()
+            self.dict_of_keywords["GVB_RESTART"] = value.lower()
 
-
-    def gvb_unrestricted(self,value="show"):
+    def gvb_unrestricted(self, value="show"):
         '''
 Name: GVB_UNRESTRICTED
 Type: STRING
@@ -1108,10 +1132,9 @@ Recommendation: : Set this variable explicitly only to do a UPP job from an RHF 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_UNRESTRICTED"]=value.lower()
+            self.dict_of_keywords["GVB_UNRESTRICTED"] = value.lower()
 
-
-    def gvb_print(self,value="show"):
+    def gvb_print(self, value="show"):
         '''
 Name: GVB_PRINT
 Type: INTEGER
@@ -1128,10 +1151,9 @@ Recommendation: : Should never need to go above 0 or 1.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_PRINT"]=value.lower()
+            self.dict_of_keywords["GVB_PRINT"] = value.lower()
 
-
-    def nvo_lin_convergence(self,value="show"):
+    def nvo_lin_convergence(self, value="show"):
         '''
 Name: NVO_LIN_CONVERGENCE
 Type: INTEGER
@@ -1148,10 +1170,9 @@ Recommendation: : Solution of the single-excitation amplitude equations is consi
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_LIN_CONVERGENCE"]=value.lower()
+            self.dict_of_keywords["NVO_LIN_CONVERGENCE"] = value.lower()
 
-
-    def nvo_lin_max_ite(self,value="show"):
+    def nvo_lin_max_ite(self, value="show"):
         '''
 Name: NVO_LIN_MAX_ITE
 Type: INTEGER
@@ -1168,10 +1189,9 @@ Description: Maximum number of iterations in the preconditioned conjugate gradie
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_LIN_MAX_ITE"]=value.lower()
+            self.dict_of_keywords["NVO_LIN_MAX_ITE"] = value.lower()
 
-
-    def nvo_truncate_precond(self,value="show"):
+    def nvo_truncate_precond(self, value="show"):
         '''
 Name: NVO_TRUNCATE_PRECOND
 Type: INTEGER
@@ -1188,10 +1208,9 @@ Recommendation: : Use default. Increasing n improves convergence of the PCG algo
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_TRUNCATE_PRECOND"]=value.lower()
+            self.dict_of_keywords["NVO_TRUNCATE_PRECOND"] = value.lower()
 
-
-    def nvo_uvv_maxpwr(self,value="show"):
+    def nvo_uvv_maxpwr(self, value="show"):
         '''
 Name: NVO_UVV_MAXPWR
 Type: INTEGER
@@ -1208,10 +1227,9 @@ Description: Controls convergence of the Taylor series when calculating the Uvv 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_UVV_MAXPWR"]=value.lower()
+            self.dict_of_keywords["NVO_UVV_MAXPWR"] = value.lower()
 
-
-    def nvo_uvv_precision(self,value="show"):
+    def nvo_uvv_precision(self, value="show"):
         '''
 Name: NVO_UVV_PRECISION
 Type: INTEGER
@@ -1228,10 +1246,9 @@ Recommendation: : NVO_UVV_PRECISION must be the same as or larger than THRESH.  
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_UVV_PRECISION"]=value.lower()
+            self.dict_of_keywords["NVO_UVV_PRECISION"] = value.lower()
 
-
-    def print_dist_matrix(self,value="show"):
+    def print_dist_matrix(self, value="show"):
         '''
 Name: PRINT_DIST_MATRIX
 Type: INTEGER
@@ -1248,10 +1265,9 @@ Recommendation: : Use default unless distances are required for large systems   
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PRINT_DIST_MATRIX"]=value.lower()
+            self.dict_of_keywords["PRINT_DIST_MATRIX"] = value.lower()
 
-
-    def rc_r0(self,value="show"):
+    def rc_r0(self, value="show"):
         '''
 Name: RC_R0
 Type: INTEGER
@@ -1268,10 +1284,9 @@ Recommendation: : We recommend value of 250 for a typical spit valence basis.  F
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RC_R0"]=value.lower()
+            self.dict_of_keywords["RC_R0"] = value.lower()
 
-
-    def svp_cavity_conv(self,value="show"):
+    def svp_cavity_conv(self, value="show"):
         '''
 Name: SVP_CAVITY_CONV
 Type: INTEGER
@@ -1288,10 +1303,9 @@ Recommendation: : The default value unless convergence problems arise.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SVP_CAVITY_CONV"]=value.lower()
+            self.dict_of_keywords["SVP_CAVITY_CONV"] = value.lower()
 
-
-    def rpath_max_cycles(self,value="show"):
+    def rpath_max_cycles(self, value="show"):
         '''
 Name: RPATH_MAX_CYCLES
 Type: INTEGER
@@ -1310,10 +1324,9 @@ Recommendation: : Use more points if the minimum is desired, but not reached usi
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPATH_MAX_CYCLES"]=value.lower()
+            self.dict_of_keywords["RPATH_MAX_CYCLES"] = value.lower()
 
-
-    def rpath_tol_displacement(self,value="show"):
+    def rpath_tol_displacement(self, value="show"):
         '''
 Name: RPATH_TOL_DISPLACEMENT
 Type: INTEGER
@@ -1333,10 +1346,9 @@ Description: Specifies the convergence threshold (in a.u.) for the step. If a st
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPATH_TOL_DISPLACEMENT"]=value.lower()
+            self.dict_of_keywords["RPATH_TOL_DISPLACEMENT"] = value.lower()
 
-
-    def rpath_print(self,value="show"):
+    def rpath_print(self, value="show"):
         '''
 Name: RPATH_PRINT
 Type: INTEGER
@@ -1355,10 +1367,9 @@ Recommendation: : Use default, little additional information is printed at highe
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPATH_PRINT"]=value.lower()
+            self.dict_of_keywords["RPATH_PRINT"] = value.lower()
 
-
-    def scf_convergence(self,value="show"):
+    def scf_convergence(self, value="show"):
         '''
 Name: SCF_CONVERGENCE
 Type: INTEGER
@@ -1377,10 +1388,9 @@ Recommendation: : Tighter criteria for geometry optimization and vibration analy
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_CONVERGENCE"]=value.lower()
+            self.dict_of_keywords["SCF_CONVERGENCE"] = value.lower()
 
-
-    def aimd_steps(self,value="show"):
+    def aimd_steps(self, value="show"):
         '''
 Name: AIMD_STEPS
 Type: INTEGER
@@ -1399,10 +1409,9 @@ Description: Specifies the requested number of molecular dynamics steps.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_STEPS"]=value.lower()
+            self.dict_of_keywords["AIMD_STEPS"] = value.lower()
 
-
-    def ao2mo_disk(self,value="show"):
+    def ao2mo_disk(self, value="show"):
         '''
 Name: AO2MO_DISK
 Type: INTEGER
@@ -1422,10 +1431,9 @@ Recommendation: : Should be set as large as possible, as discussed in the manual
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AO2MO_DISK"]=value.lower()
+            self.dict_of_keywords["AO2MO_DISK"] = value.lower()
 
-
-    def cc_canonize_final(self,value="show"):
+    def cc_canonize_final(self, value="show"):
         '''
 Name: CC_CANONIZE_FINAL
 Type: LOGICAL
@@ -1447,10 +1455,9 @@ Recommendation: : Should not normally have to be altered.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CANONIZE_FINAL"]=value.lower()
+            self.dict_of_keywords["CC_CANONIZE_FINAL"] = value.lower()
 
-
-    def cc_canonize(self,value="show"):
+    def cc_canonize(self, value="show"):
         '''
 Name: CC_CANONIZE
 Type: LOGICAL
@@ -1472,10 +1479,9 @@ Recommendation: : Should not normally have to be altered.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CANONIZE"]=value.lower()
+            self.dict_of_keywords["CC_CANONIZE"] = value.lower()
 
-
-    def cc_convergence(self,value="show"):
+    def cc_convergence(self, value="show"):
         '''
 Name: CC_CONVERGENCE
 Type: INTEGER
@@ -1494,10 +1500,9 @@ Description: Overall convergence criterion for the coupled-cluster codes. This i
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CONVERGENCE"]=value.lower()
+            self.dict_of_keywords["CC_CONVERGENCE"] = value.lower()
 
-
-    def cc_dconvergence(self,value="show"):
+    def cc_dconvergence(self, value="show"):
         '''
 Name: CC_DCONVERGENCE
 Type: INTEGER
@@ -1516,10 +1521,9 @@ Recommendation: : Use default. Should normally be set to the same value as CC_DT
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DCONVERGENCE"]=value.lower()
+            self.dict_of_keywords["CC_DCONVERGENCE"] = value.lower()
 
-
-    def cdft(self,value="show"):
+    def cdft(self, value="show"):
         '''
 Name: CDFT
 Type: LOGICAL
@@ -1541,10 +1545,9 @@ Recommendation: : Set to TRUE if a Constrained DFT calculation is desired.    ''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CDFT"]=value.lower()
+            self.dict_of_keywords["CDFT"] = value.lower()
 
-
-    def cd_algorithm(self,value="show"):
+    def cd_algorithm(self, value="show"):
         '''
 Name: CD_ALGORITHM
 Type: STRING
@@ -1568,10 +1571,9 @@ Recommendation: : Semi-direct is usually most efficient, and will normally be ch
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CD_ALGORITHM"]=value.lower()
+            self.dict_of_keywords["CD_ALGORITHM"] = value.lower()
 
-
-    def cdft_thresh(self,value="show"):
+    def cdft_thresh(self, value="show"):
         '''
 Name: CDFT_THRESH
 Type: INTEGER
@@ -1591,10 +1593,9 @@ Recommendation: : Use default unless problems occur.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CDFT_THRESH"]=value.lower()
+            self.dict_of_keywords["CDFT_THRESH"] = value.lower()
 
-
-    def cdft_postdiis(self,value="show"):
+    def cdft_postdiis(self, value="show"):
         '''
 Name: CDFT_POSTDIIS
 Type: LOGICAL
@@ -1617,10 +1618,9 @@ Recommentation: Use default unless convergence problems arise, in which case it 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CDFT_POSTDIIS"]=value.lower()
+            self.dict_of_keywords["CDFT_POSTDIIS"] = value.lower()
 
-
-    def cdft_prediis(self,value="show"):
+    def cdft_prediis(self, value="show"):
         '''
 Name: CDFT_PREDIIS
 Type: LOGICAL
@@ -1643,10 +1643,9 @@ Recommendation: : Use default unless problems arise, in which case it might be b
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CDFT_PREDIIS"]=value.lower()
+            self.dict_of_keywords["CDFT_PREDIIS"] = value.lower()
 
-
-    def cfmm_order(self,value="show"):
+    def cfmm_order(self, value="show"):
         '''
 Name: CFMM_ORDER
 Type: INTEGER
@@ -1665,10 +1664,9 @@ Description: Controls the order of the multipole expansions in CFMM calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CFMM_ORDER"]=value.lower()
+            self.dict_of_keywords["CFMM_ORDER"] = value.lower()
 
-
-    def chemsol_nn(self,value="show"):
+    def chemsol_nn(self, value="show"):
         '''
 Name: CHEMSOL_NN
 Type: INTEGER
@@ -1687,10 +1685,9 @@ Description: Sets the number of grids used to calculate the average hydration fr
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHEMSOL_NN"]=value.lower()
+            self.dict_of_keywords["CHEMSOL_NN"] = value.lower()
 
-
-    def cis_convergence(self,value="show"):
+    def cis_convergence(self, value="show"):
         '''
 Name: CIS_CONVERGENCE
 Type: INTEGER
@@ -1709,10 +1706,9 @@ Description: CIS is considered converged when error is less than 10-CIS_CONVERGE
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_CONVERGENCE"]=value.lower()
+            self.dict_of_keywords["CIS_CONVERGENCE"] = value.lower()
 
-
-    def cis_guess_disk(self,value="show"):
+    def cis_guess_disk(self, value="show"):
         '''
 Name: CIS_GUESS_DISK
 Type: LOGICAL
@@ -1734,10 +1730,9 @@ Recommendation: : Requires a guess from previous calculation.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_GUESS_DISK"]=value.lower()
+            self.dict_of_keywords["CIS_GUESS_DISK"] = value.lower()
 
-
-    def cis_relaxed_density(self,value="show"):
+    def cis_relaxed_density(self, value="show"):
         '''
 Name: CIS_RELAXED_DENSITY
 Type: LOGICAL
@@ -1759,10 +1754,9 @@ Description: Determines whether or not to use the relaxed CIS density for attach
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RELAXED_DENSITY"]=value.lower()
+            self.dict_of_keywords["CIS_RELAXED_DENSITY"] = value.lower()
 
-
-    def cis_singlets(self,value="show"):
+    def cis_singlets(self, value="show"):
         '''
 Name: CIS_SINGLETS
 Type: LOGICAL
@@ -1784,10 +1778,9 @@ Description: Solve for singlet excited states in RCIS calculations (ignored for 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_SINGLETS"]=value.lower()
+            self.dict_of_keywords["CIS_SINGLETS"] = value.lower()
 
-
-    def cis_triplets(self,value="show"):
+    def cis_triplets(self, value="show"):
         '''
 Name: CIS_TRIPLETS
 Type: LOGICAL
@@ -1809,10 +1802,9 @@ Description: Solve for triplet excited states in RCIS calculations (ignored for 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_TRIPLETS"]=value.lower()
+            self.dict_of_keywords["CIS_TRIPLETS"] = value.lower()
 
-
-    def core_character(self,value="show"):
+    def core_character(self, value="show"):
         '''
 Name: CORE_CHARACTER
 Type: INTEGER
@@ -1831,10 +1823,9 @@ Recommendation: : Use default, unless performing calculations on molecules with 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CORE_CHARACTER"]=value.lower()
+            self.dict_of_keywords["CORE_CHARACTER"] = value.lower()
 
-
-    def cpscf_nseg(self,value="show"):
+    def cpscf_nseg(self, value="show"):
         '''
 Name: CPSCF_NSEG
 Type: INTEGER
@@ -1853,10 +1844,9 @@ Recommendation: : Use default unless too much memory is requested.  Increasing t
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CPSCF_NSEG"]=value.lower()
+            self.dict_of_keywords["CPSCF_NSEG"] = value.lower()
 
-
-    def deuterate(self,value="show"):
+    def deuterate(self, value="show"):
         '''
 Name: DEUTERATE
 Type: LOGICAL
@@ -1878,10 +1868,9 @@ Recommendation: : Replacing hydrogen atoms reduces the fastest vibrational frequ
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DEUTERATE"]=value.lower()
+            self.dict_of_keywords["DEUTERATE"] = value.lower()
 
-
-    def dma_midpoints(self,value="show"):
+    def dma_midpoints(self, value="show"):
         '''
 Name: DMA_MIDPOINTS
 Type: LOGICAL
@@ -1903,10 +1892,9 @@ Description: Specifies whether to include bond midpoints in the DMA expansion.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DMA_MIDPOINTS"]=value.lower()
+            self.dict_of_keywords["DMA_MIDPOINTS"] = value.lower()
 
-
-    def dual_basis_energy(self,value="show"):
+    def dual_basis_energy(self, value="show"):
         '''
 Name: DUAL_BASIS_ENERGY
 Type: LOGICAL
@@ -1928,10 +1916,9 @@ Recommendation: : Use Dual-Basis to capture large-basis effects at smaller basis
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DUAL_BASIS_ENERGY"]=value.lower()
+            self.dict_of_keywords["DUAL_BASIS_ENERGY"] = value.lower()
 
-
-    def eda_bsse(self,value="show"):
+    def eda_bsse(self, value="show"):
         '''
 Name: EDA_BSSE
 Type: LOGICAL
@@ -1953,10 +1940,9 @@ Recommendation: : Set to TRUE unless a very large basis set is used.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EDA_BSSE"]=value.lower()
+            self.dict_of_keywords["EDA_BSSE"] = value.lower()
 
-
-    def eda_print_covp(self,value="show"):
+    def eda_print_covp(self, value="show"):
         '''
 Name: EDA_PRINT_COVP
 Type: LOGICAL
@@ -1978,10 +1964,9 @@ Recommendation: : Set to TRUE to print COVP orbitals instead of conventional MOs
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EDA_PRINT_COVP"]=value.lower()
+            self.dict_of_keywords["EDA_PRINT_COVP"] = value.lower()
 
-
-    def epao_iterate(self,value="show"):
+    def epao_iterate(self, value="show"):
         '''
 Name: EPAO_ITERATE
 Type: INTEGER
@@ -2001,10 +1986,9 @@ Recommendation: : Use default. For molecules that are not too large, one can tes
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EPAO_ITERATE"]=value.lower()
+            self.dict_of_keywords["EPAO_ITERATE"] = value.lower()
 
-
-    def fast_xc(self,value="show"):
+    def fast_xc(self, value="show"):
         '''
 Name: FAST_XC
 Type: LOGICAL
@@ -2026,10 +2010,9 @@ Recommendation: : This option improves the speed of a DFT calculation, but may o
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FAST_XC"]=value.lower()
+            self.dict_of_keywords["FAST_XC"] = value.lower()
 
-
-    def frgm_lpcorr(self,value="show"):
+    def frgm_lpcorr(self, value="show"):
         '''
 Name: FRGM_LPCORR
 Type: STRING
@@ -2055,10 +2038,9 @@ Recommendation: : For large basis sets use ARS, use RS if ARS fails.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FRGM_LPCORR"]=value.lower()
+            self.dict_of_keywords["FRGM_LPCORR"] = value.lower()
 
-
-    def frgm_method(self,value="show"):
+    def frgm_method(self, value="show"):
         '''
 Name: FRGM_METHOD
 Type: STRING
@@ -2085,10 +2067,9 @@ Recommendation: : STOLL and GIA - variational optimization of the ALMOs. NOSCF o
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FRGM_METHOD"]=value.lower()
+            self.dict_of_keywords["FRGM_METHOD"] = value.lower()
 
-
-    def ftc_class_thresh_mult(self,value="show"):
+    def ftc_class_thresh_mult(self, value="show"):
         '''
 Name: FTC_CLASS_THRESH_MULT
 Type: INTEGER
@@ -2107,10 +2088,9 @@ Description: Together with FTC_CLASS_THRESH_ORDER, determines the cutoff thresho
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FTC_CLASS_THRESH_MULT"]=value.lower()
+            self.dict_of_keywords["FTC_CLASS_THRESH_MULT"] = value.lower()
 
-
-    def ftc_class_thresh_order(self,value="show"):
+    def ftc_class_thresh_order(self, value="show"):
         '''
 Name: FTC_CLASS_THRESH_ORDER
 Type: INTEGER
@@ -2129,10 +2109,9 @@ Description: Together with FTC_CLASS_THRESH_MULT, determines the cutoff threshol
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FTC_CLASS_THRESH_ORDER"]=value.lower()
+            self.dict_of_keywords["FTC_CLASS_THRESH_ORDER"] = value.lower()
 
-
-    def qui_geom_opt_fallback(self,value="show"):
+    def qui_geom_opt_fallback(self, value="show"):
         '''
 Name: QUI_GEOM_OPT_FALLBACK
 Type: LOGICAL
@@ -2154,10 +2133,9 @@ Description: Sets whether or not to fall back to cartesian coordinates if the op
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_GEOM_OPT_FALLBACK"]=value.lower()
+            self.dict_of_keywords["QUI_GEOM_OPT_FALLBACK"] = value.lower()
 
-
-    def geom_opt_linear_angle(self,value="show"):
+    def geom_opt_linear_angle(self, value="show"):
         '''
 Name: GEOM_OPT_LINEAR_ANGLE
 Type: INTEGER
@@ -2176,10 +2154,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_LINEAR_ANGLE"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_LINEAR_ANGLE"] = value.lower()
 
-
-    def geom_opt_max_cycles(self,value="show"):
+    def geom_opt_max_cycles(self, value="show"):
         '''
 Name: GEOM_OPT_MAX_CYCLES
 Type: INTEGER
@@ -2198,10 +2175,9 @@ Recommendation: : The default should be sufficient for most cases. Increase if t
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_MAX_CYCLES"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_MAX_CYCLES"] = value.lower()
 
-
-    def geom_opt_mode(self,value="show"):
+    def geom_opt_mode(self, value="show"):
         '''
 Name: GEOM_OPT_MODE
 Type: INTEGER
@@ -2220,10 +2196,9 @@ Description: Determines which Hessian mode is followed during a transition state
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_MODE"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_MODE"] = value.lower()
 
-
-    def geom_opt_print(self,value="show"):
+    def geom_opt_print(self, value="show"):
         '''
 Name: GEOM_OPT_PRINT
 Type: INTEGER
@@ -2242,10 +2217,9 @@ Recommendation: : Use the default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_PRINT"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_PRINT"] = value.lower()
 
-
-    def geom_print(self,value="show"):
+    def geom_print(self, value="show"):
         '''
 Name: GEOM_PRINT
 Type: LOGICAL
@@ -2267,10 +2241,9 @@ Recommendation: : Use if you want to be able to quickly examine geometric parame
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_PRINT"]=value.lower()
+            self.dict_of_keywords["GEOM_PRINT"] = value.lower()
 
-
-    def gvb_amp_scale(self,value="show"):
+    def gvb_amp_scale(self, value="show"):
         '''
 Name: GVB_AMP_SCALE
 Type: INTEGER
@@ -2290,10 +2263,9 @@ Recommendation: : Default is usually fine, but in some highly-correlated systems
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_AMP_SCALE"]=value.lower()
+            self.dict_of_keywords["GVB_AMP_SCALE"] = value.lower()
 
-
-    def gvb_guess_mix(self,value="show"):
+    def gvb_guess_mix(self, value="show"):
         '''
 Name: GVB_GUESS_MIX
 Type: INTEGER
@@ -2312,10 +2284,9 @@ Recommendation: : 25 often works well to break symmetry without overly impeding 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_GUESS_MIX"]=value.lower()
+            self.dict_of_keywords["GVB_GUESS_MIX"] = value.lower()
 
-
-    def gvb_local(self,value="show"):
+    def gvb_local(self, value="show"):
         '''
 Name: GVB_LOCAL
 Type: STRING
@@ -2337,10 +2308,9 @@ Recommendation: : Different initial guesses can sometimes lead to different solu
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_LOCAL"]=value.lower()
+            self.dict_of_keywords["GVB_LOCAL"] = value.lower()
 
-
-    def gvb_n_pairs(self,value="show"):
+    def gvb_n_pairs(self, value="show"):
         '''
 Name: GVB_N_PAIRS
 Type: INTEGER
@@ -2359,10 +2329,9 @@ Recommendation: : Use default unless one wants to study a special active space. 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GVB_N_PAIRS"]=value.lower()
+            self.dict_of_keywords["GVB_N_PAIRS"] = value.lower()
 
-
-    def incdft(self,value="show"):
+    def incdft(self, value="show"):
         '''
 Name: INCDFT
 Type: LOGICAL
@@ -2384,10 +2353,9 @@ Recommendation: : Turning this option on can lead to faster SCF calculations, pa
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INCDFT"]=value.lower()
+            self.dict_of_keywords["INCDFT"] = value.lower()
 
-
-    def incdft_dendiff_thresh(self,value="show"):
+    def incdft_dendiff_thresh(self, value="show"):
         '''
 Name: INCDFT_DENDIFF_THRESH
 Type: INTEGER
@@ -2406,10 +2374,9 @@ Recommendation: : If the default value causes convergence problems, set this val
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INCDFT_DENDIFF_THRESH"]=value.lower()
+            self.dict_of_keywords["INCDFT_DENDIFF_THRESH"] = value.lower()
 
-
-    def incdft_dendiff_varthresh(self,value="show"):
+    def incdft_dendiff_varthresh(self, value="show"):
         '''
 Name: INCDFT_DENDIFF_VARTHRESH
 Type: INTEGER
@@ -2428,10 +2395,9 @@ Recommendation: : If the default value causes convergence problems, set this val
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INCDFT_DENDIFF_VARTHRESH"]=value.lower()
+            self.dict_of_keywords["INCDFT_DENDIFF_VARTHRESH"] = value.lower()
 
-
-    def incdft_griddiff_thresh(self,value="show"):
+    def incdft_griddiff_thresh(self, value="show"):
         '''
 Name: INCDFT_GRIDDIFF_THRESH
 Type: INTEGER
@@ -2450,10 +2416,9 @@ Recommendation: : If the default value causes convergence problems, set this val
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INCDFT_GRIDDIFF_THRESH"]=value.lower()
+            self.dict_of_keywords["INCDFT_GRIDDIFF_THRESH"] = value.lower()
 
-
-    def incfock(self,value="show"):
+    def incfock(self, value="show"):
         '''
 Name: INCFOCK
 Type: INTEGER
@@ -2472,10 +2437,9 @@ Recommendation: : May be necessary to allow several iterations before switching 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INCFOCK"]=value.lower()
+            self.dict_of_keywords["INCFOCK"] = value.lower()
 
-
-    def integrals_buffer(self,value="show"):
+    def integrals_buffer(self, value="show"):
         '''
 Name: INTEGRALS_BUFFER
 Type: INTEGER
@@ -2494,10 +2458,9 @@ Recommendation: : Use the default, or consult your systems administrator for har
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTEGRALS_BUFFER"]=value.lower()
+            self.dict_of_keywords["INTEGRALS_BUFFER"] = value.lower()
 
-
-    def lin_k(self,value="show"):
+    def lin_k(self, value="show"):
         '''
 Name: LIN_K
 Type: LOGICAL
@@ -2519,10 +2482,9 @@ Recommendation: : Use for HF and hybrid DFT calculations with large numbers of a
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["LIN_K"]=value.lower()
+            self.dict_of_keywords["LIN_K"] = value.lower()
 
-
-    def max_sub_file_num(self,value="show"):
+    def max_sub_file_num(self, value="show"):
         '''
 Name: MAX_SUB_FILE_NUM
 Type: INTEGER
@@ -2541,10 +2503,9 @@ Recommendation: : Leave as default, or adjust according to your system limits.  
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MAX_SUB_FILE_NUM"]=value.lower()
+            self.dict_of_keywords["MAX_SUB_FILE_NUM"] = value.lower()
 
-
-    def qui_frozen_core(self,value="show"):
+    def qui_frozen_core(self, value="show"):
         '''
 Name: QUI_FROZEN_CORE
 Type: LOGICAL
@@ -2566,10 +2527,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_FROZEN_CORE"]=value.lower()
+            self.dict_of_keywords["QUI_FROZEN_CORE"] = value.lower()
 
-
-    def xc_smart_grid(self,value="show"):
+    def xc_smart_grid(self, value="show"):
         '''
 Name: XC_SMART_GRID
 Type: LOGICAL
@@ -2591,10 +2551,9 @@ Recommendation: : The use of the smart grid can save some time on initial SCF cy
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XC_SMART_GRID"]=value.lower()
+            self.dict_of_keywords["XC_SMART_GRID"] = value.lower()
 
-
-    def xopt_seam_only(self,value="show"):
+    def xopt_seam_only(self, value="show"):
         '''
 Name: XOPT_SEAM_ONLY
 Type: LOGICAL
@@ -2616,10 +2575,9 @@ Recommendation: : In systems with a large number of degrees of freedom it might 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XOPT_SEAM_ONLY"]=value.lower()
+            self.dict_of_keywords["XOPT_SEAM_ONLY"] = value.lower()
 
-
-    def xcis(self,value="show"):
+    def xcis(self, value="show"):
         '''
 Name: XCIS
 Type: LOGICAL
@@ -2641,10 +2599,9 @@ Description: Do an XCIS calculation in addition to a CIS calculation
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XCIS"]=value.lower()
+            self.dict_of_keywords["XCIS"] = value.lower()
 
-
-    def wavefunction_analysis(self,value="show"):
+    def wavefunction_analysis(self, value="show"):
         '''
 Name: WAVEFUNCTION_ANALYSIS
 Type: LOGICAL
@@ -2666,10 +2623,9 @@ Description: Controls the running of the default wavefunction analysis tasks.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["WAVEFUNCTION_ANALYSIS"]=value.lower()
+            self.dict_of_keywords["WAVEFUNCTION_ANALYSIS"] = value.lower()
 
-
-    def vibman_print(self,value="show"):
+    def vibman_print(self, value="show"):
         '''
 Name: VIBMAN_PRINT
 Type: INTEGER
@@ -2688,10 +2644,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["VIBMAN_PRINT"]=value.lower()
+            self.dict_of_keywords["VIBMAN_PRINT"] = value.lower()
 
-
-    def vci(self,value="show"):
+    def vci(self, value="show"):
         '''
 Name: VCI
 Type: INTEGER
@@ -2710,10 +2665,9 @@ Recommendation: : The availability depends on the memory of the machine.  For ex
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["VCI"]=value.lower()
+            self.dict_of_keywords["VCI"] = value.lower()
 
-
-    def stability_analysis(self,value="show"):
+    def stability_analysis(self, value="show"):
         '''
 Name: STABILITY_ANALYSIS
 Type: LOGICAL
@@ -2735,10 +2689,9 @@ Recommendation: : Set to TRUE when a HF or DFT solution is suspected to be unsta
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["STABILITY_ANALYSIS"]=value.lower()
+            self.dict_of_keywords["STABILITY_ANALYSIS"] = value.lower()
 
-
-    def scf_print_frgm(self,value="show"):
+    def scf_print_frgm(self, value="show"):
         '''
 Name: SCF_PRINT_FRGM
 Type: LOGICAL
@@ -2760,10 +2713,9 @@ Recommendation: : Use TRUE if details about isolated fragments are important.   
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_PRINT_FRGM"]=value.lower()
+            self.dict_of_keywords["SCF_PRINT_FRGM"] = value.lower()
 
-
-    def chemsol_print(self,value="show"):
+    def chemsol_print(self, value="show"):
         '''
 Name: CHEMSOL_PRINT
 Type: LOGICAL
@@ -2785,10 +2737,9 @@ Description: Increases the amount of ChemSol output.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHEMSOL_PRINT"]=value.lower()
+            self.dict_of_keywords["CHEMSOL_PRINT"] = value.lower()
 
-
-    def qui_charge(self,value="show"):
+    def qui_charge(self, value="show"):
         '''
 Name: QUI_CHARGE
 Type: INTEGER
@@ -2807,10 +2758,9 @@ Description: Sets the total charge of the system.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_CHARGE"]=value.lower()
+            self.dict_of_keywords["QUI_CHARGE"] = value.lower()
 
-
-    def unrestricted(self,value="show"):
+    def unrestricted(self, value="show"):
         '''
 Name: UNRESTRICTED
 Type: LOGICAL
@@ -2832,10 +2782,9 @@ Recommendation: : Use default unless ROHF is desired. Note that for unrestricted
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["UNRESTRICTED"]=value.lower()
+            self.dict_of_keywords["UNRESTRICTED"] = value.lower()
 
-
-    def write_wfn(self,value="show"):
+    def write_wfn(self, value="show"):
         '''
 Name: WRITE_WFN
 Type: STRING
@@ -2856,10 +2805,9 @@ Description: Specifies whether or not a wfn file is created, which is suitable f
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["WRITE_WFN"]=value.lower()
+            self.dict_of_keywords["WRITE_WFN"] = value.lower()
 
-
-    def aimd_moments(self,value="show"):
+    def aimd_moments(self, value="show"):
         '''
 Name: AIMD_MOMENTS
 Type: INTEGER
@@ -2878,10 +2826,9 @@ Description: Specifies the order of multipole moments that are output at each ti
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_MOMENTS"]=value.lower()
+            self.dict_of_keywords["AIMD_MOMENTS"] = value.lower()
 
-
-    def n_frozen_core(self,value="show"):
+    def n_frozen_core(self, value="show"):
         '''
 Name: N_FROZEN_CORE
 Type: INTEGER
@@ -2900,10 +2847,9 @@ Recommendation: : While the default is not to freeze orbitals, MP2 calculations 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["N_FROZEN_CORE"]=value.lower()
+            self.dict_of_keywords["N_FROZEN_CORE"] = value.lower()
 
-
-    def n_frozen_virtual(self,value="show"):
+    def n_frozen_virtual(self, value="show"):
         '''
 Name: N_FROZEN_VIRTUAL
 Type: INTEGER
@@ -2922,10 +2868,9 @@ Description: Sets the number of frozen virtual orbitals in a post-Hartree-Fock c
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["N_FROZEN_VIRTUAL"]=value.lower()
+            self.dict_of_keywords["N_FROZEN_VIRTUAL"] = value.lower()
 
-
-    def chemsol(self,value="show"):
+    def chemsol(self, value="show"):
         '''
 Name: CHEMSOL
 Type: LOGICAL
@@ -2947,10 +2892,9 @@ Description: Controls the use of ChemSol in Q-Chem.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHEMSOL"]=value.lower()
+            self.dict_of_keywords["CHEMSOL"] = value.lower()
 
-
-    def ftc(self,value="show"):
+    def ftc(self, value="show"):
         '''
 Name: FTC
 Type: LOGICAL
@@ -2972,10 +2916,9 @@ Recommendation: : Use FTC when bigger and/or diffuse basis sets are used.     ''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FTC"]=value.lower()
+            self.dict_of_keywords["FTC"] = value.lower()
 
-
-    def qui_cfmm(self,value="show"):
+    def qui_cfmm(self, value="show"):
         '''
 Name: QUI_CFMM
 Type: LOGICAL
@@ -2997,10 +2940,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_CFMM"]=value.lower()
+            self.dict_of_keywords["QUI_CFMM"] = value.lower()
 
-
-    def qui_largemol_none(self,value="show"):
+    def qui_largemol_none(self, value="show"):
         '''
 Name: QUI_LARGEMOL_NONE
 Type: LOGICAL
@@ -3022,10 +2964,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_LARGEMOL_NONE"]=value.lower()
+            self.dict_of_keywords["QUI_LARGEMOL_NONE"] = value.lower()
 
-
-    def qui_solvent_onsager(self,value="show"):
+    def qui_solvent_onsager(self, value="show"):
         '''
 Name: QUI_SOLVENT_ONSAGER
 Type: LOGICAL
@@ -3047,10 +2988,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SOLVENT_ONSAGER"]=value.lower()
+            self.dict_of_keywords["QUI_SOLVENT_ONSAGER"] = value.lower()
 
-
-    def qui_plots_points(self,value="show"):
+    def qui_plots_points(self, value="show"):
         '''
 Name: QUI_PLOTS_POINTS
 Type: INTEGER
@@ -3069,10 +3009,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_PLOTS_POINTS"]=value.lower()
+            self.dict_of_keywords["QUI_PLOTS_POINTS"] = value.lower()
 
-
-    def ssg(self,value="show"):
+    def ssg(self, value="show"):
         '''
 Name: SSG
 Type: LOGICAL
@@ -3094,10 +3033,9 @@ Recommendation: : See also the UNRESTRICTED and DIIS_SUBSPACE_SIZE $rem variable
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SSG"]=value.lower()
+            self.dict_of_keywords["SSG"] = value.lower()
 
-
-    def qui_eom_method(self,value="show"):
+    def qui_eom_method(self, value="show"):
         '''
 Name: QUI_EOM_METHOD
 Type: STRING
@@ -3122,10 +3060,9 @@ Description: Specifies the type of EOM calculation to perform
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_METHOD"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_METHOD"] = value.lower()
 
-
-    def geom_opt_tol_displacement(self,value="show"):
+    def geom_opt_tol_displacement(self, value="show"):
         '''
 Name: GEOM_OPT_TOL_DISPLACEMENT
 Type: INTEGER
@@ -3144,10 +3081,9 @@ Recommendation: : Use the default. To converge the gradient and either one of th
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_TOL_DISPLACEMENT"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_TOL_DISPLACEMENT"] = value.lower()
 
-
-    def geom_opt_tol_energy(self,value="show"):
+    def geom_opt_tol_energy(self, value="show"):
         '''
 Name: GEOM_OPT_TOL_ENERGY
 Type: INTEGER
@@ -3166,10 +3102,9 @@ Recommendation: : Use the default. To converge the gradient and either one of th
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_TOL_ENERGY"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_TOL_ENERGY"] = value.lower()
 
-
-    def geom_opt_tol_gradient(self,value="show"):
+    def geom_opt_tol_gradient(self, value="show"):
         '''
 Name: GEOM_OPT_TOL_GRADIENT
 Type: INTEGER
@@ -3188,10 +3123,9 @@ Recommendation: : Use the default. To converge the gradient and either one of th
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_TOL_GRADIENT"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_TOL_GRADIENT"] = value.lower()
 
-
-    def skip_cis_rpa(self,value="show"):
+    def skip_cis_rpa(self, value="show"):
         '''
 Name: SKIP_CIS_RPA
 Type: LOGICAL
@@ -3214,10 +3148,9 @@ Recommendation: : Set to true to speed up the generation of plot data if the sam
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SKIP_CIS_RPA"]=value.lower()
+            self.dict_of_keywords["SKIP_CIS_RPA"] = value.lower()
 
-
-    def qui_coordinates(self,value="show"):
+    def qui_coordinates(self, value="show"):
         '''
 Name: QUI_COORDINATES
 Type: STRING
@@ -3240,10 +3173,9 @@ Description: Controls the format of the geometry in the output file.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_COORDINATES"]=value.lower()
+            self.dict_of_keywords["QUI_COORDINATES"] = value.lower()
 
-
-    def pseudo_canonical(self,value="show"):
+    def pseudo_canonical(self, value="show"):
         '''
 Name: PSEUDO_CANONICAL
 Type: LOGICAL
@@ -3265,10 +3197,9 @@ Recommendation: : The default is usually more efficient, but choosing TRUE somet
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PSEUDO_CANONICAL"]=value.lower()
+            self.dict_of_keywords["PSEUDO_CANONICAL"] = value.lower()
 
-
-    def purecart(self,value="show"):
+    def purecart(self, value="show"):
         '''
 Name: PURECART
 Type: STRING
@@ -3293,10 +3224,9 @@ Description: Controls the use of pure (spherical harmonic) or Cartesian angular 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PURECART"]=value.lower()
+            self.dict_of_keywords["PURECART"] = value.lower()
 
-
-    def moprop(self,value="show"):
+    def moprop(self, value="show"):
         '''
 Name: MOPROP
 Type: STRING
@@ -3324,10 +3254,9 @@ Description: Specifies the job for mopropman.  Note that for hyperpolarizabiliti
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP"]=value.lower()
+            self.dict_of_keywords["MOPROP"] = value.lower()
 
-
-    def ecp(self,value="show"):
+    def ecp(self, value="show"):
         '''
 Name: ECP
 Type: STRING
@@ -3360,10 +3289,9 @@ Recommendation: : Pseudopotentials are recommended for first row transition meta
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ECP"]=value.lower()
+            self.dict_of_keywords["ECP"] = value.lower()
 
-
-    def aimd_fictitious_mass(self,value="show"):
+    def aimd_fictitious_mass(self, value="show"):
         '''
 Name: AIMD_FICTITIOUS_MASS
 Type: INTEGER
@@ -3383,10 +3311,9 @@ Recommendation: : Values in the range 50-200 a.u. have been employed.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_FICTITIOUS_MASS"]=value.lower()
+            self.dict_of_keywords["AIMD_FICTITIOUS_MASS"] = value.lower()
 
-
-    def anhar(self,value="show"):
+    def anhar(self, value="show"):
         '''
 Name: ANHAR
 Type: LOGICAL
@@ -3409,10 +3336,9 @@ Recommendation: : Since this calculation involves the third and fourth derivativ
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ANHAR"]=value.lower()
+            self.dict_of_keywords["ANHAR"] = value.lower()
 
-
-    def aimd_initial_velocities(self,value="show"):
+    def aimd_initial_velocities(self, value="show"):
         '''
 Name: AIMD_INITIAL_VELOCITIES
 Type: STRING
@@ -3436,10 +3362,9 @@ Recommendation: : This variable need only be specified in the event that velocit
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_INITIAL_VELOCITIES"]=value.lower()
+            self.dict_of_keywords["AIMD_INITIAL_VELOCITIES"] = value.lower()
 
-
-    def aimd_temperature(self,value="show"):
+    def aimd_temperature(self, value="show"):
         '''
 Name: AIMD_TEMPERATURE
 Type: INTEGER
@@ -3458,10 +3383,9 @@ Recommendation: : This variable is only useful in conjunction with AIMD velocit 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_TEMP"]=value.lower()
+            self.dict_of_keywords["AIMD_TEMP"] = value.lower()
 
-
-    def anharmonic(self,value="show"):
+    def anharmonic(self, value="show"):
         '''
 Name: ANHARMONIC
 Type: LOGICAL
@@ -3484,10 +3408,9 @@ Recommendation: : Since this calculation involves the third and fourth derivativ
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ANHARMONIC"]=value.lower()
+            self.dict_of_keywords["ANHARMONIC"] = value.lower()
 
-
-    def basis_linear_dependence_thresh(self,value="show"):
+    def basis_linear_dependence_thresh(self, value="show"):
         '''
 Name: BASIS_LINEAR_DEPENDENCE_THRESH
 Type: INTEGER
@@ -3506,10 +3429,10 @@ Recommendation: : Set to 5 or smaller if you have a poorly behaved SCF and you s
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["BASIS_LINEAR_DEPENDENCE_THRESH"]=value.lower()
+            self.dict_of_keywords[
+                "BASIS_LINEAR_DEPENDENCE_THRESH"] = value.lower()
 
-
-    def cc_amplitude_response(self,value="show"):
+    def cc_amplitude_response(self, value="show"):
         '''
 Name: CC_AMPLITUDE_RESPONSE
 Type: LOGICAL
@@ -3531,10 +3454,9 @@ Recommendation: : The cost is always about the cost of an analytic gradient calc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_AMPLITUDE_RESPONSE"]=value.lower()
+            self.dict_of_keywords["CC_AMPLITUDE_RESPONSE"] = value.lower()
 
-
-    def cc_properties(self,value="show"):
+    def cc_properties(self, value="show"):
         '''
 Name: CC_PROPERTIES
 Type: LOGICAL
@@ -3556,10 +3478,9 @@ Recommendation: : Additional equations need to be solved (lambda CCSD equations)
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PROPERTIES"]=value.lower()
+            self.dict_of_keywords["CC_PROPERTIES"] = value.lower()
 
-
-    def cc_two_particle_properties(self,value="show"):
+    def cc_two_particle_properties(self, value="show"):
         '''
 Name: CC_TWO_PARTICLE_PROPERTIES
 Type: LOGICAL
@@ -3581,10 +3502,9 @@ Recommendation: : The two-particle properties are extremely computationally expe
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_TWO_PARTICLE_PROPERTIES"]=value.lower()
+            self.dict_of_keywords["CC_TWO_PARTICLE_PROPERTIES"] = value.lower()
 
-
-    def cc_block_tensor_buffer_size(self,value="show"):
+    def cc_block_tensor_buffer_size(self, value="show"):
         '''
 Name: CC_BLOCK_TENSOR_BUFFER_SIZE
 Type: INTEGER
@@ -3603,10 +3523,9 @@ Recommendation: : Larger values can give better I/O performance and are recommen
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_BLOCK_TENSOR_BUFFER_SIZE"]=value.lower()
+            self.dict_of_keywords["CC_BLOCK_TENSOR_BUFFER_SIZE"] = value.lower()
 
-
-    def cc_diis_maximum_overlap(self,value="show"):
+    def cc_diis_maximum_overlap(self, value="show"):
         '''
 Name: CC_DIIS_MAXIMUM_OVERLAP
 Type: INTEGER
@@ -3626,10 +3545,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS_MAXIMUM_OVERLAP"]=value.lower()
+            self.dict_of_keywords["CC_DIIS_MAXIMUM_OVERLAP"] = value.lower()
 
-
-    def cc_diis12_switch(self,value="show"):
+    def cc_diis12_switch(self, value="show"):
         '''
 Name: CC_DIIS12_SWITCH
 Type: INTEGER
@@ -3648,10 +3566,9 @@ Description: When to switch from DIIS 2 to DIIS 1 procedure, or when DIIS 2 proc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS12_SWITCH"]=value.lower()
+            self.dict_of_keywords["CC_DIIS12_SWITCH"] = value.lower()
 
-
-    def cc_diis_extrapolation_frequency(self,value="show"):
+    def cc_diis_extrapolation_frequency(self, value="show"):
         '''
 Name: CC_DIIS_EXTRAPOLATION_FREQUENCY
 Type: INTEGER
@@ -3670,10 +3587,10 @@ Description: DIIS extrapolation will be attempted every n iterations. However, D
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS_EXTRAPOLATION_FREQUENCY"]=value.lower()
+            self.dict_of_keywords[
+                "CC_DIIS_EXTRAPOLATION_FREQUENCY"] = value.lower()
 
-
-    def cc_diis_minimum_overlap(self,value="show"):
+    def cc_diis_minimum_overlap(self, value="show"):
         '''
 Name: CC_DIIS_MINIMUM_OVERLAP
 Type: INTEGER
@@ -3692,10 +3609,9 @@ Description: The DIIS procedure will be halted when the square root of smallest 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS_MINIMUM_OVERLAP"]=value.lower()
+            self.dict_of_keywords["CC_DIIS_MINIMUM_OVERLAP"] = value.lower()
 
-
-    def cc_diis_size(self,value="show"):
+    def cc_diis_size(self, value="show"):
         '''
 Name: CC_DIIS_SIZE
 Type: INTEGER
@@ -3714,10 +3630,9 @@ Recommendation: : Larger values involve larger amounts of disk storage.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS_SIZE"]=value.lower()
+            self.dict_of_keywords["CC_DIIS_SIZE"] = value.lower()
 
-
-    def cc_diis_start(self,value="show"):
+    def cc_diis_start(self, value="show"):
         '''
 Name: CC_DIIS_START
 Type: INTEGER
@@ -3736,10 +3651,9 @@ Recommendation: : Occasionally DIIS can cause optimized orbital coupled-cluster 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS_START"]=value.lower()
+            self.dict_of_keywords["CC_DIIS_START"] = value.lower()
 
-
-    def cc_dmaxiter(self,value="show"):
+    def cc_dmaxiter(self, value="show"):
         '''
 Name: CC_DMAXITER
 Type: INTEGER
@@ -3758,10 +3672,9 @@ Recommendation: : Default is usually sufficient    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DMAXITER"]=value.lower()
+            self.dict_of_keywords["CC_DMAXITER"] = value.lower()
 
-
-    def cc_do_disconnected(self,value="show"):
+    def cc_do_disconnected(self, value="show"):
         '''
 Name: CC_DO_DISCONNECTED
 Type: LOGICAL
@@ -3783,10 +3696,9 @@ Recommendation: : Inclusion of disconnected terms has very small effects and is 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DO_DISCONNECTED"]=value.lower()
+            self.dict_of_keywords["CC_DO_DISCONNECTED"] = value.lower()
 
-
-    def cc_do_cisdt(self,value="show"):
+    def cc_do_cisdt(self, value="show"):
         '''
 Name: CC_DO_CISDT
 Type: LOGICAL
@@ -3808,10 +3720,9 @@ Description: Controls the calculation of full CISDT
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DO_CISDT"]=value.lower()
+            self.dict_of_keywords["CC_DO_CISDT"] = value.lower()
 
-
-    def cc_do_dyson_ee(self,value="show"):
+    def cc_do_dyson_ee(self, value="show"):
         '''
 Name: CC_DO_DYSON_EE
 Type: LOGICAL
@@ -3833,10 +3744,9 @@ Recommendation: : none    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DO_DYSON_EE"]=value.lower()
+            self.dict_of_keywords["CC_DO_DYSON_EE"] = value.lower()
 
-
-    def cc_do_dyson(self,value="show"):
+    def cc_do_dyson(self, value="show"):
         '''
 Name: CC_DO_DYSON
 Type: LOGICAL
@@ -3858,10 +3768,9 @@ Recommendation: : none    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DO_DYSON"]=value.lower()
+            self.dict_of_keywords["CC_DO_DYSON"] = value.lower()
 
-
-    def cc_ea(self,value="show"):
+    def cc_ea(self, value="show"):
         '''
 Name: CC_EA
 Type: LOGICAL
@@ -3883,10 +3792,9 @@ Description: If TRUE, calculates EOM-EA-CCSD excitation energies and properties 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EA"]=value.lower()
+            self.dict_of_keywords["CC_EA"] = value.lower()
 
-
-    def cc_ip(self,value="show"):
+    def cc_ip(self, value="show"):
         '''
 Name: CC_IP
 Type: LOGICAL
@@ -3908,10 +3816,9 @@ Description: If TRUE, calculates EOM-IP-CCSD excitation energies and properties 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_IP"]=value.lower()
+            self.dict_of_keywords["CC_IP"] = value.lower()
 
-
-    def cc_ip_filter(self,value="show"):
+    def cc_ip_filter(self, value="show"):
         '''
 Name: CC_IP_FILTER
 Type: LOGICAL
@@ -3933,10 +3840,9 @@ Description: If TRUE, filters the EOM-IP-CCSD amplitudes obtained using the diff
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_IP_FILTER"]=value.lower()
+            self.dict_of_keywords["CC_IP_FILTER"] = value.lower()
 
-
-    def cc_ip_proper(self,value="show"):
+    def cc_ip_proper(self, value="show"):
         '''
 Name: CC_IP_PROPER
 Type: LOGICAL
@@ -3958,10 +3864,9 @@ Description: If TRUE, calculates proper EOM-IP-CCSD excitation energies and prop
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_IP_PROPER"]=value.lower()
+            self.dict_of_keywords["CC_IP_PROPER"] = value.lower()
 
-
-    def cc_mp2no_grad(self,value="show"):
+    def cc_mp2no_grad(self, value="show"):
         '''
 Name: CC_MP2NO_GRAD
 Type: LOGICAL
@@ -3983,10 +3888,9 @@ Recommendation: : The two definitions give generally similar performance.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_MP2NO_GRAD"]=value.lower()
+            self.dict_of_keywords["CC_MP2NO_GRAD"] = value.lower()
 
-
-    def cc_mp2no_guess(self,value="show"):
+    def cc_mp2no_guess(self, value="show"):
         '''
 Name: CC_MP2NO_GUESS
 Type: LOGICAL
@@ -4008,10 +3912,9 @@ Description: Will guess orbitals be natural orbitals of the MP1 wavefunction? Al
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_MP2NO_GUESS"]=value.lower()
+            self.dict_of_keywords["CC_MP2NO_GUESS"] = value.lower()
 
-
-    def cc_preconv_doubles(self,value="show"):
+    def cc_preconv_doubles(self, value="show"):
         '''
 Name: CC_PRECONV_DOUBLES
 Type: LOGICAL
@@ -4033,10 +3936,9 @@ Recommendation: : Occasionally necessary to ensure a doubly excited state is fou
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONV_DOUBLES"]=value.lower()
+            self.dict_of_keywords["CC_PRECONV_DOUBLES"] = value.lower()
 
-
-    def cc_preconv_singles(self,value="show"):
+    def cc_preconv_singles(self, value="show"):
         '''
 Name: CC_PRECONV_SINGLES
 Type: LOGICAL
@@ -4058,10 +3960,9 @@ Description: When TRUE, singly-excited vectors are converged prior to a full exc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONV_SINGLES"]=value.lower()
+            self.dict_of_keywords["CC_PRECONV_SINGLES"] = value.lower()
 
-
-    def cc_prop(self,value="show"):
+    def cc_prop(self, value="show"):
         '''
 Name: CC_PROP
 Type: LOGICAL
@@ -4083,10 +3984,9 @@ Recommendation: : Additional equations need to be solved (lambda CCSD equations)
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PROP"]=value.lower()
+            self.dict_of_keywords["CC_PROP"] = value.lower()
 
-
-    def cc_restart(self,value="show"):
+    def cc_restart(self, value="show"):
         '''
 Name: CC_RESTART
 Type: LOGICAL
@@ -4108,10 +4008,9 @@ Recommendation: : Useful for restarting a job that did not converge, if files we
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_RESTART"]=value.lower()
+            self.dict_of_keywords["CC_RESTART"] = value.lower()
 
-
-    def cc_restart_no_scf(self,value="show"):
+    def cc_restart_no_scf(self, value="show"):
         '''
 Name: CC_RESTART_NO_SCF
 Type: LOGICAL
@@ -4133,10 +4032,9 @@ Description: Should an optimized orbital coupled cluster calculation begin with 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_RESTART_NO_SCF"]=value.lower()
+            self.dict_of_keywords["CC_RESTART_NO_SCF"] = value.lower()
 
-
-    def cc_sd_3(self,value="show"):
+    def cc_sd_3(self, value="show"):
         '''
 Name: CC_SD_3
 Type: LOGICAL
@@ -4158,10 +4056,9 @@ Description: This keyword initializes calculation of non-iterative triples corre
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_SD_3"]=value.lower()
+            self.dict_of_keywords["CC_SD_3"] = value.lower()
 
-
-    def cc_spin_flip(self,value="show"):
+    def cc_spin_flip(self, value="show"):
         '''
 Name: CC_SPIN_FLIP
 Type: LOGICAL
@@ -4183,10 +4080,9 @@ Description: Selects whether do perform a standard excited state calculation, or
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_SPIN_FLIP"]=value.lower()
+            self.dict_of_keywords["CC_SPIN_FLIP"] = value.lower()
 
-
-    def cc_symmetry(self,value="show"):
+    def cc_symmetry(self, value="show"):
         '''
 Name: CC_SYMMETRY
 Type: LOGICAL
@@ -4208,10 +4104,9 @@ Recommendation: : It is automatically turned off for any finite difference calcu
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_SYMMETRY"]=value.lower()
+            self.dict_of_keywords["CC_SYMMETRY"] = value.lower()
 
-
-    def cc_eom_amplitude_response(self,value="show"):
+    def cc_eom_amplitude_response(self, value="show"):
         '''
 Name: CC_EOM_AMPLITUDE_RESPONSE
 Type: LOGICAL
@@ -4233,10 +4128,9 @@ Recommendation: : The cost is always about the cost of an analytic gradient calc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_AMPLITUDE_RESPONSE"]=value.lower()
+            self.dict_of_keywords["CC_EOM_AMPLITUDE_RESPONSE"] = value.lower()
 
-
-    def cc_eom_properties(self,value="show"):
+    def cc_eom_properties(self, value="show"):
         '''
 Name: CC_EOM_PROPERTIES
 Type: LOGICAL
@@ -4258,10 +4152,9 @@ Recommendation: : Additional equations (EOM-CCSD equations for the left eigenvec
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_PROPERTIES"]=value.lower()
+            self.dict_of_keywords["CC_EOM_PROPERTIES"] = value.lower()
 
-
-    def cc_eom_full_response(self,value="show"):
+    def cc_eom_full_response(self, value="show"):
         '''
 Name: CC_EOM_FULL_RESPONSE
 Type: LOGICAL
@@ -4283,10 +4176,9 @@ Recommendation: : The cost for the full response properties calculation is about
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_FULL_RESPONSE"]=value.lower()
+            self.dict_of_keywords["CC_EOM_FULL_RESPONSE"] = value.lower()
 
-
-    def cc_canonize_frequency(self,value="show"):
+    def cc_canonize_frequency(self, value="show"):
         '''
 Name: CC_CANONIZE_FREQUENCY
 Type: INTEGER
@@ -4305,10 +4197,9 @@ Recommendation: : Smaller values can be tried in cases that do not converge.    
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CANONIZE_FREQUENCY"]=value.lower()
+            self.dict_of_keywords["CC_CANONIZE_FREQUENCY"] = value.lower()
 
-
-    def cc_eom_transition_properties(self,value="show"):
+    def cc_eom_transition_properties(self, value="show"):
         '''
 Name: CC_EOM_TRANSITION_PROPERTIES
 Type: LOGICAL
@@ -4330,10 +4221,10 @@ Recommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_TRANSITION_PROPERTIES"]=value.lower()
+            self.dict_of_keywords[
+                "CC_EOM_TRANSITION_PROPERTIES"] = value.lower()
 
-
-    def cc_convergence_energy(self,value="show"):
+    def cc_convergence_energy(self, value="show"):
         '''
 Name: CC_CONVERGENCE_ENERGY
 Type: INTEGER
@@ -4352,10 +4243,9 @@ Description: Convergence desired on the change in total energy, between iteratio
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CONVERGENCE_ENERGY"]=value.lower()
+            self.dict_of_keywords["CC_CONVERGENCE_ENERGY"] = value.lower()
 
-
-    def cc_convergence_zvector(self,value="show"):
+    def cc_convergence_zvector(self, value="show"):
         '''
 Name: CC_CONVERGENCE_ZVECTOR
 Type: INTEGER
@@ -4374,10 +4264,9 @@ Recommendation: : Use Default    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CONVERGENCE_ZVECTOR"]=value.lower()
+            self.dict_of_keywords["CC_CONVERGENCE_ZVECTOR"] = value.lower()
 
-
-    def cc_convergence_amplitudes(self,value="show"):
+    def cc_convergence_amplitudes(self, value="show"):
         '''
 Name: CC_CONVERGENCE_AMPLITUDES
 Type: INTEGER
@@ -4396,10 +4285,9 @@ Recommendation: : Use default    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_CONVERGENCE_AMPLITUDES"]=value.lower()
+            self.dict_of_keywords["CC_CONVERGENCE_AMPLITUDES"] = value.lower()
 
-
-    def cc_full_response(self,value="show"):
+    def cc_full_response(self, value="show"):
         '''
 Name: CC_FULL_RESPONSE
 Type: LOGICAL
@@ -4421,10 +4309,9 @@ Recommendation: : The cost for the full response properties calculation is about
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_FULL_RESPONSE"]=value.lower()
+            self.dict_of_keywords["CC_FULL_RESPONSE"] = value.lower()
 
-
-    def cc_hessian_thresh(self,value="show"):
+    def cc_hessian_thresh(self, value="show"):
         '''
 Name: CC_HESSIAN_THRESH
 Type: INTEGER
@@ -4444,10 +4331,9 @@ Description: Minimum alloed value for the orbital Hessian.  Smaller values are r
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_HESSIAN_THRESH"]=value.lower()
+            self.dict_of_keywords["CC_HESSIAN_THRESH"] = value.lower()
 
-
-    def cc_preconverge_doubles(self,value="show"):
+    def cc_preconverge_doubles(self, value="show"):
         '''
 Name: CC_PRECONVERGE_DOUBLES
 Type: LOGICAL
@@ -4469,10 +4355,9 @@ Recommendation: : Occasionally necessary to ensure a doubly excited state is fou
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONVERGE_DOUBLES"]=value.lower()
+            self.dict_of_keywords["CC_PRECONVERGE_DOUBLES"] = value.lower()
 
-
-    def cc_preconverge_sd(self,value="show"):
+    def cc_preconverge_sd(self, value="show"):
         '''
 Name: CC_PRECONVERGE_SD
 Type: INTEGER
@@ -4489,10 +4374,9 @@ Recommendation: : Turning this option on is recommended    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONVERGE_SD"]=value.lower()
+            self.dict_of_keywords["CC_PRECONVERGE_SD"] = value.lower()
 
-
-    def cc_preconverge_singles(self,value="show"):
+    def cc_preconverge_singles(self, value="show"):
         '''
 Name: CC_PRECONVERGE_SINGLES
 Type: LOGICAL
@@ -4514,10 +4398,9 @@ Description: When TRUE, singly-excited vectors are converged prior to a full exc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONVERGE_SINGLES"]=value.lower()
+            self.dict_of_keywords["CC_PRECONVERGE_SINGLES"] = value.lower()
 
-
-    def qui_solvent_none(self,value="show"):
+    def qui_solvent_none(self, value="show"):
         '''
 Name: QUI_SOLVENT_NONE
 Type: LOGICAL
@@ -4539,10 +4422,9 @@ Description: Checking this disables all solvent models.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SOLVENT_NONE"]=value.lower()
+            self.dict_of_keywords["QUI_SOLVENT_NONE"] = value.lower()
 
-
-    def chemsol_efield(self,value="show"):
+    def chemsol_efield(self, value="show"):
         '''
 Name: CHEMSOL_EFIELD
 Type: STRING
@@ -4565,10 +4447,9 @@ Recommentation: Mulliken charges are faster, but less rigorous.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHEMSOL_EFIELD"]=value.lower()
+            self.dict_of_keywords["CHEMSOL_EFIELD"] = value.lower()
 
-
-    def cis_state_derivative(self,value="show"):
+    def cis_state_derivative(self, value="show"):
         '''
 Name: CIS_STATE_DERIVATIVE
 Type: INTEGER
@@ -4587,10 +4468,9 @@ Recommendation: : Check to see that the states do no change order during an opti
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_STATE_DERIVATIVE"]=value.lower()
+            self.dict_of_keywords["CIS_STATE_DERIVATIVE"] = value.lower()
 
-
-    def rpa(self,value="show"):
+    def rpa(self, value="show"):
         '''
 Name: RPA
 Type: LOGICAL
@@ -4612,10 +4492,9 @@ Description: Do an RPA calculation in addition to a CIS calculation
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPA"]=value.lower()
+            self.dict_of_keywords["RPA"] = value.lower()
 
-
-    def cis_ras_cutoff_occupied(self,value="show"):
+    def cis_ras_cutoff_occupied(self, value="show"):
         '''
 Name: CIS_RAS_CUTOFF_OCCUPIED
 Type: INTEGER
@@ -4635,10 +4514,9 @@ Description: Specifies the occupied orbital cutoff
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RAS_CUTOFF_OCCUPIED"]=value.lower()
+            self.dict_of_keywords["CIS_RAS_CUTOFF_OCCUPIED"] = value.lower()
 
-
-    def cis_ras_cutoff_virtual(self,value="show"):
+    def cis_ras_cutoff_virtual(self, value="show"):
         '''
 Name: CIS_RAS_CUTOFF_VIRTUAL
 Type: INTEGER
@@ -4658,10 +4536,9 @@ Description: Specifies the virtual orbital cutoff.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RAS_CUTOFF_VIRTUAL"]=value.lower()
+            self.dict_of_keywords["CIS_RAS_CUTOFF_VIRTUAL"] = value.lower()
 
-
-    def cis_ras(self,value="show"):
+    def cis_ras(self, value="show"):
         '''
 Name: CIS_RAS
 Type: LOGICAL
@@ -4683,10 +4560,9 @@ Description: Controls whether reduced single excitation space is used
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RAS"]=value.lower()
+            self.dict_of_keywords["CIS_RAS"] = value.lower()
 
-
-    def cis_ras_n_solute_atoms(self,value="show"):
+    def cis_ras_n_solute_atoms(self, value="show"):
         '''
 Name: CIS_RAS_N_SOLUTE_ATOMS
 Type: INTEGER
@@ -4703,10 +4579,9 @@ Description: Specifies number of atoms or orbitals in solute
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RAS_N_SOLUTE_ATOMS"]=value.lower()
+            self.dict_of_keywords["CIS_RAS_N_SOLUTE_ATOMS"] = value.lower()
 
-
-    def cis_ras_print(self,value="show"):
+    def cis_ras_print(self, value="show"):
         '''
 Name: CIS_RAS_PRINT
 Type: LOGICAL
@@ -4728,10 +4603,9 @@ Description: Selects whether or not to print additional output.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RAS_PRINT"]=value.lower()
+            self.dict_of_keywords["CIS_RAS_PRINT"] = value.lower()
 
-
-    def cis_ras_type(self,value="show"):
+    def cis_ras_type(self, value="show"):
         '''
 Name: CIS_RAS_TYPE
 Type: STRING
@@ -4753,10 +4627,9 @@ Description: Controls how reduced subspace is specified
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_RAS_TYPE"]=value.lower()
+            self.dict_of_keywords["CIS_RAS_TYPE"] = value.lower()
 
-
-    def diis_error_metric(self,value="show"):
+    def diis_error_metric(self, value="show"):
         '''
 Name: DIIS_ERROR_METRIC
 Type: STRING
@@ -4778,10 +4651,9 @@ Recommendation: : Use default, the maximum error provides a more reliable criter
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIIS_ERROR_METRIC"]=value.lower()
+            self.dict_of_keywords["DIIS_ERROR_METRIC"] = value.lower()
 
-
-    def dma(self,value="show"):
+    def dma(self, value="show"):
         '''
 Name: DMA
 Type: LOGICAL
@@ -4803,10 +4675,9 @@ Description: Specifies whether to perform Distributed Multipole Analysis.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DMA"]=value.lower()
+            self.dict_of_keywords["DMA"] = value.lower()
 
-
-    def raman(self,value="show"):
+    def raman(self, value="show"):
         '''
 Name: RAMAN
 Type: LOGICAL
@@ -4828,10 +4699,9 @@ Description: Controls calculation of Raman intensities. Only relevant for a freq
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RAMAN"]=value.lower()
+            self.dict_of_keywords["RAMAN"] = value.lower()
 
-
-    def dscf_convergence_level_1(self,value="show"):
+    def dscf_convergence_level_1(self, value="show"):
         '''
 Name: DSCF_CONVERGENCE_LEVEL_1
 Type: INTEGER
@@ -4850,10 +4720,9 @@ Recommendation: : The criterion for level-1 convergence must be less than or equ
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_1"]=value.lower()
+            self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_1"] = value.lower()
 
-
-    def dscf_convergence_level_2(self,value="show"):
+    def dscf_convergence_level_2(self, value="show"):
         '''
 Name: DSCF_CONVERGENCE_LEVEL_2
 Type: INTEGER
@@ -4872,10 +4741,9 @@ Description: Sets the convergence criterion for the level-2 iterations.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_2"]=value.lower()
+            self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_2"] = value.lower()
 
-
-    def dscf_diis_subspace(self,value="show"):
+    def dscf_diis_subspace(self, value="show"):
         '''
 Name: DSCF_DIIS_SUBSPACE
 Type: INTEGER
@@ -4894,10 +4762,9 @@ Recommendation: : Use the default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DSCF_DIIS_SUBSPACE"]=value.lower()
+            self.dict_of_keywords["DSCF_DIIS_SUBSPACE"] = value.lower()
 
-
-    def dcpscf_pertnum(self,value="show"):
+    def dcpscf_pertnum(self, value="show"):
         '''
 Name: DCPSCF_PERTNUM
 Type: LOGICAL
@@ -4919,10 +4786,9 @@ Description: Specifies whether to do the perturbations all together.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DCPSCF_PERTNUM"]=value.lower()
+            self.dict_of_keywords["DCPSCF_PERTNUM"] = value.lower()
 
-
-    def dcpscf_perturbations(self,value="show"):
+    def dcpscf_perturbations(self, value="show"):
         '''
 Name: DCPSCF_PERTURBATIONS
 Type: LOGICAL
@@ -4944,10 +4810,9 @@ Description: Specifies whether to do the perturbations all together.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DCPSCF_PERTURBATIONS"]=value.lower()
+            self.dict_of_keywords["DCPSCF_PERTURBATIONS"] = value.lower()
 
-
-    def fd_derivative_type(self,value="show"):
+    def fd_derivative_type(self, value="show"):
         '''
 Name: FD_DERIVATIVE_TYPE
 Type: STRING
@@ -4971,10 +4836,9 @@ Recommendation: : When the molecule is larger than benzene with small basis set,
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FD_DERIVATIVE_TYPE"]=value.lower()
+            self.dict_of_keywords["FD_DERIVATIVE_TYPE"] = value.lower()
 
-
-    def fd_step_size(self,value="show"):
+    def fd_step_size(self, value="show"):
         '''
 Name: FD_STEP_SIZE
 Type: INTEGER
@@ -4994,10 +4858,9 @@ Recommendation: : Use default, unless on a very flat potential, in which case a 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FD_STEP_SIZE"]=value.lower()
+            self.dict_of_keywords["FD_STEP_SIZE"] = value.lower()
 
-
-    def analytic_derivative_order(self,value="show"):
+    def analytic_derivative_order(self, value="show"):
         '''
 Name: ANALYTIC_DERIVATIVE_ORDER
 Type: INTEGER
@@ -5016,10 +4879,9 @@ Recommendation: : Usually set to the maximum possible for efficiency. Note that 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ANALYTIC_DERIVATIVE_ORDER"]=value.lower()
+            self.dict_of_keywords["ANALYTIC_DERIVATIVE_ORDER"] = value.lower()
 
-
-    def pao_algorithm(self,value="show"):
+    def pao_algorithm(self, value="show"):
         '''
 Name: PAO_ALGORITHM
 Type: STRING
@@ -5041,10 +4903,9 @@ Description: Algorithm used to optimize polarized atomic orbitals (see PAO_METHO
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PAO_ALGORITHM"]=value.lower()
+            self.dict_of_keywords["PAO_ALGORITHM"] = value.lower()
 
-
-    def pao_method(self,value="show"):
+    def pao_method(self, value="show"):
         '''
 Name: PAO_METHOD
 Type: STRING
@@ -5066,10 +4927,9 @@ Description: Controls evaluation of polarized atomic orbitals (PAOs).
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PAO_METHOD"]=value.lower()
+            self.dict_of_keywords["PAO_METHOD"] = value.lower()
 
-
-    def epao_weights(self,value="show"):
+    def epao_weights(self, value="show"):
         '''
 Name: EPAO_WEIGHTS
 Type: STRING
@@ -5091,10 +4951,9 @@ Recommendation: : Use default, unless convergence failure is encountered.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EPAO_WEIGHTS"]=value.lower()
+            self.dict_of_keywords["EPAO_WEIGHTS"] = value.lower()
 
-
-    def aimd_fock_extrapolation_order(self,value="show"):
+    def aimd_fock_extrapolation_order(self, value="show"):
         '''
 Name: AIMD_FOCK_EXTRAPOLATION_ORDER
 Type: INTEGER
@@ -5113,10 +4972,10 @@ Description: Specifies the polynomial order N for Fock matrix extrapolation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_ORDER"]=value.lower()
+            self.dict_of_keywords[
+                "AIMD_FOCK_EXTRAPOLATION_ORDER"] = value.lower()
 
-
-    def ftc_fast(self,value="show"):
+    def ftc_fast(self, value="show"):
         '''
 Name: FTC_FAST
 Type: LOGICAL
@@ -5138,10 +4997,9 @@ Recommendation: : Use the default if possible.  Turning this option off conserve
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["FTC_FAST"]=value.lower()
+            self.dict_of_keywords["FTC_FAST"] = value.lower()
 
-
-    def cis_max_cycles(self,value="show"):
+    def cis_max_cycles(self, value="show"):
         '''
 Name: CIS_MAX_CYCLES
 Type: INTEGER
@@ -5160,10 +5018,9 @@ Recommendation: : Default is usually sufficient.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_MAX_CYCLES"]=value.lower()
+            self.dict_of_keywords["CIS_MAX_CYCLES"] = value.lower()
 
-
-    def dscf_max_cycles_level_2(self,value="show"):
+    def dscf_max_cycles_level_2(self, value="show"):
         '''
 Name: DSCF_MAX_CYCLES_LEVEL_2
 Type: INTEGER
@@ -5182,10 +5039,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_2"]=value.lower()
+            self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_2"] = value.lower()
 
-
-    def dscf_max_cycles_level_1(self,value="show"):
+    def dscf_max_cycles_level_1(self, value="show"):
         '''
 Name: DSCF_MAX_CYCLES_LEVEL_1
 Type: INTEGER
@@ -5205,10 +5061,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_1"]=value.lower()
+            self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_1"] = value.lower()
 
-
-    def geom_opt_diis_subspace(self,value="show"):
+    def geom_opt_diis_subspace(self, value="show"):
         '''
 Name: GEOM_OPT_DIIS_SUBSPACE
 Type: INTEGER
@@ -5227,10 +5082,9 @@ Description: Controls maximum size of subspace for GDIIS. 0 turns off GDIIS and 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_DIIS_SUBSPACE"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_DIIS_SUBSPACE"] = value.lower()
 
-
-    def geom_opt_symmetry(self,value="show"):
+    def geom_opt_symmetry(self, value="show"):
         '''
 Name: GEOM_OPT_SYMMETRY
 Type: LOGICAL
@@ -5252,10 +5106,9 @@ Description: Controls the use of point-group symmetry in the optimization.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_SYMMETRY"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_SYMMETRY"] = value.lower()
 
-
-    def geom_opt_coordinates(self,value="show"):
+    def geom_opt_coordinates(self, value="show"):
         '''
 Name: GEOM_OPT_COORDINATES
 Type: STRING
@@ -5278,10 +5131,9 @@ Recommendation: : Use the default; delocalized internals are more efficient.    
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_COORDINATES"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_COORDINATES"] = value.lower()
 
-
-    def geom_opt_max_step_size(self,value="show"):
+    def geom_opt_max_step_size(self, value="show"):
         '''
 Name: GEOM_OPT_MAX_STEP_SIZE
 Type: INTEGER
@@ -5301,10 +5153,9 @@ Description: Maximum allowed step size in the geometry optimization.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_MAX_STEP_SIZE"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_MAX_STEP_SIZE"] = value.lower()
 
-
-    def geom_opt_hessian_update(self,value="show"):
+    def geom_opt_hessian_update(self, value="show"):
         '''
 Name: GEOM_OPT_HESSIAN_UPDATE
 Type: STRING
@@ -5331,10 +5182,9 @@ Description: Controls the Hessian update algorithm.  The default dpends on the t
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_HESSIAN_UPDATE"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_HESSIAN_UPDATE"] = value.lower()
 
-
-    def cfmm_grain(self,value="show"):
+    def cfmm_grain(self, value="show"):
         '''
 Name: CFMM_GRAIN
 Type: STRING
@@ -5365,10 +5215,9 @@ Recommendation: : This is an expert option; either use the default, or use a val
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CFMM_GRAIN"]=value.lower()
+            self.dict_of_keywords["CFMM_GRAIN"] = value.lower()
 
-
-    def plots_property(self,value="show"):
+    def plots_property(self, value="show"):
         '''
 Name: PLOTS_PROPERTY
 Type: STRING
@@ -5392,10 +5241,9 @@ Recommendation: : Must use this option when IGDESP is specified.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PLOTS_PROPERTY"]=value.lower()
+            self.dict_of_keywords["PLOTS_PROPERTY"] = value.lower()
 
-
-    def intracule_conserve_memory(self,value="show"):
+    def intracule_conserve_memory(self, value="show"):
         '''
 Name: INTRACULE_CONSERVE_MEMORY
 Type: LOGICAL
@@ -5417,10 +5265,9 @@ Recommendation: : The low memory option is slower, use default unless memory is 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE_CONSERVE_MEMORY"]=value.lower()
+            self.dict_of_keywords["INTRACULE_CONSERVE_MEMORY"] = value.lower()
 
-
-    def intracule(self,value="show"):
+    def intracule(self, value="show"):
         '''
 Name: INTRACULE
 Type: LOGICAL
@@ -5442,10 +5289,9 @@ Description: Controls whether intracule properties are calculated.  Setting this
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE"]=value.lower()
+            self.dict_of_keywords["INTRACULE"] = value.lower()
 
-
-    def intracule_grid(self,value="show"):
+    def intracule_grid(self, value="show"):
         '''
 Name: INTRACULE_GRID
 Type: STRING
@@ -5496,10 +5342,9 @@ Recommendation: : Larger grids if high accuracy required.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE_GRID"]=value.lower()
+            self.dict_of_keywords["INTRACULE_GRID"] = value.lower()
 
-
-    def intracule_wigner_series_limit(self,value="show"):
+    def intracule_wigner_series_limit(self, value="show"):
         '''
 Name: INTRACULE_WIGNER_SERIES_LIMIT
 Type: INTEGER
@@ -5518,10 +5363,10 @@ Recommendation: : Increase n for greater accuracy.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE_WIGNER_SERIES_LIMIT"]=value.lower()
+            self.dict_of_keywords[
+                "INTRACULE_WIGNER_SERIES_LIMIT"] = value.lower()
 
-
-    def intracule_j_series_limit(self,value="show"):
+    def intracule_j_series_limit(self, value="show"):
         '''
 Name: INTRACULE_J_SERIES_LIMIT
 Type: INTEGER
@@ -5540,10 +5385,9 @@ Recommendation: : Lower values speed up the calculation, but may affect accuracy
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE_J_SERIES_LIMIT"]=value.lower()
+            self.dict_of_keywords["INTRACULE_J_SERIES_LIMIT"] = value.lower()
 
-
-    def intracule_i_series_limit(self,value="show"):
+    def intracule_i_series_limit(self, value="show"):
         '''
 Name: INTRACULE_I_SERIES_LIMIT
 Type: INTEGER
@@ -5562,10 +5406,9 @@ Recommendation: : Lower values speed up the calculation, but may affect accuracy
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE_I_SERIES_LIMIT"]=value.lower()
+            self.dict_of_keywords["INTRACULE_I_SERIES_LIMIT"] = value.lower()
 
-
-    def intracule_method(self,value="show"):
+    def intracule_method(self, value="show"):
         '''
 Name: INTRACULE_METHOD
 Type: STRING
@@ -5587,10 +5430,9 @@ Description: Use Lebedev quadrature to evaluate Wigner integrals.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INTRACULE_METHOD"]=value.lower()
+            self.dict_of_keywords["INTRACULE_METHOD"] = value.lower()
 
-
-    def rca_max_cycles(self,value="show"):
+    def rca_max_cycles(self, value="show"):
         '''
 Name: RCA_MAX_CYCLES
 Type: INTEGER
@@ -5609,10 +5451,9 @@ Description: The maximum number of RCA iterations before switching to DIIS when 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RCA_MAX_CYCLES"]=value.lower()
+            self.dict_of_keywords["RCA_MAX_CYCLES"] = value.lower()
 
-
-    def scf_max_cycles(self,value="show"):
+    def scf_max_cycles(self, value="show"):
         '''
 Name: SCF_MAX_CYCLES
 Type: INTEGER
@@ -5631,10 +5472,9 @@ Recommendation: : Increase for slowly converging systems such as those containin
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_MAX_CYCLES"]=value.lower()
+            self.dict_of_keywords["SCF_MAX_CYCLES"] = value.lower()
 
-
-    def mm_charges(self,value="show"):
+    def mm_charges(self, value="show"):
         '''
 Name: MM_CHARGES
 Type: LOGICAL
@@ -5656,10 +5496,9 @@ Recommendation: : Set to TRUE if MDCs or the traceless form of the multipole mom
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MM_CHARGES"]=value.lower()
+            self.dict_of_keywords["MM_CHARGES"] = value.lower()
 
-
-    def molden_format(self,value="show"):
+    def molden_format(self, value="show"):
         '''
 Name: MOLDEN_FORMAT
 Type: LOGICAL
@@ -5681,10 +5520,9 @@ Description: Requests a $molden-formatted input file containing information from
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOLDEN_FORMAT"]=value.lower()
+            self.dict_of_keywords["MOLDEN_FORMAT"] = value.lower()
 
-
-    def mom_print(self,value="show"):
+    def mom_print(self, value="show"):
         '''
 Name: MOM_PRINT
 Type: LOGICAL
@@ -5706,10 +5544,9 @@ Description: Switches printing on within the MOM procedure.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOM_PRINT"]=value.lower()
+            self.dict_of_keywords["MOM_PRINT"] = value.lower()
 
-
-    def moprop_convergence_level_1(self,value="show"):
+    def moprop_convergence_level_1(self, value="show"):
         '''
 Name: MOPROP_CONVERGENCE_LEVEL_1
 Type: INTEGER
@@ -5728,10 +5565,9 @@ Description: Sets the convergence criteria for CPSCF and 1st order TDSCF.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_1"]=value.lower()
+            self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_1"] = value.lower()
 
-
-    def moprop_convergence_level_2(self,value="show"):
+    def moprop_convergence_level_2(self, value="show"):
         '''
 Name: MOPROP_CONVERGENCE_LEVEL_2
 Type: INTEGER
@@ -5750,10 +5586,9 @@ Description: Sets the convergence criterium for second-order TDSCF.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_2"]=value.lower()
+            self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_2"] = value.lower()
 
-
-    def moprop_diis(self,value="show"):
+    def moprop_diis(self, value="show"):
         '''
 Name: MOPROP_DIIS
 Type: INTEGER
@@ -5773,10 +5608,9 @@ Description: Controls the use of Pulays DIIS.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_DIIS"]=value.lower()
+            self.dict_of_keywords["MOPROP_DIIS"] = value.lower()
 
-
-    def moprop_diis_subspace(self,value="show"):
+    def moprop_diis_subspace(self, value="show"):
         '''
 Name: MOPROP_DIIS_SUBSPACE
 Type: INTEGER
@@ -5795,10 +5629,9 @@ Description: Specified the DIIS subspace dimension.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_DIIS_SUBSPACE"]=value.lower()
+            self.dict_of_keywords["MOPROP_DIIS_SUBSPACE"] = value.lower()
 
-
-    def moprop_max_cycles_level_2(self,value="show"):
+    def moprop_max_cycles_level_2(self, value="show"):
         '''
 Name: MOPROP_MAX_CYCLES_LEVEL_2
 Type: INTEGER
@@ -5817,10 +5650,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_2"]=value.lower()
+            self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_2"] = value.lower()
 
-
-    def moprop_max_cycles_level_1(self,value="show"):
+    def moprop_max_cycles_level_1(self, value="show"):
         '''
 Name: MOPROP_MAX_CYCLES_LEVEL_1
 Type: INTEGER
@@ -5839,10 +5671,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_1"]=value.lower()
+            self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_1"] = value.lower()
 
-
-    def moprop_perturbations(self,value="show"):
+    def moprop_perturbations(self, value="show"):
         '''
 Name: MOPROP_PERTURBATIONS
 Type: INTEGER
@@ -5861,10 +5692,9 @@ Recommendation: : Use default    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_PERTURBATIONS"]=value.lower()
+            self.dict_of_keywords["MOPROP_PERTURBATIONS"] = value.lower()
 
-
-    def nbo(self,value="show"):
+    def nbo(self, value="show"):
         '''
 Name: NBO
 Type: LOGICAL
@@ -5886,10 +5716,9 @@ Description: Controls the use of the NBO package.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NBO"]=value.lower()
+            self.dict_of_keywords["NBO"] = value.lower()
 
-
-    def qmmm_charges(self,value="show"):
+    def qmmm_charges(self, value="show"):
         '''
 Name: QMMM_CHARGES
 Type: LOGICAL
@@ -5911,10 +5740,9 @@ Recommendation: : Use default unless running calculations with $charmm where cha
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QMMM_CHARGES"]=value.lower()
+            self.dict_of_keywords["QMMM_CHARGES"] = value.lower()
 
-
-    def qmmm_print(self,value="show"):
+    def qmmm_print(self, value="show"):
         '''
 Name: QMMM_PRINT
 Type: LOGICAL
@@ -5936,10 +5764,9 @@ Recommendation: : Use default unless running calculations with $charmm.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QMMM_PRINT"]=value.lower()
+            self.dict_of_keywords["QMMM_PRINT"] = value.lower()
 
-
-    def multipole_order(self,value="show"):
+    def multipole_order(self, value="show"):
         '''
 Name: MULTIPOLE_ORDER
 Type: INTEGER
@@ -5958,10 +5785,9 @@ Recommendation: : Use default unless higher (or lower) precision is desired.    
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MULTIPOLE_ORDER"]=value.lower()
+            self.dict_of_keywords["MULTIPOLE_ORDER"] = value.lower()
 
-
-    def plots_grid(self,value="show"):
+    def plots_grid(self, value="show"):
         '''
 Name: PLOTS_GRID
 Type: STRING
@@ -5985,10 +5811,9 @@ Description: Controls evaluation of the electrostatic potential on a grid of poi
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PLOTS_GRID"]=value.lower()
+            self.dict_of_keywords["PLOTS_GRID"] = value.lower()
 
-
-    def mulliken(self,value="show"):
+    def mulliken(self, value="show"):
         '''
 Name: MULLIKEN
 Type: STRING
@@ -6011,10 +5836,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MULLIKEN"]=value.lower()
+            self.dict_of_keywords["MULLIKEN"] = value.lower()
 
-
-    def core_character_print(self,value="show"):
+    def core_character_print(self, value="show"):
         '''
 Name: CORE_CHARACTER_PRINT
 Type: STRING
@@ -6037,10 +5861,9 @@ Recommendation: : Use default, unless you are uncertain about what the core char
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CORE_CHARACTER_PRINT"]=value.lower()
+            self.dict_of_keywords["CORE_CHARACTER_PRINT"] = value.lower()
 
-
-    def print_distance_matrix(self,value="show"):
+    def print_distance_matrix(self, value="show"):
         '''
 Name: PRINT_DISTANCE_MATRIX
 Type: INTEGER
@@ -6057,10 +5880,9 @@ Recommendation: : Use default unless distances are required for large systems   
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PRINT_DISTANCE_MATRIX"]=value.lower()
+            self.dict_of_keywords["PRINT_DISTANCE_MATRIX"] = value.lower()
 
-
-    def qui_print_orbitals(self,value="show"):
+    def qui_print_orbitals(self, value="show"):
         '''
 Name: QUI_PRINT_ORBITALS
 Type: LOGICAL
@@ -6082,10 +5904,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_PRINT_ORBITALS"]=value.lower()
+            self.dict_of_keywords["QUI_PRINT_ORBITALS"] = value.lower()
 
-
-    def qmmm(self,value="show"):
+    def qmmm(self, value="show"):
         '''
 Name: QMMM
 Type: LOGICAL
@@ -6107,10 +5928,9 @@ Recommendation: : Use default unless running calculations with $charmm.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QMMM"]=value.lower()
+            self.dict_of_keywords["QMMM"] = value.lower()
 
-
-    def rca_print(self,value="show"):
+    def rca_print(self, value="show"):
         '''
 Name: RCA_PRINT
 Type: INTEGER
@@ -6129,10 +5949,9 @@ Description: Controls the amount of output from a RCA SCF optimization.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RCA_PRINT"]=value.lower()
+            self.dict_of_keywords["RCA_PRINT"] = value.lower()
 
-
-    def rpath_coordinates(self,value="show"):
+    def rpath_coordinates(self, value="show"):
         '''
 Name: RPATH_COORDINATES
 Type: STRING
@@ -6154,10 +5973,9 @@ Recommendation: : Mass weighted coordinates are usually more effective.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPATH_COORDINATES"]=value.lower()
+            self.dict_of_keywords["RPATH_COORDINATES"] = value.lower()
 
-
-    def rpath_direction(self,value="show"):
+    def rpath_direction(self, value="show"):
         '''
 Name: RPATH_DIRECTION
 Type: STRING
@@ -6179,10 +5997,9 @@ Description: Determines the direction of the eigen mode to follow. This will not
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPATH_DIRECTION"]=value.lower()
+            self.dict_of_keywords["RPATH_DIRECTION"] = value.lower()
 
-
-    def rpath_max_stepsize(self,value="show"):
+    def rpath_max_stepsize(self, value="show"):
         '''
 Name: RPATH_MAX_STEPSIZE
 Type: INTEGER
@@ -6202,10 +6019,9 @@ Description: Specifies the maximum step size to be taken (in a.u.).
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RPATH_MAX_STEPSIZE"]=value.lower()
+            self.dict_of_keywords["RPATH_MAX_STEPSIZE"] = value.lower()
 
-
-    def geom_opt_scf_guess_always(self,value="show"):
+    def geom_opt_scf_guess_always(self, value="show"):
         '''
 Name: GEOM_OPT_SCF_GUESS_ALWAYS
 Type: LOGICAL
@@ -6227,10 +6043,9 @@ Recommendation: : Use default unless SCF convergence issues arise    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_SCF_GUESS_ALWAYS"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_SCF_GUESS_ALWAYS"] = value.lower()
 
-
-    def scf_guess_print(self,value="show"):
+    def scf_guess_print(self, value="show"):
         '''
 Name: SCF_GUESS_PRINT
 Type: INTEGER
@@ -6249,10 +6064,9 @@ Description: Controls printing of guess MOs, Fock and density matrices.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_GUESS_PRINT"]=value.lower()
+            self.dict_of_keywords["SCF_GUESS_PRINT"] = value.lower()
 
-
-    def scf_print(self,value="show"):
+    def scf_print(self, value="show"):
         '''
 Name: SCF_PRINT
 Type: INTEGER
@@ -6271,10 +6085,9 @@ Recommendation: : Proceed with care; can result in extremely large output files 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_PRINT"]=value.lower()
+            self.dict_of_keywords["SCF_PRINT"] = value.lower()
 
-
-    def solute_radius(self,value="show"):
+    def solute_radius(self, value="show"):
         '''
 Name: SOLUTE_RADIUS
 Type: INTEGER
@@ -6294,10 +6107,9 @@ Recommendation: : Use equation (\ref{eq1000}).    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SOLUTE_RADIUS"]=value.lower()
+            self.dict_of_keywords["SOLUTE_RADIUS"] = value.lower()
 
-
-    def solvent_dielectric(self,value="show"):
+    def solvent_dielectric(self, value="show"):
         '''
 Name: SOLVENT_DIELECTRIC
 Type: INTEGER
@@ -6317,10 +6129,9 @@ Recommendation: : As per required solvent.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SOLVENT_DIELECTRIC"]=value.lower()
+            self.dict_of_keywords["SOLVENT_DIELECTRIC"] = value.lower()
 
-
-    def rca_switch_thresh(self,value="show"):
+    def rca_switch_thresh(self, value="show"):
         '''
 Name: RCA_SWITCH_THRESH
 Type: INTEGER
@@ -6339,10 +6150,9 @@ Description: The threshold for switching between RCA and DIIS when the SCF algor
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["RCA_SWITCH_THRESH"]=value.lower()
+            self.dict_of_keywords["RCA_SWITCH_THRESH"] = value.lower()
 
-
-    def qui_angular_grid(self,value="show"):
+    def qui_angular_grid(self, value="show"):
         '''
 Name: QUI_ANGULAR_GRID
 Type: STRING
@@ -6397,10 +6207,9 @@ Recommendation: : Use the default unless convergence difficulties arise.  Larger
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_ANGULAR_GRID"]=value.lower()
+            self.dict_of_keywords["QUI_ANGULAR_GRID"] = value.lower()
 
-
-    def qui_radial_grid(self,value="show"):
+    def qui_radial_grid(self, value="show"):
         '''
 Name: QUI_RADIAL_GRID
 Type: INTEGER
@@ -6419,10 +6228,9 @@ Description: Specifies the number of radial point for the exchange-correlation q
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_RADIAL_GRID"]=value.lower()
+            self.dict_of_keywords["QUI_RADIAL_GRID"] = value.lower()
 
-
-    def isotopes(self,value="show"):
+    def isotopes(self, value="show"):
         '''
 Name: ISOTOPES
 Type: LOGICAL
@@ -6444,10 +6252,9 @@ Description: Specifies if non-default masses are to be used in the frequency cal
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ISOTOPES"]=value.lower()
+            self.dict_of_keywords["ISOTOPES"] = value.lower()
 
-
-    def memory_static(self,value="show"):
+    def memory_static(self, value="show"):
         '''
 Name: MEMORY_STATIC
 Type: INTEGER
@@ -6466,10 +6273,9 @@ Recommendation: : For direct and semi-direct MP2 calculations, this must exceed 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MEMORY_STATIC"]=value.lower()
+            self.dict_of_keywords["MEMORY_STATIC"] = value.lower()
 
-
-    def memory_total(self,value="show"):
+    def memory_total(self, value="show"):
         '''
 Name: MEMORY_TOTAL
 Type: INTEGER
@@ -6489,10 +6295,9 @@ Recommendation: : Use default, or set to the physical memory of your machine.   
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MEMORY_TOTAL"]=value.lower()
+            self.dict_of_keywords["MEMORY_TOTAL"] = value.lower()
 
-
-    def aimd_method(self,value="show"):
+    def aimd_method(self, value="show"):
         '''
 Name: AIMD_METHOD
 Type: STRING
@@ -6514,10 +6319,9 @@ Recommendation: : Born-oppenheimer MD (BOMD) yields exact classical molecular dy
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_METHOD"]=value.lower()
+            self.dict_of_keywords["AIMD_METHOD"] = value.lower()
 
-
-    def cc_dthreshold(self,value="show"):
+    def cc_dthreshold(self, value="show"):
         '''
 Name: CC_DTHRESHOLD
 Type: INTEGER
@@ -6537,10 +6341,9 @@ Recommendation: : Use default unless converge problems are encountered. Should n
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DTHRESHOLD"]=value.lower()
+            self.dict_of_keywords["CC_DTHRESHOLD"] = value.lower()
 
-
-    def cc_state_derivative(self,value="show"):
+    def cc_state_derivative(self, value="show"):
         '''
 Name: CC_STATE_DERIVATIVE
 Type: INTEGER
@@ -6557,10 +6360,9 @@ Description: Selects which EOM or CIS(D) state is to be considered for optimizat
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_STATE_DERIVATIVE"]=value.lower()
+            self.dict_of_keywords["CC_STATE_DERIVATIVE"] = value.lower()
 
-
-    def gui(self,value="show"):
+    def gui(self, value="show"):
         '''
 Name: GUI
 Type: LOGICAL
@@ -6582,10 +6384,9 @@ Recommendation: : Use default unless the additional information is required. Ple
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GUI"]=value.lower()
+            self.dict_of_keywords["GUI"] = value.lower()
 
-
-    def cc_eom_two_particle_properties(self,value="show"):
+    def cc_eom_two_particle_properties(self, value="show"):
         '''
 Name: CC_EOM_TWO_PARTICLE_PROPERTIES
 Type: LOGICAL
@@ -6608,10 +6409,10 @@ Recommendation:  Two-particle properties are extremely computationally expensive
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_TWO_PARTICLE_PROPERTIES"]=value.lower()
+            self.dict_of_keywords[
+                "CC_EOM_TWO_PARTICLE_PROPERTIES"] = value.lower()
 
-
-    def qui_section_opt(self,value="show"):
+    def qui_section_opt(self, value="show"):
         '''
 Name: QUI_SECTION_OPT
 Type: LOGICAL
@@ -6633,10 +6434,9 @@ Description: Adds the $opt section for specifying constraints in the geometry op
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SECTION_OPT"]=value.lower()
+            self.dict_of_keywords["QUI_SECTION_OPT"] = value.lower()
 
-
-    def dft_d_a(self,value="show"):
+    def dft_d_a(self, value="show"):
         '''
 Name: DFT_D_A
 Type: INTEGER
@@ -6657,10 +6457,9 @@ Description: Controls the strength of the dispersion corrections in the Chai-Hea
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFT_D_A"]=value.lower()
+            self.dict_of_keywords["DFT_D_A"] = value.lower()
 
-
-    def scf_guess_mix(self,value="show"):
+    def scf_guess_mix(self, value="show"):
         '''
 Name: SCF_GUESS_MIX
 Type: INTEGER
@@ -6680,10 +6479,9 @@ Recommendation: : When performing unrestricted calculations on molecules with an
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_GUESS_MIX"]=value.lower()
+            self.dict_of_keywords["SCF_GUESS_MIX"] = value.lower()
 
-
-    def cc_print(self,value="show"):
+    def cc_print(self, value="show"):
         '''
 Name: CC_PRINT
 Type: INTEGER
@@ -6700,10 +6498,9 @@ Recommendation: : Increase if you need more output and don't like trees    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRINT"]=value.lower()
+            self.dict_of_keywords["CC_PRINT"] = value.lower()
 
-
-    def moprop_save_last_gpx(self,value="show"):
+    def moprop_save_last_gpx(self, value="show"):
         '''
 Name: MOPROP_SAVE_LAST_GPX
 Type: LOGICAL
@@ -6725,10 +6522,9 @@ Description: Save last G[P]x when calculating dynamic polarizabilities in order 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOPROP_SAVE_LAST_GPX"]=value.lower()
+            self.dict_of_keywords["MOPROP_SAVE_LAST_GPX"] = value.lower()
 
-
-    def qui_title(self,value="show"):
+    def qui_title(self, value="show"):
         '''
 Name: QUI_TITLE
 Type: STRING
@@ -6749,10 +6545,9 @@ Description: Sets the lable for this section of the input file.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_TITLE"]=value.lower()
+            self.dict_of_keywords["QUI_TITLE"] = value.lower()
 
-
-    def smx_solvent(self,value="show"):
+    def smx_solvent(self, value="show"):
         '''
 Name: SMX_SOLVENT
 Type: STRING
@@ -6948,10 +6743,9 @@ Description: Specifies which solvent to use in the SM8 model.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SMX_SOLVENT"]=value.lower()
+            self.dict_of_keywords["SMX_SOLVENT"] = value.lower()
 
-
-    def smx_solvation(self,value="show"):
+    def smx_solvation(self, value="show"):
         '''
 Name: SMX_SOLVATION
 Type: LOGICAL
@@ -6973,10 +6767,9 @@ Description: Sets whether or not to use the SM8 solvation model.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SMX_SOLVATION"]=value.lower()
+            self.dict_of_keywords["SMX_SOLVATION"] = value.lower()
 
-
-    def link_atom_projection(self,value="show"):
+    def link_atom_projection(self, value="show"):
         '''
 Name: LINK_ATOM_PROJECTION
 Type: LOGICAL
@@ -6998,10 +6791,9 @@ Description: Controls whether to perform a link-atom projection, which is necess
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["LINK_ATOM_PROJECTION"]=value.lower()
+            self.dict_of_keywords["LINK_ATOM_PROJECTION"] = value.lower()
 
-
-    def qmmm_full_hessian(self,value="show"):
+    def qmmm_full_hessian(self, value="show"):
         '''
 Name: QMMM_FULL_HESSIAN
 Type: LOGICAL
@@ -7023,10 +6815,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QMMM_FULL_HESSIAN"]=value.lower()
+            self.dict_of_keywords["QMMM_FULL_HESSIAN"] = value.lower()
 
-
-    def gaussian_blur(self,value="show"):
+    def gaussian_blur(self, value="show"):
         '''
 Name: GAUSSIAN_BLUR
 Type: LOGICAL
@@ -7048,10 +6839,9 @@ Description: Enables the use of Gaussian-delocalized external charges in a QM/MM
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GAUSSIAN_BLUR"]=value.lower()
+            self.dict_of_keywords["GAUSSIAN_BLUR"] = value.lower()
 
-
-    def hess_proj_trm(self,value="show"):
+    def hess_proj_trm(self, value="show"):
         '''
 Name: HESS_PROJ_TRM
 Type: LOGICAL
@@ -7073,10 +6863,9 @@ Description: Selects whether or not to project out the rotational and translatio
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["HESS_PROJ_TRM"]=value.lower()
+            self.dict_of_keywords["HESS_PROJ_TRM"] = value.lower()
 
-
-    def geom_opt_iproj(self,value="show"):
+    def geom_opt_iproj(self, value="show"):
         '''
 Name: GEOM_OPT_IPROJ
 Type: LOGICAL
@@ -7098,10 +6887,9 @@ Description: Allows the molecule to reorient during a geometry optimization.  Tu
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_IPROJ"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_IPROJ"] = value.lower()
 
-
-    def qui_qchem_executable(self,value="show"):
+    def qui_qchem_executable(self, value="show"):
         '''
 Name: QUI_QCHEM_EXECUTABLE
 Type: STRING
@@ -7123,10 +6911,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_QCHEM_EXECUTABLE"]=value.lower()
+            self.dict_of_keywords["QUI_QCHEM_EXECUTABLE"] = value.lower()
 
-
-    def qui_avogadro_visualize_file(self,value="show"):
+    def qui_avogadro_visualize_file(self, value="show"):
         '''
 Name: QUI_AVOGADRO_VISUALIZE_FILE
 Type: LOGICAL
@@ -7148,10 +6935,9 @@ Description: Determines which file is passed as an argument to Avogadro.  If tru
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_AVOGADRO_VISUALIZE_FILE"]=value.lower()
+            self.dict_of_keywords["QUI_AVOGADRO_VISUALIZE_FILE"] = value.lower()
 
-
-    def qui_windows_directory(self,value="show"):
+    def qui_windows_directory(self, value="show"):
         '''
 Name: QUI_WINDOWS_DIRECTORY
 Type: STRING
@@ -7172,10 +6958,9 @@ Description: Sets the directory for tskill or taskkill
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_WINDOWS_DIRECTORY"]=value.lower()
+            self.dict_of_keywords["QUI_WINDOWS_DIRECTORY"] = value.lower()
 
-
-    def qui_windows_kill_command(self,value="show"):
+    def qui_windows_kill_command(self, value="show"):
         '''
 Name: QUI_WINDOWS_KILL_COMMAND
 Type: STRING
@@ -7197,10 +6982,9 @@ Description: The command required to kill qchem jobs, only used on Windows
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_WINDOWS_KILL_COMMAND"]=value.lower()
+            self.dict_of_keywords["QUI_WINDOWS_KILL_COMMAND"] = value.lower()
 
-
-    def pdb_print(self,value="show"):
+    def pdb_print(self, value="show"):
         '''
 Name: PDB_PRINT
 Type: INTEGER
@@ -7219,10 +7003,9 @@ Description: Prints final coordinates at the end of the output file using the PD
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PDB_PRINT"]=value.lower()
+            self.dict_of_keywords["PDB_PRINT"] = value.lower()
 
-
-    def aaaa(self,value="show"):
+    def aaaa(self, value="show"):
         '''
 Name: AAAA
 Type: STRING
@@ -7247,10 +7030,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AAAA"]=value.lower()
+            self.dict_of_keywords["AAAA"] = value.lower()
 
-
-    def threads(self,value="show"):
+    def threads(self, value="show"):
         '''
 Name: THREADS
 Type: INTEGER
@@ -7269,10 +7051,9 @@ Description: Number of threads in shared memory parallel calculations.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["THREADS"]=value.lower()
+            self.dict_of_keywords["THREADS"] = value.lower()
 
-
-    def cc_max_iter(self,value="show"):
+    def cc_max_iter(self, value="show"):
         '''
 Name: CC_MAX_ITER
 Type: INTEGER
@@ -7291,10 +7072,9 @@ Description: Maximum number of iterations to optimize the coupled-cluster energy
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_MAX_ITER"]=value.lower()
+            self.dict_of_keywords["CC_MAX_ITER"] = value.lower()
 
-
-    def cc_memory(self,value="show"):
+    def cc_memory(self, value="show"):
         '''
 Name: CC_MEMORY
 Type: INTEGER
@@ -7314,10 +7094,9 @@ Description: Specifies the maximum size, in Mb, of the buffers for in-core stora
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_MEMORY"]=value.lower()
+            self.dict_of_keywords["CC_MEMORY"] = value.lower()
 
-
-    def mem_total(self,value="show"):
+    def mem_total(self, value="show"):
         '''
 Name: MEM_TOTAL
 Type: INTEGER
@@ -7337,10 +7116,9 @@ Description: Sets the total memory available to Q-Chem, in megabytes.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MEM_TOTAL"]=value.lower()
+            self.dict_of_keywords["MEM_TOTAL"] = value.lower()
 
-
-    def mem_static(self,value="show"):
+    def mem_static(self, value="show"):
         '''
 Name: MEM_STATIC
 Type: INTEGER
@@ -7360,10 +7138,9 @@ Recommendation: : For direct and semi-direct MP2 calculations, this must exceed 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MEM_STATIC"]=value.lower()
+            self.dict_of_keywords["MEM_STATIC"] = value.lower()
 
-
-    def cc_incl_core_corr(self,value="show"):
+    def cc_incl_core_corr(self, value="show"):
         '''
 Name: CC_INCL_CORE_CORR
 Type: LOGICAL
@@ -7385,10 +7162,9 @@ Recommendation: : Use default unless no core-valence or core correlation is desi
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_INCL_CORE_CORR"]=value.lower()
+            self.dict_of_keywords["CC_INCL_CORE_CORR"] = value.lower()
 
-
-    def cc_ref_prop(self,value="show"):
+    def cc_ref_prop(self, value="show"):
         '''
 Name: CC_REF_PROP
 Type: LOGICAL
@@ -7410,10 +7186,9 @@ Recommendation: : Additional equations need to be solved (lambda CCSD equations)
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_REF_PROP"]=value.lower()
+            self.dict_of_keywords["CC_REF_PROP"] = value.lower()
 
-
-    def cc_nguess_doubles(self,value="show"):
+    def cc_nguess_doubles(self, value="show"):
         '''
 Name: CC_NGUESS_DOUBLES
 Type: INTEGER
@@ -7430,10 +7205,9 @@ Recommendation: : This should be set to the expected number of doubly excited st
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_NGUESS_DOUBLES"]=value.lower()
+            self.dict_of_keywords["CC_NGUESS_DOUBLES"] = value.lower()
 
-
-    def ccman2(self,value="show"):
+    def ccman2(self, value="show"):
         '''
 Name: CCMAN2
 Type: LOGICAL
@@ -7455,10 +7229,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CCMAN2"]=value.lower()
+            self.dict_of_keywords["CCMAN2"] = value.lower()
 
-
-    def cc_t_conv(self,value="show"):
+    def cc_t_conv(self, value="show"):
         '''
 Name: CC_T_CONV
 Type: INTEGER
@@ -7477,10 +7250,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_T_CONV"]=value.lower()
+            self.dict_of_keywords["CC_T_CONV"] = value.lower()
 
-
-    def cc_ref_prop_te(self,value="show"):
+    def cc_ref_prop_te(self, value="show"):
         '''
 Name: CC_REF_PROP_TE
 Type: LOGICAL
@@ -7503,10 +7275,9 @@ inferior compared to the cost of . The variable CC_REF_PROP must be also set to 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_REF_PROP_TE"]=value.lower()
+            self.dict_of_keywords["CC_REF_PROP_TE"] = value.lower()
 
-
-    def eom_corr(self,value="show"):
+    def eom_corr(self, value="show"):
         '''
 Name: EOM_CORR
 Type: STRING
@@ -7534,10 +7305,9 @@ Description: Specifies the correlation level
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_CORR"]=value.lower()
+            self.dict_of_keywords["EOM_CORR"] = value.lower()
 
-
-    def eom_davidson_max_iter(self,value="show"):
+    def eom_davidson_max_iter(self, value="show"):
         '''
 Name: EOM_DAVIDSON_MAX_ITER
 Type: INTEGER
@@ -7557,10 +7327,9 @@ n User-defined number of iterations
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_DAVIDSON_MAX_ITER"]=value.lower()
+            self.dict_of_keywords["EOM_DAVIDSON_MAX_ITER"] = value.lower()
 
-
-    def eom_ngues_doubles(self,value="show"):
+    def eom_ngues_doubles(self, value="show"):
         '''
 Name: EOM_NGUES_DOUBLES
 Type: INTEGER
@@ -7580,10 +7349,9 @@ Recommendation: : This should be set to the expected number of doubly excited st
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_NGUES_DOUBLES"]=value.lower()
+            self.dict_of_keywords["EOM_NGUES_DOUBLES"] = value.lower()
 
-
-    def eom_nguess_doubles(self,value="show"):
+    def eom_nguess_doubles(self, value="show"):
         '''
 Name: EOM_NGUESS_DOUBLES
 Type: INTEGER
@@ -7603,10 +7371,9 @@ Recommendation: : This should be set to the expected number of doubly excited st
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_NGUESS_DOUBLES"]=value.lower()
+            self.dict_of_keywords["EOM_NGUESS_DOUBLES"] = value.lower()
 
-
-    def eom_nguess_singles(self,value="show"):
+    def eom_nguess_singles(self, value="show"):
         '''
 Name: EOM_NGUESS_SINGLES
 Type: INTEGER
@@ -7626,10 +7393,9 @@ Recommendation: : Should be greater or equal than the number of excited states r
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_NGUESS_SINGLES"]=value.lower()
+            self.dict_of_keywords["EOM_NGUESS_SINGLES"] = value.lower()
 
-
-    def cc_eom_trans_prop(self,value="show"):
+    def cc_eom_trans_prop(self, value="show"):
         '''
 Name: CC_EOM_TRANS_PROP
 Type: LOGICAL
@@ -7651,10 +7417,9 @@ Recommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_TRANS_PROP"]=value.lower()
+            self.dict_of_keywords["CC_EOM_TRANS_PROP"] = value.lower()
 
-
-    def cc_eom_prop(self,value="show"):
+    def cc_eom_prop(self, value="show"):
         '''
 Name: CC_EOM_PROP
 Type: LOGICAL
@@ -7676,10 +7441,9 @@ Recommendation: : Additional equations (EOM-CCSD equations for the left eigenvec
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_PROP"]=value.lower()
+            self.dict_of_keywords["CC_EOM_PROP"] = value.lower()
 
-
-    def cc_eom_prop_te(self,value="show"):
+    def cc_eom_prop_te(self, value="show"):
         '''
 Name: CC_EOM_PROP_TE
 Type: LOGICAL
@@ -7702,10 +7466,9 @@ is inferior compared to the cost of . The variable CC_EOM_PROP must be also set 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_PROP_TE"]=value.lower()
+            self.dict_of_keywords["CC_EOM_PROP_TE"] = value.lower()
 
-
-    def cc_fullresponse(self,value="show"):
+    def cc_fullresponse(self, value="show"):
         '''
 Name: CC_FULLRESPONSE
 Type: LOGICAL
@@ -7727,10 +7490,9 @@ Recommendation: : Not available for non-UHF/RHF references. Only available for E
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_FULLRESPONSE"]=value.lower()
+            self.dict_of_keywords["CC_FULLRESPONSE"] = value.lower()
 
-
-    def eom_davidson_threshold(self,value="show"):
+    def eom_davidson_threshold(self, value="show"):
         '''
 Name: EOM_DAVIDSON_THRESHOLD
 Type: STRING
@@ -7752,10 +7514,9 @@ abcde Integer code is mapped to abc x 10^-de
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_DAVIDSON_THRESHOLD"]=value.lower()
+            self.dict_of_keywords["EOM_DAVIDSON_THRESHOLD"] = value.lower()
 
-
-    def cc_diis(self,value="show"):
+    def cc_diis(self, value="show"):
         '''
 Name: CC_DIIS
 Type: INTEGER
@@ -7780,10 +7541,9 @@ Recommendation: : DIIS1 can be more stable. If DIIS problems are encountered in 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DIIS"]=value.lower()
+            self.dict_of_keywords["CC_DIIS"] = value.lower()
 
-
-    def cc_dov_thresh(self,value="show"):
+    def cc_dov_thresh(self, value="show"):
         '''
 Name: CC_DOV_THRESH
 Type: STRING
@@ -7806,10 +7566,9 @@ Recommendation: : Increase to 0.5 or 0.75 for non-convergent coupled-cluster cal
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DOV_THRESH"]=value.lower()
+            self.dict_of_keywords["CC_DOV_THRESH"] = value.lower()
 
-
-    def cc_nguess_singles(self,value="show"):
+    def cc_nguess_singles(self, value="show"):
         '''
 Name: CC_NGUESS_SINGLES
 Type: INTEGER
@@ -7828,10 +7587,9 @@ Recommendation: : Should be greater or equal than the number of excited states r
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_NGUESS_SINGLES"]=value.lower()
+            self.dict_of_keywords["CC_NGUESS_SINGLES"] = value.lower()
 
-
-    def cc_trans_prop(self,value="show"):
+    def cc_trans_prop(self, value="show"):
         '''
 Name: CC_TRANS_PROP
 Type: LOGICAL
@@ -7853,10 +7611,9 @@ Description: Whether or not the transition dipole moment (in atomic units) and o
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_TRANS_PROP"]=value.lower()
+            self.dict_of_keywords["CC_TRANS_PROP"] = value.lower()
 
-
-    def qui_multiplicity(self,value="show"):
+    def qui_multiplicity(self, value="show"):
         '''
 Name: QUI_MULTIPLICITY
 Type: INTEGER
@@ -7876,10 +7633,9 @@ Description: Sets the multiplicity of the system
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_MULTIPLICITY"]=value.lower()
+            self.dict_of_keywords["QUI_MULTIPLICITY"] = value.lower()
 
-
-    def efp(self,value="show"):
+    def efp(self, value="show"):
         '''
 Name: EFP
 Type: LOGICAL
@@ -7901,10 +7657,9 @@ Description: The keyword should be present if excited state calculation is reque
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EFP"]=value.lower()
+            self.dict_of_keywords["EFP"] = value.lower()
 
-
-    def efp_fragments_only(self,value="show"):
+    def efp_fragments_only(self, value="show"):
         '''
 Name: EFP_FRAGMENTS_ONLY
 Type: LOGICAL
@@ -7926,10 +7681,9 @@ Description: Set to true if there is no QM part to the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EFP_FRAGMENTS_ONLY"]=value.lower()
+            self.dict_of_keywords["EFP_FRAGMENTS_ONLY"] = value.lower()
 
-
-    def efp_input(self,value="show"):
+    def efp_input(self, value="show"):
         '''
 Name: EFP_INPUT
 Type: LOGICAL
@@ -7951,10 +7705,9 @@ Description: True indicates the new format without a dummy atom in the $molecule
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EFP_INPUT"]=value.lower()
+            self.dict_of_keywords["EFP_INPUT"] = value.lower()
 
-
-    def chemsol_read_vdw(self,value="show"):
+    def chemsol_read_vdw(self, value="show"):
         '''
 Name: CHEMSOL_READ_VDW
 Type: STRING
@@ -7976,10 +7729,9 @@ Description: Controls the input of user-defined atomic radii for a ChemSol calcu
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHEMSOL_READ_VDW"]=value.lower()
+            self.dict_of_keywords["CHEMSOL_READ_VDW"] = value.lower()
 
-
-    def pcm_print(self,value="show"):
+    def pcm_print(self, value="show"):
         '''
 Name: PCM_PRINT
 Type: INTEGER
@@ -7998,10 +7750,9 @@ Description: Controls the print level during PCM calculations.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PCM_PRINT"]=value.lower()
+            self.dict_of_keywords["PCM_PRINT"] = value.lower()
 
-
-    def qui_solvent_cosmo(self,value="show"):
+    def qui_solvent_cosmo(self, value="show"):
         '''
 Name: QUI_SOLVENT_COSMO
 Type: LOGICAL
@@ -8023,10 +7774,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SOLVENT_COSMO"]=value.lower()
+            self.dict_of_keywords["QUI_SOLVENT_COSMO"] = value.lower()
 
-
-    def qui_solvent_pcm(self,value="show"):
+    def qui_solvent_pcm(self, value="show"):
         '''
 Name: QUI_SOLVENT_PCM
 Type: LOGICAL
@@ -8048,10 +7798,9 @@ Description: Use an apparent surface charge polarizable continuum solvent model.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SOLVENT_PCM"]=value.lower()
+            self.dict_of_keywords["QUI_SOLVENT_PCM"] = value.lower()
 
-
-    def solvent_method(self,value="show"):
+    def solvent_method(self, value="show"):
         '''
 Name: SOLVENT_METHOD
 Type: STRING
@@ -8074,10 +7823,9 @@ Description: Sets the preferred solvent model.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SOLVENT_METHOD"]=value.lower()
+            self.dict_of_keywords["SOLVENT_METHOD"] = value.lower()
 
-
-    def sol_order(self,value="show"):
+    def sol_order(self, value="show"):
         '''
 Name: SOL_ORDER
 Type: INTEGER
@@ -8096,10 +7844,9 @@ Description: Determines the order to which the multipole expansion of the solute
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SOL_ORDER"]=value.lower()
+            self.dict_of_keywords["SOL_ORDER"] = value.lower()
 
-
-    def svp(self,value="show"):
+    def svp(self, value="show"):
         '''
 Name: SVP
 Type: LOGICAL
@@ -8123,10 +7870,9 @@ Description: Sets whether to perform the isodensity solvation procedure.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SVP"]=value.lower()
+            self.dict_of_keywords["SVP"] = value.lower()
 
-
-    def svp_charge_conv(self,value="show"):
+    def svp_charge_conv(self, value="show"):
         '''
 Name: SVP_CHARGE_CONV
 Type: INTEGER
@@ -8143,10 +7889,9 @@ Recommendation: : The default value unless convergence problems arise.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SVP_CHARGE_CONV"]=value.lower()
+            self.dict_of_keywords["SVP_CHARGE_CONV"] = value.lower()
 
-
-    def svp_guess(self,value="show"):
+    def svp_guess(self, value="show"):
         '''
 Name: SVP_GUESS
 Type: STRING
@@ -8169,10 +7914,9 @@ Recommendation: : It is helpful to also set SCF_GUESS to READ when using a guess
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SVP_GUESS"]=value.lower()
+            self.dict_of_keywords["SVP_GUESS"] = value.lower()
 
-
-    def svp_memory(self,value="show"):
+    def svp_memory(self, value="show"):
         '''
 Name: SVP_MEMORY
 Type: INTEGER
@@ -8191,10 +7935,9 @@ Recommendation: :     '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SVP_MEMORY"]=value.lower()
+            self.dict_of_keywords["SVP_MEMORY"] = value.lower()
 
-
-    def svp_path(self,value="show"):
+    def svp_path(self, value="show"):
         '''
 Name: SVP_PATH
 Type: LOGICAL
@@ -8218,10 +7961,9 @@ Recommendation: : Running the gas-phase calculation provides a good guess to sta
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SVP_PATH"]=value.lower()
+            self.dict_of_keywords["SVP_PATH"] = value.lower()
 
-
-    def symmetry_decomposition(self,value="show"):
+    def symmetry_decomposition(self, value="show"):
         '''
 Name: SYMMETRY_DECOMPOSITION
 Type: INTEGER
@@ -8238,10 +7980,9 @@ Description: Determines symmetry decompositions to calculate.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SYMMETRY_DECOMPOSITION"]=value.lower()
+            self.dict_of_keywords["SYMMETRY_DECOMPOSITION"] = value.lower()
 
-
-    def qui_solvent_dielectric_cosmo(self,value="show"):
+    def qui_solvent_dielectric_cosmo(self, value="show"):
         '''
 Name: QUI_SOLVENT_DIELECTRIC_COSMO
 Type: INTEGER
@@ -8261,10 +8002,10 @@ Description: Sets the dielectric constant of the solvent
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC_COSMO"]=value.lower()
+            self.dict_of_keywords[
+                "QUI_SOLVENT_DIELECTRIC_COSMO"] = value.lower()
 
-
-    def qui_solvent_dielectric_onsager(self,value="show"):
+    def qui_solvent_dielectric_onsager(self, value="show"):
         '''
 Name: QUI_SOLVENT_DIELECTRIC_ONSAGER
 Type: INTEGER
@@ -8284,10 +8025,10 @@ Description: Sets the dielectric constant of the solvent
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC_ONSAGER"]=value.lower()
+            self.dict_of_keywords[
+                "QUI_SOLVENT_DIELECTRIC_ONSAGER"] = value.lower()
 
-
-    def cholesky_tol(self,value="show"):
+    def cholesky_tol(self, value="show"):
         '''
 Name: CHOLESKY_TOL
 Type: INTEGER
@@ -8310,10 +8051,9 @@ Recommendation: :
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHOLESKY_TOL"]=value.lower()
+            self.dict_of_keywords["CHOLESKY_TOL"] = value.lower()
 
-
-    def qui_integral_decomposition_none(self,value="show"):
+    def qui_integral_decomposition_none(self, value="show"):
         '''
 Name: QUI_INTEGRAL_DECOMPOSITION_NONE
 Type: LOGICAL
@@ -8337,10 +8077,10 @@ Description: No integral decomposition
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_INTEGRAL_DECOMPOSITION_NONE"]=value.lower()
+            self.dict_of_keywords[
+                "QUI_INTEGRAL_DECOMPOSITION_NONE"] = value.lower()
 
-
-    def direct_ri(self,value="show"):
+    def direct_ri(self, value="show"):
         '''
 Name: DIRECT_RI
 Type: LOGICAL
@@ -8367,10 +8107,9 @@ By default, all integrals are used in decomposed format allowing significant red
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIRECT_RI"]=value.lower()
+            self.dict_of_keywords["DIRECT_RI"] = value.lower()
 
-
-    def print_general_basis(self,value="show"):
+    def print_general_basis(self, value="show"):
         '''
 Name: PRINT_GENERAL_BASIS
 Type: LOGICAL
@@ -8394,10 +8133,9 @@ Recommendation: : Useful for modification of standard basis sets.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PRINT_GENERAL_BASIS"]=value.lower()
+            self.dict_of_keywords["PRINT_GENERAL_BASIS"] = value.lower()
 
-
-    def print_orbitals(self,value="show"):
+    def print_orbitals(self, value="show"):
         '''
 Name: PRINT_ORBITALS
 Type: STRING
@@ -8421,10 +8159,9 @@ Recommendation: : Usually not required as the orbitals are more easily examined 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["PRINT_ORBITALS"]=value.lower()
+            self.dict_of_keywords["PRINT_ORBITALS"] = value.lower()
 
-
-    def scf_algorithm(self,value="show"):
+    def scf_algorithm(self, value="show"):
         '''
 Name: SCF_ALGORITHM
 Type: STRING
@@ -8452,10 +8189,9 @@ Recommendation: : Use DIIS unless performing a restricted open-shell calculation
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_ALGORITHM"]=value.lower()
+            self.dict_of_keywords["SCF_ALGORITHM"] = value.lower()
 
-
-    def thresh(self,value="show"):
+    def thresh(self, value="show"):
         '''
 Name: THRESH
 Type: INTEGER
@@ -8474,10 +8210,9 @@ Recommendation: : Should be at least three greater than the SCF convergence sett
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["THRESH"]=value.lower()
+            self.dict_of_keywords["THRESH"] = value.lower()
 
-
-    def basis_projection_type(self,value="show"):
+    def basis_projection_type(self, value="show"):
         '''
 Name: BASIS_PROJECTION_TYPE
 Type: STRING
@@ -8499,10 +8234,9 @@ Description: Determines which method to use when projecting the density matrix f
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["BASIS_PROJECTION_TYPE"]=value.lower()
+            self.dict_of_keywords["BASIS_PROJECTION_TYPE"] = value.lower()
 
-
-    def diis_max_cycles(self,value="show"):
+    def diis_max_cycles(self, value="show"):
         '''
 Name: DIIS_MAX_CYCLES
 Type: INTEGER
@@ -8521,10 +8255,9 @@ Description: The maximum number of DIIS iterations before switching to (geometri
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIIS_MAX_CYCLES"]=value.lower()
+            self.dict_of_keywords["DIIS_MAX_CYCLES"] = value.lower()
 
-
-    def diis_separate_errvec(self,value="show"):
+    def diis_separate_errvec(self, value="show"):
         '''
 Name: DIIS_SEPARATE_ERRVEC
 Type: LOGICAL
@@ -8552,10 +8285,9 @@ occurrence, if cancelation is suspected, set to TRUE to check.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]=value.lower()
+            self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"] = value.lower()
 
-
-    def diis_subspace_size(self,value="show"):
+    def diis_subspace_size(self, value="show"):
         '''
 Name: DIIS_SUBSPACE_SIZE
 Type: INTEGER
@@ -8574,10 +8306,9 @@ Description: Controls the size of the DIIS and/or RCA subspace during the SCF.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]=value.lower()
+            self.dict_of_keywords["DIIS_SUBSPACE_SIZE"] = value.lower()
 
-
-    def diis_switch_thresh(self,value="show"):
+    def diis_switch_thresh(self, value="show"):
         '''
 Name: DIIS_SWITCH_THRESH
 Type: INTEGER
@@ -8594,10 +8325,9 @@ Description: The threshold for switching between DIIS extrapolation and direct m
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIIS_SWITCH_THRESH"]=value.lower()
+            self.dict_of_keywords["DIIS_SWITCH_THRESH"] = value.lower()
 
-
-    def direct_scf(self,value="show"):
+    def direct_scf(self, value="show"):
         '''
 Name: DIRECT_SCF
 Type: LOGICAL
@@ -8623,10 +8353,9 @@ Recommendation: : Use default; direct SCF switches off in-core integrals.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIRECT_SCF"]=value.lower()
+            self.dict_of_keywords["DIRECT_SCF"] = value.lower()
 
-
-    def meteco(self,value="show"):
+    def meteco(self, value="show"):
         '''
 Name: METECO
 Type: STRING
@@ -8648,10 +8377,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["METECO"]=value.lower()
+            self.dict_of_keywords["METECO"] = value.lower()
 
-
-    def symmetry_ignore(self,value="show"):
+    def symmetry_ignore(self, value="show"):
         '''
 Name: SYMMETRY_IGNORE
 Type: LOGICAL
@@ -8675,10 +8403,9 @@ Recommendation: : Use default unless you do not want the molecule to be reorient
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SYMMETRY_IGNORE"]=value.lower()
+            self.dict_of_keywords["SYMMETRY_IGNORE"] = value.lower()
 
-
-    def symmetry_integral(self,value="show"):
+    def symmetry_integral(self, value="show"):
         '''
 Name: SYMMETRY_INTEGRAL
 Type: LOGICAL
@@ -8702,10 +8429,9 @@ Recommendation: : Use default unless benchmarking. Note that symmetry usage is d
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SYMMETRY_INTEGRAL"]=value.lower()
+            self.dict_of_keywords["SYMMETRY_INTEGRAL"] = value.lower()
 
-
-    def symmetry_tolerance(self,value="show"):
+    def symmetry_tolerance(self, value="show"):
         '''
 Name: SYMMETRY_TOLERANCE
 Type: INTEGER
@@ -8724,10 +8450,9 @@ Recommendation: : Use the default unless the molecule has high symmetry which is
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SYMMETRY_TOLERANCE"]=value.lower()
+            self.dict_of_keywords["SYMMETRY_TOLERANCE"] = value.lower()
 
-
-    def dftvdw_alpha1(self,value="show"):
+    def dftvdw_alpha1(self, value="show"):
         '''
 Name: DFTVDW_ALPHA1
 Type: INTEGER
@@ -8747,10 +8472,9 @@ Description: Parameter in XDM calculations with higher-order terms
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_ALPHA1"]=value.lower()
+            self.dict_of_keywords["DFTVDW_ALPHA1"] = value.lower()
 
-
-    def dftvdw_alpha2(self,value="show"):
+    def dftvdw_alpha2(self, value="show"):
         '''
 Name: DFTVDW_ALPHA2
 Type: INTEGER
@@ -8770,10 +8494,9 @@ Description: Parameter in XDM calculations with higher-order terms.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_ALPHA2"]=value.lower()
+            self.dict_of_keywords["DFTVDW_ALPHA2"] = value.lower()
 
-
-    def dftvdw_jobnumber(self,value="show"):
+    def dftvdw_jobnumber(self, value="show"):
         '''
 Name: DFTVDW_JOBNUMBER
 Type: STRING
@@ -8796,10 +8519,9 @@ Description: Basic vdW job control
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_JOBNUMBER"]=value.lower()
+            self.dict_of_keywords["DFTVDW_JOBNUMBER"] = value.lower()
 
-
-    def dftvdw_kai(self,value="show"):
+    def dftvdw_kai(self, value="show"):
         '''
 Name: DFTVDW_KAI
 Type: INTEGER
@@ -8819,10 +8541,9 @@ Description: Damping factor K for C6 only damping functions
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_KAI"]=value.lower()
+            self.dict_of_keywords["DFTVDW_KAI"] = value.lower()
 
-
-    def dftvdw_mol1natoms(self,value="show"):
+    def dftvdw_mol1natoms(self, value="show"):
         '''
 Name: DFTVDW_MOL1NATOMS
 Type: INTEGER
@@ -8841,10 +8562,9 @@ Description: The number of atoms in the first monomer in a dimer calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_MOL1NATOMS"]=value.lower()
+            self.dict_of_keywords["DFTVDW_MOL1NATOMS"] = value.lower()
 
-
-    def dftvdw_print(self,value="show"):
+    def dftvdw_print(self, value="show"):
         '''
 Name: DFTVDW_PRINT
 Type: STRING
@@ -8867,10 +8587,9 @@ Description: Controls the amount of output from the VDW code.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_PRINT"]=value.lower()
+            self.dict_of_keywords["DFTVDW_PRINT"] = value.lower()
 
-
-    def lrc_dft(self,value="show"):
+    def lrc_dft(self, value="show"):
         '''
 Name: LRC_DFT
 Type: LOGICAL
@@ -8895,10 +8614,9 @@ Recommendation: :  Long-range correction is available for any combination of HF,
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["LRC_DFT"]=value.lower()
+            self.dict_of_keywords["LRC_DFT"] = value.lower()
 
-
-    def omega(self,value="show"):
+    def omega(self, value="show"):
         '''
 Name: OMEGA
 Type: INTEGER
@@ -8918,10 +8636,9 @@ Description: Controls the degree of attenuation of the Coulomb operator.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["OMEGA"]=value.lower()
+            self.dict_of_keywords["OMEGA"] = value.lower()
 
-
-    def dftvdw_method(self,value="show"):
+    def dftvdw_method(self, value="show"):
         '''
 Name: DFTVDW_METHOD
 Type: STRING
@@ -8943,10 +8660,9 @@ Description: Selects the damping function used in XDM
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFTVDW_METHOD"]=value.lower()
+            self.dict_of_keywords["DFTVDW_METHOD"] = value.lower()
 
-
-    def dft_d(self,value="show"):
+    def dft_d(self, value="show"):
         '''
 Name: DFT_D
 Type: STRING
@@ -8970,10 +8686,9 @@ Description: Specifies what dispersion correction to use within a DFT calculatio
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFT_D"]=value.lower()
+            self.dict_of_keywords["DFT_D"] = value.lower()
 
-
-    def dft_d3_s6(self,value="show"):
+    def dft_d3_s6(self, value="show"):
         '''
 Name: DFT_D3_S6
 Type: INTEGER
@@ -8993,10 +8708,9 @@ Description: Controls the strength of dispersion corrections, s6, in Grimme?s DF
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFT_D3_S6"]=value.lower()
+            self.dict_of_keywords["DFT_D3_S6"] = value.lower()
 
-
-    def dft_d3_s8(self,value="show"):
+    def dft_d3_s8(self, value="show"):
         '''
 Name: DFT_D3_S8
 Type: INTEGER
@@ -9016,10 +8730,9 @@ Description: Controls the strength of dispersion corrections, s8 , in Grimme?s D
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFT_D3_S8"]=value.lower()
+            self.dict_of_keywords["DFT_D3_S8"] = value.lower()
 
-
-    def dft_d3_sr6(self,value="show"):
+    def dft_d3_sr6(self, value="show"):
         '''
 Name: DFT_D3_SR6
 Type: INTEGER
@@ -9039,10 +8752,9 @@ Description: Controls the strength of dispersion corrections, sr6 , in the Grimm
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFT_D3_SR6"]=value.lower()
+            self.dict_of_keywords["DFT_D3_SR6"] = value.lower()
 
-
-    def nl_correlation(self,value="show"):
+    def nl_correlation(self, value="show"):
         '''
 Name: NL_CORRELATION
 Type: STRING
@@ -9068,10 +8780,9 @@ Recommendation: :  Do not forget to add the LSDA correlation (PW92 is recommende
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NL_CORRELATION"]=value.lower()
+            self.dict_of_keywords["NL_CORRELATION"] = value.lower()
 
-
-    def nl_grid(self,value="show"):
+    def nl_grid(self, value="show"):
         '''
 Name: NL_GRID
 Type: STRING
@@ -9101,10 +8812,9 @@ used.  XC_GRID should generally be ?ner than NL_GRID.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NL_GRID"]=value.lower()
+            self.dict_of_keywords["NL_GRID"] = value.lower()
 
-
-    def nl_vv_b(self,value="show"):
+    def nl_vv_b(self, value="show"):
         '''
 Name: NL_VV_B
 Type: INTEGER
@@ -9125,10 +8835,9 @@ Recommendation: : The optimal value depends strongly on the exchange functional 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NL_VV_B"]=value.lower()
+            self.dict_of_keywords["NL_VV_B"] = value.lower()
 
-
-    def nl_vv_c(self,value="show"):
+    def nl_vv_c(self, value="show"):
         '''
 Name: NL_VV_C
 Type: INTEGER
@@ -9150,10 +8859,9 @@ is recommended when a long-range corrected (LRC) hybrid functional is used.    '
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NL_VV_C"]=value.lower()
+            self.dict_of_keywords["NL_VV_C"] = value.lower()
 
-
-    def local_interp_order(self,value="show"):
+    def local_interp_order(self, value="show"):
         '''
 Name: LOCAL_INTERP_ORDER
 Type: INTEGER
@@ -9172,10 +8880,9 @@ Description: Controls the order of the B-spline.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["LOCAL_INTERP_ORDER"]=value.lower()
+            self.dict_of_keywords["LOCAL_INTERP_ORDER"] = value.lower()
 
-
-    def mrxc(self,value="show"):
+    def mrxc(self, value="show"):
         '''
 Name: MRXC
 Type: LOGICAL
@@ -9199,10 +8906,9 @@ large basis sets are used.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MRXC"]=value.lower()
+            self.dict_of_keywords["MRXC"] = value.lower()
 
-
-    def mrxc_class_thresh_mult(self,value="show"):
+    def mrxc_class_thresh_mult(self, value="show"):
         '''
 Name: MRXC_CLASS_THRESH_MULT
 Type: INTEGER
@@ -9221,10 +8927,9 @@ Description: Controls the prefactor of the smoothness precision.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]=value.lower()
+            self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"] = value.lower()
 
-
-    def mrxc_class_thresh_order(self,value="show"):
+    def mrxc_class_thresh_order(self, value="show"):
         '''
 Name: MRXC_CLASS_THRESH_ORDER
 Type: INTEGER
@@ -9243,10 +8948,9 @@ Description: Controls the exponent of the smoothness precision.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]=value.lower()
+            self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"] = value.lower()
 
-
-    def exchange(self,value="show"):
+    def exchange(self, value="show"):
         '''
 Name: EXCHANGE
 Type: STRING
@@ -9352,10 +9056,9 @@ Recommendation: : Consult the literature and reviews for guidence    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EXCHANGE"]=value.lower()
+            self.dict_of_keywords["EXCHANGE"] = value.lower()
 
-
-    def dfpt_exchange(self,value="show"):
+    def dfpt_exchange(self, value="show"):
         '''
 Name: DFPT_EXCHANGE
 Type: STRING
@@ -9427,10 +9130,9 @@ Description: Specifies the secondary functional in a density functional perturba
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFPT_EXCHANGE"]=value.lower()
+            self.dict_of_keywords["DFPT_EXCHANGE"] = value.lower()
 
-
-    def dfpt_xc_grid(self,value="show"):
+    def dfpt_xc_grid(self, value="show"):
         '''
 Name: DFPT_XC_GRID
 Type: STRING
@@ -9454,10 +9156,9 @@ Recommendation: : This should be at least as large as the XC_GRID    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DFPT_XC_GRID"]=value.lower()
+            self.dict_of_keywords["DFPT_XC_GRID"] = value.lower()
 
-
-    def hfpt(self,value="show"):
+    def hfpt(self, value="show"):
         '''
 Name: HFPT
 Type: LOGICAL
@@ -9479,10 +9180,9 @@ Description: This is set implicitly by setting HFPT_BASIS
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["HFPT"]=value.lower()
+            self.dict_of_keywords["HFPT"] = value.lower()
 
-
-    def xc_grid(self,value="show"):
+    def xc_grid(self, value="show"):
         '''
 Name: XC_GRID
 Type: STRING
@@ -9511,10 +9211,9 @@ Recommendation: : Use the default unless convergence difficulties arise.  Larger
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XC_GRID"]=value.lower()
+            self.dict_of_keywords["XC_GRID"] = value.lower()
 
-
-    def auxiliary_basis(self,value="show"):
+    def auxiliary_basis(self, value="show"):
         '''
 Name: AUXILIARY_BASIS
 Type: STRING
@@ -9543,10 +9242,9 @@ Description: Specifies the auxiliary basis to be used in a RI-MP2 calculation
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AUXILIARY_BASIS"]=value.lower()
+            self.dict_of_keywords["AUXILIARY_BASIS"] = value.lower()
 
-
-    def basis(self,value="show"):
+    def basis(self, value="show"):
         '''
 Name: BASIS
 Type: STRING
@@ -9627,10 +9325,9 @@ Recommendation: : Consult literature and reviews to aid your selection.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["BASIS"]=value.lower()
+            self.dict_of_keywords["BASIS"] = value.lower()
 
-
-    def chelpg(self,value="show"):
+    def chelpg(self, value="show"):
         '''
 Name: CHELPG
 Type: LOGICAL
@@ -9653,10 +9350,9 @@ Recommendation: : For large molecules there is some overhead associated with com
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CHELPG"]=value.lower()
+            self.dict_of_keywords["CHELPG"] = value.lower()
 
-
-    def cis_moments(self,value="show"):
+    def cis_moments(self, value="show"):
         '''
 Name: CIS_MOMENTS
 Type: LOGICAL
@@ -9678,10 +9374,9 @@ Description: Controls the calculation of excited-date (CIS or TDDFT) multipole m
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_MOMENTS"]=value.lower()
+            self.dict_of_keywords["CIS_MOMENTS"] = value.lower()
 
-
-    def cis_ampl_anal(self,value="show"):
+    def cis_ampl_anal(self, value="show"):
         '''
 Name: CIS_AMPL_ANAL
 Type: LOGICAL
@@ -9703,10 +9398,9 @@ Description: Perform additional analysis of CIS and TDDFT excitation amplitudes,
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_AMPL_ANAL"]=value.lower()
+            self.dict_of_keywords["CIS_AMPL_ANAL"] = value.lower()
 
-
-    def spin_flip(self,value="show"):
+    def spin_flip(self, value="show"):
         '''
 Name: SPIN_FLIP
 Type: LOGICAL
@@ -9728,10 +9422,9 @@ Description: Selects whether to perform a spin-?ip calculation.  Spin multiplici
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SPIN_FLIP"]=value.lower()
+            self.dict_of_keywords["SPIN_FLIP"] = value.lower()
 
-
-    def spin_flip_xcis(self,value="show"):
+    def spin_flip_xcis(self, value="show"):
         '''
 Name: SPIN_FLIP_XCIS
 Type: LOGICAL
@@ -9753,10 +9446,9 @@ Description: Do a SF-XCIS
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SPIN_FLIP_XCIS"]=value.lower()
+            self.dict_of_keywords["SPIN_FLIP_XCIS"] = value.lower()
 
-
-    def cis_mulliken(self,value="show"):
+    def cis_mulliken(self, value="show"):
         '''
 Name: CIS_MULLIKEN
 Type: LOGICAL
@@ -9779,10 +9471,9 @@ Description: Controls Mulliken and Loewdin population analyses for excited-state
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_MULLIKEN"]=value.lower()
+            self.dict_of_keywords["CIS_MULLIKEN"] = value.lower()
 
-
-    def jobtype(self,value="show"):
+    def jobtype(self, value="show"):
         '''
 Name: JOBTYPE
 Type: STRING
@@ -9813,10 +9504,9 @@ Description: Specifies the type of calculation to run.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["JOBTYPE"]=value.lower()
+            self.dict_of_keywords["JOBTYPE"] = value.lower()
 
-
-    def hfpt_basis(self,value="show"):
+    def hfpt_basis(self, value="show"):
         '''
 Name: HFPT_BASIS
 Type: STRING
@@ -9855,10 +9545,9 @@ Description: Specifies the secondary basis in a HFPC/DFPC calculation
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["HFPT_BASIS"]=value.lower()
+            self.dict_of_keywords["HFPT_BASIS"] = value.lower()
 
-
-    def hirshfeld(self,value="show"):
+    def hirshfeld(self, value="show"):
         '''
 Name: HIRSHFELD
 Type: LOGICAL
@@ -9880,10 +9569,9 @@ Description: Compute Hirshfeld populations
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["HIRSHFELD"]=value.lower()
+            self.dict_of_keywords["HIRSHFELD"] = value.lower()
 
-
-    def qui_use_case(self,value="show"):
+    def qui_use_case(self, value="show"):
         '''
 Name: QUI_USE_CASE
 Type: LOGICAL
@@ -9907,10 +9595,9 @@ Description: Selects the atenuated coulomb operator (CASE approximation).
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_USE_CASE"]=value.lower()
+            self.dict_of_keywords["QUI_USE_CASE"] = value.lower()
 
-
-    def qui_cis_guess(self,value="show"):
+    def qui_cis_guess(self, value="show"):
         '''
 Name: QUI_CIS_GUESS
 Type: STRING
@@ -9934,10 +9621,9 @@ Description: Determines what guess should be used for a CIS calculation.  Note t
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_CIS_GUESS"]=value.lower()
+            self.dict_of_keywords["QUI_CIS_GUESS"] = value.lower()
 
-
-    def sts_mom(self,value="show"):
+    def sts_mom(self, value="show"):
         '''
 Name: STS_MOM
 Type: LOGICAL
@@ -9959,10 +9645,9 @@ Description: Compute transition moments between excited states in the CIS and TD
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["STS_MOM"]=value.lower()
+            self.dict_of_keywords["STS_MOM"] = value.lower()
 
-
-    def max_cis_subspace(self,value="show"):
+    def max_cis_subspace(self, value="show"):
         '''
 Name: MAX_CIS_SUBSPACE
 Type: INTEGER
@@ -9982,10 +9667,9 @@ Recommendation: : The default is usually appropriate, unless a large number of s
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MAX_CIS_SUBSPACE"]=value.lower()
+            self.dict_of_keywords["MAX_CIS_SUBSPACE"] = value.lower()
 
-
-    def cis_dynamic_memory(self,value="show"):
+    def cis_dynamic_memory(self, value="show"):
         '''
 Name: CIS_DYNAMIC_MEMORY
 Type: LOGICAL
@@ -10009,10 +9693,9 @@ Recommendation: : The default control requires static memory (MEM_STATIC) to hol
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_DYNAMIC_MEMORY"]=value.lower()
+            self.dict_of_keywords["CIS_DYNAMIC_MEMORY"] = value.lower()
 
-
-    def roks(self,value="show"):
+    def roks(self, value="show"):
         '''
 Name: ROKS
 Type: LOGICAL
@@ -10034,10 +9717,9 @@ Description: Controls whether a restricted open-shell Kohn-Sham calculation will
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ROKS"]=value.lower()
+            self.dict_of_keywords["ROKS"] = value.lower()
 
-
-    def roks_level_shift(self,value="show"):
+    def roks_level_shift(self, value="show"):
         '''
 Name: ROKS_LEVEL_SHIFT
 Type: INTEGER
@@ -10057,10 +9739,9 @@ Description: Introduce a level-shift (in Hartree) to aid convergence.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ROKS_LEVEL_SHIFT"]=value.lower()
+            self.dict_of_keywords["ROKS_LEVEL_SHIFT"] = value.lower()
 
-
-    def cc_dmaxvectors(self,value="show"):
+    def cc_dmaxvectors(self, value="show"):
         '''
 Name: CC_DMAXVECTORS
 Type: INTEGER
@@ -10079,10 +9760,9 @@ Recommendation: : Larger values increase disk storage but accelerate and stabili
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_DMAXVECTORS"]=value.lower()
+            self.dict_of_keywords["CC_DMAXVECTORS"] = value.lower()
 
-
-    def eda_covp(self,value="show"):
+    def eda_covp(self, value="show"):
         '''
 Name: EDA_COVP
 Type: LOGICAL
@@ -10106,10 +9786,9 @@ Recommendation: : Set to TRUE to perform COVP analysis of the CT term in an EDA 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EDA_COVP"]=value.lower()
+            self.dict_of_keywords["EDA_COVP"] = value.lower()
 
-
-    def eom_davidson_convergence(self,value="show"):
+    def eom_davidson_convergence(self, value="show"):
         '''
 Name: EOM_DAVIDSON_CONVERGENCE
 Type: INTEGER
@@ -10131,10 +9810,9 @@ EOM DAVIDSON THRESHOLD.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]=value.lower()
+            self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"] = value.lower()
 
-
-    def eom_davidson_maxvectors(self,value="show"):
+    def eom_davidson_maxvectors(self, value="show"):
         '''
 Name: EOM_DAVIDSON_MAXVECTORS
 Type: INTEGER
@@ -10156,10 +9834,9 @@ Larger values increase disk storage but accelerate and stabilize convergence.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]=value.lower()
+            self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"] = value.lower()
 
-
-    def eom_ref_prop_te(self,value="show"):
+    def eom_ref_prop_te(self, value="show"):
         '''
 Name: EOM_REF_PROP_TE
 Type: LOGICAL
@@ -10186,10 +9863,9 @@ and use of the two-particle density matrix (the cost is approximately the same a
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_REF_PROP_TE"]=value.lower()
+            self.dict_of_keywords["EOM_REF_PROP_TE"] = value.lower()
 
-
-    def qui_eom_ea(self,value="show"):
+    def qui_eom_ea(self, value="show"):
         '''
 Name: QUI_EOM_EA
 Type: LOGICAL
@@ -10211,10 +9887,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_EA"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_EA"] = value.lower()
 
-
-    def qui_eom_ip(self,value="show"):
+    def qui_eom_ip(self, value="show"):
         '''
 Name: QUI_EOM_IP
 Type: LOGICAL
@@ -10236,10 +9911,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_IP"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_IP"] = value.lower()
 
-
-    def qui_eom_sf(self,value="show"):
+    def qui_eom_sf(self, value="show"):
         '''
 Name: QUI_EOM_SF
 Type: LOGICAL
@@ -10261,10 +9935,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_SF"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_SF"] = value.lower()
 
-
-    def cc_theta_stepsize(self,value="show"):
+    def cc_theta_stepsize(self, value="show"):
         '''
 Name: CC_THETA_STEPSIZE
 Type: INTEGER
@@ -10283,10 +9956,9 @@ Recommendation: : Try a smaller value in cases of poor convergence and very larg
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_THETA_STEPSIZE"]=value.lower()
+            self.dict_of_keywords["CC_THETA_STEPSIZE"] = value.lower()
 
-
-    def qui_eom_ee(self,value="show"):
+    def qui_eom_ee(self, value="show"):
         '''
 Name: QUI_EOM_EE
 Type: LOGICAL
@@ -10312,10 +9984,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_EE"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_EE"] = value.lower()
 
-
-    def qui_eom_dip(self,value="show"):
+    def qui_eom_dip(self, value="show"):
         '''
 Name: QUI_EOM_DIP
 Type: LOGICAL
@@ -10337,10 +10008,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_DIP"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_DIP"] = value.lower()
 
-
-    def aimd_fock_extrapolation_points(self,value="show"):
+    def aimd_fock_extrapolation_points(self, value="show"):
         '''
 Name: AIMD_FOCK_EXTRAPOLATION_POINTS
 Type: INTEGER
@@ -10359,10 +10029,10 @@ Recommendation: : Higher-order extrapolations with more saved Fock matrices are 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]=value.lower()
+            self.dict_of_keywords[
+                "AIMD_FOCK_EXTRAPOLATION_POINTS"] = value.lower()
 
-
-    def aimd_time_step(self,value="show"):
+    def aimd_time_step(self, value="show"):
         '''
 Name: AIMD_TIME_STEP
 Type: INTEGER
@@ -10381,10 +10051,9 @@ Recommendation: : Smaller time steps lead to better energy conservation; too lar
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIMD_TIME_STEP"]=value.lower()
+            self.dict_of_keywords["AIMD_TIME_STEP"] = value.lower()
 
-
-    def cc_eom_state_to_opt(self,value="show"):
+    def cc_eom_state_to_opt(self, value="show"):
         '''
 Name: CC_EOM_STATE_TO_OPT
 Type: undefined
@@ -10406,10 +10075,9 @@ Description: Specifies which state to optimize.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]=value.lower()
+            self.dict_of_keywords["CC_EOM_STATE_TO_OPT"] = value.lower()
 
-
-    def cc_high_spin(self,value="show"):
+    def cc_high_spin(self, value="show"):
         '''
 Name: CC_HIGH_SPIN
 Type: undefined
@@ -10430,10 +10098,9 @@ Description: Sets the number of high-spin excited state roots to find.  Works on
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_HIGH_SPIN"]=value.lower()
+            self.dict_of_keywords["CC_HIGH_SPIN"] = value.lower()
 
-
-    def cc_iterate_ov(self,value="show"):
+    def cc_iterate_ov(self, value="show"):
         '''
 Name: CC_ITERATE_OV
 Type: INTEGER
@@ -10452,10 +10119,9 @@ Recommendation: : Can be useful for non-convergent active space calculations.   
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_ITERATE_OV"]=value.lower()
+            self.dict_of_keywords["CC_ITERATE_OV"] = value.lower()
 
-
-    def cc_low_spin(self,value="show"):
+    def cc_low_spin(self, value="show"):
         '''
 Name: CC_LOW_SPIN
 Type: undefined
@@ -10476,10 +10142,9 @@ Description: Sets the number of low-spin excited state roots to find.  In the ca
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_LOW_SPIN"]=value.lower()
+            self.dict_of_keywords["CC_LOW_SPIN"] = value.lower()
 
-
-    def cc_preconverge_fz(self,value="show"):
+    def cc_preconverge_fz(self, value="show"):
         '''
 Name: CC_PRECONVERGE_FZ
 Type: INTEGER
@@ -10498,10 +10163,9 @@ Recommendation: :     '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONVERGE_FZ"]=value.lower()
+            self.dict_of_keywords["CC_PRECONVERGE_FZ"] = value.lower()
 
-
-    def cc_preconverge_t2z(self,value="show"):
+    def cc_preconverge_t2z(self, value="show"):
         '''
 Name: CC_PRECONVERGE_T2Z
 Type: INTEGER
@@ -10520,10 +10184,9 @@ Recommendation: : Experiment with this option in cases of convergence failure.  
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONVERGE_T2Z"]=value.lower()
+            self.dict_of_keywords["CC_PRECONVERGE_T2Z"] = value.lower()
 
-
-    def cc_preconverge_t2z_each(self,value="show"):
+    def cc_preconverge_t2z_each(self, value="show"):
         '''
 Name: CC_PRECONVERGE_T2Z_EACH
 Type: INTEGER
@@ -10542,10 +10205,9 @@ Recommendation: : A very slow last resort option for jobs that do not converge. 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]=value.lower()
+            self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"] = value.lower()
 
-
-    def cc_preconv_t2z(self,value="show"):
+    def cc_preconv_t2z(self, value="show"):
         '''
 Name: CC_PRECONV_T2Z
 Type: INTEGER
@@ -10564,10 +10226,9 @@ Recommendation: : Experiment with this option in cases of convergence failure.  
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONV_T2Z"]=value.lower()
+            self.dict_of_keywords["CC_PRECONV_T2Z"] = value.lower()
 
-
-    def cc_preconv_t2z_each(self,value="show"):
+    def cc_preconv_t2z_each(self, value="show"):
         '''
 Name: CC_PRECONV_T2Z_EACH
 Type: INTEGER
@@ -10586,10 +10247,9 @@ Recommendation: : A very slow last resort option for jobs that do not converge. 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]=value.lower()
+            self.dict_of_keywords["CC_PRECONV_T2Z_EACH"] = value.lower()
 
-
-    def cc_qccd_theta_switch(self,value="show"):
+    def cc_qccd_theta_switch(self, value="show"):
         '''
 Name: CC_QCCD_THETA_SWITCH
 Type: INTEGER
@@ -10608,10 +10268,9 @@ Description: QCCD calculations switch from OD to QCCD when the rotation gradient
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]=value.lower()
+            self.dict_of_keywords["CC_QCCD_THETA_SWITCH"] = value.lower()
 
-
-    def cc_reference_symmetry(self,value="show"):
+    def cc_reference_symmetry(self, value="show"):
         '''
 Name: CC_REFERENCE_SYMMETRY
 Type: INTEGER
@@ -10630,10 +10289,9 @@ Description: Together with CC_STATE_DERIV, selects which EOM state is to be cons
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]=value.lower()
+            self.dict_of_keywords["CC_REFERENCE_SYMMETRY"] = value.lower()
 
-
-    def cc_refsym(self,value="show"):
+    def cc_refsym(self, value="show"):
         '''
 Name: CC_REFSYM
 Type: INTEGER
@@ -10652,10 +10310,9 @@ Description: Together with CC_STATE_DERIV, selects which EOM state is to be cons
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_REFSYM"]=value.lower()
+            self.dict_of_keywords["CC_REFSYM"] = value.lower()
 
-
-    def cc_spin_flip_ms(self,value="show"):
+    def cc_spin_flip_ms(self, value="show"):
         '''
 Name: CC_SPIN_FLIP_MS
 Type: INTEGER
@@ -10674,10 +10331,9 @@ Recommendation: : This option can be useful when starting from quintet reference
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_SPIN_FLIP_MS"]=value.lower()
+            self.dict_of_keywords["CC_SPIN_FLIP_MS"] = value.lower()
 
-
-    def cc_state_deriv(self,value="show"):
+    def cc_state_deriv(self, value="show"):
         '''
 Name: CC_STATE_DERIV
 Type: INTEGER
@@ -10694,10 +10350,9 @@ Description: Selects which EOM or CIS(D) state is to be considered for optimizat
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_STATE_DERIV"]=value.lower()
+            self.dict_of_keywords["CC_STATE_DERIV"] = value.lower()
 
-
-    def cc_state_to_opt(self,value="show"):
+    def cc_state_to_opt(self, value="show"):
         '''
 Name: CC_STATE_TO_OPT
 Type: undefined
@@ -10719,10 +10374,9 @@ Description: Species which state to optimize.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_STATE_TO_OPT"]=value.lower()
+            self.dict_of_keywords["CC_STATE_TO_OPT"] = value.lower()
 
-
-    def cc_theta_conv(self,value="show"):
+    def cc_theta_conv(self, value="show"):
         '''
 Name: CC_THETA_CONV
 Type: INTEGER
@@ -10741,10 +10395,9 @@ Recommendation: : Use default    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_THETA_CONV"]=value.lower()
+            self.dict_of_keywords["CC_THETA_CONV"] = value.lower()
 
-
-    def cc_theta_grad_conv(self,value="show"):
+    def cc_theta_grad_conv(self, value="show"):
         '''
 Name: CC_THETA_GRAD_CONV
 Type: INTEGER
@@ -10763,10 +10416,9 @@ Recommendation: : Use default    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CC_THETA_GRAD_CONV"]=value.lower()
+            self.dict_of_keywords["CC_THETA_GRAD_CONV"] = value.lower()
 
-
-    def cis_guess_disk_type(self,value="show"):
+    def cis_guess_disk_type(self, value="show"):
         '''
 Name: CIS_GUESS_DISK_TYPE
 Type: INTEGER
@@ -10785,10 +10437,9 @@ Recommendation: : Must be specified if a CIS guess in to be read from disk.    '
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]=value.lower()
+            self.dict_of_keywords["CIS_GUESS_DISK_TYPE"] = value.lower()
 
-
-    def cis_n_roots(self,value="show"):
+    def cis_n_roots(self, value="show"):
         '''
 Name: CIS_N_ROOTS
 Type: INTEGER
@@ -10807,10 +10458,9 @@ Description: Sets the number of CI-Singles (CIS) excited state roots to find
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CIS_N_ROOTS"]=value.lower()
+            self.dict_of_keywords["CIS_N_ROOTS"] = value.lower()
 
-
-    def diis_print(self,value="show"):
+    def diis_print(self, value="show"):
         '''
 Name: DIIS_PRINT
 Type: INTEGER
@@ -10833,10 +10483,9 @@ Description: Controls the output from DIIS SCF optimization:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIIS_PRINT"]=value.lower()
+            self.dict_of_keywords["DIIS_PRINT"] = value.lower()
 
-
-    def dip_singlets(self,value="show"):
+    def dip_singlets(self, value="show"):
         '''
 Name: DIP_SINGLETS
 Type: undefined
@@ -10858,10 +10507,9 @@ Description: Sets the number of singlet DIP roots to find. Works only for closed
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIP_SINGLETS"]=value.lower()
+            self.dict_of_keywords["DIP_SINGLETS"] = value.lower()
 
-
-    def dip_states(self,value="show"):
+    def dip_states(self, value="show"):
         '''
 Name: DIP_STATES
 Type: undefined
@@ -10883,10 +10531,9 @@ Description: Sets the number of DIP roots to find. For closed-shell reference, d
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIP_STATES"]=value.lower()
+            self.dict_of_keywords["DIP_STATES"] = value.lower()
 
-
-    def dip_triplets(self,value="show"):
+    def dip_triplets(self, value="show"):
         '''
 Name: DIP_TRIPLETS
 Type: undefined
@@ -10908,10 +10555,9 @@ Description: Sets the number of triplet DIP roots to find. Works only for closed
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DIP_TRIPLETS"]=value.lower()
+            self.dict_of_keywords["DIP_TRIPLETS"] = value.lower()
 
-
-    def dsf_states(self,value="show"):
+    def dsf_states(self, value="show"):
         '''
 Name: DSF_STATES
 Type: undefined
@@ -10933,10 +10579,9 @@ Description: Sets the number of double spin-?ip target states roots to ?nd.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["DSF_STATES"]=value.lower()
+            self.dict_of_keywords["DSF_STATES"] = value.lower()
 
-
-    def ee_singlets(self,value="show"):
+    def ee_singlets(self, value="show"):
         '''
 Name: EE_SINGLETS
 Type: undefined
@@ -10957,10 +10602,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EE_SINGLETS"]=value.lower()
+            self.dict_of_keywords["EE_SINGLETS"] = value.lower()
 
-
-    def ee_states(self,value="show"):
+    def ee_states(self, value="show"):
         '''
 Name: EE_STATES
 Type: undefined
@@ -10981,10 +10625,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EE_STATES"]=value.lower()
+            self.dict_of_keywords["EE_STATES"] = value.lower()
 
-
-    def ee_triplets(self,value="show"):
+    def ee_triplets(self, value="show"):
         '''
 Name: EE_TRIPLETS
 Type: undefined
@@ -11005,10 +10648,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EE_TRIPLETS"]=value.lower()
+            self.dict_of_keywords["EE_TRIPLETS"] = value.lower()
 
-
-    def eom_ea_alpha(self,value="show"):
+    def eom_ea_alpha(self, value="show"):
         '''
 Name: EOM_EA_ALPHA
 Type: undefined
@@ -11030,10 +10672,9 @@ Description: Sets the number of attached target states derived by attaching alph
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_EA_ALPHA"]=value.lower()
+            self.dict_of_keywords["EOM_EA_ALPHA"] = value.lower()
 
-
-    def eom_ea_beta(self,value="show"):
+    def eom_ea_beta(self, value="show"):
         '''
 Name: EOM_EA_BETA
 Type: undefined
@@ -11055,10 +10696,9 @@ Description: Sets the number of attached target states derived by attaching beta
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_EA_BETA"]=value.lower()
+            self.dict_of_keywords["EOM_EA_BETA"] = value.lower()
 
-
-    def eom_ea_states(self,value="show"):
+    def eom_ea_states(self, value="show"):
         '''
 Name: EOM_EA_STATES
 Type: undefined
@@ -11080,10 +10720,9 @@ Description: Sets the number of attached target states roots to find. By defaul
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_EA_STATES"]=value.lower()
+            self.dict_of_keywords["EOM_EA_STATES"] = value.lower()
 
-
-    def eom_ip_alpha(self,value="show"):
+    def eom_ip_alpha(self, value="show"):
         '''
 Name: EOM_IP_ALPHA
 Type: undefined
@@ -11105,10 +10744,9 @@ Description: Sets the number of ionized target states derived by removing alpha 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_IP_ALPHA"]=value.lower()
+            self.dict_of_keywords["EOM_IP_ALPHA"] = value.lower()
 
-
-    def eom_ip_beta(self,value="show"):
+    def eom_ip_beta(self, value="show"):
         '''
 Name: EOM_IP_BETA
 Type: undefined
@@ -11130,10 +10768,9 @@ Description: Sets the number of ionized target states derived by removing beta e
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_IP_BETA"]=value.lower()
+            self.dict_of_keywords["EOM_IP_BETA"] = value.lower()
 
-
-    def eom_ip_states(self,value="show"):
+    def eom_ip_states(self, value="show"):
         '''
 Name: EOM_IP_STATES
 Type: undefined
@@ -11155,10 +10792,9 @@ Description: Sets the number of ionized target states roots to find. By default
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["EOM_IP_STATES"]=value.lower()
+            self.dict_of_keywords["EOM_IP_STATES"] = value.lower()
 
-
-    def incdft_griddiff_varthresh(self,value="show"):
+    def incdft_griddiff_varthresh(self, value="show"):
         '''
 Name: INCDFT_GRIDDIFF_VARTHRESH
 Type: INTEGER
@@ -11177,10 +10813,9 @@ Recommendation: : If the default value causes convergence problems, set this val
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]=value.lower()
+            self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"] = value.lower()
 
-
-    def mom_start(self,value="show"):
+    def mom_start(self, value="show"):
         '''
 Name: MOM_START
 Type: INTEGER
@@ -11199,10 +10834,9 @@ Recommendation: : Set to 1 if preservation of initial orbitals is desired. If MO
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MOM_START"]=value.lower()
+            self.dict_of_keywords["MOM_START"] = value.lower()
 
-
-    def nvo_method(self,value="show"):
+    def nvo_method(self, value="show"):
         '''
 Name: NVO_METHOD
 Type: INTEGER
@@ -11221,10 +10855,9 @@ Recommendation: : Experimental option. Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_METHOD"]=value.lower()
+            self.dict_of_keywords["NVO_METHOD"] = value.lower()
 
-
-    def nvo_truncate_dist(self,value="show"):
+    def nvo_truncate_dist(self, value="show"):
         '''
 Name: NVO_TRUNCATE_DIST
 Type: INTEGER
@@ -11243,10 +10876,9 @@ Recommendation: : This option does not affect the final result. However, it affe
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NVO_TRUNCATE_DIST"]=value.lower()
+            self.dict_of_keywords["NVO_TRUNCATE_DIST"] = value.lower()
 
-
-    def qui_eom_states1(self,value="show"):
+    def qui_eom_states1(self, value="show"):
         '''
 Name: QUI_EOM_STATES1
 Type: undefined
@@ -11267,10 +10899,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_STATES1"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_STATES1"] = value.lower()
 
-
-    def qui_eom_states2(self,value="show"):
+    def qui_eom_states2(self, value="show"):
         '''
 Name: QUI_EOM_STATES2
 Type: undefined
@@ -11291,10 +10922,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_EOM_STATES2"]=value.lower()
+            self.dict_of_keywords["QUI_EOM_STATES2"] = value.lower()
 
-
-    def scf_final_print(self,value="show"):
+    def scf_final_print(self, value="show"):
         '''
 Name: SCF_FINAL_PRINT
 Type: INTEGER
@@ -11313,10 +10943,9 @@ Recommendation: : The break-down of energies is often useful (level 1).    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_FINAL_PRINT"]=value.lower()
+            self.dict_of_keywords["SCF_FINAL_PRINT"] = value.lower()
 
-
-    def scf_guess(self,value="show"):
+    def scf_guess(self, value="show"):
         '''
 Name: SCF_GUESS
 Type: STRING
@@ -11340,10 +10969,9 @@ Recommendation: : SAD guess for standard basis sets. For general basis sets, it 
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SCF_GUESS"]=value.lower()
+            self.dict_of_keywords["SCF_GUESS"] = value.lower()
 
-
-    def sf_states(self,value="show"):
+    def sf_states(self, value="show"):
         '''
 Name: SF_STATES
 Type: undefined
@@ -11365,10 +10993,9 @@ Description: Sets the number of spin-?ip target states roots to ?nd.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SF_STATES"]=value.lower()
+            self.dict_of_keywords["SF_STATES"] = value.lower()
 
-
-    def varthresh(self,value="show"):
+    def varthresh(self, value="show"):
         '''
 Name: VARTHRESH
 Type: INTEGER
@@ -11387,10 +11014,9 @@ Recommendation: : 3 has been found to be a practical level, and can slightly spe
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["VARTHRESH"]=value.lower()
+            self.dict_of_keywords["VARTHRESH"] = value.lower()
 
-
-    def xopt_state_1(self,value="show"):
+    def xopt_state_1(self, value="show"):
         '''
 Name: XOPT_STATE_1
 Type: undefined
@@ -11421,10 +11047,9 @@ state, state = 2 is the second excited state, etc.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XOPT_STATE_1"]=value.lower()
+            self.dict_of_keywords["XOPT_STATE_1"] = value.lower()
 
-
-    def xopt_state_2(self,value="show"):
+    def xopt_state_2(self, value="show"):
         '''
 Name: XOPT_STATE_2
 Type: undefined
@@ -11455,10 +11080,9 @@ state, state = 2 is the second excited state, etc.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XOPT_STATE_2"]=value.lower()
+            self.dict_of_keywords["XOPT_STATE_2"] = value.lower()
 
-
-    def qui_section_swap_occupied_virtual(self,value="show"):
+    def qui_section_swap_occupied_virtual(self, value="show"):
         '''
 Name: QUI_SECTION_SWAP_OCCUPIED_VIRTUAL
 Type: LOGICAL
@@ -11478,14 +11102,15 @@ Description: Change the occupancies of the guess orbitals (not compatible with t
                 print("Keyword removed.")
         elif value == "show":
             if "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL" in self.dict_of_keywords:
-                return self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]
+                return self.dict_of_keywords[
+                    "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]=value.lower()
+            self.dict_of_keywords[
+                "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"] = value.lower()
 
-
-    def adc_davidson_maxiter(self,value="show"):
+    def adc_davidson_maxiter(self, value="show"):
         '''
 Name: ADC_DAVIDSON_MAXITER
 Type: INTEGER
@@ -11504,10 +11129,9 @@ Description: Maximum number of iterations to determine the eigenstates in an ADC
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]=value.lower()
+            self.dict_of_keywords["ADC_DAVIDSON_MAXITER"] = value.lower()
 
-
-    def adc_diis_maxiter(self,value="show"):
+    def adc_diis_maxiter(self, value="show"):
         '''
 Name: ADC_DIIS_MAXITER
 Type: STRING
@@ -11528,10 +11152,9 @@ Description: Maximum number of iterations to determine the eigenstates in an ADC
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DIIS_MAXITER"]=value.lower()
+            self.dict_of_keywords["ADC_DIIS_MAXITER"] = value.lower()
 
-
-    def adc_davidson_maxsubspace(self,value="show"):
+    def adc_davidson_maxsubspace(self, value="show"):
         '''
 Name: ADC_DAVIDSON_MAXSUBSPACE
 Type: INTEGER
@@ -11551,10 +11174,9 @@ Recommendation: : Larger values increase disk storage but accelerate and stabili
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]=value.lower()
+            self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"] = value.lower()
 
-
-    def adc_c_c(self,value="show"):
+    def adc_c_c(self, value="show"):
         '''
 Name: ADC_C_C
 Type: INTEGER
@@ -11574,10 +11196,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_C_C"]=value.lower()
+            self.dict_of_keywords["ADC_C_C"] = value.lower()
 
-
-    def adc_c_t(self,value="show"):
+    def adc_c_t(self, value="show"):
         '''
 Name: ADC_C_T
 Type: INTEGER
@@ -11597,10 +11218,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_C_T"]=value.lower()
+            self.dict_of_keywords["ADC_C_T"] = value.lower()
 
-
-    def adc_c_x(self,value="show"):
+    def adc_c_x(self, value="show"):
         '''
 Name: ADC_C_X
 Type: INTEGER
@@ -11620,10 +11240,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_C_X"]=value.lower()
+            self.dict_of_keywords["ADC_C_X"] = value.lower()
 
-
-    def adc_davidson_conv(self,value="show"):
+    def adc_davidson_conv(self, value="show"):
         '''
 Name: ADC_DAVIDSON_CONV
 Type: INTEGER
@@ -11642,10 +11261,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DAVIDSON_CONV"]=value.lower()
+            self.dict_of_keywords["ADC_DAVIDSON_CONV"] = value.lower()
 
-
-    def adc_davidson_thresh(self,value="show"):
+    def adc_davidson_thresh(self, value="show"):
         '''
 Name: ADC_DAVIDSON_THRESH
 Type: INTEGER
@@ -11664,10 +11282,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DAVIDSON_THRESH"]=value.lower()
+            self.dict_of_keywords["ADC_DAVIDSON_THRESH"] = value.lower()
 
-
-    def adc_diis_econv(self,value="show"):
+    def adc_diis_econv(self, value="show"):
         '''
 Name: ADC_DIIS_ECONV
 Type: INTEGER
@@ -11686,10 +11303,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DIIS_ECONV"]=value.lower()
+            self.dict_of_keywords["ADC_DIIS_ECONV"] = value.lower()
 
-
-    def adc_diis_rconv(self,value="show"):
+    def adc_diis_rconv(self, value="show"):
         '''
 Name: ADC_DIIS_RCONV
 Type: INTEGER
@@ -11708,10 +11324,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DIIS_RCONV"]=value.lower()
+            self.dict_of_keywords["ADC_DIIS_RCONV"] = value.lower()
 
-
-    def adc_diis_size(self,value="show"):
+    def adc_diis_size(self, value="show"):
         '''
 Name: ADC_DIIS_SIZE
 Type: INTEGER
@@ -11730,10 +11345,9 @@ Recommendation: : Larger values involve larger amounts of disk storage.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DIIS_SIZE"]=value.lower()
+            self.dict_of_keywords["ADC_DIIS_SIZE"] = value.lower()
 
-
-    def adc_diis_start(self,value="show"):
+    def adc_diis_start(self, value="show"):
         '''
 Name: ADC_DIIS_START
 Type: INTEGER
@@ -11753,10 +11367,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DIIS_START"]=value.lower()
+            self.dict_of_keywords["ADC_DIIS_START"] = value.lower()
 
-
-    def adc_do_diis(self,value="show"):
+    def adc_do_diis(self, value="show"):
         '''
 Name: ADC_DO_DIIS
 Type: LOGICAL
@@ -11779,10 +11392,9 @@ Recommendation: : Use only with extreme care!    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_DO_DIIS"]=value.lower()
+            self.dict_of_keywords["ADC_DO_DIIS"] = value.lower()
 
-
-    def adc_ecorr(self,value="show"):
+    def adc_ecorr(self, value="show"):
         '''
 Name: ADC_ECORR
 Type: LOGICAL
@@ -11804,10 +11416,9 @@ Description: Activate the computation of higher-order energy corrections for ADC
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_ECORR"]=value.lower()
+            self.dict_of_keywords["ADC_ECORR"] = value.lower()
 
-
-    def adc_extended(self,value="show"):
+    def adc_extended(self, value="show"):
         '''
 Name: ADC_EXTENDED
 Type: LOGICAL
@@ -11830,10 +11441,9 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_EXTENDED"]=value.lower()
+            self.dict_of_keywords["ADC_EXTENDED"] = value.lower()
 
-
-    def adc_cvs(self,value="show"):
+    def adc_cvs(self, value="show"):
         '''
 Name: ADC_CVS
 Type: LOGICAL
@@ -11856,10 +11466,9 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_CVS"]=value.lower()
+            self.dict_of_keywords["ADC_CVS"] = value.lower()
 
-
-    def adc_order(self,value="show"):
+    def adc_order(self, value="show"):
         '''
 Name: ADC_ORDER
 Type: LOGICAL
@@ -11882,10 +11491,9 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_ORDER"]=value.lower()
+            self.dict_of_keywords["ADC_ORDER"] = value.lower()
 
-
-    def adc_nguess_doubles(self,value="show"):
+    def adc_nguess_doubles(self, value="show"):
         '''
 Name: ADC_NGUESS_DOUBLES
 Type: INTEGER
@@ -11905,10 +11513,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_NGUESS_DOUBLES"]=value.lower()
+            self.dict_of_keywords["ADC_NGUESS_DOUBLES"] = value.lower()
 
-
-    def adc_nguess_singles(self,value="show"):
+    def adc_nguess_singles(self, value="show"):
         '''
 Name: ADC_NGUESS_SINGLES
 Type: INTEGER
@@ -11928,10 +11535,9 @@ Recommendation: : Use default ( = number of states to requested).    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_NGUESS_SINGLES"]=value.lower()
+            self.dict_of_keywords["ADC_NGUESS_SINGLES"] = value.lower()
 
-
-    def adc_prop_es2es(self,value="show"):
+    def adc_prop_es2es(self, value="show"):
         '''
 Name: ADC_PROP_ES2ES
 Type: LOGICAL
@@ -11953,10 +11559,9 @@ Description: Activate the calculation of state-to-state transition properties in
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_PROP_ES2ES"]=value.lower()
+            self.dict_of_keywords["ADC_PROP_ES2ES"] = value.lower()
 
-
-    def adc_prop_tpa(self,value="show"):
+    def adc_prop_tpa(self, value="show"):
         '''
 Name: ADC_PROP_TPA
 Type: LOGICAL
@@ -11978,10 +11583,9 @@ Description: Activate the calculation of two-photon absorption cross-sections fo
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_PROP_TPA"]=value.lower()
+            self.dict_of_keywords["ADC_PROP_TPA"] = value.lower()
 
-
-    def adc_prop_es(self,value="show"):
+    def adc_prop_es(self, value="show"):
         '''
 Name: ADC_PROP_ES
 Type: LOGICAL
@@ -12003,10 +11607,9 @@ Description: Activate the calculation of excited state properties in an ADC calc
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_PROP_ES"]=value.lower()
+            self.dict_of_keywords["ADC_PROP_ES"] = value.lower()
 
-
-    def adc_sos(self,value="show"):
+    def adc_sos(self, value="show"):
         '''
 Name: ADC_SOS
 Type: LOGICAL
@@ -12029,10 +11632,9 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_SOS"]=value.lower()
+            self.dict_of_keywords["ADC_SOS"] = value.lower()
 
-
-    def adc_print(self,value="show"):
+    def adc_print(self, value="show"):
         '''
 Name: ADC_PRINT
 Type: INTEGER
@@ -12052,10 +11654,9 @@ Recommendation: : Use default.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["ADC_PRINT"]=value.lower()
+            self.dict_of_keywords["ADC_PRINT"] = value.lower()
 
-
-    def state_analysis(self,value="show"):
+    def state_analysis(self, value="show"):
         '''
 Name: STATE_ANALYSIS
 Type: LOGICAL
@@ -12077,10 +11678,9 @@ Description: Performs certain excited state analyses for CIS/TD-DFT, ADC, and CC
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["STATE_ANALYSIS"]=value.lower()
+            self.dict_of_keywords["STATE_ANALYSIS"] = value.lower()
 
-
-    def qui_adc_states1(self,value="show"):
+    def qui_adc_states1(self, value="show"):
         '''
 Name: QUI_ADC_STATES1
 Type: undefined
@@ -12101,10 +11701,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_ADC_STATES1"]=value.lower()
+            self.dict_of_keywords["QUI_ADC_STATES1"] = value.lower()
 
-
-    def qui_adc_states2(self,value="show"):
+    def qui_adc_states2(self, value="show"):
         '''
 Name: QUI_ADC_STATES2
 Type: undefined
@@ -12125,10 +11724,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_ADC_STATES2"]=value.lower()
+            self.dict_of_keywords["QUI_ADC_STATES2"] = value.lower()
 
-
-    def qui_adc_core(self,value="show"):
+    def qui_adc_core(self, value="show"):
         '''
 Name: QUI_ADC_CORE
 Type: INTEGER
@@ -12147,10 +11745,9 @@ Description: Set the number of core orbitals in an CVS-ADC calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_ADC_CORE"]=value.lower()
+            self.dict_of_keywords["QUI_ADC_CORE"] = value.lower()
 
-
-    def geom_opt_hessian(self,value="show"):
+    def geom_opt_hessian(self, value="show"):
         '''
 Name: GEOM_OPT_HESSIAN
 Type: STRING
@@ -12173,10 +11770,9 @@ Recommendation: : An accurate initial Hessian will improve the performance of th
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["GEOM_OPT_HESSIAN"]=value.lower()
+            self.dict_of_keywords["GEOM_OPT_HESSIAN"] = value.lower()
 
-
-    def mp2v(self,value="show"):
+    def mp2v(self, value="show"):
         '''
 Name: MP2V
 Type: LOGICAL
@@ -12198,10 +11794,9 @@ Description:
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MP2V"]=value.lower()
+            self.dict_of_keywords["MP2V"] = value.lower()
 
-
-    def correlation(self,value="show"):
+    def correlation(self, value="show"):
         '''
 Name: CORRELATION
 Type: STRING
@@ -12283,10 +11878,9 @@ Recommendation: : Consult the literature and reviews for guidence    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["CORRELATION"]=value.lower()
+            self.dict_of_keywords["CORRELATION"] = value.lower()
 
-
-    def qui_primary_basis(self,value="show"):
+    def qui_primary_basis(self, value="show"):
         '''
 Name: QUI_PRIMARY_BASIS
 Type: STRING
@@ -12367,10 +11961,9 @@ Recommendation: : The primary basis should be smaller than the target basis.    
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["QUI_PRIMARY_BASIS"]=value.lower()
+            self.dict_of_keywords["QUI_PRIMARY_BASIS"] = value.lower()
 
-
-    def basis2_save(self,value="show"):
+    def basis2_save(self, value="show"):
         '''
 Name: BASIS2_SAVE
 Type: STRING
@@ -12410,10 +12003,9 @@ Description: Selects either a small basis set to use in basis set projection for
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["BASIS2_SAVE"]=value.lower()
+            self.dict_of_keywords["BASIS2_SAVE"] = value.lower()
 
-
-    def basis2(self,value="show"):
+    def basis2(self, value="show"):
         '''
 Name: BASIS2
 Type: STRING
@@ -12502,10 +12094,9 @@ Recommendation: : Consult literature and reviews to aid your selection.    '''
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["BASIS2"]=value.lower()
+            self.dict_of_keywords["BASIS2"] = value.lower()
 
-
-    def method(self,value="show"):
+    def method(self, value="show"):
         '''
 Name: METHOD
 Type: STRING
@@ -12568,16 +12159,13 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["METHOD"]=value.lower()
-
+            self.dict_of_keywords["METHOD"] = value.lower()
 
     # --------------- End of computer generated keyword list ------------------
 
-
-
     # --------------  REM keywords added by hand (obsolete?) -----------------
 
-    def aifdem(self,value="show"):
+    def aifdem(self, value="show"):
         if value == "":
             if "AIFDEM" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM"]
@@ -12588,9 +12176,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM"]=value.lower()
-    
-    def aifdem_ntothresh(self,value="show"):
+            self.dict_of_keywords["AIFDEM"] = value.lower()
+
+    def aifdem_ntothresh(self, value="show"):
         if value == "":
             if "AIFDEM_NTOTHRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_NTOTHRESH"]
@@ -12601,9 +12189,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_NTOTHRESH"]=value.lower()
-    
-    def aifdem_embed_range(self,value="show"):
+            self.dict_of_keywords["AIFDEM_NTOTHRESH"] = value.lower()
+
+    def aifdem_embed_range(self, value="show"):
         if value == "":
             if "AIFDEM_EMBED_RANGE" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_EMBED_RANGE"]
@@ -12614,9 +12202,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_EMBED_RANGE"]=value.lower()
-    
-    def aifdem_ctstates(self,value="show"):
+            self.dict_of_keywords["AIFDEM_EMBED_RANGE"] = value.lower()
+
+    def aifdem_ctstates(self, value="show"):
         if value == "":
             if "AIFDEM_CTSTATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_CTSTATES"]
@@ -12627,9 +12215,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_CTSTATES"]=value.lower()
-    
-    def xpol(self,value="show"):
+            self.dict_of_keywords["AIFDEM_CTSTATES"] = value.lower()
+
+    def xpol(self, value="show"):
         if value == "":
             if "XPOL" in self.dict_of_keywords:
                 del self.dict_of_keywords["XPOL"]
@@ -12640,9 +12228,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XPOL"]=value.lower()
-    
-    def xpol_noscf(self,value="show"):
+            self.dict_of_keywords["XPOL"] = value.lower()
+
+    def xpol_noscf(self, value="show"):
         if value == "":
             if "XPOL_NOSCF" in self.dict_of_keywords:
                 del self.dict_of_keywords["XPOL_NOSCF"]
@@ -12653,9 +12241,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XPOL_NOSCF"]=value.lower()
-    
-    def xpol_charge_type(self,value="show"):
+            self.dict_of_keywords["XPOL_NOSCF"] = value.lower()
+
+    def xpol_charge_type(self, value="show"):
         if value == "":
             if "XPOL_CHARGE_TYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["XPOL_CHARGE_TYPE"]
@@ -12666,9 +12254,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XPOL_CHARGE_TYPE"]=value.lower()
-            
-    def nto_pairs(self,value="show"):
+            self.dict_of_keywords["XPOL_CHARGE_TYPE"] = value.lower()
+
+    def nto_pairs(self, value="show"):
         if value == "":
             if "NTO_PAIRS" in self.dict_of_keywords:
                 del self.dict_of_keywords["NTO_PAIRS"]
@@ -12679,9 +12267,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["NTO_PAIRS"]=value.lower()
-    
-    def max_scf_cycles(self,value="show"):
+            self.dict_of_keywords["NTO_PAIRS"] = value.lower()
+
+    def max_scf_cycles(self, value="show"):
         if value == "":
             if "MAX_SCF_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["MAX_SCF_CYCLES"]
@@ -12692,9 +12280,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MAX_SCF_CYCLES"]=value.lower()
-            
-    def symmetry(self,value="show"):
+            self.dict_of_keywords["MAX_SCF_CYCLES"] = value.lower()
+
+    def symmetry(self, value="show"):
         if value == "":
             if "SYMMETRY" in self.dict_of_keywords:
                 del self.dict_of_keywords["SYMMETRY"]
@@ -12705,9 +12293,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SYMMETRY"]=value.lower()
-    
-    def aifdem_frgm_read(self,value="show"):
+            self.dict_of_keywords["SYMMETRY"] = value.lower()
+
+    def aifdem_frgm_read(self, value="show"):
         if value == "":
             if "AIFDEM_FRGM_READ" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_FRGM_READ"]
@@ -12718,9 +12306,9 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_FRGM_READ"]=value.lower()
-    
-    def aifdem_frgm_write(self,value="show"):
+            self.dict_of_keywords["AIFDEM_FRGM_READ"] = value.lower()
+
+    def aifdem_frgm_write(self, value="show"):
         if value == "":
             if "AIFDEM_FRGM_WRITE" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_FRGM_WRITE"]
@@ -12731,59 +12319,59 @@ Description: The level of theory used in the calculation.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_FRGM_WRITE"]=value.lower()
+            self.dict_of_keywords["AIFDEM_FRGM_WRITE"] = value.lower()
 
+    # ------------------------ End of manual keyword list ----------------------
 
-   # ------------------------ End of manual keyword list ---------------------- 
-            
-    def add(self,keyword,value):
+    def add(self, keyword, value):
         '''\nFor rem values without documenation herein, please add keyword and value manually'''
-        self.dict_of_keywords[keyword.upper()]=value.lower()
-        
-    def remove(self,keyword):
+        self.dict_of_keywords[keyword.upper()] = value.lower()
+
+    def remove(self, keyword):
         del self.dict_of_keywords[keyword.upper()]
-        
+
     def clear(self):
         '''Removes all keywords from array.'''
         self.dict_of_keywords.clear()
-        
+
     def __str__(self):
-        str_ret =  "$rem\n"
-        for key,value in self.dict_of_keywords.items():
-            str_ret += key.upper() + (rem_array.__tabstop-len(key))*" " + value + "\n"
+        str_ret = "$rem\n"
+        for key, value in self.dict_of_keywords.items():
+            str_ret += key.upper() + (
+                        rem_array.__tabstop - len(key)) * " " + value + "\n"
         str_ret += "$end\n"
         return str_ret
-    
+
     def info(self):
         print("Type: rem array")
         print("Keywords: " + str(len(self.dict_of_keywords)))
 
+
 ######################### REM_FRGM FRAGMENT ##############################
 
 class rem_frgm_array(rem_array):
-
     __tabstop = 30
 
-    def __init__(self,rem_init=""):
+    def __init__(self, rem_init=""):
         self.dict_of_keywords = {}
-        rem_init=rem_init.splitlines()
-        if len(rem_init)!=0:
+        rem_init = rem_init.splitlines()
+        if len(rem_init) != 0:
             for i in rem_init:
-                i=i.split(" ")
-                if len(i)==0:
-                    i=i.split("=")
+                i = i.split(" ")
+                if len(i) == 0:
+                    i = i.split("=")
                 if i[0].startswith("$"):
                     continue
-                self.add(i[0],i[1])
+                self.add(i[0], i[1])
 
     def __str__(self):
-        str_ret =  "$rem_frgm\n"
-        for key,value in self.dict_of_keywords.items():
-            str_ret += key.upper() + (rem_frgm_array.__tabstop-len(key))*" " + value + "\n"
+        str_ret = "$rem_frgm\n"
+        for key, value in self.dict_of_keywords.items():
+            str_ret += key.upper() + (rem_frgm_array.__tabstop - len(
+                key)) * " " + value + "\n"
         str_ret += "$end\n"
         return str_ret
 
     def info(self):
         print("Type: rem_frgm array")
         print("Keywords: " + str(len(self.dict_of_keywords)))
-
