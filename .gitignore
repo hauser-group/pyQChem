@@ -15,3 +15,6 @@ pathtable
 
 # Ignore folder for PyCharm IDE
 .idea/
+
+# Ignore backup files from 2to3
+*.bak
