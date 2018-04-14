@@ -28,8 +28,8 @@ start=out.opt.geometries[0]
 end=out.opt.geometries[-1]
 
 #Print statistics for geometric distortions
-print "\n\nApproximate change between starting and ending geometries by two metrics:\n"
-print qc.utilities.rmsd(start.xyzs,end.xyzs)," or ", qc.utilities.kabsch(start.xyzs,end.xyzs),"\n"
+print("\n\nApproximate change between starting and ending geometries by two metrics:\n")
+print(qc.utilities.rmsd(start.xyzs,end.xyzs)," or ", qc.utilities.kabsch(start.xyzs,end.xyzs),"\n")
 
 #Check for reordering (not necessary in this case) and print out sequential RMSDs
 qc.utilities.orderset(out.opt.geometries)

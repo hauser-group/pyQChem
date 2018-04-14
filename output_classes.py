@@ -39,10 +39,10 @@
 import numpy as _np
 from copy import deepcopy
 
-from input_classes import cartesian
-from utilities import _readinput
-from adc_classes import _parse_adc
-import constants
+from .input_classes import cartesian
+from .utilities import _readinput
+from .adc_classes import _parse_adc
+from . import constants
 
 
 ########################## INFO CLASSES #############################
@@ -79,35 +79,35 @@ class _mm(object):
         '''
         Prints an overview of the calculated MM energies.
         '''
-        print "MM calculation summary"
-        print "----------------------"
-        print ""
+        print("MM calculation summary")
+        print("----------------------")
+        print("")
         if type(self.etot)==list:
-            print str(len(self.etot)) + " energies found, printing last:"
-            print ""
-            print "Number of bonds:\t\t" + str(self.nbonds)
-            print "Bond energy:\t\t\t" + str(self.ebond[-1]) + " kcal/mol"
-            print "Angle energy:\t\t\t" + str(self.eangle[-1]) + " kcal/mol"
-            print "Urey-Bradly energy:\t\t" + str(self.eureybrad[-1]) + " kcal/mol"
-            print "Improper rotation energy:\t" + str(self.eimptors[-1]) + " kcal/mol"
-            print "Torsion energy:\t\t\t" + str(self.etorsion[-1]) + " kcal/mol"
-            print "van der Waals energy:\t\t" + str(self.evdw[-1]) + " kcal/mol"
-            print "Coulomb energy:\t\t\t" + str(self.ecoulomb[-1]) + " kcal/mol"
-            print "-------------------------"
-            print "Total energy:\t\t\t" + str(self.etot[-1])  + " kcal/mol (" + \
-                str(self.etot[-1]*constants.kcal_pro_mole_to_hartree) + " Hartree)"
+            print(str(len(self.etot)) + " energies found, printing last:")
+            print("")
+            print("Number of bonds:\t\t" + str(self.nbonds))
+            print("Bond energy:\t\t\t" + str(self.ebond[-1]) + " kcal/mol")
+            print("Angle energy:\t\t\t" + str(self.eangle[-1]) + " kcal/mol")
+            print("Urey-Bradly energy:\t\t" + str(self.eureybrad[-1]) + " kcal/mol")
+            print("Improper rotation energy:\t" + str(self.eimptors[-1]) + " kcal/mol")
+            print("Torsion energy:\t\t\t" + str(self.etorsion[-1]) + " kcal/mol")
+            print("van der Waals energy:\t\t" + str(self.evdw[-1]) + " kcal/mol")
+            print("Coulomb energy:\t\t\t" + str(self.ecoulomb[-1]) + " kcal/mol")
+            print("-------------------------")
+            print("Total energy:\t\t\t" + str(self.etot[-1])  + " kcal/mol (" + \
+                str(self.etot[-1]*constants.kcal_pro_mole_to_hartree) + " Hartree)")
         else:
-            print "Number of bonds:\t\t" + str(self.nbonds)
-            print "Bond energy:\t\t\t" + str(self.ebond) + " kcal/mol"
-            print "Angle energy:\t\t\t" + str(self.eangle) + " kcal/mol"
-            print "Urey-Bradly energy:\t\t" + str(self.eureybrad) + " kcal/mol"
-            print "Improper rotation energy:\t" + str(self.eimptors) + " kcal/mol"
-            print "Torsion energy:\t\t\t" + str(self.etorsion) + " kcal/mol"
-            print "van der Waals energy:\t\t" + str(self.evdw) + " kcal/mol"
-            print "Coulomb energy:\t\t\t" + str(self.ecoulomb) + " kcal/mol"
-            print "-------------------------"
-            print "Total energy:\t\t\t" + str(self.etot)  + " kcal/mol (" + \
-                str(self.etot*constants.kcal_pro_mole_to_hartree) + " Hartree)"
+            print("Number of bonds:\t\t" + str(self.nbonds))
+            print("Bond energy:\t\t\t" + str(self.ebond) + " kcal/mol")
+            print("Angle energy:\t\t\t" + str(self.eangle) + " kcal/mol")
+            print("Urey-Bradly energy:\t\t" + str(self.eureybrad) + " kcal/mol")
+            print("Improper rotation energy:\t" + str(self.eimptors) + " kcal/mol")
+            print("Torsion energy:\t\t\t" + str(self.etorsion) + " kcal/mol")
+            print("van der Waals energy:\t\t" + str(self.evdw) + " kcal/mol")
+            print("Coulomb energy:\t\t\t" + str(self.ecoulomb) + " kcal/mol")
+            print("-------------------------")
+            print("Total energy:\t\t\t" + str(self.etot)  + " kcal/mol (" + \
+                str(self.etot*constants.kcal_pro_mole_to_hartree) + " Hartree)")
 
 
 class _general(object):
@@ -136,10 +136,10 @@ class _general(object):
         '''
         Prints a summary of basic information. Energy is given in Hartree.
         '''
-        print "About this job:"
-        print "--------------"
-        print ""
-        print "Q-Chem version:\t\t" + self.version
+        print("About this job:")
+        print("--------------")
+        print("")
+        print("Q-Chem version:\t\t" + self.version)
 
         jobstring = "Jobtype:\t\t" + self.jobtype.lower()
         if self.mm_type == "mm":
@@ -148,20 +148,20 @@ class _general(object):
             jobstring += " (QM/MM calculation of type Janus)"
         if self.mm_type == "oniom":
             jobstring += " (QM/MM calculation of type ONIOM)"
-        print jobstring
+        print(jobstring)
 
         if self.mm_type=="mm":
-            print "MM energy:\t\t" + str(self.energy)
+            print("MM energy:\t\t" + str(self.energy))
         elif self.mm_type=="" :
-            print "Basis functions:\t" + str(self.basis_size)
-            print "Spin:\t\t\t" + str(self.spin)
-            print "SCF energy:\t\t" + str(self.energy)
+            print("Basis functions:\t" + str(self.basis_size))
+            print("Spin:\t\t\t" + str(self.spin))
+            print("SCF energy:\t\t" + str(self.energy))
         else:
-            print "Basis functions:\t" + str(self.basis_size)
-            print "Spin:\t\t\t" + str(self.spin)
-            print "QM/MM total energy:\t" + str(self.energy)
+            print("Basis functions:\t" + str(self.basis_size))
+            print("Spin:\t\t\t" + str(self.spin))
+            print("QM/MM total energy:\t" + str(self.energy))
 
-        print "Status:\t\t\t" + self.status
+        print("Status:\t\t\t" + self.status)
 
 
 class _thermo(object):
@@ -193,26 +193,26 @@ class _thermo(object):
         Enthalpy (H), Helmholtz free energy (F) and Gibbs free energy (G) are
         already corrected for internal thermal energy (which includes zero point energy).
         '''
-        print "Electronic energy (E):\t\t" + str(self.E)
-        print "---------------------"
-        print ""
-        print "Corrections to E:"
-        print "-----------------"
-        print "Zero point energy (ZPE):\t" + str(self.ZPE)
-        print "Internal thermal energy (ITE):\t" + str(self.ITE)
-        print ""
-        print "Temperature (T in Kelvin):\t" + str(self.T)
-        print "-------------------------"
-        print ""
-        print "Pressure (p in Pa):\t\t" + str(self.p)
-        print "------------------"
-        print ""
-        print "Thermodynamic potentials:"
-        print "------------------------"
-        print "Entropy (S):\t\t\t" + str(self.S)
-        print "Enthalpy (H):\t\t\t" + str(self.H)
-        print "Helmholtz free energy (F):\t" + str(self.F)
-        print "Gibbs free energy (G):\t\t" + str(self.G)
+        print("Electronic energy (E):\t\t" + str(self.E))
+        print("---------------------")
+        print("")
+        print("Corrections to E:")
+        print("-----------------")
+        print("Zero point energy (ZPE):\t" + str(self.ZPE))
+        print("Internal thermal energy (ITE):\t" + str(self.ITE))
+        print("")
+        print("Temperature (T in Kelvin):\t" + str(self.T))
+        print("-------------------------")
+        print("")
+        print("Pressure (p in Pa):\t\t" + str(self.p))
+        print("------------------")
+        print("")
+        print("Thermodynamic potentials:")
+        print("------------------------")
+        print("Entropy (S):\t\t\t" + str(self.S))
+        print("Enthalpy (H):\t\t\t" + str(self.H))
+        print("Helmholtz free energy (F):\t" + str(self.F))
+        print("Gibbs free energy (G):\t\t" + str(self.G))
 
     def calculate(self,temp,pressure="",loop_iso=0,loop_freq="",grimme=0,grimme_thresh=100,silent=0):
         '''
@@ -265,7 +265,7 @@ class _thermo(object):
                 p = _np.asarray(pressure,dtype=float)
 
         if (_np.size(T) != _np.size(p)):
-            print "Temperature and pressure input differs in length."
+            print("Temperature and pressure input differs in length.")
         else:
             # Get frequencies
             dummy = _np.asarray(self.frequencies[loop_freq],dtype=float)
@@ -287,7 +287,7 @@ class _thermo(object):
         # Rotational contributions (for linear molecule)
         if self._lin_switch==1:
             if silent==0:
-                print "Linear molecule detected..."
+                print("Linear molecule detected...")
             theta_lin = (constants.Planck_constant)**2/(8*pi**2*_np.max(mom_inertia)*constants.Boltzmann_constant) # rotational temperature
             Q_rot_lin = T/theta_lin/rot_sym
             S_rot = constants.molar_gas_constant*(_np.log(Q_rot_lin)+1)
@@ -340,11 +340,11 @@ class _thermo(object):
         # Print and return array of thermodynamical potentials
         if silent==0:
             headerline = "Results based on frequencies of loop " + str(loop_freq) + " and isotopes of loop " + str(loop_iso)
-            print headerline
-            print "-"*len(headerline)
-            print "\nT\tp\t\tITE\t\t S\t\t H\t\t F\t\t G"
+            print(headerline)
+            print("-"*len(headerline))
+            print("\nT\tp\t\tITE\t\t S\t\t H\t\t F\t\t G")
             for k,l in enumerate(T):
-                print "%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k])
+                print("%.2f\t%.2f\t%.7f\t%.7f\t%.7f\t%.7f\t%.7f\t" % (T[k],p[k],ITE[k],S[k],H[k],F[k],G[k]))
         dummy = _np.asarray([T,p,ITE,S,H,F,G])
         data = dummy.transpose()
         return data
@@ -365,13 +365,13 @@ class _opt(object):
         self.status = optstat
 
     def info(self):
-        print "Summary of geometry optimization:"
-        print "--------------------------------"
-        print ""
-        print "Energy\t\tGradient\tDisplacement\tDeltaE"
+        print("Summary of geometry optimization:")
+        print("--------------------------------")
+        print("")
+        print("Energy\t\tGradient\tDisplacement\tDeltaE")
         for i,k in enumerate(self.energies):
             #print str(k) + "\t\t" + str(self.gradient[i]) + "\t" + str(self.displacement[i]) + "\t" + str(self.change[i])
-            print "%.9f\t%.9f\t%.9f\t%.9f\t" %(k,self.gradient[i],self.displacement[i],self.change[i])
+            print("%.9f\t%.9f\t%.9f\t%.9f\t" %(k,self.gradient[i],self.displacement[i],self.change[i]))
 
     def write_trajectory_xyz(self,filename='trajectory.xyz'):
         """
@@ -404,12 +404,12 @@ class _aimd(object):
         self.status=aimdstat
 
     def info(self):
-        print "Summary of AIMD calculation:"
-        print "--------------------------------"
-        print ""
-        print "Step\tenergies\ttime (fs)\tdrift"
+        print("Summary of AIMD calculation:")
+        print("--------------------------------")
+        print("")
+        print("Step\tenergies\ttime (fs)\tdrift")
         for i,k in enumerate(self.energies):
-            print "%i\t%.9f\t%8.2f\t%.5f\t" %(i+1,k,self.time[i],self.drift[i])
+            print("%i\t%.9f\t%8.2f\t%.5f\t" %(i+1,k,self.time[i],self.drift[i]))
 
     def write_trajectory_xyz(self,filename='trajectory.xyz'):
     	"""
@@ -731,7 +731,7 @@ class _outputfile(object):
                     loop += 1
                     if "*" in line:
                         if not silent:
-                            print "Warning: Molecular mass in loop " + str(loop) + " is unphysically large. Will use mass of first loop instead."
+                            print("Warning: Molecular mass in loop " + str(loop) + " is unphysically large. Will use mass of first loop instead.")
                         mass.append(mass[0])
                     else:
                         dummy = float((line.split())[2])
@@ -741,7 +741,7 @@ class _outputfile(object):
                 if "Eigenvalues --" in line:
                     if "*" in line:
                         if not silent:
-                            print "Warning: Moment of inertia in loop " + str(loop) + " is unphysically large. Will use values of first loop instead."
+                            print("Warning: Moment of inertia in loop " + str(loop) + " is unphysically large. Will use values of first loop instead.")
                         mom_inertia.append(mom_inertia[0])
                     else:
                         dummy = [float((line.split())[2]),float((line.split())[3]),float((line.split())[4])]
@@ -915,7 +915,7 @@ class _outputfile(object):
             for i in range(len(self.EvalStrng.split())):
                 _ierr +=1
                 if _ierr > 7:
-                    print "Possible Error finding AIFDEM Excitation Energy in output_classes.py"
+                    print("Possible Error finding AIFDEM Excitation Energy in output_classes.py")
                 if len(self.EvalStrng.split()[i]) > 1:
                     _iFirstline = i
                     break

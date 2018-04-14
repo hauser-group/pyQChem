@@ -59,35 +59,35 @@ from copy import deepcopy
 
 ############################ CONSTANTS ##############################
 
-import constants
+from . import constants
 
 ############################# MODULES ###############################
 
 # First we need all visible inputfile classes. 
 
-from input_classes import *
+from .input_classes import *
 
 # Then we add some hidden outputfile classes... 
 
-from output_classes import _outputfile
-from output_classes import _multioutput
+from .output_classes import _outputfile
+from .output_classes import _multioutput
 
 # and one hidden inputfile class for users who need to create their own
 # unsupported input arrays
 
-from input_classes import _unsupported_array
+from .input_classes import _unsupported_array
 
 # Now we load some subroutines for filereading.
 
-from utilities import _readzmat
-from utilities import _readcartesian
-from utilities import _readtinker
-from utilities import _readpybel
-from utilities import _readinput
+from .utilities import _readzmat
+from .utilities import _readcartesian
+from .utilities import _readtinker
+from .utilities import _readpybel
+from .utilities import _readinput
 
 # Lastly, let's load some scripts for running files
 
-from running_scripts import *
+from .running_scripts import *
 
 ########################### FILEHANDLING ############################
         
@@ -119,7 +119,7 @@ def read(filename,silent=False):
         # Does the file contain multiple jobs? 
         if N_jobs>0:
             if not silent:
-                print "Batch Jobfile detected."
+                print("Batch Jobfile detected.")
             joblist = []
             infile = open(filename,"r")
             content = infile.readlines()
@@ -141,25 +141,25 @@ def read(filename,silent=False):
         # No, it's a single job file    
         else:
             if not silent:
-                print "Jobfile detected."
+                print("Jobfile detected.")
             return _readinput(filename,silent)
         
     # Is it a z-matrix file?
     elif extension in ("zmat","ZMAT","Z","z"):
         if not silent:
-            print "Z-matrix file detected."
+            print("Z-matrix file detected.")
         return _readzmat(filename)
           
     # Is it a cartesian coordinates file?
     elif extension in ("xyz","XYZ"):
         if not silent:
-            print "Cartesian coordinates file detected."
+            print("Cartesian coordinates file detected.")
         return _readcartesian(filename)
         
     # Is it a tinker coordinates file?
     elif extension in ("txyz","TXYZ"):
         if not silent:
-            print "Tinker coordinates file detected."
+            print("Tinker coordinates file detected.")
         return _readtinker(filename)
 
 
@@ -179,7 +179,7 @@ def read(filename,silent=False):
         # Does the file contain multiple jobs? 
         if N_jobs>1:
             if not silent:
-                print "Batch-Outputfile detected."
+                print("Batch-Outputfile detected.")
             joblist = []
             infile = open(filename,"r")
             content = infile.readlines()
@@ -201,7 +201,7 @@ def read(filename,silent=False):
         # No, it's a single job file    
         else:
             if not silent:
-                print "Outputfile detected."
+                print("Outputfile detected.")
             return _outputfile(filename,silent)
 
     # Is it anything pybel can read?
@@ -209,18 +209,18 @@ def read(filename,silent=False):
         try: 
             import pybel
         except:
-            print "Error: File type not recognized."
+            print("Error: File type not recognized.")
             return
         if not silent:
-            print pybel.informats[extension], " detected"
+            print(pybel.informats[extension], " detected")
         return _readpybel(extension,filename)   
 
     # What the heck? This is not a valid file.
     else:
         if not silent:
-            print "Error: File type not recognized."
+            print("Error: File type not recognized.")
 
 if __name__ == "__main__":
-    print "This file is supposed to be loaded as a module, not as main."
+    print("This file is supposed to be loaded as a module, not as main.")
    
    

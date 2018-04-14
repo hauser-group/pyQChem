@@ -28,10 +28,10 @@ class _state(object):
         Print an overview of the state information 
         '''
         if self.term_symbol != "":
-            print("  Term symbol: " + self.term_symbol)
-        print("  Energy = " + repr(self.total_energy))
-        for name,value in self.dict_of_properties.items():
-            print("  Property: " + name + " = " + repr(value))
+            print(("  Term symbol: " + self.term_symbol))
+        print(("  Energy = " + repr(self.total_energy)))
+        for name,value in list(self.dict_of_properties.items()):
+            print(("  Property: " + name + " = " + repr(value)))
         
         
 class _transition(object):
@@ -55,10 +55,10 @@ class _transition(object):
         '''
         Print an overview of the transition information 
         '''
-        print("  Excitation energy = " + repr(self.energy) +
-            " (" + repr(self.osc_strength) + ")");
-        for name,value in self.dict_of_properties.items():
-            print("  Property " + name + " = " + repr(value))
+        print(("  Excitation energy = " + repr(self.energy) +
+            " (" + repr(self.osc_strength) + ")"));
+        for name,value in list(self.dict_of_properties.items()):
+            print(("  Property " + name + " = " + repr(value)))
 
 
 class _amplitude(object):
@@ -87,8 +87,8 @@ class _ground_state(_state):
         '''
         _state.info(self)
         print("  Energy composition:")
-        for name,value in self.dict_of_econtrib.items():
-            print("    E(" + name + ") = " + repr(value))
+        for name,value in list(self.dict_of_econtrib.items()):
+            print(("    E(" + name + ") = " + repr(value)))
 
 
 class _excited_state(_state, _transition):
@@ -127,11 +127,11 @@ class _excited_state(_state, _transition):
         else:
             s = "  Not converged " + s
         print(s)
-        print("  Components V^2 = " + str(self.vnorm))
+        print(("  Components V^2 = " + str(self.vnorm)))
         if len(self.list_of_amplitudes) > 0:
             print("  Imporant amplitudes")
             for a in self.list_of_amplitudes:
-                print("    " + a.excitation + ": " + str(a.value))
+                print(("    " + a.excitation + ": " + str(a.value)))
         
 
 class _adc(object):
@@ -161,17 +161,17 @@ class _adc(object):
         self.ground_state.info()
         print("")
         for i,state in enumerate(self.list_of_excited_states):
-            print("Excited state " + str(i + 1) + ":")
+            print(("Excited state " + str(i + 1) + ":"))
             state.info()
             print("")
         print("")
         if isinstance(self.dict_of_transitions, dict):
-            for i,trlist in self.dict_of_transitions.items():
+            for i,trlist in list(self.dict_of_transitions.items()):
                 if not isinstance(trlist, dict): 
                     continue
-                for j,tr in trlist.items():
-                    print("Transition from state " + str(i + 1) + " to state " 
-                        + str(j + 1) + ":")
+                for j,tr in list(trlist.items()):
+                    print(("Transition from state " + str(i + 1) + " to state " 
+                        + str(j + 1) + ":"))
                     tr.info()
 
 ####################### ADC PARSER FUNCTIONS ######################## 
@@ -255,7 +255,7 @@ def _build_gs(ts, data):
     for state in data: 
         te = state['total_energy']
         contrib[state['name']] = state['energy_contrib']
-        for key,val in state['properties'].items():
+        for key,val in list(state['properties'].items()):
             prop[key] = val
 
     return _ground_state(ts, te, prop, contrib)

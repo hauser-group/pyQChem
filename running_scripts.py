@@ -35,7 +35,7 @@
 # modified my AWH Feb 2014: global method 'run()' is now hidden to reduce confusion,
 # inputfile and multifile objects have their own 'run()' method which calls '_run()'.
 
-from input_classes import *
+from .input_classes import *
 
 def _run(inp_file,name='',loc53='',qchem='',nt=1,np=1,timestamp=False):
     """This is a script for running Q-Chem inside of iPython given an input file object, name, 53.0 file, location, and number of threads or processors"""
@@ -100,10 +100,10 @@ def queue(joblist,num_workers=1):
 	"""This is a simple queue for running through a list of jobs (based on the content of each runinfo object).  
 	When in doubt, set num_workers to the number of cores on the machine.
 	Advanced options are currently not supported."""
-	import Queue
+	import queue
 	import threading
-	q_in = Queue.Queue(maxsize=0)
-	q_out = Queue.Queue(maxsize=0)
+	q_in = queue.Queue(maxsize=0)
+	q_out = queue.Queue(maxsize=0)
 	# process that each worker thread will execute until the Queue is empty
 	def worker():
 	    while True:
@@ -118,7 +118,7 @@ def queue(joblist,num_workers=1):
 	    while True:
 	        # get an item processed by worker threads and print the result. Let queue know item has been processed
 	        item = q_out.get()
-	        print "Completed ", item
+	        print("Completed ", item)
 	        q_out.task_done()
 
 	# launch all of our queued processes
@@ -141,4 +141,4 @@ def queue(joblist,num_workers=1):
 	q_in.join()       # block until all tasks are done
 	q_out.join()
 
-	print "Processing Complete"
+	print("Processing Complete")

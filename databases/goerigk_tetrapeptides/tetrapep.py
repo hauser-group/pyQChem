@@ -15,4 +15,4 @@ for i in li:
         eos.append(627.5095*(d))
 
 for i,j in enumerate(li):
-        print j,scf[i],eos[i],ess[i]
+        print(j,scf[i],eos[i],ess[i])

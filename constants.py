@@ -40,11 +40,11 @@
 
 
 def info():
-	print "Selection of constants and conversion factors"
-	print "---------------------------------------------"
-	print ""
-	print "Fundamental constants are given in SI units. Factors for conversion from x to y are abbreviated as x_to_y."
-	print "Constants are taken from http://physics.nist.gov/constants (1/14/2014)"
+	print("Selection of constants and conversion factors")
+	print("---------------------------------------------")
+	print("")
+	print("Fundamental constants are given in SI units. Factors for conversion from x to y are abbreviated as x_to_y.")
+	print("Constants are taken from http://physics.nist.gov/constants (1/14/2014)")
 
 # Fundamentals in SI units                                     Value                 Uncertainty           Unit
 #---------------------------------------------------------------------------------------------------------------------------

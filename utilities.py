@@ -49,9 +49,9 @@ import numpy
 # Let's start with importing the inputfile classes. 
 # Hidden classes have to be imported explicitely.
 
-from input_classes import *
-from input_classes import _unsupported_array
-from input_classes import _array
+from .input_classes import *
+from .input_classes import _unsupported_array
+from .input_classes import _array
 
 
 def _readcartesian(filename):
@@ -111,12 +111,12 @@ def _readpybel(extension,filename):
     try:
         import pybel
     except:
-        print "pybel not loaded- please check your openbabel installation\n"
+        print("pybel not loaded- please check your openbabel installation\n")
         return 
     import numpy as _np
-    from constants import dict_of_atomic_abbr
+    from .constants import dict_of_atomic_abbr
 
-    infile = pybel.readfile(extension,filename).next() #this assumes only one geometry per file
+    infile = next(pybel.readfile(extension,filename)) #this assumes only one geometry per file
     periodic=False
     try:
         if (infile.unitcell.GetValue()=='UnitCell'):
@@ -127,7 +127,7 @@ def _readpybel(extension,filename):
     cell_b=0.0
     cell_c=0.0
     if periodic:
-        print "Be very careful, you have a periodic system. You'd better terminate those bonds.\n"
+        print("Be very careful, you have a periodic system. You'd better terminate those bonds.\n")
         cell_a=infile.unitcell.GetA()
         cell_b=infile.unitcell.GetB()
         cell_c=infile.unitcell.GetC()
@@ -143,8 +143,8 @@ def _readpybel(extension,filename):
     for num,i in enumerate(atom_list):
         atom_list[num][0]=dict_of_atomic_abbr[i[0]] #cast to known abbreviations
     
-    for i in xrange(len(atom_list)): #Make it all strings
-        for j in xrange(len(atom_list[i])):
+    for i in range(len(atom_list)): #Make it all strings
+        for j in range(len(atom_list[i])):
             atom_list[i][j]=str(atom_list[i][j])
 
     re_file = inputfile()
@@ -278,10 +278,10 @@ def _readinput(file_input,silent=False):
                     new_array.geometry(tinker_dummy)
                 elif switch == 0:
                     if not silent:
-                        print "Warning: $molecule array is empty."
+                        print("Warning: $molecule array is empty.")
                 else:
                     if not silent:
-                        print "Unknown format in $molecule array."
+                        print("Unknown format in $molecule array.")
             re_file.add(new_array)
             
         elif k=="comment":
@@ -331,7 +331,7 @@ def _readinput(file_input,silent=False):
 
         else:
             if not silent:
-                print "Unsupported array type " + k + " detected. Read as constant."
+                print("Unsupported array type " + k + " detected. Read as constant.")
             new_array = _unsupported_array(k)
             for line in content:
                 new_array.add_line(line)
@@ -523,8 +523,8 @@ def order(P,Q):
     natoms=len(P.xyzs)
     dist,Q.xyzs=kabsch2(P.xyzs,Q.xyzs)
     Q.move([0,0,0])
-    for i in xrange(natoms):
-        for j in xrange(natoms):
+    for i in range(natoms):
+        for j in range(natoms):
             if i==j:
                 continue
             tmp=kabsch(P.xyzs,swap(Q,i,j).xyzs)
@@ -532,18 +532,18 @@ def order(P,Q):
                 Q=swap(Q,i,j)
                 dist,Q.xyzs=kabsch2(P.xyzs,Q.xyzs)
                 Q.move([0,0,0])
-                print "Swapping atoms ",i," and ",j
+                print("Swapping atoms ",i," and ",j)
     return Q
 
 def orderset(cart_list):
     cnum=len(cart_list)
-    for i in xrange(cnum):
+    for i in range(cnum):
         cart_list[i].move(-cart_list[i].com)
-    for i in xrange(cnum-1):
-        print "Comparing ",i," and ",i+1
+    for i in range(cnum-1):
+        print("Comparing ",i," and ",i+1)
         cart_list[i+1]=order(cart_list[i],cart_list[i+1])
-        print "RMSD=",rmsd(cart_list[i].xyzs,cart_list[i+1].xyzs)
-        print "Kabsch RMSD=",kabsch(cart_list[i].xyzs,cart_list[i+1].xyzs)
+        print("RMSD=",rmsd(cart_list[i].xyzs,cart_list[i+1].xyzs))
+        print("Kabsch RMSD=",kabsch(cart_list[i].xyzs,cart_list[i+1].xyzs))
     return
 
 
