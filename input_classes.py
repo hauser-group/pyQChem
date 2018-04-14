@@ -12338,7 +12338,7 @@ Description: The level of theory used in the calculation.
         str_ret = "$rem\n"
         for key, value in self.dict_of_keywords.items():
             str_ret += key.upper() + (
-                        rem_array.__tabstop - len(key)) * " " + value + "\n"
+                    rem_array.__tabstop - len(key)) * " " + value + "\n"
         str_ret += "$end\n"
         return str_ret
 
