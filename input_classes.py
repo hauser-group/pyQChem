@@ -673,21 +673,21 @@ class mol_array(_array):
         if self.content["GEOMETRY"] == "read":
             str_ret = "$molecule\nread\n$end\n"
         else:
-            str_ret = "$molecule\n" + self.content["CHARGE"] + " " + \
-                      self.content["MULTIPLICITY"] + "\n"
-            if type(self.content["GEOMETRY"]) == type(cartesian()):
+            str_ret = "$molecule\n" + str(self.content["CHARGE"]) + " " + \
+                      str(self.content["MULTIPLICITY"]) + "\n"
+            if isinstance(self.content["GEOMETRY"], cartesian):
                 for k in (self.content["GEOMETRY"]).list_of_atoms:
                     str_ret += k[0] + "    " + k[1] + "    " + k[2] + "    " + \
                                k[3] + "\n"
-            elif type(self.content["GEOMETRY"]) == type(fragment()):
+            elif isinstance(self.content["GEOMETRY"], fragment):
                 for l in self.content["GEOMETRY"].fragment_list:
                     str_ret += "--\n0 1\n"
                     for k in l.list_of_atoms:
                         str_ret += k[0] + "    " + k[1] + "    " + k[
                             2] + "    " + k[3] + "\n"
-            elif type(self.content["GEOMETRY"]) == type(zmat()):
+            elif isinstance(self.content["GEOMETRY"], zmat):
                 str_ret += (self.content["GEOMETRY"]).__str__()
-            elif type(self.content["GEOMETRY"]) == type(tinker()):
+            elif isinstance(self.content["GEOMETRY"], tinker):
                 for k in (self.content["GEOMETRY"]).list_of_atoms:
                     str_ret += k[0] + "    " + k[1] + "   " + k[2] + \
                                "    " + k[3] + "    " + k[4] + "    " + k[5] + \
