@@ -222,7 +222,7 @@ def read(filename, silent=False):
     elif extension in pybel_inlist:
         try:
             import pybel
-        except:
+        except ImportError:
             print("Error: File type not recognized.")
             return
         if not silent:
