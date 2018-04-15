@@ -828,7 +828,10 @@ class _outputfile(object):
             elif switch == 2:
                 grad_dummy.append(line.split())
         # The geometry has changed, so let's update a variable in the 'general' info object
-        final_geometry = deepcopy(geometries[-1])
+        try:
+            final_geometry = deepcopy(geometries[-1])
+        except IndexError:
+            raise ValueError('Could not find the geometries from optimization output.')
         if jobtype == "opt" or jobtype == "optimization":
             self.opt = _opt(geometries, energies, gradient, gradient_vector,
                             displacement, change, optstat)
