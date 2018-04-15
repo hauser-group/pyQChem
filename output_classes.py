@@ -518,17 +518,13 @@ class _outputfile(object):
 
         switch = 0
         for line in content:
-            if "JOBTYPE" in line:
-                jobtype = ((line.split())[-1]).lower()
-            if "jobtype" in line:
-                jobtype = ((line.split())[-1]).lower()
-            if "JOB_TYPE" in line:
+            if "jobtype" in line.lower() or "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
             if "basis2" in line.lower():
                 basis2_flag = True
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
                 mm_type = ((line.split())[-1]).lower()
-            if ("AIFDEM" in line) or ("aifdem" in line):
+            if "aifdem" in line.lower():
                 self.aifdem = ((line.split())[-1]).lower()
             if ("CIS_N_ROOTS" in line):
                 self.N_SET = ((line.split())[-1]).lower()
@@ -588,121 +584,11 @@ class _outputfile(object):
 
         # Make another round if we have an MM or a QM/MM Janus job (just one MM per step)
         if mm_type == "mm" or mm_type == "janus":
-            etot = []
-            ecoulomb = []
-            etorsion = []
-            eimptors = []
-            eureybrad = []
-            eangle = []
-            ebond = []
-            evdw = []
-
-            first_bond = 1
-            for line in content:
-                if ("MM bonds to file" in line) and (first_bond == 1):
-                    nbonds = int((line.split())[1])
-                    first_bond = 0
-                if "Ebond:" in line:
-                    ebond.append(float((line.split())[1]))
-                if "Eangle:" in line:
-                    eangle.append(float((line.split())[1]))
-                if "EUreyBrad:" in line:
-                    eureybrad.append(float((line.split())[1]))
-                if "Eimptors:" in line:
-                    eimptors.append(float((line.split())[1]))
-                if "Etorsion:" in line:
-                    etorsion.append(float((line.split())[1]))
-                if "Evdw:" in line:
-                    evdw.append(float((line.split())[1]))
-                if "Ecoulomb:" in line:
-                    ecoulomb.append(float((line.split())[1]))
-                if "Etot:" in line:
-                    etot.append(float((line.split())[1]))
-            self.mm = _mm(
-                [etot, ecoulomb, evdw, etorsion, eimptors, eureybrad, eangle,
-                 ebond, nbonds])  # Create MM info object
+            self._process_mm(content)
 
         # Make another round if we have an QM/MM ONIOM job (has two MM calulations per step)
         elif mm_type == "oniom":
-            etot = []
-            ecoulomb = []
-            etorsion = []
-            eimptors = []
-            eureybrad = []
-            eangle = []
-            ebond = []
-            evdw = []
-
-            etot2 = []
-            ecoulomb2 = []
-            etorsion2 = []
-            eimptors2 = []
-            eureybrad2 = []
-            eangle2 = []
-            ebond2 = []
-            evdw2 = []
-
-            mm_step = 0
-
-            first_bond = 1
-            first_bond2 = 1
-
-            for line in content:
-                if "Step 1: MM calculation on the entire system" in line:
-                    mm_step = 1
-                if "Step 2: MM calculation on the model system" in line:
-                    mm_step = 2
-
-                if ("MM bonds to file" in line) and (first_bond == 1) and (
-                        mm_step == 1):
-                    nbonds = int((line.split())[1])
-                    first_bond = 0
-                if "Ebond:" in line and (mm_step == 1):
-                    ebond.append(float((line.split())[1]))
-                if "Eangle:" in line and (mm_step == 1):
-                    eangle.append(float((line.split())[1]))
-                if "EUreyBrad:" in line and (mm_step == 1):
-                    eureybrad.append(float((line.split())[1]))
-                if "Eimptors:" in line and (mm_step == 1):
-                    eimptors.append(float((line.split())[1]))
-                if "Etorsion:" in line and (mm_step == 1):
-                    etorsion.append(float((line.split())[1]))
-                if "Evdw:" in line and (mm_step == 1):
-                    evdw.append(float((line.split())[1]))
-                if "Ecoulomb:" in line and (mm_step == 1):
-                    ecoulomb.append(float((line.split())[1]))
-                if "Etot:" in line and (mm_step == 1):
-                    etot.append(float((line.split())[1]))
-
-                if ("n_qm_bonds =" in line) and (first_bond2 == 1) and (
-                        mm_step == 2):
-                    nbonds2 = int((line.split())[2])
-                    first_bond2 = 0
-                if "Ebond:" in line and (mm_step == 2):
-                    ebond2.append(float((line.split())[1]))
-                if "Eangle:" in line and (mm_step == 2):
-                    eangle2.append(float((line.split())[1]))
-                if "EUreyBrad:" in line and (mm_step == 2):
-                    eureybrad2.append(float((line.split())[1]))
-                if "Eimptors:" in line and (mm_step == 2):
-                    eimptors2.append(float((line.split())[1]))
-                if "Etorsion:" in line and (mm_step == 2):
-                    etorsion2.append(float((line.split())[1]))
-                if "Evdw:" in line and (mm_step == 2):
-                    evdw2.append(float((line.split())[1]))
-                if "Ecoulomb:" in line and (mm_step == 2):
-                    ecoulomb2.append(float((line.split())[1]))
-                if "Etot:" in line and (mm_step == 2):
-                    etot2.append(float((line.split())[1]))
-
-            # Create MM info object for entire system
-            self.mm_total = _mm(
-                [etot, ecoulomb, evdw, etorsion, eimptors, eureybrad, eangle,
-                 ebond, nbonds])
-            # Create MM info object for model system
-            self.mm_model = _mm(
-                [etot2, ecoulomb2, evdw2, etorsion2, eimptors2, eureybrad2,
-                 eangle2, ebond2, nbonds2])
+            self._process_oniom(content)
 
         if jobtype == "sp":
             # Retrieve rem object from input file
@@ -735,227 +621,13 @@ class _outputfile(object):
                 self.adc = _parse_adc(adc_variant, content, silent)
 
         if jobtype == "freq":
-            H2kcal = constants.hartree_to_kcal_pro_mole
-            E = float(energy)
-            temp = []
-            press = []
-            R_T = []
-            enth_corr = []
-            entr_corr = []
-            zero_point = []
-
-            mass = []
-            mom_inertia = []
-            rot_sym = []
-
-            switch = 0
-            frequencies = []
-            intensities = []
-
-            loop = 0
-
-            linear_switch = 0
-
-            for line in content:
-                if "STANDARD THERMODYNAMIC QUANTITIES AT" in line:
-                    temp.append(float((line.split())[4]))
-                    press.append(1.01325e5 * float((line.split())[7]))
-                if "Zero point vibrational energy" in line:
-                    zero_point.append(float((line.split())[4]) / H2kcal)
-                if "gas constant (RT):" in line:
-                    R_T.append(float((line.split())[3]) / H2kcal)
-                if "Total Enthalpy:" in line:
-                    enth_corr.append(float((line.split())[2]) / H2kcal)
-                if "Total Entropy:" in line:
-                    entr_corr.append(float((line.split())[2]) / 1000 / H2kcal)
-                if "We detect a D*h symmetry" in line:
-                    linear_switch = 1
-                if "We detect a C*v symmetry" in line:
-                    linear_switch = 1
-                if "We detect a C*h symmetry" in line:  # necessary because of wrong nomenclature in Q-chem (thermodyn.F)
-                    linear_switch = 1
-                if "Molecular Mass:" in line:
-                    loop += 1
-                    if "*" in line:
-                        if not silent:
-                            print("Warning: Molecular mass in loop " + str(
-                                loop) + " is unphysically large. Will use mass of first loop instead.")
-                        mass.append(mass[0])
-                    else:
-                        dummy = float((line.split())[2])
-                        mass.append(dummy)
-                if "Rotational Symmetry Number is" in line:
-                    rot_sym.append(float((line.split())[4]))
-                if "Eigenvalues --" in line:
-                    if "*" in line:
-                        if not silent:
-                            print("Warning: Moment of inertia in loop " + str(
-                                loop) + " is unphysically large. Will use values of first loop instead.")
-                        mom_inertia.append(mom_inertia[0])
-                    else:
-                        dummy = [float((line.split())[2]),
-                                 float((line.split())[3]),
-                                 float((line.split())[4])]
-                        mom_inertia.append(dummy)
-
-                if "VIBRATIONAL ANALYSIS" in line:
-                    loop1 = []
-                    loop2 = []
-                    switch = 1
-                    infile_content = []
-                if switch == 1:
-                    if "Frequency:" in line:
-                        dummy = line.split()
-                        del dummy[0]
-                        for k in dummy:
-                            loop1.append(float(k))
-                    if "IR Intens:" in line:
-                        dummy = line.split()
-                        del dummy[0]
-                        del dummy[0]
-                        for k in dummy:
-                            loop2.append(float(k))
-                if switch == 1 and "STANDARD THERMODYNAMIC" in line:
-                    switch = 0
-                    frequencies.append(loop1)
-                    intensities.append(loop2)
-
-            T = _np.asarray(temp)
-            p = _np.asarray(press)
-            ZPE = _np.asarray(zero_point)
-            H = E + _np.asarray(enth_corr)
-            S = _np.asarray(entr_corr)
-            ITE = _np.asarray(
-                enth_corr) - R_T  # RT = pV is subtracted from H to obtain the ZPE corrected ITE
-            F = E + ITE - (T * S)
-            G = H - (T * S)
-            self.thermo = _thermo(E, ZPE, ITE, T, p, S, H, F, G, frequencies,
-                                  intensities, mass, mom_inertia, rot_sym,
-                                  linear_switch)
+            self._process_freq(content, energy, silent)
 
         if jobtype == "opt" or jobtype == "optimization" or jobtype == "ts":
-            energies = []
-            gradient_vector = []
-            gradient = [0.0]
-            displacement = []
-            change = []
-            geometries = []
-            optstat = "no convergence"
-            N_step = 1
-            switch = 0
-            for line in content:
-                if "Energy is" in line:
-                    dummy = float((line.split())[-1])
-                    energies.append(dummy)
-                if "Gradient   " in line:
-                    try:
-                        dummy = float((line.split())[1])
-                    except:
-                        dummy = 0.0
-                    gradient.append(dummy)
-                if "Displacement   " in line:
-                    dummy = float((line.split())[1])
-                    displacement.append(dummy)
-                if "Energy change   " in line:
-                    try:
-                        dummy = float((line.split())[2])
-                    except:
-                        dummy = 0.0
-                    change.append(dummy)
-                if "**  OPTIMIZATION CONVERGED  **" in line:
-                    optstat = "converged"
-                if "ATOM                X               Y               Z" in line:
-                    switch = 1
-                    cycle_name = "Optimization step " + str(N_step)
-                    cart_dummy = cartesian(cycle_name)
-                if switch == 1 and "ATOM" not in line and "Point Group" not in line:
-                    con = line.split()
-                    cart_dummy.add_atom(con[1], con[2], con[3], con[4])
-                if "Point Group" in line and switch == 1:
-                    geometries.append(deepcopy(cart_dummy))
-                    N_step += 1
-                    switch = 0
-                if "Gradient of SCF Energy" in line:
-                    switch = 2
-                    grad_dummy = []
-                elif "Max gradient component" in line and switch == 2:
-                    # Assuming that the array will always have a 3xN structure:
-                    matrix = [[], [], []]
-                    for i, sp in enumerate(grad_dummy):
-                        if not i % 4 == 0:
-                            matrix[i % 4 - 1].extend(
-                                [float(si) for si in sp[1:]])
-                    switch = 0
-                    gradient_vector.append(_np.array(matrix))
-                elif switch == 2:
-                    grad_dummy.append(line.split())
-
-            # The geometry has changed, so let's update a variable in the 'general' info object
-            final_geometry = deepcopy(geometries[-1])
-
-            if jobtype == "opt" or jobtype == "optimization":
-                self.opt = _opt(geometries, energies, gradient, gradient_vector,
-                                displacement, change, optstat)
-            else:
-                self.ts = _opt(geometries, energies, gradient, gradient_vector,
-                               displacement, change, optstat)
+            final_geometry = self._process_opt(content, jobtype)
 
         if jobtype == "aimd":
-            drift = []
-            kinetic_energies = []
-            time = []
-            energies = []
-            geometries = []
-            aimdstat = "steps not completed"
-            temp = 0
-
-            aimd_step = 0
-            drift_switch = 0
-            geom_switch = 0
-            for line in content:
-                if "Simulation temperature" in line:
-                    temp = float((line.split())[3])
-                if "AIMD will take" in line:
-                    N_steps = int((line.split())[3])
-                if "Time step =" in line:
-                    time_step = float((line.split())[7])  # use fs units
-                if "Total simulation time requested" in line:
-                    total_time = float((line.split())[5])  # use fs units
-                if "TIME STEP #" in line:  # AIMD starts
-                    aimd_step += 1
-                    time.append(float((line.split())[5]))
-                if ("Drift factor =" in line) and (aimd_step > 0):
-                    drift_switch = 1
-                if ("Total" in line) and (drift_switch == 1) and (
-                        aimd_step > 0):
-                    drift.append(float((line.split())[2]))
-                    kinetic_energies.append(float((line.split())[1]))
-                    drift_switch = 0
-                if ("Total energy in the final" in line) and (aimd_step > 0):
-                    dummy = float((line.split())[8])
-                    energies.append(dummy)
-                # if "Atom           X                Y                Z" in line and (aimd_step>0):
-                if "Standard Nuclear Orientation (Angstroms)" in line and (
-                        aimd_step > 0):
-                    geom_switch = 1
-                    cycle_name = "time step " + str(aimd_step)
-                    cart_dummy = cartesian(cycle_name)
-                if (geom_switch == 1) and ("------" not in line) and (
-                        "Atom" not in line) and ("Nuclear" not in line):
-                    con = line.split()
-                    cart_dummy.add_atom(con[1], con[2], con[3], con[4])
-                if geom_switch == 1 and "Nuclear Repulsion Energy" in line:
-                    geometries.append(deepcopy(cart_dummy))
-                    geom_switch = 0
-                if "TIME STEPS COMPLETED" in line:
-                    aimdstat = "steps completed"
-
-            # The geometry has changed, so let's update a variable in the 'general' info object
-            final_geometry = deepcopy(geometries[-1])
-
-            self.aimd = _aimd(temp, N_steps, time_step, total_time, time,
-                              energies, drift, kinetic_energies, geometries,
-                              aimdstat)
+            final_geometry = self._process_aimd(content)
 
         if self.aifdem != 0:
             self.EvalStrng = ""
@@ -992,24 +664,24 @@ class _outputfile(object):
             self.cis_time = 0
             _N_SET = 0
             for line in content:
-                if ("Excited state" in line):
+                if "Excited state" in line:
                     _E_Exc_eV = float(line.split()[-1])
                     _N_SET += 1
-                if ("Total energy for state" in line):
+                if "Total energy for state" in line:
                     _E_Exc_total = float(line.split()[-1])
-                if ("Multiplicity:" in line):
+                if "Multiplicity:" in line:
                     _Mult = line.split()[-1]
-                if ("Trans. Mom.:" in line):
+                if "Trans. Mom.:" in line:
                     _momX = line.split()[2]
                     _momY = line.split()[4]
                     _momZ = line.split()[6]
-                if ("Strength" in line):
+                if "Strength" in line:
                     _osc = line.split()[-1]
                     self.excited_states.append(
                         {"Exc_eV": _E_Exc_eV, "Tot": _E_Exc_total,
                          "Mult": _Mult, "X": _momX, "Y": _momY, "Z": _momZ,
                          "Strength": _osc})
-                if ("CPU time" in line):
+                if "CPU time" in line:
                     self.cis_time = line.split()[-1]
             self.N_SET = _N_SET
 
@@ -1018,24 +690,24 @@ class _outputfile(object):
             self.cis_time = 0
             _N_SET = 0
             for line in content:
-                if ("Excited state" in line):
+                if "Excited state" in line:
                     _E_Exc_eV = float(line.split()[-1])
                     _N_SET += 1
-                if ("Total energy for state" in line):
+                if "Total energy for state" in line:
                     _E_Exc_total = float(line.split()[-1])
-                if ("Multiplicity:" in line):
+                if "Multiplicity:" in line:
                     _Mult = line.split()[-1]
-                if ("Trans. Mom.:" in line):
+                if "Trans. Mom.:" in line:
                     _momX = line.split()[2]
                     _momY = line.split()[4]
                     _momZ = line.split()[6]
-                if ("Strength" in line):
+                if "Strength" in line:
                     _osc = line.split()[-1]
                     self.excited_states.append(
                         {"Exc_eV": _E_Exc_eV, "Tot": _E_Exc_total,
                          "Mult": _Mult, "X": _momX, "Y": _momY, "Z": _momZ,
                          "Strength": _osc})
-                if ("CPU time" in line):
+                if "CPU time" in line:
                     self.cis_time = line.split()[-1]
             self.N_SET = _N_SET
 
@@ -1043,3 +715,327 @@ class _outputfile(object):
         self.general = _general(jobtype, version, spin, basis_size, energy,
                                 status, inputfile, mm_type, initial_geometry,
                                 final_geometry, wall_time, cpu_time)
+
+    def _process_aimd(self, content):
+        drift = []
+        kinetic_energies = []
+        time = []
+        energies = []
+        geometries = []
+        aimdstat = "steps not completed"
+        temp = 0
+        aimd_step = 0
+        drift_switch = 0
+        geom_switch = 0
+        for line in content:
+            if "Simulation temperature" in line:
+                temp = float((line.split())[3])
+            if "AIMD will take" in line:
+                N_steps = int((line.split())[3])
+            if "Time step =" in line:
+                time_step = float((line.split())[7])  # use fs units
+            if "Total simulation time requested" in line:
+                total_time = float((line.split())[5])  # use fs units
+            if "TIME STEP #" in line:  # AIMD starts
+                aimd_step += 1
+                time.append(float((line.split())[5]))
+            if ("Drift factor =" in line) and (aimd_step > 0):
+                drift_switch = 1
+            if ("Total" in line) and (drift_switch == 1) and (
+                    aimd_step > 0):
+                drift.append(float((line.split())[2]))
+                kinetic_energies.append(float((line.split())[1]))
+                drift_switch = 0
+            if ("Total energy in the final" in line) and (aimd_step > 0):
+                dummy = float((line.split())[8])
+                energies.append(dummy)
+            # if "Atom           X                Y                Z" in line and (aimd_step>0):
+            if "Standard Nuclear Orientation (Angstroms)" in line and (
+                    aimd_step > 0):
+                geom_switch = 1
+                cycle_name = "time step " + str(aimd_step)
+                cart_dummy = cartesian(cycle_name)
+            if (geom_switch == 1) and ("------" not in line) and (
+                    "Atom" not in line) and ("Nuclear" not in line):
+                con = line.split()
+                cart_dummy.add_atom(con[1], con[2], con[3], con[4])
+            if geom_switch == 1 and "Nuclear Repulsion Energy" in line:
+                geometries.append(deepcopy(cart_dummy))
+                geom_switch = 0
+            if "TIME STEPS COMPLETED" in line:
+                aimdstat = "steps completed"
+        # The geometry has changed, so let's update a variable in the 'general' info object
+        final_geometry = deepcopy(geometries[-1])
+        self.aimd = _aimd(temp, N_steps, time_step, total_time, time,
+                          energies, drift, kinetic_energies, geometries,
+                          aimdstat)
+        return final_geometry
+
+    def _process_opt(self, content, jobtype):
+        energies = []
+        gradient_vector = []
+        gradient = [0.0]
+        displacement = []
+        change = []
+        geometries = []
+        optstat = "no convergence"
+        N_step = 1
+        switch = 0
+        for line in content:
+            if "Energy is" in line:
+                dummy = float((line.split())[-1])
+                energies.append(dummy)
+            if "Gradient   " in line:
+                try:
+                    dummy = float((line.split())[1])
+                except:
+                    dummy = 0.0
+                gradient.append(dummy)
+            if "Displacement   " in line:
+                dummy = float((line.split())[1])
+                displacement.append(dummy)
+            if "Energy change   " in line:
+                try:
+                    dummy = float((line.split())[2])
+                except:
+                    dummy = 0.0
+                change.append(dummy)
+            if "**  OPTIMIZATION CONVERGED  **" in line:
+                optstat = "converged"
+            if "ATOM                X               Y               Z" in line:
+                switch = 1
+                cycle_name = "Optimization step " + str(N_step)
+                cart_dummy = cartesian(cycle_name)
+            if switch == 1 and "ATOM" not in line and "Point Group" not in line:
+                con = line.split()
+                cart_dummy.add_atom(con[1], con[2], con[3], con[4])
+            if "Point Group" in line and switch == 1:
+                geometries.append(deepcopy(cart_dummy))
+                N_step += 1
+                switch = 0
+            if "Gradient of SCF Energy" in line:
+                switch = 2
+                grad_dummy = []
+            elif "Max gradient component" in line and switch == 2:
+                # Assuming that the array will always have a 3xN structure:
+                matrix = [[], [], []]
+                for i, sp in enumerate(grad_dummy):
+                    if not i % 4 == 0:
+                        matrix[i % 4 - 1].extend(
+                            [float(si) for si in sp[1:]])
+                switch = 0
+                gradient_vector.append(_np.array(matrix))
+            elif switch == 2:
+                grad_dummy.append(line.split())
+        # The geometry has changed, so let's update a variable in the 'general' info object
+        final_geometry = deepcopy(geometries[-1])
+        if jobtype == "opt" or jobtype == "optimization":
+            self.opt = _opt(geometries, energies, gradient, gradient_vector,
+                            displacement, change, optstat)
+        else:
+            self.ts = _opt(geometries, energies, gradient, gradient_vector,
+                           displacement, change, optstat)
+        return final_geometry
+
+    def _process_freq(self, content, energy, silent):
+        H2kcal = constants.hartree_to_kcal_pro_mole
+        E = float(energy)
+        temp = []
+        press = []
+        R_T = []
+        enth_corr = []
+        entr_corr = []
+        zero_point = []
+        mass = []
+        mom_inertia = []
+        rot_sym = []
+        switch = 0
+        frequencies = []
+        intensities = []
+        loop = 0
+        linear_switch = 0
+        for line in content:
+            if "STANDARD THERMODYNAMIC QUANTITIES AT" in line:
+                temp.append(float((line.split())[4]))
+                press.append(1.01325e5 * float((line.split())[7]))
+            if "Zero point vibrational energy" in line:
+                zero_point.append(float((line.split())[4]) / H2kcal)
+            if "gas constant (RT):" in line:
+                R_T.append(float((line.split())[3]) / H2kcal)
+            if "Total Enthalpy:" in line:
+                enth_corr.append(float((line.split())[2]) / H2kcal)
+            if "Total Entropy:" in line:
+                entr_corr.append(float((line.split())[2]) / 1000 / H2kcal)
+            if "We detect a D*h symmetry" in line:
+                linear_switch = 1
+            if "We detect a C*v symmetry" in line:
+                linear_switch = 1
+            if "We detect a C*h symmetry" in line:  # necessary because of wrong nomenclature in Q-chem (thermodyn.F)
+                linear_switch = 1
+            if "Molecular Mass:" in line:
+                loop += 1
+                if "*" in line:
+                    if not silent:
+                        print("Warning: Molecular mass in loop " + str(
+                            loop) + " is unphysically large. Will use mass of first loop instead.")
+                    mass.append(mass[0])
+                else:
+                    dummy = float((line.split())[2])
+                    mass.append(dummy)
+            if "Rotational Symmetry Number is" in line:
+                rot_sym.append(float((line.split())[4]))
+            if "Eigenvalues --" in line:
+                if "*" in line:
+                    if not silent:
+                        print("Warning: Moment of inertia in loop " + str(
+                            loop) + " is unphysically large. Will use values of first loop instead.")
+                    mom_inertia.append(mom_inertia[0])
+                else:
+                    dummy = [float((line.split())[2]),
+                             float((line.split())[3]),
+                             float((line.split())[4])]
+                    mom_inertia.append(dummy)
+
+            if "VIBRATIONAL ANALYSIS" in line:
+                loop1 = []
+                loop2 = []
+                switch = 1
+                infile_content = []
+            if switch == 1:
+                if "Frequency:" in line:
+                    dummy = line.split()
+                    del dummy[0]
+                    for k in dummy:
+                        loop1.append(float(k))
+                if "IR Intens:" in line:
+                    dummy = line.split()
+                    del dummy[0]
+                    del dummy[0]
+                    for k in dummy:
+                        loop2.append(float(k))
+            if switch == 1 and "STANDARD THERMODYNAMIC" in line:
+                switch = 0
+                frequencies.append(loop1)
+                intensities.append(loop2)
+        T = _np.asarray(temp)
+        p = _np.asarray(press)
+        ZPE = _np.asarray(zero_point)
+        H = E + _np.asarray(enth_corr)
+        S = _np.asarray(entr_corr)
+        ITE = _np.asarray(
+            enth_corr) - R_T  # RT = pV is subtracted from H to obtain the ZPE corrected ITE
+        F = E + ITE - (T * S)
+        G = H - (T * S)
+        self.thermo = _thermo(E, ZPE, ITE, T, p, S, H, F, G, frequencies,
+                              intensities, mass, mom_inertia, rot_sym,
+                              linear_switch)
+
+    def _process_oniom(self, content):
+        etot = []
+        ecoulomb = []
+        etorsion = []
+        eimptors = []
+        eureybrad = []
+        eangle = []
+        ebond = []
+        evdw = []
+        etot2 = []
+        ecoulomb2 = []
+        etorsion2 = []
+        eimptors2 = []
+        eureybrad2 = []
+        eangle2 = []
+        ebond2 = []
+        evdw2 = []
+        mm_step = 0
+        first_bond = 1
+        first_bond2 = 1
+        for line in content:
+            if "Step 1: MM calculation on the entire system" in line:
+                mm_step = 1
+            if "Step 2: MM calculation on the model system" in line:
+                mm_step = 2
+
+            if ("MM bonds to file" in line) and (first_bond == 1) and (
+                    mm_step == 1):
+                nbonds = int((line.split())[1])
+                first_bond = 0
+            if "Ebond:" in line and (mm_step == 1):
+                ebond.append(float((line.split())[1]))
+            if "Eangle:" in line and (mm_step == 1):
+                eangle.append(float((line.split())[1]))
+            if "EUreyBrad:" in line and (mm_step == 1):
+                eureybrad.append(float((line.split())[1]))
+            if "Eimptors:" in line and (mm_step == 1):
+                eimptors.append(float((line.split())[1]))
+            if "Etorsion:" in line and (mm_step == 1):
+                etorsion.append(float((line.split())[1]))
+            if "Evdw:" in line and (mm_step == 1):
+                evdw.append(float((line.split())[1]))
+            if "Ecoulomb:" in line and (mm_step == 1):
+                ecoulomb.append(float((line.split())[1]))
+            if "Etot:" in line and (mm_step == 1):
+                etot.append(float((line.split())[1]))
+
+            if ("n_qm_bonds =" in line) and (first_bond2 == 1) and (
+                    mm_step == 2):
+                nbonds2 = int((line.split())[2])
+                first_bond2 = 0
+            if "Ebond:" in line and (mm_step == 2):
+                ebond2.append(float((line.split())[1]))
+            if "Eangle:" in line and (mm_step == 2):
+                eangle2.append(float((line.split())[1]))
+            if "EUreyBrad:" in line and (mm_step == 2):
+                eureybrad2.append(float((line.split())[1]))
+            if "Eimptors:" in line and (mm_step == 2):
+                eimptors2.append(float((line.split())[1]))
+            if "Etorsion:" in line and (mm_step == 2):
+                etorsion2.append(float((line.split())[1]))
+            if "Evdw:" in line and (mm_step == 2):
+                evdw2.append(float((line.split())[1]))
+            if "Ecoulomb:" in line and (mm_step == 2):
+                ecoulomb2.append(float((line.split())[1]))
+            if "Etot:" in line and (mm_step == 2):
+                etot2.append(float((line.split())[1]))
+        # Create MM info object for entire system
+        self.mm_total = _mm(
+            [etot, ecoulomb, evdw, etorsion, eimptors, eureybrad, eangle,
+             ebond, nbonds])
+        # Create MM info object for model system
+        self.mm_model = _mm(
+            [etot2, ecoulomb2, evdw2, etorsion2, eimptors2, eureybrad2,
+             eangle2, ebond2, nbonds2])
+
+    def _process_mm(self, content):
+        etot = []
+        ecoulomb = []
+        etorsion = []
+        eimptors = []
+        eureybrad = []
+        eangle = []
+        ebond = []
+        evdw = []
+        first_bond = 1
+        for line in content:
+            if ("MM bonds to file" in line) and (first_bond == 1):
+                nbonds = int((line.split())[1])
+                first_bond = 0
+            if "Ebond:" in line:
+                ebond.append(float((line.split())[1]))
+            if "Eangle:" in line:
+                eangle.append(float((line.split())[1]))
+            if "EUreyBrad:" in line:
+                eureybrad.append(float((line.split())[1]))
+            if "Eimptors:" in line:
+                eimptors.append(float((line.split())[1]))
+            if "Etorsion:" in line:
+                etorsion.append(float((line.split())[1]))
+            if "Evdw:" in line:
+                evdw.append(float((line.split())[1]))
+            if "Ecoulomb:" in line:
+                ecoulomb.append(float((line.split())[1]))
+            if "Etot:" in line:
+                etot.append(float((line.split())[1]))
+        self.mm = _mm(
+            [etot, ecoulomb, evdw, etorsion, eimptors, eureybrad, eangle,
+             ebond, nbonds])  # Create MM info object
