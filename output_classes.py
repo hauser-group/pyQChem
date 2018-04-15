@@ -802,7 +802,7 @@ class _outputfile(object):
                 change.append(dummy)
             if "**  OPTIMIZATION CONVERGED  **" in line:
                 optstat = "converged"
-            if "ATOM                X               Y               Z" in line:
+            if "ATOM              X           Y           Z" in line:
                 switch = 1
                 cycle_name = "Optimization step " + str(N_step)
                 cart_dummy = cartesian(cycle_name)
