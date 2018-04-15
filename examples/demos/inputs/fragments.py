@@ -26,11 +26,11 @@ xf=open("4water.xyz",'w')
 xf.write(xyz)
 xf.close()
 
-import pyQChem as pq
+import pyqchem as qc
 
 
 #make the rem array 
-rem1=pq.rem_array()
+rem1=qc.rem_array()
 rem1.basis("6-31++G**")
 rem1.exchange("hf")
 rem1.thresh("14")
@@ -40,30 +40,30 @@ rem2=deepcopy(rem1)
 rem2.scf_guess("fragmo")
 
 #make a rem_frgm array
-rem_frgm=pq.rem_frgm_array()
+rem_frgm=qc.rem_frgm_array()
 rem_frgm.thresh("7")
 rem_frgm.scf_convergence("3")
 
 #make objects for holding the molecular geometries
-xyz=pq.read("4water.xyz")
-frag=pq.fragment(atom_list=xyz.list_of_atoms)
+xyz=qc.read("4water.xyz")
+frag=qc.fragment(atom_list=xyz.list_of_atoms)
 
 #make molecule array from cartesian object
-mol1=pq.mol_array(xyz)
-mol2=pq.mol_array(frag)
+mol1=qc.mol_array(xyz)
+mol2=qc.mol_array(frag)
 
 #make input object and write to disk
-job1=pq.inputfile()
+job1=qc.inputfile()
 job1.add(rem1)
 job1.add(mol1)
 
-job2=pq.inputfile()
+job2=qc.inputfile()
 job2.add(rem2)
 job2.rem.scf_guess("fragmo")
 job2.add(rem_frgm)
 job2.add(mol2)
 
-job=pq.multifile()
+job=qc.multifile()
 job.add(job1)
 job.add(job2)
 

@@ -3,7 +3,7 @@
 #
 # MBG (2/2014)
 #
-import pyQChem as qc
+import pyqchem as qc
 
 
 #make the rem array and fill it

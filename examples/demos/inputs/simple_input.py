@@ -5,7 +5,7 @@
 #
 #
 
-import pyQChem as qc
+import pyqchem as qc
 
 #make the rem array and define the basis and exchange (setting them to defaults, but showing how)
 rem=qc.rem_array()

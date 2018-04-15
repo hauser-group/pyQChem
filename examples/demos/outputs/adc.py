@@ -1,4 +1,4 @@
-import pyQChem as qc
+import pyqchem as qc
 
 #generate rem array, cartesian object, mol array, and job via standard procedure (see input demos)
 rem=qc.rem_array()
