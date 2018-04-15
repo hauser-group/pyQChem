@@ -788,7 +788,7 @@ class _outputfile(object):
             if "Gradient   " in line:
                 try:
                     dummy = float((line.split())[1])
-                except:
+                except (ValueError, IndexError):
                     dummy = 0.0
                 gradient.append(dummy)
             if "Displacement   " in line:
@@ -797,7 +797,7 @@ class _outputfile(object):
             if "Energy change   " in line:
                 try:
                     dummy = float((line.split())[2])
-                except:
+                except (ValueError, IndexError):
                     dummy = 0.0
                 change.append(dummy)
             if "**  OPTIMIZATION CONVERGED  **" in line:
