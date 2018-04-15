@@ -497,8 +497,7 @@ class _outputfile(object):
         if type(file_input) == list:
             content = file_input
         else:
-            infile = open(file_input, "r")
-            content = infile.readlines()
+            content = open(file_input, "r").readlines()
 
         spin = '0'
         energy = 'undetermined'
