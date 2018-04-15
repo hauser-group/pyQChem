@@ -290,7 +290,7 @@ class _thermo(object):
         mass = self.mass[loop_iso] * constants.atomic_mass_constant
         mom_inertia = _np.asarray(
             self.mom_inertia[loop_iso]) * constants.atomic_mass_constant * (
-                                  1e-10 * constants.bohr_to_angstrom) ** 2
+                              1e-10 * constants.bohr_to_angstrom) ** 2
         rot_sym = float(self.rot_sym[loop_iso])
 
         # Translational contributions to S and the thermal energy E
@@ -307,7 +307,7 @@ class _thermo(object):
             if silent == 0:
                 print("Linear molecule detected...")
             theta_lin = (constants.Planck_constant) ** 2 / (
-                        8 * pi ** 2 * _np.max(
+                    8 * pi ** 2 * _np.max(
                     mom_inertia) * constants.Boltzmann_constant)  # rotational temperature
             Q_rot_lin = T / theta_lin / rot_sym
             S_rot = constants.molar_gas_constant * (_np.log(Q_rot_lin) + 1)
@@ -315,7 +315,7 @@ class _thermo(object):
         else:
             # Rotational contributions (for nonlinear molecule)
             theta = (constants.Planck_constant) ** 2 / (
-                        8 * pi ** 2 * mom_inertia * constants.Boltzmann_constant)  # rotational temperature
+                    8 * pi ** 2 * mom_inertia * constants.Boltzmann_constant)  # rotational temperature
             Q_rot = _np.sqrt(pi) / rot_sym * ((T ** (3. / 2)) / _np.sqrt(
                 theta[0] * theta[1] * theta[2]))
             S_rot = constants.molar_gas_constant * (_np.log(Q_rot) + 3. / 2)
@@ -339,14 +339,14 @@ class _thermo(object):
                 B_average = 10E-44;  # kg.m^2
                 if grimme == 2:  # calculate B_av from current frequencies
                     B_average = sum(constants.Planck_constant / (
-                                8 * pi ** 2 * constants.speed_of_light_in_vacuum * freq)) / len(
+                            8 * pi ** 2 * constants.speed_of_light_in_vacuum * freq)) / len(
                         freq);
                 alpha = 4;
                 mu = constants.Planck_constant / (
-                            8 * pi ** 2 * constants.speed_of_light_in_vacuum * freq)
+                        8 * pi ** 2 * constants.speed_of_light_in_vacuum * freq)
                 mu_prime = mu * B_average / (mu + B_average)
                 dum_grim = 0.5 + _np.log((
-                                                     8 * pi ** 3 * constants.Boltzmann_constant * k * mu_prime / constants.Planck_constant ** 2) ** 0.5);
+                                                 8 * pi ** 3 * constants.Boltzmann_constant * k * mu_prime / constants.Planck_constant ** 2) ** 0.5);
                 weight = 1. / (1 + (grimme_thresh / freq) ** alpha);
                 S_hind.append(constants.molar_gas_constant * (
                             weight * dum_term + (1 - weight) * dum_grim).sum())
