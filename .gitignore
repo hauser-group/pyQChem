@@ -19,8 +19,10 @@ pathtable
 # Ignore backup files from 2to3
 *.bak
 
-# Ignore egg info file from setuptools
+# Ignore files from setuptools
 /pyqchem.egg-info/
+/build/
+/dist/
 
 # Don't ignore tutorial files
 !/examples/tutorials/testrun.in
