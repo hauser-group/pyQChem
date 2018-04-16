@@ -214,7 +214,7 @@ class inputfile(object):
     def write(self, filename):
         f = open(filename, 'w')
         str_ret = self.__str__()
-        print(str_ret, file=f)
+        f.write(str_ret)
         f.close()
 
     def info(self):
@@ -271,7 +271,7 @@ class _array(object):
     def write(self, filename):
         f = open(filename, 'w')
         str_ret = self.__str__()
-        print(str_ret, file=f)
+        f.write(str_ret)
         f.close()
 
     def __add__(self, other):
