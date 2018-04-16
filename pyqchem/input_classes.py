@@ -107,7 +107,7 @@ class multifile(object):
         """Writes the batch jobfile to disk."""
         f = open(filename, 'w')
         str_ret = self.__str__()
-        print(str_ret, file=f)
+        f.write(str_ret)
         f.close()
 
     def run(self, name='', loc53='', qchem='', nt=1, np=1, timestamp=False):
