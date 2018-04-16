@@ -1,0 +1,2483 @@
+mFile = /Applications/qchem/bin/mpi/machines
+                  Welcome to Q-Chem
+     A Quantum Leap Into The Future Of Chemistry
+
+ Y. Shao, L. Fusti-Molnar, Y. Jung, J. Kussmann, C. Ochsenfeld,
+ S. T. Brown, A. T. B. Gilbert, L. V. Slipchenko,S. V. Levchenko,
+ D. P. O'Neill, R. A. DiStasio Jr., R. C. Lochan, T. Wang,
+ G. J. O. Beran, N. A. Besley, J. M. Herbert, C. Y. Lin,
+ T. Van Voorhis, S. H. Chien, A. Sodt, R. P. Steele, 
+ V. A. Rassolov, P. E. Maslen, P. P. Korambath, R. D. Adamson,
+ B. Austin, J. Baker, E. F. C. Byrd, H. Dachsel, R. J. Doerksen,
+ A. Dreuw, B. D. Dunietz, A. D. Dutoi, T. R. Furlani,
+ S. R. Gwaltney, A. Heyden, S. Hirata, C.-P. Hsu, G. Kedziora,
+ R. Z. Khaliullin, P. Klunzinger, A. M. Lee, M. S. Lee, W. Liang,
+ I. Lotan, N. Nair, B. Peters, E. I. Proynov, P. A. Pieniazek, 
+ Y. M. Rhee, J. Ritchie, E. Rosta, C. D. Sherrill, 
+ A. C. Simmonett, J. E. Subotnik, H. L. Woodcock III,
+ W. Zhang, A. T. Bell, A. K. Chakraborty, D. M. Chipman,
+ F. J. Keil, A. Warshel, W. J. Hehre, H. F. Schaefer III,
+ J. Kong, A. I. Krylov, P. M. W. Gill, M. Head-Gordon,
+
+ Additional authors for Version 3.1: 
+ Z. Gan, Y. Zhao, N. E. Schultz, D. Truhlar, E. Epifanovsky and M. Oana.
+
+ Additional authors for Version 3.2: 
+ R. Baer, B. R. Brooks, D. Casanova, J.-D. Chai, C.-L. Cheng, 
+ C. Cramer, D. Crittenden, A. Ghysels, G. Hawkins, E. G. Hohenstein, 
+ C. Kelley, W. Kurlancheek, D. Liotard, E. Livshits, P. Manohar, 
+ A. Marenich, D. Neuhauser, R. Olson, M. A. Rohrdanz, K. S. Thanthiriwatte, 
+ A. J. W. Thom, V. Vanovschi, C. F. Williams, Q. Wu and Z.-Q. You. 
+
+ Additional authors for Version 4.0: 
+ A. Aspuru-Guzik, C. Chang, R. G. Edgar, E. Sundstrom, J. Parkhill, K. Lawler,
+ M. Gordon, M. Schmidt, N. Shenvi, D. Lambrecht, M. Goldey, R. Olivares-Amaya,
+ Y. Bernard, L. Vogt, M. Watson, J. Liu, S. Yeganeh, B. Kaduk, O. Vydrov, X. Xu, 
+ I. Kaliman, K. Khistyaev, N. Russ, I.Y. Zhang, W.A. Goddard III, F. Liu, R. King ,
+ A. Landau, M. Wormit, A. Dreuw, M. Diedenhofen, A. Klamt, A.W. Lange, D. Ghosh,
+ D. Kosenkov, T. Kus, A. Landau, D. Zuev, J. Deng, S.P. Mao, Y.C. Su, D. Small,
+ L. D. Jacobson
+ 
+ Q-Chem, Version 4.0.1, Q-Chem, Inc., Pittsburgh, PA (2007).
+
+
+ MAC (Intel) OSX Version 4.0.1.0 
+
+ Q-chem begins on Fri Mar  7 18:54:01 2014  
+
+Andreass-MacBook-Air.local
+Host: 0
+ Using version located at /Users/hauser/Scripts//qchem
+
+Applying user defined connections for MM calculations
+
+theFileMan(): MAXOPENFILES=206 MAX_SUB_FILE_NUM=16
+Maximum size of a physical file is 2.0 GB, maximum size of a tmp-file is 32.0 GB
+
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+Symmetry disabled for QM/MM jobs.
+
+Total Memory Limit in MB = 2000
+Mega-Array Size in MB = 62
+Finally everything over in PARseQInput
+
+--------------------------------------------------------------
+User input:
+--------------------------------------------------------------
+$rem
+FORCE_FIELD                   read
+EXCHANGE                      hf
+BASIS                         cc-pvDZ
+USER_CONNECT                  true
+QM_MM_INTERFACE               mm
+QMMM_PRINT                    true
+GEOM_PRINT                    true
+JOBTYPE                       opt
+$end
+
+$force_field_params
+Filename /Users/hauser/Desktop/butadiene/mm/first.prm
+$end
+
+$molecule
+0 1
+C    -1.687850   -0.157250    0.397780    27     2     5     6   0
+C    -0.696370    0.396810   -0.279640    26     7     3     1   0
+C     0.730090    0.389890    0.154890    26     4     2     8   0
+C     1.661260   -0.404510   -0.345860    27     9    10     3   0
+H    -2.708180   -0.112480    0.037110     1     1     0     0   0
+H    -1.517940   -0.678510    1.333080     1     1     0     0   0
+H    -0.916230    0.911900   -1.210930     1     2     0     0   0
+H     1.005000    1.105740    0.924920     1     3     0     0   0
+H     1.435510   -1.131650   -1.117660     1     4     0     0   0
+H     2.685630   -0.358310    0.002980     1     4     0     0   0
+$end
+
+$comment
+butadiene TS full MM
+$end
+--------------------------------------------------------------
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.687850    -0.157250     0.397780
+    2      C      -0.696370     0.396810    -0.279640
+    3      C       0.730090     0.389890     0.154890
+    4      C       1.661260    -0.404510    -0.345860
+    5      H      -2.708180    -0.112480     0.037110
+    6      H      -1.517940    -0.678510     1.333080
+    7      H      -0.916230     0.911900    -1.210930
+    8      H       1.005000     1.105740     0.924920
+    9      H       1.435510    -1.131650    -1.117660
+   10      H       2.685630    -0.358310     0.002980
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+
+Total QAlloc Memory Limit   2000 MB
+Mega-Array Size        61 MB
+MEM_STATIC part        62 MB
+
+finished with qalloc call
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Determining angles, torsions, etc. from user defined input
+Finding angles...
+Finding torsions...
+Finding improper torsions...
+Wrote 9 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:            20.463686909676
+   Eangle:           12.592132131224
+   EUreyBrad:         1.098201243489
+   Eimptors:          0.000000000000
+   Etorsion:          2.176334299120
+   Evdw:              0.566455170026
+   Ecoulomb:         -3.051444562649
+   Etot:             33.845365190886 Kcal/mol (      0.053936022889 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0007 Y     -0.0258 Z      0.0108
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.049952       0.030461      -0.041027
+   2      -0.053782      -0.029934       0.050056
+   3       0.050370      -0.046406      -0.040059
+   4      -0.046605       0.044246       0.031242
+   5       0.016188      -0.000600       0.005769
+   6      -0.002602       0.008480      -0.014781
+   7       0.003890      -0.007271       0.013289
+   8      -0.004668      -0.010071      -0.011016
+   9       0.003502       0.011733       0.012134
+  10      -0.016245      -0.000636      -0.005606
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+
+ Q-Chem warning in module /Applications/qchem/forms1/BasisType.C, line 1082:
+
+ SAD: How to set up polarization functions for non-Pople basis?
+
+ Requested basis set is cc-pVDZ
+ There are 42 shells and 86 basis functions
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   1
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.687850   -0.157250    0.397780
+      2  C        -0.696370    0.396810   -0.279640
+      3  C         0.730090    0.389890    0.154890
+      4  C         1.661260   -0.404510   -0.345860
+      5  H        -2.708180   -0.112480    0.037110
+      6  H        -1.517940   -0.678510    1.333080
+      7  H        -0.916230    0.911900   -1.210930
+      8  H         1.005000    1.105740    0.924920
+      9  H         1.435510   -1.131650   -1.117660
+     10  H         2.685630   -0.358310    0.002980
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.053936023
+
+
+ Attempting to Generate Delocalized Internal Coordinates
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.010344    0.021778    0.021779    0.032663    0.032664    0.032664
+     0.032665    0.159987    0.159987    0.160000    0.160000    0.160000
+     0.160000    0.220004    0.220004    0.333193    0.351943    0.351946
+     0.354981    0.354983    0.356193    0.356195    0.613214    0.613227
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.03102390
+ Step Taken.  Stepsize is  0.238254
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.067498      0.000300      NO
+         Displacement       0.121156      0.001200      NO
+         Energy change      0.053936      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.348807
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.732655    -0.168536     0.416035
+    2      C      -0.699548     0.426795    -0.309665
+    3      C       0.736238     0.426203     0.176252
+    4      C       1.704678    -0.423987    -0.360087
+    5      H      -2.776771    -0.147057     0.050003
+    6      H      -1.546480    -0.689191     1.375941
+    7      H      -0.921291     0.943894    -1.264534
+    8      H       1.013493     1.149889     0.968559
+    9      H       1.462487    -1.155450    -1.155995
+   10      H       2.750769    -0.400929     0.000162
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             7.841149056359
+   Eangle:           11.941340392608
+   EUreyBrad:         0.362652988857
+   Eimptors:          0.000000000000
+   Etorsion:          2.173327911931
+   Evdw:              0.215415693032
+   Ecoulomb:         -3.061761986552
+   Etot:             19.472124056234 Kcal/mol (      0.031030805041 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0012 Y     -0.0387 Z      0.0124
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.038508       0.021694      -0.028780
+   2      -0.038411      -0.021181       0.032093
+   3       0.036034      -0.032010      -0.025128
+   4      -0.036121       0.031657       0.021793
+   5       0.000769      -0.000705       0.001815
+   6      -0.002012       0.000344      -0.000715
+   7       0.001209       0.000360      -0.000493
+   8      -0.001168       0.000580       0.000370
+   9       0.002041       0.000339       0.000625
+  10      -0.000849      -0.001077      -0.001581
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   2
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.732655   -0.168536    0.416035
+      2  C        -0.699548    0.426795   -0.309665
+      3  C         0.736238    0.426203    0.176252
+      4  C         1.704678   -0.423987   -0.360087
+      5  H        -2.776771   -0.147057    0.050003
+      6  H        -1.546480   -0.689191    1.375941
+      7  H        -0.921291    0.943894   -1.264534
+      8  H         1.013493    1.149889    0.968559
+      9  H         1.462487   -1.155450   -1.155995
+     10  H         2.750769   -0.400929    0.000162
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.031030805
+
+ Hessian Updated using BFGS Update
+
+ 22 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.010343    0.021763    0.021779    0.032655    0.032663    0.032664
+     0.032664    0.157663    0.159987    0.160000    0.160076    0.215783
+     0.220004    0.299127    0.335783    0.351945    0.353774    0.354982
+     0.355708    0.356194    0.412800    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.01762798
+ Step Taken.  Stepsize is  0.250370
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.043128      0.000300      NO
+         Displacement       0.146685      0.001200      NO
+         Energy change     -0.022905      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.303990
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.790136    -0.179037     0.442851
+    2      C      -0.693915     0.450929    -0.334190
+    3      C       0.733030     0.456238     0.193697
+    4      C       1.760696    -0.446023    -0.382645
+    5      H      -2.834604    -0.167587     0.060890
+    6      H      -1.584798    -0.690266     1.409659
+    7      H      -0.919893     0.960826    -1.292996
+    8      H       1.013932     1.173636     0.991696
+    9      H       1.500162    -1.168518    -1.187854
+   10      H       2.806446    -0.428567    -0.004439
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.881383065182
+   Eangle:           11.545824739955
+   EUreyBrad:         1.531907507092
+   Eimptors:          0.000000000000
+   Etorsion:          2.165940128699
+   Evdw:             -0.010064145629
+   Ecoulomb:         -3.065603271537
+   Etot:             13.049388023762 Kcal/mol (      0.020795523617 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0015 Y     -0.0442 Z      0.0132
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.012305       0.004807      -0.008004
+   2      -0.012373      -0.004366       0.007146
+   3       0.011860      -0.007123      -0.005642
+   4      -0.011745       0.007764       0.006360
+   5      -0.004519      -0.000359      -0.000247
+   6      -0.000652      -0.001929       0.004001
+   7       0.000541       0.001930      -0.003849
+   8      -0.000325       0.002894       0.003217
+   9       0.000435      -0.002942      -0.003364
+  10       0.004473      -0.000678       0.000383
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   3
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.790136   -0.179037    0.442851
+      2  C        -0.693915    0.450929   -0.334190
+      3  C         0.733030    0.456238    0.193697
+      4  C         1.760696   -0.446023   -0.382645
+      5  H        -2.834604   -0.167587    0.060890
+      6  H        -1.584798   -0.690266    1.409659
+      7  H        -0.919893    0.960826   -1.292996
+      8  H         1.013932    1.173636    0.991696
+      9  H         1.500162   -1.168518   -1.187854
+     10  H         2.806446   -0.428567   -0.004439
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.020795524
+
+ Hessian Updated using BFGS Update
+
+ 23 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.010340    0.021701    0.021779    0.032600    0.032663    0.032664
+     0.032664    0.150586    0.159987    0.160000    0.160000    0.160151
+     0.218346    0.220004    0.272321    0.335650    0.351945    0.353472
+     0.354982    0.355673    0.356194    0.421849    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00125870
+ Step Taken.  Stepsize is  0.107813
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.012418      0.000300      NO
+         Displacement       0.080008      0.001200      NO
+         Energy change     -0.010235      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.124158
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.811693    -0.171371     0.455728
+    2      C      -0.688872     0.438520    -0.337821
+    3      C       0.726958     0.445669     0.200344
+    4      C       1.782695    -0.443840    -0.396820
+    5      H      -2.845560    -0.154166     0.061516
+    6      H      -1.606696    -0.678020     1.418726
+    7      H      -0.918271     0.944756    -1.291161
+    8      H       1.010889     1.157844     0.994035
+    9      H       1.522940    -1.160987    -1.199508
+   10      H       2.818530    -0.416776    -0.008369
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.361643177514
+   Eangle:           11.451689219103
+   EUreyBrad:         1.697459539898
+   Eimptors:          0.000000000000
+   Etorsion:          2.147622856701
+   Evdw:             -0.042088676639
+   Ecoulomb:         -3.070745965075
+   Etot:             12.545580151502 Kcal/mol (      0.019992654663 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0012 Y     -0.0391 Z      0.0125
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.002305      -0.001566      -0.002044
+   2      -0.003329       0.001344       0.001686
+   3       0.003415       0.000571      -0.001938
+   4      -0.002412      -0.000782       0.002354
+   5      -0.001669       0.000392       0.000024
+   6      -0.000168      -0.000167       0.001689
+   7       0.000368       0.000100      -0.001417
+   8      -0.000342       0.000492       0.001340
+   9       0.000134      -0.000609      -0.001588
+  10       0.001697       0.000225      -0.000106
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   4
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.811693   -0.171371    0.455728
+      2  C        -0.688872    0.438520   -0.337821
+      3  C         0.726958    0.445669    0.200344
+      4  C         1.782695   -0.443840   -0.396820
+      5  H        -2.845560   -0.154166    0.061516
+      6  H        -1.606696   -0.678020    1.418726
+      7  H        -0.918271    0.944756   -1.291161
+      8  H         1.010889    1.157844    0.994035
+      9  H         1.522940   -1.160987   -1.199508
+     10  H         2.818530   -0.416776   -0.008369
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.019992655
+
+ Hessian Updated using BFGS Update
+
+ 23 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.009818    0.017485    0.021778    0.030410    0.032664    0.032664
+     0.032666    0.148529    0.159987    0.160000    0.160002    0.160422
+     0.220004    0.220059    0.300596    0.340480    0.351945    0.353036
+     0.354982    0.355640    0.356194    0.388841    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00050321
+ Step Taken.  Stepsize is  0.165509
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.002538      0.000300      NO
+         Displacement       0.148323      0.001200      NO
+         Energy change     -0.000803      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.175270
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.830931    -0.150639     0.470777
+    2      C      -0.684160     0.407824    -0.340636
+    3      C       0.719602     0.417258     0.210912
+    4      C       1.803510    -0.429423    -0.416490
+    5      H      -2.854720    -0.129567     0.062336
+    6      H      -1.633252    -0.663609     1.427298
+    7      H      -0.911576     0.921084    -1.286603
+    8      H       1.002096     1.134483     0.995637
+    9      H       1.550548    -1.151657    -1.211182
+   10      H       2.829802    -0.394123    -0.015379
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.383308862493
+   Eangle:           11.262898939111
+   EUreyBrad:         1.628856118416
+   Eimptors:          0.000000000000
+   Etorsion:          2.088227465920
+   Evdw:             -0.050225865365
+   Ecoulomb:         -3.092637833521
+   Etot:             12.220427687053 Kcal/mol (      0.019474491226 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0010 Y     -0.0329 Z      0.0117
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1      -0.002528      -0.006042      -0.000236
+   2       0.001547       0.004914       0.000830
+   3      -0.001117       0.004657      -0.002086
+   4       0.001988      -0.005981       0.001816
+   5       0.000569       0.001310       0.000617
+   6       0.000033       0.001620       0.000032
+   7       0.000180      -0.001614       0.000134
+   8      -0.000322      -0.001574       0.000285
+   9       0.000109       0.001556      -0.000450
+  10      -0.000458       0.001154      -0.000942
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+**WARNING** Hereditary positive definiteness endangered
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   5
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.830931   -0.150639    0.470777
+      2  C        -0.684160    0.407824   -0.340636
+      3  C         0.719602    0.417258    0.210912
+      4  C         1.803510   -0.429423   -0.416490
+      5  H        -2.854720   -0.129567    0.062336
+      6  H        -1.633252   -0.663609    1.427298
+      7  H        -0.911576    0.921084   -1.286603
+      8  H         1.002096    1.134483    0.995637
+      9  H         1.550548   -1.151657   -1.211182
+     10  H         2.829802   -0.394123   -0.015379
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.019474491
+
+ Hessian Updated using BFGS Update
+**WARNING** Hereditary positive definiteness endangered
+
+ 23 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+    -1.873408    0.000129    0.012016    0.021778    0.029260    0.032664
+     0.032664    0.032715    0.159987    0.160000    0.160002    0.160290
+     0.182614    0.219713    0.220004    0.335537    0.348813    0.351945
+     0.354982    0.355373    0.356194    0.357516    0.613221
+**WARNING** Hessian does not have the Desired Local Structure
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -1.87342106
+ Calculated Step too Large.  Step scaled by  0.000792
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.004835      0.000300      NO
+         Displacement       0.230845      0.001200      NO
+         Energy change     -0.000518      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.236874
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.798260    -0.135083     0.454052
+    2      C      -0.709173     0.397041    -0.350520
+    3      C       0.743694     0.407233     0.223535
+    4      C       1.772522    -0.407260    -0.404722
+    5      H      -2.874083    -0.141271     0.055484
+    6      H      -1.593046    -0.691026     1.436079
+    7      H      -0.919466     0.945783    -1.328417
+    8      H       1.012622     1.168322     1.029790
+    9      H       1.507970    -1.176775    -1.213069
+   10      H       2.848139    -0.405334    -0.005542
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             4.845953502483
+   Eangle:           11.217327086819
+   EUreyBrad:         2.493812708371
+   Eimptors:          0.000000000000
+   Etorsion:          2.048091709748
+   Evdw:             -0.001479108517
+   Ecoulomb:         -3.121191553646
+   Etot:             17.482514345258 Kcal/mol (      0.027860160130 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0016 Y     -0.0479 Z      0.0137
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.038199       0.012967      -0.024965
+   2      -0.035651      -0.013165       0.019971
+   3       0.034128      -0.020926      -0.015509
+   4      -0.036630       0.022247       0.020357
+   5      -0.023391       0.000364      -0.005827
+   6       0.001839      -0.010209       0.021142
+   7      -0.002677       0.009670      -0.020561
+   8       0.003753       0.014356       0.017414
+   9      -0.002971      -0.015098      -0.017829
+  10       0.023400      -0.000206       0.005806
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   6
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.798260   -0.135083    0.454052
+      2  C        -0.709173    0.397041   -0.350520
+      3  C         0.743694    0.407233    0.223535
+      4  C         1.772522   -0.407260   -0.404722
+      5  H        -2.874083   -0.141271    0.055484
+      6  H        -1.593046   -0.691026    1.436079
+      7  H        -0.919466    0.945783   -1.328417
+      8  H         1.012622    1.168322    1.029790
+      9  H         1.507970   -1.176775   -1.213069
+     10  H         2.848139   -0.405334   -0.005542
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.027860160
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.000122    0.011878    0.021778    0.028786    0.032664    0.032664
+     0.032699    0.150706    0.159987    0.160000    0.160000    0.160013
+     0.160700    0.219601    0.220004    0.269020    0.335704    0.351945
+     0.352048    0.354982    0.355616    0.356194    0.378631    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.01739514
+ Calculated Step too Large.  Step scaled by  0.872337
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.039331      0.000300      NO
+         Displacement       0.219788      0.001200      NO
+         Energy change      0.008386      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.283233
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.836704    -0.113112     0.484973
+    2      C      -0.687758     0.365849    -0.346507
+    3      C       0.719578     0.378046     0.227434
+    4      C       1.812401    -0.397409    -0.439836
+    5      H      -2.865836    -0.107044     0.058017
+    6      H      -1.643072    -0.674031     1.428627
+    7      H      -0.907805     0.915230    -1.287152
+    8      H       0.997847     1.129328     0.997627
+    9      H       1.559379    -1.162899    -1.209650
+   10      H       2.842891    -0.372329    -0.016863
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.467402300795
+   Eangle:           10.429904633353
+   EUreyBrad:         1.649614178391
+   Eimptors:          0.000000000000
+   Etorsion:          1.904721928700
+   Evdw:             -0.028753997109
+   Ecoulomb:         -3.138452472781
+   Etot:             11.284436571348 Kcal/mol (      0.017982894431 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0012 Y     -0.0388 Z      0.0125
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.007968      -0.005189      -0.008295
+   2      -0.006951       0.002507       0.008101
+   3       0.007053      -0.000272      -0.008398
+   4      -0.008300      -0.002171       0.009266
+   5      -0.005525       0.002590      -0.001111
+   6       0.000915      -0.000266       0.006046
+   7      -0.001284       0.000440      -0.005762
+   8       0.001384       0.001791       0.005471
+   9      -0.001004      -0.001727      -0.005787
+  10       0.005745       0.002296       0.000469
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   7
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.836704   -0.113112    0.484973
+      2  C        -0.687758    0.365849   -0.346507
+      3  C         0.719578    0.378046    0.227434
+      4  C         1.812401   -0.397409   -0.439836
+      5  H        -2.865836   -0.107044    0.058017
+      6  H        -1.643072   -0.674031    1.428627
+      7  H        -0.907805    0.915230   -1.287152
+      8  H         0.997847    1.129328    0.997627
+      9  H         1.559379   -1.162899   -1.209650
+     10  H         2.842891   -0.372329   -0.016863
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.017982894
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.000108    0.011754    0.021778    0.028622    0.032664    0.032664
+     0.032699    0.159625    0.159987    0.160000    0.160000    0.160036
+     0.163229    0.219558    0.220004    0.267559    0.335690    0.351572
+     0.351945    0.354982    0.355590    0.356194    0.369078    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00879260
+ Calculated Step too Large.  Step scaled by  0.325588
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.008990      0.000300      NO
+         Displacement       0.279201      0.001200      NO
+         Energy change     -0.009877      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.230056
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.855088    -0.073747     0.508606
+    2      C      -0.682333     0.318190    -0.349311
+    3      C       0.710035     0.333362     0.242345
+    4      C       1.833907    -0.367157    -0.472629
+    5      H      -2.868923    -0.075080     0.055659
+    6      H      -1.671468    -0.670382     1.427706
+    7      H      -0.898121     0.893792    -1.271595
+    8      H       0.986152     1.105548     0.987985
+    9      H       1.587979    -1.161645    -1.209343
+   10      H       2.848781    -0.341251    -0.022753
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.304876521261
+   Eangle:            9.124015715537
+   EUreyBrad:         1.387113347688
+   Eimptors:          0.000000000000
+   Etorsion:          1.618502755639
+   Evdw:             -0.011318315458
+   Ecoulomb:         -3.180319389156
+   Etot:              9.242870635511 Kcal/mol (      0.014729452005 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0013 Y     -0.0390 Z      0.0125
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.002918      -0.010951      -0.007002
+   2      -0.001133       0.006344       0.007532
+   3       0.001602       0.004077      -0.008902
+   4      -0.003790      -0.008495       0.009557
+   5      -0.003221       0.004200      -0.000625
+   6       0.001541       0.001971       0.004725
+   7      -0.001940      -0.001443      -0.004332
+   8       0.001856      -0.000447       0.004581
+   9      -0.001417       0.000821      -0.005094
+  10       0.003585       0.003924      -0.000441
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+**WARNING** Hereditary positive definiteness endangered
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   8
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.855088   -0.073747    0.508606
+      2  C        -0.682333    0.318190   -0.349311
+      3  C         0.710035    0.333362    0.242345
+      4  C         1.833907   -0.367157   -0.472629
+      5  H        -2.868923   -0.075080    0.055659
+      6  H        -1.671468   -0.670382    1.427706
+      7  H        -0.898121    0.893792   -1.271595
+      8  H         0.986152    1.105548    0.987985
+      9  H         1.587979   -1.161645   -1.209343
+     10  H         2.848781   -0.341251   -0.022753
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.014729452
+
+ Hessian Updated using BFGS Update
+**WARNING** Hereditary positive definiteness endangered
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+    -0.019019    0.002284    0.019572    0.021778    0.032647    0.032664
+     0.032664    0.065657    0.157820    0.159987    0.160000    0.160000
+     0.160022    0.163245    0.219627    0.220004    0.334889    0.342365
+     0.351945    0.354349    0.354982    0.355859    0.356194    0.613221
+**WARNING** Hessian does not have the Desired Local Structure
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.02312165
+ Calculated Step too Large.  Step scaled by  0.135293
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.010976      0.000300      NO
+         Displacement       0.260137      0.001200      NO
+         Energy change     -0.003253      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.191782
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.858220    -0.032393     0.526536
+    2      C      -0.686900     0.273454    -0.353293
+    3      C       0.710719     0.290917     0.257747
+    4      C       1.840457    -0.332193    -0.500591
+    5      H      -2.873636    -0.050993     0.051572
+    6      H      -1.683747    -0.679945     1.425518
+    7      H      -0.887799     0.884764    -1.267960
+    8      H       0.975045     1.096827     0.986667
+    9      H       1.599386    -1.171361    -1.204598
+   10      H       2.855615    -0.317449    -0.024928
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.616829450113
+   Eangle:            7.297041474102
+   EUreyBrad:         1.318114837443
+   Eimptors:          0.000000000000
+   Etorsion:          1.274899283424
+   Evdw:              0.017039409402
+   Ecoulomb:         -3.228902191056
+   Etot:              7.295022263428 Kcal/mol (      0.011625358023 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0016 Y     -0.0465 Z      0.0135
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.010436      -0.009289      -0.011787
+   2      -0.007802       0.004052       0.011601
+   3       0.007997       0.000237      -0.012166
+   4      -0.011077      -0.004998       0.013661
+   5      -0.008374       0.004877      -0.002896
+   6       0.002593      -0.000727       0.009611
+   7      -0.002985       0.001018      -0.009127
+   8       0.003168       0.003063       0.008593
+   9      -0.002760      -0.002941      -0.009131
+  10       0.008803       0.004705       0.001643
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:   9
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.858220   -0.032393    0.526536
+      2  C        -0.686900    0.273454   -0.353293
+      3  C         0.710719    0.290917    0.257747
+      4  C         1.840457   -0.332193   -0.500591
+      5  H        -2.873636   -0.050993    0.051572
+      6  H        -1.683747   -0.679945    1.425518
+      7  H        -0.887799    0.884764   -1.267960
+      8  H         0.975045    1.096827    0.986667
+      9  H         1.599386   -1.171361   -1.204598
+     10  H         2.855615   -0.317449   -0.024928
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.011625358
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.000007    0.009615    0.021778    0.023673    0.032656    0.032664
+     0.032664    0.150531    0.159987    0.160000    0.160000    0.160016
+     0.161563    0.219627    0.220004    0.333124    0.337770    0.351945
+     0.353699    0.354982    0.355741    0.356194    0.613221    2.488249
+**WARNING** Magnitude of eigenvalue   1 too small.  Replaced by     0.000100
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.01107966
+ Calculated Step too Large.  Step scaled by  0.309183
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.014913      0.000300      NO
+         Displacement       0.257009      0.001200      NO
+         Energy change     -0.003104      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.183906
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.853252     0.006425     0.546171
+    2      C      -0.692087     0.243106    -0.354997
+    3      C       0.713268     0.261678     0.267243
+    4      C       1.838705    -0.299382    -0.529665
+    5      H      -2.866304    -0.041165     0.046820
+    6      H      -1.684130    -0.709376     1.404924
+    7      H      -0.878454     0.895983    -1.254338
+    8      H       0.966574     1.104928     0.970502
+    9      H       1.597415    -1.194415    -1.177077
+   10      H       2.849185    -0.306152    -0.022913
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             1.344143665883
+   Eangle:            5.052333027548
+   EUreyBrad:         1.114696302035
+   Eimptors:          0.000000000000
+   Etorsion:          0.923033266491
+   Evdw:              0.054305778577
+   Ecoulomb:         -3.279016818917
+   Etot:              5.209495221617 Kcal/mol (      0.008301859115 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0025 Y     -0.0648 Z      0.0160
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.017327      -0.005694      -0.015072
+   2      -0.014497       0.001224       0.014867
+   3       0.014383      -0.003921      -0.014515
+   4      -0.017584      -0.000075       0.015816
+   5      -0.012398       0.004629      -0.005078
+   6       0.003385      -0.004049       0.012895
+   7      -0.003433       0.003638      -0.012818
+   8       0.003887       0.006495       0.011490
+   9      -0.003881      -0.006917      -0.011453
+  10       0.012811       0.004669       0.003867
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  10
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.853252    0.006425    0.546171
+      2  C        -0.692087    0.243106   -0.354997
+      3  C         0.713268    0.261678    0.267243
+      4  C         1.838705   -0.299382   -0.529665
+      5  H        -2.866304   -0.041165    0.046820
+      6  H        -1.684130   -0.709376    1.404924
+      7  H        -0.878454    0.895983   -1.254338
+      8  H         0.966574    1.104928    0.970502
+      9  H         1.597415   -1.194415   -1.177077
+     10  H         2.849185   -0.306152   -0.022913
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.008301859
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.000270    0.003374    0.016071    0.021778    0.032636    0.032664
+     0.032664    0.122251    0.159987    0.160000    0.160000    0.160016
+     0.161026    0.219720    0.220004    0.331503    0.341082    0.351945
+     0.353738    0.354982    0.355761    0.356194    0.613221    1.865875
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.01221735
+ Calculated Step too Large.  Step scaled by  0.326267
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.020256      0.000300      NO
+         Displacement       0.199202      0.001200      NO
+         Energy change     -0.003323      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.348735
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.839764     0.033573     0.571873
+    2      C      -0.700180     0.258366    -0.348879
+    3      C       0.722638     0.274064     0.257451
+    4      C       1.827405    -0.278596    -0.561747
+    5      H      -2.837806    -0.074462     0.043931
+    6      H      -1.660344    -0.778012     1.343996
+    7      H      -0.871324     0.952431    -1.223636
+    8      H       0.964081     1.151947     0.926226
+    9      H       1.568403    -1.242689    -1.100738
+   10      H       2.817811    -0.334993    -0.011807
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             1.913498198564
+   Eangle:            2.916629950403
+   EUreyBrad:         0.751856383849
+   Eimptors:          0.000000000000
+   Etorsion:          0.708008701608
+   Evdw:              0.068680530509
+   Ecoulomb:         -3.324033736966
+   Etot:              3.034640027966 Kcal/mol (      0.004836006735 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0046 Y     -0.1115 Z      0.0222
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.022270       0.000526      -0.015514
+   2      -0.023254      -0.000839       0.018021
+   3       0.022894      -0.007499      -0.016927
+   4      -0.021948       0.006486       0.014554
+   5      -0.013118       0.002251      -0.005799
+   6       0.002933      -0.007175       0.012027
+   7      -0.001353       0.005125      -0.013872
+   8       0.001958       0.008381       0.012102
+   9      -0.003699      -0.009748      -0.009789
+  10       0.013319       0.002492       0.005197
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  11
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.839764    0.033573    0.571873
+      2  C        -0.700180    0.258366   -0.348879
+      3  C         0.722638    0.274064    0.257451
+      4  C         1.827405   -0.278596   -0.561747
+      5  H        -2.837806   -0.074462    0.043931
+      6  H        -1.660344   -0.778012    1.343996
+      7  H        -0.871324    0.952431   -1.223636
+      8  H         0.964081    1.151947    0.926226
+      9  H         1.568403   -1.242689   -1.100738
+     10  H         2.817811   -0.334993   -0.011807
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.004836007
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.000876    0.008998    0.020550    0.021778    0.032633    0.032664
+     0.032665    0.112815    0.159987    0.160000    0.160000    0.160026
+     0.162370    0.219865    0.220004    0.330950    0.348896    0.351945
+     0.353830    0.354982    0.355791    0.356194    0.613221    1.135508
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00808384
+ Calculated Step too Large.  Step scaled by  0.441609
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.021710      0.000300      NO
+         Displacement       0.267878      0.001200      NO
+         Energy change     -0.003466      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.246727
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.837852     0.078424     0.596348
+    2      C      -0.702509     0.207369    -0.349518
+    3      C       0.720462     0.224929     0.271293
+    4      C       1.829088    -0.241647    -0.596838
+    5      H      -2.826627    -0.046554     0.048089
+    6      H      -1.687838    -0.777819     1.330238
+    7      H      -0.843509     0.934270    -1.205272
+    8      H       0.934570     1.132233     0.912824
+    9      H       1.595987    -1.241386    -1.087238
+   10      H       2.809147    -0.308190    -0.023255
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             2.173835224925
+   Eangle:            1.340929161000
+   EUreyBrad:         0.492998610953
+   Eimptors:          0.000000000000
+   Etorsion:          0.407631086884
+   Evdw:              0.122812654647
+   Ecoulomb:         -3.383695942239
+   Etot:              1.154510796169 Kcal/mol (      0.001839830074 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0047 Y     -0.1161 Z      0.0227
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.024187       0.006064      -0.012851
+   2      -0.025579      -0.002591       0.016444
+   3       0.025065      -0.008990      -0.014916
+   4      -0.023409       0.011310       0.010534
+   5      -0.013203       0.000113      -0.007136
+   6       0.002569      -0.009792       0.010692
+   7      -0.000716       0.005915      -0.013754
+   8       0.001391       0.009170       0.011774
+   9      -0.003544      -0.011963      -0.007824
+  10       0.013239       0.000764       0.007037
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  12
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.837852    0.078424    0.596348
+      2  C        -0.702509    0.207369   -0.349518
+      3  C         0.720462    0.224929    0.271293
+      4  C         1.829088   -0.241647   -0.596838
+      5  H        -2.826627   -0.046554    0.048089
+      6  H        -1.687838   -0.777819    1.330238
+      7  H        -0.843509    0.934270   -1.205272
+      8  H         0.934570    1.132233    0.912824
+      9  H         1.595987   -1.241386   -1.087238
+     10  H         2.809147   -0.308190   -0.023255
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is      0.001839830
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.001182    0.011396    0.021778    0.030975    0.032664    0.032664
+     0.032939    0.103371    0.159987    0.160000    0.160000    0.160037
+     0.165672    0.220004    0.220530    0.329852    0.349798    0.351945
+     0.354917    0.354982    0.356194    0.356259    0.613221    0.723244
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00751314
+ Calculated Step too Large.  Step scaled by  0.654837
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.025228      0.000300      NO
+         Displacement       0.262378      0.001200      NO
+         Energy change     -0.002996      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.360640
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.841075     0.111141     0.618157
+    2      C      -0.701836     0.149936    -0.347749
+    3      C       0.714649     0.169272     0.284478
+    4      C       1.834821    -0.216263    -0.626056
+    5      H      -2.823714    -0.002514     0.074290
+    6      H      -1.757590    -0.771010     1.318223
+    7      H      -0.785013     0.919507    -1.160316
+    8      H       0.874453     1.111679     0.872514
+    9      H       1.666242    -1.237913    -1.076743
+   10      H       2.809984    -0.272204    -0.060128
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             1.110224891227
+   Eangle:            0.741158365428
+   EUreyBrad:         0.141734840104
+   Eimptors:          0.000000000000
+   Etorsion:          0.184658025762
+   Evdw:              0.132637059613
+   Ecoulomb:         -3.415123966657
+   Etot:             -1.104710784522 Kcal/mol (     -0.001760468703 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0038 Y     -0.0979 Z      0.0201
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.021189       0.006159      -0.008842
+   2      -0.023436       0.000760       0.010519
+   3       0.023272      -0.004046      -0.010068
+   4      -0.020475       0.010086       0.006707
+   5      -0.008804      -0.002230      -0.003525
+   6      -0.001256      -0.007712       0.005781
+   7       0.003044       0.002929      -0.007873
+   8      -0.002685       0.005118       0.006813
+   9       0.000520      -0.009036      -0.003593
+  10       0.008630      -0.002026       0.004082
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  13
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.841075    0.111141    0.618157
+      2  C        -0.701836    0.149936   -0.347749
+      3  C         0.714649    0.169272    0.284478
+      4  C         1.834821   -0.216263   -0.626056
+      5  H        -2.823714   -0.002514    0.074290
+      6  H        -1.757590   -0.771010    1.318223
+      7  H        -0.785013    0.919507   -1.160316
+      8  H         0.874453    1.111679    0.872514
+      9  H         1.666242   -1.237913   -1.076743
+     10  H         2.809984   -0.272204   -0.060128
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.001760469
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.001110    0.011351    0.021778    0.032588    0.032664    0.032665
+     0.045842    0.129042    0.159987    0.160000    0.160000    0.160166
+     0.164319    0.220004    0.220852    0.326465    0.348142    0.351945
+     0.354982    0.355428    0.356194    0.356690    0.466206    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00474053
+ Calculated Step too Large.  Step scaled by  0.551327
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.021454      0.000300      NO
+         Displacement       0.221817      0.001200      NO
+         Energy change     -0.003600      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.527211
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.839824     0.145037     0.619128
+    2      C      -0.696255     0.045144    -0.353948
+    3      C       0.699999     0.070514     0.317198
+    4      C       1.836610    -0.183700    -0.635803
+    5      H      -2.827739     0.088781     0.082133
+    6      H      -1.824183    -0.706434     1.356068
+    7      H      -0.739589     0.843254    -1.140399
+    8      H       0.822259     1.037097     0.872324
+    9      H       1.737806    -1.191310    -1.129065
+   10      H       2.821834    -0.186752    -0.090966
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.678151086803
+   Eangle:            0.259354060929
+   EUreyBrad:         0.010971329513
+   Eimptors:          0.000000000000
+   Etorsion:          0.032499218514
+   Evdw:              0.282226155130
+   Ecoulomb:         -3.449159152511
+   Etot:             -2.185957301623 Kcal/mol (     -0.003483544715 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0013 Y     -0.0392 Z      0.0125
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.018494       0.005436      -0.006745
+   2      -0.015766      -0.001445       0.003044
+   3       0.015540      -0.003589      -0.002369
+   4      -0.017865       0.008619       0.004880
+   5      -0.007753      -0.001479      -0.002621
+   6      -0.001769      -0.006108       0.005145
+   7       0.002065       0.003078      -0.004444
+   8      -0.001737       0.004293       0.003472
+   9       0.001169      -0.007363      -0.003370
+  10       0.007621      -0.001442       0.003009
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  14
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.839824    0.145037    0.619128
+      2  C        -0.696255    0.045144   -0.353948
+      3  C         0.699999    0.070514    0.317198
+      4  C         1.836610   -0.183700   -0.635803
+      5  H        -2.827739    0.088781    0.082133
+      6  H        -1.824183   -0.706434    1.356068
+      7  H        -0.739589    0.843254   -1.140399
+      8  H         0.822259    1.037097    0.872324
+      9  H         1.737806   -1.191310   -1.129065
+     10  H         2.821834   -0.186752   -0.090966
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.003483545
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.002840    0.021778    0.023637    0.032571    0.032664    0.032665
+     0.046251    0.106620    0.150182    0.159987    0.160000    0.160000
+     0.160184    0.185332    0.220004    0.243177    0.334042    0.351544
+     0.351945    0.354982    0.355594    0.356194    0.375018    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00554633
+ Calculated Step too Large.  Step scaled by  0.769504
+ Step Taken.  Stepsize is  0.300000
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.015975      0.000300      NO
+         Displacement       0.156308      0.001200      NO
+         Energy change     -0.001723      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.438066
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.884448     0.115635     0.636963
+    2      C      -0.693979     0.096288    -0.340132
+    3      C       0.702075     0.116461     0.290158
+    4      C       1.878525    -0.220330    -0.645182
+    5      H      -2.836987     0.048640     0.095916
+    6      H      -1.857944    -0.753512     1.307850
+    7      H      -0.770978     0.923612    -1.063936
+    8      H       0.859555     1.091850     0.778138
+    9      H       1.767963    -1.227132    -1.069772
+   10      H       2.827137    -0.229881    -0.093331
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.339693413213
+   Eangle:            0.260397264245
+   EUreyBrad:         0.096429101159
+   Eimptors:          0.000000000000
+   Etorsion:          0.094850652326
+   Evdw:              0.016705401851
+   Ecoulomb:         -3.263973294581
+   Etot:             -2.455897461787 Kcal/mol (     -0.003913721745 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0016 Y     -0.0439 Z      0.0135
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1      -0.007319      -0.004910       0.001144
+   2       0.001309       0.005673      -0.002036
+   3      -0.000762       0.006065       0.000483
+   4       0.006885      -0.005639       0.000191
+   5       0.005319      -0.001605       0.005691
+   6      -0.003228       0.005318      -0.004926
+   7       0.002068      -0.003883       0.004043
+   8      -0.002447      -0.004589      -0.002927
+   9       0.003721       0.006117       0.003473
+  10      -0.005546      -0.002548      -0.005135
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  15
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.884448    0.115635    0.636963
+      2  C        -0.693979    0.096288   -0.340132
+      3  C         0.702075    0.116461    0.290158
+      4  C         1.878525   -0.220330   -0.645182
+      5  H        -2.836987    0.048640    0.095916
+      6  H        -1.857944   -0.753512    1.307850
+      7  H        -0.770978    0.923612   -1.063936
+      8  H         0.859555    1.091850    0.778138
+      9  H         1.767963   -1.227132   -1.069772
+     10  H         2.827137   -0.229881   -0.093331
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.003913722
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.003992    0.021778    0.023578    0.032609    0.032664    0.032666
+     0.046306    0.134094    0.159987    0.159988    0.160000    0.160007
+     0.169587    0.220004    0.233254    0.258927    0.338409    0.351945
+     0.354761    0.354983    0.355624    0.356194    0.377496    0.613221
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00203659
+ Step Taken.  Stepsize is  0.183519
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.013285      0.000300      NO
+         Displacement       0.091898      0.001200      NO
+         Energy change     -0.000430      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.301309
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.868306     0.138884     0.630090
+    2      C      -0.692417     0.052299    -0.345069
+    3      C       0.696517     0.075581     0.306903
+    4      C       1.864198    -0.195400    -0.644056
+    5      H      -2.828140     0.080690     0.074879
+    6      H      -1.839188    -0.712310     1.343609
+    7      H      -0.766674     0.864277    -1.102318
+    8      H       0.850574     1.045288     0.830532
+    9      H       1.752417    -1.195189    -1.115697
+   10      H       2.821938    -0.192490    -0.082203
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.008679417657
+   Eangle:            0.013990538290
+   EUreyBrad:         0.011026060785
+   Eimptors:          0.000000000000
+   Etorsion:          0.034594605632
+   Evdw:              0.154389422211
+   Ecoulomb:         -3.347438674992
+   Etot:             -3.124758630418 Kcal/mol (     -0.004979619870 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0008 Y     -0.0333 Z      0.0114
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.000120       0.000584      -0.000089
+   2      -0.001363      -0.000641      -0.000395
+   3       0.001260      -0.000600       0.000570
+   4      -0.000083       0.000556      -0.000008
+   5       0.000237      -0.000411       0.000345
+   6      -0.000334       0.000082      -0.000489
+   7      -0.000130       0.000389       0.000143
+   8       0.000161       0.000328      -0.000235
+   9       0.000368       0.000167       0.000412
+  10      -0.000236      -0.000453      -0.000254
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  16
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.868306    0.138884    0.630090
+      2  C        -0.692417    0.052299   -0.345069
+      3  C         0.696517    0.075581    0.306903
+      4  C         1.864198   -0.195400   -0.644056
+      5  H        -2.828140    0.080690    0.074879
+      6  H        -1.839188   -0.712310    1.343609
+      7  H        -0.766674    0.864277   -1.102318
+      8  H         0.850574    1.045288    0.830532
+      9  H         1.752417   -1.195189   -1.115697
+     10  H         2.821938   -0.192490   -0.082203
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.004979620
+
+ Hessian Updated using BFGS Update
+
+ 23 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.004064    0.021778    0.023800    0.032600    0.032664    0.032670
+     0.045435    0.134584    0.159908    0.159987    0.160014    0.167465
+     0.220004    0.230203    0.266196    0.330174    0.351917    0.351945
+     0.354983    0.355605    0.356195    0.380533    0.613222
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00006160
+ Step Taken.  Stepsize is  0.064683
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.001090      0.000300      NO
+         Displacement       0.038523      0.001200      NO
+         Energy change     -0.001066      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.100002
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.868308     0.141007     0.626136
+    2      C      -0.690599     0.044843    -0.345118
+    3      C       0.694429     0.068500     0.308219
+    4      C       1.864770    -0.191448    -0.641657
+    5      H      -2.830775     0.088406     0.073651
+    6      H      -1.840400    -0.694223     1.359379
+    7      H      -0.761117     0.842995    -1.116777
+    8      H       0.843440     1.028705     0.849769
+    9      H       1.754929    -1.181758    -1.134814
+   10      H       2.824552    -0.185395    -0.082118
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.003249620585
+   Eangle:            0.008033548802
+   EUreyBrad:         0.009679933992
+   Eimptors:          0.000000000000
+   Etorsion:          0.032263199710
+   Evdw:              0.177283067373
+   Ecoulomb:         -3.368116229257
+   Etot:             -3.137606858795 Kcal/mol (     -0.005000094825 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0011 Y     -0.0300 Z      0.0118
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1       0.000310      -0.000399      -0.000480
+   2      -0.000324       0.000164       0.000078
+   3       0.000397       0.000055      -0.000119
+   4      -0.000305      -0.000169       0.000468
+   5      -0.000280       0.000145       0.000111
+   6      -0.000121       0.000017       0.000320
+   7       0.000110       0.000078      -0.000084
+   8      -0.000100       0.000105       0.000057
+   9       0.000086      -0.000063      -0.000243
+  10       0.000228       0.000068      -0.000107
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  17
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.868308    0.141007    0.626136
+      2  C        -0.690599    0.044843   -0.345118
+      3  C         0.694429    0.068500    0.308219
+      4  C         1.864770   -0.191448   -0.641657
+      5  H        -2.830775    0.088406    0.073651
+      6  H        -1.840400   -0.694223    1.359379
+      7  H        -0.761117    0.842995   -1.116777
+      8  H         0.843440    1.028705    0.849769
+      9  H         1.754929   -1.181758   -1.134814
+     10  H         2.824552   -0.185395   -0.082118
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.005000095
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.004233    0.021779    0.022907    0.032594    0.032664    0.032812
+     0.061542    0.140238    0.159125    0.159987    0.160000    0.160173
+     0.163424    0.220006    0.228577    0.265561    0.318837    0.351945
+     0.354415    0.355144    0.355613    0.356269    0.379528    0.613284
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =  -0.00001249
+ Step Taken.  Stepsize is  0.013622
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.000732      0.000300      NO
+         Displacement       0.008171      0.001200      NO
+         Energy change     -0.000020      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.027980
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.867915     0.142075     0.628105
+    2      C      -0.690678     0.048103    -0.344511
+    3      C       0.694430     0.071545     0.307394
+    4      C       1.864124    -0.191755    -0.643002
+    5      H      -2.827904     0.084067     0.072035
+    6      H      -1.836544    -0.698427     1.355006
+    7      H      -0.763335     0.846880    -1.115283
+    8      H       0.845880     1.032153     0.847494
+    9      H       1.750862    -1.184518    -1.130282
+   10      H       2.822000    -0.188493    -0.080284
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.003414753949
+   Eangle:            0.003228426219
+   EUreyBrad:         0.008544604534
+   Eimptors:          0.000000000000
+   Etorsion:          0.033616007412
+   Evdw:              0.179019370115
+   Ecoulomb:         -3.369333700556
+   Etot:             -3.141510538326 Kcal/mol (     -0.005006315735 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0009 Y     -0.0338 Z      0.0115
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1      -0.000008       0.000003      -0.000007
+   2      -0.000213      -0.000066       0.000108
+   3       0.000167      -0.000079      -0.000079
+   4      -0.000008      -0.000030       0.000057
+   5       0.000004       0.000018      -0.000054
+   6       0.000066      -0.000022       0.000013
+   7       0.000030       0.000072      -0.000071
+   8      -0.000023       0.000092       0.000051
+   9      -0.000049      -0.000028      -0.000047
+  10       0.000035       0.000041       0.000029
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  18
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.867915    0.142075    0.628105
+      2  C        -0.690678    0.048103   -0.344511
+      3  C         0.694430    0.071545    0.307394
+      4  C         1.864124   -0.191755   -0.643002
+      5  H        -2.827904    0.084067    0.072035
+      6  H        -1.836544   -0.698427    1.355006
+      7  H        -0.763335    0.846880   -1.115283
+      8  H         0.845880    1.032153    0.847494
+      9  H         1.750862   -1.184518   -1.130282
+     10  H         2.822000   -0.188493   -0.080284
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.005006316
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.004282    0.021779    0.022988    0.032591    0.032664    0.033116
+     0.058405    0.133611    0.159284    0.159987    0.160000    0.160185
+     0.179669    0.220020    0.229019    0.265234    0.318696    0.351945
+     0.354833    0.355590    0.356010    0.358900    0.372049    0.613596
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =   0.00000000
+ Step Taken.  Stepsize is  0.003362
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.000157      0.000300     YES
+         Displacement       0.001766      0.001200      NO
+         Energy change     -0.000006      0.000001      NO
+
+
+ New Cartesian Coordinates Obtained by Inverse Iteration
+
+ Displacement from previous Coordinates is:  0.005436
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -1.867808     0.142146     0.627912
+    2      C      -0.690428     0.047287    -0.344755
+    3      C       0.694403     0.070790     0.307336
+    4      C       1.864297    -0.190935    -0.643512
+    5      H      -2.828101     0.084835     0.072433
+    6      H      -1.837367    -0.697599     1.355613
+    7      H      -0.763140     0.846001    -1.115389
+    8      H       0.845684     1.031110     0.847709
+    9      H       1.751671    -1.183805    -1.130476
+   10      H       2.821709    -0.188199    -0.080200
+ ----------------------------------------------------
+ Nuclear Repulsion Energy =     0.0000000000 hartrees
+ There are       15 alpha and       15 beta electrons
+ opened zmat2 in MoleculeInput::write (get connectivity info)
+ JobOver = FALSE
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+
+ ------ MM Energies ------
+   Ebond:             0.003380401612
+   Eangle:            0.003278483484
+   EUreyBrad:         0.008419976061
+   Eimptors:          0.000000000000
+   Etorsion:          0.033042062086
+   Evdw:              0.179707355114
+   Ecoulomb:         -3.369455202519
+   Etot:             -3.141626924162 Kcal/mol (     -0.005006501207 hartree)
+ -------------------------
+ Time req'd to calc MM energy: 0.0 s (CPU) 0.0 s (wall)
+ MM system total charge (e):
+       -0.3600
+ MM system dipole moment (e*Angs):
+ X     -0.0012 Y     -0.0336 Z      0.0121
+ Call to compute MM gradient 
+ Loading force field from file.
+ Q-Chem will use parameter file:
+/Users/hauser/Desktop/butadiene/mm/first.prm
+ getting molecule information
+ Reading atomic types. 
+Wrote 0 MM bonds to file 840
+ Time req'd to get MM system information: 0.0 s (CPU) 0.0 s (wall)
+MM energy gradient
+---------------------------------------------------
+  Atom         X              Y              Z     
+---------------------------------------------------
+   1      -0.000033      -0.000034      -0.000018
+   2      -0.000012      -0.000014      -0.000012
+   3       0.000055      -0.000050       0.000010
+   4       0.000054       0.000013      -0.000041
+   5      -0.000004       0.000016       0.000004
+   6       0.000007       0.000012       0.000021
+   7       0.000006       0.000021       0.000003
+   8      -0.000003       0.000019      -0.000010
+   9      -0.000030       0.000017       0.000026
+  10      -0.000040       0.000001       0.000016
+---------------------------------------------------
+ Time req'd to calc MM gradient: 0.0 s (CPU) 0.0 s (wall)
+ Geometry Optimization Parameters
+   NAtoms,    NIC,     NZ,  NCons,   NDum,   NFix, NCnnct, MaxDiis
+       10      53       0       0       0       0       0       0
+
+ Cartesian Hessian Update
+ Hessian Updated using BFGS Update
+
+
+** GEOMETRY OPTIMIZATION IN DELOCALIZED INTERNAL COORDINATES **
+   Searching for a Minimum
+
+   Optimization Cycle:  19
+
+                       Coordinates (Angstroms)
+     ATOM              X           Y           Z
+      1  C        -1.867808    0.142146    0.627912
+      2  C        -0.690428    0.047287   -0.344755
+      3  C         0.694403    0.070790    0.307336
+      4  C         1.864297   -0.190935   -0.643512
+      5  H        -2.828101    0.084835    0.072433
+      6  H        -1.837367   -0.697599    1.355613
+      7  H        -0.763140    0.846001   -1.115389
+      8  H         0.845684    1.031110    0.847709
+      9  H         1.751671   -1.183805   -1.130476
+     10  H         2.821709   -0.188199   -0.080200
+   Point Group: c1    Number of degrees of freedom:    24
+
+
+   Energy is     -0.005006501
+
+ Hessian Updated using BFGS Update
+
+ 24 Hessian modes will be used to form the next step
+  Hessian Eigenvalues:
+     0.004110    0.021781    0.023729    0.032035    0.032664    0.051478
+     0.054997    0.129256    0.154271    0.159575    0.159987    0.160000
+     0.187382    0.219971    0.220666    0.258137    0.312851    0.349565
+     0.351947    0.355519    0.355616    0.360234    0.372406    0.618365
+
+ Minimum Search - Taking Simple RFO Step
+ Searching for Lamda that Minimizes Along All modes
+ Value Taken    Lamda =   0.00000000
+ Step Taken.  Stepsize is  0.002063
+
+                             Maximum     Tolerance    Cnvgd?
+         Gradient           0.000063      0.000300     YES
+         Displacement       0.000926      0.001200     YES
+         Energy change     -0.000000      0.000001     YES
+
+
+                       Distance Matrix (Angstroms)
+             C (  1)   C (  2)   C (  3)   C (  4)   H (  5)   H (  6)
+   C (  2)  1.530131
+   C (  3)  2.583173  1.530859
+   C (  4)  3.956774  2.583142  1.530119
+   H (  5)  1.110857  2.178325  3.530355  4.754705
+   H (  6)  1.111597  2.182104  2.845903  4.237396  1.800085
+   H (  7)  2.180550  1.112253  2.179340  2.863795  2.500871  3.105240
+   H (  8)  2.863844  2.179339  1.112252  2.180529  3.872103  3.231898
+   H (  9)  4.236826  2.845486  2.181542  1.111579  4.902117  4.392975
+   H ( 10)  4.754169  3.529950  2.177772  1.110840  5.658462  4.901840
+             H (  7)   H (  8)   H (  9)
+   H (  8)  2.544863
+   H (  9)  3.231812  3.104815
+   H ( 10)  3.871992  2.500481  1.799803
+
+  -----------------------------------------------------------------
+   Geometric Parameters (Bond Distances, Bond Angles,Torsion Angles) 
+  -----------------------------------------------------------------
+ 
+   R(1,2)   = 1.53013
+   R(1,5)   = 1.11086
+   R(1,6)   = 1.11160
+   R(2,3)   = 1.53086
+   R(2,7)   = 1.11225
+   R(3,4)   = 1.53012
+   R(3,8)   = 1.11225
+   R(4,9)   = 1.11158
+   R(4,10)  = 1.11084
+   R(5,6)   = 1.80009
+   R(9,10)  = 1.79980
+ 
+   A(1,2,3)    = 115.10873
+   A(1,2,7)    = 110.21920
+   A(1,5,6)    =  35.92237
+   A(1,6,5)    =  35.89476
+   A(2,1,5)    = 110.12726
+   A(2,1,6)    = 110.37955
+   A(2,3,4)    = 115.10733
+   A(2,3,8)    = 110.07462
+   A(3,2,7)    = 110.07470
+   A(3,4,9)    = 110.33744
+   A(3,4,10)   = 110.08589
+   A(4,3,8)    = 110.21845
+   A(4,9,10)   =  35.90597
+   A(4,10,9)   =  35.93356
+   A(5,1,6)    = 108.18287
+   A(9,4,10)   = 108.16047
+ 
+   D(1,2,3,4)     =  173.02973
+   D(1,2,3,8)     =  -61.68881
+   D(2,1,5,6)     =  120.71410
+   D(2,1,6,5)     = -120.55691
+   D(2,3,4,9)     =  -58.83104
+   D(2,3,4,10)    = -178.13636
+   D(3,4,9,10)    = -120.46705
+   D(3,4,10,9)    =  120.62398
+
+  -----------------------------------------------------------------
+
+ Final energy is  -5.00650120731337654E-003
+
+
+ ******************************
+ **  OPTIMIZATION CONVERGED  **
+ ******************************
+
+Z-matrix Print:
+$molecule
+0,1
+1 C 
+2 H  1 1.112252
+3 C  1 1.530119 2 110.218454
+4 H  3 1.110840 1 110.085889 2 -56.656859 0
+5 H  3 1.111579 1 110.337436 2 -175.962180 0
+6 C  1 1.530859 2 110.074621 3 128.025899 0
+7 H  6 1.112253 1 110.074704 2 -63.594821 0
+8 C  6 1.530131 1 115.108728 2 61.688809 0
+9 H  8 1.110857 6 110.127264 1 178.178927 0
+10 H  8 1.111597 6 110.379549 1 58.793269 0
+$end
+
+Symmetry turned off temporarily
+ JobOver = TRUE
+ Total job time:  0.16s(wall), 0.13s(cpu) 
+ Fri Mar  7 18:54:01 2014
+
+        *************************************************************
+        *                                                           *
+        *  Thank you very much for using Q-Chem.  Have a nice day.  *
+        *                                                           *
+        *************************************************************
+
+
+*** MISSION COMPLETED -- STARFLEET OUT ***
+

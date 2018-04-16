@@ -1,0 +1,370 @@
+mFile = /Applications/qchem/bin/mpi/machines
+                  Welcome to Q-Chem
+     A Quantum Leap Into The Future Of Chemistry
+
+ Y. Shao, L. Fusti-Molnar, Y. Jung, J. Kussmann, C. Ochsenfeld,
+ S. T. Brown, A. T. B. Gilbert, L. V. Slipchenko,S. V. Levchenko,
+ D. P. O'Neill, R. A. DiStasio Jr., R. C. Lochan, T. Wang,
+ G. J. O. Beran, N. A. Besley, J. M. Herbert, C. Y. Lin,
+ T. Van Voorhis, S. H. Chien, A. Sodt, R. P. Steele, 
+ V. A. Rassolov, P. E. Maslen, P. P. Korambath, R. D. Adamson,
+ B. Austin, J. Baker, E. F. C. Byrd, H. Dachsel, R. J. Doerksen,
+ A. Dreuw, B. D. Dunietz, A. D. Dutoi, T. R. Furlani,
+ S. R. Gwaltney, A. Heyden, S. Hirata, C.-P. Hsu, G. Kedziora,
+ R. Z. Khaliullin, P. Klunzinger, A. M. Lee, M. S. Lee, W. Liang,
+ I. Lotan, N. Nair, B. Peters, E. I. Proynov, P. A. Pieniazek, 
+ Y. M. Rhee, J. Ritchie, E. Rosta, C. D. Sherrill, 
+ A. C. Simmonett, J. E. Subotnik, H. L. Woodcock III,
+ W. Zhang, A. T. Bell, A. K. Chakraborty, D. M. Chipman,
+ F. J. Keil, A. Warshel, W. J. Hehre, H. F. Schaefer III,
+ J. Kong, A. I. Krylov, P. M. W. Gill, M. Head-Gordon,
+
+ Additional authors for Version 3.1: 
+ Z. Gan, Y. Zhao, N. E. Schultz, D. Truhlar, E. Epifanovsky and M. Oana.
+
+ Additional authors for Version 3.2: 
+ R. Baer, B. R. Brooks, D. Casanova, J.-D. Chai, C.-L. Cheng, 
+ C. Cramer, D. Crittenden, A. Ghysels, G. Hawkins, E. G. Hohenstein, 
+ C. Kelley, W. Kurlancheek, D. Liotard, E. Livshits, P. Manohar, 
+ A. Marenich, D. Neuhauser, R. Olson, M. A. Rohrdanz, K. S. Thanthiriwatte, 
+ A. J. W. Thom, V. Vanovschi, C. F. Williams, Q. Wu and Z.-Q. You. 
+
+ Additional authors for Version 4.0: 
+ A. Aspuru-Guzik, C. Chang, R. G. Edgar, E. Sundstrom, J. Parkhill, K. Lawler,
+ M. Gordon, M. Schmidt, N. Shenvi, D. Lambrecht, M. Goldey, R. Olivares-Amaya,
+ Y. Bernard, L. Vogt, M. Watson, J. Liu, S. Yeganeh, B. Kaduk, O. Vydrov, X. Xu, 
+ I. Kaliman, K. Khistyaev, N. Russ, I.Y. Zhang, W.A. Goddard III, F. Liu, R. King ,
+ A. Landau, M. Wormit, A. Dreuw, M. Diedenhofen, A. Klamt, A.W. Lange, D. Ghosh,
+ D. Kosenkov, T. Kus, A. Landau, D. Zuev, J. Deng, S.P. Mao, Y.C. Su, D. Small,
+ L. D. Jacobson
+ 
+ Q-Chem, Version 4.0.1, Q-Chem, Inc., Pittsburgh, PA (2007).
+
+
+ MAC (Intel) OSX Version 4.0.1.0 
+
+ Q-chem begins on Wed Apr 16 15:59:13 2014  
+
+Andreass-MacBook-Air.local
+Host: 0
+ Using version located at /Users/hauser/Scripts//qchem
+
+
+theFileMan(): MAXOPENFILES=206 MAX_SUB_FILE_NUM=16
+Maximum size of a physical file is 2.0 GB, maximum size of a tmp-file is 32.0 GB
+
+
+Total Memory Limit in MB = 2000
+Mega-Array Size in MB = 62
+Finally everything over in PARseQInput
+
+--------------------------------------------------------------
+User input:
+--------------------------------------------------------------
+$rem
+SCF_ALGORITHM                 diis_gdm
+BASIS                         gen
+SCF_CONVERGENCE               5
+JOBTYPE                       sp
+EXCHANGE                      hf
+$end
+
+$molecule
+0 1
+C    -3.54006763    2.82474243    0.00000120
+C    -2.37910984    1.82952504    -0.00000385
+H    -3.97395812    2.93913923    -1.00744205
+H    -3.21519618    3.82424113    0.33432388
+H    -4.35085406    2.49943817    0.67310301
+H    -1.56832364    2.15482904    -0.67310597
+H    -2.70398151    0.83002615    -0.33432561
+H    -1.94521902    1.71512882    1.00743939
+$end
+
+$basis
+H
+6-31G
+****
+C
+6-31G
+****
+$end
+
+
+--------------------------------------------------------------
+ I,J,IOp=           1           2           2  D=  1.31344315620785728E-007 Fix sym
+ Atom   2: (  0.7645718904,  0.0000122122,  0.0000045335)
+         ->(  0.7645718709,  0.0000121664,  0.0000045820)
+ I,J,IOp=           3           8           2  D=  1.25863228091984845E-006 Fix sym
+ Atom   8: (  1.1684445474, -0.5794708171,  0.8469850034)
+         ->(  1.1684446548, -0.5794713303,  0.8469845927)
+ I,J,IOp=           4           7           2  D=  1.70357151023521033E-006 Fix sym
+ Atom   7: (  1.1684432196, -0.4438093338, -0.9253176034)
+         ->(  1.1684432435, -0.4438085231, -0.9253179968)
+ I,J,IOp=           5           6           2  D=  9.71219912291419286E-007 Fix sym
+ Atom   6: (  1.1684044878,  1.0232667723,  0.0783164558)
+         ->(  1.1684044737,  1.0232667497,  0.0783169691)
+ ----------------------------------------------------
+       Standard Nuclear Orientation (Angstroms)
+    I     Atom         X            Y            Z
+ ----------------------------------------------------
+    1      C      -0.764572    -0.000012    -0.000005
+    2      C       0.764572     0.000012     0.000005
+    3      H      -1.168445     0.579471    -0.846985
+    4      H      -1.168443     0.443809     0.925318
+    5      H      -1.168404    -1.023267    -0.078317
+    6      H       1.168404     1.023267     0.078317
+    7      H       1.168443    -0.443809    -0.925318
+    8      H       1.168445    -0.579471     0.846985
+ ----------------------------------------------------
+ Molecular Point Group                 Ci    NOp =  2
+ Largest Abelian Subgroup              Ci    NOp =  2
+ Nuclear Repulsion Energy =    41.9771994009 hartrees
+ There are        9 alpha and        9 beta electrons
+
+ Q-Chem warning in module /Applications/qchem/forms1/BasisType.C, line 1125:
+
+ Setting pure/cartesian flag to 2111 for general basis
+
+
+ Requested basis set is non-standard
+ There are 18 shells and 30 basis functions
+
+Total QAlloc Memory Limit   2000 MB
+Mega-Array Size        61 MB
+MEM_STATIC part        62 MB
+
+finished with qalloc call
+
+                       Distance Matrix (Angstroms)
+             C (  1)   C (  2)   H (  3)   H (  4)   H (  5)   H (  6)
+   C (  2)  1.529144
+   H (  3)  1.102855  2.188542
+   H (  4)  1.102865  2.188540  1.777487
+   H (  5)  1.102843  2.188523  1.777532  1.777524
+   H (  6)  2.188523  1.102843  2.552254  2.552262  3.110227
+   H (  7)  2.188540  1.102865  2.552309  3.110266  2.552262  1.777524
+   H (  8)  2.188542  1.102855  3.110262  2.552309  2.552254  1.777532
+             H (  7)
+   H (  8)  1.777487
+
+ Job number = 2, Threshold = 1.00E-09
+Integral type ranges set in mkLRange.C for JobNum: 2  <1-6|1-6>
+Symmetry turned off temporarily
+ Using the largest function pair in Schwarz integrals
+Total number of integrals generated =            3561
+Symmetry turned back on
+ A cutoff of  1.0D-09 yielded    171 shell pairs
+ There are       489 function pairs
+ Job number = 11, Threshold = 1.00E-09
+Integral type ranges set in mkLRange.C for JobNum: 11  <1-6|7-7>
+Total number of integrals generated =            2112
+ Smallest overlap matrix eigenvalue = 1.03E-02
+ Multipole matrices computed through 2nd order
+
+  Scale SEOQF with 1.000000e+00/1.000000e+00/1.000000e+00
+
+ Standard Electronic Orientation quadrupole field applied
+ Nucleus-field energy     =     0.0000000043 hartrees
+ Guess MOs from core Hamiltonian diagonalization
+scfman initvdwdat 
+ A restricted Hartree-Fock SCF calculation will be
+ performed using Pulay DIIS + Geometric Direct Minimization
+ SCF converges when RMS gradient is below 1.0E-05
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Fock build time:  0.03 s (CPU) 0.02 s (wall)
+DIIS Errors:  Max 1.05E+00 RMS 1.92E-01
+
+Current DIIS subspace size = 1
+REM_GRID_RESTART_DIIS = 0
+
+ ---------------------------------------
+  Cycle       Energy         DIIS Error
+ ---------------------------------------
+    1     -66.7696098008      1.92E-01  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.02 s (CPU) 0.01 s (wall)
+DIIS Errors:  Max 6.61E-01 RMS 1.68E-01
+
+Current DIIS subspace size = 2
+REM_GRID_RESTART_DIIS = 0
+
+    2     -71.7588485013      1.68E-01  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.02 s (CPU) 0.01 s (wall)
+DIIS Errors:  Max 7.53E-02 RMS 1.38E-02
+
+Current DIIS subspace size = 3
+REM_GRID_RESTART_DIIS = 0
+
+    3     -79.1721890614      1.38E-02  00000
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.01 s (CPU) 0.01 s (wall)
+DIIS Errors:  Max 1.42E-02 RMS 2.53E-03
+
+Current DIIS subspace size = 4
+REM_GRID_RESTART_DIIS = 0
+
+    4     -79.1953604203      2.53E-03  00000 Done DIIS. Switching to GDM
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.01 s (CPU) 0.01 s (wall)
+    5     -79.1961384132      3.93E-03  00000 Normal BFGS step
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.02 s (CPU) 0.01 s (wall)
+    6     -79.1962278140      2.36E-03  00000 Normal BFGS step
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.01 s (CPU) 0.01 s (wall)
+    7     -79.1962470820      2.24E-04  00000 Normal BFGS step
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.02 s (CPU) 0.01 s (wall)
+    8     -79.1962473405      6.83E-05  00000 Normal BFGS step
+Finding J and K together
+ Job number = 22, Threshold = 1.00E-09
+ using 2 threads for integral computing 
+Integral type ranges set in mkLRange.C for JobNum: 22  <1-6|1-6>
+Approximate symmetry reduction factor = 2.000000
+Storing 3035.24% of integrals
+Reusing in-core integrals buffer for job 22
+Fock build time:  0.01 s (CPU) 0.01 s (wall)
+    9     -79.1962473604      6.88E-06  00000 Convergence criterion met
+ ---------------------------------------
+ SCF time:  CPU 0.17 s  wall 0.11 s
+ SCF   energy in the final basis set = -79.1962473604
+ Total energy in the final basis set = -79.1962473604
+Symmetry turned off temporarily
+ Analysis of SCF Wavefunction
+
+ --------------------------------------------------------------
+             Orbital Energies (a.u.) and Symmetries
+ --------------------------------------------------------------
+
+ Alpha MOs, Restricted
+ -- Occupied --                  
+-11.218 -11.218  -1.018  -0.841  -0.593  -0.593  -0.509  -0.480
+  1 Ag    1 Au    2 Ag    2 Au    3 Au    4 Au    3 Ag    4 Ag                 
+ -0.480
+  5 Ag                                                                         
+ -- Virtual --                   
+  0.239   0.296   0.309   0.309   0.334   0.334   0.406   0.740
+  6 Ag    5 Au    6 Au    7 Au    7 Ag    8 Ag    8 Au    9 Ag                 
+  0.763   0.763   0.871   0.871   0.951   1.200   1.200   1.200
+  9 Au   10 Au   10 Ag   11 Ag   11 Au   12 Au   13 Au   12 Ag                 
+  1.244   1.248   1.248   1.303   1.692
+ 14 Au   13 Ag   14 Ag   15 Ag   15 Au                                         
+
+ Beta MOs, Restricted
+ -- Occupied --                  
+-11.218 -11.218  -1.018  -0.841  -0.593  -0.593  -0.509  -0.480
+  1 Ag    1 Au    2 Ag    2 Au    3 Au    4 Au    3 Ag    4 Ag                 
+ -0.480
+  5 Ag                                                                         
+ -- Virtual --                   
+  0.239   0.296   0.309   0.309   0.334   0.334   0.406   0.740
+  6 Ag    5 Au    6 Au    7 Au    7 Ag    8 Ag    8 Au    9 Ag                 
+  0.763   0.763   0.871   0.871   0.951   1.200   1.200   1.200
+  9 Au   10 Au   10 Ag   11 Ag   11 Au   12 Au   13 Au   12 Ag                 
+  1.244   1.248   1.248   1.303   1.692
+ 14 Au   13 Ag   14 Ag   15 Ag   15 Au                                         
+ --------------------------------------------------------------
+
+          Ground-State Mulliken Net Atomic Charges
+
+     Atom                 Charge (a.u.)
+  ----------------------------------------
+      1 C                    -0.451347
+      2 C                    -0.451347
+      3 H                     0.150449
+      4 H                     0.150446
+      5 H                     0.150452
+      6 H                     0.150452
+      7 H                     0.150446
+      8 H                     0.150449
+  ----------------------------------------
+  Sum of atomic charges =    -0.000000
+
+ -----------------------------------------------------------------
+                    Cartesian Multipole Moments
+ -----------------------------------------------------------------
+    Charge (ESU x 10^10)
+                -0.0000
+    Dipole Moment (Debye)
+         X      -0.0000      Y       0.0000      Z       0.0000
+       Tot       0.0000
+    Quadrupole Moments (Debye-Ang)
+        XX     -15.6078     XY      -0.0001     YY     -15.1498
+        XZ       0.0000     YZ      -0.0000     ZZ     -15.1502
+    Octapole Moments (Debye-Ang^2)
+       XXX      -0.0000    XXY       0.0000    XYY       0.0000
+       YYY       0.0000    XXZ      -0.0000    XYZ       0.0000
+       YYZ       0.0000    XZZ      -0.0000    YZZ       0.0000
+       ZZZ       0.0000
+    Hexadecapole Moments (Debye-Ang^3)
+      XXXX     -94.8123   XXXY      -0.0002   XXYY     -19.7750
+      XYYY       1.1961   YYYY     -29.6219   XXXZ       0.0001
+      XXYZ      -0.0001   XYYZ       0.2790   YYYZ      -0.0001
+      XXZZ     -19.7754   XYZZ      -1.1960   YYZZ      -9.8740
+      XZZZ      -0.2789   YZZZ      -0.0000   ZZZZ     -29.6221
+ -----------------------------------------------------------------
+ JobOver = TRUE
+Archival summary:
+1\1\Andreass-MacBook-Air.local\SP\HF\BasisUnspecified\26\WedApr1615:59:142014WedApr1615:59:142014\0\\#,HF,BasisUnspecified,\\0,1\C\H,1,1.10284\H,1,1.10286,2,107.391\H,1,1.10286,2,107.39,3,-115.227,0\C,1,1.52914,2,111.481,3,122.388,0\H,5,1.10284,1,111.481,2,-180,0\H,5,1.10286,1,111.482,2,59.997,0\H,5,1.10286,1,111.481,2,-59.9992,0\\HF=-79.1962474\\@
+
+ Total job time:  0.15s(wall), 0.20s(cpu) 
+ Wed Apr 16 15:59:14 2014
+
+        *************************************************************
+        *                                                           *
+        *  Thank you very much for using Q-Chem.  Have a nice day.  *
+        *                                                           *
+        *************************************************************
+
+
+*** MISSION COMPLETED -- STARFLEET OUT ***
+

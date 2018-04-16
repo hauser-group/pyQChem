@@ -1,0 +1,55 @@
+$comment
+   Optimize H-H at HF/6-31G*
+$end
+
+$molecule
+0 1
+H
+H 1 r
+
+r = 1.1
+$end
+
+$rem
+   JOBTYPE       opt    Optimize the bond length
+   EXCHANGE      hf
+   CORRELATION   none
+   BASIS         6-31G*
+$end
+
+@@@
+
+$comment
+   Now calculate the frequency of H-H at the same level of theory.
+$end
+
+$molecule
+   read
+$end
+
+$rem
+   JOBTYPE       freq
+   EXCHANGE      hf
+   CORRELATION   none
+   BASIS         6-31G*
+   SCF_GUESS     read
+$end
+
+@@@
+
+$comment
+Calculate vibrational frequency
+Read the MOs from disk
+Now a single point calculation at at MP2/6-311G(d,p)//HF/6-31G*
+$end
+
+$molecule
+read
+$end
+
+$rem
+        EXCHANGE      hf
+        CORRELATION   mp2
+        BASIS         6-311G(d,p)
+$end
+
