@@ -21,3 +21,27 @@ pathtable
 
 # Ignore egg info file from setuptools
 /pyqchem.egg-info/
+
+# Don't ignore tutorial files
+!/examples/tutorials/testrun.in
+!/examples/tutorials/oniom_opt.out
+!/examples/tutorials/ethane.inp
+!/examples/tutorials/trajectory.xyz
+!/examples/tutorials/tutorial_output.html
+!/examples/tutorials/pocop_batch.out
+!/examples/tutorials/a.in
+!/examples/tutorials/aimd.out
+!/examples/tutorials/b.in
+!/examples/tutorials/tutorial_output.ipynb
+!/examples/tutorials/a.out
+!/examples/tutorials/pocop_eth.out
+!/examples/tutorials/testrun2.in
+!/examples/tutorials/testrun2.out
+!/examples/tutorials/iqmol.png
+!/examples/tutorials/mm_opt.out
+!/examples/tutorials/tutorial_input.html
+!/examples/tutorials/testrun.out
+!/examples/tutorials/h2_batch.inp
+!/examples/tutorials/pocop_co.out
+!/examples/tutorials/b.out
+!/examples/tutorials/tutorial_input.ipynb
