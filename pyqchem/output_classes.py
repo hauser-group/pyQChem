@@ -133,7 +133,7 @@ class _general(object):
             self.basis_size = int(basis_size)
         try:
             self.energy = _np.float(energy)
-        except:
+        except ValueError:
             self.energy = "undefined"
         self.status = status
         self.inputfile = inputfile
