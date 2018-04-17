@@ -49,9 +49,9 @@ from . import constants
 ########################## INFO CLASSES #############################
 
 class _mm(object):
-    '''
+    """
     This structure contains molecular mechanics data. Energies are in kcal/mol.
-    '''
+    """
 
     def __init__(self, mm_list):
         if (len(mm_list[0]) > 1):
@@ -76,9 +76,9 @@ class _mm(object):
             self.nbonds = mm_list[8]
 
     def info(self):
-        '''
+        """
         Prints an overview of the calculated MM energies.
-        '''
+        """
         print("MM calculation summary")
         print("----------------------")
         print("")
@@ -119,9 +119,9 @@ class _mm(object):
 
 
 class _general(object):
-    '''
+    """
     This structure contains basic information about the Q-Chem jobfile.
-    '''
+    """
 
     def __init__(self, jobtype, version, spin, basis_size, energy, status,
                  inputfile, mm_type, initial_geometry, final_geometry,
@@ -144,9 +144,9 @@ class _general(object):
         self.cpu_time = cpu_time
 
     def info(self):
-        '''
+        """
         Prints a summary of basic information. Energy is given in Hartree.
-        '''
+        """
         print("About this job:")
         print("--------------")
         print("")
@@ -176,9 +176,9 @@ class _general(object):
 
 
 class _thermo(object):
-    '''
+    """
     This structure contains thermodynamics information obtained from a frequency calculation.
-    '''
+    """
 
     def __init__(self, E, ZPE, ITE, T, p, S, H, F, G, frequencies, intensities,
                  mass, mom_inertia, rot_sym, linear_switch):
@@ -199,12 +199,12 @@ class _thermo(object):
         self._lin_switch = linear_switch
 
     def info(self):
-        '''
+        """
         Prints a summary of basic thermodynamics information (in Hartree).
         The internal thermal energy (ITE) is corrected for zero point energy (ZPE).
         Enthalpy (H), Helmholtz free energy (F) and Gibbs free energy (G) are
         already corrected for internal thermal energy (which includes zero point energy).
-        '''
+        """
         print("Electronic energy (E):\t\t" + str(self.E))
         print("---------------------")
         print("")
@@ -228,7 +228,7 @@ class _thermo(object):
 
     def calculate(self, temp, pressure="", loop_iso=0, loop_freq="", grimme=0,
                   grimme_thresh=100, silent=0):
-        '''
+        """
         Thermodynamics calculation
         --------------------------
 
@@ -254,7 +254,7 @@ class _thermo(object):
 
         Example:
         <somefile>.thermo.calculate(373.15) calculates the potentials at 100 deg C and 1 atm.
-        '''
+        """
         if loop_freq == "":
             loop_freq = loop_iso
 
@@ -382,9 +382,9 @@ class _thermo(object):
 
 
 class _opt(object):
-    '''
+    """
     This structure contains information about the geometry optimization. Energies are given in Hartree.
-    '''
+    """
 
     def __init__(self, geometries, energies, gradient, gradient_vector,
                  displacement, change, optstat):
@@ -460,9 +460,9 @@ class _aimd(object):
 
 
 class _orbitals(object):
-    '''
+    """
     This structure contains information (occupation, energies) about the orbitals.
-    '''
+    """
 
     def __init__(self, N_elec):
         self.N_elec = N_elec
