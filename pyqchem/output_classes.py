@@ -508,9 +508,9 @@ class _outputfile(object):
         status = 'unfinished'
         wall_time = -99
         cpu_time = -99
-
-        # flag for detection of basis2 job
-        basis2_flag = False
+        basis2_flag = False  # flag for detection of basis2 job
+        infile_content = []
+        initial_cartesian = cartesian("sp job - initial geometry in standard orientation")
 
         mm_type = ""
         self.aifdem = 0
@@ -527,22 +527,21 @@ class _outputfile(object):
                 mm_type = ((line.split())[-1]).lower()
             if "aifdem" in line.lower():
                 self.aifdem = ((line.split())[-1]).lower()
-            if ("CIS_N_ROOTS" in line):
+            if "CIS_N_ROOTS" in line:
                 self.N_SET = ((line.split())[-1]).lower()
             if "Q-Chem, Version" in line:
                 version = (((line.split(","))[1]).split())[1]
             if "<S^2> =" in line:
                 spin = (line.split())[2]
-            if (
-            "Total energy in the final basis set") in line and mm_type != "mm":
+            if "Total energy in the final basis set" in line and mm_type != "mm":
                 energy = (line.split())[8]
-            if ("Convergence criterion met") in line and basis2_flag:
+            if "Convergence criterion met" in line and basis2_flag:
                 energy = (line.split())[1]
             if ("Etot:" in line) and (mm_type == "mm"):
                 energy = (line.split())[4]
             if ("There are" in line) and ("shells" in line):
                 basis_size = (line.split())[5]
-            if ("Total job time:" in line):
+            if "Total job time:" in line:
                 wall_time = float(line.split()[3].split("s")[0])
                 cpu_time = float(line.split()[4].split("s")[0])
             if "MISSION" in line:
@@ -556,13 +555,10 @@ class _outputfile(object):
             # Create corresponding inputfile:
             if switch == 0 and "User input:" in line:
                 switch = 1
-                infile_content = []
             if switch == 1:
                 infile_content.append(line)
             if switch == 1 and "Standard Nuclear Orientation" in line:
                 switch = 2
-                initial_cartesian = cartesian(
-                    "sp job - initial geometry in standard orientation")
                 continue
             if switch == 2 and ("Repulsion" in line or "Molecular" in line):
                 switch = 3
@@ -573,7 +569,8 @@ class _outputfile(object):
 
         inputfile = _readinput(infile_content, silent)
 
-        # Creating geometry objects under 'general' for convenience, final geometry will be overwritten later if different
+        # Creating geometry objects under 'general' for convenience,
+        # final geometry will be overwritten later if different
 
         # Final geometry is NOT read directly from inputfile, but from Q-Chem standard orientation output in order to
         # avoid issues with molecule 'read' in batch jobs
