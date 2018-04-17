@@ -659,12 +659,13 @@ class mol_array(_array):
         elif value == "read":
             self.content["GEOMETRY"] = value
         else:
-            if type(value) == type(cartesian()) or type(value) == type(
-                    zmat()) or type(value) == type(tinker()):
+            if (isinstance(value, cartesian)
+                    or isinstance(value, zmat)
+                    or isinstance(value, tinker)):
                 self.content["GEOMETRY"] = value
             else:
                 print(
-                    "Only cartesian, tinker or zmat arrays can be added here.")
+                    "Only cartesian, tinker, or zmat arrays or 'read' can be added here.")
 
     def clear(self):
         self.content = {"CHARGE": "0", "MULTIPLICITY": "1", "GEOMETRY": ""}
