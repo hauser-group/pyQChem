@@ -807,7 +807,9 @@ class _outputfile(object):
                 switch = 1
                 cycle_name = "Optimization step " + str(N_step)
                 cart_dummy = cartesian(cycle_name)
-            if switch == 1 and "atom" not in line.lower() and "Point Group" not in line:
+            if switch == 1 and "atom" not in line.lower() \
+                    and "Point Group" not in line \
+                    and '--------' not in line:
                 con = line.split()
                 cart_dummy.add_atom(con[1], con[2], con[3], con[4])
             if "Point Group" in line and switch == 1:
