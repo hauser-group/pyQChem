@@ -641,12 +641,11 @@ class _outputfile(object):
                     self.EvalStrng += line
                 if " EigenValues \n" in line:
                     EvalSwitch = 1
-                _ierr = 0
+            _ierr = 0
             for i in range(len(self.EvalStrng.split())):
                 _ierr += 1
                 if _ierr > 7:
-                    print(
-                        "Possible Error finding AIFDEM Excitation Energy in output_classes.py")
+                    print("Possible Error finding AIFDEM Excitation Energy in output_classes.py")
                 if len(self.EvalStrng.split()[i]) > 1:
                     _iFirstline = i
                     break
