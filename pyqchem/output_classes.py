@@ -54,7 +54,7 @@ class _mm(object):
     """
 
     def __init__(self, mm_list):
-        if (len(mm_list[0]) > 1):
+        if len(mm_list[0]) > 1:
             self.etot = mm_list[0]
             self.ecoulomb = mm_list[1]
             self.evdw = mm_list[2]
@@ -544,7 +544,7 @@ class _outputfile(object):
             if "Total job time:" in line:
                 wall_time = float(line.split()[3].split("s")[0])
                 cpu_time = float(line.split()[4].split("s")[0])
-            if "MISSION" in line:
+            if "MISSION" in line or 'Thank you very much for using Q-Chem' in line:
                 status = 'finished'
             if "--fragment" in line:
                 ifrgm = int((line.split())[-1])
