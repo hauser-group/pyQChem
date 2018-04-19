@@ -529,8 +529,8 @@ class _outputfile(object):
                 self.aifdem = ((line.split())[-1]).lower()
             if "CIS_N_ROOTS" in line:
                 self.N_SET = ((line.split())[-1]).lower()
-            if "Q-Chem, Version" in line:
-                version = (((line.split(","))[1]).split())[1]
+            if re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line):
+                version = re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line).group(1)
             if "<S^2> =" in line:
                 spin = (line.split())[2]
             if "Total energy in the final basis set" in line and mm_type != "mm":
