@@ -521,37 +521,50 @@ class _outputfile(object):
         for line in content:
             if "jobtype" in line.lower() or "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
+                continue
             if "basis2" in line.lower():
                 basis2_flag = True
+                continue
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
                 mm_type = ((line.split())[-1]).lower()
             if "aifdem" in line.lower():
                 self.aifdem = ((line.split())[-1]).lower()
             if "CIS_N_ROOTS" in line:
                 self.N_SET = ((line.split())[-1]).lower()
+                continue
             if re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line):
                 version = re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line).group(1)
+                continue
             if "<S^2> =" in line:
                 spin = (line.split())[2]
+                continue
             if "Total energy in the final basis set" in line and mm_type != "mm":
                 energy = (line.split())[8]
+                continue
             if "Convergence criterion met" in line and basis2_flag:
                 energy = (line.split())[1]
+                continue
             if ("Etot:" in line) and (mm_type == "mm"):
                 energy = (line.split())[4]
+                continue
             if ("There are" in line) and ("shells" in line):
                 basis_size = (line.split())[5]
+                continue
             if "Total job time:" in line:
                 wall_time = float(line.split()[3].split("s")[0])
                 cpu_time = float(line.split()[4].split("s")[0])
+                continue
             if "MISSION" in line or 'Thank you very much for using Q-Chem' in line:
                 status = 'finished'
+                continue
             if "--fragment" in line:
                 ifrgm = int((line.split())[-1])
                 if ifrgm + 1 > self.N_Fragments:
                     self.N_Fragments = ifrgm + 1
+                continue
             if "TIME STEPS COMPLETED" in line and jobtype == "aimd":
                 status = 'time steps completed'
+                continue
             # Create corresponding inputfile:
             if switch == 0 and "User input:" in line:
                 switch = 1
