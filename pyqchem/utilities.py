@@ -160,7 +160,6 @@ def _readpybel(extension, filename):
     # re_file.add(cell)
 
     return deepcopy(re_file)
-    del re_file
 
 
 def _readinput(file_input, silent=False):
@@ -314,7 +313,6 @@ def _readinput(file_input, silent=False):
                         new_array.add(atom, dummy)
             re_file.add(new_array)
 
-
         elif k == "ecp":
             new_array = ecp_array()
             first = 0
@@ -348,7 +346,6 @@ def _readinput(file_input, silent=False):
 
             # Return the final inputfile object
     return deepcopy(re_file)
-    del re_file
 
 
 # Utilities for comparing xyz files taken from https://github.com/charnley/rmsd
