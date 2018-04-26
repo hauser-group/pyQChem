@@ -521,17 +521,14 @@ class _outputfile(object):
         for line in content:
             if "jobtype" in line.lower() or "JOB_TYPE" in line:
                 jobtype = ((line.split())[-1]).lower()
-                continue
             if "basis2" in line.lower():
                 basis2_flag = True
-                continue
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
                 mm_type = ((line.split())[-1]).lower()
             if "aifdem" in line.lower():
                 self.aifdem = ((line.split())[-1]).lower()
             if "CIS_N_ROOTS" in line:
                 self.N_SET = ((line.split())[-1]).lower()
-                continue
             if re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line):
                 version = re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line).group(1)
                 continue
