@@ -842,7 +842,8 @@ class _outputfile(object):
                 switch = 0
                 gradient_vector.append(_np.array(matrix))
             elif switch == 2:
-                grad_dummy.append(line.split())
+                # Cut atom numbering by starting at index 5
+                grad_dummy.append(line[5:])
         # The geometry has changed, so let's update a variable in the 'general' info object
         try:
             final_geometry = deepcopy(geometries[-1])
@@ -1087,4 +1088,5 @@ class _outputfile(object):
                 switch = 0
                 gradient_vector.append(_np.array(matrix))
             elif switch == 2:
-                grad_dummy.append(line.split())
+                # Cut atom numbering by starting at index 5
+                grad_dummy.append(line[5:])
