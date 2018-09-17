@@ -17,3 +17,4 @@ to basic inputfile handling and outputfile parsing.
 Example Python scripts that use pyQChem can be found in the 'demos' directory.
 
 Andreas W. Hauser, Matthew Goldey, Ehud Tsivion and Michael Wormit, January 2015
+Ralf Meyer and Thomas Heavey, September 2018
