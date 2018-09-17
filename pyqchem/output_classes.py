@@ -637,6 +637,9 @@ class _outputfile(object):
         if jobtype == "aimd":
             final_geometry = self._process_aimd(content)
 
+        if jobtype == "force":
+            self._process_force(content)
+
         if self.aifdem != 0:
             self.EvalStrng = ""
             self.aifdem_E_Excite = 0.0
@@ -1055,3 +1058,33 @@ class _outputfile(object):
         self.mm = _mm(
             [etot, ecoulomb, evdw, etorsion, eimptors, eureybrad, eangle,
              ebond, nbonds])  # Create MM info object
+
+    def _process_force(self, content):
+        gradient_vector = np.zeros()
+        gradient = 0.0
+        switch = 0
+        for line in content:
+            if " Max gradient component" in line:
+                try:
+                    dummy = float((line.split())[4])
+                except (ValueError, IndexError):
+                    dummy = 0.0
+                gradient.append(dummy)
+            if "Gradient of SCF Energy" in line:
+                switch = 2
+                grad_dummy = []
+            elif "Max gradient component" in line and switch == 2:
+                # Assuming that the array will always have a 3xN structure:
+                matrix = [[], [], []]
+                for i, sp in enumerate(grad_dummy):
+                    if not i % 4 == 0:
+                        # Ugly workaround for fortran printing problem.
+                        # Assumes that all gradient entries are printed with
+                        # exactly 8 digits after decimal point
+                        ind = [0] + [m.start()+8 for m in re.finditer('\.', sp)]
+                        matrix[i%4-1].extend([float(si) for si in
+                            [sp[ind[i]:ind[i+1]] for i in range(len(ind)-1)]])
+                switch = 0
+                gradient_vector.append(_np.array(matrix))
+            elif switch == 2:
+                grad_dummy.append(line.split())
