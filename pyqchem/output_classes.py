@@ -830,8 +830,12 @@ class _outputfile(object):
                 matrix = [[], [], []]
                 for i, sp in enumerate(grad_dummy):
                     if not i % 4 == 0:
-                        matrix[i % 4 - 1].extend(
-                            [float(si) for si in sp[1:]])
+                        # Ugly workaround for fortran printing problem.
+                        # Assumes that all gradient entries are printed with
+                        # exactly 8 digits after decimal point
+                        ind = [0] + [m.start()+8 for m in re.finditer('\.', sp)]
+                        matrix[i%4-1].extend([float(si) for si in
+                            [sp[ind[i]:ind[i+1]] for i in range(len(ind)-1)]])
                 switch = 0
                 gradient_vector.append(_np.array(matrix))
             elif switch == 2:
