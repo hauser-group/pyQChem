@@ -784,7 +784,7 @@ class _outputfile(object):
     def _process_opt(self, content, jobtype):
         energies = []
         gradient_vector = []
-        gradient = [0.0]
+        gradient = []
         displacement = []
         change = []
         geometries = []
