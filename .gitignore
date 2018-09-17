@@ -24,6 +24,9 @@ pathtable
 /build/
 /dist/
 
+# Don't ignore test files
+!/test/files/*.out
+
 # Don't ignore tutorial files
 !/examples/tutorials/testrun.in
 !/examples/tutorials/oniom_opt.out
