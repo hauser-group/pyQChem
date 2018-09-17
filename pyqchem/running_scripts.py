@@ -104,7 +104,10 @@ def queue(joblist, num_workers=1):
     """This is a simple queue for running through a list of jobs (based on the content of each runinfo object).
     When in doubt, set num_workers to the number of cores on the machine.
     Advanced options are currently not supported."""
-    import queue
+    try:
+        import queue
+    except ImportError:
+        import Queue as queue # Python2.7 fallback
     import threading
     q_in = queue.Queue(maxsize=0)
     q_out = queue.Queue(maxsize=0)
