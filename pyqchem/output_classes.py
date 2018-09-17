@@ -459,6 +459,21 @@ class _aimd(object):
         f.close()
 
 
+class _force(object):
+    """
+    This structure contains information about the geometry optimization. Energies are given in Hartree.
+    """
+
+    def __init__(self, gradient, gradient_vector):
+        self.gradient_vector = gradient_vector
+        self.gradient = gradient
+
+    def info(self):
+        print("Summary of force calculation:")
+        print("--------------------------------")
+        print("")
+        print("Maximum component of gradient: %.9f"%self.gradient)
+
 class _orbitals(object):
     """
     This structure contains information (occupation, energies) about the orbitals.
@@ -1061,16 +1076,15 @@ class _outputfile(object):
              ebond, nbonds])  # Create MM info object
 
     def _process_force(self, content):
-        gradient_vector = np.zeros()
+        gradient_vector = _np.zeros((3,0))
         gradient = 0.0
         switch = 0
         for line in content:
             if " Max gradient component" in line:
                 try:
-                    dummy = float((line.split())[4])
+                    gradient = float((line.split())[4])
                 except (ValueError, IndexError):
-                    dummy = 0.0
-                gradient.append(dummy)
+                    gradient = 0.0
             if "Gradient of SCF Energy" in line:
                 switch = 2
                 grad_dummy = []
@@ -1086,7 +1100,8 @@ class _outputfile(object):
                         matrix[i%4-1].extend([float(si) for si in
                             [sp[ind[i]:ind[i+1]] for i in range(len(ind)-1)]])
                 switch = 0
-                gradient_vector.append(_np.array(matrix))
+                gradient_vector = _np.array(matrix)
             elif switch == 2:
                 # Cut atom numbering by starting at index 5
                 grad_dummy.append(line[5:])
+        self.force = _force(gradient, gradient_vector)
