@@ -827,15 +827,13 @@ class _outputfile(object):
                 change.append(dummy)
             if "**  OPTIMIZATION CONVERGED  **" in line:
                 optstat = "converged"
-            if re.search("ATOM\s{10,15}X\s{10,17}Y\s{10,17}Z", line, flags=re.IGNORECASE):
+            if "Optimization Cycle:" in line:
                 switch = 1
                 cycle_name = "Optimization step " + str(N_step)
                 cart_dummy = cartesian(cycle_name)
-            if switch == 1 and "atom" not in line.lower() \
-                    and "Point Group" not in line \
-                    and '--------' not in line:
-                con = line.split()
-                cart_dummy.add_atom(con[1], con[2], con[3], con[4])
+            if switch == 1 and len(line.split()) == 5: # fulfilled only by xyz-format (hopefully)
+            	    con = line.split()
+                    cart_dummy.add_atom(con[1], con[2], con[3], con[4]) 
             if "Point Group" in line and switch == 1:
                 geometries.append(deepcopy(cart_dummy))
                 N_step += 1
