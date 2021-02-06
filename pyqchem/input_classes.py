@@ -814,12 +814,12 @@ Description: Initializes a EOM-DIP-CCSD calculation
         if value == "":
             if "CC_DIP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIP"]=value.lower()
 
@@ -834,12 +834,12 @@ Description: This keyword initializes a EOM-CC(2,3) calculation. If {CC_IP_PROPE
         if value == "":
             if "CC_DO_TRIPLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DO_TRIPLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DO_TRIPLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DO_TRIPLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DO_TRIPLES"]=value.lower()
 
@@ -854,12 +854,12 @@ Recommendation: : Can be useful for non-convergent active space calculations    
         if value == "":
             if "CC_ITERATE_ON" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_ITERATE_ON"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_ITERATE_ON" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_ITERATE_ON"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_ITERATE_ON"]=value.lower()
 
@@ -874,12 +874,12 @@ Description: Specifies target (and maximum) size of blocks in orbital space.
         if value == "":
             if "CC_ORBS_PER_BLOCK" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_ORBS_PER_BLOCK"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_ORBS_PER_BLOCK" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_ORBS_PER_BLOCK"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_ORBS_PER_BLOCK"]=value.lower()
 
@@ -894,12 +894,12 @@ Recommendation: : Turning this option on is recommended    '''
         if value == "":
             if "CC_PRECONV_SD" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONV_SD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONV_SD" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONV_SD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONV_SD"]=value.lower()
 
@@ -914,12 +914,12 @@ Description: The reference MO coefficient matrix is reset every n iterations to 
         if value == "":
             if "CC_RESET_THETA" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_RESET_THETA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_RESET_THETA" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_RESET_THETA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_RESET_THETA"]=value.lower()
 
@@ -934,12 +934,12 @@ Description: Controls the restriction on amplitudes is there are restricted orbi
         if value == "":
             if "CC_RESTR_AMPL" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_RESTR_AMPL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_RESTR_AMPL" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_RESTR_AMPL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_RESTR_AMPL"]=value.lower()
 
@@ -954,12 +954,12 @@ Description: Controls which space the triples correction is computed in
         if value == "":
             if "CC_RESTR_TRIPLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_RESTR_TRIPLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_RESTR_TRIPLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_RESTR_TRIPLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_RESTR_TRIPLES"]=value.lower()
 
@@ -974,12 +974,12 @@ Description: Sets the number of restricted occupied orbitals including frozen oc
         if value == "":
             if "CC_REST_OCC" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_REST_OCC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_REST_OCC" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_REST_OCC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_REST_OCC"]=value.lower()
 
@@ -994,12 +994,12 @@ Description: Sets the number of restricted virtual orbitals including frozen vir
         if value == "":
             if "CC_REST_VIR" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_REST_VIR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_REST_VIR" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_REST_VIR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_REST_VIR"]=value.lower()
 
@@ -1014,12 +1014,12 @@ Recommendation: : Can be made smaller if convergence difficulties are encountere
         if value == "":
             if "CC_THETA_GRAD_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_THETA_GRAD_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_THETA_GRAD_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_THETA_GRAD_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_THETA_GRAD_THRESH"]=value.lower()
 
@@ -1034,12 +1034,12 @@ Recommendation: : Should not be smaller than the size of the largest possible bl
         if value == "":
             if "CC_TMPBUFFSIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_TMPBUFFSIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_TMPBUFFSIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_TMPBUFFSIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_TMPBUFFSIZE"]=value.lower()
 
@@ -1054,12 +1054,12 @@ Recommendation: : Use 6 for PP(2) jobs or geometry optimizations. Tighter conver
         if value == "":
             if "GVB_ORB_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_ORB_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_ORB_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_ORB_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_ORB_CONV"]=value.lower()
 
@@ -1074,12 +1074,12 @@ Recommendation: : Default is typically adequate, but some jobs, particularly UPP
         if value == "":
             if "GVB_ORB_MAX_ITER" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_ORB_MAX_ITER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_ORB_MAX_ITER" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_ORB_MAX_ITER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_ORB_MAX_ITER"]=value.lower()
 
@@ -1094,12 +1094,12 @@ Recommendation: : Default is usually fine, but for some stretched geometries it 
         if value == "":
             if "GVB_ORB_SCALE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_ORB_SCALE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_ORB_SCALE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_ORB_SCALE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_ORB_SCALE"]=value.lower()
 
@@ -1118,12 +1118,12 @@ Recommendation: : Useful when trying to converge to the same GVB solution at sli
         if value == "":
             if "GVB_RESTART" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_RESTART"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_RESTART" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_RESTART"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_RESTART"]=value.lower()
 
@@ -1142,12 +1142,12 @@ Recommendation: : Set this variable explicitly only to do a UPP job from an RHF 
         if value == "":
             if "GVB_UNRESTRICTED" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_UNRESTRICTED"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_UNRESTRICTED" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_UNRESTRICTED"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_UNRESTRICTED"]=value.lower()
 
@@ -1162,12 +1162,12 @@ Recommendation: : Should never need to go above 0 or 1.    '''
         if value == "":
             if "GVB_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_PRINT"]=value.lower()
 
@@ -1182,12 +1182,12 @@ Recommendation: : Solution of the single-excitation amplitude equations is consi
         if value == "":
             if "NVO_LIN_CONVERGENCE" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_LIN_CONVERGENCE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_LIN_CONVERGENCE" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_LIN_CONVERGENCE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_LIN_CONVERGENCE"]=value.lower()
 
@@ -1202,12 +1202,12 @@ Description: Maximum number of iterations in the preconditioned conjugate gradie
         if value == "":
             if "NVO_LIN_MAX_ITE" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_LIN_MAX_ITE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_LIN_MAX_ITE" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_LIN_MAX_ITE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_LIN_MAX_ITE"]=value.lower()
 
@@ -1222,12 +1222,12 @@ Recommendation: : Use default. Increasing n improves convergence of the PCG algo
         if value == "":
             if "NVO_TRUNCATE_PRECOND" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_TRUNCATE_PRECOND"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_TRUNCATE_PRECOND" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_TRUNCATE_PRECOND"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_TRUNCATE_PRECOND"]=value.lower()
 
@@ -1242,12 +1242,12 @@ Description: Controls convergence of the Taylor series when calculating the Uvv 
         if value == "":
             if "NVO_UVV_MAXPWR" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_UVV_MAXPWR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_UVV_MAXPWR" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_UVV_MAXPWR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_UVV_MAXPWR"]=value.lower()
 
@@ -1262,12 +1262,12 @@ Recommendation: : NVO_UVV_PRECISION must be the same as or larger than THRESH.  
         if value == "":
             if "NVO_UVV_PRECISION" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_UVV_PRECISION"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_UVV_PRECISION" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_UVV_PRECISION"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_UVV_PRECISION"]=value.lower()
 
@@ -1282,12 +1282,12 @@ Recommendation: : Use default unless distances are required for large systems   
         if value == "":
             if "PRINT_DIST_MATRIX" in self.dict_of_keywords:
                 del self.dict_of_keywords["PRINT_DIST_MATRIX"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PRINT_DIST_MATRIX" in self.dict_of_keywords:
                 return self.dict_of_keywords["PRINT_DIST_MATRIX"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PRINT_DIST_MATRIX"]=value.lower()
 
@@ -1302,12 +1302,12 @@ Recommendation: : We recommend value of 250 for a typical spit valence basis.  F
         if value == "":
             if "RC_R0" in self.dict_of_keywords:
                 del self.dict_of_keywords["RC_R0"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RC_R0" in self.dict_of_keywords:
                 return self.dict_of_keywords["RC_R0"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RC_R0"]=value.lower()
 
@@ -1322,12 +1322,12 @@ Recommendation: : The default value unless convergence problems arise.    '''
         if value == "":
             if "SVP_CAVITY_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["SVP_CAVITY_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SVP_CAVITY_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["SVP_CAVITY_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SVP_CAVITY_CONV"]=value.lower()
 
@@ -1344,12 +1344,12 @@ Recommendation: : Use more points if the minimum is desired, but not reached usi
         if value == "":
             if "RPATH_MAX_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPATH_MAX_CYCLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPATH_MAX_CYCLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPATH_MAX_CYCLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPATH_MAX_CYCLES"]=value.lower()
 
@@ -1367,12 +1367,12 @@ Description: Specifies the convergence threshold (in a.u.) for the step. If a st
         if value == "":
             if "RPATH_TOL_DISPLACEMENT" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPATH_TOL_DISPLACEMENT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPATH_TOL_DISPLACEMENT" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPATH_TOL_DISPLACEMENT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPATH_TOL_DISPLACEMENT"]=value.lower()
 
@@ -1389,36 +1389,14 @@ Recommendation: : Use default, little additional information is printed at highe
         if value == "":
             if "RPATH_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPATH_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPATH_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPATH_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPATH_PRINT"]=value.lower()
-
-
-    def scf_convergence(self,value="show"):
-        '''
-Name: SCF_CONVERGENCE
-Type: INTEGER
-Default: 5
-Options: Range from 0 to 12
-
-Description: SCF is considered converged when the wavefunction error is less that 10-SCF_CONVERGENCE. Adjust the value of THRESH at the same time. Note that in Q-Chem 3.0 the DIIS error is measured by the maximum error rather than the RMS error as in previous versions.
-Recommendation: : Tighter criteria for geometry optimization and vibration analysis. Larger values provide more significant figures, at greater computational cost.    '''
-        if value == "":
-            if "SCF_CONVERGENCE" in self.dict_of_keywords:
-                del self.dict_of_keywords["SCF_CONVERGENCE"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SCF_CONVERGENCE" in self.dict_of_keywords:
-                return self.dict_of_keywords["SCF_CONVERGENCE"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SCF_CONVERGENCE"]=value.lower()
 
 
     def aimd_steps(self,value="show"):
@@ -1433,37 +1411,14 @@ Description: Specifies the requested number of molecular dynamics steps.
         if value == "":
             if "AIMD_STEPS" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_STEPS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_STEPS" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_STEPS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_STEPS"]=value.lower()
-
-
-    def ao2mo_disk(self,value="show"):
-        '''
-Name: AO2MO_DISK
-Type: INTEGER
-Default: 2000
-Options: Range from 0 to 8000
-
-Description: Sets the amount of disk space (in megabytes) available for MP2 calculations. 
-
-Recommendation: : Should be set as large as possible, as discussed in the manual.    '''
-        if value == "":
-            if "AO2MO_DISK" in self.dict_of_keywords:
-                del self.dict_of_keywords["AO2MO_DISK"]
-                print "Keyword removed."
-        elif value == "show":
-            if "AO2MO_DISK" in self.dict_of_keywords:
-                return self.dict_of_keywords["AO2MO_DISK"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["AO2MO_DISK"]=value.lower()
 
 
     def cc_canonize_final(self,value="show"):
@@ -1481,12 +1436,12 @@ Recommendation: : Should not normally have to be altered.    '''
         if value == "":
             if "CC_CANONIZE_FINAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CANONIZE_FINAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CANONIZE_FINAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CANONIZE_FINAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CANONIZE_FINAL"]=value.lower()
 
@@ -1506,12 +1461,12 @@ Recommendation: : Should not normally have to be altered.    '''
         if value == "":
             if "CC_CANONIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CANONIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CANONIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CANONIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CANONIZE"]=value.lower()
 
@@ -1528,12 +1483,12 @@ Description: Overall convergence criterion for the coupled-cluster codes. This i
         if value == "":
             if "CC_CONVERGENCE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CONVERGENCE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CONVERGENCE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CONVERGENCE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CONVERGENCE"]=value.lower()
 
@@ -1550,12 +1505,12 @@ Recommendation: : Use default. Should normally be set to the same value as CC_DT
         if value == "":
             if "CC_DCONVERGENCE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DCONVERGENCE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DCONVERGENCE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DCONVERGENCE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DCONVERGENCE"]=value.lower()
 
@@ -1575,41 +1530,14 @@ Recommendation: : Set to TRUE if a Constrained DFT calculation is desired.    ''
         if value == "":
             if "CDFT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CDFT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CDFT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CDFT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CDFT"]=value.lower()
-
-
-    def cd_algorithm(self,value="show"):
-        '''
-Name: CD_ALGORITHM
-Type: STRING
-Default: Program determined
-
-Options:
-    'Program determined'............ Program determined
-    'Direct'........................ Direct
-    'Semi-direct'................... Semi-direct
-    'Local-occupied'................ Local-occupied
-
-Description: Determines the algorithm for MP2 integral transformations.
-Recommendation: : Semi-direct is usually most efficient, and will normally be chosen by default.    '''
-        if value == "":
-            if "CD_ALGORITHM" in self.dict_of_keywords:
-                del self.dict_of_keywords["CD_ALGORITHM"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CD_ALGORITHM" in self.dict_of_keywords:
-                return self.dict_of_keywords["CD_ALGORITHM"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CD_ALGORITHM"]=value.lower()
 
 
     def cdft_thresh(self,value="show"):
@@ -1625,12 +1553,12 @@ Recommendation: : Use default unless problems occur.    '''
         if value == "":
             if "CDFT_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CDFT_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CDFT_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CDFT_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CDFT_THRESH"]=value.lower()
 
@@ -1651,12 +1579,12 @@ Recommentation: Use default unless convergence problems arise, in which case it 
         if value == "":
             if "CDFT_POSTDIIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CDFT_POSTDIIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CDFT_POSTDIIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CDFT_POSTDIIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CDFT_POSTDIIS"]=value.lower()
 
@@ -1677,12 +1605,12 @@ Recommendation: : Use default unless problems arise, in which case it might be b
         if value == "":
             if "CDFT_PREDIIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CDFT_PREDIIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CDFT_PREDIIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CDFT_PREDIIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CDFT_PREDIIS"]=value.lower()
 
@@ -1699,12 +1627,12 @@ Description: Controls the order of the multipole expansions in CFMM calculation.
         if value == "":
             if "CFMM_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["CFMM_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CFMM_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["CFMM_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CFMM_ORDER"]=value.lower()
 
@@ -1721,12 +1649,12 @@ Description: CIS is considered converged when error is less than 10-CIS_CONVERGE
         if value == "":
             if "CIS_CONVERGENCE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_CONVERGENCE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_CONVERGENCE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_CONVERGENCE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_CONVERGENCE"]=value.lower()
 
@@ -1746,12 +1674,12 @@ Recommendation: : Requires a guess from previous calculation.    '''
         if value == "":
             if "CIS_GUESS_DISK" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_GUESS_DISK"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_GUESS_DISK" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_GUESS_DISK"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_GUESS_DISK"]=value.lower()
 
@@ -1771,12 +1699,12 @@ Description: Determines whether or not to use the relaxed CIS density for attach
         if value == "":
             if "CIS_RELAXED_DENSITY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RELAXED_DENSITY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RELAXED_DENSITY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RELAXED_DENSITY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RELAXED_DENSITY"]=value.lower()
 
@@ -1796,12 +1724,12 @@ Description: Solve for singlet excited states in RCIS calculations (ignored for 
         if value == "":
             if "CIS_SINGLETS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_SINGLETS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_SINGLETS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_SINGLETS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_SINGLETS"]=value.lower()
 
@@ -1821,36 +1749,14 @@ Description: Solve for triplet excited states in RCIS calculations (ignored for 
         if value == "":
             if "CIS_TRIPLETS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_TRIPLETS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_TRIPLETS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_TRIPLETS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_TRIPLETS"]=value.lower()
-
-
-    def core_character(self,value="show"):
-        '''
-Name: CORE_CHARACTER
-Type: INTEGER
-Default: 0
-Options: Range from 0 to 4
-
-Description: Selects how the core orbitals are determined in the frozen-core approximation.
-Recommendation: : Use default, unless performing calculations on molecules with heavy elements.    '''
-        if value == "":
-            if "CORE_CHARACTER" in self.dict_of_keywords:
-                del self.dict_of_keywords["CORE_CHARACTER"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CORE_CHARACTER" in self.dict_of_keywords:
-                return self.dict_of_keywords["CORE_CHARACTER"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CORE_CHARACTER"]=value.lower()
 
 
     def cpscf_nseg(self,value="show"):
@@ -1865,12 +1771,12 @@ Recommendation: : Use default unless too much memory is requested.  Increasing t
         if value == "":
             if "CPSCF_NSEG" in self.dict_of_keywords:
                 del self.dict_of_keywords["CPSCF_NSEG"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CPSCF_NSEG" in self.dict_of_keywords:
                 return self.dict_of_keywords["CPSCF_NSEG"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CPSCF_NSEG"]=value.lower()
 
@@ -1890,12 +1796,12 @@ Recommendation: : Replacing hydrogen atoms reduces the fastest vibrational frequ
         if value == "":
             if "DEUTERATE" in self.dict_of_keywords:
                 del self.dict_of_keywords["DEUTERATE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DEUTERATE" in self.dict_of_keywords:
                 return self.dict_of_keywords["DEUTERATE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DEUTERATE"]=value.lower()
 
@@ -1915,12 +1821,12 @@ Description: Specifies whether to include bond midpoints in the DMA expansion.
         if value == "":
             if "DMA_MIDPOINTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["DMA_MIDPOINTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DMA_MIDPOINTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["DMA_MIDPOINTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DMA_MIDPOINTS"]=value.lower()
 
@@ -1940,12 +1846,12 @@ Recommendation: : Use Dual-Basis to capture large-basis effects at smaller basis
         if value == "":
             if "DUAL_BASIS_ENERGY" in self.dict_of_keywords:
                 del self.dict_of_keywords["DUAL_BASIS_ENERGY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DUAL_BASIS_ENERGY" in self.dict_of_keywords:
                 return self.dict_of_keywords["DUAL_BASIS_ENERGY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DUAL_BASIS_ENERGY"]=value.lower()
 
@@ -1965,12 +1871,12 @@ Recommendation: : Set to TRUE unless a very large basis set is used.    '''
         if value == "":
             if "EDA_BSSE" in self.dict_of_keywords:
                 del self.dict_of_keywords["EDA_BSSE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EDA_BSSE" in self.dict_of_keywords:
                 return self.dict_of_keywords["EDA_BSSE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EDA_BSSE"]=value.lower()
 
@@ -1990,12 +1896,12 @@ Recommendation: : Set to TRUE to print COVP orbitals instead of conventional MOs
         if value == "":
             if "EDA_PRINT_COVP" in self.dict_of_keywords:
                 del self.dict_of_keywords["EDA_PRINT_COVP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EDA_PRINT_COVP" in self.dict_of_keywords:
                 return self.dict_of_keywords["EDA_PRINT_COVP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EDA_PRINT_COVP"]=value.lower()
 
@@ -2013,12 +1919,12 @@ Recommendation: : Use default. For molecules that are not too large, one can tes
         if value == "":
             if "EPAO_ITERATE" in self.dict_of_keywords:
                 del self.dict_of_keywords["EPAO_ITERATE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EPAO_ITERATE" in self.dict_of_keywords:
                 return self.dict_of_keywords["EPAO_ITERATE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EPAO_ITERATE"]=value.lower()
 
@@ -2038,12 +1944,12 @@ Recommendation: : This option improves the speed of a DFT calculation, but may o
         if value == "":
             if "FAST_XC" in self.dict_of_keywords:
                 del self.dict_of_keywords["FAST_XC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FAST_XC" in self.dict_of_keywords:
                 return self.dict_of_keywords["FAST_XC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FAST_XC"]=value.lower()
 
@@ -2067,12 +1973,12 @@ Recommendation: : For large basis sets use ARS, use RS if ARS fails.    '''
         if value == "":
             if "FRGM_LPCORR" in self.dict_of_keywords:
                 del self.dict_of_keywords["FRGM_LPCORR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FRGM_LPCORR" in self.dict_of_keywords:
                 return self.dict_of_keywords["FRGM_LPCORR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FRGM_LPCORR"]=value.lower()
 
@@ -2097,12 +2003,12 @@ Recommendation: : STOLL and GIA - variational optimization of the ALMOs. NOSCF o
         if value == "":
             if "FRGM_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["FRGM_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FRGM_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["FRGM_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FRGM_METHOD"]=value.lower()
 
@@ -2119,12 +2025,12 @@ Description: Together with FTC_CLASS_THRESH_ORDER, determines the cutoff thresho
         if value == "":
             if "FTC_CLASS_THRESH_MULT" in self.dict_of_keywords:
                 del self.dict_of_keywords["FTC_CLASS_THRESH_MULT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FTC_CLASS_THRESH_MULT" in self.dict_of_keywords:
                 return self.dict_of_keywords["FTC_CLASS_THRESH_MULT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FTC_CLASS_THRESH_MULT"]=value.lower()
 
@@ -2141,12 +2047,12 @@ Description: Together with FTC_CLASS_THRESH_MULT, determines the cutoff threshol
         if value == "":
             if "FTC_CLASS_THRESH_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["FTC_CLASS_THRESH_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FTC_CLASS_THRESH_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["FTC_CLASS_THRESH_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FTC_CLASS_THRESH_ORDER"]=value.lower()
 
@@ -2166,12 +2072,12 @@ Description: Sets whether or not to fall back to cartesian coordinates if the op
         if value == "":
             if "QUI_GEOM_OPT_FALLBACK" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_GEOM_OPT_FALLBACK"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_GEOM_OPT_FALLBACK" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_GEOM_OPT_FALLBACK"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_GEOM_OPT_FALLBACK"]=value.lower()
 
@@ -2188,12 +2094,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "GEOM_OPT_LINEAR_ANGLE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_LINEAR_ANGLE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_LINEAR_ANGLE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_LINEAR_ANGLE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_LINEAR_ANGLE"]=value.lower()
 
@@ -2210,12 +2116,12 @@ Recommendation: : The default should be sufficient for most cases. Increase if t
         if value == "":
             if "GEOM_OPT_MAX_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_MAX_CYCLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_MAX_CYCLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_MAX_CYCLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_MAX_CYCLES"]=value.lower()
 
@@ -2232,12 +2138,12 @@ Description: Determines which Hessian mode is followed during a transition state
         if value == "":
             if "GEOM_OPT_MODE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_MODE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_MODE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_MODE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_MODE"]=value.lower()
 
@@ -2254,12 +2160,12 @@ Recommendation: : Use the default.    '''
         if value == "":
             if "GEOM_OPT_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_PRINT"]=value.lower()
 
@@ -2279,12 +2185,12 @@ Recommendation: : Use if you want to be able to quickly examine geometric parame
         if value == "":
             if "GEOM_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_PRINT"]=value.lower()
 
@@ -2302,12 +2208,12 @@ Recommendation: : Default is usually fine, but in some highly-correlated systems
         if value == "":
             if "GVB_AMP_SCALE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_AMP_SCALE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_AMP_SCALE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_AMP_SCALE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_AMP_SCALE"]=value.lower()
 
@@ -2324,12 +2230,12 @@ Recommendation: : 25 often works well to break symmetry without overly impeding 
         if value == "":
             if "GVB_GUESS_MIX" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_GUESS_MIX"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_GUESS_MIX" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_GUESS_MIX"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_GUESS_MIX"]=value.lower()
 
@@ -2349,12 +2255,12 @@ Recommendation: : Different initial guesses can sometimes lead to different solu
         if value == "":
             if "GVB_LOCAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_LOCAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_LOCAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_LOCAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_LOCAL"]=value.lower()
 
@@ -2371,12 +2277,12 @@ Recommendation: : Use default unless one wants to study a special active space. 
         if value == "":
             if "GVB_N_PAIRS" in self.dict_of_keywords:
                 del self.dict_of_keywords["GVB_N_PAIRS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GVB_N_PAIRS" in self.dict_of_keywords:
                 return self.dict_of_keywords["GVB_N_PAIRS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GVB_N_PAIRS"]=value.lower()
 
@@ -2396,12 +2302,12 @@ Recommendation: : Turning this option on can lead to faster SCF calculations, pa
         if value == "":
             if "INCDFT" in self.dict_of_keywords:
                 del self.dict_of_keywords["INCDFT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INCDFT" in self.dict_of_keywords:
                 return self.dict_of_keywords["INCDFT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INCDFT"]=value.lower()
 
@@ -2418,12 +2324,12 @@ Recommendation: : If the default value causes convergence problems, set this val
         if value == "":
             if "INCDFT_DENDIFF_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["INCDFT_DENDIFF_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INCDFT_DENDIFF_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["INCDFT_DENDIFF_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INCDFT_DENDIFF_THRESH"]=value.lower()
 
@@ -2440,12 +2346,12 @@ Recommendation: : If the default value causes convergence problems, set this val
         if value == "":
             if "INCDFT_DENDIFF_VARTHRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["INCDFT_DENDIFF_VARTHRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INCDFT_DENDIFF_VARTHRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["INCDFT_DENDIFF_VARTHRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INCDFT_DENDIFF_VARTHRESH"]=value.lower()
 
@@ -2462,12 +2368,12 @@ Recommendation: : If the default value causes convergence problems, set this val
         if value == "":
             if "INCDFT_GRIDDIFF_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["INCDFT_GRIDDIFF_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INCDFT_GRIDDIFF_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["INCDFT_GRIDDIFF_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INCDFT_GRIDDIFF_THRESH"]=value.lower()
 
@@ -2484,12 +2390,12 @@ Recommendation: : May be necessary to allow several iterations before switching 
         if value == "":
             if "INCFOCK" in self.dict_of_keywords:
                 del self.dict_of_keywords["INCFOCK"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INCFOCK" in self.dict_of_keywords:
                 return self.dict_of_keywords["INCFOCK"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INCFOCK"]=value.lower()
 
@@ -2506,12 +2412,12 @@ Recommendation: : Use the default, or consult your systems administrator for har
         if value == "":
             if "INTEGRALS_BUFFER" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTEGRALS_BUFFER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTEGRALS_BUFFER" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTEGRALS_BUFFER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTEGRALS_BUFFER"]=value.lower()
 
@@ -2531,12 +2437,12 @@ Recommendation: : Use for HF and hybrid DFT calculations with large numbers of a
         if value == "":
             if "LIN_K" in self.dict_of_keywords:
                 del self.dict_of_keywords["LIN_K"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "LIN_K" in self.dict_of_keywords:
                 return self.dict_of_keywords["LIN_K"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["LIN_K"]=value.lower()
 
@@ -2553,12 +2459,12 @@ Recommendation: : Leave as default, or adjust according to your system limits.  
         if value == "":
             if "MAX_SUB_FILE_NUM" in self.dict_of_keywords:
                 del self.dict_of_keywords["MAX_SUB_FILE_NUM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MAX_SUB_FILE_NUM" in self.dict_of_keywords:
                 return self.dict_of_keywords["MAX_SUB_FILE_NUM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MAX_SUB_FILE_NUM"]=value.lower()
 
@@ -2578,12 +2484,12 @@ Recommendation: : The use of the smart grid can save some time on initial SCF cy
         if value == "":
             if "XC_SMART_GRID" in self.dict_of_keywords:
                 del self.dict_of_keywords["XC_SMART_GRID"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "XC_SMART_GRID" in self.dict_of_keywords:
                 return self.dict_of_keywords["XC_SMART_GRID"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["XC_SMART_GRID"]=value.lower()
 
@@ -2603,12 +2509,12 @@ Recommendation: : In systems with a large number of degrees of freedom it might 
         if value == "":
             if "XOPT_SEAM_ONLY" in self.dict_of_keywords:
                 del self.dict_of_keywords["XOPT_SEAM_ONLY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "XOPT_SEAM_ONLY" in self.dict_of_keywords:
                 return self.dict_of_keywords["XOPT_SEAM_ONLY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["XOPT_SEAM_ONLY"]=value.lower()
 
@@ -2628,12 +2534,12 @@ Description: Do an XCIS calculation in addition to a CIS calculation
         if value == "":
             if "XCIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["XCIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "XCIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["XCIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["XCIS"]=value.lower()
 
@@ -2653,12 +2559,12 @@ Description: Controls the running of the default wavefunction analysis tasks.
         if value == "":
             if "WAVEFUNCTION_ANALYSIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["WAVEFUNCTION_ANALYSIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "WAVEFUNCTION_ANALYSIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["WAVEFUNCTION_ANALYSIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["WAVEFUNCTION_ANALYSIS"]=value.lower()
 
@@ -2675,12 +2581,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "VIBMAN_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["VIBMAN_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "VIBMAN_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["VIBMAN_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["VIBMAN_PRINT"]=value.lower()
 
@@ -2697,12 +2603,12 @@ Recommendation: : The availability depends on the memory of the machine.  For ex
         if value == "":
             if "VCI" in self.dict_of_keywords:
                 del self.dict_of_keywords["VCI"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "VCI" in self.dict_of_keywords:
                 return self.dict_of_keywords["VCI"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["VCI"]=value.lower()
 
@@ -2722,12 +2628,12 @@ Recommendation: : Set to TRUE when a HF or DFT solution is suspected to be unsta
         if value == "":
             if "STABILITY_ANALYSIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["STABILITY_ANALYSIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "STABILITY_ANALYSIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["STABILITY_ANALYSIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["STABILITY_ANALYSIS"]=value.lower()
 
@@ -2747,12 +2653,12 @@ Recommendation: : Use TRUE if details about isolated fragments are important.   
         if value == "":
             if "SCF_PRINT_FRGM" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_PRINT_FRGM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_PRINT_FRGM" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_PRINT_FRGM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_PRINT_FRGM"]=value.lower()
 
@@ -2769,12 +2675,12 @@ Description: Sets the total charge of the system.
         if value == "":
             if "QUI_CHARGE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_CHARGE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_CHARGE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_CHARGE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_CHARGE"]=value.lower()
 
@@ -2794,12 +2700,12 @@ Recommendation: : Use default unless ROHF is desired. Note that for unrestricted
         if value == "":
             if "UNRESTRICTED" in self.dict_of_keywords:
                 del self.dict_of_keywords["UNRESTRICTED"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "UNRESTRICTED" in self.dict_of_keywords:
                 return self.dict_of_keywords["UNRESTRICTED"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["UNRESTRICTED"]=value.lower()
 
@@ -2818,12 +2724,12 @@ Description: Specifies whether or not a wfn file is created, which is suitable f
         if value == "":
             if "WRITE_WFN" in self.dict_of_keywords:
                 del self.dict_of_keywords["WRITE_WFN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "WRITE_WFN" in self.dict_of_keywords:
                 return self.dict_of_keywords["WRITE_WFN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["WRITE_WFN"]=value.lower()
 
@@ -2840,12 +2746,12 @@ Description: Specifies the order of multipole moments that are output at each ti
         if value == "":
             if "AIMD_MOMENTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_MOMENTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_MOMENTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_MOMENTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_MOMENTS"]=value.lower()
 
@@ -2862,12 +2768,12 @@ Description: Sets the number of frozen virtual orbitals in a post-Hartree-Fock c
         if value == "":
             if "N_FROZEN_VIRTUAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["N_FROZEN_VIRTUAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "N_FROZEN_VIRTUAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["N_FROZEN_VIRTUAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["N_FROZEN_VIRTUAL"]=value.lower()
 
@@ -2887,12 +2793,12 @@ Recommendation: : Use FTC when bigger and/or diffuse basis sets are used.     ''
         if value == "":
             if "FTC" in self.dict_of_keywords:
                 del self.dict_of_keywords["FTC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FTC" in self.dict_of_keywords:
                 return self.dict_of_keywords["FTC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FTC"]=value.lower()
 
@@ -2912,12 +2818,12 @@ Description:
         if value == "":
             if "QUI_CFMM" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_CFMM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_CFMM" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_CFMM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_CFMM"]=value.lower()
 
@@ -2937,12 +2843,12 @@ Description:
         if value == "":
             if "QUI_LARGEMOL_NONE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_LARGEMOL_NONE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_LARGEMOL_NONE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_LARGEMOL_NONE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_LARGEMOL_NONE"]=value.lower()
 
@@ -2959,12 +2865,12 @@ Description:
         if value == "":
             if "QUI_PLOTS_POINTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PLOTS_POINTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PLOTS_POINTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PLOTS_POINTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PLOTS_POINTS"]=value.lower()
 
@@ -2984,12 +2890,12 @@ Recommendation: : See also the UNRESTRICTED and DIIS_SUBSPACE_SIZE $rem variable
         if value == "":
             if "SSG" in self.dict_of_keywords:
                 del self.dict_of_keywords["SSG"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SSG" in self.dict_of_keywords:
                 return self.dict_of_keywords["SSG"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SSG"]=value.lower()
 
@@ -3012,12 +2918,12 @@ Description: Specifies the type of EOM calculation to perform
         if value == "":
             if "QUI_EOM_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_METHOD"]=value.lower()
 
@@ -3034,12 +2940,12 @@ Recommendation: : Use the default. To converge the gradient and either one of th
         if value == "":
             if "GEOM_OPT_TOL_DISPLACEMENT" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_TOL_DISPLACEMENT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_TOL_DISPLACEMENT" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_TOL_DISPLACEMENT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_TOL_DISPLACEMENT"]=value.lower()
 
@@ -3056,12 +2962,12 @@ Recommendation: : Use the default. To converge the gradient and either one of th
         if value == "":
             if "GEOM_OPT_TOL_ENERGY" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_TOL_ENERGY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_TOL_ENERGY" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_TOL_ENERGY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_TOL_ENERGY"]=value.lower()
 
@@ -3078,12 +2984,12 @@ Recommendation: : Use the default. To converge the gradient and either one of th
         if value == "":
             if "GEOM_OPT_TOL_GRADIENT" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_TOL_GRADIENT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_TOL_GRADIENT" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_TOL_GRADIENT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_TOL_GRADIENT"]=value.lower()
 
@@ -3104,12 +3010,12 @@ Recommendation: : Set to true to speed up the generation of plot data if the sam
         if value == "":
             if "SKIP_CIS_RPA" in self.dict_of_keywords:
                 del self.dict_of_keywords["SKIP_CIS_RPA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SKIP_CIS_RPA" in self.dict_of_keywords:
                 return self.dict_of_keywords["SKIP_CIS_RPA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SKIP_CIS_RPA"]=value.lower()
 
@@ -3130,12 +3036,12 @@ Description: Controls the format of the geometry in the output file.
         if value == "":
             if "QUI_COORDINATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_COORDINATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_COORDINATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_COORDINATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_COORDINATES"]=value.lower()
 
@@ -3155,12 +3061,12 @@ Recommendation: : The default is usually more efficient, but choosing TRUE somet
         if value == "":
             if "PSEUDO_CANONICAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["PSEUDO_CANONICAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PSEUDO_CANONICAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["PSEUDO_CANONICAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PSEUDO_CANONICAL"]=value.lower()
 
@@ -3183,12 +3089,12 @@ Description: Controls the use of pure (spherical harmonic) or Cartesian angular 
         if value == "":
             if "PURECART" in self.dict_of_keywords:
                 del self.dict_of_keywords["PURECART"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PURECART" in self.dict_of_keywords:
                 return self.dict_of_keywords["PURECART"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PURECART"]=value.lower()
 
@@ -3214,12 +3120,12 @@ Description: Specifies the job for mopropman.  Note that for hyperpolarizabiliti
         if value == "":
             if "MOPROP" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP"]=value.lower()
 
@@ -3237,12 +3143,12 @@ Recommendation: : Values in the range 50-200 a.u. have been employed.    '''
         if value == "":
             if "AIMD_FICTITIOUS_MASS" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_FICTITIOUS_MASS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_FICTITIOUS_MASS" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_FICTITIOUS_MASS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_FICTITIOUS_MASS"]=value.lower()
 
@@ -3263,12 +3169,12 @@ Recommendation: : Since this calculation involves the third and fourth derivativ
         if value == "":
             if "ANHAR" in self.dict_of_keywords:
                 del self.dict_of_keywords["ANHAR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ANHAR" in self.dict_of_keywords:
                 return self.dict_of_keywords["ANHAR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ANHAR"]=value.lower()
 
@@ -3290,12 +3196,12 @@ Recommendation: : This variable need only be specified in the event that velocit
         if value == "":
             if "AIMD_INITIAL_VELOCITIES" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_INITIAL_VELOCITIES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_INITIAL_VELOCITIES" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_INITIAL_VELOCITIES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_INITIAL_VELOCITIES"]=value.lower()
 
@@ -3312,12 +3218,12 @@ Recommendation: : This variable is only useful in conjunction with AIMD velocit 
         if value == "":
             if "AIMD_TEMPERATURE" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_TEMPERATURE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_TEMPERATURE" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_TEMPERATURE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_TEMPERATURE"]=value.lower()
 
@@ -3338,12 +3244,12 @@ Recommendation: : Since this calculation involves the third and fourth derivativ
         if value == "":
             if "ANHARMONIC" in self.dict_of_keywords:
                 del self.dict_of_keywords["ANHARMONIC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ANHARMONIC" in self.dict_of_keywords:
                 return self.dict_of_keywords["ANHARMONIC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ANHARMONIC"]=value.lower()
 
@@ -3360,12 +3266,12 @@ Recommendation: : Set to 5 or smaller if you have a poorly behaved SCF and you s
         if value == "":
             if "BASIS_LINEAR_DEPENDENCE_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["BASIS_LINEAR_DEPENDENCE_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "BASIS_LINEAR_DEPENDENCE_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["BASIS_LINEAR_DEPENDENCE_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["BASIS_LINEAR_DEPENDENCE_THRESH"]=value.lower()
 
@@ -3385,12 +3291,12 @@ Recommendation: : The cost is always about the cost of an analytic gradient calc
         if value == "":
             if "CC_AMPLITUDE_RESPONSE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_AMPLITUDE_RESPONSE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_AMPLITUDE_RESPONSE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_AMPLITUDE_RESPONSE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_AMPLITUDE_RESPONSE"]=value.lower()
 
@@ -3410,12 +3316,12 @@ Recommendation: : Additional equations need to be solved (lambda CCSD equations)
         if value == "":
             if "CC_PROPERTIES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PROPERTIES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PROPERTIES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PROPERTIES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PROPERTIES"]=value.lower()
 
@@ -3435,12 +3341,12 @@ Recommendation: : The two-particle properties are extremely computationally expe
         if value == "":
             if "CC_TWO_PARTICLE_PROPERTIES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_TWO_PARTICLE_PROPERTIES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_TWO_PARTICLE_PROPERTIES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_TWO_PARTICLE_PROPERTIES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_TWO_PARTICLE_PROPERTIES"]=value.lower()
 
@@ -3457,12 +3363,12 @@ Recommendation: : Larger values can give better I/O performance and are recommen
         if value == "":
             if "CC_BLOCK_TENSOR_BUFFER_SIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_BLOCK_TENSOR_BUFFER_SIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_BLOCK_TENSOR_BUFFER_SIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_BLOCK_TENSOR_BUFFER_SIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_BLOCK_TENSOR_BUFFER_SIZE"]=value.lower()
 
@@ -3480,12 +3386,12 @@ Description:
         if value == "":
             if "CC_DIIS_MAXIMUM_OVERLAP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS_MAXIMUM_OVERLAP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS_MAXIMUM_OVERLAP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS_MAXIMUM_OVERLAP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS_MAXIMUM_OVERLAP"]=value.lower()
 
@@ -3502,12 +3408,12 @@ Description: When to switch from DIIS 2 to DIIS 1 procedure, or when DIIS 2 proc
         if value == "":
             if "CC_DIIS12_SWITCH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS12_SWITCH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS12_SWITCH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS12_SWITCH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS12_SWITCH"]=value.lower()
 
@@ -3524,12 +3430,12 @@ Description: DIIS extrapolation will be attempted every n iterations. However, D
         if value == "":
             if "CC_DIIS_EXTRAPOLATION_FREQUENCY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS_EXTRAPOLATION_FREQUENCY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS_EXTRAPOLATION_FREQUENCY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS_EXTRAPOLATION_FREQUENCY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS_EXTRAPOLATION_FREQUENCY"]=value.lower()
 
@@ -3546,12 +3452,12 @@ Description: The DIIS procedure will be halted when the square root of smallest 
         if value == "":
             if "CC_DIIS_MINIMUM_OVERLAP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS_MINIMUM_OVERLAP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS_MINIMUM_OVERLAP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS_MINIMUM_OVERLAP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS_MINIMUM_OVERLAP"]=value.lower()
 
@@ -3568,12 +3474,12 @@ Recommendation: : Larger values involve larger amounts of disk storage.    '''
         if value == "":
             if "CC_DIIS_SIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS_SIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS_SIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS_SIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS_SIZE"]=value.lower()
 
@@ -3590,12 +3496,12 @@ Recommendation: : Occasionally DIIS can cause optimized orbital coupled-cluster 
         if value == "":
             if "CC_DIIS_START" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS_START"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS_START" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS_START"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS_START"]=value.lower()
 
@@ -3612,12 +3518,12 @@ Recommendation: : Default is usually sufficient    '''
         if value == "":
             if "CC_DMAXITER" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DMAXITER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DMAXITER" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DMAXITER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DMAXITER"]=value.lower()
 
@@ -3637,12 +3543,12 @@ Recommendation: : Inclusion of disconnected terms has very small effects and is 
         if value == "":
             if "CC_DO_DISCONNECTED" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DO_DISCONNECTED"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DO_DISCONNECTED" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DO_DISCONNECTED"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DO_DISCONNECTED"]=value.lower()
 
@@ -3662,12 +3568,12 @@ Description: Controls the calculation of full CISDT
         if value == "":
             if "CC_DO_CISDT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DO_CISDT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DO_CISDT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DO_CISDT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DO_CISDT"]=value.lower()
 
@@ -3687,12 +3593,12 @@ Recommendation: : none    '''
         if value == "":
             if "CC_DO_DYSON_EE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DO_DYSON_EE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DO_DYSON_EE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DO_DYSON_EE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DO_DYSON_EE"]=value.lower()
 
@@ -3712,12 +3618,12 @@ Recommendation: : none    '''
         if value == "":
             if "CC_DO_DYSON" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DO_DYSON"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DO_DYSON" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DO_DYSON"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DO_DYSON"]=value.lower()
 
@@ -3737,12 +3643,12 @@ Description: If TRUE, calculates EOM-EA-CCSD excitation energies and properties 
         if value == "":
             if "CC_EA" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EA" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EA"]=value.lower()
 
@@ -3762,12 +3668,12 @@ Description: If TRUE, calculates EOM-IP-CCSD excitation energies and properties 
         if value == "":
             if "CC_IP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_IP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_IP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_IP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_IP"]=value.lower()
 
@@ -3787,12 +3693,12 @@ Description: If TRUE, filters the EOM-IP-CCSD amplitudes obtained using the diff
         if value == "":
             if "CC_IP_FILTER" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_IP_FILTER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_IP_FILTER" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_IP_FILTER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_IP_FILTER"]=value.lower()
 
@@ -3812,12 +3718,12 @@ Description: If TRUE, calculates proper EOM-IP-CCSD excitation energies and prop
         if value == "":
             if "CC_IP_PROPER" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_IP_PROPER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_IP_PROPER" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_IP_PROPER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_IP_PROPER"]=value.lower()
 
@@ -3837,12 +3743,12 @@ Recommendation: : The two definitions give generally similar performance.    '''
         if value == "":
             if "CC_MP2NO_GRAD" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_MP2NO_GRAD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_MP2NO_GRAD" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_MP2NO_GRAD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_MP2NO_GRAD"]=value.lower()
 
@@ -3862,12 +3768,12 @@ Description: Will guess orbitals be natural orbitals of the MP1 wavefunction? Al
         if value == "":
             if "CC_MP2NO_GUESS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_MP2NO_GUESS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_MP2NO_GUESS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_MP2NO_GUESS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_MP2NO_GUESS"]=value.lower()
 
@@ -3887,12 +3793,12 @@ Recommendation: : Occasionally necessary to ensure a doubly excited state is fou
         if value == "":
             if "CC_PRECONV_DOUBLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONV_DOUBLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONV_DOUBLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONV_DOUBLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONV_DOUBLES"]=value.lower()
 
@@ -3912,12 +3818,12 @@ Description: When TRUE, singly-excited vectors are converged prior to a full exc
         if value == "":
             if "CC_PRECONV_SINGLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONV_SINGLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONV_SINGLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONV_SINGLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONV_SINGLES"]=value.lower()
 
@@ -3937,12 +3843,12 @@ Recommendation: : Additional equations need to be solved (lambda CCSD equations)
         if value == "":
             if "CC_PROP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PROP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PROP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PROP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PROP"]=value.lower()
 
@@ -3962,12 +3868,12 @@ Recommendation: : Useful for restarting a job that did not converge, if files we
         if value == "":
             if "CC_RESTART" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_RESTART"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_RESTART" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_RESTART"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_RESTART"]=value.lower()
 
@@ -3987,12 +3893,12 @@ Description: Should an optimized orbital coupled cluster calculation begin with 
         if value == "":
             if "CC_RESTART_NO_SCF" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_RESTART_NO_SCF"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_RESTART_NO_SCF" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_RESTART_NO_SCF"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_RESTART_NO_SCF"]=value.lower()
 
@@ -4012,12 +3918,12 @@ Description: This keyword initializes calculation of non-iterative triples corre
         if value == "":
             if "CC_SD_3" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_SD_3"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_SD_3" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_SD_3"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_SD_3"]=value.lower()
 
@@ -4037,12 +3943,12 @@ Description: Selects whether do perform a standard excited state calculation, or
         if value == "":
             if "CC_SPIN_FLIP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_SPIN_FLIP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_SPIN_FLIP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_SPIN_FLIP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_SPIN_FLIP"]=value.lower()
 
@@ -4062,12 +3968,12 @@ Recommendation: : It is automatically turned off for any finite difference calcu
         if value == "":
             if "CC_SYMMETRY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_SYMMETRY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_SYMMETRY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_SYMMETRY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_SYMMETRY"]=value.lower()
 
@@ -4087,12 +3993,12 @@ Recommendation: : The cost is always about the cost of an analytic gradient calc
         if value == "":
             if "CC_EOM_AMPLITUDE_RESPONSE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_AMPLITUDE_RESPONSE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_AMPLITUDE_RESPONSE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_AMPLITUDE_RESPONSE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_AMPLITUDE_RESPONSE"]=value.lower()
 
@@ -4112,12 +4018,12 @@ Recommendation: : Additional equations (EOM-CCSD equations for the left eigenvec
         if value == "":
             if "CC_EOM_PROPERTIES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_PROPERTIES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_PROPERTIES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_PROPERTIES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_PROPERTIES"]=value.lower()
 
@@ -4137,12 +4043,12 @@ Recommendation: : The cost for the full response properties calculation is about
         if value == "":
             if "CC_EOM_FULL_RESPONSE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_FULL_RESPONSE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_FULL_RESPONSE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_FULL_RESPONSE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_FULL_RESPONSE"]=value.lower()
 
@@ -4159,12 +4065,12 @@ Recommendation: : Smaller values can be tried in cases that do not converge.    
         if value == "":
             if "CC_CANONIZE_FREQUENCY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CANONIZE_FREQUENCY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CANONIZE_FREQUENCY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CANONIZE_FREQUENCY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CANONIZE_FREQUENCY"]=value.lower()
 
@@ -4184,12 +4090,12 @@ Recommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus 
         if value == "":
             if "CC_EOM_TRANSITION_PROPERTIES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_TRANSITION_PROPERTIES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_TRANSITION_PROPERTIES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_TRANSITION_PROPERTIES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_TRANSITION_PROPERTIES"]=value.lower()
 
@@ -4206,12 +4112,12 @@ Description: Convergence desired on the change in total energy, between iteratio
         if value == "":
             if "CC_CONVERGENCE_ENERGY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CONVERGENCE_ENERGY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CONVERGENCE_ENERGY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CONVERGENCE_ENERGY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CONVERGENCE_ENERGY"]=value.lower()
 
@@ -4228,12 +4134,12 @@ Recommendation: : Use Default    '''
         if value == "":
             if "CC_CONVERGENCE_ZVECTOR" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CONVERGENCE_ZVECTOR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CONVERGENCE_ZVECTOR" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CONVERGENCE_ZVECTOR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CONVERGENCE_ZVECTOR"]=value.lower()
 
@@ -4250,12 +4156,12 @@ Recommendation: : Use default    '''
         if value == "":
             if "CC_CONVERGENCE_AMPLITUDES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_CONVERGENCE_AMPLITUDES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_CONVERGENCE_AMPLITUDES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_CONVERGENCE_AMPLITUDES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_CONVERGENCE_AMPLITUDES"]=value.lower()
 
@@ -4275,12 +4181,12 @@ Recommendation: : The cost for the full response properties calculation is about
         if value == "":
             if "CC_FULL_RESPONSE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_FULL_RESPONSE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_FULL_RESPONSE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_FULL_RESPONSE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_FULL_RESPONSE"]=value.lower()
 
@@ -4298,12 +4204,12 @@ Description: Minimum alloed value for the orbital Hessian.  Smaller values are r
         if value == "":
             if "CC_HESSIAN_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_HESSIAN_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_HESSIAN_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_HESSIAN_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_HESSIAN_THRESH"]=value.lower()
 
@@ -4323,12 +4229,12 @@ Recommendation: : Occasionally necessary to ensure a doubly excited state is fou
         if value == "":
             if "CC_PRECONVERGE_DOUBLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONVERGE_DOUBLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONVERGE_DOUBLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONVERGE_DOUBLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONVERGE_DOUBLES"]=value.lower()
 
@@ -4343,12 +4249,12 @@ Recommendation: : Turning this option on is recommended    '''
         if value == "":
             if "CC_PRECONVERGE_SD" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONVERGE_SD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONVERGE_SD" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONVERGE_SD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONVERGE_SD"]=value.lower()
 
@@ -4368,12 +4274,12 @@ Description: When TRUE, singly-excited vectors are converged prior to a full exc
         if value == "":
             if "CC_PRECONVERGE_SINGLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONVERGE_SINGLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONVERGE_SINGLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONVERGE_SINGLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONVERGE_SINGLES"]=value.lower()
 
@@ -4390,12 +4296,12 @@ Recommendation: : Check to see that the states do no change order during an opti
         if value == "":
             if "CIS_STATE_DERIVATIVE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_STATE_DERIVATIVE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_STATE_DERIVATIVE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_STATE_DERIVATIVE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_STATE_DERIVATIVE"]=value.lower()
 
@@ -4415,12 +4321,12 @@ Description: Do an RPA calculation in addition to a CIS calculation
         if value == "":
             if "RPA" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPA" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPA"]=value.lower()
 
@@ -4438,12 +4344,12 @@ Description: Specifies the occupied orbital cutoff
         if value == "":
             if "CIS_RAS_CUTOFF_OCCUPIED" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RAS_CUTOFF_OCCUPIED"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RAS_CUTOFF_OCCUPIED" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RAS_CUTOFF_OCCUPIED"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RAS_CUTOFF_OCCUPIED"]=value.lower()
 
@@ -4461,12 +4367,12 @@ Description: Specifies the virtual orbital cutoff.
         if value == "":
             if "CIS_RAS_CUTOFF_VIRTUAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RAS_CUTOFF_VIRTUAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RAS_CUTOFF_VIRTUAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RAS_CUTOFF_VIRTUAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RAS_CUTOFF_VIRTUAL"]=value.lower()
 
@@ -4486,12 +4392,12 @@ Description: Controls whether reduced single excitation space is used
         if value == "":
             if "CIS_RAS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RAS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RAS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RAS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RAS"]=value.lower()
 
@@ -4506,12 +4412,12 @@ Description: Specifies number of atoms or orbitals in solute
         if value == "":
             if "CIS_RAS_N_SOLUTE_ATOMS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RAS_N_SOLUTE_ATOMS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RAS_N_SOLUTE_ATOMS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RAS_N_SOLUTE_ATOMS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RAS_N_SOLUTE_ATOMS"]=value.lower()
 
@@ -4531,12 +4437,12 @@ Description: Selects whether or not to print additional output.
         if value == "":
             if "CIS_RAS_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RAS_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RAS_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RAS_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RAS_PRINT"]=value.lower()
 
@@ -4556,12 +4462,12 @@ Description: Controls how reduced subspace is specified
         if value == "":
             if "CIS_RAS_TYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_RAS_TYPE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_RAS_TYPE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_RAS_TYPE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_RAS_TYPE"]=value.lower()
 
@@ -4581,12 +4487,12 @@ Recommendation: : Use default, the maximum error provides a more reliable criter
         if value == "":
             if "DIIS_ERROR_METRIC" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIIS_ERROR_METRIC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIIS_ERROR_METRIC" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIIS_ERROR_METRIC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIIS_ERROR_METRIC"]=value.lower()
 
@@ -4606,12 +4512,12 @@ Description: Specifies whether to perform Distributed Multipole Analysis.
         if value == "":
             if "DMA" in self.dict_of_keywords:
                 del self.dict_of_keywords["DMA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DMA" in self.dict_of_keywords:
                 return self.dict_of_keywords["DMA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DMA"]=value.lower()
 
@@ -4631,12 +4537,12 @@ Description: Controls calculation of Raman intensities. Only relevant for a freq
         if value == "":
             if "RAMAN" in self.dict_of_keywords:
                 del self.dict_of_keywords["RAMAN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RAMAN" in self.dict_of_keywords:
                 return self.dict_of_keywords["RAMAN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RAMAN"]=value.lower()
 
@@ -4653,12 +4559,12 @@ Recommendation: : The criterion for level-1 convergence must be less than or equ
         if value == "":
             if "DSCF_CONVERGENCE_LEVEL_1" in self.dict_of_keywords:
                 del self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DSCF_CONVERGENCE_LEVEL_1" in self.dict_of_keywords:
                 return self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_1"]=value.lower()
 
@@ -4675,12 +4581,12 @@ Description: Sets the convergence criterion for the level-2 iterations.
         if value == "":
             if "DSCF_CONVERGENCE_LEVEL_2" in self.dict_of_keywords:
                 del self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DSCF_CONVERGENCE_LEVEL_2" in self.dict_of_keywords:
                 return self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DSCF_CONVERGENCE_LEVEL_2"]=value.lower()
 
@@ -4697,12 +4603,12 @@ Recommendation: : Use the default.    '''
         if value == "":
             if "DSCF_DIIS_SUBSPACE" in self.dict_of_keywords:
                 del self.dict_of_keywords["DSCF_DIIS_SUBSPACE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DSCF_DIIS_SUBSPACE" in self.dict_of_keywords:
                 return self.dict_of_keywords["DSCF_DIIS_SUBSPACE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DSCF_DIIS_SUBSPACE"]=value.lower()
 
@@ -4722,12 +4628,12 @@ Description: Specifies whether to do the perturbations all together.
         if value == "":
             if "DCPSCF_PERTNUM" in self.dict_of_keywords:
                 del self.dict_of_keywords["DCPSCF_PERTNUM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DCPSCF_PERTNUM" in self.dict_of_keywords:
                 return self.dict_of_keywords["DCPSCF_PERTNUM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DCPSCF_PERTNUM"]=value.lower()
 
@@ -4747,12 +4653,12 @@ Description: Specifies whether to do the perturbations all together.
         if value == "":
             if "DCPSCF_PERTURBATIONS" in self.dict_of_keywords:
                 del self.dict_of_keywords["DCPSCF_PERTURBATIONS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DCPSCF_PERTURBATIONS" in self.dict_of_keywords:
                 return self.dict_of_keywords["DCPSCF_PERTURBATIONS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DCPSCF_PERTURBATIONS"]=value.lower()
 
@@ -4774,12 +4680,12 @@ Recommendation: : When the molecule is larger than benzene with small basis set,
         if value == "":
             if "FD_DERIVATIVE_TYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["FD_DERIVATIVE_TYPE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FD_DERIVATIVE_TYPE" in self.dict_of_keywords:
                 return self.dict_of_keywords["FD_DERIVATIVE_TYPE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FD_DERIVATIVE_TYPE"]=value.lower()
 
@@ -4797,12 +4703,12 @@ Recommendation: : Use default, unless on a very flat potential, in which case a 
         if value == "":
             if "FD_STEP_SIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["FD_STEP_SIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FD_STEP_SIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["FD_STEP_SIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FD_STEP_SIZE"]=value.lower()
 
@@ -4819,12 +4725,12 @@ Recommendation: : Usually set to the maximum possible for efficiency. Note that 
         if value == "":
             if "ANALYTIC_DERIVATIVE_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["ANALYTIC_DERIVATIVE_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ANALYTIC_DERIVATIVE_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["ANALYTIC_DERIVATIVE_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ANALYTIC_DERIVATIVE_ORDER"]=value.lower()
 
@@ -4844,12 +4750,12 @@ Description: Algorithm used to optimize polarized atomic orbitals (see PAO_METHO
         if value == "":
             if "PAO_ALGORITHM" in self.dict_of_keywords:
                 del self.dict_of_keywords["PAO_ALGORITHM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PAO_ALGORITHM" in self.dict_of_keywords:
                 return self.dict_of_keywords["PAO_ALGORITHM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PAO_ALGORITHM"]=value.lower()
 
@@ -4869,12 +4775,12 @@ Description: Controls evaluation of polarized atomic orbitals (PAOs).
         if value == "":
             if "PAO_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["PAO_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PAO_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["PAO_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PAO_METHOD"]=value.lower()
 
@@ -4894,12 +4800,12 @@ Recommendation: : Use default, unless convergence failure is encountered.    '''
         if value == "":
             if "EPAO_WEIGHTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["EPAO_WEIGHTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EPAO_WEIGHTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["EPAO_WEIGHTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EPAO_WEIGHTS"]=value.lower()
 
@@ -4916,12 +4822,12 @@ Description: Specifies the polynomial order N for Fock matrix extrapolation.
         if value == "":
             if "AIMD_FOCK_EXTRAPOLATION_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_FOCK_EXTRAPOLATION_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_ORDER"]=value.lower()
 
@@ -4941,12 +4847,12 @@ Recommendation: : Use the default if possible.  Turning this option off conserve
         if value == "":
             if "FTC_FAST" in self.dict_of_keywords:
                 del self.dict_of_keywords["FTC_FAST"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FTC_FAST" in self.dict_of_keywords:
                 return self.dict_of_keywords["FTC_FAST"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FTC_FAST"]=value.lower()
 
@@ -4963,12 +4869,12 @@ Recommendation: : Default is usually sufficient.    '''
         if value == "":
             if "CIS_MAX_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_MAX_CYCLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_MAX_CYCLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_MAX_CYCLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_MAX_CYCLES"]=value.lower()
 
@@ -4985,12 +4891,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "DSCF_MAX_CYCLES_LEVEL_2" in self.dict_of_keywords:
                 del self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DSCF_MAX_CYCLES_LEVEL_2" in self.dict_of_keywords:
                 return self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_2"]=value.lower()
 
@@ -5008,12 +4914,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "DSCF_MAX_CYCLES_LEVEL_1" in self.dict_of_keywords:
                 del self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DSCF_MAX_CYCLES_LEVEL_1" in self.dict_of_keywords:
                 return self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DSCF_MAX_CYCLES_LEVEL_1"]=value.lower()
 
@@ -5030,12 +4936,12 @@ Description: Controls maximum size of subspace for GDIIS. 0 turns off GDIIS and 
         if value == "":
             if "GEOM_OPT_DIIS_SUBSPACE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_DIIS_SUBSPACE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_DIIS_SUBSPACE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_DIIS_SUBSPACE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_DIIS_SUBSPACE"]=value.lower()
 
@@ -5055,12 +4961,12 @@ Description: Controls the use of point-group symmetry in the optimization.
         if value == "":
             if "GEOM_OPT_SYMMETRY" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_SYMMETRY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_SYMMETRY" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_SYMMETRY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_SYMMETRY"]=value.lower()
 
@@ -5081,12 +4987,12 @@ Recommendation: : Use the default; delocalized internals are more efficient.    
         if value == "":
             if "GEOM_OPT_COORDINATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_COORDINATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_COORDINATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_COORDINATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_COORDINATES"]=value.lower()
 
@@ -5104,12 +5010,12 @@ Description: Maximum allowed step size in the geometry optimization.
         if value == "":
             if "GEOM_OPT_MAX_STEP_SIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_MAX_STEP_SIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_MAX_STEP_SIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_MAX_STEP_SIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_MAX_STEP_SIZE"]=value.lower()
 
@@ -5134,12 +5040,12 @@ Description: Controls the Hessian update algorithm.  The default dpends on the t
         if value == "":
             if "GEOM_OPT_HESSIAN_UPDATE" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_HESSIAN_UPDATE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_HESSIAN_UPDATE" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_HESSIAN_UPDATE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_HESSIAN_UPDATE"]=value.lower()
 
@@ -5168,12 +5074,12 @@ Recommendation: : This is an expert option; either use the default, or use a val
         if value == "":
             if "CFMM_GRAIN" in self.dict_of_keywords:
                 del self.dict_of_keywords["CFMM_GRAIN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CFMM_GRAIN" in self.dict_of_keywords:
                 return self.dict_of_keywords["CFMM_GRAIN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CFMM_GRAIN"]=value.lower()
 
@@ -5195,12 +5101,12 @@ Recommendation: : Must use this option when IGDESP is specified.    '''
         if value == "":
             if "PLOTS_PROPERTY" in self.dict_of_keywords:
                 del self.dict_of_keywords["PLOTS_PROPERTY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PLOTS_PROPERTY" in self.dict_of_keywords:
                 return self.dict_of_keywords["PLOTS_PROPERTY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PLOTS_PROPERTY"]=value.lower()
 
@@ -5220,12 +5126,12 @@ Recommendation: : The low memory option is slower, use default unless memory is 
         if value == "":
             if "INTRACULE_CONSERVE_MEMORY" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE_CONSERVE_MEMORY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE_CONSERVE_MEMORY" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE_CONSERVE_MEMORY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE_CONSERVE_MEMORY"]=value.lower()
 
@@ -5245,12 +5151,12 @@ Description: Controls whether intracule properties are calculated.  Setting this
         if value == "":
             if "INTRACULE" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE"]=value.lower()
 
@@ -5299,12 +5205,12 @@ Recommendation: : Larger grids if high accuracy required.    '''
         if value == "":
             if "INTRACULE_GRID" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE_GRID"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE_GRID" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE_GRID"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE_GRID"]=value.lower()
 
@@ -5321,12 +5227,12 @@ Recommendation: : Increase n for greater accuracy.    '''
         if value == "":
             if "INTRACULE_WIGNER_SERIES_LIMIT" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE_WIGNER_SERIES_LIMIT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE_WIGNER_SERIES_LIMIT" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE_WIGNER_SERIES_LIMIT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE_WIGNER_SERIES_LIMIT"]=value.lower()
 
@@ -5343,12 +5249,12 @@ Recommendation: : Lower values speed up the calculation, but may affect accuracy
         if value == "":
             if "INTRACULE_J_SERIES_LIMIT" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE_J_SERIES_LIMIT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE_J_SERIES_LIMIT" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE_J_SERIES_LIMIT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE_J_SERIES_LIMIT"]=value.lower()
 
@@ -5365,12 +5271,12 @@ Recommendation: : Lower values speed up the calculation, but may affect accuracy
         if value == "":
             if "INTRACULE_I_SERIES_LIMIT" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE_I_SERIES_LIMIT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE_I_SERIES_LIMIT" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE_I_SERIES_LIMIT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE_I_SERIES_LIMIT"]=value.lower()
 
@@ -5390,12 +5296,12 @@ Description: Use Lebedev quadrature to evaluate Wigner integrals.
         if value == "":
             if "INTRACULE_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["INTRACULE_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INTRACULE_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["INTRACULE_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INTRACULE_METHOD"]=value.lower()
 
@@ -5412,12 +5318,12 @@ Description: The maximum number of RCA iterations before switching to DIIS when 
         if value == "":
             if "RCA_MAX_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["RCA_MAX_CYCLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RCA_MAX_CYCLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["RCA_MAX_CYCLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RCA_MAX_CYCLES"]=value.lower()
 
@@ -5434,12 +5340,12 @@ Recommendation: : Increase for slowly converging systems such as those containin
         if value == "":
             if "SCF_MAX_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_MAX_CYCLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_MAX_CYCLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_MAX_CYCLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_MAX_CYCLES"]=value.lower()
 
@@ -5459,12 +5365,12 @@ Recommendation: : Set to TRUE if MDCs or the traceless form of the multipole mom
         if value == "":
             if "MM_CHARGES" in self.dict_of_keywords:
                 del self.dict_of_keywords["MM_CHARGES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MM_CHARGES" in self.dict_of_keywords:
                 return self.dict_of_keywords["MM_CHARGES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MM_CHARGES"]=value.lower()
 
@@ -5484,12 +5390,12 @@ Description: Requests a $molden-formatted input file containing information from
         if value == "":
             if "MOLDEN_FORMAT" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOLDEN_FORMAT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOLDEN_FORMAT" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOLDEN_FORMAT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOLDEN_FORMAT"]=value.lower()
 
@@ -5509,12 +5415,12 @@ Description: Switches printing on within the MOM procedure.
         if value == "":
             if "MOM_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOM_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOM_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOM_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOM_PRINT"]=value.lower()
 
@@ -5531,12 +5437,12 @@ Description: Sets the convergence criteria for CPSCF and 1st order TDSCF.
         if value == "":
             if "MOPROP_CONVERGENCE_LEVEL_1" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_CONVERGENCE_LEVEL_1" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_1"]=value.lower()
 
@@ -5553,12 +5459,12 @@ Description: Sets the convergence criterium for second-order TDSCF.
         if value == "":
             if "MOPROP_CONVERGENCE_LEVEL_2" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_CONVERGENCE_LEVEL_2" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_CONVERGENCE_LEVEL_2"]=value.lower()
 
@@ -5576,12 +5482,12 @@ Description: Controls the use of Pulays DIIS.
         if value == "":
             if "MOPROP_DIIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_DIIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_DIIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_DIIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_DIIS"]=value.lower()
 
@@ -5598,12 +5504,12 @@ Description: Specified the DIIS subspace dimension.
         if value == "":
             if "MOPROP_DIIS_SUBSPACE" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_DIIS_SUBSPACE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_DIIS_SUBSPACE" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_DIIS_SUBSPACE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_DIIS_SUBSPACE"]=value.lower()
 
@@ -5620,12 +5526,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "MOPROP_MAX_CYCLES_LEVEL_2" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_MAX_CYCLES_LEVEL_2" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_2"]=value.lower()
 
@@ -5642,12 +5548,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "MOPROP_MAX_CYCLES_LEVEL_1" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_MAX_CYCLES_LEVEL_1" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_MAX_CYCLES_LEVEL_1"]=value.lower()
 
@@ -5664,12 +5570,12 @@ Recommendation: : Use default    '''
         if value == "":
             if "MOPROP_PERTURBATIONS" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_PERTURBATIONS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_PERTURBATIONS" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_PERTURBATIONS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_PERTURBATIONS"]=value.lower()
 
@@ -5689,12 +5595,12 @@ Description: Controls the use of the NBO package.
         if value == "":
             if "NBO" in self.dict_of_keywords:
                 del self.dict_of_keywords["NBO"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NBO" in self.dict_of_keywords:
                 return self.dict_of_keywords["NBO"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NBO"]=value.lower()
 
@@ -5714,12 +5620,12 @@ Recommendation: : Use default unless running calculations with $charmm where cha
         if value == "":
             if "QMMM_CHARGES" in self.dict_of_keywords:
                 del self.dict_of_keywords["QMMM_CHARGES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QMMM_CHARGES" in self.dict_of_keywords:
                 return self.dict_of_keywords["QMMM_CHARGES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QMMM_CHARGES"]=value.lower()
 
@@ -5739,12 +5645,12 @@ Recommendation: : Use default unless running calculations with $charmm.    '''
         if value == "":
             if "QMMM_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["QMMM_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QMMM_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["QMMM_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QMMM_PRINT"]=value.lower()
 
@@ -5761,12 +5667,12 @@ Recommendation: : Use default unless higher (or lower) precision is desired.    
         if value == "":
             if "MULTIPOLE_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["MULTIPOLE_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MULTIPOLE_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["MULTIPOLE_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MULTIPOLE_ORDER"]=value.lower()
 
@@ -5788,12 +5694,12 @@ Description: Controls evaluation of the electrostatic potential on a grid of poi
         if value == "":
             if "PLOTS_GRID" in self.dict_of_keywords:
                 del self.dict_of_keywords["PLOTS_GRID"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PLOTS_GRID" in self.dict_of_keywords:
                 return self.dict_of_keywords["PLOTS_GRID"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PLOTS_GRID"]=value.lower()
 
@@ -5814,12 +5720,12 @@ Description:
         if value == "":
             if "MULLIKEN" in self.dict_of_keywords:
                 del self.dict_of_keywords["MULLIKEN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MULLIKEN" in self.dict_of_keywords:
                 return self.dict_of_keywords["MULLIKEN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MULLIKEN"]=value.lower()
 
@@ -5840,12 +5746,12 @@ Recommendation: : Use default, unless you are uncertain about what the core char
         if value == "":
             if "CORE_CHARACTER_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CORE_CHARACTER_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CORE_CHARACTER_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CORE_CHARACTER_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CORE_CHARACTER_PRINT"]=value.lower()
 
@@ -5860,12 +5766,12 @@ Recommendation: : Use default unless distances are required for large systems   
         if value == "":
             if "PRINT_DISTANCE_MATRIX" in self.dict_of_keywords:
                 del self.dict_of_keywords["PRINT_DISTANCE_MATRIX"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PRINT_DISTANCE_MATRIX" in self.dict_of_keywords:
                 return self.dict_of_keywords["PRINT_DISTANCE_MATRIX"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PRINT_DISTANCE_MATRIX"]=value.lower()
 
@@ -5885,12 +5791,12 @@ Description:
         if value == "":
             if "QUI_PRINT_ORBITALS" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PRINT_ORBITALS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PRINT_ORBITALS" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PRINT_ORBITALS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PRINT_ORBITALS"]=value.lower()
 
@@ -5910,12 +5816,12 @@ Recommendation: : Use default unless running calculations with $charmm.    '''
         if value == "":
             if "QMMM" in self.dict_of_keywords:
                 del self.dict_of_keywords["QMMM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QMMM" in self.dict_of_keywords:
                 return self.dict_of_keywords["QMMM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QMMM"]=value.lower()
 
@@ -5932,12 +5838,12 @@ Description: Controls the amount of output from a RCA SCF optimization.
         if value == "":
             if "RCA_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["RCA_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RCA_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["RCA_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RCA_PRINT"]=value.lower()
 
@@ -5957,12 +5863,12 @@ Recommendation: : Mass weighted coordinates are usually more effective.    '''
         if value == "":
             if "RPATH_COORDINATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPATH_COORDINATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPATH_COORDINATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPATH_COORDINATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPATH_COORDINATES"]=value.lower()
 
@@ -5982,12 +5888,12 @@ Description: Determines the direction of the eigen mode to follow. This will not
         if value == "":
             if "RPATH_DIRECTION" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPATH_DIRECTION"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPATH_DIRECTION" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPATH_DIRECTION"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPATH_DIRECTION"]=value.lower()
 
@@ -6005,12 +5911,12 @@ Description: Specifies the maximum step size to be taken (in a.u.).
         if value == "":
             if "RPATH_MAX_STEPSIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["RPATH_MAX_STEPSIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RPATH_MAX_STEPSIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["RPATH_MAX_STEPSIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RPATH_MAX_STEPSIZE"]=value.lower()
 
@@ -6030,12 +5936,12 @@ Recommendation: : Use default unless SCF convergence issues arise    '''
         if value == "":
             if "GEOM_OPT_SCF_GUESS_ALWAYS" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_SCF_GUESS_ALWAYS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_SCF_GUESS_ALWAYS" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_SCF_GUESS_ALWAYS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_SCF_GUESS_ALWAYS"]=value.lower()
 
@@ -6052,12 +5958,12 @@ Description: Controls printing of guess MOs, Fock and density matrices.
         if value == "":
             if "SCF_GUESS_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_GUESS_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_GUESS_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_GUESS_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_GUESS_PRINT"]=value.lower()
 
@@ -6074,12 +5980,12 @@ Recommendation: : Proceed with care; can result in extremely large output files 
         if value == "":
             if "SCF_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_PRINT"]=value.lower()
 
@@ -6097,12 +6003,12 @@ Recommendation: : Use equation (\ref{eq1000}).    '''
         if value == "":
             if "SOLUTE_RADIUS" in self.dict_of_keywords:
                 del self.dict_of_keywords["SOLUTE_RADIUS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SOLUTE_RADIUS" in self.dict_of_keywords:
                 return self.dict_of_keywords["SOLUTE_RADIUS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SOLUTE_RADIUS"]=value.lower()
 
@@ -6120,12 +6026,12 @@ Recommendation: : As per required solvent.    '''
         if value == "":
             if "SOLVENT_DIELECTRIC" in self.dict_of_keywords:
                 del self.dict_of_keywords["SOLVENT_DIELECTRIC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SOLVENT_DIELECTRIC" in self.dict_of_keywords:
                 return self.dict_of_keywords["SOLVENT_DIELECTRIC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SOLVENT_DIELECTRIC"]=value.lower()
 
@@ -6142,12 +6048,12 @@ Description: The threshold for switching between RCA and DIIS when the SCF algor
         if value == "":
             if "RCA_SWITCH_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["RCA_SWITCH_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "RCA_SWITCH_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["RCA_SWITCH_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["RCA_SWITCH_THRESH"]=value.lower()
 
@@ -6200,12 +6106,12 @@ Recommendation: : Use the default unless convergence difficulties arise.  Larger
         if value == "":
             if "QUI_ANGULAR_GRID" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_ANGULAR_GRID"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_ANGULAR_GRID" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_ANGULAR_GRID"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_ANGULAR_GRID"]=value.lower()
 
@@ -6222,12 +6128,12 @@ Description: Specifies the number of radial point for the exchange-correlation q
         if value == "":
             if "QUI_RADIAL_GRID" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_RADIAL_GRID"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_RADIAL_GRID" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_RADIAL_GRID"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_RADIAL_GRID"]=value.lower()
 
@@ -6247,12 +6153,12 @@ Description: Specifies if non-default masses are to be used in the frequency cal
         if value == "":
             if "ISOTOPES" in self.dict_of_keywords:
                 del self.dict_of_keywords["ISOTOPES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ISOTOPES" in self.dict_of_keywords:
                 return self.dict_of_keywords["ISOTOPES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ISOTOPES"]=value.lower()
 
@@ -6269,12 +6175,12 @@ Recommendation: : For direct and semi-direct MP2 calculations, this must exceed 
         if value == "":
             if "MEMORY_STATIC" in self.dict_of_keywords:
                 del self.dict_of_keywords["MEMORY_STATIC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MEMORY_STATIC" in self.dict_of_keywords:
                 return self.dict_of_keywords["MEMORY_STATIC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MEMORY_STATIC"]=value.lower()
 
@@ -6292,12 +6198,12 @@ Recommendation: : Use default, or set to the physical memory of your machine.   
         if value == "":
             if "MEMORY_TOTAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["MEMORY_TOTAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MEMORY_TOTAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["MEMORY_TOTAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MEMORY_TOTAL"]=value.lower()
 
@@ -6317,12 +6223,12 @@ Recommendation: : Born-oppenheimer MD (BOMD) yields exact classical molecular dy
         if value == "":
             if "AIMD_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_METHOD"]=value.lower()
 
@@ -6340,12 +6246,12 @@ Recommendation: : Use default unless converge problems are encountered. Should n
         if value == "":
             if "CC_DTHRESHOLD" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DTHRESHOLD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DTHRESHOLD" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DTHRESHOLD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DTHRESHOLD"]=value.lower()
 
@@ -6360,12 +6266,12 @@ Description: Selects which EOM or CIS(D) state is to be considered for optimizat
         if value == "":
             if "CC_STATE_DERIVATIVE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_STATE_DERIVATIVE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_STATE_DERIVATIVE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_STATE_DERIVATIVE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_STATE_DERIVATIVE"]=value.lower()
 
@@ -6385,12 +6291,12 @@ Recommendation: : Use default unless the additional information is required. Ple
         if value == "":
             if "GUI" in self.dict_of_keywords:
                 del self.dict_of_keywords["GUI"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GUI" in self.dict_of_keywords:
                 return self.dict_of_keywords["GUI"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GUI"]=value.lower()
 
@@ -6411,12 +6317,12 @@ Recommendation:  Two-particle properties are extremely computationally expensive
         if value == "":
             if "CC_EOM_TWO_PARTICLE_PROPERTIES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_TWO_PARTICLE_PROPERTIES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_TWO_PARTICLE_PROPERTIES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_TWO_PARTICLE_PROPERTIES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_TWO_PARTICLE_PROPERTIES"]=value.lower()
 
@@ -6436,12 +6342,12 @@ Description: Adds the $opt section for specifying constraints in the geometry op
         if value == "":
             if "QUI_SECTION_OPT" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SECTION_OPT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SECTION_OPT" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SECTION_OPT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SECTION_OPT"]=value.lower()
 
@@ -6460,12 +6366,12 @@ Description: Controls the strength of the dispersion corrections in the Chai-Hea
         if value == "":
             if "DFT_D_A" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFT_D_A"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFT_D_A" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFT_D_A"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFT_D_A"]=value.lower()
 
@@ -6483,12 +6389,12 @@ Recommendation: : When performing unrestricted calculations on molecules with an
         if value == "":
             if "SCF_GUESS_MIX" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_GUESS_MIX"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_GUESS_MIX" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_GUESS_MIX"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_GUESS_MIX"]=value.lower()
 
@@ -6503,12 +6409,12 @@ Recommendation: : Increase if you need more output and don't like trees    '''
         if value == "":
             if "CC_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRINT"]=value.lower()
 
@@ -6528,12 +6434,12 @@ Description: Save last G[P]x when calculating dynamic polarizabilities in order 
         if value == "":
             if "MOPROP_SAVE_LAST_GPX" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOPROP_SAVE_LAST_GPX"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOPROP_SAVE_LAST_GPX" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOPROP_SAVE_LAST_GPX"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOPROP_SAVE_LAST_GPX"]=value.lower()
 
@@ -6552,12 +6458,12 @@ Description: Sets the lable for this section of the input file.
         if value == "":
             if "QUI_TITLE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_TITLE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_TITLE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_TITLE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_TITLE"]=value.lower()
 
@@ -6577,12 +6483,12 @@ Description: Controls whether to perform a link-atom projection, which is necess
         if value == "":
             if "LINK_ATOM_PROJECTION" in self.dict_of_keywords:
                 del self.dict_of_keywords["LINK_ATOM_PROJECTION"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "LINK_ATOM_PROJECTION" in self.dict_of_keywords:
                 return self.dict_of_keywords["LINK_ATOM_PROJECTION"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["LINK_ATOM_PROJECTION"]=value.lower()
 
@@ -6602,12 +6508,12 @@ Description:
         if value == "":
             if "QMMM_FULL_HESSIAN" in self.dict_of_keywords:
                 del self.dict_of_keywords["QMMM_FULL_HESSIAN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QMMM_FULL_HESSIAN" in self.dict_of_keywords:
                 return self.dict_of_keywords["QMMM_FULL_HESSIAN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QMMM_FULL_HESSIAN"]=value.lower()
 
@@ -6627,12 +6533,12 @@ Description: Enables the use of Gaussian-delocalized external charges in a QM/MM
         if value == "":
             if "GAUSSIAN_BLUR" in self.dict_of_keywords:
                 del self.dict_of_keywords["GAUSSIAN_BLUR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GAUSSIAN_BLUR" in self.dict_of_keywords:
                 return self.dict_of_keywords["GAUSSIAN_BLUR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GAUSSIAN_BLUR"]=value.lower()
 
@@ -6652,12 +6558,12 @@ Description: Selects whether or not to project out the rotational and translatio
         if value == "":
             if "HESS_PROJ_TRM" in self.dict_of_keywords:
                 del self.dict_of_keywords["HESS_PROJ_TRM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "HESS_PROJ_TRM" in self.dict_of_keywords:
                 return self.dict_of_keywords["HESS_PROJ_TRM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["HESS_PROJ_TRM"]=value.lower()
 
@@ -6677,12 +6583,12 @@ Description: Allows the molecule to reorient during a geometry optimization.  Tu
         if value == "":
             if "GEOM_OPT_IPROJ" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_IPROJ"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_IPROJ" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_IPROJ"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_IPROJ"]=value.lower()
 
@@ -6702,12 +6608,12 @@ Description:
         if value == "":
             if "QUI_QCHEM_EXECUTABLE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_QCHEM_EXECUTABLE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_QCHEM_EXECUTABLE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_QCHEM_EXECUTABLE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_QCHEM_EXECUTABLE"]=value.lower()
 
@@ -6727,12 +6633,12 @@ Description: Determines which file is passed as an argument to Avogadro.  If tru
         if value == "":
             if "QUI_AVOGADRO_VISUALIZE_FILE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_AVOGADRO_VISUALIZE_FILE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_AVOGADRO_VISUALIZE_FILE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_AVOGADRO_VISUALIZE_FILE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_AVOGADRO_VISUALIZE_FILE"]=value.lower()
 
@@ -6751,12 +6657,12 @@ Description: Sets the directory for tskill or taskkill
         if value == "":
             if "QUI_WINDOWS_DIRECTORY" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_WINDOWS_DIRECTORY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_WINDOWS_DIRECTORY" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_WINDOWS_DIRECTORY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_WINDOWS_DIRECTORY"]=value.lower()
 
@@ -6776,12 +6682,12 @@ Description: The command required to kill qchem jobs, only used on Windows
         if value == "":
             if "QUI_WINDOWS_KILL_COMMAND" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_WINDOWS_KILL_COMMAND"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_WINDOWS_KILL_COMMAND" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_WINDOWS_KILL_COMMAND"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_WINDOWS_KILL_COMMAND"]=value.lower()
 
@@ -6798,12 +6704,12 @@ Description: Prints final coordinates at the end of the output file using the PD
         if value == "":
             if "PDB_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["PDB_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PDB_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["PDB_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PDB_PRINT"]=value.lower()
 
@@ -6826,12 +6732,12 @@ Description:
         if value == "":
             if "AAAA" in self.dict_of_keywords:
                 del self.dict_of_keywords["AAAA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AAAA" in self.dict_of_keywords:
                 return self.dict_of_keywords["AAAA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AAAA"]=value.lower()
 
@@ -6848,12 +6754,12 @@ Description: Number of threads in shared memory parallel calculations.
         if value == "":
             if "THREADS" in self.dict_of_keywords:
                 del self.dict_of_keywords["THREADS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "THREADS" in self.dict_of_keywords:
                 return self.dict_of_keywords["THREADS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["THREADS"]=value.lower()
 
@@ -6870,12 +6776,12 @@ Description: Maximum number of iterations to optimize the coupled-cluster energy
         if value == "":
             if "CC_MAX_ITER" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_MAX_ITER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_MAX_ITER" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_MAX_ITER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_MAX_ITER"]=value.lower()
 
@@ -6893,60 +6799,14 @@ Description: Specifies the maximum size, in Mb, of the buffers for in-core stora
         if value == "":
             if "CC_MEMORY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_MEMORY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_MEMORY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_MEMORY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_MEMORY"]=value.lower()
-
-
-    def mem_total(self,value="show"):
-        '''
-Name: MEM_TOTAL
-Type: INTEGER
-Factor: 10
-Default: 200 [=2000]
-Options: Range from 20 [=200] to 100000 [=1000000]
-
-Description: Sets the total memory available to Q-Chem, in megabytes.
-    '''
-        if value == "":
-            if "MEM_TOTAL" in self.dict_of_keywords:
-                del self.dict_of_keywords["MEM_TOTAL"]
-                print "Keyword removed."
-        elif value == "show":
-            if "MEM_TOTAL" in self.dict_of_keywords:
-                return self.dict_of_keywords["MEM_TOTAL"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["MEM_TOTAL"]=value.lower()
-
-
-    def mem_static(self,value="show"):
-        '''
-Name: MEM_STATIC
-Type: INTEGER
-Factor: 10
-Default: 24 [=240]
-Options: Range from 3 [=32] to 100000 [=1000000]
-
-Description: Sets the memory (in megabytes) for individual fortran program modules.
-Recommendation: : For direct and semi-direct MP2 calculations, this must exceed OVN + requirements for AO integral evaluation (32-160 Mb).    '''
-        if value == "":
-            if "MEM_STATIC" in self.dict_of_keywords:
-                del self.dict_of_keywords["MEM_STATIC"]
-                print "Keyword removed."
-        elif value == "show":
-            if "MEM_STATIC" in self.dict_of_keywords:
-                return self.dict_of_keywords["MEM_STATIC"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["MEM_STATIC"]=value.lower()
 
 
     def cc_incl_core_corr(self,value="show"):
@@ -6964,12 +6824,12 @@ Recommendation: : Use default unless no core-valence or core correlation is desi
         if value == "":
             if "CC_INCL_CORE_CORR" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_INCL_CORE_CORR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_INCL_CORE_CORR" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_INCL_CORE_CORR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_INCL_CORE_CORR"]=value.lower()
 
@@ -6989,12 +6849,12 @@ Recommendation: : Additional equations need to be solved (lambda CCSD equations)
         if value == "":
             if "CC_REF_PROP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_REF_PROP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_REF_PROP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_REF_PROP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_REF_PROP"]=value.lower()
 
@@ -7009,12 +6869,12 @@ Recommendation: : This should be set to the expected number of doubly excited st
         if value == "":
             if "CC_NGUESS_DOUBLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_NGUESS_DOUBLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_NGUESS_DOUBLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_NGUESS_DOUBLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_NGUESS_DOUBLES"]=value.lower()
 
@@ -7034,12 +6894,12 @@ Description:
         if value == "":
             if "CCMAN2" in self.dict_of_keywords:
                 del self.dict_of_keywords["CCMAN2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CCMAN2" in self.dict_of_keywords:
                 return self.dict_of_keywords["CCMAN2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CCMAN2"]=value.lower()
 
@@ -7056,12 +6916,12 @@ Description:
         if value == "":
             if "CC_T_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_T_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_T_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_T_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_T_CONV"]=value.lower()
 
@@ -7082,12 +6942,12 @@ inferior compared to the cost of . The variable CC_REF_PROP must be also set to 
         if value == "":
             if "CC_REF_PROP_TE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_REF_PROP_TE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_REF_PROP_TE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_REF_PROP_TE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_REF_PROP_TE"]=value.lower()
 
@@ -7113,12 +6973,12 @@ Description: Specifies the correlation level
         if value == "":
             if "EOM_CORR" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_CORR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_CORR" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_CORR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_CORR"]=value.lower()
 
@@ -7136,12 +6996,12 @@ n User-defined number of iterations
         if value == "":
             if "EOM_DAVIDSON_MAX_ITER" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_DAVIDSON_MAX_ITER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_DAVIDSON_MAX_ITER" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_DAVIDSON_MAX_ITER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_DAVIDSON_MAX_ITER"]=value.lower()
 
@@ -7159,12 +7019,12 @@ Recommendation: : This should be set to the expected number of doubly excited st
         if value == "":
             if "EOM_NGUES_DOUBLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_NGUES_DOUBLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_NGUES_DOUBLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_NGUES_DOUBLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_NGUES_DOUBLES"]=value.lower()
 
@@ -7182,12 +7042,12 @@ Recommendation: : This should be set to the expected number of doubly excited st
         if value == "":
             if "EOM_NGUESS_DOUBLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_NGUESS_DOUBLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_NGUESS_DOUBLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_NGUESS_DOUBLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_NGUESS_DOUBLES"]=value.lower()
 
@@ -7205,12 +7065,12 @@ Recommendation: : Should be greater or equal than the number of excited states r
         if value == "":
             if "EOM_NGUESS_SINGLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_NGUESS_SINGLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_NGUESS_SINGLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_NGUESS_SINGLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_NGUESS_SINGLES"]=value.lower()
 
@@ -7230,12 +7090,12 @@ Recommendation: : Additional equations (for the left EOM-CCSD eigenvectors plus 
         if value == "":
             if "CC_EOM_TRANS_PROP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_TRANS_PROP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_TRANS_PROP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_TRANS_PROP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_TRANS_PROP"]=value.lower()
 
@@ -7255,12 +7115,12 @@ Recommendation: : Additional equations (EOM-CCSD equations for the left eigenvec
         if value == "":
             if "CC_EOM_PROP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_PROP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_PROP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_PROP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_PROP"]=value.lower()
 
@@ -7281,12 +7141,12 @@ is inferior compared to the cost of . The variable CC_EOM_PROP must be also set 
         if value == "":
             if "CC_EOM_PROP_TE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_PROP_TE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_PROP_TE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_PROP_TE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_PROP_TE"]=value.lower()
 
@@ -7306,12 +7166,12 @@ Recommendation: : Not available for non-UHF/RHF references. Only available for E
         if value == "":
             if "CC_FULLRESPONSE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_FULLRESPONSE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_FULLRESPONSE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_FULLRESPONSE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_FULLRESPONSE"]=value.lower()
 
@@ -7331,12 +7191,12 @@ abcde Integer code is mapped to abc x 10^-de
         if value == "":
             if "EOM_DAVIDSON_THRESHOLD" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_DAVIDSON_THRESHOLD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_DAVIDSON_THRESHOLD" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_DAVIDSON_THRESHOLD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_DAVIDSON_THRESHOLD"]=value.lower()
 
@@ -7359,12 +7219,12 @@ Recommendation: : DIIS1 can be more stable. If DIIS problems are encountered in 
         if value == "":
             if "CC_DIIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DIIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DIIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DIIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DIIS"]=value.lower()
 
@@ -7385,12 +7245,12 @@ Recommendation: : Increase to 0.5 or 0.75 for non-convergent coupled-cluster cal
         if value == "":
             if "CC_DOV_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DOV_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DOV_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DOV_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DOV_THRESH"]=value.lower()
 
@@ -7407,12 +7267,12 @@ Recommendation: : Should be greater or equal than the number of excited states r
         if value == "":
             if "CC_NGUESS_SINGLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_NGUESS_SINGLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_NGUESS_SINGLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_NGUESS_SINGLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_NGUESS_SINGLES"]=value.lower()
 
@@ -7432,12 +7292,12 @@ Description: Whether or not the transition dipole moment (in atomic units) and o
         if value == "":
             if "CC_TRANS_PROP" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_TRANS_PROP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_TRANS_PROP" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_TRANS_PROP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_TRANS_PROP"]=value.lower()
 
@@ -7455,12 +7315,12 @@ Description: Sets the multiplicity of the system
         if value == "":
             if "QUI_MULTIPLICITY" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_MULTIPLICITY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_MULTIPLICITY" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_MULTIPLICITY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_MULTIPLICITY"]=value.lower()
 
@@ -7480,12 +7340,12 @@ Description: The keyword should be present if excited state calculation is reque
         if value == "":
             if "EFP" in self.dict_of_keywords:
                 del self.dict_of_keywords["EFP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EFP" in self.dict_of_keywords:
                 return self.dict_of_keywords["EFP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EFP"]=value.lower()
 
@@ -7505,12 +7365,12 @@ Description: Set to true if there is no QM part to the calculation.
         if value == "":
             if "EFP_FRAGMENTS_ONLY" in self.dict_of_keywords:
                 del self.dict_of_keywords["EFP_FRAGMENTS_ONLY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EFP_FRAGMENTS_ONLY" in self.dict_of_keywords:
                 return self.dict_of_keywords["EFP_FRAGMENTS_ONLY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EFP_FRAGMENTS_ONLY"]=value.lower()
 
@@ -7530,12 +7390,12 @@ Description: True indicates the new format without a dummy atom in the $molecule
         if value == "":
             if "EFP_INPUT" in self.dict_of_keywords:
                 del self.dict_of_keywords["EFP_INPUT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EFP_INPUT" in self.dict_of_keywords:
                 return self.dict_of_keywords["EFP_INPUT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EFP_INPUT"]=value.lower()
 
@@ -7555,12 +7415,12 @@ Description: Controls the input of user-defined atomic radii for a ChemSol calcu
         if value == "":
             if "CHEMSOL_READ_VDW" in self.dict_of_keywords:
                 del self.dict_of_keywords["CHEMSOL_READ_VDW"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CHEMSOL_READ_VDW" in self.dict_of_keywords:
                 return self.dict_of_keywords["CHEMSOL_READ_VDW"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CHEMSOL_READ_VDW"]=value.lower()
 
@@ -7577,12 +7437,12 @@ Description: Determines the order to which the multipole expansion of the solute
         if value == "":
             if "SOL_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["SOL_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SOL_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["SOL_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SOL_ORDER"]=value.lower()
 
@@ -7597,12 +7457,12 @@ Recommendation: : The default value unless convergence problems arise.    '''
         if value == "":
             if "SVP_CHARGE_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["SVP_CHARGE_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SVP_CHARGE_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["SVP_CHARGE_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SVP_CHARGE_CONV"]=value.lower()
 
@@ -7623,12 +7483,12 @@ Recommendation: : It is helpful to also set SCF_GUESS to READ when using a guess
         if value == "":
             if "SVP_GUESS" in self.dict_of_keywords:
                 del self.dict_of_keywords["SVP_GUESS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SVP_GUESS" in self.dict_of_keywords:
                 return self.dict_of_keywords["SVP_GUESS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SVP_GUESS"]=value.lower()
 
@@ -7645,12 +7505,12 @@ Recommendation: :     '''
         if value == "":
             if "SVP_MEMORY" in self.dict_of_keywords:
                 del self.dict_of_keywords["SVP_MEMORY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SVP_MEMORY" in self.dict_of_keywords:
                 return self.dict_of_keywords["SVP_MEMORY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SVP_MEMORY"]=value.lower()
 
@@ -7672,12 +7532,12 @@ Recommendation: : Running the gas-phase calculation provides a good guess to sta
         if value == "":
             if "SVP_PATH" in self.dict_of_keywords:
                 del self.dict_of_keywords["SVP_PATH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SVP_PATH" in self.dict_of_keywords:
                 return self.dict_of_keywords["SVP_PATH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SVP_PATH"]=value.lower()
 
@@ -7692,12 +7552,12 @@ Description: Determines symmetry decompositions to calculate.
         if value == "":
             if "SYMMETRY_DECOMPOSITION" in self.dict_of_keywords:
                 del self.dict_of_keywords["SYMMETRY_DECOMPOSITION"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SYMMETRY_DECOMPOSITION" in self.dict_of_keywords:
                 return self.dict_of_keywords["SYMMETRY_DECOMPOSITION"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SYMMETRY_DECOMPOSITION"]=value.lower()
 
@@ -7715,12 +7575,12 @@ Description: Sets the dielectric constant of the solvent
         if value == "":
             if "QUI_SOLVENT_DIELECTRIC_COSMO" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC_COSMO"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SOLVENT_DIELECTRIC_COSMO" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC_COSMO"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC_COSMO"]=value.lower()
 
@@ -7741,12 +7601,12 @@ Recommendation: :
         if value == "":
             if "CHOLESKY_TOL" in self.dict_of_keywords:
                 del self.dict_of_keywords["CHOLESKY_TOL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CHOLESKY_TOL" in self.dict_of_keywords:
                 return self.dict_of_keywords["CHOLESKY_TOL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CHOLESKY_TOL"]=value.lower()
 
@@ -7768,12 +7628,12 @@ Description: No integral decomposition
         if value == "":
             if "QUI_INTEGRAL_DECOMPOSITION_NONE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_INTEGRAL_DECOMPOSITION_NONE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_INTEGRAL_DECOMPOSITION_NONE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_INTEGRAL_DECOMPOSITION_NONE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_INTEGRAL_DECOMPOSITION_NONE"]=value.lower()
 
@@ -7798,12 +7658,12 @@ By default, all integrals are used in decomposed format allowing significant red
         if value == "":
             if "DIRECT_RI" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIRECT_RI"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIRECT_RI" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIRECT_RI"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIRECT_RI"]=value.lower()
 
@@ -7825,12 +7685,12 @@ Recommendation: : Useful for modification of standard basis sets.    '''
         if value == "":
             if "PRINT_GENERAL_BASIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["PRINT_GENERAL_BASIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PRINT_GENERAL_BASIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["PRINT_GENERAL_BASIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PRINT_GENERAL_BASIS"]=value.lower()
 
@@ -7852,12 +7712,12 @@ Recommendation: : Usually not required as the orbitals are more easily examined 
         if value == "":
             if "PRINT_ORBITALS" in self.dict_of_keywords:
                 del self.dict_of_keywords["PRINT_ORBITALS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "PRINT_ORBITALS" in self.dict_of_keywords:
                 return self.dict_of_keywords["PRINT_ORBITALS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["PRINT_ORBITALS"]=value.lower()
 
@@ -7883,12 +7743,12 @@ Recommendation: : Use DIIS unless performing a restricted open-shell calculation
         if value == "":
             if "SCF_ALGORITHM" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_ALGORITHM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_ALGORITHM" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_ALGORITHM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_ALGORITHM"]=value.lower()
 
@@ -7900,17 +7760,17 @@ Type: INTEGER
 Default: 8
 Options: Range from 0 to 14
 
-Description: Cutoff for neglect of two electron integrals. 10-THRESH (THRESH ? 14).
+Description: Cutoff for neglect of two electron integrals. 10-THRESH (THRESH ≤ 14).
 Recommendation: : Should be at least three greater than the SCF convergence setting. Increase for more significant figures, at greater computational cost.    '''
         if value == "":
             if "THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["THRESH"]=value.lower()
 
@@ -7930,12 +7790,12 @@ Description: Determines which method to use when projecting the density matrix f
         if value == "":
             if "BASIS_PROJECTION_TYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["BASIS_PROJECTION_TYPE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "BASIS_PROJECTION_TYPE" in self.dict_of_keywords:
                 return self.dict_of_keywords["BASIS_PROJECTION_TYPE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["BASIS_PROJECTION_TYPE"]=value.lower()
 
@@ -7952,12 +7812,12 @@ Description: The maximum number of DIIS iterations before switching to (geometri
         if value == "":
             if "DIIS_MAX_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIIS_MAX_CYCLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIIS_MAX_CYCLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIIS_MAX_CYCLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIIS_MAX_CYCLES"]=value.lower()
 
@@ -7983,12 +7843,12 @@ occurrence, if cancelation is suspected, set to TRUE to check.    '''
         if value == "":
             if "DIIS_SEPARATE_ERRVEC" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIIS_SEPARATE_ERRVEC" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIIS_SEPARATE_ERRVEC"]=value.lower()
 
@@ -8005,12 +7865,12 @@ Description: Controls the size of the DIIS and/or RCA subspace during the SCF.
         if value == "":
             if "DIIS_SUBSPACE_SIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIIS_SUBSPACE_SIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIIS_SUBSPACE_SIZE"]=value.lower()
 
@@ -8025,12 +7885,12 @@ Description: The threshold for switching between DIIS extrapolation and direct m
         if value == "":
             if "DIIS_SWITCH_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIIS_SWITCH_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIIS_SWITCH_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIIS_SWITCH_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIIS_SWITCH_THRESH"]=value.lower()
 
@@ -8054,12 +7914,12 @@ Recommendation: : Use default; direct SCF switches off in-core integrals.    '''
         if value == "":
             if "DIRECT_SCF" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIRECT_SCF"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIRECT_SCF" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIRECT_SCF"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIRECT_SCF"]=value.lower()
 
@@ -8079,12 +7939,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "METECO" in self.dict_of_keywords:
                 del self.dict_of_keywords["METECO"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "METECO" in self.dict_of_keywords:
                 return self.dict_of_keywords["METECO"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["METECO"]=value.lower()
 
@@ -8106,12 +7966,12 @@ Recommendation: : Use default unless you do not want the molecule to be reorient
         if value == "":
             if "SYMMETRY_IGNORE" in self.dict_of_keywords:
                 del self.dict_of_keywords["SYMMETRY_IGNORE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SYMMETRY_IGNORE" in self.dict_of_keywords:
                 return self.dict_of_keywords["SYMMETRY_IGNORE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SYMMETRY_IGNORE"]=value.lower()
 
@@ -8133,12 +7993,12 @@ Recommendation: : Use default unless benchmarking. Note that symmetry usage is d
         if value == "":
             if "SYMMETRY_INTEGRAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["SYMMETRY_INTEGRAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SYMMETRY_INTEGRAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["SYMMETRY_INTEGRAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SYMMETRY_INTEGRAL"]=value.lower()
 
@@ -8155,12 +8015,12 @@ Recommendation: : Use the default unless the molecule has high symmetry which is
         if value == "":
             if "SYMMETRY_TOLERANCE" in self.dict_of_keywords:
                 del self.dict_of_keywords["SYMMETRY_TOLERANCE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SYMMETRY_TOLERANCE" in self.dict_of_keywords:
                 return self.dict_of_keywords["SYMMETRY_TOLERANCE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SYMMETRY_TOLERANCE"]=value.lower()
 
@@ -8178,12 +8038,12 @@ Description: Parameter in XDM calculations with higher-order terms
         if value == "":
             if "DFTVDW_ALPHA1" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_ALPHA1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_ALPHA1" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_ALPHA1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_ALPHA1"]=value.lower()
 
@@ -8201,12 +8061,12 @@ Description: Parameter in XDM calculations with higher-order terms.
         if value == "":
             if "DFTVDW_ALPHA2" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_ALPHA2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_ALPHA2" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_ALPHA2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_ALPHA2"]=value.lower()
 
@@ -8227,12 +8087,12 @@ Description: Basic vdW job control
         if value == "":
             if "DFTVDW_JOBNUMBER" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_JOBNUMBER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_JOBNUMBER" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_JOBNUMBER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_JOBNUMBER"]=value.lower()
 
@@ -8250,12 +8110,12 @@ Description: Damping factor K for C6 only damping functions
         if value == "":
             if "DFTVDW_KAI" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_KAI"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_KAI" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_KAI"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_KAI"]=value.lower()
 
@@ -8272,12 +8132,12 @@ Description: The number of atoms in the first monomer in a dimer calculation.
         if value == "":
             if "DFTVDW_MOL1NATOMS" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_MOL1NATOMS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_MOL1NATOMS" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_MOL1NATOMS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_MOL1NATOMS"]=value.lower()
 
@@ -8298,12 +8158,12 @@ Description: Controls the amount of output from the VDW code.
         if value == "":
             if "DFTVDW_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_PRINT"]=value.lower()
 
@@ -8326,12 +8186,12 @@ Recommendation: :  Long-range correction is available for any combination of HF,
         if value == "":
             if "LRC_DFT" in self.dict_of_keywords:
                 del self.dict_of_keywords["LRC_DFT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "LRC_DFT" in self.dict_of_keywords:
                 return self.dict_of_keywords["LRC_DFT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["LRC_DFT"]=value.lower()
 
@@ -8349,12 +8209,12 @@ Description: Controls the degree of attenuation of the Coulomb operator.
         if value == "":
             if "OMEGA" in self.dict_of_keywords:
                 del self.dict_of_keywords["OMEGA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "OMEGA" in self.dict_of_keywords:
                 return self.dict_of_keywords["OMEGA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["OMEGA"]=value.lower()
 
@@ -8374,41 +8234,14 @@ Description: Selects the damping function used in XDM
         if value == "":
             if "DFTVDW_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFTVDW_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFTVDW_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFTVDW_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFTVDW_METHOD"]=value.lower()
-
-
-    def dft_d(self,value="show"):
-        '''
-Name: DFT_D
-Type: STRING
-Default: 0
-
-Options:
-    '0'............................. None
-    'EMPIRICAL_GRIMME'.............. Grimme
-    'EMPIRICAL_GRIMME3'............. DFT-D3
-    'EMPIRICAL_CHG'................. Chai Head-Gordon
-
-Description: Specifies what dispersion correction to use within a DFT calculation.
-    '''
-        if value == "":
-            if "DFT_D" in self.dict_of_keywords:
-                del self.dict_of_keywords["DFT_D"]
-                print "Keyword removed."
-        elif value == "show":
-            if "DFT_D" in self.dict_of_keywords:
-                return self.dict_of_keywords["DFT_D"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["DFT_D"]=value.lower()
 
 
     def dft_d3_s6(self,value="show"):
@@ -8419,17 +8252,17 @@ Factor: 0.001
 Default: 1000 [=1.000]
 Options: Range from 0 [=0] to 9999 [=9.999]
 
-Description: Controls the strength of dispersion corrections, s6, in Grimme?s DFT-D3 method
+Description: Controls the strength of dispersion corrections, s6, in Grimme’s DFT-D3 method
     '''
         if value == "":
             if "DFT_D3_S6" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFT_D3_S6"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFT_D3_S6" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFT_D3_S6"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFT_D3_S6"]=value.lower()
 
@@ -8442,17 +8275,17 @@ Factor: 0.001
 Default: 1000 [=1.000]
 Options: Range from 0 [=0] to 9999 [=9.999]
 
-Description: Controls the strength of dispersion corrections, s8 , in Grimme?s DFT-D3 method.
+Description: Controls the strength of dispersion corrections, s8 , in Grimme’s DFT-D3 method.
     '''
         if value == "":
             if "DFT_D3_S8" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFT_D3_S8"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFT_D3_S8" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFT_D3_S8"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFT_D3_S8"]=value.lower()
 
@@ -8465,81 +8298,19 @@ Factor: 0.001
 Default: 1000 [=1.000]
 Options: Range from 0 [=0] to 9999 [=9.999]
 
-Description: Controls the strength of dispersion corrections, sr6 , in the Grimme?s DFT-D3 method.
+Description: Controls the strength of dispersion corrections, sr6 , in the Grimme’s DFT-D3 method.
     '''
         if value == "":
             if "DFT_D3_SR6" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFT_D3_SR6"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFT_D3_SR6" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFT_D3_SR6"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFT_D3_SR6"]=value.lower()
-
-
-    def nl_correlation(self,value="show"):
-        '''
-Name: NL_CORRELATION
-Type: STRING
-Default: None
-
-Options:
-    'None'.......................... None
-    'vdW-DF-04'..................... vdW-DF-04
-    'vdW-DF-10'..................... vdW-DF-10
-    'VV09'.......................... VV09
-    'VV10'.......................... VV10
-
-Description: Speci?es a non-local correlation functional that includes non-empirical dispersion.
-
-Recommendation: :  Do not forget to add the LSDA correlation (PW92 is recommended) when using vdW-DF-04, vdW-DF-10, or VV09. VV10 should be used with PBE correlation. Choose exchange functionals carefully: HF, rPW86, revPBE, and some of the LRC exchange functionals are among the recommended choices.    '''
-        if value == "":
-            if "NL_CORRELATION" in self.dict_of_keywords:
-                del self.dict_of_keywords["NL_CORRELATION"]
-                print "Keyword removed."
-        elif value == "show":
-            if "NL_CORRELATION" in self.dict_of_keywords:
-                return self.dict_of_keywords["NL_CORRELATION"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["NL_CORRELATION"]=value.lower()
-
-
-    def nl_grid(self,value="show"):
-        '''
-Name: NL_GRID
-Type: STRING
-Default: 0
-
-Options:
-    '0'............................. SG-0
-    '1'............................. SG-1
-    '2'............................. El-cheeso
-
-    '35,110'........................ 35,110
-    '50,194'........................ 50,194
-    '75,302'........................ 75,302
-    '99,590'........................ 99,590
-
-Description: Speci?es the grid to use for non-local correlation.
-
-Recommendation: : Use default unless computational cost becomes prohibitive, in which case SG-0 may be 
-used.  XC_GRID should generally be ?ner than NL_GRID.    '''
-        if value == "":
-            if "NL_GRID" in self.dict_of_keywords:
-                del self.dict_of_keywords["NL_GRID"]
-                print "Keyword removed."
-        elif value == "show":
-            if "NL_GRID" in self.dict_of_keywords:
-                return self.dict_of_keywords["NL_GRID"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["NL_GRID"]=value.lower()
 
 
     def nl_vv_b(self,value="show"):
@@ -8556,12 +8327,12 @@ Recommendation: : The optimal value depends strongly on the exchange functional 
         if value == "":
             if "NL_VV_B" in self.dict_of_keywords:
                 del self.dict_of_keywords["NL_VV_B"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NL_VV_B" in self.dict_of_keywords:
                 return self.dict_of_keywords["NL_VV_B"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NL_VV_B"]=value.lower()
 
@@ -8581,12 +8352,12 @@ is recommended when a long-range corrected (LRC) hybrid functional is used.    '
         if value == "":
             if "NL_VV_C" in self.dict_of_keywords:
                 del self.dict_of_keywords["NL_VV_C"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NL_VV_C" in self.dict_of_keywords:
                 return self.dict_of_keywords["NL_VV_C"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NL_VV_C"]=value.lower()
 
@@ -8603,12 +8374,12 @@ Description: Controls the order of the B-spline.
         if value == "":
             if "LOCAL_INTERP_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["LOCAL_INTERP_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "LOCAL_INTERP_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["LOCAL_INTERP_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["LOCAL_INTERP_ORDER"]=value.lower()
 
@@ -8625,17 +8396,17 @@ Options:
 
 Description: Controls the use of multi-resolution XC.
 
-Recommendation: : MRXC is very ef?cient for medium and large molecules, especially when medium and 
+Recommendation: : MRXC is very efﬁcient for medium and large molecules, especially when medium and 
 large basis sets are used.    '''
         if value == "":
             if "MRXC" in self.dict_of_keywords:
                 del self.dict_of_keywords["MRXC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MRXC" in self.dict_of_keywords:
                 return self.dict_of_keywords["MRXC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MRXC"]=value.lower()
 
@@ -8652,12 +8423,12 @@ Description: Controls the prefactor of the smoothness precision.
         if value == "":
             if "MRXC_CLASS_THRESH_MULT" in self.dict_of_keywords:
                 del self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MRXC_CLASS_THRESH_MULT" in self.dict_of_keywords:
                 return self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MRXC_CLASS_THRESH_MULT"]=value.lower()
 
@@ -8674,12 +8445,12 @@ Description: Controls the exponent of the smoothness precision.
         if value == "":
             if "MRXC_CLASS_THRESH_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MRXC_CLASS_THRESH_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MRXC_CLASS_THRESH_ORDER"]=value.lower()
 
@@ -8783,12 +8554,12 @@ Recommendation: : Consult the literature and reviews for guidence    '''
         if value == "":
             if "EXCHANGE" in self.dict_of_keywords:
                 del self.dict_of_keywords["EXCHANGE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EXCHANGE" in self.dict_of_keywords:
                 return self.dict_of_keywords["EXCHANGE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EXCHANGE"]=value.lower()
 
@@ -8858,12 +8629,12 @@ Description: Specifies the secondary functional in a density functional perturba
         if value == "":
             if "DFPT_EXCHANGE" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFPT_EXCHANGE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFPT_EXCHANGE" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFPT_EXCHANGE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFPT_EXCHANGE"]=value.lower()
 
@@ -8885,12 +8656,12 @@ Recommendation: : This should be at least as large as the XC_GRID    '''
         if value == "":
             if "DFPT_XC_GRID" in self.dict_of_keywords:
                 del self.dict_of_keywords["DFPT_XC_GRID"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DFPT_XC_GRID" in self.dict_of_keywords:
                 return self.dict_of_keywords["DFPT_XC_GRID"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DFPT_XC_GRID"]=value.lower()
 
@@ -8910,46 +8681,14 @@ Description: This is set implicitly by setting HFPT_BASIS
         if value == "":
             if "HFPT" in self.dict_of_keywords:
                 del self.dict_of_keywords["HFPT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "HFPT" in self.dict_of_keywords:
                 return self.dict_of_keywords["HFPT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["HFPT"]=value.lower()
-
-
-    def xc_grid(self,value="show"):
-        '''
-Name: XC_GRID
-Type: STRING
-Default: 1
-
-Options:
-    '0'............................. SG-0
-    '1'............................. SG-1
-    '2'............................. El-cheeso
-
-    '35,110'........................ 35,110
-    '50,194'........................ 50,194
-    '75,302'........................ 75,302
-    '99,590'........................ 99,590
-
-Description: Specifies the quadrature grid to be used for evaluating the exchange-correlation component of the energy.  Either a standard grid should be selected, or a Lebedev grid with the corresponding number of points.
-
-Recommendation: : Use the default unless convergence difficulties arise.  Larger grids are required for calculations involving derivatives and excited states.    '''
-        if value == "":
-            if "XC_GRID" in self.dict_of_keywords:
-                del self.dict_of_keywords["XC_GRID"]
-                print "Keyword removed."
-        elif value == "show":
-            if "XC_GRID" in self.dict_of_keywords:
-                return self.dict_of_keywords["XC_GRID"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["XC_GRID"]=value.lower()
 
 
     def auxiliary_basis(self,value="show"):
@@ -8974,12 +8713,12 @@ Description: Specifies the auxiliary basis to be used in a RI-MP2 calculation
         if value == "":
             if "AUXILIARY_BASIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["AUXILIARY_BASIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AUXILIARY_BASIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["AUXILIARY_BASIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AUXILIARY_BASIS"]=value.lower()
 
@@ -9058,12 +8797,12 @@ Recommendation: : Consult literature and reviews to aid your selection.    '''
         if value == "":
             if "BASIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["BASIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "BASIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["BASIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["BASIS"]=value.lower()
 
@@ -9084,12 +8823,12 @@ Recommendation: : For large molecules there is some overhead associated with com
         if value == "":
             if "CHELPG" in self.dict_of_keywords:
                 del self.dict_of_keywords["CHELPG"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CHELPG" in self.dict_of_keywords:
                 return self.dict_of_keywords["CHELPG"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CHELPG"]=value.lower()
 
@@ -9109,12 +8848,12 @@ Description: Controls the calculation of excited-date (CIS or TDDFT) multipole m
         if value == "":
             if "CIS_MOMENTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_MOMENTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_MOMENTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_MOMENTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_MOMENTS"]=value.lower()
 
@@ -9134,12 +8873,12 @@ Description: Perform additional analysis of CIS and TDDFT excitation amplitudes,
         if value == "":
             if "CIS_AMPL_ANAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_AMPL_ANAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_AMPL_ANAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_AMPL_ANAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_AMPL_ANAL"]=value.lower()
 
@@ -9154,17 +8893,17 @@ Options:
     'FALSE'......................... FALSE
     'TRUE'.......................... TRUE
 
-Description: Selects whether to perform a spin-?ip calculation.  Spin multiplicity should be set to 3 for systems with an even number of electrons, and 4 for systems with an odd number of electrons.
+Description: Selects whether to perform a spin-ﬂip calculation.  Spin multiplicity should be set to 3 for systems with an even number of electrons, and 4 for systems with an odd number of electrons.
     '''
         if value == "":
             if "SPIN_FLIP" in self.dict_of_keywords:
                 del self.dict_of_keywords["SPIN_FLIP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SPIN_FLIP" in self.dict_of_keywords:
                 return self.dict_of_keywords["SPIN_FLIP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SPIN_FLIP"]=value.lower()
 
@@ -9184,12 +8923,12 @@ Description: Do a SF-XCIS
         if value == "":
             if "SPIN_FLIP_XCIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["SPIN_FLIP_XCIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SPIN_FLIP_XCIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["SPIN_FLIP_XCIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SPIN_FLIP_XCIS"]=value.lower()
 
@@ -9204,18 +8943,18 @@ Options:
     'FALSE'......................... FALSE
     'TRUE'.......................... TRUE
 
-Description: Controls Mulliken and L?wdin population analyses for excited-state particle and hole density matrices. 
+Description: Controls Mulliken and Löwdin population analyses for excited-state particle and hole density matrices. 
 
     '''
         if value == "":
             if "CIS_MULLIKEN" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_MULLIKEN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_MULLIKEN" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_MULLIKEN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_MULLIKEN"]=value.lower()
 
@@ -9252,12 +8991,12 @@ Description: Specifies the secondary basis in a HFPC/DFPC calculation
         if value == "":
             if "HFPT_BASIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["HFPT_BASIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "HFPT_BASIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["HFPT_BASIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["HFPT_BASIS"]=value.lower()
 
@@ -9277,12 +9016,12 @@ Description: Compute Hirshfeld populations
         if value == "":
             if "HIRSHFELD" in self.dict_of_keywords:
                 del self.dict_of_keywords["HIRSHFELD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "HIRSHFELD" in self.dict_of_keywords:
                 return self.dict_of_keywords["HIRSHFELD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["HIRSHFELD"]=value.lower()
 
@@ -9304,12 +9043,12 @@ Description: Selects the atenuated coulomb operator (CASE approximation).
         if value == "":
             if "QUI_USE_CASE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_USE_CASE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_USE_CASE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_USE_CASE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_USE_CASE"]=value.lower()
 
@@ -9331,12 +9070,12 @@ Description: Determines what guess should be used for a CIS calculation.  Note t
         if value == "":
             if "QUI_CIS_GUESS" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_CIS_GUESS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_CIS_GUESS" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_CIS_GUESS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_CIS_GUESS"]=value.lower()
 
@@ -9356,12 +9095,12 @@ Description: Compute transition moments between excited states in the CIS and TD
         if value == "":
             if "STS_MOM" in self.dict_of_keywords:
                 del self.dict_of_keywords["STS_MOM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "STS_MOM" in self.dict_of_keywords:
                 return self.dict_of_keywords["STS_MOM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["STS_MOM"]=value.lower()
 
@@ -9379,12 +9118,12 @@ Recommendation: : The default is usually appropriate, unless a large number of s
         if value == "":
             if "MAX_CIS_SUBSPACE" in self.dict_of_keywords:
                 del self.dict_of_keywords["MAX_CIS_SUBSPACE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MAX_CIS_SUBSPACE" in self.dict_of_keywords:
                 return self.dict_of_keywords["MAX_CIS_SUBSPACE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MAX_CIS_SUBSPACE"]=value.lower()
 
@@ -9404,12 +9143,12 @@ Description: Controls whether a restricted open-shell Kohn-Sham calculation will
         if value == "":
             if "ROKS" in self.dict_of_keywords:
                 del self.dict_of_keywords["ROKS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ROKS" in self.dict_of_keywords:
                 return self.dict_of_keywords["ROKS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ROKS"]=value.lower()
 
@@ -9427,12 +9166,12 @@ Description: Introduce a level-shift (in Hartree) to aid convergence.
         if value == "":
             if "ROKS_LEVEL_SHIFT" in self.dict_of_keywords:
                 del self.dict_of_keywords["ROKS_LEVEL_SHIFT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ROKS_LEVEL_SHIFT" in self.dict_of_keywords:
                 return self.dict_of_keywords["ROKS_LEVEL_SHIFT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ROKS_LEVEL_SHIFT"]=value.lower()
 
@@ -9449,12 +9188,12 @@ Recommendation: : Larger values increase disk storage but accelerate and stabili
         if value == "":
             if "CC_DMAXVECTORS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_DMAXVECTORS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_DMAXVECTORS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_DMAXVECTORS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_DMAXVECTORS"]=value.lower()
 
@@ -9476,12 +9215,12 @@ Recommendation: : Set to TRUE to perform COVP analysis of the CT term in an EDA 
         if value == "":
             if "EDA_COVP" in self.dict_of_keywords:
                 del self.dict_of_keywords["EDA_COVP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EDA_COVP" in self.dict_of_keywords:
                 return self.dict_of_keywords["EDA_COVP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EDA_COVP"]=value.lower()
 
@@ -9501,12 +9240,12 @@ EOM DAVIDSON THRESHOLD.
         if value == "":
             if "EOM_DAVIDSON_CONVERGENCE" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_DAVIDSON_CONVERGENCE" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_DAVIDSON_CONVERGENCE"]=value.lower()
 
@@ -9526,12 +9265,12 @@ Larger values increase disk storage but accelerate and stabilize convergence.
         if value == "":
             if "EOM_DAVIDSON_MAXVECTORS" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_DAVIDSON_MAXVECTORS" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_DAVIDSON_MAXVECTORS"]=value.lower()
 
@@ -9549,19 +9288,19 @@ Options:
     'TRUE'.......................... TRUE
 
 Description: Request for calculation of non-relaxed two-particle EOM-CC properties. The two-particle properties currently include 
-?S2?. The one-particle properties also will be calculated, since their cost is much less than the two-particle properties. The variable CC_EOM_PROP must be also set to TRUE. Alternatively, CC_CALC_SSQ can be used to request ?S2? calculation. 
+⟨S2⟩. The one-particle properties also will be calculated, since their cost is much less than the two-particle properties. The variable CC_EOM_PROP must be also set to TRUE. Alternatively, CC_CALC_SSQ can be used to request ⟨S2⟩ calculation. 
 
 Recommendation: :  The two-particle properties are computationally expensive since they require calculation 
 and use of the two-particle density matrix (the cost is approximately the same as the cost of an analytic gradient calculation). Do not request the two-particle properties unless you really need them.     '''
         if value == "":
             if "EOM_REF_PROP_TE" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_REF_PROP_TE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_REF_PROP_TE" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_REF_PROP_TE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_REF_PROP_TE"]=value.lower()
 
@@ -9581,12 +9320,12 @@ Description:
         if value == "":
             if "QUI_EOM_EA" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_EA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_EA" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_EA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_EA"]=value.lower()
 
@@ -9606,12 +9345,12 @@ Description:
         if value == "":
             if "QUI_EOM_IP" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_IP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_IP" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_IP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_IP"]=value.lower()
 
@@ -9631,12 +9370,12 @@ Description:
         if value == "":
             if "QUI_EOM_SF" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_SF"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_SF" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_SF"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_SF"]=value.lower()
 
@@ -9653,12 +9392,12 @@ Recommendation: : Try a smaller value in cases of poor convergence and very larg
         if value == "":
             if "CC_THETA_STEPSIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_THETA_STEPSIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_THETA_STEPSIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_THETA_STEPSIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_THETA_STEPSIZE"]=value.lower()
 
@@ -9682,12 +9421,12 @@ Description:
         if value == "":
             if "QUI_EOM_EE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_EE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_EE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_EE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_EE"]=value.lower()
 
@@ -9707,12 +9446,12 @@ Description:
         if value == "":
             if "QUI_EOM_DIP" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_DIP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_DIP" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_DIP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_DIP"]=value.lower()
 
@@ -9729,12 +9468,12 @@ Recommendation: : Higher-order extrapolations with more saved Fock matrices are 
         if value == "":
             if "AIMD_FOCK_EXTRAPOLATION_POINTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_FOCK_EXTRAPOLATION_POINTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_FOCK_EXTRAPOLATION_POINTS"]=value.lower()
 
@@ -9754,12 +9493,12 @@ Description: Specifies which state to optimize.
         if value == "":
             if "CC_EOM_STATE_TO_OPT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_EOM_STATE_TO_OPT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_EOM_STATE_TO_OPT"]=value.lower()
 
@@ -9778,12 +9517,12 @@ Description: Sets the number of high-spin excited state roots to find.  Works on
         if value == "":
             if "CC_HIGH_SPIN" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_HIGH_SPIN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_HIGH_SPIN" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_HIGH_SPIN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_HIGH_SPIN"]=value.lower()
 
@@ -9800,12 +9539,12 @@ Recommendation: : Can be useful for non-convergent active space calculations.   
         if value == "":
             if "CC_ITERATE_OV" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_ITERATE_OV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_ITERATE_OV" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_ITERATE_OV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_ITERATE_OV"]=value.lower()
 
@@ -9824,12 +9563,12 @@ Description: Sets the number of low-spin excited state roots to find.  In the ca
         if value == "":
             if "CC_LOW_SPIN" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_LOW_SPIN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_LOW_SPIN" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_LOW_SPIN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_LOW_SPIN"]=value.lower()
 
@@ -9846,12 +9585,12 @@ Recommendation: :     '''
         if value == "":
             if "CC_PRECONVERGE_FZ" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONVERGE_FZ"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONVERGE_FZ" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONVERGE_FZ"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONVERGE_FZ"]=value.lower()
 
@@ -9868,12 +9607,12 @@ Recommendation: : Experiment with this option in cases of convergence failure.  
         if value == "":
             if "CC_PRECONVERGE_T2Z" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONVERGE_T2Z"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONVERGE_T2Z" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONVERGE_T2Z"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONVERGE_T2Z"]=value.lower()
 
@@ -9890,12 +9629,12 @@ Recommendation: : A very slow last resort option for jobs that do not converge. 
         if value == "":
             if "CC_PRECONVERGE_T2Z_EACH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONVERGE_T2Z_EACH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONVERGE_T2Z_EACH"]=value.lower()
 
@@ -9912,12 +9651,12 @@ Recommendation: : Experiment with this option in cases of convergence failure.  
         if value == "":
             if "CC_PRECONV_T2Z" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONV_T2Z"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONV_T2Z" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONV_T2Z"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONV_T2Z"]=value.lower()
 
@@ -9934,12 +9673,12 @@ Recommendation: : A very slow last resort option for jobs that do not converge. 
         if value == "":
             if "CC_PRECONV_T2Z_EACH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_PRECONV_T2Z_EACH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_PRECONV_T2Z_EACH"]=value.lower()
 
@@ -9956,12 +9695,12 @@ Description: QCCD calculations switch from OD to QCCD when the rotation gradient
         if value == "":
             if "CC_QCCD_THETA_SWITCH" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_QCCD_THETA_SWITCH" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_QCCD_THETA_SWITCH"]=value.lower()
 
@@ -9978,12 +9717,12 @@ Description: Together with CC_STATE_DERIV, selects which EOM state is to be cons
         if value == "":
             if "CC_REFERENCE_SYMMETRY" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_REFERENCE_SYMMETRY" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_REFERENCE_SYMMETRY"]=value.lower()
 
@@ -10000,12 +9739,12 @@ Description: Together with CC_STATE_DERIV, selects which EOM state is to be cons
         if value == "":
             if "CC_REFSYM" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_REFSYM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_REFSYM" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_REFSYM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_REFSYM"]=value.lower()
 
@@ -10017,17 +9756,17 @@ Type: INTEGER
 Default: 0
 Options: Range from 0 to 2
 
-Description: This option is only used in EOM-SF using quintet references and including triple excitations. By default, SF flips the spin of one ? electron. One can ask to flip the spins of two ? electrons by specifying CC_SPIN_FLIP_MS = 1
+Description: This option is only used in EOM-SF using quintet references and including triple excitations. By default, SF flips the spin of one α electron. One can ask to flip the spins of two α electrons by specifying CC_SPIN_FLIP_MS = 1
 Recommendation: : This option can be useful when starting from quintet references - though this is not typical for EOM-SF.    '''
         if value == "":
             if "CC_SPIN_FLIP_MS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_SPIN_FLIP_MS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_SPIN_FLIP_MS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_SPIN_FLIP_MS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_SPIN_FLIP_MS"]=value.lower()
 
@@ -10042,12 +9781,12 @@ Description: Selects which EOM or CIS(D) state is to be considered for optimizat
         if value == "":
             if "CC_STATE_DERIV" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_STATE_DERIV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_STATE_DERIV" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_STATE_DERIV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_STATE_DERIV"]=value.lower()
 
@@ -10067,12 +9806,12 @@ Description: Species which state to optimize.
         if value == "":
             if "CC_STATE_TO_OPT" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_STATE_TO_OPT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_STATE_TO_OPT" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_STATE_TO_OPT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_STATE_TO_OPT"]=value.lower()
 
@@ -10089,12 +9828,12 @@ Recommendation: : Use default    '''
         if value == "":
             if "CC_THETA_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_THETA_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_THETA_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_THETA_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_THETA_CONV"]=value.lower()
 
@@ -10111,12 +9850,12 @@ Recommendation: : Use default    '''
         if value == "":
             if "CC_THETA_GRAD_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["CC_THETA_GRAD_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CC_THETA_GRAD_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["CC_THETA_GRAD_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CC_THETA_GRAD_CONV"]=value.lower()
 
@@ -10133,12 +9872,12 @@ Recommendation: : Must be specified if a CIS guess in to be read from disk.    '
         if value == "":
             if "CIS_GUESS_DISK_TYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_GUESS_DISK_TYPE" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_GUESS_DISK_TYPE"]=value.lower()
 
@@ -10155,12 +9894,12 @@ Description: Sets the number of CI-Singles (CIS) excited state roots to find
         if value == "":
             if "CIS_N_ROOTS" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_N_ROOTS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_N_ROOTS" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_N_ROOTS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_N_ROOTS"]=value.lower()
 
@@ -10181,12 +9920,12 @@ Description: Controls the output from DIIS SCF optimization:
         if value == "":
             if "DIIS_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIIS_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIIS_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIIS_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIIS_PRINT"]=value.lower()
 
@@ -10206,12 +9945,12 @@ Description: Sets the number of singlet DIP roots to find. Works only for closed
         if value == "":
             if "DIP_SINGLETS" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIP_SINGLETS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIP_SINGLETS" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIP_SINGLETS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIP_SINGLETS"]=value.lower()
 
@@ -10231,12 +9970,12 @@ Description: Sets the number of DIP roots to find. For closed-shell reference, d
         if value == "":
             if "DIP_STATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIP_STATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIP_STATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIP_STATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIP_STATES"]=value.lower()
 
@@ -10256,12 +9995,12 @@ Description: Sets the number of triplet DIP roots to find. Works only for closed
         if value == "":
             if "DIP_TRIPLETS" in self.dict_of_keywords:
                 del self.dict_of_keywords["DIP_TRIPLETS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DIP_TRIPLETS" in self.dict_of_keywords:
                 return self.dict_of_keywords["DIP_TRIPLETS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DIP_TRIPLETS"]=value.lower()
 
@@ -10275,18 +10014,18 @@ Default: [0]
 Options:
     '[0]'........................... [0]
 
-Description: Sets the number of double spin-?ip target states roots to ?nd.
-[i, j, k . . .] Find i SF states in the ?rst irrep, j states in the second irrep etc.
+Description: Sets the number of double spin-ﬂip target states roots to ﬁnd.
+[i, j, k . . .] Find i SF states in the ﬁrst irrep, j states in the second irrep etc.
     '''
         if value == "":
             if "DSF_STATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["DSF_STATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "DSF_STATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["DSF_STATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["DSF_STATES"]=value.lower()
 
@@ -10305,12 +10044,12 @@ Description:
         if value == "":
             if "EE_SINGLETS" in self.dict_of_keywords:
                 del self.dict_of_keywords["EE_SINGLETS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EE_SINGLETS" in self.dict_of_keywords:
                 return self.dict_of_keywords["EE_SINGLETS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EE_SINGLETS"]=value.lower()
 
@@ -10329,12 +10068,12 @@ Description:
         if value == "":
             if "EE_STATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["EE_STATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EE_STATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["EE_STATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EE_STATES"]=value.lower()
 
@@ -10353,12 +10092,12 @@ Description:
         if value == "":
             if "EE_TRIPLETS" in self.dict_of_keywords:
                 del self.dict_of_keywords["EE_TRIPLETS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EE_TRIPLETS" in self.dict_of_keywords:
                 return self.dict_of_keywords["EE_TRIPLETS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EE_TRIPLETS"]=value.lower()
 
@@ -10378,12 +10117,12 @@ Description: Sets the number of attached target states derived by attaching alph
         if value == "":
             if "EOM_EA_ALPHA" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_EA_ALPHA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_EA_ALPHA" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_EA_ALPHA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_EA_ALPHA"]=value.lower()
 
@@ -10403,12 +10142,12 @@ Description: Sets the number of attached target states derived by attaching beta
         if value == "":
             if "EOM_EA_BETA" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_EA_BETA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_EA_BETA" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_EA_BETA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_EA_BETA"]=value.lower()
 
@@ -10428,12 +10167,12 @@ Description: Sets the number of attached target states roots to find. By defaul
         if value == "":
             if "EOM_EA_STATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_EA_STATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_EA_STATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_EA_STATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_EA_STATES"]=value.lower()
 
@@ -10453,12 +10192,12 @@ Description: Sets the number of ionized target states derived by removing alpha 
         if value == "":
             if "EOM_IP_ALPHA" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_IP_ALPHA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_IP_ALPHA" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_IP_ALPHA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_IP_ALPHA"]=value.lower()
 
@@ -10478,12 +10217,12 @@ Description: Sets the number of ionized target states derived by removing beta e
         if value == "":
             if "EOM_IP_BETA" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_IP_BETA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_IP_BETA" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_IP_BETA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_IP_BETA"]=value.lower()
 
@@ -10503,12 +10242,12 @@ Description: Sets the number of ionized target states roots to find. By default
         if value == "":
             if "EOM_IP_STATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["EOM_IP_STATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "EOM_IP_STATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["EOM_IP_STATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["EOM_IP_STATES"]=value.lower()
 
@@ -10525,12 +10264,12 @@ Recommendation: : If the default value causes convergence problems, set this val
         if value == "":
             if "INCDFT_GRIDDIFF_VARTHRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "INCDFT_GRIDDIFF_VARTHRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["INCDFT_GRIDDIFF_VARTHRESH"]=value.lower()
 
@@ -10547,12 +10286,12 @@ Recommendation: : Set to 1 if preservation of initial orbitals is desired. If MO
         if value == "":
             if "MOM_START" in self.dict_of_keywords:
                 del self.dict_of_keywords["MOM_START"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MOM_START" in self.dict_of_keywords:
                 return self.dict_of_keywords["MOM_START"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MOM_START"]=value.lower()
 
@@ -10569,12 +10308,12 @@ Recommendation: : Experimental option. Use default.    '''
         if value == "":
             if "NVO_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_METHOD"]=value.lower()
 
@@ -10591,12 +10330,12 @@ Recommendation: : This option does not affect the final result. However, it affe
         if value == "":
             if "NVO_TRUNCATE_DIST" in self.dict_of_keywords:
                 del self.dict_of_keywords["NVO_TRUNCATE_DIST"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NVO_TRUNCATE_DIST" in self.dict_of_keywords:
                 return self.dict_of_keywords["NVO_TRUNCATE_DIST"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NVO_TRUNCATE_DIST"]=value.lower()
 
@@ -10615,12 +10354,12 @@ Description:
         if value == "":
             if "QUI_EOM_STATES1" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_STATES1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_STATES1" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_STATES1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_STATES1"]=value.lower()
 
@@ -10639,12 +10378,12 @@ Description:
         if value == "":
             if "QUI_EOM_STATES2" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_EOM_STATES2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_EOM_STATES2" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_EOM_STATES2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_EOM_STATES2"]=value.lower()
 
@@ -10661,12 +10400,12 @@ Recommendation: : The break-down of energies is often useful (level 1).    '''
         if value == "":
             if "SCF_FINAL_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["SCF_FINAL_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SCF_FINAL_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["SCF_FINAL_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SCF_FINAL_PRINT"]=value.lower()
 
@@ -10680,18 +10419,18 @@ Default: [0]
 Options:
     '[0]'........................... [0]
 
-Description: Sets the number of spin-?ip target states roots to ?nd.
-[i, j, k . . .] Find i SF states in the ?rst irrep, j states in the second irrep etc.
+Description: Sets the number of spin-ﬂip target states roots to ﬁnd.
+[i, j, k . . .] Find i SF states in the ﬁrst irrep, j states in the second irrep etc.
     '''
         if value == "":
             if "SF_STATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["SF_STATES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SF_STATES" in self.dict_of_keywords:
                 return self.dict_of_keywords["SF_STATES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SF_STATES"]=value.lower()
 
@@ -10703,17 +10442,17 @@ Type: INTEGER
 Default: 0
 Options: Range from 0 to 12
 
-Description: Controls the temporary integral cut-off threshold. The variable threshold is set to 10-VARTHRESH? DIIS_error
+Description: Controls the temporary integral cut-off threshold. The variable threshold is set to 10-VARTHRESH∗ DIIS_error
 Recommendation: : 3 has been found to be a practical level, and can slightly speed up SCF evaluation.    '''
         if value == "":
             if "VARTHRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["VARTHRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "VARTHRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["VARTHRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["VARTHRESH"]=value.lower()
 
@@ -10742,12 +10481,12 @@ state, state = 2 is the second excited state, etc.
         if value == "":
             if "XOPT_STATE_1" in self.dict_of_keywords:
                 del self.dict_of_keywords["XOPT_STATE_1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "XOPT_STATE_1" in self.dict_of_keywords:
                 return self.dict_of_keywords["XOPT_STATE_1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["XOPT_STATE_1"]=value.lower()
 
@@ -10776,12 +10515,12 @@ state, state = 2 is the second excited state, etc.
         if value == "":
             if "XOPT_STATE_2" in self.dict_of_keywords:
                 del self.dict_of_keywords["XOPT_STATE_2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "XOPT_STATE_2" in self.dict_of_keywords:
                 return self.dict_of_keywords["XOPT_STATE_2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["XOPT_STATE_2"]=value.lower()
 
@@ -10803,12 +10542,12 @@ Description: Change the occupancies of the guess orbitals (not compatible with t
         if value == "":
             if "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SECTION_SWAP_OCCUPIED_VIRTUAL" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SECTION_SWAP_OCCUPIED_VIRTUAL"]=value.lower()
 
@@ -10825,12 +10564,12 @@ Description: Maximum number of iterations to determine the eigenstates in an ADC
         if value == "":
             if "ADC_DAVIDSON_MAXITER" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DAVIDSON_MAXITER" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DAVIDSON_MAXITER"]=value.lower()
 
@@ -10849,12 +10588,12 @@ Description: Maximum number of iterations to determine the eigenstates in an ADC
         if value == "":
             if "ADC_DIIS_MAXITER" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DIIS_MAXITER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DIIS_MAXITER" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DIIS_MAXITER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DIIS_MAXITER"]=value.lower()
 
@@ -10872,12 +10611,12 @@ Recommendation: : Larger values increase disk storage but accelerate and stabili
         if value == "":
             if "ADC_DAVIDSON_MAXSUBSPACE" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DAVIDSON_MAXSUBSPACE" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DAVIDSON_MAXSUBSPACE"]=value.lower()
 
@@ -10895,12 +10634,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_C_C" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_C_C"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_C_C" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_C_C"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_C_C"]=value.lower()
 
@@ -10918,12 +10657,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_C_T" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_C_T"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_C_T" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_C_T"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_C_T"]=value.lower()
 
@@ -10941,12 +10680,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_C_X" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_C_X"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_C_X" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_C_X"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_C_X"]=value.lower()
 
@@ -10963,12 +10702,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_DAVIDSON_CONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DAVIDSON_CONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DAVIDSON_CONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DAVIDSON_CONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DAVIDSON_CONV"]=value.lower()
 
@@ -10985,12 +10724,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_DAVIDSON_THRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DAVIDSON_THRESH"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DAVIDSON_THRESH" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DAVIDSON_THRESH"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DAVIDSON_THRESH"]=value.lower()
 
@@ -11007,12 +10746,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_DIIS_ECONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DIIS_ECONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DIIS_ECONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DIIS_ECONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DIIS_ECONV"]=value.lower()
 
@@ -11029,12 +10768,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_DIIS_RCONV" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DIIS_RCONV"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DIIS_RCONV" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DIIS_RCONV"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DIIS_RCONV"]=value.lower()
 
@@ -11051,12 +10790,12 @@ Recommendation: : Larger values involve larger amounts of disk storage.    '''
         if value == "":
             if "ADC_DIIS_SIZE" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DIIS_SIZE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DIIS_SIZE" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DIIS_SIZE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DIIS_SIZE"]=value.lower()
 
@@ -11074,12 +10813,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_DIIS_START" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DIIS_START"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DIIS_START" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DIIS_START"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DIIS_START"]=value.lower()
 
@@ -11100,12 +10839,12 @@ Recommendation: : Use only with extreme care!    '''
         if value == "":
             if "ADC_DO_DIIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_DO_DIIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_DO_DIIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_DO_DIIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_DO_DIIS"]=value.lower()
 
@@ -11125,12 +10864,12 @@ Description: Activate the computation of higher-order energy corrections for ADC
         if value == "":
             if "ADC_ECORR" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_ECORR"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_ECORR" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_ECORR"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_ECORR"]=value.lower()
 
@@ -11151,12 +10890,12 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
         if value == "":
             if "ADC_EXTENDED" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_EXTENDED"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_EXTENDED" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_EXTENDED"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_EXTENDED"]=value.lower()
 
@@ -11177,12 +10916,12 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
         if value == "":
             if "ADC_CVS" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_CVS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_CVS" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_CVS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_CVS"]=value.lower()
 
@@ -11203,12 +10942,12 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
         if value == "":
             if "ADC_ORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_ORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_ORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_ORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_ORDER"]=value.lower()
 
@@ -11226,12 +10965,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_NGUESS_DOUBLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_NGUESS_DOUBLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_NGUESS_DOUBLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_NGUESS_DOUBLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_NGUESS_DOUBLES"]=value.lower()
 
@@ -11249,12 +10988,12 @@ Recommendation: : Use default ( = number of states to requested).    '''
         if value == "":
             if "ADC_NGUESS_SINGLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_NGUESS_SINGLES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_NGUESS_SINGLES" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_NGUESS_SINGLES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_NGUESS_SINGLES"]=value.lower()
 
@@ -11274,12 +11013,12 @@ Description: Activate the calculation of state-to-state transition properties in
         if value == "":
             if "ADC_PROP_ES2ES" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_PROP_ES2ES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_PROP_ES2ES" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_PROP_ES2ES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_PROP_ES2ES"]=value.lower()
 
@@ -11299,12 +11038,12 @@ Description: Activate the calculation of two-photon absorption cross-sections fo
         if value == "":
             if "ADC_PROP_TPA" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_PROP_TPA"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_PROP_TPA" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_PROP_TPA"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_PROP_TPA"]=value.lower()
 
@@ -11324,12 +11063,12 @@ Description: Activate the calculation of excited state properties in an ADC calc
         if value == "":
             if "ADC_PROP_ES" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_PROP_ES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_PROP_ES" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_PROP_ES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_PROP_ES"]=value.lower()
 
@@ -11350,12 +11089,12 @@ Recommendation: : This keyword is deprecated. Use METHOD instead.    '''
         if value == "":
             if "ADC_SOS" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_SOS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_SOS" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_SOS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_SOS"]=value.lower()
 
@@ -11373,12 +11112,12 @@ Recommendation: : Use default.    '''
         if value == "":
             if "ADC_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["ADC_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ADC_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["ADC_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ADC_PRINT"]=value.lower()
 
@@ -11398,12 +11137,12 @@ Description: Performs certain excited state analyses for CIS/TD-DFT, ADC, and CC
         if value == "":
             if "STATE_ANALYSIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["STATE_ANALYSIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "STATE_ANALYSIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["STATE_ANALYSIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["STATE_ANALYSIS"]=value.lower()
 
@@ -11422,12 +11161,12 @@ Description:
         if value == "":
             if "QUI_ADC_STATES1" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_ADC_STATES1"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_ADC_STATES1" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_ADC_STATES1"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_ADC_STATES1"]=value.lower()
 
@@ -11446,12 +11185,12 @@ Description:
         if value == "":
             if "QUI_ADC_STATES2" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_ADC_STATES2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_ADC_STATES2" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_ADC_STATES2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_ADC_STATES2"]=value.lower()
 
@@ -11468,12 +11207,12 @@ Description: Set the number of core orbitals in an CVS-ADC calculation.
         if value == "":
             if "QUI_ADC_CORE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_ADC_CORE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_ADC_CORE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_ADC_CORE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_ADC_CORE"]=value.lower()
 
@@ -11494,12 +11233,12 @@ Recommendation: : An accurate initial Hessian will improve the performance of th
         if value == "":
             if "GEOM_OPT_HESSIAN" in self.dict_of_keywords:
                 del self.dict_of_keywords["GEOM_OPT_HESSIAN"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "GEOM_OPT_HESSIAN" in self.dict_of_keywords:
                 return self.dict_of_keywords["GEOM_OPT_HESSIAN"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["GEOM_OPT_HESSIAN"]=value.lower()
 
@@ -11519,99 +11258,14 @@ Description:
         if value == "":
             if "MP2V" in self.dict_of_keywords:
                 del self.dict_of_keywords["MP2V"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "MP2V" in self.dict_of_keywords:
                 return self.dict_of_keywords["MP2V"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["MP2V"]=value.lower()
-
-
-    def correlation(self,value="show"):
-        '''
-Name: CORRELATION
-Type: STRING
-Default: None
-
-Options:
-    'None'.......................... None
-
-    'B94'........................... B94
-    'B94hyb'........................ B94hyb
-    'B95'........................... B95
-    'LYP'........................... LYP
-    'LYP(EDF1)'..................... LYP(EDF1)
-    'P86'........................... P86
-    'PBE'........................... PBE
-    'PK09'.......................... PK09
-    'PK09'.......................... PK09
-    'PW91'.......................... PW91
-    'PW92'.......................... PW92
-    'PZ81'.......................... PZ81
-    'TPSS'.......................... TPSS
-    'VWN'........................... VWN
-    'Wigner'........................ Wigner
-    '(PBE)OP'....................... (PBE)OP
-    '(B88)OP'....................... (B88)OP
-
-    'MP2'........................... MP2
-    'CCMP2'......................... CCMP2
-    'MP4SDQ'........................ MP4SDQ
-    'ZAPT2'......................... ZAPT2
-    'Local_MP2'..................... Local_MP2
-    'RI-MP2'........................ RI-MP2
-    'SOSMP2'........................ SOSMP2
-    'ATTMP2'........................ ATT-MP2
-    'MOSMP2'........................ MOSMP2
-    'RILMP2'........................ RILMP2
-
-    'MP3'........................... MP3
-    'MP4'........................... MP4
-    'CCD'........................... CCD
-    'CCD(2)'........................ CCD(2)
-    'CCSD'.......................... CCSD
-    'CCSD(T)'....................... CCSD(T)
-    'CCSD(2)'....................... CCSD(2)
-    'CCSD(fT)'...................... CCSD(fT)
-    'CCSD(dT)'...................... CCSD(dT)
-    'QCCD'.......................... QCCD
-    'QCCD(T)'....................... QCCD(T)
-    'QCCD(2)'....................... QCCD(2)
-    'QCISD'......................... QCISD
-    'QCISD(T)'...................... QCISD(T)
-    'OD'............................ OD
-    'OD(T)'......................... OD(T)
-    'OD(2)'......................... OD(2)
-    'VOD'........................... VOD
-    'VOD(2)'........................ VOD(2)
-    'VQCCD'......................... VQCCD
-    'VQCCD(T)'...................... VQCCD(T)
-    'VQCCD(2)'...................... VQCCD(2)
-
-    'PP'............................ PP
-    'CCVB'.......................... CCVB
-    'GVB_IP'........................ GVB_IP
-    'GVB_SIP'....................... GVB_SIP
-    'GVB_DIP'....................... GVB_DIP
-    'OP'............................ OP
-    'NP'............................ NP
-    '2P'............................ 2P
-
-Description: Specifies the correlation level of theory, either DFT or wavefunction-based.
-Recommendation: : Consult the literature and reviews for guidence    '''
-        if value == "":
-            if "CORRELATION" in self.dict_of_keywords:
-                del self.dict_of_keywords["CORRELATION"]
-                print "Keyword removed."
-        elif value == "show":
-            if "CORRELATION" in self.dict_of_keywords:
-                return self.dict_of_keywords["CORRELATION"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["CORRELATION"]=value.lower()
 
 
     def qui_primary_basis(self,value="show"):
@@ -11688,12 +11342,12 @@ Recommendation: : The primary basis should be smaller than the target basis.    
         if value == "":
             if "QUI_PRIMARY_BASIS" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PRIMARY_BASIS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PRIMARY_BASIS" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PRIMARY_BASIS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PRIMARY_BASIS"]=value.lower()
 
@@ -11731,12 +11385,12 @@ Description: Selects either a small basis set to use in basis set projection for
         if value == "":
             if "BASIS2_SAVE" in self.dict_of_keywords:
                 del self.dict_of_keywords["BASIS2_SAVE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "BASIS2_SAVE" in self.dict_of_keywords:
                 return self.dict_of_keywords["BASIS2_SAVE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["BASIS2_SAVE"]=value.lower()
 
@@ -11823,80 +11477,14 @@ Recommendation: : Consult literature and reviews to aid your selection.    '''
         if value == "":
             if "BASIS2" in self.dict_of_keywords:
                 del self.dict_of_keywords["BASIS2"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "BASIS2" in self.dict_of_keywords:
                 return self.dict_of_keywords["BASIS2"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["BASIS2"]=value.lower()
-
-
-    def method(self,value="show"):
-        '''
-Name: METHOD
-Type: STRING
-Default: HF
-
-Options:
-    'Custom'........................ Custom
-    'HF'............................ HF
-
-    'B3LYP'......................... B3LYP
-    'M06-2X'........................ M06-2X
-    'wB97XD'........................ Omega-B97X-D
-    'wB97XV'........................ Omega-B97X-V
-    'BLYP'.......................... BLYP
-    'CAMB3LYP'...................... CAM-B3LYP
-    'EDF1'.......................... EDF1
-    'B97-D'......................... B97-D
-    'EDF2'.......................... EDF2
-    'LDA'........................... LDA
-    'M06'........................... M06
-    'PBE'........................... PBE
-    'PBE50'......................... PBE50
-
-    'MP2'........................... MP2
-    'MP2'........................... MP2[V]
-    'RI-MP2'........................ RI-MP2
-    'ATT-MP2'....................... ATT-MP2
-    'SOS-MP2'....................... SOS-MP2
-    'CCSD'.......................... CCSD
-    'CCSD(T)'....................... CCSD(T)
-
-    'TD-DFT'........................ TD-DFT
-    'CIS'........................... CIS
-    'CIS(D)'........................ CIS(D)
-    'RI-CIS(D)'..................... RI-CIS(D)
-    'SOS-CIS(D)'.................... SOS-CIS(D)
-    'SOS-CIS(D0)'................... SOS-CIS(D0)
-
-    'EOM-CCSD'...................... EOM-CCSD
-
-    'ADC(1)'........................ ADC(1)
-    'ADC(2)'........................ ADC(2)
-    'ADC(2)-x'...................... ADC(2)-x
-    'ADC(3)'........................ ADC(3)
-    'CVS-ADC(1)'.................... CVS-ADC(1)
-    'CVS-ADC(2)'.................... CVS-ADC(2)
-    'CVS-ADC(2)-x'.................. CVS-ADC(2)-x
-    'SOS-ADC(2)'.................... SOS-ADC(2)
-    'SOS-ADC(2)-x'.................. SOS-ADC(2)-x
-
-Description: The level of theory used in the calculation.
-    '''
-        if value == "":
-            if "METHOD" in self.dict_of_keywords:
-                del self.dict_of_keywords["METHOD"]
-                print "Keyword removed."
-        elif value == "show":
-            if "METHOD" in self.dict_of_keywords:
-                return self.dict_of_keywords["METHOD"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["METHOD"]=value.lower()
 
 
     def cis_dynamic_mem(self,value="show"):
@@ -11911,17 +11499,17 @@ Options:
 
 Description: Controls whether to use static or dynamic memory in CIS and TDDFT calculations.
 
-Recommendation: : The default control requires static memory (MEM_STATIC) to hold a temporary array whose minimum size is OV ? CIS_N_ROOTS. For a large calculation, one has to specify a large value for MEM_STATIC, which is not recommended. Therefore, it is recommended to use dynamic memory for large calculations. 
+Recommendation: : The default control requires static memory (MEM_STATIC) to hold a temporary array whose minimum size is OV × CIS_N_ROOTS. For a large calculation, one has to specify a large value for MEM_STATIC, which is not recommended. Therefore, it is recommended to use dynamic memory for large calculations. 
     '''
         if value == "":
             if "CIS_DYNAMIC_MEM" in self.dict_of_keywords:
                 del self.dict_of_keywords["CIS_DYNAMIC_MEM"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "CIS_DYNAMIC_MEM" in self.dict_of_keywords:
                 return self.dict_of_keywords["CIS_DYNAMIC_MEM"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["CIS_DYNAMIC_MEM"]=value.lower()
 
@@ -11942,12 +11530,12 @@ Description:
         if value == "":
             if "QUI_SOLVENT_SMX_MODEL" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SOLVENT_SMX_MODEL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SOLVENT_SMX_MODEL" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SOLVENT_SMX_MODEL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SOLVENT_SMX_MODEL"]=value.lower()
 
@@ -11965,12 +11553,12 @@ Description: Specifies the number of nodes along the string.
         if value == "":
             if "FSM_NNODE" in self.dict_of_keywords:
                 del self.dict_of_keywords["FSM_NNODE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FSM_NNODE" in self.dict_of_keywords:
                 return self.dict_of_keywords["FSM_NNODE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FSM_NNODE"]=value.lower()
 
@@ -11991,12 +11579,12 @@ Description: Specifies the method of optimization.
         if value == "":
             if "FSM_OPT_MODE" in self.dict_of_keywords:
                 del self.dict_of_keywords["FSM_OPT_MODE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FSM_OPT_MODE" in self.dict_of_keywords:
                 return self.dict_of_keywords["FSM_OPT_MODE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FSM_OPT_MODE"]=value.lower()
 
@@ -12013,12 +11601,12 @@ Description: Specifies the number of perpendicular gradients used to optimise ea
         if value == "":
             if "FSM_NGRAD" in self.dict_of_keywords:
                 del self.dict_of_keywords["FSM_NGRAD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FSM_NGRAD" in self.dict_of_keywords:
                 return self.dict_of_keywords["FSM_NGRAD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FSM_NGRAD"]=value.lower()
 
@@ -12038,12 +11626,12 @@ Description: Specifies the method of interpolation.
         if value == "":
             if "FSM_MODE" in self.dict_of_keywords:
                 del self.dict_of_keywords["FSM_MODE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "FSM_MODE" in self.dict_of_keywords:
                 return self.dict_of_keywords["FSM_MODE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["FSM_MODE"]=value.lower()
 
@@ -12075,42 +11663,14 @@ Description: Specifies the type of calculation to run.
         if value == "":
             if "JOBTYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["JOBTYPE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "JOBTYPE" in self.dict_of_keywords:
                 return self.dict_of_keywords["JOBTYPE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["JOBTYPE"]=value.lower()
-
-
-    def scf_guess(self,value="show"):
-        '''
-Name: SCF_GUESS
-Type: STRING
-Default: SAD
-
-Options:
-    'SAD'........................... SAD
-    'CORE'.......................... CORE
-    'GWH'........................... GWH
-    'READ'.......................... READ
-    'FRAGMO'........................ FRAGMO
-
-Description: Specifies the initial guess procedure to use for the SCF.
-Recommendation: : SAD guess for standard basis sets. For general basis sets, it is best to use the BASIS2 $rem. Alternatively, try the GWH or core Hamiltonian guess. For ROHF it can be useful to READ guesses from an SCF calculation on the corresponding cation or anion. Note that because the density is made spherical, this may favor an undesired state for atomic systems, especially transition metals.    '''
-        if value == "":
-            if "SCF_GUESS" in self.dict_of_keywords:
-                del self.dict_of_keywords["SCF_GUESS"]
-                print "Keyword removed."
-        elif value == "show":
-            if "SCF_GUESS" in self.dict_of_keywords:
-                return self.dict_of_keywords["SCF_GUESS"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["SCF_GUESS"]=value.lower()
 
 
     def aimd_time_step(self,value="show"):
@@ -12125,12 +11685,12 @@ Recommendation: : Smaller time steps lead to better energy conservation; too lar
         if value == "":
             if "AIMD_TIME_STEP" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIMD_TIME_STEP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "AIMD_TIME_STEP" in self.dict_of_keywords:
                 return self.dict_of_keywords["AIMD_TIME_STEP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["AIMD_TIME_STEP"]=value.lower()
 
@@ -12148,12 +11708,12 @@ Recommendation: : Use the default.  The expansion is usually converged by order 
         if value == "":
             if "QUI_SOLVENT_MULTIPOLEORDER" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SOLVENT_MULTIPOLEORDER"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SOLVENT_MULTIPOLEORDER" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SOLVENT_MULTIPOLEORDER"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SOLVENT_MULTIPOLEORDER"]=value.lower()
 
@@ -12171,12 +11731,12 @@ Description:
         if value == "":
             if "QUI_SOLVENT_DIELECTRIC" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SOLVENT_DIELECTRIC" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SOLVENT_DIELECTRIC"]=value.lower()
 
@@ -12198,12 +11758,12 @@ Description: Use of SWIG is recommended only because it is slightly more efficie
         if value == "":
             if "QUI_PCM_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PCM_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PCM_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PCM_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PCM_METHOD"]=value.lower()
 
@@ -12223,12 +11783,12 @@ Description: Bondi radii are widely used.
         if value == "":
             if "QUI_PCM_RADII" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PCM_RADII"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PCM_RADII" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PCM_RADII"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PCM_RADII"]=value.lower()
 
@@ -12246,12 +11806,12 @@ Description: Sets the radius of the spherical solute cavity, in angstroms
         if value == "":
             if "QUI_SOLVENT_CAVITYRADIUS" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SOLVENT_CAVITYRADIUS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SOLVENT_CAVITYRADIUS" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SOLVENT_CAVITYRADIUS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SOLVENT_CAVITYRADIUS"]=value.lower()
 
@@ -12273,12 +11833,12 @@ Recommendation: : The IEF-PCM/SS(V)PE mode is more sophisticated than either C-P
         if value == "":
             if "QUI_PCM_THEORY" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PCM_THEORY"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PCM_THEORY" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PCM_THEORY"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PCM_THEORY"]=value.lower()
 
@@ -12299,12 +11859,12 @@ Description: Sets the type of atomic charges for the SM12 electrostatic terms.
         if value == "":
             if "QUI_SMX_CHARGES" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SMX_CHARGES"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SMX_CHARGES" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SMX_CHARGES"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SMX_CHARGES"]=value.lower()
 
@@ -12498,12 +12058,12 @@ Description: Specifies which solvent to use in the SMx models.
         if value == "":
             if "QUI_SMX_SOLVENT" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SMX_SOLVENT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SMX_SOLVENT" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SMX_SOLVENT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SMX_SOLVENT"]=value.lower()
 
@@ -12530,12 +12090,12 @@ Description: Sets the preferred solvent model.
         if value == "":
             if "SOLVENT_METHOD" in self.dict_of_keywords:
                 del self.dict_of_keywords["SOLVENT_METHOD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "SOLVENT_METHOD" in self.dict_of_keywords:
                 return self.dict_of_keywords["SOLVENT_METHOD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["SOLVENT_METHOD"]=value.lower()
 
@@ -12553,12 +12113,12 @@ Description: The optical dielectric constant of th PCM solvent.
         if value == "":
             if "QUI_SOLVENT_OPTICALDIELECTRIC" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_SOLVENT_OPTICALDIELECTRIC"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_SOLVENT_OPTICALDIELECTRIC" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_SOLVENT_OPTICALDIELECTRIC"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_SOLVENT_OPTICALDIELECTRIC"]=value.lower()
 
@@ -12575,12 +12135,12 @@ Description: Sets the number of grids used to calculate the average hydration fr
         if value == "":
             if "QUI_CHEMSOL_NGRIDS" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_CHEMSOL_NGRIDS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_CHEMSOL_NGRIDS" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_CHEMSOL_NGRIDS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_CHEMSOL_NGRIDS"]=value.lower()
 
@@ -12602,12 +12162,12 @@ Description: Increases the amount of ChemSol output.
         if value == "":
             if "QUI_CHEMSOL_PRINT" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_CHEMSOL_PRINT"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_CHEMSOL_PRINT" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_CHEMSOL_PRINT"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_CHEMSOL_PRINT"]=value.lower()
 
@@ -12624,12 +12184,12 @@ Description: Controls the print level during PCM calculations.
         if value == "":
             if "QUI_PCM_PRINTLEVEL" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_PCM_PRINTLEVEL"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_PCM_PRINTLEVEL" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_PCM_PRINTLEVEL"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_PCM_PRINTLEVEL"]=value.lower()
 
@@ -12650,12 +12210,12 @@ Recommentation: Mulliken charges are faster, but less rigorous.
         if value == "":
             if "QUI_CHEMSOL_EFIELD" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_CHEMSOL_EFIELD"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_CHEMSOL_EFIELD" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_CHEMSOL_EFIELD"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_CHEMSOL_EFIELD"]=value.lower()
 
@@ -12686,39 +12246,14 @@ Recommendation: : Pseudopotentials are recommended for first row transition meta
         if value == "":
             if "ECP" in self.dict_of_keywords:
                 del self.dict_of_keywords["ECP"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "ECP" in self.dict_of_keywords:
                 return self.dict_of_keywords["ECP"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["ECP"]=value.lower()
-
-
-    def mom_method(self,value="show"):
-        '''
-Name: MOM_METHOD
-Type: STRING
-Default: 3
-
-Options:
-    '3'............................. MOM
-    '13'............................ IMOM
-
-Description: Selects between the original (MOM) and initial (IMOM) algorithms.  
-    '''
-        if value == "":
-            if "MOM_METHOD" in self.dict_of_keywords:
-                del self.dict_of_keywords["MOM_METHOD"]
-                print "Keyword removed."
-        elif value == "show":
-            if "MOM_METHOD" in self.dict_of_keywords:
-                return self.dict_of_keywords["MOM_METHOD"]
-            else:
-                print "Value not set."
-        else:
-            self.dict_of_keywords["MOM_METHOD"]=value.lower()
 
 
     def qui_frozen_core(self,value="show"):
@@ -12738,12 +12273,12 @@ Description:
         if value == "":
             if "QUI_FROZEN_CORE" in self.dict_of_keywords:
                 del self.dict_of_keywords["QUI_FROZEN_CORE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "QUI_FROZEN_CORE" in self.dict_of_keywords:
                 return self.dict_of_keywords["QUI_FROZEN_CORE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["QUI_FROZEN_CORE"]=value.lower()
 
@@ -12760,12 +12295,12 @@ Recommendation: :  The default is to freeze orbitals making MP2 calculations mor
         if value == "":
             if "N_FROZEN_CORE" in self.dict_of_keywords:
                 del self.dict_of_keywords["N_FROZEN_CORE"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "N_FROZEN_CORE" in self.dict_of_keywords:
                 return self.dict_of_keywords["N_FROZEN_CORE"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["N_FROZEN_CORE"]=value.lower()
 
@@ -12782,21 +12317,778 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
         if value == "":
             if "NTO_PAIRS" in self.dict_of_keywords:
                 del self.dict_of_keywords["NTO_PAIRS"]
-                print "Keyword removed."
+                print("Keyword removed.")
         elif value == "show":
             if "NTO_PAIRS" in self.dict_of_keywords:
                 return self.dict_of_keywords["NTO_PAIRS"]
             else:
-                print "Value not set."
+                print("Value not set.")
         else:
             self.dict_of_keywords["NTO_PAIRS"]=value.lower()
 
 
-    # --------------- End of computer generated keyword list ------------------
+    def gen_scfman(self,value="show"):
+        '''
+Name: GEN_SCFMAN
+Type: LOGICAL
+Default: TRUE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Unselect this option for features not yet supported by GEN_SCFMAN.
+    '''
+        if value == "":
+            if "GEN_SCFMAN" in self.dict_of_keywords:
+                del self.dict_of_keywords["GEN_SCFMAN"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "GEN_SCFMAN" in self.dict_of_keywords:
+                return self.dict_of_keywords["GEN_SCFMAN"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["GEN_SCFMAN"]=value.lower()
+
+
+    def ghf(self,value="show"):
+        '''
+Name: GHF
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Run a generalized Hatree-Fock calculation.
+
+Recommendation: : GEN_SCFMAN must be active for this to take effect.    '''
+        if value == "":
+            if "GHF" in self.dict_of_keywords:
+                del self.dict_of_keywords["GHF"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "GHF" in self.dict_of_keywords:
+                return self.dict_of_keywords["GHF"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["GHF"]=value.lower()
+
+
+    def os_roscf(self,value="show"):
+        '''
+Name: OS_ROSCF
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Run an open-shell ROSCF calculation.
+
+Recommendation: : GEN_SCFMAN must be turned on for this to have effect.    '''
+        if value == "":
+            if "OS_ROSCF" in self.dict_of_keywords:
+                del self.dict_of_keywords["OS_ROSCF"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "OS_ROSCF" in self.dict_of_keywords:
+                return self.dict_of_keywords["OS_ROSCF"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["OS_ROSCF"]=value.lower()
+
+
+    def scf_convergence(self,value="show"):
+        '''
+Name: SCF_CONVERGENCE
+Type: INTEGER
+Default: 5
+Options: Range from 0 to 12
+
+Description: SCF is considered converged when the wavefunction error is less that 10-SCF_CONVERGENCE. Adjust the value of THRESH at the same time. Note that from Q-Chem 3.0 the DIIS error is measured by the maximum error rather than the RMS error as in previous versions.
+Recommendation: : Tighter criteria for geometry optimization and vibration analysis. Larger values provide more significant figures, at greater computational cost.    '''
+        if value == "":
+            if "SCF_CONVERGENCE" in self.dict_of_keywords:
+                del self.dict_of_keywords["SCF_CONVERGENCE"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "SCF_CONVERGENCE" in self.dict_of_keywords:
+                return self.dict_of_keywords["SCF_CONVERGENCE"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["SCF_CONVERGENCE"]=value.lower()
+
+
+    def complex(self,value="show"):
+        '''
+Name: COMPLEX
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Run an SCF calculation with complex MOs.
+
+Recommendation: : GEN_SCFMAN must be active for this to take effect.    '''
+        if value == "":
+            if "COMPLEX" in self.dict_of_keywords:
+                del self.dict_of_keywords["COMPLEX"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "COMPLEX" in self.dict_of_keywords:
+                return self.dict_of_keywords["COMPLEX"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["COMPLEX"]=value.lower()
+
+
+    def complex_mix(self,value="show"):
+        '''
+Name: COMPLEX_MIX
+Type: INTEGER
+Default: 0
+Options: Range from 0 to 100
+
+Description: Mix a percentage of the real part of the HOMO to the imaginary part of the LUMO.  The mixing angle = π x COMPLEX_MIX/100.  This is analogous to SCF_GUESS_MIX for finding unrestricted solutions.
+    '''
+        if value == "":
+            if "COMPLEX_MIX" in self.dict_of_keywords:
+                del self.dict_of_keywords["COMPLEX_MIX"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "COMPLEX_MIX" in self.dict_of_keywords:
+                return self.dict_of_keywords["COMPLEX_MIX"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["COMPLEX_MIX"]=value.lower()
+
+
+    def scf_guess(self,value="show"):
+        '''
+Name: SCF_GUESS
+Type: STRING
+Default: SAD
+
+Options:
+    'SAD'........................... SAD
+    'AUTOSAD'....................... AUTOSAD
+    'SADMO'......................... SADMO
+    'CORE'.......................... CORE
+    'GWH'........................... GWH
+    'READ'.......................... READ
+    'FRAGMO'........................ FRAGMO
+
+Description: Specifies the initial guess procedure to use for the SCF.
+Recommendation: : Use SAD, AUTOSAD, or SADMO guess for standard basis sets. For general basis sets, it is best to use the BASIS2 $rem. For mixed (standard) basis sets, use AUTOSAD.  Alternatively, try the GWH or core Hamiltonian guess. For ROHF it can be useful to READ guesses from an SCF calculation on the corresponding cation or anion. Note that because the density is made spherical, this may favor an undesired state for atomic systems, especially transition metals.    '''
+        if value == "":
+            if "SCF_GUESS" in self.dict_of_keywords:
+                del self.dict_of_keywords["SCF_GUESS"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "SCF_GUESS" in self.dict_of_keywords:
+                return self.dict_of_keywords["SCF_GUESS"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["SCF_GUESS"]=value.lower()
+
+
+    def scf_guess_always(self,value="show"):
+        '''
+Name: SCF_GUESS_ALWAYS
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Switch to force the regeneration of a new inital guess for each SCF in, for example, a geometry optimization.
+
+Recommendation: : Use the default, unless convergence issues arise.    '''
+        if value == "":
+            if "SCF_GUESS_ALWAYS" in self.dict_of_keywords:
+                del self.dict_of_keywords["SCF_GUESS_ALWAYS"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "SCF_GUESS_ALWAYS" in self.dict_of_keywords:
+                return self.dict_of_keywords["SCF_GUESS_ALWAYS"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["SCF_GUESS_ALWAYS"]=value.lower()
+
+
+    def mom_method(self,value="show"):
+        '''
+Name: MOM_METHOD
+Type: STRING
+Default: 3
+
+Options:
+    '3'............................. MOM
+    '13'............................ IMOM
+
+Description: Selects between the original (MOM) and initial (IMOM) algorithms.  
+
+Recommendation: : If appropriate guess orbitals can be obtained, then IMOM can provide more reliable convergence to the desired solution.    '''
+        if value == "":
+            if "MOM_METHOD" in self.dict_of_keywords:
+                del self.dict_of_keywords["MOM_METHOD"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "MOM_METHOD" in self.dict_of_keywords:
+                return self.dict_of_keywords["MOM_METHOD"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["MOM_METHOD"]=value.lower()
+
+
+    def dft_d(self,value="show"):
+        '''
+Name: DFT_D
+Type: STRING
+Default: False
+
+Options:
+    'False'......................... False
+    'D3'............................ AUTO
+    'EMPIRICAL_GRIMME'.............. DFT-D2
+    'EMPIRICAL_CHG'................. DFT-CHG
+    'D3_ZERO'....................... DFT-D3(0)
+    'D3_BJ'......................... DFT-D3(BJ)
+    'D3_CSO'........................ DFT-D3(CSO)
+    'D3_ZEROM'...................... DFT-D3M(0)
+    'D3_BJM'........................ DFT-D3M(BJ)
+    'D3_OP'......................... DFT-D3(op)
+
+Description: Specifies what dispersion correction to use within a DFT calculation.
+
+Recommendation: : Use the D3 option, which selects the empirical potential based on the density functional specified by the user.    '''
+        if value == "":
+            if "DFT_D" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFT_D"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "DFT_D" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFT_D"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["DFT_D"]=value.lower()
+
+
+    def internal_stability(self,value="show"):
+        '''
+Name: INTERNAL_STABILITY
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Perform internal stability analysis in GEN_SCFMAN
+
+Recommendation: : Turn on when the SCF solution is prone to unstable solutions, especially for open-shell species.    '''
+        if value == "":
+            if "INTERNAL_STABILITY" in self.dict_of_keywords:
+                del self.dict_of_keywords["INTERNAL_STABILITY"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "INTERNAL_STABILITY" in self.dict_of_keywords:
+                return self.dict_of_keywords["INTERNAL_STABILITY"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["INTERNAL_STABILITY"]=value.lower()
+
+
+    def nl_correlation(self,value="show"):
+        '''
+Name: NL_CORRELATION
+Type: STRING
+Default: None
+
+Options:
+    'None'.......................... None
+    'vdW-DF-04'..................... vdW-DF-04
+    'vdW-DF-10'..................... vdW-DF-10
+    'VV09'.......................... VV09
+    'VV10'.......................... VV10
+
+Description: Speciﬁes a non-local correlation functional that includes non-empirical dispersion.
+
+Recommendation: :  Do not forget to add the LSDA correlation (PW92 is recommended) when using vdW-DF-04, vdW-DF-10, or VV09. VV10 should be used with PBE correlation. Choose exchange functionals carefully: HF, rPW86, revPBE, and some of the LRC exchange functionals are among the recommended choices.    '''
+        if value == "":
+            if "NL_CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_CORRELATION"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "NL_CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_CORRELATION"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["NL_CORRELATION"]=value.lower()
+
+
+    def nl_grid(self,value="show"):
+        '''
+Name: NL_GRID
+Type: STRING
+Default: 0
+
+Options:
+    '0'............................. SG-0
+    '1'............................. SG-1
+    '2'............................. SG-2
+    '3'............................. SG3
+
+    '35,110'........................ 35,110
+    '50,194'........................ 50,194
+    '75,302'........................ 75,302
+    '99,590'........................ 99,590
+
+Description: Speciﬁes the grid to use for non-local correlation.
+
+Recommendation: : Use default unless computational cost becomes prohibitive, in which case SG-0 may be 
+used.  XC_GRID should generally be ﬁner than NL_GRID.    '''
+        if value == "":
+            if "NL_GRID" in self.dict_of_keywords:
+                del self.dict_of_keywords["NL_GRID"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "NL_GRID" in self.dict_of_keywords:
+                return self.dict_of_keywords["NL_GRID"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["NL_GRID"]=value.lower()
+
+
+    def xc_grid(self,value="show"):
+        '''
+Name: XC_GRID
+Type: STRING
+Default: 1
+
+Options:
+    '0'............................. SG-0
+    '1'............................. SG-1
+    '2'............................. SG-2
+    '3'............................. SG-3
+
+    '35,110'........................ 35,110
+    '50,194'........................ 50,194
+    '75,302'........................ 75,302
+    '99,590'........................ 99,590
+
+Description: Specifies the quadrature grid to be used for evaluating the exchange-correlation component of the energy.  Either a standard grid should be selected, or a Lebedev grid with the corresponding number of points.
+
+Recommendation: : Use the default unless convergence difficulties arise.  Larger grids are required for calculations involving derivatives and excited states.    '''
+        if value == "":
+            if "XC_GRID" in self.dict_of_keywords:
+                del self.dict_of_keywords["XC_GRID"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "XC_GRID" in self.dict_of_keywords:
+                return self.dict_of_keywords["XC_GRID"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["XC_GRID"]=value.lower()
+
+
+    def ao2mo_disk(self,value="show"):
+        '''
+Name: AO2MO_DISK
+Type: INTEGER
+Factor: 100
+Default: 20 [=2000]
+Options: Range from 0 [=0] to 320 [=32000]
+
+Description: Sets the amount of disk space (in megabytes) available for MP2 calculations. 
+
+Recommendation: : Should be set as large as possible, as discussed in the manual.    '''
+        if value == "":
+            if "AO2MO_DISK" in self.dict_of_keywords:
+                del self.dict_of_keywords["AO2MO_DISK"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "AO2MO_DISK" in self.dict_of_keywords:
+                return self.dict_of_keywords["AO2MO_DISK"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["AO2MO_DISK"]=value.lower()
+
+
+    def cd_algorithm(self,value="show"):
+        '''
+Name: CD_ALGORITHM
+Type: STRING
+Default: Program determined
+
+Options:
+    'Program determined'............ Program determined
+    'Direct'........................ Direct
+    'Semi-direct'................... Semi-direct
+    'Local-occupied'................ Local-occupied
+
+Description: Determines the algorithm for MP2 integral transformations.
+Recommendation: : Semi-direct is usually most efficient, and will normally be chosen by default.    '''
+        if value == "":
+            if "CD_ALGORITHM" in self.dict_of_keywords:
+                del self.dict_of_keywords["CD_ALGORITHM"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "CD_ALGORITHM" in self.dict_of_keywords:
+                return self.dict_of_keywords["CD_ALGORITHM"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["CD_ALGORITHM"]=value.lower()
+
+
+    def core_character(self,value="show"):
+        '''
+Name: CORE_CHARACTER
+Type: INTEGER
+Default: 0
+Options: Range from 0 to 4
+
+Description: Selects how the core orbitals are determined in the frozen-core approximation.
+Recommendation: : Use default, unless performing calculations on molecules with heavy elements.    '''
+        if value == "":
+            if "CORE_CHARACTER" in self.dict_of_keywords:
+                del self.dict_of_keywords["CORE_CHARACTER"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "CORE_CHARACTER" in self.dict_of_keywords:
+                return self.dict_of_keywords["CORE_CHARACTER"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["CORE_CHARACTER"]=value.lower()
+
+
+    def correlation(self,value="show"):
+        '''
+Name: CORRELATION
+Type: STRING
+Default: None
+
+Options:
+    'None'.......................... None
+
+    'B94'........................... B94
+    'B94hyb'........................ B94hyb
+    'B95'........................... B95
+    'LYP'........................... LYP
+    'LYP(EDF1)'..................... LYP(EDF1)
+    'P86'........................... P86
+    'PBE'........................... PBE
+    'PK09'.......................... PK09
+    'PK09'.......................... PK09
+    'PW91'.......................... PW91
+    'PW92'.......................... PW92
+    'PZ81'.......................... PZ81
+    'TPSS'.......................... TPSS
+    'VWN'........................... VWN
+    'Wigner'........................ Wigner
+    '(PBE)OP'....................... (PBE)OP
+    '(B88)OP'....................... (B88)OP
+
+    'MP2'........................... MP2
+    'RI-MP2'........................ RI-MP2
+    'Local_MP2'..................... Local_MP2
+    'RILMP2'........................ RILMP2
+    'ATTMP2'........................ ATT-MP2
+    'SOSMP2'........................ SOSMP2
+    'MOSMP2'........................ MOSMP2
+    'ZAPT2'......................... ZAPT2
+    'MP4SDQ'........................ MP4SDQ
+
+    'MP3'........................... MP3
+    'MP4'........................... MP4
+    'CCD'........................... CCD
+    'CCD(2)'........................ CCD(2)
+    'CCSD'.......................... CCSD
+    'CCSD(T)'....................... CCSD(T)
+    'CCSD(2)'....................... CCSD(2)
+    'CCSD(fT)'...................... CCSD(fT)
+    'CCSD(dT)'...................... CCSD(dT)
+    'QCCD'.......................... QCCD
+    'QCCD(T)'....................... QCCD(T)
+    'QCCD(2)'....................... QCCD(2)
+    'QCISD'......................... QCISD
+    'QCISD(T)'...................... QCISD(T)
+    'OD'............................ OD
+    'OD(T)'......................... OD(T)
+    'OD(2)'......................... OD(2)
+    'VOD'........................... VOD
+    'VOD(2)'........................ VOD(2)
+    'VQCCD'......................... VQCCD
+    'VQCCD(T)'...................... VQCCD(T)
+    'VQCCD(2)'...................... VQCCD(2)
+
+    'PP'............................ PP
+    'CCVB'.......................... CCVB
+    'GVB_IP'........................ GVB_IP
+    'GVB_SIP'....................... GVB_SIP
+    'GVB_DIP'....................... GVB_DIP
+    'OP'............................ OP
+    'NP'............................ NP
+    '2P'............................ 2P
+
+Description: Specifies the correlation level of theory, either DFT or wavefunction-based.
+Recommendation: : Consult the literature and reviews for guidence    '''
+        if value == "":
+            if "CORRELATION" in self.dict_of_keywords:
+                del self.dict_of_keywords["CORRELATION"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "CORRELATION" in self.dict_of_keywords:
+                return self.dict_of_keywords["CORRELATION"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["CORRELATION"]=value.lower()
+
+
+    def dft_c(self,value="show"):
+        '''
+Name: DFT_C
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Controls whether the DFT-C empirical BSSE correction should be added.
+    '''
+        if value == "":
+            if "DFT_C" in self.dict_of_keywords:
+                del self.dict_of_keywords["DFT_C"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "DFT_C" in self.dict_of_keywords:
+                return self.dict_of_keywords["DFT_C"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["DFT_C"]=value.lower()
+
+
+    def dh(self,value="show"):
+        '''
+Name: DH
+Type: LOGICAL
+Default: FALSE
+
+Options:
+    'FALSE'......................... FALSE
+    'TRUE'.......................... TRUE
+
+Description: Controls the applicaiton of the double hybrid DFT scheme
+    '''
+        if value == "":
+            if "DH" in self.dict_of_keywords:
+                del self.dict_of_keywords["DH"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "DH" in self.dict_of_keywords:
+                return self.dict_of_keywords["DH"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["DH"]=value.lower()
+
+
+    def mem_static(self,value="show"):
+        '''
+Name: MEM_STATIC
+Type: INTEGER
+Factor: 10
+Default: 6 [=64]
+Options: Range from 3 [=32] to 100000 [=1000000]
+
+Description: Sets the memory (in megabytes) for individual fortran program modules.
+Recommendation: : For direct and semi-direct MP2 calculations, this must exceed OVN + requirements for AO integral evaluation (32-160 Mb).    '''
+        if value == "":
+            if "MEM_STATIC" in self.dict_of_keywords:
+                del self.dict_of_keywords["MEM_STATIC"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "MEM_STATIC" in self.dict_of_keywords:
+                return self.dict_of_keywords["MEM_STATIC"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["MEM_STATIC"]=value.lower()
+
+
+    def mem_total(self,value="show"):
+        '''
+Name: MEM_TOTAL
+Type: INTEGER
+Factor: 10
+Default: 200 [=2000]
+Options: Range from 20 [=200] to 100000 [=1000000]
+
+Description: Sets the total memory available to Q-Chem, in megabytes.
+    '''
+        if value == "":
+            if "MEM_TOTAL" in self.dict_of_keywords:
+                del self.dict_of_keywords["MEM_TOTAL"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "MEM_TOTAL" in self.dict_of_keywords:
+                return self.dict_of_keywords["MEM_TOTAL"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["MEM_TOTAL"]=value.lower()
+
+
+    def method(self,value="show"):
+        '''
+Name: METHOD
+Type: STRING
+Default: HF
+
+Options:
+    'Custom'........................ Custom
+    'HF'............................ HF
+
+    'B3LYP'......................... B3LYP
+    'M06-2X'........................ M06-2X
+    'wB97XD'........................ Omega-B97X-D
+    'wB97XV'........................ Omega-B97X-V
+    'BLYP'.......................... BLYP
+    'CAMB3LYP'...................... CAM-B3LYP
+    'EDF1'.......................... EDF1
+    'B97-D'......................... B97-D
+    'EDF2'.......................... EDF2
+    'LDA'........................... LDA
+    'M06'........................... M06
+    'PBE'........................... PBE
+    'PBE50'......................... PBE50
+
+    'MP2'........................... MP2
+    'RI-MP2'........................ RI-MP2
+    'LOCAL_MP2'..................... Local MP2
+    'RILMP2'........................ RILMP2
+    'ATTMP2'........................ ATT-MP2
+    'ZAPT2'......................... ZAPT2
+    'SOS-MP2'....................... SOS-MP2
+    'MP2'........................... MP2[V]
+    'MP4'........................... MP4
+    'CCSD'.......................... CCSD
+    'CCSD(T)'....................... CCSD(T)
+
+    'TD-DFT'........................ TD-DFT
+    'CIS'........................... CIS
+    'CIS(D)'........................ CIS(D)
+    'RI-CIS(D)'..................... RI-CIS(D)
+    'SOS-CIS(D)'.................... SOS-CIS(D)
+    'SOS-CIS(D0)'................... SOS-CIS(D0)
+
+    'EOM-CCSD'...................... EOM-CCSD
+
+    'ADC(1)'........................ ADC(1)
+    'ADC(2)'........................ ADC(2)
+    'ADC(2)-x'...................... ADC(2)-x
+    'ADC(3)'........................ ADC(3)
+    'CVS-ADC(1)'.................... CVS-ADC(1)
+    'CVS-ADC(2)'.................... CVS-ADC(2)
+    'CVS-ADC(2)-x'.................. CVS-ADC(2)-x
+    'SOS-ADC(2)'.................... SOS-ADC(2)
+    'SOS-ADC(2)-x'.................. SOS-ADC(2)-x
+
+Description: The level of theory used in the calculation.
+    '''
+        if value == "":
+            if "METHOD" in self.dict_of_keywords:
+                del self.dict_of_keywords["METHOD"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "METHOD" in self.dict_of_keywords:
+                return self.dict_of_keywords["METHOD"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["METHOD"]=value.lower()
+
+
+    def sos_factor(self,value="show"):
+        '''
+Name: SOS_FACTOR
+Type: INTEGER
+Factor: 0.000001
+Default: 0 [=0.0]
+Options: Range from 0 [=0.00] to 1000000 [=1.00]
+
+Description: Controls the strength of the opposite-spin component of the PT2 correlation energy.
+    '''
+        if value == "":
+            if "SOS_FACTOR" in self.dict_of_keywords:
+                del self.dict_of_keywords["SOS_FACTOR"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "SOS_FACTOR" in self.dict_of_keywords:
+                return self.dict_of_keywords["SOS_FACTOR"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["SOS_FACTOR"]=value.lower()
+
+
+    def sss_factor(self,value="show"):
+        '''
+Name: SSS_FACTOR
+Type: INTEGER
+Factor: 0.000001
+Default: 0 [=0.0]
+Options: Range from 1 [=0.000001] to 1000000 [=1.00000]
+
+Description: Controls the strength of the same-spin component of the PT2 correlation energy.
+    '''
+        if value == "":
+            if "SSS_FACTOR" in self.dict_of_keywords:
+                del self.dict_of_keywords["SSS_FACTOR"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "SSS_FACTOR" in self.dict_of_keywords:
+                return self.dict_of_keywords["SSS_FACTOR"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["SSS_FACTOR"]=value.lower()
+
+    # --------------- End of computer-generated keyword list ------------------
 
     # --------------  REM keywords added by hand (obsolete?) -----------------
 
-    def aifdem(self, value="show"):
+    def aifdem(self,value="show"):
         if value == "":
             if "AIFDEM" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM"]
@@ -12807,9 +13099,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM"] = value.lower()
-
-    def aifdem_ntothresh(self, value="show"):
+            self.dict_of_keywords["AIFDEM"]=value.lower()
+    
+    def aifdem_ntothresh(self,value="show"):
         if value == "":
             if "AIFDEM_NTOTHRESH" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_NTOTHRESH"]
@@ -12820,9 +13112,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_NTOTHRESH"] = value.lower()
-
-    def aifdem_embed_range(self, value="show"):
+            self.dict_of_keywords["AIFDEM_NTOTHRESH"]=value.lower()
+    
+    def aifdem_embed_range(self,value="show"):
         if value == "":
             if "AIFDEM_EMBED_RANGE" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_EMBED_RANGE"]
@@ -12833,9 +13125,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_EMBED_RANGE"] = value.lower()
-
-    def aifdem_ctstates(self, value="show"):
+            self.dict_of_keywords["AIFDEM_EMBED_RANGE"]=value.lower()
+    
+    def aifdem_ctstates(self,value="show"):
         if value == "":
             if "AIFDEM_CTSTATES" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_CTSTATES"]
@@ -12846,9 +13138,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_CTSTATES"] = value.lower()
-
-    def xpol(self, value="show"):
+            self.dict_of_keywords["AIFDEM_CTSTATES"]=value.lower()
+    
+    def xpol(self,value="show"):
         if value == "":
             if "XPOL" in self.dict_of_keywords:
                 del self.dict_of_keywords["XPOL"]
@@ -12859,9 +13151,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XPOL"] = value.lower()
-
-    def xpol_noscf(self, value="show"):
+            self.dict_of_keywords["XPOL"]=value.lower()
+    
+    def xpol_noscf(self,value="show"):
         if value == "":
             if "XPOL_NOSCF" in self.dict_of_keywords:
                 del self.dict_of_keywords["XPOL_NOSCF"]
@@ -12872,9 +13164,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XPOL_NOSCF"] = value.lower()
-
-    def xpol_charge_type(self, value="show"):
+            self.dict_of_keywords["XPOL_NOSCF"]=value.lower()
+    
+    def xpol_charge_type(self,value="show"):
         if value == "":
             if "XPOL_CHARGE_TYPE" in self.dict_of_keywords:
                 del self.dict_of_keywords["XPOL_CHARGE_TYPE"]
@@ -12885,9 +13177,22 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["XPOL_CHARGE_TYPE"] = value.lower()
-
-    def max_scf_cycles(self, value="show"):
+            self.dict_of_keywords["XPOL_CHARGE_TYPE"]=value.lower()
+            
+    def nto_pairs(self,value="show"):
+        if value == "":
+            if "NTO_PAIRS" in self.dict_of_keywords:
+                del self.dict_of_keywords["NTO_PAIRS"]
+                print("Keyword removed.")
+        elif value == "show":
+            if "NTO_PAIRS" in self.dict_of_keywords:
+                return self.dict_of_keywords["NTO_PAIRS"]
+            else:
+                print("Value not set.")
+        else:
+            self.dict_of_keywords["NTO_PAIRS"]=value.lower()
+    
+    def max_scf_cycles(self,value="show"):
         if value == "":
             if "MAX_SCF_CYCLES" in self.dict_of_keywords:
                 del self.dict_of_keywords["MAX_SCF_CYCLES"]
@@ -12898,9 +13203,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["MAX_SCF_CYCLES"] = value.lower()
-
-    def symmetry(self, value="show"):
+            self.dict_of_keywords["MAX_SCF_CYCLES"]=value.lower()
+            
+    def symmetry(self,value="show"):
         if value == "":
             if "SYMMETRY" in self.dict_of_keywords:
                 del self.dict_of_keywords["SYMMETRY"]
@@ -12911,9 +13216,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["SYMMETRY"] = value.lower()
-
-    def aifdem_frgm_read(self, value="show"):
+            self.dict_of_keywords["SYMMETRY"]=value.lower()
+    
+    def aifdem_frgm_read(self,value="show"):
         if value == "":
             if "AIFDEM_FRGM_READ" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_FRGM_READ"]
@@ -12924,9 +13229,9 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_FRGM_READ"] = value.lower()
-
-    def aifdem_frgm_write(self, value="show"):
+            self.dict_of_keywords["AIFDEM_FRGM_READ"]=value.lower()
+    
+    def aifdem_frgm_write(self,value="show"):
         if value == "":
             if "AIFDEM_FRGM_WRITE" in self.dict_of_keywords:
                 del self.dict_of_keywords["AIFDEM_FRGM_WRITE"]
@@ -12937,7 +13242,7 @@ Description: Sets the number of HONTO/LUNTO pairs for each transition.
             else:
                 print("Value not set.")
         else:
-            self.dict_of_keywords["AIFDEM_FRGM_WRITE"] = value.lower()
+            self.dict_of_keywords["AIFDEM_FRGM_WRITE"]=value.lower()
 
     # ------------------------ End of manual keyword list ----------------------
 

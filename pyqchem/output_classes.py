@@ -832,7 +832,7 @@ class _outputfile(object):
                 cycle_name = "Optimization step " + str(N_step)
                 cart_dummy = cartesian(cycle_name)
             if switch == 1 and len(line.split()) == 5: # fulfilled only by xyz-format (hopefully)
-            	    con = line.split()
+                    con = line.split()
                     cart_dummy.add_atom(con[1], con[2], con[3], con[4]) 
             if "Point Group" in line and switch == 1:
                 geometries.append(deepcopy(cart_dummy))
