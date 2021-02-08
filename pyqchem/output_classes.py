@@ -544,7 +544,7 @@ class _outputfile(object):
                 self.aifdem = ((line.split())[-1]).lower()
             if "CIS_N_ROOTS" in line:
                 self.N_SET = ((line.split())[-1]).lower()
-            if re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line):
+            if re.search(r'Q-Chem.+?([\d.]+).*?, Q-Chem, Inc\.,', line):
                 version = re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line).group(1)
                 continue
             if "<S^2> =" in line:
