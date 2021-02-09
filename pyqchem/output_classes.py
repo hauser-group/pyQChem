@@ -535,15 +535,15 @@ class _outputfile(object):
         switch = 0
         for line in content:
             if "jobtype" in line.lower() or "JOB_TYPE" in line:
-                jobtype = ((line.split())[-1]).lower()
+                jobtype = ((line.split())[1]).lower()
             if "basis2" in line.lower():
                 basis2_flag = True
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
-                mm_type = ((line.split())[-1]).lower()
+                mm_type = ((line.split())[1]).lower()
             if "aifdem" in line.lower():
-                self.aifdem = ((line.split())[-1]).lower()
+                self.aifdem = ((line.split())[1]).lower()
             if "CIS_N_ROOTS" in line:
-                self.N_SET = ((line.split())[-1]).lower()
+                self.N_SET = ((line.split())[1]).lower()
             if ("Pleasanton" in line) or ("Pittsburgh" in line):
                 for k in line.split():
                     if re.match(r'^([\s\d.,]+)$',k):
