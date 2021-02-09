@@ -544,8 +544,10 @@ class _outputfile(object):
                 self.aifdem = ((line.split())[-1]).lower()
             if "CIS_N_ROOTS" in line:
                 self.N_SET = ((line.split())[-1]).lower()
-            if re.search(r'Q-Chem.+?([\d.]+).*?, Q-Chem, Inc\.,', line):
-                version = re.search(r'Q-Chem.+?([\d.]+), Q-Chem, Inc\.,', line).group(1)
+            if ("Pleasanton" in line) or ("Pittsburgh" in line):
+                for k in line.split():
+                    if re.match(r'^([\s\d.,]+)$',k):
+                        version = k.split(',')[0]
                 continue
             if "<S^2> =" in line:
                 spin = (line.split())[2]
