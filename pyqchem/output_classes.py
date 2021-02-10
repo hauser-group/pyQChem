@@ -130,7 +130,10 @@ class _general(object):
         self.version = version
         self.spin = _np.float(spin)
         if mm_type != "mm":
-            self.basis_size = int(basis_size)
+            try:
+                self.basis_size = int(basis_size)
+            except ValueError:
+                self.basis_size = "undefined"
         try:
             self.energy = _np.float(energy)
         except ValueError:
@@ -517,7 +520,7 @@ class _outputfile(object):
 
         spin = '0'
         energy = 'undetermined'
-        jobtype = 'undetermined'
+        jobtype = 'sp' # Q-Chem default if not mentioned explicitly
         version = 'undetermined'
         basis_size = 'undetermined'
         status = 'unfinished'
@@ -543,7 +546,7 @@ class _outputfile(object):
             if "aifdem" in line.lower():
                 self.aifdem = ((line.split())[1]).lower()
             if "CIS_N_ROOTS" in line:
-                self.N_SET = ((line.split())[1]).lower()
+                self.N_SET = int(((line.split())[1]).lower())
             if ("Pleasanton" in line) or ("Pittsburgh" in line):
                 for k in line.split():
                     if re.match(r'^([\s\d.,]+)$',k):
@@ -665,11 +668,11 @@ class _outputfile(object):
             for line in content:
                 if ("AIFDEM Time:" in line):
                     self.aifdem_Time = float(line.split()[6])
-                if (" EigenVectors " in line) and (EvalSwitch == 1):
+                if (" Eigenvectors " in line) and (EvalSwitch == 1):
                     EvalSwitch = 0
                 if EvalSwitch == 1:
                     self.EvalStrng += line
-                if " EigenValues \n" in line:
+                if " Eigenvalues \n" in line:
                     EvalSwitch = 1
             _ierr = 0
             for i in range(len(self.EvalStrng.split())):
