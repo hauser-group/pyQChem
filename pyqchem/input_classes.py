@@ -795,9 +795,10 @@ class rem_array(_array):
         rem_init = rem_init.splitlines()
         if len(rem_init) != 0:
             for i in rem_init:
+                i = i.replace("=", " ") # some people use '=' at arbitrary positions...
                 i = i.split(" ")
-                if len(i) == 0:
-                    i = i.split("=")
+                #if len(i) == 0:
+                #    i = i.split("=")
                 if i[0].startswith("$"):
                     continue
                 self.add(i[0], i[1])
