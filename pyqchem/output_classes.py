@@ -477,6 +477,29 @@ class _force(object):
         print("")
         print("Maximum component of gradient: %.9f"%self.gradient)
 
+
+class _aifdem(object):
+    """
+    This structure contains information about the Ab Initio Frenkel Davydov Exciton Model.
+    """
+
+    def __init__(self, n_set,n_fragments,cis_n_roots,cis_time,excited_states):
+        self.n_set = n_set
+        self.n_fragments = n_fragments
+        self.cis_n_roots = cis_n_roots
+        self.cis_time = cis_time
+        self.excited_states = excited_states
+
+    def info(self):
+        print("AIFDEM summary:")
+        print("--------------------------------")
+        print("")
+        print("Number of sets: %.9f"%self.n_set)
+        print("Number of fragments: %.9f"%self.n_fragments)
+        print("Number of CIS roots: %.9f"%self.cis_n_roots)
+
+
+
 class _orbitals(object):
     """
     This structure contains information (occupation, energies) about the orbitals.
@@ -531,22 +554,25 @@ class _outputfile(object):
         initial_cartesian = cartesian("sp job - initial geometry in standard orientation")
 
         mm_type = ""
-        self.aifdem = 0
-        self.N_Fragments = 1
-        self.N_SET = 0
+
+        self._aifdem_switch = 0  # aifdem and CIS switch
 
         switch = 0
         for line in content:
             if "jobtype" in line.lower() or "JOB_TYPE" in line:
+                line = line.replace("=", " ") # just in case there is an unnecessary '=' somewhere
                 jobtype = ((line.split())[1]).lower()
             if "basis2" in line.lower():
                 basis2_flag = True
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
+                line = line.replace("=", " ") # just in case there is an unnecessary '=' somewhere
                 mm_type = ((line.split())[1]).lower()
-            if "aifdem" in line.lower():
-                self.aifdem = ((line.split())[1]).lower()
-            if "CIS_N_ROOTS" in line:
-                self.N_SET = int(((line.split())[1]).lower())
+            
+            # AWH Feb 2021: AIFDEM output has changed substantially, needs to be rewritten
+            #               Hence it is deactivated for now.
+            #if "aifdem" in line.lower():
+            #    self._aifdem_switch = True 
+            
             if ("Pleasanton" in line) or ("Pittsburgh" in line) and ("CA" in line):
                 for k in line.split():
                     if re.match(r'^([\s\d.,]+)$',k):
@@ -573,11 +599,6 @@ class _outputfile(object):
                 continue
             if "MISSION" in line or 'Thank you very much for using Q-Chem' in line:
                 status = 'finished'
-                continue
-            if "--fragment" in line:
-                ifrgm = int((line.split())[-1])
-                if ifrgm + 1 > self.N_Fragments:
-                    self.N_Fragments = ifrgm + 1
                 continue
             if "TIME STEPS COMPLETED" in line and jobtype == "aimd":
                 status = 'time steps completed'
@@ -660,91 +681,89 @@ class _outputfile(object):
         if jobtype == "force":
             self._process_force(content)
 
-        if self.aifdem != 0:
-            self.EvalStrng = ""
-            self.aifdem_E_Excite = 0.0
-            self.aifdem_Time = 0.0
-            EvalSwitch = 0
-            for line in content:
-                if ("AIFDEM Time:" in line):
-                    self.aifdem_Time = float(line.split()[6])
-                if (" Eigenvectors " in line) and (EvalSwitch == 1):
-                    EvalSwitch = 0
-                if EvalSwitch == 1:
-                    self.EvalStrng += line
-                if " Eigenvalues \n" in line:
-                    EvalSwitch = 1
-            _ierr = 0
-            for i in range(len(self.EvalStrng.split())):
-                _ierr += 1
-                if _ierr > 7:
-                    print("Possible Error finding AIFDEM Excitation Energy in output_classes.py")
-                if len(self.EvalStrng.split()[i]) > 1:
-                    _iFirstline = i
-                    break
-
-            _EvalStrngFirstline = self.EvalStrng.split()[_iFirstline]
-
-            self.aifdem_E_Excite = float(
-                (_EvalStrngFirstline.split("-"))[1]) - float(
-                (_EvalStrngFirstline.split("-"))[2])
-            self.aifdem_E_Excite = round(self.aifdem_E_Excite, 7)
-        if self.N_SET > 0 and self.aifdem == 0:
-            self.excited_states = []
-            self.cis_time = 0
-            _N_SET = 0
-            for line in content:
-                if "Excited state" in line:
-                    _E_Exc_eV = float(line.split()[-1])
-                    _N_SET += 1
-                if "Total energy for state" in line:
-                    _E_Exc_total = float(line.split()[-1])
-                if "Multiplicity:" in line:
-                    _Mult = line.split()[-1]
-                if "Trans. Mom.:" in line:
-                    _momX = line.split()[2]
-                    _momY = line.split()[4]
-                    _momZ = line.split()[6]
-                if "Strength" in line:
-                    _osc = line.split()[-1]
-                    self.excited_states.append(
-                        {"Exc_eV": _E_Exc_eV, "Tot": _E_Exc_total,
-                         "Mult": _Mult, "X": _momX, "Y": _momY, "Z": _momZ,
-                         "Strength": _osc})
-                if "CPU time" in line:
-                    self.cis_time = line.split()[-1]
-            self.N_SET = _N_SET
-
-        if self.N_SET > 0 and self.aifdem == 0:
-            self.excited_states = []
-            self.cis_time = 0
-            _N_SET = 0
-            for line in content:
-                if "Excited state" in line:
-                    _E_Exc_eV = float(line.split()[-1])
-                    _N_SET += 1
-                if "Total energy for state" in line:
-                    _E_Exc_total = float(line.split()[-1])
-                if "Multiplicity:" in line:
-                    _Mult = line.split()[-1]
-                if "Trans. Mom.:" in line:
-                    _momX = line.split()[2]
-                    _momY = line.split()[4]
-                    _momZ = line.split()[6]
-                if "Strength" in line:
-                    _osc = line.split()[-1]
-                    self.excited_states.append(
-                        {"Exc_eV": _E_Exc_eV, "Tot": _E_Exc_total,
-                         "Mult": _Mult, "X": _momX, "Y": _momY, "Z": _momZ,
-                         "Strength": _osc})
-                if "CPU time" in line:
-                    self.cis_time = line.split()[-1]
-            self.N_SET = _N_SET
+        if self._aifdem_switch != 0:
+            self._process_aifdem(content)
 
         # Finally, we create the global info object 'general'
         self.general = _general(jobtype, version, spin, basis_size, energy,
                                 status, inputfile, mm_type, initial_geometry,
                                 final_geometry, wall_time, cpu_time)
+
+
+    # AWH Feb 2021: This parser if fully outdated and needs to be adjusted, AIFDEM has changed substantially
+    def _process_aifdem(self, content):
+        n_fragments = 1
+        n_set = 0
+        EvalStrng = ""
+        aifdem_E_Excite = 0.0
+        aifdem_Time = 0.0
+        EvalSwitch = 0
+
+        # Basic parsing part
+        for line in content:
+            if "CIS_N_ROOTS" in line:
+                line = line.replace("=", " ")
+                n_set = int(((line.split())[1]).lower())
+            if "--fragment" in line:
+                ifrgm = int((line.split())[-1])
+                if ifrgm + 1 > n_fragments:
+                    n_fragments = ifrgm + 1
+                    continue
+            if ("AIFDEM Time:" in line):
+                aifdem_Time = float(line.split()[6])
+            if (" Eigenvectors " in line) and (EvalSwitch == 1):
+                EvalSwitch = 0
+            if EvalSwitch == 1:
+                EvalStrng += line
+            if " Eigenvalues \n" in line:
+                EvalSwitch = 1
+        
+        _ierr = 0
+        for i in range(len(EvalStrng.split())):
+            _ierr += 1
+            if _ierr > 7:
+                print("Possible Error finding AIFDEM Excitation Energy in output_classes.py")
+            if len(EvalStrng.split()[i]) > 1:
+                _iFirstline = i
+                break
+
+        _EvalStrngFirstline = EvalStrng.split()[_iFirstline]
+        aifdem_E_Excite = float(
+                (_EvalStrngFirstline.split("-"))[1]) - float(
+                (_EvalStrngFirstline.split("-"))[2])
+        aifdem_E_Excite = round(aifdem_E_Excite, 7)
+
+
+        # Advanced parsing part if there are sets
+        if n_set > 0:
+            excited_states = []
+            cis_time = 0
+            n_set = 0
+            for line in content:
+                if "Excited state" in line:
+                    _E_Exc_eV = float(line.split()[-1])
+                    n_set += 1
+                if "Total energy for state" in line:
+                    _E_Exc_total = float(line.split()[-1])
+                if "Multiplicity:" in line:
+                    _Mult = line.split()[-1]
+                if "Trans. Mom.:" in line:
+                    _momX = line.split()[2]
+                    _momY = line.split()[4]
+                    _momZ = line.split()[6]
+                if "Strength" in line:
+                    _osc = line.split()[-1]
+                    excited_states.append(
+                        {"Exc_eV": _E_Exc_eV, "Tot": _E_Exc_total,
+                         "Mult": _Mult, "X": _momX, "Y": _momY, "Z": _momZ,
+                         "Strength": _osc})
+                if "CPU time" in line:
+                    cis_time = line.split()[-1]
+            
+        # And finally, we create the aifdem info object:
+        self.aifdem = _aifdem([n_set,n_fragments,cis_n_roots,cis_time,excited_states])
+
+
 
     def _process_aimd(self, content):
         drift = []
