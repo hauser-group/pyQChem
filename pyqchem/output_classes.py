@@ -547,7 +547,7 @@ class _outputfile(object):
                 self.aifdem = ((line.split())[1]).lower()
             if "CIS_N_ROOTS" in line:
                 self.N_SET = int(((line.split())[1]).lower())
-            if ("Pleasanton" in line) or ("Pittsburgh" in line):
+            if ("Pleasanton" in line) or ("Pittsburgh" in line) and ("CA" in line):
                 for k in line.split():
                     if re.match(r'^([\s\d.,]+)$',k):
                         version = k.split(',')[0]
