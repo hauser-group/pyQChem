@@ -2,11 +2,9 @@ import setuptools
 
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
-    
-install_requires = [
-    'numpy>=1.10.4',
-    'matplotlib>=2.0.0',
-]
+
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
 
 setuptools.setup(
     name='pyqchem',
@@ -18,5 +16,6 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=setuptools.find_packages(),
-    python_requires='>=3.6'
+    python_requires='>=3.5',
+    install_requires=requirements
 )
