@@ -3,13 +3,13 @@
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met: 
+# modification, are permitted provided that the following conditions are met:
 
 # 1. Redistributions of source code must retain the above copyright notice, this
-#    list of conditions and the following disclaimer. 
+#    list of conditions and the following disclaimer.
 # 2. Redistributions in binary form must reproduce the above copyright notice,
 #    this list of conditions and the following disclaimer in the documentation
-#    and/or other materials provided with the distribution. 
+#    and/or other materials provided with the distribution.
 
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -23,14 +23,14 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # The views and conclusions contained in the software and documentation are those
-# of the authors and should not be interpreted as representing official policies, 
+# of the authors and should not be interpreted as representing official policies,
 # either expressed or implied, of the FreeBSD Project.
 
 #####################################################################
 #                                                                   #
 #               pyQchem - Input/Output-Tools for Q-Chem             #
 #                                                                   #
-#                           Version 0.9                             #
+#                           Version 1.0                             #
 #                                                                   #
 #####################################################################
 
@@ -38,7 +38,7 @@
 
 ############################## RULES ################################
 
-# Object properties are only accessible via methods. Exceptions are 
+# Object properties are only accessible via methods. Exceptions are
 # either info-objects (mostly in outputfile parsing) or cases where it
 # really makes sense for the user and Python datatypes come in handy.
 # In these rare exceptions, the property has to contain the word "list"
@@ -48,10 +48,10 @@
 # needed by the user. This keeps the tab completion tidy and efficient.
 
 # Note that "remove" functions start counting at 1, in contrast to
-# the Python tradition. 
+# the Python tradition.
 
 # Current addition: The jobfile class allows direct access to certain
-# array objects (rem, basis, molecule ...). 
+# array objects (rem, basis, molecule ...).
 
 ######################### STANDARD MODULES ##########################
 
@@ -65,11 +65,11 @@ from . import constants
 
 ############################# MODULES ###############################
 
-# First we need all visible inputfile classes. 
+# First we need all visible inputfile classes.
 
 from .input_classes import *
 
-# Then we add some hidden outputfile classes... 
+# Then we add some hidden outputfile classes...
 
 from .output_classes import _outputfile
 from .output_classes import _multioutput
@@ -95,11 +95,11 @@ from .running_scripts import *
 ########################### FILEHANDLING ############################
 
 # This is the main filereading method. It reads all types of supported
-# files. All other reading methods are hidden from the user. 
+# files. All other reading methods are hidden from the user.
 
 def read(filename, silent=False):
     """
-    This method reads Q-Chem input files, output files, and coordinate files (xyz,zmat,txyz). 
+    This method reads Q-Chem input files, output files, and coordinate files (xyz,zmat,txyz).
     """
 
     extension = (filename.split("."))[-1]
@@ -135,7 +135,7 @@ def read(filename, silent=False):
 
         N_jobs = len(seperator)
 
-        # Does the file contain multiple jobs? 
+        # Does the file contain multiple jobs?
         if N_jobs > 0:
             if not silent:
                 print("Batch Jobfile detected.")
@@ -157,7 +157,7 @@ def read(filename, silent=False):
                 re_file.add(dummy)
             return re_file
 
-        # No, it's a single job file    
+        # No, it's a single job file
         else:
             if not silent:
                 print("Jobfile detected.")
@@ -192,7 +192,7 @@ def read(filename, silent=False):
 
         N_jobs = len(seperator)
 
-        # Does the file contain multiple jobs? 
+        # Does the file contain multiple jobs?
         if N_jobs > 1:
             if not silent:
                 print("Batch-Outputfile detected.")
@@ -214,7 +214,7 @@ def read(filename, silent=False):
                 re_file.add(dummy)
             return re_file
 
-        # No, it's a single job file    
+        # No, it's a single job file
         else:
             if not silent:
                 print("Outputfile detected.")
