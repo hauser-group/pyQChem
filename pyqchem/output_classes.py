@@ -413,13 +413,12 @@ class _opt(object):
         """
         This method concatenates the xyz geometries, using the current energy as title (supported by Molden).
         """
-        f = open(filename, 'w')
         ret_str = ""
         for i, k in enumerate(self.geometries):
             k.title(str(self.energies[i]))
             ret_str += k.__str__()
-        f.write(ret_str)
-        f.close()
+        with open(filename, 'w') as f:
+            f.write(ret_str)
 
 
 class _aimd(object):
@@ -453,13 +452,12 @@ class _aimd(object):
         """
         This method concatenates the xyz geometries, using the current energy as title (supported by Molden).
         """
-        f = open(filename, 'w')
         ret_str = ""
         for i, k in enumerate(self.geometries):
             k.title(str(self.energies[i]))
             ret_str += k.__str__()
-        f.write(ret_str)
-        f.close()
+        with open(filename, 'w') as f:
+            f.write(ret_str)
 
 
 class _force(object):
@@ -539,7 +537,8 @@ class _outputfile(object):
         if type(file_input) == list:
             content = file_input
         else:
-            content = open(file_input, "r").readlines()
+            with open(file_input, "r") as f:
+                content = f.readlines()
 
         spin = '0'
         energy = 'undetermined'
@@ -567,12 +566,12 @@ class _outputfile(object):
             if ("QM_MM_INTERFACE" in line) or ("qm_mm_interface" in line):
                 line = line.replace("=", " ") # just in case there is an unnecessary '=' somewhere
                 mm_type = ((line.split())[1]).lower()
-            
+
             # AWH Feb 2021: AIFDEM output has changed substantially, needs to be rewritten
             #               Hence it is deactivated for now.
             #if "aifdem" in line.lower():
-            #    self._aifdem_switch = True 
-            
+            #    self._aifdem_switch = True
+
             if ("Pleasanton" in line) or ("Pittsburgh" in line) and ("CA" in line):
                 for k in line.split():
                     if re.match(r'^([\s\d.,]+)$',k):
@@ -717,7 +716,7 @@ class _outputfile(object):
                 EvalStrng += line
             if " Eigenvalues \n" in line:
                 EvalSwitch = 1
-        
+
         _ierr = 0
         for i in range(len(EvalStrng.split())):
             _ierr += 1
@@ -759,7 +758,7 @@ class _outputfile(object):
                          "Strength": _osc})
                 if "CPU time" in line:
                     cis_time = line.split()[-1]
-            
+
         # And finally, we create the aifdem info object:
         self.aifdem = _aifdem([n_set,n_fragments,cis_n_roots,cis_time,excited_states])
 
@@ -857,7 +856,7 @@ class _outputfile(object):
                 cart_dummy = cartesian(cycle_name)
             if switch == 1 and len(line.split()) == 5: # fulfilled only by xyz-format (hopefully)
                     con = line.split()
-                    cart_dummy.add_atom(con[1], con[2], con[3], con[4]) 
+                    cart_dummy.add_atom(con[1], con[2], con[3], con[4])
             if "Point Group" in line and switch == 1:
                 geometries.append(deepcopy(cart_dummy))
                 N_step += 1
