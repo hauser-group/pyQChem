@@ -4,10 +4,10 @@
 
 PyQChem is a Python module designed for an intuitive manipulation of [Q-Chem](http://www.q-chem.com) input and output files. It was written with special focus on the features of [IPython](http://ipython.org) such as tab completion and easy access to help docstrings via the question mark operator.
 
-Use pip to add the latest release of pqQChem to your environment (recommended),
+Use conda to add the latest release of pqQChem to your environment (recommended),
 
 ```
-pip install pyqchem
+conda install pyqchem
 ```
 
 or clone and install the current Github development version via
