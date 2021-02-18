@@ -7,7 +7,7 @@ PyQChem is a Python module designed for an intuitive manipulation of [Q-Chem](ht
 Use conda to add the latest release of pqQChem to your environment (recommended),
 
 ```
-conda install pyqchem
+conda install -c awhauser pyqchem 
 ```
 
 or clone and install the current Github development version via
