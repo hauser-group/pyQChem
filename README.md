@@ -2,6 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/16428728.svg)](https://zenodo.org/badge/latestdoi/16428728)
 [![Build Status](https://travis-ci.com/hauser-group/pyQChem.svg?branch=master)](https://travis-ci.com/hauser-group/pyQChem) 
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/terraform-provider-github/badges/installer/conda.svg)](https://anaconda.org/awhauser/pyqchem)
 
 PyQChem is a Python module designed for an intuitive manipulation of [Q-Chem](http://www.q-chem.com) input and output files. It was written with special focus on the features of [IPython](http://ipython.org) such as tab completion and easy access to help docstrings via the question mark operator.
 
