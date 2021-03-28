@@ -2,7 +2,6 @@
 *.swp
 .ipynb_checkpoints
 pyQchem\ test.ipynb
-*.html
 *.png
 *.in
 *.out
@@ -26,8 +25,6 @@ pathtable
 # Don't ignore test files
 !/test/files/*.out
 
-# Don#t ignore doc files
-!/docs/*.html
 
 # Don't ignore tutorial files
 !/examples/tutorials/testrun.in
