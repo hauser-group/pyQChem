@@ -26,6 +26,9 @@ pathtable
 # Don't ignore test files
 !/test/files/*.out
 
+# Don#t ignore doc files
+!/docs/*.html
+
 # Don't ignore tutorial files
 !/examples/tutorials/testrun.in
 !/examples/tutorials/oniom_opt.out
