@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'pyqchem'
+project = 'pyQChem'
 copyright = '2021, Andreas Hauser'
 author = 'Andreas Hauser'
 
@@ -32,7 +32,9 @@ release = '0.0.2'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
     'sphinx_rtd_theme',
+    'sphinx.ext.githubpages',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
