@@ -123,7 +123,7 @@ class _general(object):
     This structure contains basic information about the Q-Chem jobfile.
     """
 
-    def __init__(self, jobtype, version, spin, basis_size, energy, status,
+    def __init__(self, jobtype, version, spin, basis_size, energy, dipole, status,
                  inputfile, mm_type, initial_geometry, final_geometry,
                  wall_time, cpu_time):
         self.jobtype = jobtype
@@ -138,6 +138,10 @@ class _general(object):
             self.energy = _np.float(energy)
         except ValueError:
             self.energy = "undefined"
+        try:
+            self.dipole = dipole
+        except ValueError:
+            self.dipole = "undefined"
         self.status = status
         self.inputfile = inputfile
         self.mm_type = mm_type
@@ -170,6 +174,7 @@ class _general(object):
             print("Basis functions:\t" + str(self.basis_size))
             print("Spin:\t\t\t" + str(self.spin))
             print("SCF energy:\t\t" + str(self.energy))
+            print("Dipole moment:\t\t" + str(self.dipole))
         else:
             print("Basis functions:\t" + str(self.basis_size))
             print("Spin:\t\t\t" + str(self.spin))
@@ -546,6 +551,7 @@ class _outputfile(object):
         version = 'undetermined'
         basis_size = 'undetermined'
         status = 'unfinished'
+        dipole = 'undefined'
         wall_time = -99
         cpu_time = -99
         basis2_flag = False  # flag for detection of basis2 job
@@ -557,6 +563,7 @@ class _outputfile(object):
         self._aifdem_switch = 0  # aifdem and CIS switch
 
         switch = 0
+        dipoleswitch=0
         for line in content:
             if "jobtype" in line.lower() or "JOB_TYPE" in line:
                 line = line.replace("=", " ") # just in case there is an unnecessary '=' somewhere
@@ -585,6 +592,17 @@ class _outputfile(object):
                 continue
             if "Convergence criterion met" in line and basis2_flag:
                 energy = (line.split())[1]
+                continue
+            if ("Etot:" in line) and (mm_type == "mm"):
+                energy = (line.split())[4]
+                continue
+            if "Dipole Moment (Debye)" in line:
+                dipoleswitch = 1
+                continue
+            if dipoleswitch == 1 and " X " in line:
+                dummy = line.split()
+                dipole = _np.array([dummy[1],dummy[3],dummy[5]],'float')
+                dipoleswitch = 0
                 continue
             if ("Etot:" in line) and (mm_type == "mm"):
                 energy = (line.split())[4]
@@ -684,7 +702,7 @@ class _outputfile(object):
             self._process_aifdem(content)
 
         # Finally, we create the global info object 'general'
-        self.general = _general(jobtype, version, spin, basis_size, energy,
+        self.general = _general(jobtype, version, spin, basis_size, energy, dipole,
                                 status, inputfile, mm_type, initial_geometry,
                                 final_geometry, wall_time, cpu_time)
 
