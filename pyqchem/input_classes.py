@@ -373,6 +373,8 @@ class cartesian(_array):
                 self.xyzs.append(_np.array([float(x), float(y), float(z)]))
             self.xyzs = _np.array(self.xyzs)
             self.__center_of_mass()
+            self.__center_of_charge()
+
 
     def fix(self):
         """This fixes any odd errors resulting from modifying the number of atoms"""
@@ -387,6 +389,7 @@ class cartesian(_array):
             self.xyzs.append(_np.array([float(x), float(y), float(z)]))
         self.xyzs = _np.array(self.xyzs)
         self.__center_of_mass()
+        self.__center_of_charge()
 
     def __center_of_mass(self):
         """This computes the centroid and center of mass using standard atomic masses"""
@@ -407,6 +410,22 @@ class cartesian(_array):
         self.centroid = _np.array([i / self.__Natoms for i in self.centroid])
         self.com = _np.array([i / total_mass for i in self.com])
 
+    def __center_of_charge(self):
+        """This computes the center of charge using standard atomic charges"""
+        # print self.xyzs, self.__Natoms
+        self.coc = _np.array([0.0, 0.0, 0.0])
+        if len(self.xyzs) == 0:
+            return
+        total_charge = 0.0
+        wts = [constants.dict_of_atomic_numbers[
+                   self.list_of_atoms[i][0].replace("@", "")] for i in
+               range(self.__Natoms)]
+        for i, atom in enumerate(self.xyzs):
+            wt = wts[i]
+            total_charge = total_charge + wt
+            self.coc = self.coc + atom * wt
+        self.coc = _np.array([i / total_charge for i in self.coc])
+
     def title(self, title="show"):
         if title == "show":
             return self.__title
@@ -417,11 +436,13 @@ class cartesian(_array):
         self.list_of_atoms.append([name, x, y, z])
         self.fix()
         self.__center_of_mass()
+        self.__center_of_charge()
 
     def remove_atom(self, position=0):
         del self.list_of_atoms[position]  # First atom is atom 1
         self.fix()
         self.__center_of_mass()
+        self.__center_of_charge()
 
     def ghost(self):
         atoms = []
@@ -450,6 +471,10 @@ class cartesian(_array):
         print(str(self.com[0]) + '\t' + str(self.com[1]) + '\t' + str(
             self.com[2]))
 
+    def print_center_of_charge(self):
+        print(str(self.coc[0]) + '\t' + str(self.coc[1]) + '\t' + str(
+            self.coc[2]))
+
     def move(self, dir, amt=1.0):
         dir = _np.array(dir)
         for i in range(self.__Natoms):
@@ -458,6 +483,7 @@ class cartesian(_array):
             self.list_of_atoms[i][2] = str(self.xyzs[i][1])
             self.list_of_atoms[i][3] = str(self.xyzs[i][2])
         self.__center_of_mass()
+        self.__center_of_charge()
 
     def __str__(self):
         str_ret = str(self.__Natoms) + "\n" + self.__title + "\n"
